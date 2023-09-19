@@ -4,10 +4,14 @@ from  pprint import  PrettyPrinter
 def  ASSERT_(c,t='\U00002a33'): assert c,t; return c
 pprint = PrettyPrinter(2).pprint
 DEGEN_=g$>deque(g,maxlen=0)
-EMPTY_STRING=''
-COMPLEX_UNIT=1j
-MATH_PI = 3.14159265359
-MATH_TAU = 6.28318530718
+EMPTY_STRING, COMPLEX_UNIT = '', 1j
+MATH_PI, MATH_TAU = 3.14159265359, 6.28318530718
+class  Namespace:
+    __init__ = SPECIAL_SELF_ $> KWARGS_ .keys()* list | setattrs ( SPECIAL_SELF_ )| list * KWARGS_ .values()
+    __setitem__ = <$ SPECIAL_SELF_ ,k,v$>setattr( SPECIAL_SELF_ ,k,v)
+    __getitem__ = <$ SPECIAL_SELF_ ,k$>getattr( SPECIAL_SELF_ ,k)
+    __iter__ = SPECIAL_SELF_ $>iter( SPECIAL_SELF_. __dict__.items())
+    __repr__ = SPECIAL_SELF_ $>f"""ℕ({(', '.join(f"""{k}={v}"""  for k,v in  SPECIAL_SELF_. __dict__.items()))})""" 
 class  pait:
     import  subprocess as SP
     def  __call__( SPECIAL_SELF_ ,s,* ARGS_ ,** KWARGS_ ):
@@ -15,14 +19,14 @@ class  pait:
         return  (proc.wait() and  False  if  "background" not in  KWARGS_ ) or  proc
     _parse = SPECIAL_SELF_ ,o$>o.read().decode()
     r = SPECIAL_SELF_ $> SPECIAL_SELF_ (* ARGS_ ,** KWARGS_ ).return_code
-    S = SPECIAL_SELF_ $> SPECIAL_SELF_ ._parse( SPECIAL_SELF_ (* ARGS_ ,stdout= SPECIAL_SELF_ .SP.capture,** KWARGS_ ).stdout)
-    E = SPECIAL_SELF_ $> SPECIAL_SELF_ ._parse( SPECIAL_SELF_ (* ARGS_ ,stderr= SPECIAL_SELF_ .SP.capture,** KWARGS_ ).stderr)
-    b = SPECIAL_SELF_ $> SPECIAL_SELF_ (* ARGS_ ,background= True ,stdout= SPECIAL_SELF_ .SP.capture,stderr= SPECIAL_SELF_ .SP.capture,** KWARGS_ )
+    S = SPECIAL_SELF_ $> SPECIAL_SELF_ ._parse( SPECIAL_SELF_ (* ARGS_ ,stdout= SPECIAL_SELF_ .SP.PIPE,** KWARGS_ ).stdout)
+    E = SPECIAL_SELF_ $> SPECIAL_SELF_ ._parse( SPECIAL_SELF_ (* ARGS_ ,stderr= SPECIAL_SELF_ .SP.PIPE,** KWARGS_ ).stderr)
+    b = SPECIAL_SELF_ $> SPECIAL_SELF_ (* ARGS_ ,background= True ,stdout= SPECIAL_SELF_ .SP.PIPE,stderr= SPECIAL_SELF_ .SP.PIPE,** KWARGS_ )
     def  B( SPECIAL_SELF_ ,* ARGS_ ,** KWARGS_ ):
-        o = SPECIAL_SELF_ (* ARGS_ ,stdout= SPECIAL_SELF_ .SP.capture,stderr= SPECIAL_SELF_ .SP.capture,** KWARGS_ )
+        o = SPECIAL_SELF_ (* ARGS_ ,stdout= SPECIAL_SELF_ .SP.PIPE,stderr= SPECIAL_SELF_ .SP.PIPE,** KWARGS_ )
         return  SPECIAL_SELF_ ._parse(o.stdout), SPECIAL_SELF_ ._parse(o.stderr)
     def  A( SPECIAL_SELF_ ,* ARGS_ ,** KWARGS_ ):
-        o = SPECIAL_SELF_ (* ARGS_ ,stdout= SPECIAL_SELF_ .SP.capture,stderr= SPECIAL_SELF_ .SP.capture,** KWARGS_ )
+        o = SPECIAL_SELF_ (* ARGS_ ,stdout= SPECIAL_SELF_ .SP.PIPE,stderr= SPECIAL_SELF_ .SP.PIPE,** KWARGS_ )
         return  o.return_code, SPECIAL_SELF_ ._parse(o.stdout), SPECIAL_SELF_ ._parse(o.stderr)
 pait = pait()
 from  operator import  add as add_
@@ -79,6 +83,7 @@ OP_SWAP_ = OP_UNARY_(SWAP_, __rmatmul__='l')
 OP_DUP_ = OP_UNARY_(DUP_, __rmatmul__='l')
 OP_COMPOSE_ = OP_BNARY_(COMPOSE_, **par_add_)
 sum = (x$>reduce(add_,(x:=list(x)),*([ ARGS_ [0] if  ARGS_  else 0] if  not x else [])))**OP_TO_BNARY_
+prod = (x$>reduce(<$x,y$>x*y,(x:=list(x)),*([ ARGS_ [0] if  ARGS_  else 0] if  not x else [])))**OP_TO_BNARY_
 reduce **= OP_TO_BNARY_
 isinstance = OP_BNARY_(isinstance, **par_pow_)
 range = OP_UNARY_(range, **par_mul_)
@@ -90,6 +95,7 @@ skinniside_z = OP_UNARY_(<$x$>1 if x>0 else 0, **par_mul_)
 skinniside_b = OP_UNARY_(<$x$>(1 if x>0 else -1) if x else 0, **par_mul_)
 setattrs = f$>(<$x,y$> DEGEN_( setattr(f,a,b) for a,b in zip(x,y)))**OP_TO_BNARY_
 other = (<$x,y$> ASSERT_ ( len (l:= list *x)==2 and y in l) and l[y==l[0]])**OP_TO_BNARY_
+split_string = OP_UNARY_(<$x$>[split_string(k,' ') if ' ' in k else k for k in x.split( ARGS_ [0] if  ARGS_  else ' ')], **par_mul_)
 
 # no generators- bad idea?
 map = (<$$>(list(map_(* ARGS_ )) if  len ( ARGS_ )>1 else  (<$* ARGS_ ,f= ARGS_ [0]$>list(map_(f,* ARGS_ )))**OP_TO_UNARY_))**OP_TO_BNARY_
@@ -114,6 +120,8 @@ assert j(3)==9
 k=<$f=(x$>x**2),y=5$>(f(y*2), ARGS_ , KWARGS_ )[0]
 assert (k(y=8))==256
 assert ((x$>[x+5, ARGS_ [0] [1], KWARGS_ ])(1, "hello", 3, yay="yay"))==6`$"e"`${'yay':'yay'}
+
+
 
 
 
