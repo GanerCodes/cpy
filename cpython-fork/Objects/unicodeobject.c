@@ -7060,7 +7060,7 @@ decode_code_page_errors(UINT code_page,
             if (err != ERROR_NO_UNICODE_TRANSLATION
                 && err != ERROR_INSUFFICIENT_BUFFER)
             {
-                PyErr_SetFromWindowsErr(0);
+                PyErr_SetFromWindowsErr(err);
                 goto error;
             }
             insize++;
@@ -12361,7 +12361,7 @@ str.split as unicode_split
         The separator used to split the string.
 
         When set to None (the default value), will split on any whitespace
-        character (including \\n \\r \\t \\f and spaces) and will discard
+        character (including \n \r \t \f and spaces) and will discard
         empty strings from the result.
     maxsplit: Py_ssize_t = -1
         Maximum number of splits (starting from the left).
@@ -12377,7 +12377,7 @@ the regular expression module.
 
 static PyObject *
 unicode_split_impl(PyObject *self, PyObject *sep, Py_ssize_t maxsplit)
-/*[clinic end generated code: output=3a65b1db356948dc input=906d953b44efc43b]*/
+/*[clinic end generated code: output=3a65b1db356948dc input=07b9040d98c5fe8d]*/
 {
     if (sep == Py_None)
         return split(self, NULL, maxsplit);
@@ -14817,6 +14817,7 @@ _PyUnicode_ClearInterned(PyInterpreterState *interp)
     PyObject *s, *ignored_value;
     while (PyDict_Next(interned, &pos, &s, &ignored_value)) {
         assert(PyUnicode_IS_READY(s));
+        int shared = 0;
         switch (PyUnicode_CHECK_INTERNED(s)) {
         case SSTATE_INTERNED_IMMORTAL:
             // Skip the Immortal Instance check and restore
@@ -14828,6 +14829,14 @@ _PyUnicode_ClearInterned(PyInterpreterState *interp)
 #endif
             break;
         case SSTATE_INTERNED_IMMORTAL_STATIC:
+            /* It is shared between interpreters, so we should unmark it
+               only when this is the last interpreter in which it's
+               interned.  We immortalize all the statically initialized
+               strings during startup, so we can rely on the
+               main interpreter to be the last one. */
+            if (!_Py_IsMainInterpreter(interp)) {
+                shared = 1;
+            }
             break;
         case SSTATE_INTERNED_MORTAL:
             /* fall through */
@@ -14836,7 +14845,9 @@ _PyUnicode_ClearInterned(PyInterpreterState *interp)
         default:
             Py_UNREACHABLE();
         }
-        _PyUnicode_STATE(s).interned = SSTATE_NOT_INTERNED;
+        if (!shared) {
+            _PyUnicode_STATE(s).interned = SSTATE_NOT_INTERNED;
+        }
     }
 #ifdef INTERNED_STATS
     fprintf(stderr,
@@ -15177,10 +15188,13 @@ init_fs_codec(PyInterpreterState *interp)
 
     /* Set Py_FileSystemDefaultEncoding and Py_FileSystemDefaultEncodeErrors
        global configuration variables. */
-    if (_Py_SetFileSystemEncoding(fs_codec->encoding,
-                                  fs_codec->errors) < 0) {
-        PyErr_NoMemory();
-        return -1;
+    if (_Py_IsMainInterpreter(interp)) {
+
+        if (_Py_SetFileSystemEncoding(fs_codec->encoding,
+                                      fs_codec->errors) < 0) {
+            PyErr_NoMemory();
+            return -1;
+        }
     }
     return 0;
 }

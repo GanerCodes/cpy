@@ -1084,6 +1084,7 @@ class AST_Tests(unittest.TestCase):
                     return self
         enum._test_simple_enum(_Precedence, ast._Precedence)
 
+    @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
     @support.cpython_only
     def test_ast_recursion_limit(self):
         fail_depth = support.EXCEEDS_RECURSION_LIMIT
@@ -1998,6 +1999,7 @@ class ASTValidatorTests(unittest.TestCase):
             'ast.NameConstant is deprecated and will be removed in Python 3.14; use ast.Constant instead',
         ])
 
+    @support.requires_resource('cpu')
     def test_stdlib_validates(self):
         stdlib = os.path.dirname(ast.__file__)
         tests = [fn for fn in os.listdir(stdlib) if fn.endswith(".py")]

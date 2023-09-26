@@ -299,7 +299,7 @@ Module functions
        Can be ``"DEFERRED"`` (default), ``"EXCLUSIVE"`` or ``"IMMEDIATE"``;
        or ``None`` to disable opening transactions implicitly.
        Has no effect unless :attr:`Connection.autocommit` is set to
-       :data:`~sqlite3.LEGACY_TRANSACTION_CONTROL` (the default).
+       :const:`~sqlite3.LEGACY_TRANSACTION_CONTROL` (the default).
    :type isolation_level: str | None
 
    :param bool check_same_thread:
@@ -334,7 +334,7 @@ Module functions
        See :attr:`Connection.autocommit` and
        :ref:`sqlite3-transaction-control-autocommit` for more information.
        *autocommit* currently defaults to
-       :data:`~sqlite3.LEGACY_TRANSACTION_CONTROL`.
+       :const:`~sqlite3.LEGACY_TRANSACTION_CONTROL`.
        The default will change to ``False`` in a future Python release.
    :type autocommit: bool
 
@@ -755,7 +755,7 @@ Connection objects
          ('acbd18db4cc2f85cedef654fccc4a4d8',)
 
 
-   .. method:: create_aggregate(name, /, n_arg, aggregate_class)
+   .. method:: create_aggregate(name, n_arg, aggregate_class)
 
       Create or remove a user-defined SQL aggregate function.
 
@@ -895,7 +895,7 @@ Connection objects
 
          [('a', 9), ('b', 12), ('c', 16), ('d', 12), ('e', 9)]
 
-   .. method:: create_collation(name, callable)
+   .. method:: create_collation(name, callable, /)
 
       Create a collation named *name* using the collating function *callable*.
       *callable* is passed two :class:`string <str>` arguments,
@@ -1547,7 +1547,7 @@ Cursor objects
 
       :raises ProgrammingError:
          If *sql* contains more than one SQL statement,
-         or is not a DML statment.
+         or is not a DML statement.
 
       Example:
 
@@ -1821,9 +1821,9 @@ Blob objects
    .. method:: seek(offset, origin=os.SEEK_SET, /)
 
       Set the current access position of the blob to *offset*.  The *origin*
-      argument defaults to :data:`os.SEEK_SET` (absolute blob positioning).
-      Other values for *origin* are :data:`os.SEEK_CUR` (seek relative to the
-      current position) and :data:`os.SEEK_END` (seek relative to the blob’s
+      argument defaults to :const:`os.SEEK_SET` (absolute blob positioning).
+      Other values for *origin* are :const:`os.SEEK_CUR` (seek relative to the
+      current position) and :const:`os.SEEK_END` (seek relative to the blob’s
       end).
 
 

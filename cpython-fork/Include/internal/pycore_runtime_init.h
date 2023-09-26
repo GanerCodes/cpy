@@ -41,11 +41,6 @@ extern PyTypeObject _PyExc_MemoryError;
            in accordance with the specification. */ \
         .autoTSSkey = Py_tss_NEEDS_INIT, \
         .parser = _parser_runtime_state_INIT, \
-        .imports = { \
-            .extensions = { \
-                .main_tstate = _PyThreadState_INIT, \
-            }, \
-        }, \
         .ceval = { \
             .perf = _PyEval_RUNTIME_PERF_INIT, \
         }, \
@@ -106,6 +101,7 @@ extern PyTypeObject _PyExc_MemoryError;
                 { .threshold = 10, }, \
             }, \
         }, \
+        .object_state = _py_object_state_INIT(INTERP), \
         .dtoa = _dtoa_state_INIT(&(INTERP)), \
         .dict_state = _dict_state_INIT, \
         .func_state = { \
@@ -134,6 +130,16 @@ extern PyTypeObject _PyExc_MemoryError;
         .py_recursion_limit = Py_DEFAULT_RECURSION_LIMIT, \
         .context_ver = 1, \
     }
+
+#ifdef Py_TRACE_REFS
+# define _py_object_state_INIT(INTERP) \
+    { \
+        .refchain = {&INTERP.object_state.refchain, &INTERP.object_state.refchain}, \
+    }
+#else
+# define _py_object_state_INIT(INTERP) \
+    { 0 }
+#endif
 
 
 // global objects

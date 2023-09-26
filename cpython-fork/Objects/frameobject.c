@@ -24,10 +24,16 @@ static PyMemberDef frame_memberlist[] = {
 static PyObject *
 frame_getlocals(PyFrameObject *f, void *closure)
 {
-    if (PyFrame_FastToLocalsWithError(f) < 0)
+    if (f == NULL) {
+        PyErr_BadInternalCall();
         return NULL;
-    PyObject *locals = f->f_frame->f_locals;
-    return Py_NewRef(locals);
+    }
+    assert(!_PyFrame_IsIncomplete(f->f_frame));
+    PyObject *locals = _PyFrame_GetLocals(f->f_frame, 1);
+    if (locals) {
+        f->f_fast_as_locals = 1;
+    }
+    return locals;
 }
 
 int
@@ -878,9 +884,6 @@ frame_dealloc(PyFrameObject *f)
     /* It is the responsibility of the owning generator/coroutine
      * to have cleared the generator pointer */
 
-    assert(f->f_frame->owner != FRAME_OWNED_BY_GENERATOR ||
-        _PyFrame_GetGenerator(f->f_frame)->gi_frame_state == FRAME_CLEARED);
-
     if (_PyObject_GC_IS_TRACKED(f)) {
         _PyObject_GC_UNTRACK(f);
     }
@@ -888,10 +891,14 @@ frame_dealloc(PyFrameObject *f)
     Py_TRASHCAN_BEGIN(f, frame_dealloc);
     PyCodeObject *co = NULL;
 
+    /* GH-106092: If f->f_frame was on the stack and we reached the maximum
+     * nesting depth for deallocations, the trashcan may have delayed this
+     * deallocation until after f->f_frame is freed. Avoid dereferencing
+     * f->f_frame unless we know it still points to valid memory. */
+    _PyInterpreterFrame *frame = (_PyInterpreterFrame *)f->_f_frame_data;
+
     /* Kill all local variables including specials, if we own them */
-    if (f->f_frame->owner == FRAME_OWNED_BY_FRAME_OBJECT) {
-        assert(f->f_frame == (_PyInterpreterFrame *)f->_f_frame_data);
-        _PyInterpreterFrame *frame = (_PyInterpreterFrame *)f->_f_frame_data;
+    if (f->f_frame == frame && frame->owner == FRAME_OWNED_BY_FRAME_OBJECT) {
         /* Don't clear code object until the end */
         co = frame->f_code;
         frame->f_code = NULL;
@@ -1350,11 +1357,11 @@ PyFrame_GetVarString(PyFrameObject *frame, const char *name)
 int
 PyFrame_FastToLocalsWithError(PyFrameObject *f)
 {
-    assert(!_PyFrame_IsIncomplete(f->f_frame));
     if (f == NULL) {
         PyErr_BadInternalCall();
         return -1;
     }
+    assert(!_PyFrame_IsIncomplete(f->f_frame));
     int err = _PyFrame_FastToLocalsWithError(f->f_frame);
     if (err == 0) {
         f->f_fast_as_locals = 1;

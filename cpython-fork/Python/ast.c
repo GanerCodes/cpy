@@ -768,6 +768,11 @@ validate_stmt(struct validator *state, stmt_ty stmt)
                validate_expr(state, stmt->v.AnnAssign.annotation, Load);
         break;
     case TypeAlias_kind:
+        if (stmt->v.TypeAlias.name->kind != Name_kind) {
+            PyErr_SetString(PyExc_TypeError,
+                            "TypeAlias with non-Name name");
+            return 0;
+        }
         ret = validate_expr(state, stmt->v.TypeAlias.name, Store) &&
             validate_type_params(state, stmt->v.TypeAlias.type_params) &&
             validate_expr(state, stmt->v.TypeAlias.value, Load);
@@ -1029,7 +1034,7 @@ validate_type_params(struct validator *state, asdl_type_param_seq *tps)
 
 
 /* See comments in symtable.c. */
-#define COMPILER_STACK_FRAME_SCALE 3
+#define COMPILER_STACK_FRAME_SCALE 2
 
 int
 _PyAST_Validate(mod_ty mod)
