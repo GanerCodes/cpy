@@ -13,7 +13,7 @@ cd ../cpython-fork
     ./python -m ensurepip --default-pip
 cd -
 
-cpy_tool tests.py
+../cpy_tool tests.py
 
 
 # make -s -j8 regen-pegen regen-frozen
