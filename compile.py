@@ -23,13 +23,18 @@ dict_replace = lambda d, s: re.compile(
     f"({'|'.join(map(re.escape, d.keys()))})") \
         .sub(lambda m: d[m.string[m.start():m.end()]], s) 
 
-REPS = {}
-for t in TRY_SURROUND_SPACE.split(' '):
-    f, r = t.split('/', 1)
-    REPS['\n'+f] = '\n'+r+' '
-    REPS[' '+f] = ' '+r+' '
-    REPS[f] = ' '+r+' '
-for t in STANDARD.split(' '):
-    f, r = t.split('/', 1)
-    REPS[f] = r
+def get_reps():
+    REPS = {}
+    for t in TRY_SURROUND_SPACE.split(' '):
+        f, r = t.split('/', 1)
+        REPS['\n'+f] = '\n'+r+' '
+        REPS[' '+f] = ' '+r+' '
+        REPS[f] = ' '+r+' '
+    for t in STANDARD.split(' '):
+        f, r = t.split('/', 1)
+        REPS[f] = r
+    return REPS
+
+reps = get_reps()
+
 sys.stdout.write(dict_replace(REPS, '\n'+sys.stdin.read()))
