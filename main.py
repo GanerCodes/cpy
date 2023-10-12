@@ -66,5 +66,5 @@ if (f:=A.file):
     env.pop("PYTHONPATH", None)
     env.pop("PYTHONHOME", None)
     
-    print(f"Running: ＂{shlex.join(args)}＂")
+    print(f'Running: "{shlex.join(args)}"')
     os.execvpe(cpy_bin, args, env)
