@@ -1,4 +1,4 @@
-import argparse, os, re
+import argparse, shlex, os, re
 from functools import reduce
 from os import path as P
 
@@ -37,7 +37,6 @@ def proc_file(f):
     code = compile_code(dmp(f, False), HEADER)
     with open(new_name, 'w') as F:
         F.write(code)
-    print(f, '→', new_name)
     return new_name
 
 PA = argparse.ArgumentParser(description="CPY Compiler.")
@@ -67,5 +66,5 @@ if (f:=A.file):
     env.pop("PYTHONPATH", None)
     env.pop("PYTHONHOME", None)
     
-    print("Running with args:", args)
+    print("Running with args:", shlex.join(args))
     os.execvpe(cpy_bin, args, env)
