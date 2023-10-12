@@ -35,6 +35,6 @@ def get_reps():
         REPS[f] = r
     return REPS
 
-reps = get_reps()
+REPS = get_reps()
 
 sys.stdout.write(dict_replace(REPS, '\n'+sys.stdin.read()))

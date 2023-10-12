@@ -2,55 +2,64 @@ import argparse, os, re
 from functools import reduce
 from os import path as P
 
-cpy_dir = P.split(__file__)[0]
+cpy_bin = P.join(
+    cpy_dir := P.split(__file__)[0],
+    "bin/cpy_binary")
+
 dict_replace = lambda d, s: re.compile(
     f"({'|'.join(map(re.escape, d.keys()))})") \
         .sub(lambda m: d[m.string[m.start():m.end()]], s) 
 
 dmp = lambda f, j=True: open(P.join(cpy_dir, f) if j else f).read()
-HEADER = f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n"
 
 ñ,ƨ = '\n '
 MAPPING_FUNCS = {
     "S": str.replace,
-    "S_S": lambda t, F, R: t.replace(ñ+F, ñ+R+ƨ).replace(ƨ+F, ƨ+R+ƨ).replace(F, ƨ+R+ƨ),
+    "E": lambda t, F, R: t.replace(ñ+F, ñ+R+ƨ).replace(ƨ+F, ƨ+R+ƨ).replace(F, ƨ+R+ƨ),
     "R": lambda t, F, R: re.sub(F, R, t),
-    "Y": lambda t, F, R: reduce(lambda x, y: str.replace(x,*y), zip(F, R), t)
-}
+    "Y": lambda t, F, R: reduce(lambda x, y: str.replace(x,*y), zip(F, R), t) }
 normalize = lambda t: t.strip().replace('␠', ƨ).replace('␤', ñ)
-MAPPINGS = [[*map(normalize, y.split('␉'))] for x in dmp("MAPPINGS").split('\n') if ((y:=x.strip()) and y[0]!='#')]
-def compile_code(code):
+MAPPINGS = [[*map(normalize, y.split('␉'))] for x in dmp("MAPPINGS").split(ñ) if ((y:=x.strip()) and y[0]!='#')]
+def compile_code(code, header=""):
     code = ñ+code
     for f, *a in MAPPINGS:
         code = MAPPING_FUNCS[f](code, *a)
-    return code[1:]
+    return header+code[1:]
 
 def understand_filename(f):
-    b, e = P.splitext(filename)
+    b, e = P.splitext(f)
     return b + (".py" if (e == ".cpy" or not e) else e)
 
+HEADER = compile_code(f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n")
 def proc_file(f):
     b, e = P.splitext(f)
     new_name = b+".py"
-    print(compile_code(dmp(f, False)))
-    print(f,'→',new_name)
+    code = compile_code(dmp(f, False), HEADER)
+    with open(new_name, 'w') as F:
+        F.write(code)
+    print(f, '→', new_name)
 
 PA = argparse.ArgumentParser(description="CPY Compiler.")
 PA.add_argument("-d", "--directory", help="Directory of CPY project")
 PA.add_argument("-n", "--no-recurse", action='store_true', help="Recurse into directory")
 PA.add_argument("-c", "--cd-file", help="cd to file location to run instead of directory")
 PA.add_argument("file", nargs='?', help="File to run (if any)")
+PA.add_argument('pyargs', nargs=argparse.REMAINDER, help="Arguments to pass to cpy_binary, eg. cpy_binary <pyarg1> <pyarg2> … <file>")
 A = PA.parse_args()
 
-if not (D:=A.directory): D = os.getcwd()
+D = A.directory or os.getcwd()
 
-if A.no_recurse:
-    files = [P.join(D, f) for f in os.listdir(D)]
-else:
-    files = [P.join(R, f) for R, _, fs in os.walk(D) for f in fs]
-files = [f for f in files if "/.git/" not in f and P.splitext(f)[1] == ".cpy"] # todo fix this
+files = [f for f in (
+        (P.join(D, f) for f in os.listdir(D))
+            if A.no_recurse else
+        (P.join(R, f) for R, _, fs in os.walk(D) for f in fs)
+    ) if "/.git/" not in f and P.splitext(f)[1] == ".cpy"] # todo fix this
 
 for f in files: proc_file(f)
 
 if (f:=A.file):
-    pass
+    f = understand_filename(f)
+    os.chdir(P.split(f)[0] if A.cd_file else D)
+    args = ["-u", *A.pyargs, f]
+    print("Running with args:", args)
+    os.execvp(cpy_bin, args)
