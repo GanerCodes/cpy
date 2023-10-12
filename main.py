@@ -17,7 +17,7 @@ MAPPING_FUNCS = {
     "S": str.replace,
     "E": lambda t, F, R: t.replace(ñ+F, ñ+R+ƨ).replace(ƨ+F, ƨ+R+ƨ).replace(F, ƨ+R+ƨ),
     "R": lambda t, F, R: re.sub(F, R, t),
-    "Y": lambda t, F, R: reduce(lambda x, y: str.replace(x,*y), zip(F, R), t) }
+    "Y": lambda t, F, R: reduce(lambda x, y: str.replace(x, *y), zip(F, R), t) }
 normalize = lambda t: t.strip().replace('␠', ƨ).replace('␤', ñ)
 MAPPINGS = [[*map(normalize, y.split('␉'))] for x in dmp("MAPPINGS").split(ñ) if ((y:=x.strip()) and y[0]!='#')]
 def compile_code(code, header=""):
@@ -38,6 +38,7 @@ def proc_file(f):
     with open(new_name, 'w') as F:
         F.write(code)
     print(f, '→', new_name)
+    return new_name
 
 PA = argparse.ArgumentParser(description="CPY Compiler.")
 PA.add_argument("-d", "--directory", help="Directory of CPY project")
@@ -53,13 +54,18 @@ files = [f for f in (
         (P.join(D, f) for f in os.listdir(D))
             if A.no_recurse else
         (P.join(R, f) for R, _, fs in os.walk(D) for f in fs)
-    ) if "/.git/" not in f and P.splitext(f)[1] == ".cpy"] # todo fix this
+    ) if "/.git/" not in f.replace(*'\\/') and P.splitext(f)[1] == ".cpy"]
 
-for f in files: proc_file(f)
+new_names = [proc_file(f) for f in files]
 
 if (f:=A.file):
     f = understand_filename(f)
     os.chdir(P.split(f)[0] if A.cd_file else D)
-    args = ["-u", *A.pyargs, f]
+    
+    args = [cpy_bin, "-u", *A.pyargs, f]
+    env = os.environ.copy()
+    env.pop("PYTHONPATH", None)
+    env.pop("PYTHONHOME", None)
+    
     print("Running with args:", args)
-    os.execvp(cpy_bin, args)
+    os.execvpe(cpy_bin, args, env)
