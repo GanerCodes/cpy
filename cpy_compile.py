@@ -6,10 +6,6 @@ cpy_bin = P.join(
     cpy_dir := P.split(__file__)[0],
     "bin/cpy_binary")
 
-dict_replace = lambda d, s: re.compile(
-    f"({'|'.join(map(re.escape, d.keys()))})") \
-        .sub(lambda m: d[m.string[m.start():m.end()]], s) 
-
 dmp = lambda f, j=True: open(P.join(cpy_dir, f) if j else f).read()
 
 ñ,ƨ = '\n '
