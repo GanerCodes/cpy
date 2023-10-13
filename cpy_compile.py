@@ -55,13 +55,13 @@ files = [f for f in (
         (P.join(R, f) for R, _, fs in os.walk(D) for f in fs)
     ) if "/.git/" not in f.replace(*'\\/') and P.splitext(f)[1] == ".cpy"]
 
-new_names = [proc_file(f) for f in files]
+new_names = [print(f, '→', r:=proc_file(f)) or r for f in files]
 
 if (f:=A.file):
     f = understand_filename(f)
     os.chdir(P.split(f)[0] if A.cd_file else D)
     
-    args = [cpy_bin, "-u", *A.pyargs, f]
+    args = [cpy_bin, *A.pyargs, f]
     env = os.environ.copy()
     env.pop("PYTHONPATH", None)
     env.pop("PYTHONHOME", None)
