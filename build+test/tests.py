@@ -81,28 +81,29 @@ OP_TO_BNARY_ = OP_UNARY_(f$>OP_BNARY_(f, **par_or_), __rpow__='l')
 OP_SWAP_ = OP_UNARY_(SWAP_, __rmatmul__='l')
 OP_DUP_ = OP_UNARY_(DUP_, __rmatmul__='l')
 OP_COMPOSE_ = OP_BNARY_(COMPOSE_, **par_add_)
-sum = (x$>reduce(add_,(x:=list(x)),*([ ARGS_ [0] if ARGS_  else 0] if  not x else [])))**OP_TO_BNARY_
 prod = (x$>reduce(<$x,y$>x*y,(x:=list(x)),*([ ARGS_ [0] if ARGS_  else 0] if  not x else [])))**OP_TO_BNARY_
-reduce **= OP_TO_BNARY_
-isinstance = OP_BNARY_(isinstance, **par_pow_)
-range = OP_UNARY_(range, **par_mul_)
 range_binary = OP_BNARY_(range, **par_pow_)
-enumerate = OP_UNARY_(enumerate, **par_mul_)
-print = OP_UNARY_(<$$>print_(* ARGS_ ,** KWARGS_ ) or ( ARGS_ [0] if ARGS_ ), **par_mul_)
 skinniside_z = OP_UNARY_(<$x$>1 if x>0 else 0, **par_mul_)
 skinniside_b = OP_UNARY_(<$x$>(1 if x>0 else -1) if x else 0, **par_mul_)
 setattrs = f$>(<$x,y$> DEGEN_( setattr(f,a,b) for a,b in zip(x,y)))**OP_TO_BNARY_
 other = (<$x,y$> ASSERT_ ( len (l:= list *x)==2 and y in l) and l[y==l[0]])**OP_TO_BNARY_
 split_string = OP_UNARY_(<$x$>[split_string(k,' ') if ' ' in k else k for k in x.split( ARGS_ [0] if ARGS_  else ' ')], **par_mul_)
 
+map = (<$$>(list(map_(* ARGS_ )) if  len ( ARGS_ )>1 else  (<$* ARGS_ ,f= ARGS_ [0]$>list(map_(f,* ARGS_ )))**OP_TO_UNARY_))**OP_TO_BNARY_
+zip = (<$$>list(zip_(* ARGS_ ,** KWARGS_ )))**OP_TO_BNARY_
+sum = (x$>reduce(add_,(x:=list(x)),*([ ARGS_ [0] if ARGS_  else 0] if  not x else [])))**OP_TO_BNARY_
+reduce **= OP_TO_BNARY_
+
+len = OP_UNARY_(len, **par_mul_)
+range = OP_UNARY_(range, **par_mul_)
+enumerate = OP_UNARY_(enumerate, **par_mul_)
+isinstance = OP_BNARY_(isinstance, **par_pow_)
+print = OP_UNARY_(<$$>print_(* ARGS_ ,** KWARGS_ ) or ( ARGS_ [0] if ARGS_ ), **par_mul_)
+
+tuple = OP_UNARY_(tuple, **par_mul_)
 list = OP_UNARY_(list, **par_mul_)
 set = OP_UNARY_(set, **par_mul_)
 dict = OP_UNARY_(dict, **par_mul_)
-len = OP_UNARY_(len, **par_mul_)
-
-# no generators- bad idea?
-map = (<$$>(list(map_(* ARGS_ )) if  len ( ARGS_ )>1 else  (<$* ARGS_ ,f= ARGS_ [0]$>list(map_(f,* ARGS_ )))**OP_TO_UNARY_))**OP_TO_BNARY_
-zip = (<$$>list(zip_(* ARGS_ ,** KWARGS_ )))**OP_TO_BNARY_
 def  x():
     assert (2 if  True )==2
     assert (0 if  False )== None 

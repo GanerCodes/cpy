@@ -51,25 +51,26 @@ OP_TO_BNARY_ = OP_UNARY_(f↦OP_BNARY_(f, ⠶par_or_), __rpow__='l')
 OP_SWAP_ = OP_UNARY_(SWAP_, __rmatmul__='l')
 OP_DUP_ = OP_UNARY_(DUP_, __rmatmul__='l')
 OP_COMPOSE_ = OP_BNARY_(COMPOSE_, ⠶par_add_)
-sum = (x↦reduce(add_,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))²
 prod = (x↦reduce(⑵x*y,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))²
-reduce ⌃= OP_TO_BNARY_
-isinstance = OP_BNARY_(isinstance, ⠶par_pow_)
-range = OP_UNARY_(range, ⠶par_mul_)
 range_binary = OP_BNARY_(range, ⠶par_pow_)
-enumerate = OP_UNARY_(enumerate, ⠶par_mul_)
-print = OP_UNARY_(𝚲print_(⠤𝔸,⠶𝕂)∨(𝔸₀¿𝔸), ⠶par_mul_)
 skinniside_z = OP_UNARY_(⑴1¿x>0¡0, ⠶par_mul_)
 skinniside_b = OP_UNARY_(⑴(1¿x>0¡¯1)¿x¡0, ⠶par_mul_)
 setattrs = f↦(⑵⁅setattr(f,a,b)∀a,b∈zip(x,y)⁆)²
 other = (⑵⨳(🃌(l≔⚇⨯x)≡2∧y∈l)∧l[y≡l₀])²
 split_string = OP_UNARY_(⑴[split_string(k,' ')¿' '∈k¡k ∀k∈x.split(𝔸₀¿𝔸¡' ')], ⠶par_mul_)
 
+map = (𝚲(list(map_(⠤𝔸)) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦list(map_(f,⠤𝔸)))¹))²
+zip = (𝚲list(zip_(⠤𝔸,⠶𝕂)))⌃OP_TO_BNARY_
+sum = (x↦reduce(add_,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))²
+reduce ⌃= OP_TO_BNARY_
+
+len = OP_UNARY_(len, ⠶par_mul_)
+range = OP_UNARY_(range, ⠶par_mul_)
+enumerate = OP_UNARY_(enumerate, ⠶par_mul_)
+isinstance = OP_BNARY_(isinstance, ⠶par_pow_)
+print = OP_UNARY_(𝚲print_(⠤𝔸,⠶𝕂)∨(𝔸₀¿𝔸), ⠶par_mul_)
+
+tuple = OP_UNARY_(tuple, ⠶par_mul_)
 list = OP_UNARY_(list, ⠶par_mul_)
 set = OP_UNARY_(set, ⠶par_mul_)
 dict = OP_UNARY_(dict, ⠶par_mul_)
-len = OP_UNARY_(len, ⠶par_mul_)
-
-# no generators- bad idea?
-map = (𝚲(list(map_(⠤𝔸)) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦list(map_(f,⠤𝔸)))¹))²
-zip = (𝚲list(zip_(⠤𝔸,⠶𝕂)))⌃OP_TO_BNARY_

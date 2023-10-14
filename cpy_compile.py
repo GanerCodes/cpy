@@ -37,7 +37,6 @@ def unescape_code(code):
             c = chr(int(''.join(next(t) for i in range(7))))
         r += c
     return r
-
 def compile_code(code, header=""):
     code = ñ+code
     code = escape_code(code)
@@ -85,7 +84,7 @@ if __name__ == "__main__":
 
     new_names = [print(f, '→', r:=proc_file(f)) or r for f in files]
     
-    if (f:=A.file):
+    if f := A.file:
         f = understand_filename(f)
         os.chdir(P.split(f)[0] if A.cd_file else D)
         
