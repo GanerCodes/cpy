@@ -64,9 +64,16 @@ if __name__ == "__main__":
     PA.add_argument("-d", "--directory", help="Directory of CPY project")
     PA.add_argument("-n", "--no-recurse", action='store_true', help="Recurse into directory")
     PA.add_argument("-c", "--cd-file", help="cd to file location to run instead of directory")
+    PA.add_argument("--test", action='store_true', help="run the cpy testing utility, ignores most other arguments")
     PA.add_argument("file", nargs='?', help="File to run (if any)")
     PA.add_argument('pyargs', nargs=argparse.REMAINDER, help="Arguments to pass to cpy_binary, eg. cpy_binary <pyarg1> <pyarg2> … <file>")
     A = PA.parse_args()
+    
+    if A.test:
+        A.directory = f"{cpy_dir}/build+test"
+        A.file = f"{A.directory}/tests.cpy"
+        A.no_recurse = True
+        A.cd_file = True
 
     D = A.directory or os.getcwd()
 
@@ -77,7 +84,7 @@ if __name__ == "__main__":
         ) if "/.git/" not in f.replace(*'\\/') and P.splitext(f)[1] == ".cpy"]
 
     new_names = [print(f, '→', r:=proc_file(f)) or r for f in files]
-
+    
     if (f:=A.file):
         f = understand_filename(f)
         os.chdir(P.split(f)[0] if A.cd_file else D)
