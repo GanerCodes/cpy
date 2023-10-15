@@ -35,7 +35,18 @@ E ␉ ☾ ␉ print
 E ␉ 🃌 ␉ len
 E ␉ ⨳ ␉ ASSERT_
 E ␉ ᴍ ␉ map
+
 E ␉ ⚇ ␉ list
+# holdover ↑
+E ␉ ƨ ␉ magic_str
+E ␉ 𝓈 ␉ magic_set
+E ␉ 𝒻𝓈 ␉ magic_frozenset
+E ␉ 𝒾 ␉ magic_int
+E ␉ 𝒻 ␉ magic_float
+E ␉ 𝓁 ␉ magic_list
+E ␉ 𝓉 ␉ magic_tuple
+E ␉ 𝒹 ␉ magic_dict
+
 E ␉ ζ ␉ zip
 E ␉ ↕ ␉ range
 E ␉ ↨ ␉ enumerate

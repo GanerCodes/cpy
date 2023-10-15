@@ -15,7 +15,6 @@ MAPPING_FUNCS = {
     "R": lambda t, F, R: re.sub(F, R, t),
     "Y": lambda t, F, R: reduce(lambda x, y: str.replace(x, *y), zip(F, R), t) }
 MAPPINGS = [list(map(normalize, y.split('␉'))) for x in dmp("MAPPINGS").split(ñ) if ((y:=x.strip()) and y[0]!='#')]
-HEADER = compile_code(f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n")
 
 def escape_code(code):
     t, r = iter(code), ''
@@ -56,6 +55,7 @@ def proc_file(f):
         F.write(code)
     return new_name
 
+HEADER = compile_code(f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n")
 if __name__ == "__main__":
     PA = argparse.ArgumentParser(description="CPY Compiler.")
     PA.add_argument("-d", "--directory", help="Directory of CPY project")

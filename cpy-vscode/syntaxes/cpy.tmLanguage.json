@@ -34,7 +34,7 @@
       "function": {
         "patterns": [{
           "name": "function",
-          "match": "[⋀⋁ΣΠℵ🃌↕↨⇳⇧⍟⨳⤉⤈]"
+          "match": "[⋀⋁ΣΠ🃌↕↨⇳⇧⍟⨳⤉⤈]"
       }]},
       "parameter": {
         "patterns": [{
@@ -42,10 +42,11 @@
             "match": "[≔=⠤⠶:.←→↑↓↖↗↙↘]"
         }]},
       "type": {
-        "patterns": [{
-            "name": "lambda",
-            "match": "[𝚲⥌ƛ𝝺λ⑴⑵⑶↦]"
-        }]},
+        "patterns": [
+        { "name": "cooltype",
+          "match": "[ƨ𝓈𝒾𝒻𝓁𝓉𝒹ℵ]" },
+        { "name": "lambda",
+          "match": "[𝚲⥌ƛ𝝺λ⑴⑵⑶↦]" }]},
       "number": {
         "patterns": [{
             "name": "number",
