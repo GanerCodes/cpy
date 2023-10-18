@@ -1,4 +1,5 @@
 import argparse, shlex, os, re
+from datetime import datetime
 from functools import reduce
 from os import path as P
 
@@ -6,6 +7,14 @@ from os import path as P
 cpy_bin = P.join(
     cpy_dir := P.split(__file__)[0],
     "bin/cpy_binary")
+import_dir = P.join(cpy_dir, "imports")
+
+VERSION = "a"
+TIME_SIG = datetime.now().strftime("%Y/%m/%d_%H:%M:%S")
+GENERAL_HEADER =  "from sys import path as __PATH; " \
+                 f"__PATH.insert(0, '{import_dir.replace('\\', '/')}') ; " \
+                  "del __PATH ; " \
+                 f"from CPY_HEADER import * # CPY-{VERSION}-{TIME_SIG} \n"
 
 dmp = lambda f, j=True: open(P.join(cpy_dir, f) if j else f).read()
 normalize = lambda t: t.strip().replace('␠', ƨ).replace('␤', ñ)
@@ -50,12 +59,16 @@ def understand_filename(f):
 def proc_file(f):
     b, e = P.splitext(f)
     new_name = b+".py"
-    code = compile_code(dmp(f, False), HEADER)
+    code = compile_code(dmp(f, False), GENERAL_HEADER)
     with open(new_name, 'w') as F:
         F.write(code)
     return new_name
 
-HEADER = compile_code(f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n")
+with open(P.join(import_dir, "CPY_HEADER.py"), 'w') as f:
+    f.write(
+        compile_code(
+            f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n"))
+
 if __name__ == "__main__":
     PA = argparse.ArgumentParser(description="CPY Compiler.")
     PA.add_argument("-d", "--directory", help="Directory of CPY project")
@@ -88,7 +101,7 @@ if __name__ == "__main__":
         
         args = [cpy_bin, *A.pyargs, f]
         env = os.environ.copy()
-        env.pop("PYTHONPATH", None)
+        env["PYTHONPATH"] = import_dir
         env.pop("PYTHONHOME", None)
         
         print(f'Running: "{shlex.join(args)}"')

@@ -1,2 +1,2 @@
 #!/bin/sh
-python "$(readlink -m "$0/..")/cpy_compile.py" "$@"
+python3.12 "$(readlink -m "$0/..")/cpy_compile.py" "$@"
