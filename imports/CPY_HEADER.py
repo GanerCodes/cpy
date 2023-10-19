@@ -6,7 +6,7 @@ DEGEN_=g$>deque(g,maxlen=0)
 EMPTY_STRING, COMPLEX_UNIT = '', 1j
 MATH_PI, MATH_TAU = 3.14159265359, 6.28318530718
 class  Namespace:
-    __init__ = SPECIAL_SELF_ $> KWARGS_ .keys()* list | setattrs ( SPECIAL_SELF_ )| list * KWARGS_ .values()
+    __init__ = SPECIAL_SELF_ $> KWARGS_ .keys()* magic_list | setattrs ( SPECIAL_SELF_ )| magic_list * KWARGS_ .values()
     __setitem__ = <$ SPECIAL_SELF_ ,k,v$>setattr( SPECIAL_SELF_ ,k,v)
     __getitem__ = <$ SPECIAL_SELF_ ,k$>getattr( SPECIAL_SELF_ ,k)
     __iter__ = SPECIAL_SELF_ $>iter( SPECIAL_SELF_. __dict__.items())
@@ -86,7 +86,7 @@ range_binary = OP_BNARY_(range, **par_pow_)
 skinniside_z = OP_UNARY_(<$x$>1 if x>0 else 0, **par_mul_)
 skinniside_b = OP_UNARY_(<$x$>(1 if x>0 else -1) if x else 0, **par_mul_)
 setattrs = f$>(<$x,y$> DEGEN_( setattr(f,a,b) for a,b in zip(x,y)))**OP_TO_BNARY_
-other = (<$x,y$> ASSERT_ ( len (l:= list *x)==2 and y in l) and l[y==l[0]])**OP_TO_BNARY_
+other = (<$x,y$> ASSERT_ ( len (l:= magic_list *x)==2 and y in l) and l[y==l[0]])**OP_TO_BNARY_
 split_string = OP_UNARY_(<$x$>[split_string(k,' ') if ' ' in k else k for k in x.split( ARGS_ [0] if ARGS_  else ' ')], **par_mul_)
 
 map = (<$$>(list(map_(* ARGS_ )) if  len ( ARGS_ )>1 else  (<$* ARGS_ ,f= ARGS_ [0]$>list(map_(f,* ARGS_ )))**OP_TO_UNARY_))**OP_TO_BNARY_
