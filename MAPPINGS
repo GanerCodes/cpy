@@ -44,7 +44,7 @@ E ␉ 🃌 ␉ len
 E ␉ ⨳ ␉ ASSERT_
 E ␉ ᴍ ␉ map
 
-E ␉ ⚇ ␉ list
+E ␉ ⚇ ␉ magic_list
 # holdover ↑
 E ␉ ƨ ␉ magic_str
 E ␉ 𝓈 ␉ magic_set
