@@ -76,7 +76,7 @@ if __name__ == "__main__":
     PA.add_argument("-c", "--cd-file", help="cd to file location to run instead of directory")
     PA.add_argument("--test", action='store_true', help="run the cpy testing utility, ignores most other arguments")
     PA.add_argument("file", nargs='?', help="File to run (if any)")
-    PA.add_argument('pyargs', nargs=argparse.REMAINDER, help="Arguments to pass to cpy_binary, eg. cpy_binary <pyarg1> <pyarg2> … <file>")
+    PA.add_argument('progargs', nargs=argparse.REMAINDER, help="Arguments to pass, eg. cpy_binary <file> <pyarg1> <pyarg2> … ")
     A = PA.parse_args()
     
     if A.test:
@@ -99,7 +99,7 @@ if __name__ == "__main__":
         f = understand_filename(f)
         os.chdir(P.split(f)[0] if A.cd_file else D)
         
-        args = [cpy_bin, *A.pyargs, f]
+        args = [cpy_bin, '-u', f, *A.progargs]
         env = os.environ.copy()
         env["PYTHONPATH"] = import_dir
         env.pop("PYTHONHOME", None)

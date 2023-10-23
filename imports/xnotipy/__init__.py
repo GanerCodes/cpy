@@ -1,0 +1,1 @@
+from .xnotipy import Notification

@@ -145,6 +145,8 @@ class Notification:
     def thread_run(𝕊, *args, **kwargs):
         Thread(target=𝕊.run, args=args, kwargs=kwargs).start()
     
+    __call__ = thread_run
+    
     def background_run(𝕊, *args, **kwargs):
         if fork() == 0:
             𝕊.run(*args, **kwargs)
