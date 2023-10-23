@@ -1,2 +1,3 @@
 #!/bin/sh
-python3.12 "$(readlink -m "$0/..")/cpy_compile.py" "$@"
+DIR="$(readlink -m "$0/..")"
+"$DIR/bin/cpy_binary" "$DIR/cpy_compile.py" "$@"
