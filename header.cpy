@@ -5,12 +5,12 @@ pprint = PrettyPrinter(2).pprint
 DEGEN_=g↦deque(g,maxlen=0)
 EMPTY_STRING, COMPLEX_UNIT = '', 1j
 MATH_PI, MATH_TAU = 3.14159265359, 6.28318530718
-Ω Namespace:
-    __init__ = 𝕊↦𝕂.keys()⨯⚇|🜌(𝕊)|⚇⨯𝕂.values()
-    __setitem__ = ⥌𝕊,k,v↦setattr(𝕊,k,v)
-    __getitem__ = ⥌𝕊,k↦getattr(𝕊,k)
-    __iter__ = 𝕊↦iter(🢖__dict__.items())
-    __repr__ = 𝕊↦‹ℕ({(', '.join(‹{k}={v}› ∀k,v∈🢖__dict__.items()))})›
+Ω Namespace(dict):
+    __init__ = 𝕊↦super().__init__(⠶𝕂)
+    __setattr__ = dict.__setitem__
+    __getattr__ = dict.__getitem__
+    __iter__ = 𝕊↦iter(𝕊.items())
+    __repr__ = 𝕊↦‹\U00002135({(', '.join(‹{k}={v}› ∀k,v∈𝕊))})›
 Ω pait:
     ⨡ subprocess as SP
     ⊢ __call__(𝕊,s,⠤𝔸,⠶𝕂):
