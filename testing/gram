@@ -1,0 +1,4 @@
+MAIN = "a"* "a"
+# MAIN = (BLOCK / TEXT)*
+# BLOCK = "[" MAIN "]"
+# TEXT = ~"."
