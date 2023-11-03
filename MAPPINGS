@@ -47,8 +47,8 @@ E ␉ ᴍ ␉ map
 E ␉ ⚇ ␉ magic_list
 # holdover ↑
 E ␉ ƨ ␉ magic_str
-E ␉ 𝓈 ␉ magic_set
 E ␉ 𝒻𝓈 ␉ magic_frozenset
+E ␉ 𝓈 ␉ magic_set
 E ␉ 𝒾 ␉ magic_int
 E ␉ 𝒻 ␉ magic_float
 E ␉ 𝓁 ␉ magic_list
