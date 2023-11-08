@@ -39,7 +39,7 @@
       "parameter": {
         "patterns": [{
             "name": "assign",
-            "match": "[≔=⠤⠶:.←→↑↓↖↗↙↘]"
+            "match": "[≔=⠤⠶:﹕.←→↑↓↖↗↙↘]"
         }]},
       "type": {
         "patterns": [
