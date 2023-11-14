@@ -25,6 +25,9 @@ MAPPING_FUNCS = {
     "Y": lambda t, F, R: reduce(lambda x, y: str.replace(x, *y), zip(F, R), t) }
 MAPPINGS = [list(map(normalize, y.split('␉'))) for x in dmp("MAPPINGS").split(ñ) if ((y:=x.strip()) and y[0]!='#')]
 
+def reparse_code(code):
+    import ast
+    return ast.unparse(ast.parse(code))
 def escape_code(code):
     t, r = iter(code), ''
     while True:
@@ -45,35 +48,33 @@ def unescape_code(code):
             c = chr(int(''.join(next(t) for i in range(7))))
         r += c
     return r
-def compile_code(code, header=""):
+def compile_code(code, header="", reparse=False):
     code = ñ+code
     code = escape_code(code)
     for f, *a in MAPPINGS:
         code = MAPPING_FUNCS[f](code, *a)
-    code = unescape_code(code)
-    return header+code[1:]
+    code = header + unescape_code(code)[1:]
+    if reparse:
+        code = reparse_code(code)
+    return code
 
 def understand_filename(f):
     b, e = P.splitext(f)
     return b + (".py" if (e == ".cpy" or not e) else e)
-def proc_file(f):
+def proc_file(f, **kwargs):
     b, e = P.splitext(f)
     new_name = b+".py"
-    code = compile_code(dmp(f, False), GENERAL_HEADER)
+    code = compile_code(dmp(f, False), GENERAL_HEADER, **kwargs)
     with open(new_name, 'w') as F:
         F.write(code)
     return new_name
-
-with open(P.join(import_dir, "CPY_HEADER.py"), 'w') as f:
-    f.write(
-        compile_code(
-            f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n"))
 
 if __name__ == "__main__":
     PA = argparse.ArgumentParser(description="CPY Compiler.")
     PA.add_argument("-d", "--directory", help="Directory of CPY project")
     PA.add_argument("-n", "--no-recurse", action='store_true', help="Recurse into directory")
     PA.add_argument("-c", "--cd-file", help="cd to file location to run instead of directory")
+    PA.add_argument("-r", "--reparse", action='store_true', help="try and reparse the files into more normal python")
     PA.add_argument("--test", action='store_true', help="run the cpy testing utility, ignores most other arguments")
     PA.add_argument("file", nargs='?', help="File to run (if any)")
     PA.add_argument('progargs', nargs=argparse.REMAINDER, help="Arguments to pass, eg. cpy_binary <file> <pyarg1> <pyarg2> … ")
@@ -85,6 +86,14 @@ if __name__ == "__main__":
         A.no_recurse = True
         A.cd_file = True
 
+    compiler_args = { "reparse": A.reparse }
+
+    with open(P.join(import_dir, "CPY_HEADER.py"), 'w') as f:
+        f.write(
+            compile_code(
+                f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n",
+                **compiler_args))
+
     D = A.directory or os.getcwd()
 
     files = [f for f in (
@@ -92,8 +101,8 @@ if __name__ == "__main__":
                 if A.no_recurse else
             (P.join(R, f) for R, _, fs in os.walk(D) for f in fs)
         ) if "/.git/" not in f.replace(*'\\/') and P.splitext(f)[1] == ".cpy"]
-
-    new_names = [print(f, '→', r:=proc_file(f)) or r for f in files]
+    
+    new_names = [print(f, '→', r:=proc_file(f, **compiler_args)) or r for f in files]
     
     if f := A.file:
         f = understand_filename(f)
