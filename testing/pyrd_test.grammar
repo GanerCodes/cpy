@@ -1,5 +1,0 @@
-swag     :: A "a" {return parsed};
-A        :: A A | "a" {return parsed};
-%%
-
-☾⨯Swag().parse(open('code').read())

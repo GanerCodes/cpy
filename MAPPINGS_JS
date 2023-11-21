@@ -1,0 +1,89 @@
+# Why not?
+
+# Doc:
+#   Format:
+#    "command ␉ arg1 ␉ arg2 ␉ …"
+#   Commands:
+#     E: enclose with spaces
+#     S: text subsitution aka replacement
+#     Y: pairwise text subsitution
+#     R: regex subsitution
+#   Arg syntax:
+#     ␠: Space
+#     ␤: Newline
+
+R ␉ (֎[^֎]*֎)|(🟑[^🟑]*🟑) ␉
+
+E ␉ 𝕋 ␉ true
+E ␉ 𝔽 ␉ false
+E ␉ ⤉ ␉ math.max
+E ␉ ⤈ ␉ math.min
+E ␉ ⋀ ␉ all
+E ␉ ⋁ ␉ any
+E ␉ Ω ␉ class
+E ␉ ☾ ␉ print
+E ␉ 🃌 ␉ len
+E ␉ ⨳ ␉ ASSERT_
+E ␉ ᴍ ␉ map
+# E ␉ Σ ␉ sum
+; E ␉ Π ␉ prod
+
+E ␉ 𝒩 ␉ Number
+
+E ␉ ζ ␉ zip
+E ␉ ↕ ␉ range
+E ␉ ᐦ ␉ EMPTY_STRING
+E ␉ ∧ ␉ &&
+E ␉ ∨ ␉ ||
+E ␉ ¬ ␉ !
+E ␉ ␡ ␉ delete
+E ␉ ¿ ␉ if
+E ␉ ¡ ␉ else
+E ␉ ⸘ ␉ else␠if
+E ␉ ∀ ␉ for
+E ␉ 𝔸 ␉ ARGS_
+E ␉ ℂ ␉ SPECIAL_CLASS_
+E ␉ 𝕊 ␉ SPECIAL_SELF_
+
+S ␉ ≤ ␉ <=
+S ␉ ≥ ␉ >=
+S ␉ ≡ ␉ ==
+S ␉ ≠ ␉ !=
+
+S ␉ ¯ ␉ -
+S ␉ ↪ ␉ return␠
+S ␉ ⊢ ␉ function␠
+S ␉ » ␉ assert␠
+S ␉ ↺ ␉ continue␠
+S ␉ ⇥ ␉ break␠
+S ␉ ≟ ␉ case␠
+S ␉ ‹ ␉ ${
+S ␉ › ␉ }
+S ␉ ① ␉ (x,ARGS_)=>
+S ␉ ② ␉ (x,y,ARGS_)=>
+S ␉ ③ ␉ (x,y,z,ARGS_)=>
+
+R ␉ ⇒ ␉ =>
+R ␉ [⠤⨯] ␉ *
+R ␉ [⠶⌃] ␉ **
+R ␉ [⟳➰] ␉ while␠
+R ␉ [⥀⮂] ␉ yield␠
+
+R ␉ (.)❟ ␉ '\1'
+
+Y ␉ ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ ␉ abcdefghijklmnopqrstuvwxyz
+Y ␉ 󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬 ␉ ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Y ␉ ₀₁₂₃₄₅₆₇₈₉₍₎﹕󰄎󰄏﹖󰄟󰄞₊⸝₌₋ ␉ 0123456789():,;?<>+/*=-
+
+
+; E ␉ ↨ ␉ enumerate
+; E ␉ ⍭ ␉ split_string
+; E ␉ π ␉ MATH_PI
+; E ␉ τ ␉ MATH_TAU
+; E ␉ î ␉ COMPLEX_UNIT
+; E ␉ ∅ ␉ set()
+; E ␉ □ ␉ None
+; E ␉ ∈ ␉ in
+; E ␉ ∉ ␉ not in
+; E ␉ λ ␉ lambda
+; E ␉ ⁅ ␉ DEGEN_(
