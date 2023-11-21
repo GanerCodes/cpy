@@ -36,6 +36,9 @@ E ␉ ᐦ ␉ EMPTY_STRING
 E ␉ ∧ ␉ &&
 E ␉ ∨ ␉ ||
 E ␉ ¬ ␉ !
+S ␉ ⨡ ␉ import
+S ␉ ⮌ ␉ from
+S ␉ » ␉ instanceof
 E ␉ ␡ ␉ delete
 E ␉ ¿ ␉ if
 E ␉ ¡ ␉ else
