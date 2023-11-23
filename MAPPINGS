@@ -1,6 +1,7 @@
 # Doc:
 #   Format:
 #    "command ␉ arg1 ␉ arg2 ␉ …"
+#    🝇 # acts as delimiter
 #   Commands:
 #     E: enclose with spaces
 #     S: text subsitution aka replacement

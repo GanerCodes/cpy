@@ -28,9 +28,9 @@ E ␉ ᴍ ␉ map
 # E ␉ Σ ␉ sum
 # E ␉ Π ␉ prod
 
-E ␉ 𝓃 ␉ Number
-E ␉ 𝓊 ␉ undefined
-E ␉ ℴ ␉ Object
+E ␉ 𝕟 ␉ Number
+E ␉ 𝕦 ␉ undefined
+E ␉ 𝕠 ␉ Object
 
 E ␉ 𝝵ℴ ␉ ZIP_TO_OBJ
 E ␉ 𝔎 ␉ OB_ENTRIES

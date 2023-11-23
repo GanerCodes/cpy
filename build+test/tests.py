@@ -1,4 +1,4 @@
-from sys import path as __PATH; __PATH.insert(0, '/home/ganer/Projects/cpy/imports') ; del __PATH ; from CPY_HEADER import * # CPY-a-2023/10/26_15:46:32 
+from sys import path as __PATH; __PATH.insert(0, '/home/ganer/Projects/cpy/imports') ; del __PATH ; from CPY_HEADER import * # CPY-a-2023/11/22_17:20:55 
 def  x():
     assert (2 if  True )==2
     assert (0 if  False )== None 
@@ -41,4 +41,8 @@ assert (<$x$>x+2)| map | range (3)==2`$3`$4
 assert 'ab'|other|"a"=="b"
 assert 5**isinstance**int
 assert 1**range_binary**4==range(1,4)
+
+assert  "swag" == "swag"
+assert  "x[0]" == "x[0]"
+
 print *"Passed!"

@@ -1,6 +1,7 @@
 import argparse, shlex, os, re
 from datetime import datetime
 from functools import reduce
+from itertools import groupby
 from os import path as P
 
 T,F = True, False
@@ -17,9 +18,10 @@ GENERAL_HEADER =  "from sys import path as __PATH; " \
                   "del __PATH ; " \
                  f"from CPY_HEADER import * # CPY-{VERSION}-{TIME_SIG} \n"
 
-dmp = lambda f, j=T: open(P.join(cpy_dir, f) if j else f).read()
+dmp = lambda f,j=T: open(P.join(cpy_dir, f) if j else f).read()
 normalize = lambda t: t.strip().replace('␠', ƨ).replace('␤', ñ)
-parse_mappings = lambda f,j=T: [list(map(normalize, y.split('␉'))) for x in dmp(f, j).split(ñ) if ((y:=x.strip()) and y[0] not in '#;')]
+parse_mappings = lambda f,j=T,r=T: [list(map(normalize, y.split('␉'))) for x in (dmp(f,j) if r else f).replace('🝇',ñ).split(ñ) if ((y:=x.strip()) and y[0] not in '#;')]
+gby = lambda a,f: {k:list(v) for k,v in groupby(sorted(a,key=f),f)}
 
 DEFAULT_MAPPINGS = parse_mappings("MAPPINGS")
 MAPPING_FUNCS = {
@@ -51,9 +53,15 @@ def unescape_code(code):
             c = chr(int(''.join(next(t) for i in range(7))))
         r += c
     return r
+def parse_macros(mappings, code):
+    f = lambda x: (x.startswith("ₛ") and 's') or (x.startswith("ₑ") and 'e') or 'm'
+    p = lambda x: parse_mappings(ñ.join(c[2:] for c in x), r=F)
+    d = {'s':[],'m':[],'e':[]} | gby(code.split(ñ), f)
+    return p(d['s']) + mappings + p(d['e']), ñ.join(d['m'])
 def compile_code(code, mappings, header="", reparse=F, **_):
-    code = ñ+code
-    code = escape_code(code)
+    mappings, code = parse_macros(mappings, code)
+    
+    code = escape_code(ñ+code)
     for f, *a in mappings:
         code = MAPPING_FUNCS[f](code, *a)
     code = header + unescape_code(code)[1:]
