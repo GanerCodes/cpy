@@ -1,4 +1,4 @@
-from sys import path as __PATH; __PATH.insert(0, '/home/ganer/Projects/cpy/imports') ; del __PATH ; from CPY_HEADER import * # CPY-a-2023/11/24_13:37:06 
+from sys import path as __PATH; __PATH.insert(0, '/home/ganer/Projects/cpy/imports') ; del __PATH ; from CPY_HEADER import * # CPY-a-2023/11/24_13:45:31 
 def  x():
     assert (2 if  True )==2
     assert (0 if  False )== None 
@@ -48,7 +48,7 @@ assert  1 2 3 4 5 == 120
 assert  (3)2 == 6 
 assert  magic_list "ab"2  zip     0**range_binary**4   == ("a",0)`$("b",1)`$("a",2)`$("b",3)
 assert  magic_list "ab"2 | zip | magic_list  0**range_binary**2 2 == ("a",0)`$("b",1)`$("a",0)`$("b",1) \
-                     == magic_list "ab"2 zip  magic_list *0**range_binary**2*2
+== magic_list "ab"2  zip   magic_list *0**range_binary**2*2
 
 assert  "swag" == "swag"
 assert  "x[0]" == "x[0]"
