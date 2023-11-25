@@ -43,7 +43,7 @@ zip = (𝚲list(zip_(⠤𝔸,⠶𝕂)))𐞁
 sum = (x↦reduce_(add_,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))𐞁
 
 reduce = reduce_ ⌃ OP_TO_BNARY_
-len = 𝐎𝐔(len, ⠶par_mul_)
+len = 𝐎𝐔(len, ⠶par_mul_|par_pow_)
 range = 𝐎𝐔(range, ⠶par_mul_)
 print = 𝐎𝐔(𝚲print_(⠤𝔸,⠶𝕂)∨(𝔸₀¿𝔸), ⠶par_mul_)
 enumerate = 𝐎𝐔(enumerate, ⠶par_mul_)
