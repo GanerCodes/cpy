@@ -54,9 +54,17 @@ y = 5
 » 𝓁"ab"2 |ζ| 𝓁 0…2 2 ≡ (a❟,0)⋄(b❟,1)⋄(a❟,0)⋄(b❟,1) \
 ≡ 𝓁"ab"2  ζ  𝓁*0…2*2
 
+swag1 = ⥌F,n↦①(②(②y𐞂x)ſ|x⛶+ᴙF)ſ|x⛶+0⛶n
+swag2 = ⥌F,n↦①(②F[-(y+1)%🃌⌃F]𐞂x)ſ|x⛶+🃌F↕𝓁n
+swag3 = ⥌F,n↦①(②F₋₍₊₁₎﹪ₖ𐞂x)ſ|x⛶+(k≔🃌F)↕𝓁n
+A=swag1([①A❟+x, ①B❟+x], 3)(ᐦ)
+B=swag2([①A❟+x, ①B❟+x], 3)(ᐦ)
+C=swag2([①A❟+x, ①B❟+x], 3)(ᐦ)
+»A≡B≡C≡"ABABAB"
+
 ₛ R ␉ 𝐢 ␉ swag
 ₑ R ␉ ₀ ␉ cool
 » "𝐢" ≡ "swag"
 » "x₀" ≡ "x[0]"
 
-☾⨯"Passed!"
+☾ "Passed!"
