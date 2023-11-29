@@ -23,7 +23,7 @@
           { "name": "comparison",
             "match": "[∧∨¬≤≥≡≠∈∉≾\\*\\|\\-\\~+/⨯%@^⌃&><]" },
           { "name": "op",
-            "match": "[☾ᴍζ🜌⍭…⩫]" },
+            "match": "[☾ſᴙᴍζ🜌⍭…⩫]" },
           { "name": "metaop",
             "match": "[❟𐞁]" }]},
       "control": {
@@ -34,7 +34,7 @@
       "function": {
         "patterns": [{
           "name": "function",
-          "match": "[⋀⋁ΣΠ⛶🃌↕↨⇳⇧⍟⨳⤉⤈]"
+          "match": "[⋀⋁ΣΠ⍉⛶🃌↕↨⇳⇧⍟⨳⤉⤈󷹄]"
       }]},
       "parameter": {
         "patterns": [{

@@ -1,4 +1,4 @@
-from sys import path as __PATH; __PATH.insert(0, '/home/ganer/Projects/cpy/imports') ; del __PATH ; from CPY_HEADER import * # CPY-a-2023/11/26_02:03:36 
+from sys import path as __PATH; __PATH.insert(0, '/home/ganer/Projects/cpy/imports') ; del __PATH ; from CPY_HEADER import * # CPY-a-2023/11/28_21:19:14 
 def  x():
     assert (2 if  True )==2
     assert (0 if  False )== None 
@@ -47,8 +47,8 @@ assert  "a" 2 3 == 6 "a"
 assert  1 2 3 4 5 == 120
 assert  (3)2 == 6 
 assert  (<$x$>x**2) map  2`$5 == 4`$25
-assert  magic_list "ab"2  zip     0**range_binary**4   == ("a",0)`$("b",1)`$("a",2)`$("b",3)
-assert  magic_list "ab"2 | zip | magic_list  0**range_binary**2 2 == ("a",0)`$("b",1)`$("a",0)`$("b",1) \
+assert  magic_list "ab"2  zip     0**range_binary**4   == ("a"`$0)`$("b"`$1)`$("a"`$2)`$("b"`$3)
+assert  magic_list "ab"2 | zip | magic_list  0**range_binary**2 2 == ("a"`$0)`$("b"`$1)`$("a"`$0)`$("b"`$1) \
 == magic_list "ab"2  zip   magic_list *0**range_binary**2*2
 
 swag1 = <$F,n$><$x$>(<$x,y$>(<$x,y$>y **OP_TO_UNARY_ x) FOLD_ |x enlist + REVERSE_ F) FOLD_ |x enlist +0 enlist n
@@ -58,8 +58,17 @@ A=swag1([<$x$>"A"+x, <$x$>"B"+x], 3)( EMPTY_STRING )
 B=swag2([<$x$>"A"+x, <$x$>"B"+x], 3)( EMPTY_STRING )
 C=swag2([<$x$>"A"+x, <$x$>"B"+x], 3)( EMPTY_STRING )
 assert A==B==C=="ABABAB"
-# [&$%]
+
+assert {1,2} UNION_ {3,2} SET_MINUS_ {1} INTERSECTION_ {2}=={2}
+assert 1 RET_LEFT_ 2==2 RET_RGHT_ 1==1
+assert (𝑎:=[1`$2,3`$4]) TRANSPOSE_  TRANSPOSE_ ==𝑎
+assert (<$x$>x) **OP_TO_UNARY_ 5** RET_LEFT_ **2==5
+
+assert  CONSTRAIN_ (-1,1, 22)==1 and  CONSTRAIN_ (-1,1,-22)==-1
+# print ( CONSTRAIN_ (-1,1)|-2 )
+print ( -1| CONSTRAIN_ (5)|-1 )
 assert  "swag" == "swag"
 assert  "x[0]" == "x[0]"
 
-print *"Passed!"
+
+print  "Passed!"

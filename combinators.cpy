@@ -1,9 +1,12 @@
 ⮌ operator ⨡ add as add_
 ⮌ builtins ⨡ print as print_, map as map_, zip as zip_
 ⮌ functools ⨡ reduce
+⮌ itertools ⨡ product as product_
+⮌ copy ⨡ deepcopy as dcp
 
 ₛ E ␉ 𝐎𝐔 ␉ OP_UNARY_
 ₛ E ␉ 𝐎𝐁 ␉ OP_BNARY_
+ₛ E ␉ 𝕸 ␉ par_or_|par_pow_|par_mul_
 
 Ω OP_:
     ⊢ __new__(ℂ,f,d=□,⠶𝕂):
@@ -36,9 +39,18 @@ setattrs = f↦(②⁅setattr(f,a,b)∀a,b∈zip(x,y)⁆)𐞁
 other = (②⨳(🃌(l≔⚇⨯x)≡2∧y∈l)∧l[y≡l₀])𐞁
 split_string = 𝐎𝐔(①[split_string(k, ❟)¿ ❟∈k¡k ∀k∈x.split(𝔸₀¿𝔸¡ ❟)], ⠶par_mul_)
 
+
+◄, ► = 𝐎𝐁(②x, ⠶𝕸), 𝐎𝐁(②y, ⠶𝕸)
+⤉, ⤈ = max𐞁, min𐞁
+󷹄 = (⥌*𝔸,f=(③min(max(z,x),y))↦ (𝚲f(⠤𝔸,a₀))𐞁 ¿🃌(a≔𝔸)≡1¡ (①f(⠤a,x))𐞂 ¿🃌𝔸≡2¡ f(⠤𝔸))𐞁
 ⋀ = all𐞁
 ⋁ = any𐞁
-ζ = (𝚲list(zip_(⠤𝔸,⠶𝕂)))𐞁
+∪ = (𝚲set.union(⠤map_(set,𝔸)))𐞁
+∩ = (𝚲set.intersection(⠤map_(set,𝔸)))𐞁
+∖ = (𝚲set.__sub__(⠤map_(set,𝔸)))𐞁
+⨉ = (𝚲list(product_(⠤𝔸)))𐞁
+⍉ = (𝚲list(ζ(⠤𝔸₀,⠶𝕂)))𐞂
+ζ = (𝚲list(map(list,zip_(⠤𝔸,⠶𝕂))))𐞁
 ᴙ = 𝐎𝐔(①x﹕﹕₋₁, ⠶par_mul_|par_pow_)
 ᴍ = (𝚲(list(map_(⠤𝔸)) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦list(map_(f,⠤𝔸)))𐞂))𐞁
 ſ = (𝚲(reduce(⠤𝔸) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦reduce(f,⠤𝔸))𐞂))𐞁
@@ -46,7 +58,7 @@ split_string = 𝐎𝐔(①[split_string(k, ❟)¿ ❟∈k¡k ∀k∈x.split
 Π = (x↦reduce(②x⨯y,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))𐞁
 🃌 = 𝐎𝐔(len, ⠶par_mul_|par_pow_)
 ⛶ = 𝐎𝐔(①[x], ⠶par_mul_|par_pow_)
-☾ = 𝐎𝐔(𝚲print_(⠤𝔸,⠶𝕂)∨(𝔸₀¿𝔸), ⠶par_mul_)
+☾ = 𝐎𝐔(𝚲print_(⠤𝔸,⠶𝕂)∨(𝔸₀¿𝔸))𐞂
 ↨ = 𝐎𝐔(enumerate, ⠶par_mul_)
 ↕ = 𝐎𝐔(range, ⠶par_mul_|par_pow_)
 isinstance = 𝐎𝐁(isinstance, ⠶par_pow_)

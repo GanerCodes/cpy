@@ -38,18 +38,26 @@
 
 R ␉ (֎[^֎]*֎)|(🟑[^🟑]*🟑) ␉
 
+E ␉ Ω ␉ class
 E ␉ 𝕋 ␉ True
 E ␉ 𝔽 ␉ False
-E ␉ ⤉ ␉ max
-E ␉ ⤈ ␉ min
+E ␉ ⤉ ␉ MAX_
+E ␉ ⤈ ␉ MIN_
+E ␉ 󷹄 ␉ CONSTRAIN_
+E ␉ ◄ ␉ RET_LEFT_
+E ␉ ► ␉ RET_RGHT_
 E ␉ ⋀ ␉ all
 E ␉ ⋁ ␉ any
-E ␉ Ω ␉ class
+E ␉ ⨉ ␉ CROSS_
+E ␉ ∖ ␉ SET_MINUS_
+E ␉ ∪ ␉ UNION_
+E ␉ ∩ ␉ INTERSECTION_
 E ␉ ⨳ ␉ ASSERT_
 E ␉ ☾ ␉ print
 E ␉ 🃌 ␉ len
 E ␉ Σ ␉ sum
 E ␉ Π ␉ PROD_
+E ␉ ⍉ ␉ TRANSPOSE_
 E ␉ ζ ␉ zip
 E ␉ ſ ␉ FOLD_
 E ␉ ᴙ ␉ REVERSE_
@@ -130,6 +138,7 @@ S ␉ › ␉ """␠
 R ␉ [⑴①] ␉ <$x$>
 R ␉ [⑵②] ␉ <$x,y$>
 R ␉ [⑶③] ␉ <$x,y,z$>
+R ␉ [⑷④] ␉ <$x,y,z,w$>
 R ␉ [𝚲ƛ𝝺] ␉ <$$>
 R ␉ [⠤⨯] ␉ *
 R ␉ [⠶⌃] ␉ **
