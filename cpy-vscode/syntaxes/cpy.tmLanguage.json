@@ -21,9 +21,9 @@
       "operator": {
         "patterns": [
           { "name": "comparison",
-            "match": "[∧∨¬≤≥≡≠∈∉≾\\*\\|\\-\\~+/⨯%@^⌃&><]" },
+            "match": "[∧∨¬≤≥≡≠∈∉\\*\\|\\-\\~+/⨯%@^⌃&><]" },
           { "name": "op",
-            "match": "[☾ſᴙᴍζ🜌⍭…⩫]" },
+            "match": "[☾≾ſᴙᴍζ🜌⍭…⩫]" },
           { "name": "metaop",
             "match": "[❟𐞁]" }]},
       "control": {
@@ -39,14 +39,14 @@
       "parameter": {
         "patterns": [{
             "name": "assign",
-            "match": "[≔=⠤⠶:﹕.←→↑↓↖↗↙↘]"
+            "match": "[≔=⠤⠶:﹕.]"
         }]},
       "type": {
         "patterns": [
         { "name": "cooltype",
           "match": "[ƨ𝓈𝒾𝒻𝓁𝓉𝒹ℵ]" },
         { "name": "lambda",
-          "match": "[𝚲⥌↦①②③⑴⑵⑶]" }]},
+          "match": "[𝚲⥌↦①②③]" }]},
       "number": {
         "patterns": [{
             "name": "number",
