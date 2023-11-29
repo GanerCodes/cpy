@@ -1,9 +1,10 @@
 ⮌ operator ⨡ add as add_
 ⮌ builtins ⨡ print as print_, map as map_, zip as zip_, \
-             isinstance as isinst_
+             isinstance as INST_
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ product as product_
 ⮌ copy ⨡ deepcopy as dcp
+⮌ types ⨡ UnionType
 
 ₛ E ␉ 𝐎𝐔 ␉ OP_UNARY_
 ₛ E ␉ 𝐎𝐁 ␉ OP_BNARY_
@@ -15,7 +16,9 @@
         C = type("OP", (ℂ, ), {})
         ⁅setattr(C, m, (⥌𝕊,o,k=k↦𝕊.check(k,o))) ∀m,k∈𝕂.items()⁆
         C.__call__ = staticmethod(f)
-        ¿FT: C.__getattr__ = ②getattr(FT, y)
+        ¿FT:
+            C.__getattr__ = ②getattr(FT, y)
+            C.__invert__ = 𝕊↦𝕊󰀅ᵀ
         o = super().__new__(C)
         oᶠ, oᵈ, o󰀅ᵀ, oᵏʷ = f, d∨{}, FT, 𝕂
         ↪o
@@ -29,7 +32,12 @@
         d = (𝕊 ≔ super().check(k,v))ᵈ
         ↪ 𝕊ᶠ(d[l❟],d[r❟]) ¿l❟∈d∧r❟∈d¡ 𝕊
 
-isinstance = ②isinst_(x,y󰀅ᵀ) ¿isinst_(y,OP_)¡ isinst_(x,y)
+⊢ isinstance(x, y):
+    ¿INST_(y,type|UnionType): □
+    ⸘INST_(y,OP_): y=y󰀅ᵀ
+    ⸘INST_(y,list|tuple|set): ↪any(isinstance(x,z)∀z∈y)
+    ¡: y=type(y)
+    ↪ INST_(x, y)
 
 par_or_  = dict( __ror__=l❟,  __or__=r❟)
 par_pow_ = dict(__rpow__=l❟, __pow__=r❟)
