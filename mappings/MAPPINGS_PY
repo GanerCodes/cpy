@@ -66,6 +66,7 @@ E ␉ ⛶ ␉ enlist
 E ␉ ↕ ␉ range
 E ␉ ↨ ␉ enumerate
 E ␉ 🜌 ␉ setattrs
+E ␉ ≾ ␉ isinstance
 
 E ␉ ⚇ ␉ magic_list
 # holdover ↑
@@ -130,7 +131,6 @@ S ␉ ⇥ ␉ break␠
 S ␉ ≟ ␉ case␠
 S ␉ ⎊ ␉ match␠
 S ␉ … ␉ **range_binary**
-S ␉ ≾ ␉ **isinstance**
 S ␉ ⩫ ␉ |other|
 S ␉ ‹ ␉ ␠f"""
 S ␉ › ␉ """␠
