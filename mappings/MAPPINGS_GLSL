@@ -12,9 +12,9 @@ E ␉ 𝔽 ␉ false
 E ␉ 𝓋 ␉ void
 E ␉ 𝒾 ␉ int
 E ␉ 𝒻 ␉ float
-E ␉ 𝟐 ␉ vec2
-E ␉ 𝟑 ␉ vec3
-E ␉ 𝟒 ␉ vec4
+E ␉ 𝕍₂ ␉ vec2
+E ␉ 𝕍₃ ␉ vec3
+E ␉ 𝕍₄ ␉ vec4
 E ␉ ↪ ␉ return
 E ␉ 𝑈 ␉ uniform
 E ␉ 𝑇 ␉ texture
