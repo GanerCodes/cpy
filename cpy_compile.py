@@ -148,7 +148,7 @@ if A.stdout:
     print(r[1], end='')
     exit()
 
-D = A.directory or os.getcwd()
+D = P.realpath(A.directory or os.getcwd())
 
 def file_filter(f): # open to future enhancements
     return "/.git/" not in f.replace(*'\\/') and spx(f)[1] == in_ext
