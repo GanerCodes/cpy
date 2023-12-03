@@ -135,6 +135,7 @@ PA.add_argument("-q", "--quiet", action='store_true', help="Suppress non-error m
 PA.add_argument("-r", "--reparse", action='store_true', help="Try and reparse the files into more normal python")
 PA.add_argument("-s", "--stdout", action='store_true', help="Write to stdout rather than files")
 PA.add_argument("-v", "--verbose", action='store_true', help="Output debug info")
+PA.add_argument("--steal-macros", action='append', help='Copy macros from another file')
 PA.add_argument("--custom-ext", help='Override extension, format is "inExt"/"outExt"')
 PA.add_argument("--custom-mappings", help="Use custom mapping file")
 PA.add_argument("--no-header", action='store_true', help="Disable generation/import of header")
@@ -191,6 +192,11 @@ debug(f"Got {in_ext=} {out_ext=}")
 
 mappings = parse_mappings(
     parse_map_file(t, cdr("mappings")) if (t:=A.custom_mappings) else DEFAULT_MAPPING_FILE, F)
+if A.steal_macros:
+    for f in A.steal_macros:
+        debug(f'Taking macros from "{f}"')
+        mappings = parse_macros(mappings, open(f).read())[0]
+
 compiler_args = { "mappings": mappings, "out_ext": out_ext,
                   "reparse": A.reparse, "no_header": A.no_header,
                   "no_write": A.stdout }

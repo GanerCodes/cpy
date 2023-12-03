@@ -71,9 +71,9 @@ split_string = 𝐎𝐔(①[split_string(k, ❟)¿ ❟∈k¡k ∀k∈x.split
 Π = (x↦reduce(②x⨯y,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))𐞁
 🃌 = 𝐎𝐔(len, ⠶par_mul_|par_pow_)
 ⛶ = 𝐎𝐔(①[x], ⠶par_mul_|par_pow_)
-☾ = 𝐎𝐔(𝚲print_(⠤𝔸,⠶𝕂)∨(𝔸₀¿𝔸))𐞂
 ↨ = 𝐎𝐔(enumerate, ⠶par_mul_)
 ↕ = 𝐎𝐔(range, ⠶par_mul_|par_pow_)
+☾ = (𝚲print_(⠤𝔸,⠶𝕂)∨(𝔸₀¿𝔸))𐞂
 ≾ = isinstance𐞁
 
 mk_type = ①𝐎𝐔(x, FT=x, ⠶𝕂)
