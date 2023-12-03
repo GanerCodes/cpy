@@ -5,7 +5,7 @@ pprint = PrettyPrinter(2).pprint
 ⍟ = g↦deque(g,maxlen=0)
 ⊢ ⨳(c,t='\U00002a33'): »c,t; ↪c
 ᐦ, î = '', 1j
-τ ≔ 2⨯(π ≔ 3.14159265359)
+τ = 2⨯(π ≔ 3.14159265359)
 ∞ = float("inf")
 
 Ω Namespace(dict):
