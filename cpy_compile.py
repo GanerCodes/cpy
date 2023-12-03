@@ -94,14 +94,20 @@ def proc_file(f, mappings, out_ext=".py", no_header=F, no_write=F, **kwargs):
         o.write(code)
     return new_name
 
-PA = argparse.ArgumentParser(description="CPY Compiler.")
-PA.add_argument("-d", "--directory", help="Directory of CPY project")
+def cmd(args, env=None):
+    log(f'Running: "{shlex.join(args)}"')
+    (proc := Popen(args, env=env)).wait()
+    return proc.returncode
+
+PA = argparse.ArgumentParser(prog="cpy", description="The cpy Compiler.")
+PA.add_argument("-d", "--directory", help="Directory of cpy project")
 PA.add_argument("-n", "--no-recurse", action='store_true', help="Recurse into directory")
 PA.add_argument("-c", "--cd-file", help="cd to file location to run instead of directory")
+PA.add_argument("-p", "--pip", nargs=argparse.REMAINDER, help="Pip tool")
+PA.add_argument("-q", "--quiet", action='store_true', help="Suppress non-error messages")
 PA.add_argument("-r", "--reparse", action='store_true', help="Try and reparse the files into more normal python")
 PA.add_argument("-s", "--stdout", action='store_true', help="Write to stdout rather than files")
 PA.add_argument("-v", "--verbose", action='store_true', help="Output debug info")
-PA.add_argument("-q", "--quiet", action='store_true', help="Suppress non-error messages")
 PA.add_argument("--custom-ext", help='Override extension, format is "inExt"/"outExt"')
 PA.add_argument("--custom-mappings", help="Use custom mapping file")
 PA.add_argument("--no-header", action='store_true', help="Disable generation/import of header")
@@ -114,6 +120,15 @@ A = PA.parse_args()
 VERBOSE_MODE, QUIET_MODE = A.verbose, A.quiet
 
 debug("Arguments:", A)
+
+if A.pip:
+    debug("Using Pip mode")
+    args = [cpy_bin, "-m", "pip"]
+    if len(A.pip) == 1 and A.pip[0].endswith('.txt'):
+        args += ["install", "-r", A.pip[0]]
+    else:
+        args += A.pip
+    exit(cmd(args))
 
 if A.test:
     A.directory = cdr("build+test")
@@ -178,11 +193,10 @@ env = os.environ.copy()
 env["PYTHONPATH"] = import_dir
 env.pop("PYTHONHOME", None)
 
-log(f'Running: "{shlex.join(args)}"')
-Popen(args, env=env).wait()
+exit_code = cmd(args, env)
 
 if A.no_cleanup:
-    exit()
+    exit(exit_code)
 
 for f in new_names:
     try:
@@ -190,3 +204,5 @@ for f in new_names:
         os.remove(f)
     except Exception:
         print(f'Failed to remove "{f}"')
+
+exit(exit_code)
