@@ -1,0 +1,111 @@
+{
+    "name": "CPY",
+    "scopeName": "source.cpy",
+    "fileTypes": ["cpy"],
+    "patterns": [{ "include": "#everything" }],
+    "repository": {
+      "everything": {
+        "patterns": [
+          { "include": "#comment"   },
+          { "include": "#string"    },
+          { "include": "#bracket"   },
+          { "include": "#control"   },
+          { "include": "#operator"  },
+          { "include": "#keyword"   },
+          { "include": "#function"  },
+          { "include": "#parameter" },
+          { "include": "#type"      },
+          { "include": "#variable"  },
+          { "include": "#number"    }]
+      },
+      "operator": {
+        "patterns": [
+          { "name": "comparison",
+            "match": "[∧∨¬≤≥≡≠∈∉\\*\\|\\-\\~+/⨯%@^⌃&><]" },
+          { "name": "op",
+            "match": "[☾≾ſᴙᴍζ🜌⍭…⩫]" },
+          { "name": "metaop",
+            "match": "[❟𐞁]" }]},
+      "control": {
+        "patterns": [{
+            "name": "control",
+            "match": "[⋄⨡;»Ω⊢⇥↪⮌⥀⮂↺⟳␡➰∀¿¡⸘]"
+        }]},
+      "function": {
+        "patterns": [{
+          "name": "function",
+          "match": "[⋀⋁ΣΠ󰈲󰈳⍉⛶🃌↕↨⇳⇧⍟⨳⤉⤈󷹄]"
+      }]},
+      "parameter": {
+        "patterns": [{
+            "name": "assign",
+            "match": "[≔=⠤⠶:﹕.]"
+        }]},
+      "type": {
+        "patterns": [
+        { "name": "cooltype",
+          "match": "[ƨ𝓈𝒾𝒻𝓁𝓉𝒹ℵ]" },
+        { "name": "lambda",
+          "match": "[𝚲⥌↦①②③]" }]},
+      "number": {
+        "patterns": [{
+            "name": "number",
+            "match": "\\.?[₋₀₁₂₃₄₅₆₇₈₉0123456789¯îπτ]{1,}\\.?"
+        }]},
+      "variable": {
+        "patterns": [
+        { "name": "general_keyword",
+          "match": "(?<![a-zA-Z0-9_])(cls|False|await|else|import|pass|break|except|in|raise|True|class|finally|is|return|and|continue|for|lambda|try|as|def|from|nonlocal|while|assert|del|global|not|with|async|elif|if|or|yield)(?![0-9a-zA-Z_])" },
+        { "name": "variable_builtin",
+          "match": "((?<![a-zA-Z0-9_])([𝕋𝔽𝔸𝕂𝕊])(?![0-9a-zA-Z_]))|[∅□🢖ᐦ]" },
+        { "name": "variable_constant",
+          "match": "(?<![a-zA-Z0-9_])[A-Z]{1}[_A-Z0-9]{1,}(?![A-Za-z0-9_])" },
+        { "name": "variable_bold",
+          "match": "(?<![a-zA-Z0-9_])[A-Z]{1}[A-Za-z0-9_]*" },
+        { "name": "variable_dunder",
+          "match": "(?<![a-zA-Z0-9_])__[a-zA-Z0-9_]*__(?![A-Za-z0-9_])" },
+        { "name": "variable",
+          "match": "(?<![a-zA-Z0-9_])[a-zA-Z_]{1}[a-zA-Z0-9_]*" }]},
+      "bracket": {
+        "patterns": [{
+            "name": "meta.bracket",
+            "match": "(\\(|\\))"
+        }]},
+      "string": {
+        "patterns": [
+          { "name": "one_char_str",
+            "match": ".(?=❟)" },
+          { "name": "fstring",
+            "match": "‹.*?›" },
+          { "name": "string",
+            "begin": "'", "end": "'",
+            "patterns": [
+              { "include": "#escapechars" } ] },
+          { "name": "string",
+            "begin": "\"", "end": "\"" }
+        ]
+      },
+      "escapechars": {
+        "name": "escapechars",
+        "match": "(␛)(.)",
+        "captures": {
+          "1": { "name": "escapedelim" },
+          "2": { "name": "escape" } }
+      },
+      "comment": {
+        "patterns": [
+          { "include": "#escapechars" },
+          { "name": "metacomment",
+            "match": "֎" },
+          { "name": "inlinecomment",
+            "begin": "🟑",
+            "end": "🟑" },
+          { "name": "comment.line.number-sign",
+            "match": "(#[^֎🟑]*)(?=[֎🟑]|$)",
+            "captures": { "0": { "name": "punctuation.definition.comment" } }},
+          { "name": "comment.line.number-sign",
+            "match": "(.*)$",
+            "captures": { "0": { "name": "punctuation.definition.comment" } }}
+        ]}
+    }
+}

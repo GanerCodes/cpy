@@ -43,12 +43,15 @@ y = 5
 »5<∞
 
 # Comments
+»1≡1  among sw🟑🟑🟑🟑🟑🟑🟑🟑🟑ag֎֎֎֎֎
+ diahjs֎diohu;
 ֎
                 asduha8sy0ouduiahsd
 adwkai
 22=@+=q]apdd
 ֎֎dadasdasdadw23da2dwada֎
 🟑 odjaao2hda=8092hdijonkl 🟑
+ 🟑
 
 # implicit multiplication
 » "a" 2 3 ≡ 6 a❟
@@ -89,10 +92,11 @@ C=swag2([①A❟+x, ①B❟+x], 3)(ᐦ)
 »󷹄(¯1,1)|¯2 ≡ ¯1󷹄(¯2)1 ≡ 󷹄(¯1,1)(¯2) ≡ 󷹄(¯2)(¯1,1) ≡ ¯1
 »󷹄(¯1,1)|22 ≡ ¯1󷹄(2)1 ≡ 󷹄(¯1,1)(5) ≡ 󷹄(3)(¯1,1) ≡ 1
 
-# macros
+# macros/escaping
 ₛ R ␉ 𝐢 ␉ swag
 ₑ R ␉ ₀ ␉ cool
-» "𝐢" ≡ "swag"
+ₑ I ␉ ./mapping_test
+» "𝐢𝐡𝑚␛𝐡" ≡ "swageggH\N{MATHEMATICAL BOLD SMALL H}"
 » "x₀" ≡ "x[0]"
 
 ☾ "CPY Tests passed!"

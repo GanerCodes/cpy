@@ -1,0 +1,3 @@
+# for stuff like comments and whatnot
+R ␉ ([^\n]*)(?=\n) ␉
+R ␉ (֎[^֎]*֎)|(🟑[^🟑]*🟑) ␉

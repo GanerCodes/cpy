@@ -10,8 +10,9 @@ from os import path as P
 T,F = True, False
 ñ,ƨ = '\n '
 
-jop, spp, spx = P.join, P.split, P.splitext
-cpy_dir = spp(__file__)[0]
+jop, psp, pse = P.join, P.split, P.splitext
+pdr = lambda f: psp(f)[0]
+cpy_dir = psp(__file__)[0]
 cdr = lambda f: jop(cpy_dir, f)
 
 cpy_bin = cdr("bin/cpy_binary")
@@ -26,8 +27,9 @@ GENERAL_HEADER =  "from sys import path as __PATH; " \
 QUIET_MODE = F
 VERBOSE_MODE = F # enabled globally if relevent flag is present
 
-log = lambda *a: QUIET_MODE or print("CPY -", *a)
-debug = lambda *a: VERBOSE_MODE and print("Debug:", *a) 
+log = lambda *a: QUIET_MODE or print("cpy -", *a)
+debug = lambda *a: VERBOSE_MODE and print("cpy-debug -", *a)
+error = lambda *a: print("cpy-ERROR -", *a)
 dmp = lambda f,j=T: open(cdr(f) if j else f).read()
 normalize = lambda t: t.strip().replace('␠', ƨ).replace('␤', ñ)
 parse_mappings = lambda f,j=T,r=T: [list(map(normalize, y.split('␉'))) for x in (dmp(f,j) if r else f).replace('🝇',ñ).split(ñ) if ((y:=x.strip()) and y[0] not in '#;')]
@@ -35,6 +37,7 @@ gby = lambda a,f: {k:list(v) for k,v in groupby(sorted(a,key=f),f)}
 
 DEFAULT_MAPPING_FILE = cdr("mappings/MAPPINGS_PY")
 MAPPING_FUNCS = {
+    "I": None,
     "S": str.replace,
     "E": lambda t, f, r: t.replace(ñ+f, ñ+r+ƨ).replace(ƨ+f, ƨ+r+ƨ).replace(f, ƨ+r+ƨ),
     "R": lambda t, f, r: re.sub(f, r, t),
@@ -69,9 +72,33 @@ def parse_macros(mappings, code):
     d = {'s':[],'m':[],'e':[]} | gby(code.split(ñ), f)
     debug(f"Macro count: {len(d['s'])}+{len(mappings)}+{len(d['e'])}")
     return p(d['s']) + mappings + p(d['e']), ñ.join(d['m'])
-def compile_code(code, mappings, header="", reparse=F, **_):
-    mappings, code = parse_macros(mappings, code)
+def parse_map_file(f, file_dir):
+    F = f
+    if not P.isabs(f):
+        f = P.abspath(jop(file_dir, f))
+        debug("Trying mapping file", f)
+    if P.isfile(f): return f
     
+    f = P.abspath(cdr(jop("mappings/", F)))
+    debug("Trying mapping file", f)
+    if P.isfile(f): return f
+    
+    error("Unable to find mapping file", f)
+    exit(1)
+def parse_nesting_mappings(mappings, file_dir):
+    new_mappings = []
+    for m in mappings:
+        𝑓, *a = m
+        if 𝑓 != "I":
+            new_mappings.append(m)
+            continue
+        
+        f = parse_map_file(a[0], file_dir)
+        new_mappings += parse_nesting_mappings(parse_mappings(f, F, T), pdr(f))
+    return new_mappings
+def compile_code(code, mappings, header="", reparse=F, file_dir=None, **_):
+    mappings, code = parse_macros(mappings, code)
+    mappings = parse_nesting_mappings(mappings, file_dir)
     code = escape_code(ñ+code)
     for f, *a in mappings:
         code = MAPPING_FUNCS[f](code, *a)
@@ -80,13 +107,13 @@ def compile_code(code, mappings, header="", reparse=F, **_):
         code = reparse_code(code)
     return code
 def understand_filename(f):
-    b, e = spx(f)
+    b, e = pse(f)
     return b + (".py" if (e == ".cpy" or not e) else e)
 def proc_file(f, mappings, out_ext=".py", no_header=F, no_write=F, **kwargs):
-    b, e = spx(f)
+    b, e = pse(f)
     new_name = b+out_ext
     header = "" if no_header else GENERAL_HEADER
-    code = compile_code(dmp(f, F), mappings, header=header, **kwargs)
+    code = compile_code(dmp(f, F), mappings, header=header, file_dir=pdr(f), **kwargs)
     if no_write:
         return (new_name, code)
     with open(new_name, 'w') as o:
@@ -113,13 +140,37 @@ PA.add_argument("--custom-mappings", help="Use custom mapping file")
 PA.add_argument("--no-header", action='store_true', help="Disable generation/import of header")
 PA.add_argument("--no-cleanup", action='store_true', help="Disable removal of output files after execution")
 PA.add_argument("--test", action='store_true', help="Run the cpy testing utility, ignores most other arguments")
+PA.add_argument("--build-cpy", action='store_true', help="Build the cpy python binary [requires bash/gcc/etc]")
+PA.add_argument("--build-codium", action='store_true', help="Build/install codium highlighting [requires bash/npm/etc]")
 PA.add_argument("file", nargs='?', help="File to run (if any)")
 PA.add_argument('progargs', nargs=argparse.REMAINDER, help="Arguments to executable, eg. cpy_binary <file> <pyarg1> <pyarg2> … ")
 A = PA.parse_args()
+log("◕‿◕ 🩷") if ((h:='rllyawesome') in (env := os.environ.copy())) else env.__setitem__(h,h)
 
+if A.test: A.verbose = T
 VERBOSE_MODE, QUIET_MODE = A.verbose, A.quiet
 
 debug("Arguments:", A)
+
+if A.build_cpy:
+    if (r:=cmd(["bash", cdr("build+test/build.sh")])) != 0:
+        error("Failed to build cpy!")
+        exit(r)
+    log("Built cpy!")
+
+if A.build_codium:
+    if (r:=cmd(["bash", cdr("cpy-codium-highlighter/build.sh")])) != 0:
+        error("Failed to build Codium syntax highlighter!")
+        exit(r)
+    log("Build Codium syntax highlighter!")
+
+if (A.build_cpy and A.test) or (A.build_codium and not A.test):
+    exit(0)
+
+if A.test:
+    A.directory = cdr("build+test")
+    A.file = f"{A.directory}/tests.cpy"
+    A.no_recurse = A.cd_file = T
 
 if A.pip:
     debug("Using Pip mode")
@@ -130,10 +181,7 @@ if A.pip:
         args += A.pip
     exit(cmd(args))
 
-if A.test:
-    A.directory = cdr("build+test")
-    A.file = f"{A.directory}/tests.cpy"
-    A.no_recurse = A.cd_file = T
+D = P.realpath(A.directory or os.getcwd())
 
 if A.custom_ext:
     in_ext, out_ext = map(".{}".format, A.custom_ext.split('/', 1))
@@ -141,7 +189,8 @@ else:
     in_ext, out_ext = ".cpy", ".py"
 debug(f"Got {in_ext=} {out_ext=}")
 
-mappings = parse_mappings(A.custom_mappings or DEFAULT_MAPPING_FILE, F)
+mappings = parse_mappings(
+    parse_map_file(t, cdr("mappings")) if (t:=A.custom_mappings) else DEFAULT_MAPPING_FILE, F)
 compiler_args = { "mappings": mappings, "out_ext": out_ext,
                   "reparse": A.reparse, "no_header": A.no_header,
                   "no_write": A.stdout }
@@ -153,20 +202,18 @@ if not A.no_header:
         f.write(
             compile_code(
                 f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n",
-                **compiler_args))
+                file_dir = D, **compiler_args))
 
 if A.stdout:
     if not A.file:
-        print("Cannot output to stdout without <file> argument.")
+        error("Cannot output to stdout without <file> argument.")
         exit(1)
     r = proc_file(A.file, **compiler_args)
     print(r[1], end='')
     exit()
 
-D = P.realpath(A.directory or os.getcwd())
-
 def file_filter(f): # open to future enhancements
-    return "/.git/" not in f.replace(*'\\/') and spx(f)[1] == in_ext
+    return "/.git/" not in f.replace(*'\\/') and pse(f)[1] == in_ext
 
 files = filter(file_filter, 
     (jop(D, f) for f in os.listdir(D))
@@ -182,17 +229,15 @@ if not A.file:
 
 f = understand_filename(A.file)
 if not P.isfile(f):
-    print(f'Cannot locate file: "{f}"')
+    error(f'Cannot locate file: "{f}"')
     exit(1)
 
 debug(f'File to execute: "{f}"')
-os.chdir(P.split(f)[0] if A.cd_file else D)
+os.chdir(pdr(f) if A.cd_file else D)
 
 args = [cpy_bin, '-u', f, *A.progargs]
-env = os.environ.copy()
 env["PYTHONPATH"] = import_dir
 env.pop("PYTHONHOME", None)
-
 exit_code = cmd(args, env)
 
 if A.no_cleanup:
@@ -203,6 +248,6 @@ for f in new_names:
         debug(f"Removing {f}")
         os.remove(f)
     except Exception:
-        print(f'Failed to remove "{f}"')
+        error(f'Failed to remove "{f}"')
 
 exit(exit_code)

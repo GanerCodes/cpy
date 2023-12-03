@@ -12,8 +12,7 @@
 #     ␠: Space
 #     ␤: Newline
 
-R ␉ (֎[^֎]*֎)|(🟑[^🟑]*🟑) ␉
-
+I ␉ MAPPINGS_GENERIC
 E ␉ 𝕋 ␉ true
 E ␉ 𝔽 ␉ false
 E ␉ ⤉ ␉ math.max

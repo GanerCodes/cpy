@@ -36,7 +36,7 @@
 #     Idea: 𝚲Σ𝔸󰈲󰲡1❟∈x
 # Actually: 𝚲(󰲡1❟∈x)󰈲Σ𝔸
 
-R ␉ (֎[^֎]*֎)|(🟑[^🟑]*🟑) ␉
+I ␉ MAPPINGS_GENERIC
 
 E ␉ Ω ␉ class
 E ␉ 𝕋 ␉ True
