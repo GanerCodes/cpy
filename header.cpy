@@ -1,10 +1,13 @@
 ⮌ collections ⨡ deque
 ⮌ pprint ⨡ PrettyPrinter
-⊢ ASSERT_(c,t='\U00002a33'): »c,t; ↪c
 pprint = PrettyPrinter(2).pprint
-DEGEN_=g↦deque(g,maxlen=0)
-EMPTY_STRING, COMPLEX_UNIT = '', 1j
-MATH_PI, MATH_TAU = 3.14159265359, 6.28318530718
+
+⍟ = g↦deque(g,maxlen=0)
+⊢ ⨳(c,t='\U00002a33'): »c,t; ↪c
+ᐦ, î = '', 1j
+π, τ = 3.14159265359, 6.28318530718
+∞ = float("inf")
+
 Ω Namespace(dict):
     __init__ = 𝕊↦super().__init__(⠶𝕂)
     __setattr__ = dict.__setitem__

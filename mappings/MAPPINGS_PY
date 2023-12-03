@@ -79,22 +79,24 @@ E ␉ 𝓁 ␉ magic_list
 E ␉ 𝓉 ␉ magic_tuple
 E ␉ 𝒹 ␉ magic_dict
 
+E ␉ π ␉ MATH_PI
+E ␉ τ ␉ MATH_TAU
+E ␉ ∞ ␉ MATH_INFINITY
+E ␉ î ␉ MATH_COMPLEX_UNIT
+E ␉ ᐦ ␉ EMPTY_STRING
+
+E ␉ □ ␉ None
+E ␉ ∅ ␉ set()
+
 E ␉ ⍟ ␉ DEGEN_
 E ␉ ⇧ ␉ skinniside_z
 E ␉ ⇳ ␉ skinniside_b
 E ␉ ⍭ ␉ split_string
-E ␉ π ␉ MATH_PI
-E ␉ τ ␉ MATH_TAU
-E ␉ î ␉ COMPLEX_UNIT
-E ␉ ∅ ␉ set()
-E ␉ □ ␉ None
-E ␉ ᐦ ␉ EMPTY_STRING
 E ␉ ∧ ␉ and
 E ␉ ∨ ␉ or
 E ␉ ∈ ␉ in
 E ␉ ∉ ␉ not in
 E ␉ ¬ ␉ not
-E ␉ λ ␉ lambda
 E ␉ ⁅ ␉ DEGEN_(
 E ␉ ⮌ ␉ from
 E ␉ ⨡ ␉ import
@@ -112,6 +114,9 @@ E ␉ 🢖 ␉ SPECIAL_SELF_.
 E ␉ ℵ ␉ Namespace
 E ␉ 𐞂 ␉ **OP_TO_UNARY_
 E ␉ 𐞁 ␉ **OP_TO_BNARY_
+
+E ␉ λ ␉ lambda
+# ↑ Deprecated?
 
 S ␉ ⁆ ␉ )
 S ␉ ≔ ␉ :=
