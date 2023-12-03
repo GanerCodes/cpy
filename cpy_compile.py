@@ -204,11 +204,15 @@ debug(f"{compiler_args=}")
 
 if not A.no_header:
     debug("Generating header")
-    with open(jop(import_dir, "CPY_HEADER.py"), 'w') as f:
-        f.write(
-            compile_code(
-                f"{dmp("header.cpy")}\n{dmp("combinators.cpy")}\n",
-                file_dir = D, **compiler_args))
+    header = compile_code(
+        ñ.join(map(dmp, ["header.cpy", "combinators.cpy"])),
+        file_dir=D, **compiler_args)
+    if A.stdout:
+        print(header)
+        exit(0)
+    else:
+        with open(jop(import_dir, "CPY_HEADER.py"), 'w') as f:
+            f.write(header)
 
 if A.stdout:
     if not A.file:
