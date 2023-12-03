@@ -1,4 +1,3 @@
-⮌ operator ⨡ add as add_
 ⮌ builtins ⨡ print as print_, map as map_, zip as zip_, \
              isinstance as INST_
 ⮌ functools ⨡ reduce
@@ -65,8 +64,10 @@ split_string = 𝐎𝐔(①[split_string(k, ❟)¿ ❟∈k¡k ∀k∈x.split
 ζ = (𝚲list(map(list,zip_(⠤𝔸,⠶𝕂))))𐞁
 ᴙ = 𝐎𝐔(①x﹕﹕₋₁, ⠶par_mul_|par_pow_)
 ᴍ = (𝚲(list(map_(⠤𝔸)) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦list(map_(f,⠤𝔸)))𐞂))𐞁
+󰈲 = (𝚲(list(filter(𝔸₀,⠤𝔸₁﹕)) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦list(filter(f,⠤𝔸)))𐞂))𐞁
+󰈳 = (𝚲(list(filter(⥌x,f=𝔸₀↦¬f(x),⠤𝔸₁﹕)) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦list(filter(①¬f(x),⠤𝔸)))𐞂))𐞁
 ſ = (𝚲(reduce(⠤𝔸) ¿🃌(𝔸)>1¡ (⥌⠤𝔸,f=𝔸₀↦reduce(f,⠤𝔸))𐞂))𐞁
-Σ = (x↦reduce(add_,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))𐞁
+Σ = (x↦reduce(②x+y,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))𐞁
 Π = (x↦reduce(②x⨯y,(x≔list(x)),⠤([𝔸₀¿𝔸¡0]¿¬x¡[])))𐞁
 🃌 = 𝐎𝐔(len, ⠶par_mul_|par_pow_)
 ⛶ = 𝐎𝐔(①[x], ⠶par_mul_|par_pow_)

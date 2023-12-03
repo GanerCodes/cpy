@@ -16,10 +16,10 @@
 #   <superscripts> .stuff
 #   <  subscripts> [stuff]
 #   ¯ᐦ 
-#   ⠤⠶⨯⌃⟳➰⥀⮂❟←→𝚲𝕋𝔽𝔸𝕂ℂ𝕊⤉⤈Σ⨳☾🃌⛶ᴙᴍζ↕↨🜌⍟⇧⇳πτî∅□∧∨∈∉¬⋀⋁
+#   ⠤⠶⨯⌃⟳➰⥀⮂❟←→𝚲𝕋𝔽𝔸𝕂ℂ𝕊⤉⤈Σ⨳☾🃌⛶ᴙᴍſζ⍉󰈲󰈳↕↨🜌⍟⇧⇳πτî∞∅□∧∨∈∉¬⋀⋁
 #   ①②③⁅⁆⮌⨡¿¡⸘∀🢖≔≤≥≡≠⋄⥌↦↪⊢»↺⇥…≾⩫
 #   󰆴
-#   Deprecated: ⑴⑵⑶˲﹐⚇∘ƛ𝝺⎊≟λ
+#   Deprecated: ⑴⑵⑶˲﹐⚇∘ƛ𝝺⎊≟
 # TODO:
 #   Make syntax real
 #   Add reduce
@@ -59,9 +59,11 @@ E ␉ Σ ␉ sum
 E ␉ Π ␉ PROD_
 E ␉ ⍉ ␉ TRANSPOSE_
 E ␉ ζ ␉ zip
+E ␉ ᴍ ␉ map
+E ␉ 󰈲 ␉ FILTER_POS_
+E ␉ 󰈳 ␉ FILTER_NEG_
 E ␉ ſ ␉ FOLD_
 E ␉ ᴙ ␉ REVERSE_
-E ␉ ᴍ ␉ map
 E ␉ ⛶ ␉ enlist
 E ␉ ↕ ␉ range
 E ␉ ↨ ␉ enumerate
@@ -106,6 +108,7 @@ E ␉ ¿ ␉ if
 E ␉ ¡ ␉ else
 E ␉ ⸘ ␉ elif
 E ␉ ∀ ␉ for
+E ␉ λ ␉ lambda
 E ␉ 𝔸 ␉ ARGS_
 E ␉ 𝕂 ␉ KWARGS_
 E ␉ ℂ ␉ SPECIAL_CLASS_
@@ -115,8 +118,6 @@ E ␉ ℵ ␉ Namespace
 E ␉ 𐞂 ␉ **OP_TO_UNARY_
 E ␉ 𐞁 ␉ **OP_TO_BNARY_
 
-E ␉ λ ␉ lambda
-# ↑ Deprecated?
 
 S ␉ ⁆ ␉ )
 S ␉ ≔ ␉ :=
