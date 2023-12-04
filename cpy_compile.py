@@ -35,7 +35,7 @@ normalize = lambda t: t.strip().replace('␠', ƨ).replace('␤', ñ)
 parse_mappings = lambda f,j=T,r=T: [list(map(normalize, y.split('␉'))) for x in (dmp(f,j) if r else f).replace('🝇',ñ).split(ñ) if ((y:=x.strip()) and y[0] not in '#;')]
 gby = lambda a,f: {k:list(v) for k,v in groupby(sorted(a,key=f),f)}
 
-DEFAULT_MAPPING_FILE = cdr("mappings/MAPPINGS_PY")
+DEFAULT_MAPPING = "PY"
 MAPPING_FUNCS = {
     "I": None,
     "S": str.replace,
@@ -135,9 +135,9 @@ PA.add_argument("-q", "--quiet", action='store_true', help="Suppress non-error m
 PA.add_argument("-r", "--reparse", action='store_true', help="Try and reparse the files into more normal python")
 PA.add_argument("-s", "--stdout", action='store_true', help="Write to stdout rather than files")
 PA.add_argument("-v", "--verbose", action='store_true', help="Output debug info")
-PA.add_argument("--steal-macros", action='append', help='Copy macros from another file')
+PA.add_argument("-m", "--custom-mappings", action='append', help="Use custom mapping file")
+PA.add_argument("-t", "--steal-macros", action='append', help='Copy macros from another file')
 PA.add_argument("--custom-ext", help='Override extension, format is "inExt"/"outExt"')
-PA.add_argument("--custom-mappings", help="Use custom mapping file")
 PA.add_argument("--no-header", action='store_true', help="Disable generation/import of header")
 PA.add_argument("--no-cleanup", action='store_true', help="Disable removal of output files after execution")
 PA.add_argument("--test", action='store_true', help="Run the cpy testing utility, ignores most other arguments")
@@ -146,7 +146,6 @@ PA.add_argument("--build-codium", action='store_true', help="Build/install codiu
 PA.add_argument("file", nargs='?', help="File to run (if any)")
 PA.add_argument('progargs', nargs=argparse.REMAINDER, help="Arguments to executable, eg. cpy_binary <file> <pyarg1> <pyarg2> … ")
 A = PA.parse_args()
-log("◕‿◕ 🩷") if ((h:='rllyawesome') in (env := os.environ.copy())) else env.__setitem__(h,h)
 
 if A.test: A.verbose = T
 VERBOSE_MODE, QUIET_MODE = A.verbose, A.quiet
@@ -182,7 +181,8 @@ if A.pip:
         args += A.pip
     exit(cmd(args))
 
-D = P.realpath(A.directory or os.getcwd())
+cur_dir = os.getcwd()
+D = P.realpath(A.directory or cur_dir)
 
 if A.custom_ext:
     in_ext, out_ext = map(".{}".format, A.custom_ext.split('/', 1))
@@ -190,8 +190,12 @@ else:
     in_ext, out_ext = ".cpy", ".py"
 debug(f"Got {in_ext=} {out_ext=}")
 
-mappings = parse_mappings(
-    parse_map_file(t, cdr("mappings")) if (t:=A.custom_mappings) else DEFAULT_MAPPING_FILE, F)
+mapping_files = A.custom_mappings if A.custom_mappings else [DEFAULT_MAPPING]
+debug(f"Got {mapping_files=}")
+mappings = sum(
+    (parse_mappings(
+        parse_map_file(f, cur_dir), F)
+        for f in mapping_files), [])
 if A.steal_macros:
     for f in A.steal_macros:
         debug(f'Taking macros from "{f}"')
@@ -232,7 +236,7 @@ files = filter(file_filter,
 new_names = [proc_file(f, **compiler_args) for f in files]
 debug(f"Generated files: {new_names}")
 
-log(f"Generated {len(new_names)} files.")
+log(f"Generated {len(new_names)} files(s)"+(" ◕‿◕ 🩷" if ((h:='rllyawesome') in (env := os.environ.copy())) else env.__setitem__(h,h) or '.'))
 
 if not A.file:
     exit() # No need to execute or cleanup

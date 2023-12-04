@@ -36,7 +36,7 @@
 #     Idea: 𝚲Σ𝔸󰈲󰲡1❟∈x
 # Actually: 𝚲(󰲡1❟∈x)󰈲Σ𝔸
 
-I ␉ MAPPINGS_GENERIC
+I ␉ GENERIC
 
 E ␉ Ω ␉ class
 E ␉ 𝕋 ␉ True
@@ -146,7 +146,7 @@ R ␉ [⑵②] ␉ <$x,y$>
 R ␉ [⑶③] ␉ <$x,y,z$>
 R ␉ [⑷④] ␉ <$x,y,z,w$>
 R ␉ [𝚲ƛ𝝺] ␉ <$$>
-R ␉ [⠤⨯] ␉ *
+R ␉ [⠤⨯⋅] ␉ *
 R ␉ [⠶⌃] ␉ **
 R ␉ [⟳➰] ␉ while␠
 R ␉ [⥀⮂] ␉ yield␠
