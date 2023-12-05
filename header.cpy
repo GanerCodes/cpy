@@ -16,19 +16,19 @@ pprint = PrettyPrinter(2).pprint
     __repr__ = 𝕊↦‹\U00002135({(', '.join(‹{k}={v}› ∀k,v∈𝕊))})›
     copy = 𝕊↦ℵ(⠶super().copy())
 Ω pait:
-    ⨡ subprocess as SP
+    ⨡ subprocess as ρ
     ⊢ __call__(𝕊,s,⠤𝔸,⠶𝕂):
-        proc = 𝕊.SP.Popen(s.split(' '),⠤𝔸,⠶𝕂)
+        proc = 𝕊󰁜.Popen(s.split(' '),⠤𝔸,⠶𝕂)
         ↪ (proc.wait()∧𝔽 ¿ "background"∉𝕂) ∨ proc
     _parse = 𝕊,o↦o.read().decode()
     r = 𝕊↦𝕊(⠤𝔸,⠶𝕂).return_code
-    S = 𝕊↦𝕊._parse(𝕊(⠤𝔸,stdout=𝕊.SP.PIPE,⠶𝕂).stdout)
-    E = 𝕊↦𝕊._parse(𝕊(⠤𝔸,stderr=𝕊.SP.PIPE,⠶𝕂).stderr)
-    b = 𝕊↦𝕊(⠤𝔸,background=𝕋,stdout=𝕊.SP.PIPE,stderr=𝕊.SP.PIPE,⠶𝕂)
+    S = 𝕊↦𝕊._parse(𝕊(⠤𝔸,stdout=𝕊󰁜.PIPE,⠶𝕂).stdout)
+    E = 𝕊↦𝕊._parse(𝕊(⠤𝔸,stderr=𝕊󰁜.PIPE,⠶𝕂).stderr)
+    b = 𝕊↦𝕊(⠤𝔸,background=𝕋,stdout=𝕊󰁜.PIPE,stderr=𝕊󰁜.PIPE,⠶𝕂)
     ⊢ B(𝕊,⠤𝔸,⠶𝕂):
-        o = 𝕊(⠤𝔸,stdout=𝕊.SP.PIPE,stderr=𝕊.SP.PIPE,⠶𝕂)
+        o = 𝕊(⠤𝔸,stdout=𝕊󰁜.PIPE,stderr=𝕊󰁜.PIPE,⠶𝕂)
         ↪ 𝕊._parse(o.stdout), 𝕊._parse(o.stderr)
     ⊢ A(𝕊,⠤𝔸,⠶𝕂):
-        o = 𝕊(⠤𝔸,stdout=𝕊.SP.PIPE,stderr=𝕊.SP.PIPE,⠶𝕂)
+        o = 𝕊(⠤𝔸,stdout=𝕊󰁜.PIPE,stderr=𝕊󰁜.PIPE,⠶𝕂)
         ↪ o.return_code, 𝕊._parse(o.stdout), 𝕊._parse(o.stderr)
 pait = pait()
