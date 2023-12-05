@@ -32,7 +32,7 @@ debug = lambda *a: VERBOSE_MODE and print("cpy-debug -", *a)
 error = lambda *a: print("cpy-ERROR -", *a)
 dmp = lambda f,j=T: open(cdr(f) if j else f).read()
 normalize = lambda t: t.strip().replace('␠', ƨ).replace('␤', ñ)
-parse_mappings = lambda f,j=T,r=T: [list(map(normalize, y.split('␉'))) for x in (dmp(f,j) if r else f).replace('🝇',ñ).split(ñ) if ((y:=x.strip()) and y[0] not in '#;')]
+parse_map_syntax = lambda f,j=T,r=T: [list(map(normalize, y.split('␉'))) for x in (dmp(f,j) if r else f).replace('🝇',ñ).split(ñ) if ((y:=x.strip()) and y[0] not in '#;')]
 gby = lambda a,f: {k:list(v) for k,v in groupby(sorted(a,key=f),f)}
 
 DEFAULT_MAPPING = "PY"
@@ -43,9 +43,15 @@ MAPPING_FUNCS = {
     "R": lambda t, f, r: re.sub(f, r, t),
     "Y": lambda t, f, r: reduce(lambda x, y: str.replace(x, *y), zip(f, r), t) }
 
+def cmd(args, env=None):
+    log(f'Running: "{shlex.join(args)}"')
+    (proc := Popen(args, env=env)).wait()
+    return proc.returncode
+
 def reparse_code(code):
     import ast
     return ast.unparse(ast.parse(code))
+
 def escape_code(code):
     t, r = iter(code), ''
     while T:
@@ -66,13 +72,8 @@ def unescape_code(code):
             c = chr(int(''.join(next(t) for i in range(7))))
         r += c
     return r
-def parse_macros(mappings, code):
-    f = lambda x: (x.startswith("ₛ") and 's') or (x.startswith("ₑ") and 'e') or 'm'
-    p = lambda x: parse_mappings(ñ.join(c[2:] for c in x), r=F)
-    d = {'s':[],'m':[],'e':[]} | gby(code.split(ñ), f)
-    debug(f"Macro count: {len(d['s'])}+{len(mappings)}+{len(d['e'])}")
-    return p(d['s']) + mappings + p(d['e']), ñ.join(d['m'])
-def parse_map_file(f, file_dir):
+
+def search_map_filepath(f, file_dir):
     F = f
     if not P.isabs(f):
         f = P.abspath(jop(file_dir, f))
@@ -85,6 +86,18 @@ def parse_map_file(f, file_dir):
     
     error("Unable to find mapping file", f)
     exit(1)
+
+def parse_implicit_filename(f, in_ext, out_ext):
+    b, e = pse(f)
+    return b + (out_ext if (e == in_ext or not e) else e)
+
+def parse_macros(mappings, code):
+    f = lambda x: (x.startswith("ₛ") and 's') or (x.startswith("ₑ") and 'e') or 'm'
+    p = lambda x: parse_map_syntax(ñ.join(c[2:] for c in x), r=F)
+    d = {'s':[],'m':[],'e':[]} | gby(code.split(ñ), f)
+    debug(f"Macro count: {len(d['s'])}+{len(mappings)}+{len(d['e'])}")
+    return p(d['s']) + mappings + p(d['e']), ñ.join(d['m'])
+
 def parse_nesting_mappings(mappings, file_dir):
     new_mappings = []
     for m in mappings:
@@ -93,9 +106,16 @@ def parse_nesting_mappings(mappings, file_dir):
             new_mappings.append(m)
             continue
         
-        f = parse_map_file(a[0], file_dir)
-        new_mappings += parse_nesting_mappings(parse_mappings(f, F, T), pdr(f))
+        f = search_map_filepath(a[0], file_dir)
+        
+        if '' in (t := open(f).read()):
+            maps, _ = parse_macros([], t)
+        else:
+            maps = parse_map_syntax(t, F, F)
+            
+        new_mappings += parse_nesting_mappings(maps, pdr(f))
     return new_mappings
+
 def compile_code(code, mappings, header="", reparse=F, file_dir=None, **_):
     mappings, code = parse_macros(mappings, code)
     mappings = parse_nesting_mappings(mappings, file_dir)
@@ -106,9 +126,6 @@ def compile_code(code, mappings, header="", reparse=F, file_dir=None, **_):
     if reparse:
         code = reparse_code(code)
     return code
-def understand_filename(f):
-    b, e = pse(f)
-    return b + (".py" if (e == ".cpy" or not e) else e)
 def proc_file(f, mappings, out_ext=".py", no_header=F, no_write=F, **kwargs):
     b, e = pse(f)
     new_name = b+out_ext
@@ -120,11 +137,6 @@ def proc_file(f, mappings, out_ext=".py", no_header=F, no_write=F, **kwargs):
         debug(f'"{f}" → "{new_name}"')
         o.write(code)
     return new_name
-
-def cmd(args, env=None):
-    log(f'Running: "{shlex.join(args)}"')
-    (proc := Popen(args, env=env)).wait()
-    return proc.returncode
 
 PA = argparse.ArgumentParser(prog="cpy", description="The cpy Compiler.")
 PA.add_argument("-d", "--directory", help="Directory of cpy project")
@@ -190,16 +202,18 @@ else:
     in_ext, out_ext = ".cpy", ".py"
 debug(f"Got {in_ext=} {out_ext=}")
 
+mappings = []
+
+macro_files = A.steal_macros if A.steal_macros else []
+debug("Macro files:", macro_files)
+for f in macro_files:
+    mappings, _ = parse_macros(mappings, open(f).read())
+
 mapping_files = A.custom_mappings if A.custom_mappings else [DEFAULT_MAPPING]
-debug(f"Got {mapping_files=}")
-mappings = sum(
-    (parse_mappings(
-        parse_map_file(f, cur_dir), F)
-        for f in mapping_files), [])
-if A.steal_macros:
-    for f in A.steal_macros:
-        debug(f'Taking macros from "{f}"')
-        mappings = parse_macros(mappings, open(f).read())[0]
+debug("Mapping files:", mapping_files)
+for f in mapping_files:
+    mappings += parse_map_syntax(
+        search_map_filepath(f, cur_dir), F)
 
 compiler_args = { "mappings": mappings, "out_ext": out_ext,
                   "reparse": A.reparse, "no_header": A.no_header,
@@ -220,7 +234,7 @@ if not A.no_header:
 
 if A.stdout:
     if not A.file:
-        error("Cannot output to stdout without <file> argument.")
+        error("Cannot output to stdout with '--no-header' and without <file>.")
         exit(1)
     r = proc_file(A.file, **compiler_args)
     print(r[1], end='')
@@ -241,7 +255,7 @@ log(f"Generated {len(new_names)} files(s)"+(" ◕‿◕ 🩷" if ((h:='rllyaweso
 if not A.file:
     exit() # No need to execute or cleanup
 
-f = understand_filename(A.file)
+f = parse_implicit_filename(A.file, in_ext, out_ext)
 if not P.isfile(f):
     error(f'Cannot locate file: "{f}"')
     exit(1)
@@ -252,7 +266,10 @@ os.chdir(pdr(f) if A.cd_file else D)
 args = [cpy_bin, '-u', f, *A.progargs]
 env["PYTHONPATH"] = import_dir
 env.pop("PYTHONHOME", None)
-exit_code = cmd(args, env)
+try:
+    exit_code = cmd(args, env)
+except KeyboardInterrupt:
+    exit_code = 1 # jank?
 
 if A.no_cleanup:
     exit(exit_code)
@@ -265,3 +282,5 @@ for f in new_names:
         error(f'Failed to remove "{f}"')
 
 exit(exit_code)
+
+# goodbyenight

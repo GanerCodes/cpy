@@ -14,6 +14,7 @@ pprint = PrettyPrinter(2).pprint
     __getattr__ = dict.__getitem__
     __iter__ = 𝕊↦iter(𝕊.items())
     __repr__ = 𝕊↦‹\U00002135({(', '.join(‹{k}={v}› ∀k,v∈𝕊))})›
+    copy = 𝕊↦ℵ(⠶super().copy())
 Ω pait:
     ⨡ subprocess as SP
     ⊢ __call__(𝕊,s,⠤𝔸,⠶𝕂):
