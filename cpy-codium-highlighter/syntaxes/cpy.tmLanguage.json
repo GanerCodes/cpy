@@ -54,8 +54,6 @@
         }]},
       "variable": {
         "patterns": [
-        { "name": "general_keyword",
-          "match": "(?<![a-zA-Z0-9_])(cls|False|await|else|import|pass|break|except|in|raise|True|class|finally|is|return|and|continue|for|lambda|try|as|def|from|nonlocal|while|assert|del|global|not|with|async|elif|if|or|yield)(?![0-9a-zA-Z_])" },
         { "name": "variable_builtin",
           "match": "((?<![a-zA-Z0-9_])([𝕋𝔽𝔸𝕂𝕊])(?![0-9a-zA-Z_]))|[∅□🢖ᐦ]" },
         { "name": "variable_constant",
