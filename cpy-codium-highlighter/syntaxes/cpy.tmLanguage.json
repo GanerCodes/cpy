@@ -78,10 +78,6 @@
           { "name": "fstring",
             "match": "‹.*?›" },
           { "name": "string",
-            "begin": "'", "end": "'",
-            "patterns": [
-              { "include": "#escapechars" } ] },
-          { "name": "string",
             "begin": "\"", "end": "\"" }
         ]
       },

@@ -174,7 +174,7 @@ if A.build_codium:
     if (r:=cmd(["bash", cdr("cpy-codium-highlighter/build.sh")])) != 0:
         error("Failed to build Codium syntax highlighter!")
         exit(r)
-    log("Build Codium syntax highlighter!")
+    log("Built Codium syntax highlighter!")
 
 if (A.build_cpy and A.test) or (A.build_codium and not A.test):
     exit(0)
