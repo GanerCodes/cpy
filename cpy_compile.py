@@ -225,7 +225,7 @@ if not A.no_header:
     header = compile_code(
         ñ.join(map(dmp, ["header.cpy", "combinators.cpy"])),
         file_dir=D, **compiler_args)
-    if A.stdout:
+    if A.stdout and not A.file:
         print(header)
         exit(0)
     else:

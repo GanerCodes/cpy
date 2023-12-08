@@ -92,11 +92,7 @@
           { "name": "metacomment",
             "match": "֎" },
           { "name": "inlinecomment",
-            "begin": "🟑",
-            "end": "🟑" },
-          { "name": "comment.line.number-sign",
-            "match": "(#[^֎🟑]*)(?=[֎🟑]|$)",
-            "captures": { "0": { "name": "punctuation.definition.comment" } }},
+            "begin": "🟑", "end": "🟑" },
           { "name": "comment.line.number-sign",
             "match": "(.*)$",
             "captures": { "0": { "name": "punctuation.definition.comment" } }}
