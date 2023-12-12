@@ -8,3 +8,5 @@ vscodium --install-extension ./cpy-language-0.0.0.vsix
 # { "name": "comment.line.number-sign",
 #   "match": "(#[^֎🟑]*)(?=[֎🟑]|$)",
 #   "captures": { "0": { "name": "punctuation.definition.comment" } }},
+
+# { "name": "string", "begin": "\"", "end": "\"" }

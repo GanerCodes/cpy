@@ -1,0 +1,55 @@
+# -------------- PARSERS -------------- #
+
+parser_main = exprs_n
+parser_comment = (str / comment / ~"."s)*
+
+# -------------- DYNAMICS -------------- #
+
+py_keywords = ~"%PY_KEYWORDS%"
+var_special = ~"%VAR_SPECIAL%"
+oper = ~"%OPERATORS%"
+
+# ------------- EXPRESSION ------------- #
+
+exprs_n = W? (exprs W?)+
+exprs = w? (expr w?)+
+expr = lamb / _expr1
+_expr1 = group / str / oper / var_special / keyword / variable
+
+keyword = py_keywords 
+variable = (!oper !var_special !W ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
+
+group = (('(' exprs_n? ')') / ('{' exprs_n? '}')
+      /  ('[' exprs_n? ']') / ('⁅' exprs_n? '⁆')
+      /  ('⟨' exprs_n? '⟩') / ('〚' exprs_n? '〛'))
+
+# --------------- LAMBDAS --------------- #
+
+lamb_h_exprs_n = W? (lamb_h_expr W?)+
+lamb_h_expr = (!lamb_h_implicit lamb) / _expr1
+
+lamb_h_normal   = "⥌" lamb_h_exprs_n "↦"
+lamb_h_implicit = variable "↦"
+lamb_h_preset   = ~"[𝚲①②③④]"
+lamb_h = lamb_h_normal / lamb_h_implicit / lamb_h_preset
+lamb_b = (exprs_n '󰅂') / exprs
+lamb = lamb_h lamb_b
+
+# --------------- STRINGS --------------- #
+
+str = special_str / py_str / str_escape / str_spec_char
+
+special_str = ('‹' (str_escape / str_sub / str_spec_char / str_guts)* '›')
+str_sub = '〚' exprs_n? '〛'
+str_guts = !str_spec_char ~"[^␛〚›]+"
+str_escape = ~"␛."
+str_spec_char = ~"[𝗮-𝘇]"
+
+py_str = (('"' (py_str_sub / ~"[^\\\\\"]+")* '"')
+       /  ("'" (py_str_sub / ~"[^\\\\\']+")* "'"))
+py_str_sub = ~"\\\\."
+
+# whiespace
+w = ~"[ \t]+"
+W = ~"[ \t\n]+"
+comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
