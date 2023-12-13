@@ -1,13 +1,13 @@
-Binary Operators
+Binary operator modes
     ᴮ: "blocking"    :  left assoc. binary : + *
     ᴺ: "nonblocking" : right assoc. binary : ⌃
     ᐟ: none                                : ¬
 
-Unary Operators
-    󰂢: prefix         : ¬
-    󰂥: suffix         : !
-    : prefix? suffix : ☾
-    ⸝: none           : /
+Unary operator modes
+    󰂢: prefix          : ¬
+    󰂥: suffix          : !
+    : suffix ∨ prefix : ☾
+    ⸝: none            : ÷
 
 All valid operator types:
     ᴿ󰂢 | ᴿ󰂥 | ᴿ | ᴿ⸝
@@ -34,7 +34,7 @@ All valid operator types:
 .
 … ⌃󰂤 **󰂤
 ¬₁󰂞 ¯₁󰂞
-/ // % @ * ⋅ !₁󰂤
+/ ÷ // % @ * ⋅ !₁󰂤
 ⨉ ∖
 ∩
 ∪
