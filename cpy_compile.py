@@ -150,6 +150,7 @@ PA.add_argument("-v", "--verbose", action='store_true', help="Output debug info"
 PA.add_argument("-m", "--custom-mappings", action='append', help="Use custom mapping file")
 PA.add_argument("-t", "--steal-macros", action='append', help='Copy macros from another file')
 PA.add_argument("--custom-ext", help='Override extension, format is "inExt"/"outExt"')
+PA.add_argument("--no_fdir", help="If directory not provided, don't generate files based on directory of <file>")
 PA.add_argument("--no-header", action='store_true', help="Disable generation/import of header")
 PA.add_argument("--no-cleanup", action='store_true', help="Disable removal of output files after execution")
 PA.add_argument("--test", action='store_true', help="Run the cpy testing utility, ignores most other arguments")
@@ -193,14 +194,20 @@ if A.pip:
         args += A.pip
     exit(cmd(args))
 
-cur_dir = os.getcwd()
-D = P.realpath(A.directory or cur_dir)
-
 if A.custom_ext:
     in_ext, out_ext = map(".{}".format, A.custom_ext.split('/', 1))
 else:
     in_ext, out_ext = ".cpy", ".py"
 debug(f"Got {in_ext=} {out_ext=}")
+
+cur_dir = os.getcwd()
+if A.directory:
+    D = A.directory
+elif A.file and not A.no_fdir:
+    D = pdr(parse_implicit_filename(A.file, in_ext, out_ext))
+else:
+    D = A.cur_dir
+D = P.realpath(D)
 
 mappings = []
 
