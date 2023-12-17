@@ -74,7 +74,7 @@
           { "name": "one_char_str",
             "match": ".(?=❟)" },
           { "name": "fstring",
-            "match": "‹.*?›" },
+            "match": "‹.*?›" }
         ]
       },
       "escapechars": {

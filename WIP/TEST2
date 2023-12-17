@@ -28,34 +28,37 @@ All valid operator types:
 Σᐟᴺᴮ  : ΣΣ𝑥ΣΣΣ ⟶ Σ(Σ(((𝑥Σ)Σ)Σ))
  TODO: add stops, Σ` or something to disable right functionality / ′Σ for visa-versa
 ℵ𝕋𝔽îπτ□∅∞ᐦ
-☾🃌⛶⍉↨↕ᴙ⨳⋀⋁
-ΣΠ󰈲󰈳 ⤉⤈󷹄
 
-.
-… ⌃󰂤 **󰂤
-¬₁󰂞 ¯₁󰂞
-/ ÷ // % @ * ⋅ !₁󰂤
-⨉ ∖
-∩
-∪
-⊈ ⊆ ⊄ ⊂ ⊃ ⊅ ⊇ ⊉
-◄ ►
-⋄ ∘ ○
-+ -
-<< >> &
-^
-|
-≾ζᴍſ
-∧ ⊼
-∨ ⊻
-∈ ∉ ∌ ∋
-≡ ≠ ≮ < ≤ ≥ > ≯
-← →
-¿ ¡
+x∋α∈z→⋅2
+
+˜: ᐟ⸝
+
+;˜
+,˜ :˜
 🠈 🠊
-:= ≔ ,
-:
-;
+:=ᴺ ≔ᴺ
+¿˜ ⸘˜ ¡˜  parse
+← →   parse
+≡˜ ≠˜ ≮˜ <˜ ≤˜ ≥˜ >˜ ≯˜
+∈˜ ∉˜ ∌˜ ∋˜
+⊈˜ ⊆˜ ⊄˜ ⊂˜ ⊃˜ ⊅˜ ⊇˜ ⊉˜
+ parse / group
+∨ ⊻
+∧ ⊼
+≾ ζ ᴍ ſ Σᴺ Πᴺ 󰈲ᴺ 󰈳ᴺ
+|
+^
+<< >> &
++ -
+⋄˜ ∘ ○
+◄ ►
+∪
+∩
+⨉ ∖
+// / ÷ % @ * ⋅ !󰂥 ⤉ᴺ ⤈ᴺ 󷹄ᴺ ☾ 🃌 ⛶ ⍉ ↨ ↕ ᴙ ⨳ ⋀ ⋁
+¬󰂢 ¯󰂢
+… ⌃ᴺ **ᴺ
+.
 
 . . ∣ : : ∣ % % ∣ @ @ ∣ * *
 ⨯ * ∣ / / ∣ ⋅ * ∣ + + ∣ - -
@@ -64,3 +67,71 @@ All valid operator types:
 << << ∣ >> >>
 ∧ 𝐬and𝐬 ∣ ∨ 𝐬or𝐬 ∣ ∈ 𝐬in𝐬
 ∉ 𝐬not𝐬in𝐬 ∣ ⥌ 𝐬lambda𝐬
+
+
+⨡ asd
+¿x:
+    dasd
+
+y = x+2
+
+t = ¿x ⇒ ⟨ 2 ⟩+1 ⸘y ⇒ 3 ¡ 4⸮
+
+a≔b≔1  a≔(b≔1)
+
+a⋄b≔1⋄1
+➰𝕋 ⇒ a⋄b≔(☾a+b)⋄b
+
+a⋄b≔1⋄1
+➰ a<2⌃8 ⇒ a⋄b≔(☾a+b)⋄b
+
+a≔b≔1;⟨x<2⌃8⟩➰𝚲a,b≔a+b,☾b
+
+↺
+
+¿𝕋 ⇒ 〚↪2〛⸮
+
+⟵ ⟶  used for weak assignment?
+
+
+⟨𝕩⌃2⟩
+
+x = 〚↪ 2〛  x = 2
+x = ⟨↪ 2⟩  x = □↦2
+
+
+
+
+
+def reduce(𝕊):
+    if 𝕊.expr_name and 𝕊.expr_name == "var":
+        return Node(𝕊.text, 𝕊.expr_name, [])
+    return Node(𝕊.text, 𝕊.expr_name, flat(
+                [C] if (C:=c.reduce()).expr_name else
+                (C.children or [Node(C.text, "s", [])]) 
+            for c in 𝕊.children))
+
+reduce≔𝕊↦〚
+    ¿ 𝕊.expr_name ∧ 𝕊.expr_name≡‹var› ⇒ 
+        〚 ↪² Node(𝕊.text, 𝕊.expr_name, []) 〛 ⸮
+    Node(𝕊.text, 𝕊.expr_name, 𝕊.children ᴍ ①
+            ¿ C≔𝕩.reduce().expr_name ⇒ 〚C⛶〛
+            ¡ C.children ∨ Node(C.text, ␛s, [])⛶ ⸮ Σ []) 〛
+
+
+𝚲𝚲󰅂𝚲󰅂
+
+𝚲𝚲󰅂𝚲󰅂
+
+10↕ ᴍ ①
+    
+󰅂
+
+֎ 
+Things that are only binop implicitly do this
+2+
+3
+
+2+␛
+3
+֎
