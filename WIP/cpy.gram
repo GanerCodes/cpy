@@ -1,23 +1,27 @@
 # -------------- PARSERS -------------- #
 
-parser_main = W? exprs_n? W?
+parser_main = exprs_n / W?
 parser_comment = (str / comment / ~"."s)*
 
 # -------------- DYNAMICS -------------- #
 
-py_keywords = ~"%PY_KEYWORDS%"
+keywords = ~"%KEYWORDS%"
 var_special = ~"%VAR_SPECIAL%"
-oper = ~"%OPERATORS%"
+oper_literal = ~"%OPERATORS%"
 
 # ------------- EXPRESSION ------------- #
 
 exprs_n = W? (exprs W?)+
 exprs = w? (expr w?)+
 expr = lamb / _expr1
-_expr1 = group / str / oper / var_special / keyword / variable
+_expr1 = group / str / var_special / oper / keyword / variable
 
-keyword = py_keywords 
-variable = (!oper !var_special !W ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
+oper = oper_mod_l oper_literal oper_mod_r
+oper_mod_l = ~"['⟥']*"
+oper_mod_r = ~"[´꜠ᵜ⟤]*"
+
+keyword = keywords 
+variable = (!var_special !oper !W ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
 
 group = (('(' exprs_n? ')') / ('{' exprs_n? '}')
       /  ('[' exprs_n? ']') / ('⁅' exprs_n? '⁆')

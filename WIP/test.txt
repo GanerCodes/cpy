@@ -1,8 +1,118 @@
-1+1⋅2/2!+1⌃2⌃3🟑
+x⋅y⟶+3
 
-‹hi␛𝐛›
+🟑
+1⟶2⟶3
 
-x+(y+[] a b)*z
+1⟵2⟵3
+
+1⟵2⟵3
+
+f→g→h→m←k←l→p
+
+a⨉b∩c⨉d
+
+print(1)
+2+(5+2)
+2+3→⋅2
+a ∪ ((b ∪ (c ζ d)) ᴍ (e ∪ f))
+1…2⌃3⌃4⌃5…6
+
+5+2⟶⟶⟶+a⋅1⟶+2
+
+if op.t in '⟵⟶←→🡸🡺':
+                        j = 𝕊.into_expr(collapse(res+[cur]))
+                        j.text = f"({j.text})"
+                        print("PARSING", [j] + stack)
+                        return 𝕊.parse_exprs([j] + stack)
+
+[+,-,/] ζ [1,2,3] ſ ②x(y)󰅂 ⟶ ☾ + 1
+
+2+3󰅂⋅2
+(2+3)⋅2
+(2+3)⋅2
+
+([+,-,/] ζ [1,2,3] ſ ②x(y)󰅂) ⟶ (☾ + 1)
+
+a⌃b⌃
+
+1 (☾) 2
+
+
+[+,-,/] ζ [1,2,3] ſ ②x(y)󰅂 → ☾ + 1
+
+x("a").y
+
+op_maps ᴍ①x󰘬𝘀ᴍ①x󰛔␛𝐬⋄𝘀
+
+class Mapper_py(Mapper):
+    def generate_gram_regexes(𝕊, op_names):
+        rgx_keywords = rgx_or(py_kw.kwlist + py_kw.softkwlist)
+        rgx_operator = rgx_or(flat([re.escape(c+'='), re.escape(c)] for c in op_names))
+        rgx_specials = rgx_or([*"ℵ𝕋𝔽îπτ□∅∞ᐦ", "\\."*3])
+        return {
+            "OPERATORS": i_rgx_fmt(rgx_operator),
+            "VAR_SPECIAL": i_rgx_fmt(rgx_specials),
+            "KEYWORDS": i_rgx_fmt(f"({rgx_keywords})(\\Z|[^_a-zA-Z0-9])") }
+
+# actual operators
+# blocks
+# 
+
+# V,pr=0,lambda*a,**k:print(V*'#',*a,**k)
+# def A(*a,**k): global V ; V += 1 ; pr(*a,**k)
+# def B(*a,**k): global V ; pr(*a,**k) ; V -= 1
+
+op_maps ᴍ①x󰘬𝘀 ᴍ①x󰛔␛𝐬⋄𝘀
+
+(+)⋄(-)⋄(⋅)
+
+class Mapper:
+    SPECIALS = ...
+
+☾´
+ᴍ꜠ᵜ
+
+¬1+1⋅2/2!+1⌃2⌃3
+
+¿ 1>x>2:
+    1+1⋅2/2!+1⌃2⌃3
+    ‹hi␛𝐛›
+    x+(y+[] a b)*z
+
+class dasjiod:
+    def asfmdiaf:
+        daodasd
+
+class Mapper:
+    SPECIALS = ...
+    GRAM_FILE = ...
+    OPERATOR_FILE = ...
+    NODE_CLS = ...
+
+⟥d
+ssssd
+
+𝚲1
+①1
+②1
+x↦1
+⥌x,y,*a↦2
+⥌x,y,*a,**k↦2
+⥌x,y,*a↦2
+⥌x,y,**k↦2
+⥌a↦2
+⥌**,x,*↦2
+
+⥌**k,x,y↦2
+
+☾´ᴍ↕10
+☾ᴍ↕10
+
+¿ 1>x>2:
+    1+1⋅2/2!+1⌃2⌃3
+    ‹hi␛𝐛›´
+    x+(y+[] a b)*z
+
 os = "os" ⨡
 os.system(‹echo 〚2 5〛›)
 
@@ -39,8 +149,6 @@ else dasd:
 ((0…10 │ᴍ│ ①x⌃2󰅂) │Σ│ ↕) │󰈲│ ①x%2≡1
 (((0…10 │ᴍ│ ①x⌃2󰅂) │Σ│ ↕) │󰈲│ ①x%2≡1)
 ((((0…10 │ᴍ│ ①x⌃2󰅂) │Σ)│ ↕) │󰈲│ ①x%2≡1)
-
-
 
 ;
 , :
