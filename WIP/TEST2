@@ -135,3 +135,60 @@ Things that are only binop implicitly do this
 2+␛
 3
 ֎
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@classmethod
+    def process_arrow_operators(ℂ, n, layers=ℕ): # prob shouldn't exist
+        layer, *nlayers = layers or ℂ.arrows
+        if nlayers:
+            n = ℂ.process_arrow_operators(n, nlayers)
+        
+        is_arrow = lambda x: isinstance(x, ℂ) and x.expr_name == "oper" and x.text in layer
+        into_group = lambda x: ℂ(ℕ, "group",
+                        [ℂ('('), ℂ(ℕ, "exprs", [ℂ.parse_exprs(x, ℂ.ops)]), ℂ(')')])
+        
+        stack = ℂ.partition(n.copy(), is_arrow, n=ℂ.not_whitespace)
+        res = []
+        while stack:
+            c_l = stack.pop(0)
+            if is_arrow(c_l): # left arrows
+                A, S = layer[c_l.text]
+                assert A.P and stack
+                c_r = stack.pop(0)
+                val, *vals = ℂ.partition(c_r, partial(ℂ.is_op, layer=S))
+                stack[0:0] = [[into_group(val), *vals]]
+                continue
+            
+            if not stack:
+                res += c_l
+                continue
+            
+            c_r = stack.pop(0)
+            if not is_arrow(c_r):
+                stack[0:0] = [c_l + c_r]
+                continue
+            
+            A, S = layer[c_r.text]
+            if A.S: # right arrow
+                *vals, val = ℂ.partition(c_l, partial(ℂ.is_op, layer=S))
+                stack[0:0] = [[*vals, into_group(val)]]
+                continue
+            
+            res += c_l
+            stack[0:0] = [c_r]
+        print(res)
+        return res

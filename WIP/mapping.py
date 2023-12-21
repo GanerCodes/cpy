@@ -1,11 +1,12 @@
 from parsimonious.grammar import Grammar
 from collections import namedtuple as NT
 from functools import reduce, partial
+from itertools import accumulate
 import regex as re
 from sys import setrecursionlimit
 setrecursionlimit(10_000_00)
 
-𝕋, 𝔽, ℕ = True, False, None
+𝕋, 𝔽, ℕ, 𝔹 = True, False, None, bool
 R = lambda x: open(x).read()
 HX = lambda c: hex(ord(c))[2:]
 flat = lambda x: reduce(lambda x,y: x+y, l:=list(x), type(l[0])() if len(l) else [])
@@ -13,6 +14,7 @@ rgx_or = lambda x: '(' + ')|('.join(x) + ')'
 i_rgx_fmt = lambda x: x.replace('"', '\\"').replace('\\', '\\\\')
 reach_first = lambda x: reach_first(x[0]) if isinstance(x, list) and len(x)==1 else x
 collapse = lambda x: x if isinstance(x:=reach_first(x), list) else [x]
+enlist = lambda x: [x]
 
 OP = NT("op", [*"tBNPSA"], defaults=['']+[𝔽]*5)
 
@@ -29,13 +31,18 @@ class Node:
     
     __slots__ = ("text", "expr_name", "children")
     
-    def __init__(𝕊, text, expr_name, children=None):
+    def __init__(𝕊, text='', expr_name=None, children=None):
         𝕊.text = text
         𝕊.expr_name = expr_name
         𝕊.children = children or []
     
     def __repr__(𝕊):
-        return f'{𝕊.expr_name}⟨"{𝕊.text}"⟩'
+        return f'{𝕊.expr_name}⟨"{𝕊.get_text()}"⟩'
+    
+    def get_text(𝕊):
+        if 𝕊.text is ℕ:
+            return ''.join(c.get_text() for c in 𝕊.children)
+        return 𝕊.text
     
     def reduce(𝕊):
         if 𝕊.expr_name and 𝕊.expr_name == "var":
@@ -117,7 +124,7 @@ class Node:
         return op_, ℂ.metaop_change_type(L, op, R)
     
     @classmethod
-    def partition(ℂ, l, f, m=lambda x: x, n=lambda x: 𝕋, keep_sep=𝕋):
+    def partition(ℂ, l, f, m=lambda x: x, n=lambda x: 𝕋, s=lambda x: x, keep_sep=𝕋):
         r, b = [], []
         for c in filter(n, l):
             if f(c):
@@ -125,7 +132,7 @@ class Node:
                     r.append(m(b))
                     b = []
                 if keep_sep:
-                    r.append(c)
+                    r.append(s(c))
             else:
                 b.append(c)
         if b:
@@ -204,56 +211,68 @@ class Node:
         return collapse(res)
     
     @classmethod
-    def process_arrow_operators(ℂ, n, layers=ℕ):
+    def process_arrow_operators(ℂ, n, layers=ℕ): # prob shouldn't exist
         layer, *nlayers = layers or ℂ.arrows
         if nlayers:
             n = ℂ.process_arrow_operators(n, nlayers)
         
         is_arrow = lambda x: isinstance(x, ℂ) and x.expr_name == "oper" and x.text in layer
-        into_group = lambda x: ℂ('(' + (ex:=''.join(y.text for y in x)) + ')', "group", [ℂ('(', 's'), ℂ(ex, "expr", x), ℂ(')', 's')])
+        into_group = lambda x: ℂ(ℕ, "group",
+                        [ℂ('('), ℂ(ℕ, "exprs", [ℂ.parse_exprs(x, ℂ.ops)]), ℂ(')')])
+        
+        L, R = [], n.copy()
+        while R:
+            c = R.pop(0)
+            if is_cray_oper(c):
+                assert L and R
+                *l, a_l = partition(L, c.l_ops, s=lambda x: [x])
+                a_r, *r = partition(R, c.r_ops, s=lambda x: [x])
+                if c in c.r_ops:
+                    a_r = process_cray_ops(a_r)
+                L, R = l, r
+                L += [c.create(L=a_l, R=a_r)]
+            else:
+                L += [c]
+                
+        
+        
         
         stack = ℂ.partition(n.copy(), is_arrow, n=ℂ.not_whitespace)
         res = []
         while stack:
             c_l = stack.pop(0)
-            print(f"ADSOIJ {c_l=}")
-            print(f"ADSOIJ {stack=}")
-            print(f"ADSOIJ {res=}")
             if is_arrow(c_l): # left arrows
                 A, S = layer[c_l.text]
                 assert A.P and stack
                 c_r = stack.pop(0)
-                print(S)
                 val, *vals = ℂ.partition(c_r, partial(ℂ.is_op, layer=S))
                 stack[0:0] = [[into_group(val), *vals]]
-            else: # obj
-                if not stack:
-                    res += c_l
-                    continue
-                
-                c_r = stack.pop(0)
-                if not is_arrow(c_r):
-                    stack[0:0] = [c_l + c_r]
-                    continue
-                
-                A, S = layer[c_r.text]
-                if not A.S: # not right arrow
-                    res += c_l
-                    stack[0:0] = [c_r]
-                    continue
-                
+                continue
+            
+            if not stack:
+                res += c_l
+                continue
+            
+            c_r = stack.pop(0)
+            if not is_arrow(c_r):
+                stack[0:0] = [c_l + c_r]
+                continue
+            
+            A, S = layer[c_r.text]
+            if A.S: # right arrow
                 *vals, val = ℂ.partition(c_l, partial(ℂ.is_op, layer=S))
                 stack[0:0] = [[*vals, into_group(val)]]
-                
-            # res += c_l
-        print(f"RETURN {res=}")
+                continue
+            
+            res += c_l
+            stack[0:0] = [c_r]
+        print(res)
         return res
     
     @classmethod
     def parse_exprs(ℂ, n, layers=ℕ):
         if layers is ℕ:
             n = ℂ.process_arrow_operators(n)
-            print(n)
         
         if layers == []:
             return ℂ.into_expr(n)
@@ -295,7 +314,7 @@ class Mapper:
     def parse_arrows(ℂ, layers):
         arrows = [{}]
         splitting_ops = set()
-        for i, v in reversed(tuple(enumerate(layers))):
+        for i, v in tuple(enumerate(layers[::-1]))[::-1]:
             splitting_ops |= set(v)
             for s, op in tuple(v.items()):
                 if not op.A: continue
