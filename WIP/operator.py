@@ -21,6 +21,9 @@ class OP:
     def __init__(𝕊, t, v="", L=ℕ, R=ℕ, f=ℕ):
         𝕊.t, 𝕊.v, 𝕊.L, 𝕊.R, 𝕊.f = t, reduce(𝕊._or, v, 0), L or [], R or [], f or print
     
+    def mod(𝕊, v):
+        return type(𝕊)(𝕊.t, reduce(𝕊._or, v, 0), 𝕊.L, 𝕊.R, 𝕊.f)
+    
     def __repr__(𝕊):
         return f"⟨{𝕊.t},{bin(𝕊.v)[2:].zfill(len(_OP_TYPES))[::-1]}⟩"
     
@@ -74,6 +77,27 @@ class OP:
                         break
         return nodes[:i], nodes[i:]
 
+class OP_MANAGER:
+    @classmethod
+    def metaop_change_type(ℂ, l, op, r):
+        l, r = l.text, r.text
+        for u in l:
+            match u:
+                case '⟥':
+                    assert not r and (op.B or op.N)
+                    op = op.mod("S")
+                case _: assert 𝔽
+        for u in r:
+            match u:
+                case '꜠':
+                    assert op.B or op.N
+                    op = op.mod("PS")
+                case 'ᵜ':
+                    if any((x:=op.P, y:=op.S)):
+                        op = op.mod(op.B*"B"+op.N*"N"+y*"S"+x*"P")
+                case _: assert 𝔽
+        return op
+
 def apply_op(op, L, R):
     ll, lr = op.part(L, 'l')
     rl, rr = op.part(R, 'r')
@@ -112,7 +136,7 @@ def o(t):
         Node(expr_name='oper_mod_r')])
 def v(t):
     return Node(t, 'v')
-def GRAB_OP_FROM_NODE(n):
+def GRAB_OP_FROM_NODE(n):  TODO: handle metaop
     k=lambda x: ''.join(map(str,x))if isinstance(x,list)else b
     match n[1]:
         case '≔': return OP('≔', "B", R='+⋅≔',
