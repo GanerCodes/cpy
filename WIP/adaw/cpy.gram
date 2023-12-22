@@ -5,23 +5,27 @@ parser_comment = (str / comment / ~"."s)*
 
 # -------------- DYNAMICS -------------- #
 
-keywords = ~"%KEYWORDS%"
-var_special = ~"%VAR_SPECIAL%"
-oper_literal = ~"%OPERATORS%"
+KEYWORDS = ~"%KEYWORDS%"
+VAR_SPEC = ~"%VAR_SPECIAL%"
+OPER_LIT = ~"%OPERATORS%"
 
 # ------------- EXPRESSION ------------- #
 
 exprs_n = W? (exprs W?)+
 exprs = w? (expr w?)+
 expr = lamb / _expr1
-_expr1 = group / str / var_special / oper / keyword / variable
+_expr1 = group / str / VAR_SPEC / oper / keyword / _script / variable
 
-oper = oper_mod_l oper_literal oper_mod_r
+oper = oper_mod_l OPER_LIT oper_mod_r
 oper_mod_l = ~"['⟥']*"
 oper_mod_r = ~"[´꜠ᵜ⟤]*"
 
-keyword = keywords 
-variable = (!var_special !oper !W ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
+_script = superscript / subscript
+superscript = ~"[ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾◌◌◌˜]+"
+subscript = ~"[ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎﹠﹩﹪◌]+"
+
+keyword = KEYWORDS 
+variable = (!VAR_SPEC !oper !W ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
 
 group = (('(' exprs_n? ')') / ('{' exprs_n? '}')
       /  ('[' exprs_n? ']') / ('⁅' exprs_n? '⁆')
