@@ -1,4 +1,5 @@
 from util import *
+from node import Node
 
 _OP_TYPES = "NPSB"
 class OP:
@@ -10,7 +11,7 @@ class OP:
         v, F = set(ᖵ(lambda x: x in _OP_TYPES, v)), \
                set(ᖵ(lambda x: x not in _OP_TYPES, v))
         𝕊.t, 𝕊.v, 𝕊.F, 𝕊.L, 𝕊.R, 𝕊.f = \
-            t, reduce(𝕊._or, v, 0), F, L or [], R or [], f or print
+            t, reduce(𝕊._or, v, 0), F, L or set(), R or set(), f or print
     
     def mod(𝕊, v):
         return Т(𝕊)(𝕊.t, reduce(𝕊._or, v, 0), 𝕊.L, 𝕊.R, 𝕊.f)
@@ -60,36 +61,39 @@ class OP:
         assert d in "lr"
         
         i = 0
-        if d == 'r': # this code brings me fear
+        if d == 'r': # this code is scary!!1
             stack = [𝕊.R]
             for i, n in enum(nodes):
-                if O := 𝕊.is_op(n):
-                    _, op_t, _ = O
-                    while stack:
-                        if op_t in stack[-1]:
-                            stack += [op_man[n].R]
-                            break
-                        stack.pop()
-                    if not stack:
+                O = 𝕊.is_op(n)
+                if not O:
+                    continue
+                _, op_t, _ = O
+                
+                while stack:
+                    if op_t in stack[-1]:
+                        stack += [op_man[n].R]
                         break
+                    stack.pop()
+                if not stack:
+                    break
             else:
                 i += 1
         elif d == 'l':
             for i, n in [*enum(nodes)][::-1]:
-                if O := 𝕊.is_op(n):
-                    if O[1] not in 𝕊.L:
-                        break
+                O = 𝕊.is_op(n)
+                if not O:
+                    continue
+                _, op_t, _ = O
+                
+                if op_t not in 𝕊.L:
+                    break
         return nodes[:i], nodes[i:]
         
     def apply(𝕊, L, R, op_man):
         ll, lr = 𝕊.part(L, 'l', op_man)
         rl, rr = 𝕊.part(R, 'r', op_man)
         
-        if rl:
-            rl = op_man.parse_expr(rl)
-        
-        P(1, f"{L} │{𝕊}│ {R}")
-        P(2, f"{ll} ⟨{lr} │ {𝕊} │ {rl}⟩ {rr}")
+        if rl: rl = op_man.parse_expr(rl)
         
         if 𝕊.B and lr and rl: return ll + [𝕊(lr, rl)], rr # Binary
         if 𝕊.S and lr       : return ll + [𝕊(lr,  ᗜ)], rr # Suffix
@@ -148,7 +152,7 @@ if __name__ == "__main__":
         '.': OP('.', "B"  , L='. ', R='    ', f=lambda a=ᗜ,b=ᗜ:f"({k(a)}.{k(b)})"),
         '+': OP('+', "B"  , L='.⋅', R='. ⋅≔', f=lambda a=ᗜ,b=ᗜ:f"({k(a)}+{k(b)})"),
         '⋅': OP('⋅', "B"  , L='. ', R='.  ≔', f=lambda a=ᗜ,b=ᗜ:f"({k(a)}⋅{k(b)})"),
-        '≔': OP('≔', "B"  , L='. ', R='.+⋅≔', f=lambda a=ᗜ,b=ᗜ:f"⟨{k(a)}≔({k(b)})⟩")
+        '≔': OP('≔', "B"  , L='. ', R='.+⋅≔', f=lambda a=ᗜ,b=ᗜ:f"[{k(a)}≔({k(b)})]")
     })
 
     o = lambda t: Node("oper", [
@@ -157,8 +161,8 @@ if __name__ == "__main__":
             Node('oper_mod_r')])
     v = lambda t: Node('v', t)
 
-    # p = "2⋅b.a≔2+c≔3⋅2+5"
-    p = "☾Σ☾"
+    p = "2⋅5.b.a≔2+c≔3⋅2+5"
+    # p = "☾Σ☾"
     p = [o(i) if i in ops else v(i) for i in p]
     p = manager.parse_expr(p)
     print(*p)

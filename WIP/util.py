@@ -1,9 +1,11 @@
 from collections import namedtuple as NT
-from functools import reduce, partial
+from functools import reduce, partial, partialmethod
 from itertools import accumulate
-from enum import Enum
+import colored
 import regex as re
+from enum import Enum
 
+# poorman's cpy
 (ń,ś),ᐦ = '\n ', ''
 ⴳ, ⴴ, ᗜ = True, False, None
 ᖲ, ᖱ, ᒪ = bool, dict, list
@@ -23,11 +25,26 @@ def R(*a,**kw):
 enum = enumerate
 HXO = lambda x: hex(ord(x))[2:]
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), type(l[0])() if ⵌ(l) else [])
-rgx_or = lambda x: f"({ᒍ(')|(', x)})"
+rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
 collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
 _V,P=0,partial(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(' '*(_V-1+(n<0))+'|'+('←→'[n>0]if n else' '),*a,**k),0)
+
+class Z:
+    s=[colored.Fore.WHITE+colored.Back.BLACK]
+    def __getattr__(𝕊, a):
+        if a == 'p':
+            Z.s.pop()
+        else:
+            if a[0] == 'b': m, a = colored.Back, a[1:]
+            else: m = colored.Fore
+            if   a[0] == 'd': a =  "DARK_" + a[1:]
+            elif a[0] == 'l': a = "LIGHT_" + a[1:]
+            Z.s += [getattr(m,
+                min(filter(lambda x: x.startswith(a), dir(m)), key=ⵌ))]
+        return Z.s[-1]
+Z=Z()
 
 class SCRIPT:
     CHAR_NRM = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ0123456789:,<>;?!+-/*=()&$%~"""
@@ -37,11 +54,3 @@ class SCRIPT:
     SUB = ᖱ(ζ(CHAR_SUB, CHAR_NRM))
     sup2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUP.__getitem__, x))
     sub2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUB.__getitem__, x))
-
-class Node:
-    def __init__(𝕊, t=ᐦ, c=ᗜ):
-        𝕊.t, 𝕊.c = t, c or []
-    def __repr__(𝕊):
-        return 𝕊.t+(f"[{ᒍ(',', ᴍ(ᔐ,𝕊.C))}]" if 𝕊.C else f'"{𝕊.c}"')
-    C = PRP(lambda 𝕊: 𝕊.c if ᐹ(𝕊.c, ᒪ) else [])
-    txt = PRP(lambda 𝕊: 𝕊.c if ᐹ(𝕊.c, ᔐ) else ᒍ(ᐦ, ᴍ(Node.txt, 𝕊.c)))
