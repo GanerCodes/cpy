@@ -1,5 +1,5 @@
 from collections import namedtuple as NT
-from functools import reduce, partial, partialmethod
+from functools import reduce, partial
 from itertools import accumulate
 import colored
 import regex as re

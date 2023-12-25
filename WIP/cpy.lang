@@ -64,8 +64,8 @@ def supscript(n):
 
 # node transpilers
 
-@generator("exprs")
-def gen_exprs        (n): return n.parse_exprs(n.C).txt
+# @generator("exprs")
+# def gen_exprs        (n): return n.parse_exprs(n.C).txt
 @generator("variable")
 def gen_variable     (n): return py_escape_var(n.txt)
 @generator("lamb")
@@ -77,7 +77,7 @@ def gen_str_guts     (n): return py_escape_string(n.txt)
 @generator("str_escape")
 def gen_str_escape   (n): return "'" + py_escape_string(n.txt[1:]) + "'"
 @generator("str_sub")
-def gen_str_sub      (n): return "{" + n.C[1].reparse() + "}"
+def gen_str_sub      (n): return "{" + gen(n.C[1]) + "}"
 @generator("str_spec_char")
 def gen_str_spec_char(n): return "'" + py_special_mapper(n.txt) + "'"
 @generator("special_str")
@@ -90,7 +90,7 @@ def gen_special_str(n):
             case "str_spec_char":
                 r += py_special_mapper(c.txt)
             case _:
-                r += c.reparse()
+                r += gen(c)
     return r + '"'
 
 def gen_lambda(n):

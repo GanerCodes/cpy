@@ -25,8 +25,14 @@ class DynamicParser:
     def get_reduction(𝕊, t):
         return 𝕊.reductions.get(t)
     
-    def gen(n):
-        ...
+    def gen(𝕊, n):
+        if n.t in 𝕊.generators:
+            return 𝕊.generators[n.t](n)
+        else:
+            if n.S:
+                return n.c
+            else:
+                return ᒍ(ᐦ, ᴍ(𝕊.gen, n.c))
     
     def __init__(𝕊, lang, code):
         𝕊.lang = lang

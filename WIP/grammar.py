@@ -35,6 +35,10 @@ def P2N(p, F=content_filter, R=content_reducer):
 class Lang:
     rgx4grammar = SMD(lambda x: ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\\\'))
     
+    def __init__(𝕊, lang_file):
+        lang_t = R(lang_file)
+        𝕊.ops, 𝕊.gram, 𝕊.dynamic_parsers = 𝕊.parse_lang(lang_t)
+    
     @staticmethod
     def modchk(tier, mod, R):
         if 'I' in mod:
@@ -121,13 +125,7 @@ class Lang:
         
         return ops, gram, dynamic_parsers
     
-    def __init__(𝕊, lang_file):
-        lang_t = R(lang_file)
-        𝕊.ops, 𝕊.gram, 𝕊.dynamic_parsers = 𝕊.parse_lang(lang_t)
-    
-    def general_one_time_manip(𝕊, n):
-        # responsible for metasyntactical manipulations,
-        # ex. making subscripts/superscripts easier to work with
+    def general_one_time_manip(𝕊, n): # metasyntactical manipulations
         if not n.S:
             n.c = ᴍ(𝕊.general_one_time_manip, n.c)
         match n.t:
@@ -180,7 +178,7 @@ class Lang:
         n = 𝕊.general_one_time_manip(n)
         n = 𝕊.lang_tree_manip(n)
         n.print()
-        return 𝕊.gen_as(n)
+        return 𝕊.dynamic_parsers.gen(n)
     
     def __call__(𝕊, content_file):
         content = R(content_file)
@@ -190,7 +188,8 @@ class Lang:
         return content
 
 l = Lang("cpy.lang")
-l("test.txt")
+print('-'*50)
+print(l("test.txt"))
 
 # N: Nullary
 # S: Suffix
