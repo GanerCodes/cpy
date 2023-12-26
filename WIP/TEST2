@@ -158,7 +158,7 @@ Things that are only binop implicitly do this
             n = ℂ.process_arrow_operators(n, nlayers)
         
         is_arrow = lambda x: isinstance(x, ℂ) and x.expr_name == "oper" and x.text in layer
-        into_group = lambda x: ℂ(ℕ, "group",
+        into_exprroup = lambda x: ℂ(ℕ, "group",
                         [ℂ('('), ℂ(ℕ, "exprs", [ℂ.parse_exprs(x, ℂ.ops)]), ℂ(')')])
         
         stack = ℂ.partition(n.copy(), is_arrow, n=ℂ.not_whitespace)
@@ -170,7 +170,7 @@ Things that are only binop implicitly do this
                 assert A.P and stack
                 c_r = stack.pop(0)
                 val, *vals = ℂ.partition(c_r, partial(ℂ.is_op, layer=S))
-                stack[0:0] = [[into_group(val), *vals]]
+                stack[0:0] = [[into_exprroup(val), *vals]]
                 continue
             
             if not stack:
@@ -185,7 +185,7 @@ Things that are only binop implicitly do this
             A, S = layer[c_r.text]
             if A.S: # right arrow
                 *vals, val = ℂ.partition(c_l, partial(ℂ.is_op, layer=S))
-                stack[0:0] = [[*vals, into_group(val)]]
+                stack[0:0] = [[*vals, into_exprroup(val)]]
                 continue
             
             res += c_l

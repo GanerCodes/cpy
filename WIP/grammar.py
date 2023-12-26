@@ -1,5 +1,7 @@
+from traceback_with_variables import activate_by_import
+
 from util import *
-from dynamic_parser import DynamicParser
+from dynamic_parser import DynamicParser, make_thingy
 from node import Node
 from op import OP, OP_MANAGER
 from parsimonious.grammar import Grammar
@@ -37,52 +39,55 @@ class Lang:
     
     def __init__(𝕊, lang_file):
         lang_t = R(lang_file)
-        𝕊.ops, 𝕊.gram, 𝕊.dynamic_parsers = 𝕊.parse_lang(lang_t)
+        𝕊.ops, 𝕊.gram, code = 𝕊.parse_lang(lang_t)
+        𝕊.op_man = OP_MANAGER(𝕊.ops)
+        𝕊.dynamic_parsers = 𝕊.parse_parsers(code)
     
     @staticmethod
     def modchk(tier, mod, R):
         if 'I' in mod:
             mod.discard('I')
             R = R | tier
+        else:
+            R = R.copy()
         return R
     
     def gen_norm_ops(𝕊, op_norm):
+        # all_ops = { i[0] for o in op_norm for i in o }
         ops = {}
-        for tier in op_norm:
+        for tier in op_norm[::-1]:
             consume = set(ops.keys())
             for op_t, mod in tier:
+                # inv = all_ops - consume
                 food = 𝕊.modchk({x[0] for x in tier}, mod, consume)
                 
                 kw = {}
-                if 'B' in mod:
-                    kw['L'] = kw['R'] = food
-                else:
-                    if 'S' in mod: kw['L'] = food
-                    if 'P' in mod: kw['R'] = food
-                f = lambda l=ᗜ, r=ᗜ: f"({op})[{l=} {r=}]"
-                op = OP(op_t, mod, f=f, **kw)
+                if mod & set('BS'): kw['L'] = food.copy()
+                if mod & set('BP'): kw['R'] = food.copy()
+                op = OP(op_t, mod, **kw)
+                op.f = partial(make_thingy, op)
                 ops[op_t] = op
         return ops
     
-    def gen_spec_ops(𝕊, op_spec, ops):
+    def gen_spec_ops(𝕊, op_spec, ops): # beaned atm
         gen_ops = {}
         for L, (op_t, mod), R in op_spec:
+            L_c = L and ops[L].L|ops[L].R or {}
+            R_c = R and ops[R].L|ops[R].R or {}
             for c in ops:
-                if not L or c in ops[L].L|ops[L].R:
-                    if (O := ops[c]).PB:
-                        O.R.add(op_t)
-                if not R or c in ops[R].L|ops[R].R:
-                    if (O := ops[c]).SB:
-                        O.L.add(op_t)
+                if c not in L_c and (O := ops[c]).PB:
+                    O.R.add(op_t)
+                if c not in R_c and (O := ops[c]).SB:
+                    O.L.add(op_t)
             
             kw = {}
             if L: kw['L'] = (ops.keys()-ops[L].L)|{L}
             if R: kw['R'] = 𝕊.modchk(
                 {x[1][0] for x in op_spec},
-                mod, (ops.keys()-ops[R].R)|{R})
+                mod, ops[R].R)
             
-            f = lambda l=ᗜ, r=ᗜ: f"({op})[{l=} {r=}]"
-            op = OP(op_t, mod, f=f, **kw)
+            op = OP(op_t, mod, **kw)
+            op.f = partial(make_thingy, op)
             
             gen_ops[op_t] = op
         return gen_ops
@@ -108,61 +113,23 @@ class Lang:
         return Grammar(gram)
     
     def parse_lang(𝕊, raw):
-        temp, gram = raw.split("«GRAMMAR»", 1)
-        secs, code = temp.split("«GENERATORS»", 1)
+        secs, temp = raw.split("«GRAMMAR»", 1)
+        gram, code = temp.split("«GENERATORS»", 1)
         
         op_norm, op_spec, var_spec, keywords = 𝕊.parse_secs(secs)
         ops = 𝕊.gen_norm_ops(op_norm)
         ops |= 𝕊.gen_spec_ops(op_spec, ops)
         
         gen_rgx = lambda x: rgx_or(sorted(x, key=ⵌ, reverse=ⴳ))
-        rgxs = { "VAR_SPECIAL": gen_rgx(var_spec),
-                   "OPERATORS": gen_rgx(ops.keys()),
-                    "KEYWORDS": gen_rgx(keywords) }
+        rgxs = { "VAR_SPEC": gen_rgx(var_spec),
+                 "OPERATOR": gen_rgx(ops.keys()),
+                  "KEYWORD": gen_rgx(keywords) }
         gram = 𝕊.parse_gram(gram, rgxs)
         
-        dynamic_parsers = DynamicParser(𝕊, DYNAMIC_PARSER_HEADER + '\n' + code)
-        
-        return ops, gram, dynamic_parsers
+        return ops, gram, code
     
-    def general_one_time_manip(𝕊, n): # metasyntactical manipulations
-        if not n.S:
-            n.c = ᴍ(𝕊.general_one_time_manip, n.c)
-        match n.t:
-            case "supscript": n.c = SCRIPT.sup2nrm(n.c)
-            case "subscript": n.c = SCRIPT.sub2nrm(n.c)
-        return n
-    
-    def _apply_tree_manip(𝕊, m, n):
-        N = n.copy()
-        if m.recurse_children == 'B' and not N.S:
-            N.c = ᴍ(𝕊.lang_tree_manip, N.c)
-        N = m(n)
-        if m.recurse_children == 'A' and not N.S:
-            N.c = ᴍ(𝕊.lang_tree_manip, N.c)
-        return N
-    
-    def lang_tree_manip(𝕊, N):
-        if m := 𝕊.dynamic_parsers.get_replacement(N.t):
-            return 𝕊._apply_tree_manip(m, N)
-        if N.S:
-            return N
-        
-        cc = []
-        for n in N.C:
-            if m := 𝕊.dynamic_parsers.get_reduction(N.t):
-                assert m.recurse_children != 'A'
-                cc.extend(𝕊._apply_tree_manip(m, n))
-            else:
-                cc.append(𝕊.lang_tree_manip(n))
-        return Node(N.t, cc)
-        
-    def gen_as(𝕊, n, t=ᗜ):
-        if t is ᗜ:
-            t = n.t
-        
-        # print(f"Generating {n} as '{t}'")
-        return "asd"
+    def parse_parsers(𝕊, code):
+        return DynamicParser(𝕊, DYNAMIC_PARSER_HEADER + '\n' + code)
     
     def parse_as(𝕊, p, content, **kw):
         gram = 𝕊.gram[p]
@@ -174,9 +141,8 @@ class Lang:
     
     def parse_content(𝕊, content):
         n = 𝕊.parse_as("parser_main", content)
-        n.print()
-        n = 𝕊.general_one_time_manip(n)
-        n = 𝕊.lang_tree_manip(n)
+        # n.print()
+        n = 𝕊.dynamic_parsers.tree_transform(n)
         n.print()
         return 𝕊.dynamic_parsers.gen(n)
     

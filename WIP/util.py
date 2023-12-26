@@ -6,6 +6,7 @@ import regex as re
 from enum import Enum
 
 # poorman's cpy
+print = lambda *a,__print=print,**k: __print(*a,**k) or a and a[0]
 (ń,ś),ᐦ = '\n ', ''
 ⴳ, ⴴ, ᗜ = True, False, None
 ᖲ, ᖱ, ᒪ = bool, dict, list
@@ -18,6 +19,16 @@ from enum import Enum
 ᴍᴍ = lambda n,f,l: ᴍ(f,l) if n<=1 else [ᴍᴍ(n-1,f,c) for c in l]
 
 SMD, CMD, PRP = staticmethod, classmethod, property
+
+def J́(L, s, l=ⴴ, r=ⴴ):
+    if ⵌ(L) < 2: return L
+    r, e = [s] if l else [], (L := L.copy()).pop()
+    while L:
+        r += [L.pop(0), s]
+    r.append(e)
+    if r:
+        r.append(s)
+    return r
 
 def R(*a,**kw):
     with open(*a,**kw) as f:

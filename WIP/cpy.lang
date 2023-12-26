@@ -1,25 +1,25 @@
-;ᴺ
-,ᴺ :ᴺ
+;ᴺ󰁌
+,ᴺ󰁌 :ᴺ󰁌
 ␀1ᴵᴮ ¿ᴺ ⸘ᴺ ¡ᴺ
-≡ᴺ ≠ᴺ ≮ᴺ <ᴺ ≤ᴺ ≥ᴺ >ᴺ ≯ᴺ
+==ᴺ󰁌 ≡ᴺ ≠ᴺ ≮ᴺ <ᴺ󰁌 ≤ᴺ ≥ᴺ >ᴺ󰁌 ≯ᴺ
 ∈ᴺ ∉ᴺ ∌ᴺ ∋ᴺ
 ⊈ᴺ ⊆ᴺ ⊄ᴺ ⊂ᴺ ⊃ᴺ ⊅ᴺ ⊇ᴺ ⊉ᴺ
-∨ᴮ ⊻ᴮ ␉ ∧ᴮ ⊼ᴮ
-ᴍᴮ ſᴮ Σᴮᴾ󰀒 Πᴮᴾ󰀒 󰈲ᴮᴾ󰀒 󰈳ᴮᴾ󰀒
-ᐹᴮ ζᴮ
-|ᴮ ␉ ^ᴮ ␉ &ᴮ
-<<ᴮ >>ᴮ
-+ᴾᴮ -ᴮ
-∘ᴮ ○ᴮ ⋄ᴮ
-◄ᴮ ►ᴮ
-∪ᴮ ␉ ∩ᴮ ␉ ⨉ᴮ ∖ᴮ
-//ᴮ /ᴮ  ÷ᴮ   %ᴮ   @ᴮ   *ᴮ   ⋅ᴮ  !󰀒  ␛
-    ⭥ᴾ󰀒 ↨ᴾ󰀒  ⤉ᴮᴾ󰀒 ⤈ᴮᴾ󰀒 󷹄ᴮᴾ󰀒 ☾ᴾ󰀒 🃌ᴾ󰀒 ␛
-    ᒍᴮ  󰛔ᴮᴾ󰀒 󰘬ᴮᴾ󰀒 ⛶ᴾ󰀒  ⍉ᴾ󰀒  ᴙᴾ󰀒 ⨳ᴾ󰀒 ␛
-    ⋀ᴾ󰀒 ⋁ᴾ󰀒
-¬ᴾ ¯ᴾ
-… ⌃ᴵᴮ **ᴵᴮ
-.ᴵᴮ
+∨ᴮᴺ ⊻ᴮᴺ ␉ ∧ᴮᴺ ⊼ᴮᴺ
+ᴍᴮᴺ ſᴮᴺ Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ
+ᐹᴮᴺ ζᴮᴺ
+|ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
+<<ᴮᴺ >>ᴮᴺ
++ᴾᴮᴺ -ᴮᴺ
+∘ᴮᴺ ○ᴮᴺ ⋄ᴮᴺ
+◄ᴮᴺ ►ᴮᴺ
+∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴮᴺ ∖ᴮᴺ
+//ᴮᴺ󰁌 /ᴮᴺ󰁌 ÷ᴮᴺ   %ᴮᴺ󰁌  @ᴮᴺ󰁌  *ᴮᴺ󰁌  ⋅ᴮᴺ  !󰀒ᴺ  ␛
+      ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ 🃌ᴾ󰀒ᴺ ␛
+      ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ ⨳ᴾ󰀒ᴺ ␛
+      ⋀ᴾ󰀒ᴺ ⋁ᴾ󰀒ᴺ
+¬ᴾᴺ ¯ᴾ
+…ᴮ ⌃ᴵᴮ **ᴵᴮ󰁌
+.ᴵᴮ󰁌
 
  .｜:=ᴵᴮ｜␀1
  .｜ ≔ᴵᴮ｜␀1
@@ -34,42 +34,167 @@ except ␉ finally ␉ for ␉ from ␉ global ␉ if ␉ import
 in ␉ is ␉ lambda ␉ nonlocal ␉ not ␉ or ␉ pass ␉ raise
 return ␉ try ␉ while ␉ with ␉ yield
 
+«GRAMMAR»
+
+# PARSERS
+parser_main = exprs / W?
+parser_comment = (str / comment / ~"."s)*
+
+# IMPORTS
+ keyword = ~"%KEYWORD%"
+var_spec = ~"%VAR_SPEC%"
+oper_lit = ~"%OPERATOR%"
+
+# EXPRESSIONS
+exprs = W? (expr W?)+
+expr = w? (_expr_atom w? __escaped_newline?)+
+__escaped_newline = "␛" W
+_expr_atom = lamb / _expr1
+_expr1 = group / str / var_spec / oper / _keyword / _script / variable_
+
+oper = oper_mod_l oper_lit oper_mod_r
+oper_mod_l = ~"['⟥']*"
+oper_mod_r = ~"[´꜠ᵜ⟤]*"
+
+_script = supscript / subscript
+supscript = ~"[ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾◌◌◌˜]+"
+subscript = ~"[ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎﹠﹩﹪◌]+"
+
+_keyword = keyword !var_spec !variable_
+variable_ = (!W !oper !var_spec !_script ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
+
+group = ~"[\\[({⁅⟨〚]" exprs? ~"[\\])}⁆⟩〛]"
+
+# LAMBDAS
+lamb_h_exprs = W? (_lamb_h_expr W?)+
+_lamb_h_expr = (!lamb_h_implicit lamb) / _expr1
+
+lamb_h_normal   = "⥌" lamb_h_exprs "↦"
+lamb_h_implicit = variable_ "↦"
+lamb_h_preset   = ~"[𝚲①②③④]"
+lamb_h = lamb_h_normal / lamb_h_implicit / lamb_h_preset
+lamb_b = (exprs? '󰅂') / expr
+lamb = lamb_h lamb_b
+
+# STRINGS
+str = special_str / py_str / str_escape / str_spec_char
+
+special_str = ('‹' (str_escape / str_sub / str_spec_char / str_guts)* '›')
+str_sub = '〚' exprs? '〛'
+str_guts = !str_spec_char ~"[^␛〚›]+"
+str_escape = ~"␛."
+str_spec_char = ~"[𝗮-𝘇]"
+
+py_str = (('"' (py_str_sub / ~"[^\\\\\"]+")* '"')
+       /  ("'" (py_str_sub / ~"[^\\\\\']+")* "'"))
+py_str_sub = ~"\\\\."
+
+# whiespace
+w = ~"[ \t]+"
+W = ~"[ \t\n]+"
+comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
+
 «GENERATORS»
 
-# utils
+# util
 py_bad_string_chr = lambda s, bad="\\\"'{}": s in bad
 py_escape_char    = lambda c, pre='': pre+HXO(c) if py_bad_string_chr(c) else c
 py_escape_string  = lambda s: ''.join(py_escape_char(c, '\\u') for c in s)
 py_escape_var     = lambda s: ''.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
 py_special_mapper = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
-
 PY_ARGS, PY_KWARGS = py_escape_var("𝔸"), py_escape_var("𝕂")
 PY_NULL_SPECIAL = "NULL"
 
-# @reduction(recurse_children='B'/'A'/ⴴ)
-
 # tree manipulation
-@reduction("subscript")
-def subscript(n):
+
+# whitespace parsing
+calc_indent = lambda n: n.t == "W" and n.c.split('\n')[-1].count(' ') // 4 or 0
+def p_indent_stack(S, n=0):
+    r = []
+    while S:
+        indent, *exprs = S[0]
+        if indent > n:
+            r.append(p_indent_stack(S, indent))
+        elif indent < n:
+            break
+        else:
+            S.pop(0)
+            r.extend(exprs)
+    return Node("BLOCK", r)
+
+def whitespace_parser(n):
+    if n.S: return n
+    N = n.copy()
+    N.c = ᴍ(whitespace_parser, N.c)
+    
+    if N.t == "exprs":
+        if not N.C:
+            return N
+        
+        c_pre = N.C[0]
+        blocks = [[indent_pre := calc_indent(c_pre)]]
+        for c in N.C:
+            if c.t != 'W':
+                indent = calc_indent(c_pre)
+                if indent == indent_pre:
+                    blocks[-1].append(c)
+                else:
+                    blocks.append([indent, c])
+                indent_pre = indent
+            c_pre = c
+        
+        N.c = p_indent_stack(blocks, blocks[0][0]).c
+    
+    if N.t == "group" and N.C[0].c == '〚':
+        raise NotImplementedError
+    
+    return N
+
+def whitespace_unparser(n, i=0):
+    if n.S: return n
+    N = n.copy()
+    if N.t == "BLOCK":
+        i += 1
+    if N.t in ("BLOCK", "exprs"):
+        sep = Node("N", '\n'+' '*4*i)
+        # N.c = J́(N.c, sep, l=n.t == "BLOCK")
+        N.c = J́(N.c, sep)
+    N.c = [whitespace_unparser(c, i) for c in N.c]
+    return N
+
+replacement("parser_main", order=0)(whitespace_parser)
+replacement("parser_main", recurse_children='A', order=100)(whitespace_unparser)
+
+@replacement("expr", recurse_children='B', order=101)
+def expr(n): return Node("expr", J́(n.C, Node('w', ' ')))
+@reduction("BLOCK", recurse_children='B', order=101)
+def BLOCK(n): return n.C
+
+# regular parsing
+@reduction("supscript", order=1)
+def supscript(n):
     return [
-        Node("oper", "."),
+        Node("oper", [Node("oper_mod_l"), Node("oper_lit", "."), Node("oper_mod_r")]),
         Node("variable", n.txt) ]
 
-@replacement("supscript", recurse_children='A')
-def supscript(n):
+@replacement("subscript", recurse_children='A',order=1)
+def subscript(n):
     return Node("group", [
         Node(c='['),
-        parse_as("exprs_n", n.c),
+        parse_as("exprs", n.c),
         Node(c=']') ])
+
+@replacement("expr", recurse_children='B', order=2)
+def expr(n): return into_expr(parse_expr(ᖵ(lambda x: x.t != 'w', n.C)))
 
 # node transpilers
 
-# @generator("exprs")
-# def gen_exprs        (n): return n.parse_exprs(n.C).txt
+@generator("expr")
+def gen_exprs        (n):
+    # k = into_expr(parse_expr(n.C))
+    return n.txt
 @generator("variable")
 def gen_variable     (n): return py_escape_var(n.txt)
-@generator("lamb")
-def gen_lamb         (n): return gen_lambda(n)
 
 # strings
 @generator("str_guts")
@@ -93,7 +218,9 @@ def gen_special_str(n):
                 r += gen(c)
     return r + '"'
 
-def gen_lambda(n):
+# lambdas
+@generator("lamb")
+def gen_lamb(n):
     h, b = n.C
     h = h.C[0]
     if h.t == "lamb_h_preset":
@@ -103,13 +230,13 @@ def gen_lambda(n):
         H = f"{h.C[0].txt},*{PY_ARGS},**{PY_KWARGS}"
     elif h.t == "lamb_h_normal":
         h = h.C[1]
-        exprs = n.partition(h.C, lambda x: x.txt == ',', keep_sep=𝔽)
-        has_a = has_k = 𝔽
-        for e in exprs:
+        expr = n.partition(h.C, lambda x: x.txt == ',', keep_sep=𝔽)
+        has_a = has_k = ⴴ
+        for e in expr:
             if not (t := ''.join(k.txt for k in e).strip()):
                 continue
-            if t[:2] == '**': has_k = 𝕋
-            elif t[0] == '*': has_a = 𝕋
+            if t[:2] == '**': has_k = ⴳ
+            elif t[0] == '*': has_a = ⴳ
         
         if has_a and has_k:
             H = gen(h)
@@ -120,84 +247,5 @@ def gen_lambda(n):
         else:
             H = gen(h)+f',*{PY_ARGS},**{PY_KWARGS}'
     else:
-        assert 𝔽
+        assert ⴴ
     return f"(lambda {H}: {gen(b.C[0])})"
-
-# def gen_metaop(ℂ, op_, op, l, r, L, R):
-#     if not isinstance(l, str): l = l.txt
-#     if not isinstance(r, str): r = r.txt
-#     return f"ℜ('{op.t}', {L}, {R}"+(f", l='{l}'" if l else '') + (f", r='{r}'" if r else '')+')'
-
-# def gen_oper(ℂ, op_, op, L=ℕ, R=ℕ):
-#     L = (L:=reach_first(L)) and L.reparse() or ℕ
-#     R = (R:=reach_first(R)) and R.reparse() or ℕ
-    
-#     if op_.txt == op.t and op.t in ℂ.builtin_ops and \
-#             ℂ.valid_op_args(op, L is not ℕ, R is not ℕ):
-#         L = '' if L is ℕ else L
-#         R = '' if R is ℕ else R
-#         return ℂ(f"{L}{ℂ.builtin_ops[op.t]}{R}", 'ℂ')
-#     l, r = op_.C[0], op_.C[2]
-#     L = PY_NULL_SPECIAL if L is ℕ else L
-#     R = PY_NULL_SPECIAL if R is ℕ else R
-#     s = ℂ.gen_metaop(op_, op, l, r, L, R)
-#     return ℂ(s, 'ℂ')
-
-«GRAMMAR»
-
-# PARSERS
-parser_main = exprs_n / W?
-parser_comment = (str / comment / ~"."s)*
-
-# IMPORTS
-KEYWORDS = ~"%KEYWORDS%"
-VAR_SPEC = ~"%VAR_SPECIAL%"
-OPER_LIT = ~"%OPERATORS%"
-
-# EXPRESSIONS
-exprs_n = W? (exprs W?)+
-exprs = w? (expr w?)+
-expr = lamb / _expr1
-_expr1 = group / str / VAR_SPEC / oper / keyword / _script / variable_
-
-oper = oper_mod_l OPER_LIT oper_mod_r
-oper_mod_l = ~"['⟥']*"
-oper_mod_r = ~"[´꜠ᵜ⟤]*"
-
-_script = supscript / subscript
-supscript = ~"[ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾◌◌◌˜]+"
-subscript = ~"[ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎﹠﹩﹪◌]+"
-
-keyword = KEYWORDS !VAR_SPEC !variable_
-variable_ = (!W !oper !VAR_SPEC !_script ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
-
-group = ~"[\\[({⁅⟨〚]" exprs_n? ~"[\\])}⁆⟩〛]"
-
-# LAMBDAS
-lamb_h_exprs_n = W? (lamb_h_expr W?)+
-lamb_h_expr = (!lamb_h_implicit lamb) / _expr1
-
-lamb_h_normal   = "⥌" lamb_h_exprs_n "↦"
-lamb_h_implicit = variable_ "↦"
-lamb_h_preset   = ~"[𝚲①②③④]"
-lamb_h = lamb_h_normal / lamb_h_implicit / lamb_h_preset
-lamb_b = (exprs_n? '󰅂') / exprs
-lamb = lamb_h lamb_b
-
-# STRINGS
-str = special_str / py_str / str_escape / str_spec_char
-
-special_str = ('‹' (str_escape / str_sub / str_spec_char / str_guts)* '›')
-str_sub = '〚' exprs_n? '〛'
-str_guts = !str_spec_char ~"[^␛〚›]+"
-str_escape = ~"␛."
-str_spec_char = ~"[𝗮-𝘇]"
-
-py_str = (('"' (py_str_sub / ~"[^\\\\\"]+")* '"')
-       /  ("'" (py_str_sub / ~"[^\\\\\']+")* "'"))
-py_str_sub = ~"\\\\."
-
-# whiespace
-w = ~"[ \t]+"
-W = ~"[ \t\n]+"
-comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s

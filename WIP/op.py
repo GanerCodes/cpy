@@ -7,11 +7,11 @@ class OP:
     _and = staticmethod(lambda x, y: x & 1 << _OP_TYPES.index(y))
     _or  = staticmethod(lambda x, y: x | 1 << _OP_TYPES.index(y))
     
-    def __init__(𝕊, t, v=ᐦ, L=ᗜ, R=ᗜ, f=ᗜ):
+    def __init__(𝕊, t, v=ᐦ, L=ᗜ, R=ᗜ, f=print):
         v, F = set(ᖵ(lambda x: x in _OP_TYPES, v)), \
                set(ᖵ(lambda x: x not in _OP_TYPES, v))
-        𝕊.t, 𝕊.v, 𝕊.F, 𝕊.L, 𝕊.R, 𝕊.f = \
-            t, reduce(𝕊._or, v, 0), F, L or set(), R or set(), f or print
+        𝕊.t, 𝕊.v, 𝕊.F = t, reduce(𝕊._or, v, 0), F
+        𝕊.L, 𝕊.R, 𝕊.f = L or set(), R or set(), f
     
     def mod(𝕊, v):
         return Т(𝕊)(𝕊.t, reduce(𝕊._or, v, 0), 𝕊.L, 𝕊.R, 𝕊.f)
@@ -33,9 +33,9 @@ class OP:
             return ⴴ
         return O
     
-    def __call__(𝕊, L=ᗜ, R=ᗜ):
+    def __call__(𝕊, L, R, op_):
         assert 𝕊.check_args(L, R), "Invalid args for op!"
-        return 𝕊.f(L, R)
+        return 𝕊.f(L, R, op_)
     
     @classmethod
     def is_op(ℂ, n, ops=ᗜ):
@@ -89,16 +89,16 @@ class OP:
                     break
         return nodes[:i], nodes[i:]
         
-    def apply(𝕊, L, R, op_man):
+    def apply(𝕊, L, R, op_man, op_):
         ll, lr = 𝕊.part(L, 'l', op_man)
         rl, rr = 𝕊.part(R, 'r', op_man)
         
         if rl: rl = op_man.parse_expr(rl)
         
-        if 𝕊.B and lr and rl: return ll + [𝕊(lr, rl)], rr # Binary
-        if 𝕊.S and lr       : return ll + [𝕊(lr,  ᗜ)], rr # Suffix
-        if 𝕊.P and rl       : return ll + [𝕊(ᗜ , rl)], rr # Prefix
-        if 𝕊.N              : return ll + [𝕊(ᗜ ,  ᗜ)], rr # Nullary
+        if 𝕊.B and lr and rl: return ll + [𝕊(lr, rl, op_)], rr # Binary
+        if 𝕊.S and lr       : return ll + [𝕊(lr,  ᗜ, op_)], R  # Suffix
+        if 𝕊.P and rl       : return L  + [𝕊(ᗜ , rl, op_)], rr # Prefix
+        if 𝕊.N              : return L  + [𝕊(ᗜ ,  ᗜ, op_)], R  # Nullary
         assert ⴴ
 
 class OP_MANAGER:
@@ -138,7 +138,7 @@ class OP_MANAGER:
             c = R.pop(0)
             # P(f"STACKS: {L=} │{c}│ {R=}")
             if O := OP.is_op(c):
-                L, R = 𝕊[c].apply(L, R, 𝕊)
+                L, R = 𝕊[c].apply(L, R, 𝕊, c)
             else:
                 L += [c]
         # PD(-1, L+R)
