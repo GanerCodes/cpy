@@ -21,7 +21,8 @@ print = lambda *a,__print=print,**k: __print(*a,**k) or a and a[0]
 SMD, CMD, PRP = staticmethod, classmethod, property
 
 def J́(L, s, l=ⴴ, r=ⴴ):
-    if ⵌ(L) < 2: return L
+    if ⵌ(L) == 0: return [s]*ᖲ(l or r)
+    if ⵌ(L) == 1: return [s]*ᖲ(l)+L+[s]*ᖲ(r)
     r, e = [s] if l else [], (L := L.copy()).pop()
     while L:
         r += [L.pop(0), s]

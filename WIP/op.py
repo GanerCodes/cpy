@@ -13,6 +13,9 @@ class OP:
         𝕊.t, 𝕊.v, 𝕊.F = t, reduce(𝕊._or, v, 0), F
         𝕊.L, 𝕊.R, 𝕊.f = L or set(), R or set(), f
     
+    def __contains__(𝕊, v):
+        return v in 𝕊.F
+    
     def mod(𝕊, v):
         return Т(𝕊)(𝕊.t, reduce(𝕊._or, v, 0), 𝕊.L, 𝕊.R, 𝕊.f)
     

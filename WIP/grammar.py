@@ -58,7 +58,6 @@ class Lang:
         for tier in op_norm[::-1]:
             consume = set(ops.keys())
             for op_t, mod in tier:
-                # inv = all_ops - consume
                 food = 𝕊.modchk({x[0] for x in tier}, mod, consume)
                 
                 kw = {}

@@ -1,5 +1,5 @@
 from util import *
-from node import Node
+from node import *
 
 def join_nodes_flat(t, *N):
     C = []
@@ -16,7 +16,7 @@ def into_expr(C):
     return Node('expr', c=C if ᐹ(C, ᔐ) else [C])
 
 def make_thingy(op, l, r, op_):
-    ch = lambda n: Node("NULL", "˙") if n is ᗜ else into_expr(n) if ᐹ(n, ᒪ) else n
+    ch = lambda n: NULL if n is ᗜ else into_expr(n) if ᐹ(n, ᒪ) else n
     l, r = ch(l), ch(r)
     return Node("op_call", [op_, l, r])
 
@@ -97,7 +97,8 @@ class DynamicParser:
               "reduction": AbsoluteWrapper(partial(𝕊.add_manip, "reduction")),
               "generator": AbsoluteWrapper(𝕊.add_generator),
              "parse_expr": 𝕊.lang.op_man.parse_expr,
+              "into_expr": into_expr,
                "parse_as": 𝕊.lang.parse_as,
-                 "into_expr": into_expr,
+                 "op_man": 𝕊.lang.op_man,
                     "gen": 𝕊.gen }
         exec(code, namespace)

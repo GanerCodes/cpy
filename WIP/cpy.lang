@@ -1,25 +1,25 @@
-;ᴺ󰁌
+;ᴺ󰁌 ➰ᴺ󰁌
 ,ᴺ󰁌 :ᴺ󰁌
-␀1ᴵᴮ ¿ᴺ ⸘ᴺ ¡ᴺ
-==ᴺ󰁌 ≡ᴺ ≠ᴺ ≮ᴺ <ᴺ󰁌 ≤ᴺ ≥ᴺ >ᴺ󰁌 ≯ᴺ
+␀1ᴵᴮ ¿ᴺ󰁌 ⸘ᴺ󰁌 ¡ᴺ󰁌
+!=ᴺ ==ᴺ ≡ᴺ ≠ᴺ ≮ᴺ <ᴺ ≤ᴺ ≥ᴺ >ᴺ ≯ᴺ
 ∈ᴺ ∉ᴺ ∌ᴺ ∋ᴺ
 ⊈ᴺ ⊆ᴺ ⊄ᴺ ⊂ᴺ ⊃ᴺ ⊅ᴺ ⊇ᴺ ⊉ᴺ
 ∨ᴮᴺ ⊻ᴮᴺ ␉ ∧ᴮᴺ ⊼ᴮᴺ
 ᴍᴮᴺ ſᴮᴺ Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ
 ᐹᴮᴺ ζᴮᴺ
-|ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
-<<ᴮᴺ >>ᴮᴺ
-+ᴾᴮᴺ -ᴮᴺ
+|ᴮᴺ󰀷 ␉ ^ᴮᴺ󰀷 ␉ &ᴮᴺ󰀷
+<<ᴮᴺ󰀷 >>ᴮᴺ󰀷
++ᴾᴮᴺ󰀷 -ᴾᴮᴺ󰀷
 ∘ᴮᴺ ○ᴮᴺ ⋄ᴮᴺ
 ◄ᴮᴺ ►ᴮᴺ
 ∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴮᴺ ∖ᴮᴺ
-//ᴮᴺ󰁌 /ᴮᴺ󰁌 ÷ᴮᴺ   %ᴮᴺ󰁌  @ᴮᴺ󰁌  *ᴮᴺ󰁌  ⋅ᴮᴺ  !󰀒ᴺ  ␛
+//ᴮᴺ󰀷 /ᴮᴺ󰀷 ÷ᴮᴺ󰀷  %ᴮᴺ󰀷  @ᴮᴾᴺ󰀷 *ᴮᴺ󰀷  ⋅ᴮᴺ󰀷 !󰀒ᴺ  ␛
       ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ 🃌ᴾ󰀒ᴺ ␛
       ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ ⨳ᴾ󰀒ᴺ ␛
       ⋀ᴾ󰀒ᴺ ⋁ᴾ󰀒ᴺ
-¬ᴾᴺ ¯ᴾ
-…ᴮ ⌃ᴵᴮ **ᴵᴮ󰁌
-.ᴵᴮ󰁌
+¬ᴾᴺ󰀷 ¯ᴾ󰀷
+…ᴮ ⌃ᴵᴮ󰀷 **ᴵᴮ󰀷
+.ᴵᴮ
 
  .｜:=ᴵᴮ｜␀1
  .｜ ≔ᴵᴮ｜␀1
@@ -103,7 +103,6 @@ py_escape_string  = lambda s: ''.join(py_escape_char(c, '\\u') for c in s)
 py_escape_var     = lambda s: ''.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
 py_special_mapper = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
 PY_ARGS, PY_KWARGS = py_escape_var("𝔸"), py_escape_var("𝕂")
-PY_NULL_SPECIAL = "NULL"
 
 # tree manipulation
 
@@ -142,10 +141,12 @@ def whitespace_parser(n):
                     blocks.append([indent, c])
                 indent_pre = indent
             c_pre = c
-        
         N.c = p_indent_stack(blocks, blocks[0][0]).c
+        print(1)
+        N.print()
+        print(2)
     
-    if N.t == "group" and N.C[0].c == '〚':
+    elif N.t == "group" and N.C[0].c == '〚':
         raise NotImplementedError
     
     return N
@@ -157,13 +158,15 @@ def whitespace_unparser(n, i=0):
         i += 1
     if N.t in ("BLOCK", "exprs"):
         sep = Node("N", '\n'+' '*4*i)
-        # N.c = J́(N.c, sep, l=n.t == "BLOCK")
-        N.c = J́(N.c, sep)
+        # N.c = J́(N.c, sep)
+        # N.c = J́(N.c, sep, l=ⴳ)
+        N.c = J́(N.c, sep, l=n.t == "BLOCK")
+    
     N.c = [whitespace_unparser(c, i) for c in N.c]
     return N
 
 replacement("parser_main", order=0)(whitespace_parser)
-replacement("parser_main", recurse_children='A', order=100)(whitespace_unparser)
+replacement("parser_main", order=100)(whitespace_unparser)
 
 @replacement("expr", recurse_children='B', order=101)
 def expr(n): return Node("expr", J́(n.C, Node('w', ' ')))
@@ -189,11 +192,47 @@ def expr(n): return into_expr(parse_expr(ᖵ(lambda x: x.t != 'w', n.C)))
 
 # node transpilers
 
-@generator("expr")
-def gen_exprs        (n):
-    # k = into_expr(parse_expr(n.C))
-    return n.txt
-@generator("variable")
+SWAP_TABLE = {
+    '≡':'==', '≠':'!=',
+    '≤':'<=', '≥':'>=',
+    '÷': '/', '⋅': '*',
+    '⌃':'**', '¯': '-',
+    '¬':"not ",
+    '¿':"if ",
+    '⸘':"else if ",
+    '¡':"else " }
+BUILTINS = ⵉ("; , : != == < > | ^ & << >> + - // / % @ * ⋅ ** .", ś)
+
+def fmt_op(x):
+    return SWAP_TABLE.get(x, x)
+
+@generator("op_call")
+def op_call          (n):
+    op_, l, r = n.C
+    op = op_man[op_]
+    t = fmt_op(op.t)
+    j = py_escape_var(t)
+    
+    if 'α' in op:
+        return j
+    
+    L = ᐦ if l == NULL else f"({gen(l)})"
+    R = ᐦ if r == NULL else f"({gen(r)})"
+    if 'Δ' in op:
+        if L and R and op.B \
+              or R and op.P \
+              or L and op.S:
+            return f"({L}{j}{R})"
+        elif t in BUILTINS:
+            j = f'lit_op["{j}"]'
+    if L or R:
+        if op.B and L and R:
+            return f"{j}({L or 'NULL'},{R or 'NULL'})"
+        if (op.P or op.S):
+            return f"{j}({L or R or 'NULL'})"
+    return j
+    
+@generator("variable_")
 def gen_variable     (n): return py_escape_var(n.txt)
 
 # strings
