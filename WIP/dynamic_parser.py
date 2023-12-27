@@ -60,11 +60,11 @@ class DynamicParser:
                 cc.append(𝕊.lang_tree_manip(n, order))
         return Node(N.t, cc)
     
-    def add_manip(𝕊, type, f, name, recurse_children=ⴴ, order=1):
+    def add_manip(𝕊, type, f, *names, recurse_children=ⴴ, order=1):
         f.recurse_children = recurse_children
-        if not 𝕊.tree_manips[type].get(order):
-            𝕊.tree_manips[type][order] = {}
-        𝕊.tree_manips[type][order][name] = f
+        𝕊.tree_manips[type].setdefault(order, {})
+        for name in names:
+            𝕊.tree_manips[type][order][name] = f
     def get_manip(𝕊, type, order, t):
         return 𝕊.tree_manips[type].get(order, {}).get(t)
 
@@ -81,12 +81,15 @@ class DynamicParser:
     
     def tree_transform(𝕊, n):
         n = 𝕊.general_tree_manip(n)
+        n.print()
         for order in 𝕊.get_orders():
             n = 𝕊.lang_tree_manip(n, order)
+        n.print()
         return n
     
-    def add_generator(𝕊, f, name):
-        𝕊.generators[name] = f
+    def add_generator(𝕊, f, *names):
+        for name in names:
+            𝕊.generators[name] = f
     def gen(𝕊, n):
         if n.t in 𝕊.generators:
             return 𝕊.generators[n.t](n)
@@ -104,13 +107,12 @@ class DynamicParser:
     def get_namespace_head(𝕊):
         return { "register": 𝕊.register_tokset }
     
+    rgx4grammar = SMD(lambda x: f'~"{ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\\\')}"')
     def parse_gram(𝕊, gram):
-        rgx4grammar = lambda x: f'~"{ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\\\')}"'
         gram = f"{GRAM_HEADER}{
-            ᒍ(ń, (f"{i}={rgx4grammar(v)}" for \
+            ᒍ(ń, (f"{i}={𝕊.rgx4grammar(v)}" for \
                   i,v in 𝕊.grammar_imports.items()))
             }{gram}"
-        # insert regex for the stuffthings
         return Grammar(gram)
     
     def get_namespace_gen(𝕊):

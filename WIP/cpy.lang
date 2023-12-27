@@ -1,11 +1,13 @@
-«««««««««««««««««««««««« OPS »»»»»»»»»»»»»»»»»»»»»»»»
+«««««««««««««««««««««««««««««««««« OPERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 ;ᴺ󰁌
 ,ᴺ󰁌
+=ᴺ󰁌
 ⠤ᴾ󰁜 ⠶ᴾ󰁜
 :ᴺ󰁌
 ␀1ᴵᴮ ¿ᴺ󰁌 ⸘ᴺ󰁌 ¡ᴺ󰁌
 ⨳ᴮᴾ󰀒ᴺ
+≅ᴺ
 !=ᴺ ==ᴺ ≡ᴺ ≠ᴺ ≮ᴺ <ᴺ ≤ᴺ ≥ᴺ >ᴺ ≯ᴺ
 ∈ᴺ ∉ᴺ ∌ᴺ ∋ᴺ
 ⊈ᴺ ⊆ᴺ ⊄ᴺ ⊂ᴺ ⊃ᴺ ⊅ᴺ ⊇ᴺ ⊉ᴺ
@@ -31,35 +33,73 @@
   ｜  ←ᴾ󰁜｜␀1
 ␀1｜  →󰀒󰁜｜
 
-«««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»
+«««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
+
+sst = lambda x: set(ᖵ(ᗜ,ᴍ(ⵐ,ⵉ(ᖇ(x,'␉',ń),ń))))
+mdt = lambda y: ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
+inv = lambda z: {y:x for x,y in z.items()}
+merge_shorthands = lambda z: z | {x for x,y in KEYWORD_SWAP_TABLE.items() if y in z}
+
+OPS_BUILTIN = sst("""
+    // ␉ ** ␉ ; ␉ : ␉ , ␉ . ␉ + ␉ -
+    << ␉ >> ␉ < ␉ > ␉ & ␉ ^ ␉ |
+    != ␉ == ␉ % ␉ @ ␉ * ␉ ⋅ ␉ /""")
+
+OP_SWAP_TABLE = mdt("""
+    ≡ ==␉≠ !=␉≤   <=␉≥ >=
+    ÷  /␉⋅  *␉⌃   **␉¯  -
+    ⠤  *␉⠶ **␉¬ not ␉¿ if
+    ⸘    elif␉¡ else␉≔ :=""")
+
+KEYWORD_SWAP_TABLE = mdt("""
+    ¿ if␉⸘ elif␉¡ else␉∀ for␉⊢ def␉󰆴 del␉➰ while
+    ∀ for␉⮂ yield␉ Ω class␉↪ return␉⇥ break␉↺ continue""")
+
+kw_pfx_colon = merge_shorthands(sst("""
+    match ␉ case ␉ if ␉ elif ␉ else
+    try ␉ except ␉ finally
+    for ␉ while
+    class ␉ def ␉ with"""))
+kw_pfx = merge_shorthands(sst("""
+    return ␉ continue ␉ break
+    import ␉ global ␉ nonlocal
+    raise ␉ assert
+    del ␉ async ␉ pass"""))
+kw_inline = sst("""from ␉ await ␉ yield""")
+kw_op = sst("or ␉ and ␉ not ␉ is")
+
+register("VAR_SPEC", {*"ℵ𝕋𝔽îπτ□∅∞ᐦ"})
+register("KW_PFX_COLON", kw_pfx_colon)
+register("KW_PFX", kw_pfx)
+register("KW_OP", kw_op)
+register("KEYWORD", kw_pfx_colon | kw_pfx | kw_inline)
+
+«««««««««««««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 # PARSERS
 parser_main = exprs / W?
 parser_comment = (str / comment / ~"."s)*
 
-# IMPORTS
-#  keyword = ~"%KEYWORD%"
-# var_spec = ~"%VAR_SPEC%"
-# oper_lit = ~"%OPERATOR%"
-# keyword_prefix = "if"/"elif"/"else"/"class"/"def"/"return"/"match"/"case"/"for"/"del"
-
 # EXPRESSIONS
-exprs = W? ((keyword_prefix_expr / expr) W?)+
-keyword_prefix_expr = w? prefix_keyword w expr w?
-expr = w? (_expr_atom w? __escaped_newline?)+
+exprs = W? (_expr W?)+
+_expr = kw_pfx_colon_expr / kw_pfx_expr / reg_expr
+kw_pfx_colon_expr = w? kw_pfx_colon kw_pfx_colon_inner_expr? ":" w?
+kw_pfx_colon_inner_expr = (!':' _reg_expr_atom)+
+kw_pfx_expr = w? kw_pfx w reg_expr w?
+reg_expr = w? _reg_expr_atom+
+_reg_expr_atom = (lamb / _expr1) w? __escaped_newline?
 __escaped_newline = "␛" W
-_expr_atom = lamb / _expr1
 _expr1 = group / str / var_spec / oper / _keyword / _script / variable_
 
 oper = oper_mod_l oper_lit oper_mod_r
-oper_mod_l = ~"['⟥']*"
+oper_mod_l = ~"[⟥]*"
 oper_mod_r = ~"[´꜠ᵜ⟤]*"
 
 _script = supscript / subscript
 supscript = ~"[ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾◌◌◌˜]+"
 subscript = ~"[ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎﹠﹩﹪◌]+"
 
-_keyword = keyword !var_spec !variable_
+_keyword = (keyword / kw_op) !var_spec !variable_
 variable_ = (!W !oper !var_spec !_script ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
 
 group = ~"[\\[({⁅⟨〚]" exprs? ~"[\\])}⁆⟩〛]"
@@ -68,11 +108,15 @@ group = ~"[\\[({⁅⟨〚]" exprs? ~"[\\])}⁆⟩〛]"
 lamb_h_exprs = W? (_lamb_h_expr W?)+
 _lamb_h_expr = (!lamb_h_implicit lamb) / _expr1
 
+lamb_h_py_exprs = W? (_lamb_h_py_expr W?)+
+_lamb_h_py_expr = !":" (lamb / _expr1)
+
+lamb_h_py       = "lambda" lamb_h_py_exprs ":"
 lamb_h_normal   = "⥌" lamb_h_exprs "↦"
 lamb_h_implicit = variable_ "↦"
 lamb_h_preset   = ~"[𝚲①②③④]"
-lamb_h = lamb_h_normal / lamb_h_implicit / lamb_h_preset
-lamb_b = (exprs? '󰅂') / expr
+lamb_h = lamb_h_normal / lamb_h_implicit / lamb_h_preset / lamb_h_py
+lamb_b = (exprs? '󰅂') / reg_expr
 lamb = lamb_h lamb_b
 
 # STRINGS
@@ -93,51 +137,89 @@ w = ~"[ \t]+"
 W = ~"[ \t\n]+"
 comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
 
-«««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»
-
-sst = lambda x: set(ᖵ(ᗜ,ᴍ(ⵐ,ⵉ(ᖇ(x,'␉',ń),ń))))
-mdt = lambda y: ᖱ(ⵉ(x,ś,1) for x in sst(y))
-inv = lambda z: {y:x for x,y in z.items()}
-
-OPS_BUILTIN = set(ⵉ(
-    "; , : != == < > | ^ & << >> + - // / % @ * ⋅ ** .", ś))
-KEYWORD_SWAP_TABLE = mdt("""
-    ¿ if␉∀ for␉⊢ def␉󰆴 del␉¡ else␉➰ while
-    ⮂ yield␉ Ω class␉↪ return␉⸘ elif
-""")
-
-OP_SWAP_TABLE = mdt("""
-    ≡ ==␉≠ !=␉≤   <=␉≥ >=
-    ÷  /␉⋅  *␉⌃   **␉¯  -
-    ⠤  *␉⠶ **␉¬ not ␉¿ if
-    ⸘    elif␉¡ else␉≔ :=
-""")
-
-register("VAR_SPEC", set(ᒪ("ℵ𝕋𝔽îπτ□∅∞ᐦ")))
-
-register("KEYWORD", sst("""
-    and ␉ as ␉ assert ␉ async ␉ await ␉ break
-    class ␉ continue ␉ def ␉ del ␉ elif ␉ else
-    except ␉ finally ␉ for ␉ from ␉ global ␉ if ␉ import
-    in ␉ is ␉ lambda ␉ nonlocal ␉ not ␉ or ␉ pass ␉ raise
-    return ␉ try ␉ while ␉ with ␉ yield ␉ case ␉ match"""))
-
-register("PREFIX_KEYWORD", set(
-        PFX := sst("assert␉if␉elif␉else␉class␉def␉return␉match␉case␉for␉del")
-    ) | {x for x,y in KEYWORD_SWAP_TABLE.items() if y in PFX})
-
-«««««««««««««««««««««««« GENERATORS »»»»»»»»»»»»»»»»»»»»»»»»
+«««««««««««««««««««««««««««««««««« GENERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 py_bad_string_chr = lambda s, bad="\\\"'{}": s in bad
-py_escape_char    = lambda c, pre='': pre+HXO(c) if py_bad_string_chr(c) else c
-py_escape_string  = lambda s: ''.join(py_escape_char(c, '\\u') for c in s)
-py_escape_var     = lambda s: s # ''.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
+py_escape_char    = lambda c, pre=ᐦ: pre+HXO(c) if py_bad_string_chr(c) else c
+py_escape_string  = lambda s: ᐦ.join(py_escape_char(c, '\\u') for c in s)
+py_escape_var     = lambda s: s # ᐦ.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
 py_special_mapper = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
 PY_ARGS, PY_KWARGS = py_escape_var("𝔸"), py_escape_var("𝕂")
 
-# tree manipulation
+def whitespace_parser(n):
+    if n.S: return n
+    N = n.copy()
+    N.c = ᴍ(whitespace_parser, N.c)
+    
+    if N.t == "exprs":
+        if not N.C: return N
+        
+        c_pre = N.C[0]
+        blocks = [[indent_pre := calc_indent(c_pre)]]
+        for c in N.C:
+            if c.t == 'W':
+                c_pre = c
+                continue
+            indent = calc_indent(c_pre)
+            if indent == indent_pre:
+                blocks[-1].append(c)
+            else:
+                blocks.append([indent, c])
+            indent_pre = indent
+        N.c = p_indent_stack(blocks, blocks[0][0]).c
+    
+    elif N.t == "group" and N.C[0].c == '〚':
+        raise NotImplementedError
+    
+    return N
 
-# whitespace parsing
+def whitespace_unparser(n, i=0):
+    if n.S: return n
+    N = n.copy()
+    
+    if N.t == "BLOCK":
+        i += 1
+    if N.t in ("BLOCK", "exprs"):
+        sep = Node("N", ń+' '*4*i)
+        N.c = J́(N.c, sep, l=n.t == "BLOCK")
+    
+    N.c = [whitespace_unparser(c, i) for c in N.c]
+    return N
+
+# § tree manipulation
+KEYWORD_NODE_NAMES = ("keyword", "kw_pfx", "kw_pfx_colon")
+
+@replacement("kw_op", order=-1)
+def kw_op(n, M={ "or": "∨", "and": "∧", "not": "¬", "is": "≅" }):
+    if n.txt in M:
+        return OP.sym_to_node(M[n.txt])
+    return n
+
+replacement("parser_main", order=0)(whitespace_parser)
+
+@reduction("supscript", order=1)
+def supscript(n): return [OP.sym_to_node("."), Node("variable_", n.txt)]
+
+@replacement("subscript", recurse_children='A', order=1)
+def subscript(n): return Node("group", [Node(c='['), parse_as("exprs", n.c), Node(c=']')])
+
+@replacement(*KEYWORD_NODE_NAMES, order=49)
+def rep_keyword(n, *, I=inv(KEYWORD_SWAP_TABLE)): return n.copy(c=I.get(n.txt, n.txt))
+
+@replacement("kw_pfx_colon_inner_expr", "reg_expr", recurse_children='B', order=50)
+def expr(n): return into_expr(parse_expr(ᖵ(lambda x: x.t != 'w', n.C)))
+
+@replacement(*KEYWORD_NODE_NAMES, order=51)
+def rep_keyword(n): return n.copy(c=KEYWORD_SWAP_TABLE.get(n.txt, n.txt))
+
+replacement("parser_main", order=100)(whitespace_unparser)
+@replacement("expr", recurse_children='B', order=101)
+def expr(n): return n.copy(c=J́(n.C, Node('w', ' ')))
+
+@reduction("BLOCK", recurse_children='B', order=101)
+def BLOCK(n): return n.C
+
+# whitespace stuff
 calc_indent = lambda n: n.t == "W" and n.c.split('\n')[-1].count(' ') // 4 or 0
 def p_indent_stack(S, n=0):
     r = []
@@ -152,69 +234,8 @@ def p_indent_stack(S, n=0):
             r.extend(exprs)
     return Node("BLOCK", r)
 
-def whitespace_parser(n):
-    if n.S: return n
-    N = n.copy()
-    N.c = ᴍ(whitespace_parser, N.c)
-    
-    if N.t == "exprs":
-        if not N.C:
-            return N
-        
-        c_pre = N.C[0]
-        blocks = [[indent_pre := calc_indent(c_pre)]]
-        for c in N.C:
-            if c.t != 'W':
-                indent = calc_indent(c_pre)
-                if indent == indent_pre:
-                    blocks[-1].append(c)
-                else:
-                    blocks.append([indent, c])
-                indent_pre = indent
-            c_pre = c
-        N.c = p_indent_stack(blocks, blocks[0][0]).c
-    
-    elif N.t == "group" and N.C[0].c == '〚':
-        raise NotImplementedError
-    
-    return N
-
-def whitespace_unparser(n, i=0):
-    if n.S:
-        return n
-    N = n.copy()
-    
-    if N.t == "BLOCK":
-        i += 1
-    if N.t in ("BLOCK", "exprs"):
-        sep = Node("N", '\n'+' '*4*i)
-        N.c = J́(N.c, sep, l=n.t == "BLOCK")
-    
-    N.c = [whitespace_unparser(c, i) for c in N.c]
-    return N
-
-replacement("parser_main", order=0)(whitespace_parser)
-replacement("parser_main", order=100)(whitespace_unparser)
-
-@replacement("expr", recurse_children='B', order=101)
-def expr(n): return Node("expr", J́(n.C, Node('w', ' ')))
-@reduction("BLOCK", recurse_children='B', order=101)
-def BLOCK(n): return n.C
-
-# regular parsing
-@reduction("supscript", order=1)
-def supscript(n): return [OP.sym_to_node("."), Node("variable_", n.txt) ]
-
-@replacement("subscript", recurse_children='A',order=1)
-def subscript(n): return Node("group", [Node(c='['), parse_as("exprs", n.c), Node(c=']') ])
-
-@replacement("expr", recurse_children='B', order=2)
-def expr(n): return into_expr(parse_expr(ᖵ(lambda x: x.t != 'w', n.C)))
-
-# node transpilers
-
-def fmt_op(x):
-    return OP_SWAP_TABLE.get(x, x)
+# § node transpilers
+def fmt_op(x): return OP_SWAP_TABLE.get(x, x)
 
 @generator("op_call")
 def op_call          (n):
@@ -233,9 +254,9 @@ def op_call          (n):
             case ":=": return f"({L}:=({R}))"
             case "→": return f"({L})"
             case "←": return f"({R})"
-        if j == "@":
+        if j in {"@","⠤","*","**"}:
             if R and not L:
-                return f"{j}({R})"
+                return f"{j}{R}"
     
     if 'Δ' in op:
         if L and R and op.B \
@@ -251,11 +272,9 @@ def op_call          (n):
             return f"{j}({L or R or 'NULL'})"
     return j
     
+@generator("keyword", "kw_pfx")
 def gen_keyword      (n): return KEYWORD_SWAP_TABLE.get(n.txt, n.txt)
-generator("keyword")(gen_keyword)
-generator("prefix_keyword")(gen_keyword)
-
-@generator("variable_")
+@generator("variable_", "op_spec")
 def gen_variable     (n): return py_escape_var(n.txt)
 
 # strings
@@ -282,28 +301,24 @@ def gen_lamb(n):
     h, b = n.C
     h = h.C[0]
     if h.t == "lamb_h_preset":
-        H = ''.join(x+',' for x in [*"xyzw"[:"𝚲①②③④".index(h.txt)]])
+        H = ᐦ.join(x+',' for x in [*"xyzw"[:"𝚲①②③④".index(h.txt)]])
         H = f"{H}*{PY_ARGS},**{PY_KWARGS}"
     elif h.t == "lamb_h_implicit":
         H = f"{h.C[0].txt},*{PY_ARGS},**{PY_KWARGS}"
-    elif h.t == "lamb_h_normal":
+    elif h.t in ("lamb_h_normal", "lamb_h_py"):
         h = h.C[1]
-        expr = n.partition(h.C, lambda x: x.txt == ',', keep_sep=𝔽)
+        expr = split_at(h.C, lambda x: x.txt == ',')
         has_a = has_k = ⴴ
         for e in expr:
-            if not (t := ''.join(k.txt for k in e).strip()):
-                continue
+            if not (t := ⵐ(ᒍ(ᐦ, (k.txt for k in e)))): continue
             if t[:2] == '**': has_k = ⴳ
             elif t[0] == '*': has_a = ⴳ
         
-        if has_a and has_k:
-            H = gen(h)
-        elif has_a:
-            H = gen(h)+f',**{PY_KWARGS}'
-        elif has_k:
-            H = gen(h)+f',*{PY_ARGS}'
-        else:
-            H = gen(h)+f',*{PY_ARGS},**{PY_KWARGS}'
+        H = gen(h)
+        if has_a and has_k: pass
+        elif has_a: H += f',**{PY_KWARGS}'
+        elif has_k: H += f',*{PY_ARGS}'
+        else      : H += f',*{PY_ARGS},**{PY_KWARGS}'
     else:
         assert ⴴ
     return f"(lambda {H}: {gen(b.C[0])})"

@@ -8,9 +8,11 @@ class OP:
     _or  = staticmethod(lambda x, y: x | 1 << _OP_TYPES.index(y))
     
     @classmethod
-    def sym_to_node(ℂ, c, l=ᐦ, r=ᐦ):
+    def sym_to_node(ℂ, s, l=ᐦ, r=ᐦ):
         return Node("oper", [
-            Node("oper_mod_l", l), Node("oper_lit", c), Node("oper_mod_r", r)]),
+            Node("oper_mod_l", l),
+            Node("oper_lit"  , s),
+            Node("oper_mod_r", r)])
     
     def __init__(𝕊, t, v=ᐦ, L=ᗜ, R=ᗜ, f=print):
         v, F = set(ᖵ(lambda x: x in _OP_TYPES, v)), \

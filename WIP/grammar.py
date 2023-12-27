@@ -1,5 +1,3 @@
-from traceback_with_variables import activate_by_import
-
 from util import *
 from dynamic_parser import DynamicParser, make_thingy
 from node import Node
@@ -110,7 +108,7 @@ class Lang:
     def parse_lang(𝕊, raw):
         sections = spl_H(raw, r"«{3,}([^»]*)»{3,}")
         
-        op_norm, op_spec = 𝕊.parse_secs(sections['OPS'])
+        op_norm, op_spec = 𝕊.parse_secs(sections['OPERATORS'])
         ops = 𝕊.gen_norm_ops(op_norm)
         ops |= 𝕊.gen_spec_ops(op_spec, ops)
         
@@ -126,9 +124,9 @@ class Lang:
     
     def parse_content(𝕊, content):
         n = 𝕊.parse_as("parser_main", content)
-        n.print()
+        # n.print()
         n = 𝕊.dynamic_parsers.tree_transform(n)
-        n.print()
+        # n.print()
         return 𝕊.dynamic_parsers.gen(n)
     
 l = Lang("cpy.lang")
