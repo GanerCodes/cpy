@@ -1,6 +1,11 @@
-;ᴺ󰁌 ➰ᴺ󰁌
-,ᴺ󰁌 :ᴺ󰁌
+«««««««««««««««««««««««« OPS »»»»»»»»»»»»»»»»»»»»»»»»
+
+;ᴺ󰁌
+,ᴺ󰁌
+⠤ᴾ󰁜 ⠶ᴾ󰁜
+:ᴺ󰁌
 ␀1ᴵᴮ ¿ᴺ󰁌 ⸘ᴺ󰁌 ¡ᴺ󰁌
+⨳ᴮᴾ󰀒ᴺ
 !=ᴺ ==ᴺ ≡ᴺ ≠ᴺ ≮ᴺ <ᴺ ≤ᴺ ≥ᴺ >ᴺ ≯ᴺ
 ∈ᴺ ∉ᴺ ∌ᴺ ∋ᴺ
 ⊈ᴺ ⊆ᴺ ⊄ᴺ ⊂ᴺ ⊃ᴺ ⊅ᴺ ⊇ᴺ ⊉ᴺ
@@ -13,40 +18,34 @@
 ∘ᴮᴺ ○ᴮᴺ ⋄ᴮᴺ
 ◄ᴮᴺ ►ᴮᴺ
 ∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴮᴺ ∖ᴮᴺ
-//ᴮᴺ󰀷 /ᴮᴺ󰀷 ÷ᴮᴺ󰀷  %ᴮᴺ󰀷  @ᴮᴾᴺ󰀷 *ᴮᴺ󰀷  ⋅ᴮᴺ󰀷 !󰀒ᴺ  ␛
-      ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ 🃌ᴾ󰀒ᴺ ␛
-      ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ ⨳ᴾ󰀒ᴺ ␛
+//ᴮᴺ󰀷 /ᴮᴺ󰀷 ÷ᴮᴺ󰀷  %ᴮᴺ󰀷  @ᴮᴾᴺ󰀷󰁜 *ᴮᴺᴾ󰀷 ⋅ᴮᴺ󰀷 !󰀒ᴺ  ␛
+      ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ  󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ 🃌ᴾ󰀒ᴺ ␛
+      ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ   ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ ⨳ᴾ󰀒ᴺ ␛
       ⋀ᴾ󰀒ᴺ ⋁ᴾ󰀒ᴺ
 ¬ᴾᴺ󰀷 ¯ᴾ󰀷
-…ᴮ ⌃ᴵᴮ󰀷 **ᴵᴮ󰀷
-.ᴵᴮ
+…ᴮ ⌃ᴵᴮ󰀷 **ᴵᴮᴾ󰀷
+.ᴵᴮ󰁌
 
- .｜:=ᴵᴮ｜␀1
- .｜ ≔ᴵᴮ｜␀1
-  ｜  ←ᴾ｜␀1
-␀1｜  →󰀒｜
+ .｜:=ᴵᴮ󰁜｜␀1
+ .｜ ≔ᴵᴮ󰁜｜␀1
+  ｜  ←ᴾ󰁜｜␀1
+␀1｜  →󰀒󰁜｜
 
-ℵ ␉ 𝕋 ␉ 𝔽 ␉ î ␉ π ␉ τ ␉ □ ␉ ∅ ␉ ∞ ␉ ᐦ
-
-False ␉ None ␉ True ␉ and ␉ as ␉ assert ␉ async ␉ await
-break ␉ class ␉ continue ␉ def ␉ del ␉ elif ␉ else
-except ␉ finally ␉ for ␉ from ␉ global ␉ if ␉ import
-in ␉ is ␉ lambda ␉ nonlocal ␉ not ␉ or ␉ pass ␉ raise
-return ␉ try ␉ while ␉ with ␉ yield
-
-«GRAMMAR»
+«««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»
 
 # PARSERS
 parser_main = exprs / W?
 parser_comment = (str / comment / ~"."s)*
 
 # IMPORTS
- keyword = ~"%KEYWORD%"
-var_spec = ~"%VAR_SPEC%"
-oper_lit = ~"%OPERATOR%"
+#  keyword = ~"%KEYWORD%"
+# var_spec = ~"%VAR_SPEC%"
+# oper_lit = ~"%OPERATOR%"
+# keyword_prefix = "if"/"elif"/"else"/"class"/"def"/"return"/"match"/"case"/"for"/"del"
 
 # EXPRESSIONS
-exprs = W? (expr W?)+
+exprs = W? ((keyword_prefix_expr / expr) W?)+
+keyword_prefix_expr = w? prefix_keyword w expr w?
 expr = w? (_expr_atom w? __escaped_newline?)+
 __escaped_newline = "␛" W
 _expr_atom = lamb / _expr1
@@ -94,13 +93,45 @@ w = ~"[ \t]+"
 W = ~"[ \t\n]+"
 comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
 
-«GENERATORS»
+«««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»
 
-# util
+sst = lambda x: set(ᖵ(ᗜ,ᴍ(ⵐ,ⵉ(ᖇ(x,'␉',ń),ń))))
+mdt = lambda y: ᖱ(ⵉ(x,ś,1) for x in sst(y))
+inv = lambda z: {y:x for x,y in z.items()}
+
+OPS_BUILTIN = set(ⵉ(
+    "; , : != == < > | ^ & << >> + - // / % @ * ⋅ ** .", ś))
+KEYWORD_SWAP_TABLE = mdt("""
+    ¿ if␉∀ for␉⊢ def␉󰆴 del␉¡ else␉➰ while
+    ⮂ yield␉ Ω class␉↪ return␉⸘ elif
+""")
+
+OP_SWAP_TABLE = mdt("""
+    ≡ ==␉≠ !=␉≤   <=␉≥ >=
+    ÷  /␉⋅  *␉⌃   **␉¯  -
+    ⠤  *␉⠶ **␉¬ not ␉¿ if
+    ⸘    elif␉¡ else␉≔ :=
+""")
+
+register("VAR_SPEC", set(ᒪ("ℵ𝕋𝔽îπτ□∅∞ᐦ")))
+
+register("KEYWORD", sst("""
+    and ␉ as ␉ assert ␉ async ␉ await ␉ break
+    class ␉ continue ␉ def ␉ del ␉ elif ␉ else
+    except ␉ finally ␉ for ␉ from ␉ global ␉ if ␉ import
+    in ␉ is ␉ lambda ␉ nonlocal ␉ not ␉ or ␉ pass ␉ raise
+    return ␉ try ␉ while ␉ with ␉ yield ␉ case ␉ match"""))
+
+register("PREFIX_KEYWORD", set(
+        PFX := sst("assert␉if␉elif␉else␉class␉def␉return␉match␉case␉for␉del")
+    ) | {x for x,y in KEYWORD_SWAP_TABLE.items() if y in PFX})
+
+«««««««««««««««««««««««« GENERATORS »»»»»»»»»»»»»»»»»»»»»»»»
+
 py_bad_string_chr = lambda s, bad="\\\"'{}": s in bad
 py_escape_char    = lambda c, pre='': pre+HXO(c) if py_bad_string_chr(c) else c
 py_escape_string  = lambda s: ''.join(py_escape_char(c, '\\u') for c in s)
-py_escape_var     = lambda s: ''.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
+py_escape_var     = lambda s: s # ''.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
 py_special_mapper = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
 PY_ARGS, PY_KWARGS = py_escape_var("𝔸"), py_escape_var("𝕂")
 
@@ -142,9 +173,6 @@ def whitespace_parser(n):
                 indent_pre = indent
             c_pre = c
         N.c = p_indent_stack(blocks, blocks[0][0]).c
-        print(1)
-        N.print()
-        print(2)
     
     elif N.t == "group" and N.C[0].c == '〚':
         raise NotImplementedError
@@ -152,14 +180,14 @@ def whitespace_parser(n):
     return N
 
 def whitespace_unparser(n, i=0):
-    if n.S: return n
+    if n.S:
+        return n
     N = n.copy()
+    
     if N.t == "BLOCK":
         i += 1
     if N.t in ("BLOCK", "exprs"):
         sep = Node("N", '\n'+' '*4*i)
-        # N.c = J́(N.c, sep)
-        # N.c = J́(N.c, sep, l=ⴳ)
         N.c = J́(N.c, sep, l=n.t == "BLOCK")
     
     N.c = [whitespace_unparser(c, i) for c in N.c]
@@ -175,36 +203,18 @@ def BLOCK(n): return n.C
 
 # regular parsing
 @reduction("supscript", order=1)
-def supscript(n):
-    return [
-        Node("oper", [Node("oper_mod_l"), Node("oper_lit", "."), Node("oper_mod_r")]),
-        Node("variable", n.txt) ]
+def supscript(n): return [OP.sym_to_node("."), Node("variable_", n.txt) ]
 
 @replacement("subscript", recurse_children='A',order=1)
-def subscript(n):
-    return Node("group", [
-        Node(c='['),
-        parse_as("exprs", n.c),
-        Node(c=']') ])
+def subscript(n): return Node("group", [Node(c='['), parse_as("exprs", n.c), Node(c=']') ])
 
 @replacement("expr", recurse_children='B', order=2)
 def expr(n): return into_expr(parse_expr(ᖵ(lambda x: x.t != 'w', n.C)))
 
 # node transpilers
 
-SWAP_TABLE = {
-    '≡':'==', '≠':'!=',
-    '≤':'<=', '≥':'>=',
-    '÷': '/', '⋅': '*',
-    '⌃':'**', '¯': '-',
-    '¬':"not ",
-    '¿':"if ",
-    '⸘':"else if ",
-    '¡':"else " }
-BUILTINS = ⵉ("; , : != == < > | ^ & << >> + - // / % @ * ⋅ ** .", ś)
-
 def fmt_op(x):
-    return SWAP_TABLE.get(x, x)
+    return OP_SWAP_TABLE.get(x, x)
 
 @generator("op_call")
 def op_call          (n):
@@ -213,11 +223,20 @@ def op_call          (n):
     t = fmt_op(op.t)
     j = py_escape_var(t)
     
-    if 'α' in op:
-        return j
+    L = ᐦ if l == NULL else gen(l)
+    R = ᐦ if r == NULL else gen(r)
     
-    L = ᐦ if l == NULL else f"({gen(l)})"
-    R = ᐦ if r == NULL else f"({gen(r)})"
+    if 'α' in op: return L+j+R
+    
+    if 'ρ' in op:
+        match j:
+            case ":=": return f"({L}:=({R}))"
+            case "→": return f"({L})"
+            case "←": return f"({R})"
+        if j == "@":
+            if R and not L:
+                return f"{j}({R})"
+    
     if 'Δ' in op:
         if L and R and op.B \
               or R and op.P \
@@ -232,6 +251,10 @@ def op_call          (n):
             return f"{j}({L or R or 'NULL'})"
     return j
     
+def gen_keyword      (n): return KEYWORD_SWAP_TABLE.get(n.txt, n.txt)
+generator("keyword")(gen_keyword)
+generator("prefix_keyword")(gen_keyword)
+
 @generator("variable_")
 def gen_variable     (n): return py_escape_var(n.txt)
 
@@ -245,16 +268,12 @@ def gen_str_sub      (n): return "{" + gen(n.C[1]) + "}"
 @generator("str_spec_char")
 def gen_str_spec_char(n): return "'" + py_special_mapper(n.txt) + "'"
 @generator("special_str")
-def gen_special_str(n):
-    r = '"'
+def gen_special_str(n, *, r='"'):
     for c in n.c[1:-1]:
         match c.t:
-            case "str_escape":
-                r += py_escape_string(c.txt[1:])
-            case "str_spec_char":
-                r += py_special_mapper(c.txt)
-            case _:
-                r += gen(c)
+            case "str_escape"   : r += py_escape_string(c.txt[1:])
+            case "str_spec_char": r += py_special_mapper(c.txt)
+            case _              : r += gen(c)
     return r + '"'
 
 # lambdas

@@ -1,5 +1,12 @@
 from util import *
 from node import *
+from parsimonious.grammar import Grammar
+
+GRAM_HEADER = ""
+CODE_HEADER = """\
+from util import *
+from node import *
+from op import OP\n"""
 
 def join_nodes_flat(t, *N):
     C = []
@@ -89,10 +96,25 @@ class DynamicParser:
             else:
                 return ᒍ(ᐦ, ᴍ(𝕊.gen, n.c))
     
-    def __init__(𝕊, lang, code):
-        𝕊.lang, 𝕊.generators = lang, {}
-        𝕊.tree_manips = {"replacement": {}, "reduction": {}}
-        namespace = {
+    def format_grammar_toks(𝕊, toks):
+        return rgx_or(sorted(toks, key=ⵌ, reverse=ⴳ))
+    def register_tokset(𝕊, name, toks):
+        𝕊.code_namespace[name] = toks
+        𝕊.grammar_imports[name.lower()] = 𝕊.format_grammar_toks(toks)
+    def get_namespace_head(𝕊):
+        return { "register": 𝕊.register_tokset }
+    
+    def parse_gram(𝕊, gram):
+        rgx4grammar = lambda x: f'~"{ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\\\')}"'
+        gram = f"{GRAM_HEADER}{
+            ᒍ(ń, (f"{i}={rgx4grammar(v)}" for \
+                  i,v in 𝕊.grammar_imports.items()))
+            }{gram}"
+        # insert regex for the stuffthings
+        return Grammar(gram)
+    
+    def get_namespace_gen(𝕊):
+        return {
             "replacement": AbsoluteWrapper(partial(𝕊.add_manip, "replacement")),
               "reduction": AbsoluteWrapper(partial(𝕊.add_manip, "reduction")),
               "generator": AbsoluteWrapper(𝕊.add_generator),
@@ -101,4 +123,12 @@ class DynamicParser:
                "parse_as": 𝕊.lang.parse_as,
                  "op_man": 𝕊.lang.op_man,
                     "gen": 𝕊.gen }
-        exec(code, namespace)
+    
+    def __init__(𝕊, lang, code_head, code_gen):
+        𝕊.lang, 𝕊.generators, 𝕊.grammar_imports = lang, {}, {}
+        𝕊.tree_manips = {"replacement": {}, "reduction": {}}
+        𝕊.code_namespace = 𝕊.get_namespace_head()
+        𝕊.register_tokset("OPER_LIT", 𝕊.lang.ops.keys())
+        exec(CODE_HEADER+code_head, 𝕊.code_namespace)
+        𝕊.code_namespace |= 𝕊.get_namespace_gen()
+        exec(code_gen, 𝕊.code_namespace)

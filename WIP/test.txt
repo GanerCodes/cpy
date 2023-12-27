@@ -1,3 +1,20 @@
+class Node:
+    __slots__ = ('t', 'c')
+    
+    t = x ¿ y > 2 ¡ z
+    
+    ⊢ __init__(𝕊, t=ᐦ, c=ᗜ):
+        𝕊.t, 𝕊.c = t, c or []
+    
+    ⊢ __eq__(𝕊, n):
+        if ᐹ(n, ᔐ):
+            return 𝕊.t == n
+        assert n ᐹ Node
+        return 𝕊.t == n.t and 𝕊.c == n.c
+🟑
+
+
+
 a
     b
         c
@@ -5,7 +22,7 @@ d
     e
 f
 
-②x🃌→+←🃌y󰅂
+②x🃌→+←🃌y→⋅2󰅂
 2+3
 
 2⋅5 + (⋅)
@@ -18,10 +35,23 @@ def hi():
 
 αΣβ
 
-🟑
-
-
-
+# strings
+@generator("str_guts")
+def gen_str_guts     (n): return py_escape_string(n.txt)
+@generator("str_escape")
+def gen_str_escape   (n): return "'" + py_escape_string(n.txt[1:]) + "'"
+@generator("str_sub")
+def gen_str_sub      (n): return "{" + gen(n.C[1]) + "}"
+@generator("str_spec_char")
+def gen_str_spec_char(n): return "'" + py_special_mapper(n.txt) + "'"
+@generator("special_str")
+def gen_special_str(n, *, r='"'):
+    for c in n.c[1:-1]:
+        match c.t:
+            case "str_escape"   : r += py_escape_string(c.txt[1:])
+            case "str_spec_char": r += py_special_mapper(c.txt)
+            case _              : r += gen(c)
+    return r + '"'
 
 
 hi [xd]

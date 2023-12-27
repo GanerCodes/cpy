@@ -1,6 +1,7 @@
 from collections import namedtuple as NT
 from functools import reduce, partial
 from itertools import accumulate
+from more_itertools import windowed
 import colored
 import regex as re
 from enum import Enum
@@ -31,13 +32,12 @@ def J́(L, s, l=ⴴ, r=ⴴ):
         r.append(s)
     return r
 
-def R(*a,**kw):
-    with open(*a,**kw) as f:
-        return f.read()
 enum = enumerate
+R = lambda *a,**k:open(*a,**k).read()
 HXO = lambda x: hex(ord(x))[2:]
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), type(l[0])() if ⵌ(l) else [])
 rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
+spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
 collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
