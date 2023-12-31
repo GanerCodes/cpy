@@ -9,10 +9,10 @@ class OP:
     
     @classmethod
     def sym_to_node(ℂ, s, l=ᐦ, r=ᐦ):
-        return Node("oper", [
-            Node("oper_mod_l", l),
-            Node("oper_lit"  , s),
-            Node("oper_mod_r", r)])
+        return Node.n("oper", 
+            ("oper_mod_l", l),
+            ("oper_lit"  , s),
+            ("oper_mod_r", r))
     
     def __init__(𝕊, t, v=ᐦ, L=ᗜ, R=ᗜ, f=print):
         v, F = set(ᖵ(lambda x: x in _OP_TYPES, v)), \
@@ -24,7 +24,7 @@ class OP:
         return v in 𝕊.F
     
     def mod(𝕊, v):
-        return Т(𝕊)(𝕊.t, reduce(𝕊._or, v, 0), 𝕊.L, 𝕊.R, 𝕊.f)
+        return Т(𝕊)(𝕊.t, v, 𝕊.L, 𝕊.R, 𝕊.f)
     
     def __repr__(𝕊):
         return f"⟨{𝕊.t}│{bin(𝕊.v)[2:].zfill(ⵌ(_OP_TYPES))[::-1]}{f"│{𝕊.F}⟩" if 𝕊.F else '⟩'}"
@@ -109,11 +109,13 @@ class OP:
         if 𝕊.S and lr       : return ll + [𝕊(lr,  ᗜ, op_)], R  # Suffix
         if 𝕊.P and rl       : return L  + [𝕊(ᗜ , rl, op_)], rr # Prefix
         if 𝕊.N              : return L  + [𝕊(ᗜ ,  ᗜ, op_)], R  # Nullary
+        
         assert ⴴ
 
 class OP_MANAGER:
     def __init__(𝕊, table):
         𝕊.table = table
+        # print(𝕊.table['∨'].R) and exit()
     
     def __getitem__(𝕊, n):
         L, op_t, R = OP.is_op(n)
@@ -126,17 +128,17 @@ class OP_MANAGER:
             match u:
                 case '⟥':
                     assert op.B and not r
-                    op = op.mod("S")
+                    op = op.mod(op.N*'N'+"S")
                 case _:
                     assert ⴴ
         for u in r:
             match u:
                 case '꜠':
                     assert op.B
-                    op = op.mod("PS")
+                    op = op.mod(op.N*'N'+"PS")
                 case 'ᵜ':
                     if ⴸ((x:=op.P, y:=op.S)):
-                        op = op.mod(op.N*"N"+y*"S"+x*"P"+op.B*"B")
+                        op = op.mod(op.N*'N'+y*'S'+x*'P'+op.B*'B')
                 case _:
                     assert ⴴ
         return op
@@ -146,33 +148,10 @@ class OP_MANAGER:
         L, R = [], n.copy()
         while R:
             c = R.pop(0)
-            # P(f"STACKS: {L=} │{c}│ {R=}")
+            # PD(0, f"STACKS: {L=} │{c}│ {R=}")
             if O := OP.is_op(c):
                 L, R = 𝕊[c].apply(L, R, 𝕊, c)
             else:
                 L += [c]
         # PD(-1, L+R)
         return L + R
-
-if __name__ == "__main__":
-    k = lambda x: ᒍ(ᐦ, ᴍ(k, x)) if ᐹ(x, ᒪ) else ᔐ(x)
-    manager = OP_MANAGER(ops := {
-        '☾': OP('☾', "PSN", L='  ', R='    ', f=lambda a=ᗜ,b=ᗜ:f"☾({k(a or b)})"),
-        'Σ': OP('Σ', "B"  , L='☾ ', R='☾   ', f=lambda a=ᗜ,b=ᗜ:f"Σ({k(a)}, {k(b)})"),
-        '.': OP('.', "B"  , L='. ', R='    ', f=lambda a=ᗜ,b=ᗜ:f"({k(a)}.{k(b)})"),
-        '+': OP('+', "B"  , L='.⋅', R='. ⋅≔', f=lambda a=ᗜ,b=ᗜ:f"({k(a)}+{k(b)})"),
-        '⋅': OP('⋅', "B"  , L='. ', R='.  ≔', f=lambda a=ᗜ,b=ᗜ:f"({k(a)}⋅{k(b)})"),
-        '≔': OP('≔', "B"  , L='. ', R='.+⋅≔', f=lambda a=ᗜ,b=ᗜ:f"[{k(a)}≔({k(b)})]")
-    })
-
-    o = lambda t: Node("oper", [
-            Node('oper_mod_l'),
-            Node('oper_literal', t),
-            Node('oper_mod_r')])
-    v = lambda t: Node('v', t)
-
-    p = "2⋅5.b.a≔2+c≔3⋅2+5"
-    # p = "☾Σ☾"
-    p = [o(i) if i in ops else v(i) for i in p]
-    p = manager.parse_expr(p)
-    print(*p)

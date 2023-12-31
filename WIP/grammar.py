@@ -1,5 +1,5 @@
 from util import *
-from dynamic_parser import DynamicParser, make_thingy
+from dynamic_parser import DynamicParser, make_op_call
 from node import Node
 from op import OP, OP_MANAGER
 
@@ -52,22 +52,21 @@ class Lang:
         return R
     
     def gen_norm_ops(𝕊, op_norm):
-        # all_ops = { i[0] for o in op_norm for i in o }
         ops = {}
         for tier in op_norm[::-1]:
-            consume = set(ops.keys())
+            food = set(ops.keys())
             for op_t, mod in tier:
-                food = 𝕊.modchk({x[0] for x in tier}, mod, consume)
+                meal = 𝕊.modchk({x[0] for x in tier}, mod, food)
                 
                 kw = {}
-                if mod & set('BS'): kw['L'] = food.copy()
-                if mod & set('BP'): kw['R'] = food.copy()
+                if mod & set('BS'): kw['L'] = meal.copy()
+                if mod & set('BP'): kw['R'] = meal.copy()
                 op = OP(op_t, mod, **kw)
-                op.f = partial(make_thingy, op)
+                op.f = partial(make_op_call, op)
                 ops[op_t] = op
         return ops
     
-    def gen_spec_ops(𝕊, op_spec, ops): # beaned atm
+    def gen_spec_ops(𝕊, op_spec, ops):
         gen_ops = {}
         for L, (op_t, mod), R in op_spec:
             L_c = L and ops[L].L|ops[L].R or {}
@@ -85,7 +84,7 @@ class Lang:
                 mod, ops[R].R)
             
             op = OP(op_t, mod, **kw)
-            op.f = partial(make_thingy, op)
+            op.f = partial(make_op_call, op)
             
             gen_ops[op_t] = op
         return gen_ops
@@ -130,8 +129,8 @@ class Lang:
         return 𝕊.dynamic_parsers.gen(n)
     
 l = Lang("cpy.lang")
-print('-'*50)
-print(l("test.txt"))
+reparsed = l("test.txt")
+print('-'*50+ń+reparsed)
 
 # N: Nullary
 # S: Suffix

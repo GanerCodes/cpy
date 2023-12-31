@@ -2,8 +2,8 @@ from traceback_with_variables import activate_by_import
 
 from collections import namedtuple as NT
 from functools import reduce, partial
-from itertools import accumulate
-from more_itertools import windowed, split_at
+from itertools import accumulate, pairwise
+from more_itertools import windowed, split_at, mark_ends
 import colored
 import regex as re
 from enum import Enum
@@ -20,7 +20,7 @@ print = lambda *a,__print=print,**k: __print(*a,**k) or a and a[0]
 Т, ᐹ = type, isinstance
 ⴷ, ⴸ = all, any
 ᴍᴍ = lambda n,f,l: ᴍ(f,l) if n<=1 else [ᴍᴍ(n-1,f,c) for c in l]
-
+ε = lambda x: [x] if x else []
 SMD, CMD, PRP = staticmethod, classmethod, property
 
 def J́(L, s, l=ⴴ, r=ⴴ):

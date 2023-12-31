@@ -20,12 +20,11 @@ def join_nodes_flat(t, *N):
 def into_expr(C):
     if ᐹ(C, ᒪ):
         return join_nodes_flat("expr", *ᴍ(into_expr, C))
-    return Node('expr', c=C if ᐹ(C, ᔐ) else [C])
+    return Node('expr', C if ᐹ(C, ᔐ) else [C])
 
-def make_thingy(op, l, r, op_):
+def make_op_call(op, l, r, op_):
     ch = lambda n: NULL if n is ᗜ else into_expr(n) if ᐹ(n, ᒪ) else n
-    l, r = ch(l), ch(r)
-    return Node("op_call", [op_, l, r])
+    return Node("op_call", [ch(l), op_, ch(r)])
 
 class AbsoluteWrapper:
     def __init__(𝕊, *a, **k):
@@ -82,8 +81,12 @@ class DynamicParser:
     def tree_transform(𝕊, n):
         n = 𝕊.general_tree_manip(n)
         n.print()
+        print(1, '-'*50,'\n')
         for order in 𝕊.get_orders():
+            print('A', order, '_'*25)
             n = 𝕊.lang_tree_manip(n, order)
+            n.print()
+            print('B', order, '_'*25)
         n.print()
         return n
     
@@ -94,10 +97,7 @@ class DynamicParser:
         if n.t in 𝕊.generators:
             return 𝕊.generators[n.t](n)
         else:
-            if n.S:
-                return n.c
-            else:
-                return ᒍ(ᐦ, ᴍ(𝕊.gen, n.c))
+            return n.c if n.S else ᒍ(ᐦ, ᴍ(𝕊.gen, n.c))
     
     def format_grammar_toks(𝕊, toks):
         return rgx_or(sorted(toks, key=ⵌ, reverse=ⴳ))
@@ -112,7 +112,7 @@ class DynamicParser:
         gram = f"{GRAM_HEADER}{
             ᒍ(ń, (f"{i}={𝕊.rgx4grammar(v)}" for \
                   i,v in 𝕊.grammar_imports.items()))
-            }{gram}"
+            }\n{gram}"
         return Grammar(gram)
     
     def get_namespace_gen(𝕊):
