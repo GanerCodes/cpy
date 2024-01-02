@@ -40,8 +40,14 @@ class DynamicParser:
         if m.recurse_children == 'B' and not N.S:
             N.c = ᴍ(partial(𝕊.lang_tree_manip, order=order), N.c)
         N = m(N)
-        if m.recurse_children == 'A' and not N.S:
-            N.c = ᴍ(partial(𝕊.lang_tree_manip, order=order), N.c)
+        if ᐹ(N, ᒪ):
+            N = Ń('∅', *N)
+            if m.recurse_children == 'A' and not N.S:
+                return 𝕊.lang_tree_manip(N, order).c
+            return N.c
+        else:
+            if m.recurse_children == 'A' and not N.S:
+                N.c = ᴍ(partial(𝕊.lang_tree_manip, order=order), N.c)
         return N
     
     def lang_tree_manip(𝕊, N, order):
@@ -53,8 +59,8 @@ class DynamicParser:
         cc = []
         for n in N.C:
             if m := 𝕊.get_manip("reduction", order, n.t):
-                assert m.recurse_children != 'A'
-                cc.extend(𝕊._apply_tree_manip(m, n, order))
+                h = 𝕊._apply_tree_manip(m, n, order)
+                cc.extend(h)
             else:
                 cc.append(𝕊.lang_tree_manip(n, order))
         return Node(N.t, cc)
@@ -80,14 +86,16 @@ class DynamicParser:
     
     def tree_transform(𝕊, n):
         n = 𝕊.general_tree_manip(n)
+        print(f"{Z.red}{'-'*100}{Z.wh}")
         n.print()
-        print(1, '-'*50,'\n')
+        print()
         for order in 𝕊.get_orders():
-            print('A', order, '_'*25)
+            print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}")
             n = 𝕊.lang_tree_manip(n, order)
             n.print()
-            print('B', order, '_'*25)
-        n.print()
+            # breakpoint()
+            print(f"{Z.bpu}-{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}\n")
+        print(f"{Z.red}{'-'*100}{Z.wh}")
         return n
     
     def add_generator(𝕊, f, *names):
@@ -104,8 +112,6 @@ class DynamicParser:
     def register_tokset(𝕊, name, toks):
         𝕊.code_namespace[name] = toks
         𝕊.grammar_imports[name.lower()] = 𝕊.format_grammar_toks(toks)
-    def get_namespace_head(𝕊):
-        return { "register": 𝕊.register_tokset }
     
     rgx4grammar = SMD(lambda x: f'~"{ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\\\')}"')
     def parse_gram(𝕊, gram):
@@ -115,6 +121,11 @@ class DynamicParser:
             }\n{gram}"
         return Grammar(gram)
     
+    def get_namespace_head(𝕊):
+        return {
+            "register": 𝕊.register_tokset,
+              "op_man": 𝕊.lang.op_man,
+                "lang": 𝕊.lang }
     def get_namespace_gen(𝕊):
         return {
             "replacement": AbsoluteWrapper(partial(𝕊.add_manip, "replacement")),
@@ -123,8 +134,7 @@ class DynamicParser:
              "parse_expr": 𝕊.lang.op_man.parse_expr,
               "into_expr": into_expr,
                "parse_as": 𝕊.lang.parse_as,
-                 "op_man": 𝕊.lang.op_man,
-                    "gen": 𝕊.gen }
+                    "gen": 𝕊.gen } | 𝕊.get_namespace_head()
     
     def __init__(𝕊, lang, code_head, code_gen):
         𝕊.lang, 𝕊.generators, 𝕊.grammar_imports = lang, {}, {}

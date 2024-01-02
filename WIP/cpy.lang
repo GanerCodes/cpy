@@ -1,7 +1,4 @@
-# N: 0
-# P: 1 (Prefix)
-# S: 1 (Suffix)
-# B: 2
+# I: Include self in group (right asoc.)
 # α: basic concat
 # Δ: has binary builtin
 # ρ: *special*
@@ -9,9 +6,9 @@
 «««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 py_bad_string_chr  = lambda s, bad="\\\"'{}": s in bad
-py_escape_char     = lambda c, pre=ᐦ: pre+HXO(c) if py_bad_string_chr(c) else c
-py_escape_string   = lambda s: ᐦ.join(py_escape_char(c, '\\u') for c in s)
-py_escape_var      = lambda s: s # ᐦ.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
+py_escape_char     = lambda c, u='\\u': u+HXO(c) if py_bad_string_chr(c) else c
+py_escape_string   = lambda s: ᐦ.join(py_escape_char(c) for c in s)
+py_escape_var      = lambda s: ᐦ.join(f'_{HXO(c)}' if ord(c) > 127 else c for c in s)
 py_special_mapper  = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
 PY_ARGS, PY_KWARGS = py_escape_var("𝔸"), py_escape_var("𝕂")
 
@@ -20,7 +17,6 @@ mkgxp = lambda *X, b="()": mkgrp(mkexp(*X), b=b)
 mkexp = lambda *X: Ń("expr", *X)
 mkvar = lambda x: Ń("variable", x)
 mkstr = lambda x: Ń("str", '"', x, '"')
-fmtop = lambda x: inv(SWAP_TABLE).get(x, x)
 
 def p_indent_stack(S, n=0):
     r = []
@@ -85,22 +81,26 @@ rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
 OPS_BUILTIN = {
     'S': ᐦ,
-    'N': """; ␉ : ␉ ,""",
-    'P': """+ ␉ - ␉ * ␉ ~ ␉ **""",
-    'B': """+ ␉ - ␉ * ␉ @ ␉ ** ␉ // ␉  < ␉ > ␉ % ␉ .
-            & ␉ ^ ␉ | ␉ / ␉ != ␉ == ␉ << ␉ >> """ }
+    'N': """; ␉ : ␉ , ␉ if ␉ elif ␉ else ␉ for""",
+    'P': """+ ␉ - ␉ * ␉ ~ ␉ ** ␉ not ␉ yield""",
+    'B': """+ ␉ - ␉ * ␉ @ ␉ ** ␉ //  ␉  < ␉ > ␉ % ␉ .
+            & ␉ ^ ␉ | ␉ / ␉ != ␉ ==  ␉ << ␉ >>
+            is ␉ or ␉ and """ }
 OPS_BUILTIN = {k:sst(v) for k,v in OPS_BUILTIN.items()}
 OPS_BUILTIN['A'] = set.union(*map(set,OPS_BUILTIN.values()))
 
+OPS_COMP = ᖵ(ᗜ, ({s for s in l if 'λ' in lang.ops[s]} for l in lang.op_orders.values()))
+
 SWAP_TABLE = mdt("""
-    ⋅   * ␉ ≡    == ␉ ≔   := ␉ ÷ / ␉ ≠ != ␉ ≤ <=
-    ⠤   * ␉ ⠶    ** ␉ ≥   >= ␉ ¯ - ␉ ⌃ **
-    ∨  or ␉ 󰆴   del ␉ ≅   is ␉ Ω class
-    ¬ not ␉ ⊢   def ␉ ¿   if ␉ ➰ while
-    ∧ and ␉ ⮂ yield ␉ ⸘ elif ␉ ↪ return
-    ∀ for ␉ ⇥ break ␉ ¡ else ␉ ↺ continue""")
-SWAP_NO = sst("* ␉ **")
-merge_shorthands = lambda z: (z:=sst(z)) | {x for x,y in rmk(SWAP_TABLE, SWAP_NO).items() if y in z}
+    ⋅   * ␉ ⌃    ** ␉ ≡    == ␉ ≤ <= ␉ ≔ := ␉ ¯ -
+    ⠤   * ␉ ⠶    ** ␉ ≠    != ␉ ≥ >= ␉ ÷ /
+    ∨  or ␉ ≅    is ␉ 󰆴   del ␉ Ω class
+    ¬ not ␉ ¿    if ␉ ⊢   def ␉ ➰ while
+    ∧ and ␉ ⸘  elif ␉ ⮂ yield ␉ ↪ return
+    ∀ for ␉ ¡  else ␉ ⇥ break ␉ ↺ continue""")
+KEYWORDS_TO_CPY=rmk(inv(SWAP_TABLE), sst("* ␉ **"))
+
+merge_shorthands = lambda z: (z:=sst(z)) | {x for x,y in SWAP_TABLE.items() if y in z}
 
 kw_pfx_colon = merge_shorthands("""
     if ␉ elif ␉ else ␉ for ␉ while
@@ -124,16 +124,16 @@ register("KW_PFX_COLON", kw_pfx_colon)
 
 «««««««««««««««««««««««««««««««««« OPERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
-;ᴺ ,ᴺᴾ󰁜
-=ᴺ ⮂ᴾ
-⠤ᴾ󰁜 ⠶ᴾ󰁜 :ᴺ
-␀1ᴵᴮ ¿ᴺ ⸘ᴺ ¡ᴺ
+;ᴺ ,ᴺᴾᴵ󰁜
+=ᴺ ⮂ᴺᴾ󰁜 ↪ᴺᴾ󰁜 ↺ᴺ󰁜 ⇥ᴺ󰁜
+⠤ᴾ󰁜 ⠶ᴾ󰁜 :ᴺ󰁜
+␀1ᴵᴮ ¿ᴺᴾ󰁜 ⸘ᴺᴾ󰁜 ¡ᴺᴾ󰁜
 ⨳ᴮᴾ󰀒ᴺ
 ⊻ᴮᴺ󰁖 ␉ ∨ᴮᴺ󰁜󰀷
 ⊼ᴮᴺ󰁖 ␉ ∧ᴮᴺ󰁜󰀷
 ==ᴮᴺ󰁖 !=ᴮᴺ󰁖 ≜ᴮᴺ󰁖 ≡ᴮᴺ󰁖 ≠ᴮᴺ󰁖 ≮ᴮᴺ󰁖 <ᴮᴺ󰁖 ≤ᴮᴺ󰁖 ≥ᴮᴺ󰁖 >ᴮᴺ󰁖 ≯ᴮᴺ󰁖 ␛
-      ∈ᴮᴺ󰁖 ∉ᴮᴺ󰁖 ∌ᴮᴺ󰁖 ∋ᴮᴺ󰁖 ⊈ᴮᴺ󰁖 ⊆ᴮᴺ󰁖 ⊄ᴮᴺ󰁖 ⊂ᴮᴺ󰁖 ⊃ᴮᴺ󰁖 ⊅ᴮᴺ󰁖 ␛
-      ⊇ᴮᴺ󰁖 ⊉ᴮᴺ󰁖
+       ∈ᴮᴺ󰁖 ∉ᴮᴺ󰁖 ∌ᴮᴺ󰁖 ∋ᴮᴺ󰁖 ⊈ᴮᴺ󰁖 ⊆ᴮᴺ󰁖 ⊄ᴮᴺ󰁖 ⊂ᴮᴺ󰁖 ⊃ᴮᴺ󰁖 ⊅ᴮᴺ󰁖 ␛
+       ⊇ᴮᴺ󰁖 ⊉ᴮᴺ󰁖
 ᴍᴮᴺ ſᴮᴺ Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ
 ᐹᴮᴺ ζᴮᴺ
 |ᴮᴺ󰀷 ␉ ^ᴮᴺ󰀷 ␉ &ᴮᴺ󰀷
@@ -158,7 +158,7 @@ register("KW_PFX_COLON", kw_pfx_colon)
 «««««««««««««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 parser_main = exprs
-parser_comment = (str / comment / ~"."s)*
+parser_comment = (_str / comment / ~"."s)*
 
 exprs = W? (_expr W?)*
 _expr = kw_pfx_colon_expr / kw_pfx_expr / norm_expr
@@ -168,13 +168,14 @@ _expr = kw_pfx_colon_expr / kw_pfx_expr / norm_expr
 kw_pfx_colon_expr = _kw_pfx_colon __E? expr_not_colon? ':' __E? _expr?
 
 expr_not_colon = (!':' _norm_expr_atom)+
+expr_not_comma = (!',' _norm_expr_atom)+
 
 _kw_pfx_colon = (&kw_spec kw_pfx_colon) / (kw_pfx_colon __text_breaker)
 _kw_pfx       = (&kw_spec kw_pfx      ) / (kw_pfx       __text_breaker)
 _kw           = (&kw_spec kw          ) / (kw           __text_breaker)
 
 _norm_expr_atom = (lamb / _gen_expr_atom) __E?
-_gen_expr_atom = group / str / var_spec / oper / _kw / _script / variable_
+_gen_expr_atom = group / _str / var_spec / oper / _kw / _script / variable_
 variable_ = (!W !oper !var_spec !_script ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
 
 group = ~"[\\[({⁅⟨〚]" exprs ~"[\\])}⁆⟩〛]"
@@ -189,7 +190,7 @@ subscript = ~"[ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤ�
 
 lamb = lamb_h __E? lamb_b
 lamb_h = lamb_h_py / lamb_h_normal / lamb_h_implicit / lamb_h_preset
-lamb_b = (exprs '󰅂') / _expr
+lamb_b = (exprs '󰅂') / expr_not_comma
 lamb_h_preset   = ~"[𝚲①②③④]"
 lamb_h_implicit = variable_ '↦'
 lamb_h_normal   = '⥌' lamb_h_exprs '↦'
@@ -197,12 +198,16 @@ lamb_h_py       = "lambda" __text_breaker expr_not_colon? ':'
 lamb_h_exprs = W? (_lamb_h_expr W?)+
 _lamb_h_expr = (!lamb_h_implicit lamb) / _gen_expr_atom
 
-str = str_cpy / str_py / str_escape / str_spec_char
-str_cpy = ('‹' (str_escape / str_sub / str_spec_char / str_guts)* '›')
-str_sub = '〚' exprs '〛'
-str_guts = !str_spec_char ~"[^␛〚›]+"
-str_escape = ~"␛."
+_str = str_cpy / str_py / str_escape / str_spec_char
+str_cpy = __L1 (str_escape / str_sub / str_spec_char / str_guts)* __R1
+__L1 = "‹"
+__R1 = "›"
+str_sub = __L2 exprs __R2
+__L2 = "〚"
+__R2 = "〛"
 str_spec_char = ~"[𝗮-𝘇]"
+str_guts = ~"[^␛〚›]+"
+str_escape = __escape ~"."
 str_py = (('"' (str_py_sub / ~"[^\\\\\"]+")* '"')
        /  ("'" (str_py_sub / ~"[^\\\\\']+")* "'"))
 str_py_sub = ~"\\\\."
@@ -212,7 +217,8 @@ W = ~"[ \t\n]+"
 __w = w
 __text_breaker = __E / &kw_spec / &var_spec / !variable_
 __E = __w / __escaped_newline
-__escaped_newline = "␛\n"
+__escaped_newline = __escape '\n'
+__escape = '␛'
 
 comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
 
@@ -221,37 +227,36 @@ comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z)
 # § tree manipulation
 KEYWORD_NODE_NAMES = ("kw", "kw_pfx", "kw_pfx_colon")
 
-@reduction("supscript", order=-1)
+O_1 = (-1, "Subscripts to brackets + Superscripts to dot")
+@reduction("supscript", order=O_1)
 def supscript(n): return [OP.sym_to_node("."), Node("variable_", n.txt)]
-@replacement("subscript", recurse_children='A', order=-1)
-def subscript(n): return Ń("group", '[', parse_as("exprs", n.c), ']')
+@replacement("subscript", recurse_children='A', order=O_1)
+def subscript(n): return mkgrp(parse_as("exprs", n.c), b="[]")
 
-replacement("parser_main", order=0, recurse_children='A')(whitespace_parser)
-@replacement("norm_expr", "expr_not_colon", recurse_children='B', order=0)
-def expr_not_colon(n): return n.copy("expr")
+O0 = (0, "Build whitespace blocks/Normalize expression types")
+replacement("parser_main", recurse_children='A', order=O0)(whitespace_parser)
+@replacement("norm_expr", "expr_not_colon", "expr_not_comma", recurse_children='B', order=O0)
+def expr_types(n): return n.copy("expr")
 
-OP_NORMER = inv(rmk(SWAP_TABLE, SWAP_NO))
-@replacement(*KEYWORD_NODE_NAMES, order=0)
-def kw(n): return OP.sym_to_node(h) if (h := OP_NORMER.get(n.txt)) else n
-@replacement(*KEYWORD_NODE_NAMES, order=49)
-def rep_keyword(n): return n.copy(c=OP_NORMER.get(n.txt, n.txt))
+@replacement(*KEYWORD_NODE_NAMES, order=(1, "Lang keywords → cpy keywords"))
+def rep_keyword(n): return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
 
-@replacement("expr", recurse_children='B', order=50)
+@replacement("expr", recurse_children='B', order=(50, "Parse expressions"))
 def expr(n): return into_expr(parse_expr(ᖵ(lambda x: x.t != 'w', n.C)))
 
-@reduction("op_call", recurse_children='B', order=50.1)
+@reduction("op_call", recurse_children='B', order=(51, "Reduce comparison operators"))
 def op_call(n):
     if 'λ' in op_man[n.C[1]] and \
             n.C[0] != NULL and n.C[2] != NULL:
         return [*n.C[0].C, n.C[1], *n.C[2].C]
     return [n]
 
-@replacement("expr", recurse_children='B', order=50.2)
+@replacement("expr", recurse_children='B', order=(52, "Generate comparison chains"))
 def expr(n):
     C = ᒪ(split_at(n.C,
         lambda x: OP.is_op(x) and 'λ' in (k:=op_man[x]) and k.B,
         keep_separator=ⴳ))
-    if ⵌ(C) <= 3: return n
+    if ⵌ(C) < 3: return n
     r = ⴴ
     
     for H,T,(a,(b,),c) in mark_ends(windowed(C, 3, step=2)):
@@ -265,15 +270,38 @@ def expr(n):
         r = mkgxp(("op_call", mkexp(r), OP.sym_to_node('∧'), mkexp(v))) if r else v
     return n.copy(c=[r])
 
-# replacement("exprs", order=50.3)(exit)
+def mkbltnop(op_l): # format builtins if needed
+    t = op_l.txt
+    if SWAP_TABLE.get(t,t) not in OPS_BUILTIN['A']:
+        return op_l
+    return mkgxp(mkvar("LITERAL_OPS_"), mkgrp(mkstr(t), b="[]"))
 
 demodp = lambda o: (o.C[0].txt, o.C[1], o.C[2].txt)
+def transform_oper(op_): # apply modifiers to op
+    m_l, op_l, m_r = demodp(op_)
+    print(f"{m_l=} {op_l=} {m_r=}")
+    if not (m_l or m_r):
+        return op_l
+    op_n = mkbltnop(op_l)
+    mkmod = lambda op, x: mkexp(mkvar(f"OP_{x}_"), mkgrp(op))
+    if '⟥' in m_l: op_n = mkmod(op_n, "LNULL")
+    if '⟤' in m_r: op_n = mkmod(op_n, "RNULL")
+    if 'ᵜ' in m_r: op_n = mkmod(op_n, "SWAPA")
+    if '꜠' in m_r: op_n = mkmod(op_n, "DUPER")
+    return op_n
 
-@replacement("op_call", recurse_children='A', order=51)
+def try_builtin(m, op_l, L, m_l, t, m_r, R): # see if op + arg matches can make a builtin
+    if m_l or m_r:
+        return
+    t_ = SWAP_TABLE.get(t, t)
+    if t_ not in OPS_BUILTIN[m]:
+        return
+    return mkgxp(*ε(L), op_l, *ε(R))
+
 def op_call(n):
     l, op_, r = n.C
     op = op_man[op_]
-    t = fmtop(op.t)
+    t = KEYWORDS_TO_CPY.get(op.t, op.t)
     m_l, op_l, m_r = demodp(op_)
     L, R = l != NULL and mkgrp(l), r != NULL and mkgrp(r)
     
@@ -281,49 +309,28 @@ def op_call(n):
         match t:
             case '→': return L
             case '←': return R
-            case ',': return mkexp(   op_l, r)
             case '.': return mkexp(l, op_l, r)
             case '≔': return mkgxp(l, op_l, R)
+            case ':'|'¿'|'⸘'|'¡':
+                      return mkexp(op_l, r)
+            case ','|'⮂'|'↺'|'⇥'|'↪':
+                      return mkexp(op_l, r)
             case ('¬') if R:
                       return mkgxp(op_l, R)
             case ('∨'|'∧') if L and R:
                       return mkgxp(L, op_l, R)
-            case ('@'|'⠤'|'⠶'|'*'|'**') if not L and R:
+            case ('@') if not L and R:
                       return mkexp(op_l, R)
-    
-    def mkbltnop(op_l): # format builtins if needed
-        t = op_l.txt
-        if SWAP_TABLE.get(t,t) not in OPS_BUILTIN['A']:
-            return op_l
-        return mkgxp(mkvar("LITERAL_OPS_"), mkgrp(mkstr(t), b="[]"))
-    
-    def transform_oper(op_): # apply modifiers to op
-        m_l, op_l, m_r = demodp(op_)
-        if not (m_l or m_r):
-            return op_l
-        op_n = mkbltnop(op_l)
-        mkmod = lambda op, x: mkexp(mkvar(f"OP_{x}_"), mkgrp(op))
-        if '⟥' in m_l: op_n = mkmod(op_n, "LNULL")
-        if '⟤' in m_r: op_n = mkmod(op_n, "RNULL")
-        if 'ᵜ' in m_r: op_n = mkmod(op_n, "SWAPA")
-        if '꜠' in m_r: op_n = mkmod(op_n, "DUPER")
-        return op_n
-    
-    def try_builtin(m, L, m_l, t, m_r, R): # see if op + arg matches can make a builtin
-        if m_l or m_r:
-            return
-        t_ = SWAP_TABLE.get(t, t)
-        if t_ not in OPS_BUILTIN[m]:
-            return
-        return mkgxp(*ε(L), op_l, *ε(R))
+            case ('⠤'|'⠶'|'*'|'**') if not L and R:
+                      return mkexp(op_l, r)
     
     op_l = transform_oper(op_)
     COMMA = ("oper_lit", ',')
     
-    A = (L, m_l, t, m_r, R)
-    if op.S and L and not (op.P or R):
+    A = (op_l, L, m_l, t, m_r, R)
+    if op.S and L and not op.B:
         return try_builtin('S', *A) or mkexp(mkbltnop(op_), mkgxp(L))
-    if op.P and R and not (op.S or L):
+    if op.P and R and not op.B:
         return try_builtin('P', *A) or mkexp(mkbltnop(op_), mkgxp(R))
     if op.B and L and R:
         return try_builtin('B', *A) or mkexp(mkbltnop(op_), mkgxp(   L, COMMA,    R))
@@ -332,41 +339,66 @@ def op_call(n):
     if op.P and R:
         return try_builtin('P', *A) or mkexp(mkbltnop(op_), mkgxp(NULL, COMMA,    R))
     return mkbltnop(op_)
+replacement("op_call", recurse_children='B', order=(53, "Refactor op calls"))(op_call)
 
-@replacement("oper", recurse_children='A', order=52)
-def rep_oper(n): return transform_oper(*(x.c for x in n.C)) if '´' in n.C[2].txt else n
+@replacement("oper", order=(54, "Refactor sitting ops"))
+def rep_oper(n):
+    if not (n.C[2].txt or n.C[0].txt):
+        n = n.copy(c=[n.C[0], n.C[1], n.C[2].copy(c="´")])
+    print(f"{n=}")
+    k = transform_oper(n)
+    print(f"{k=}")
+    return k
 
-@replacement(*KEYWORD_NODE_NAMES, "oper_lit", order=52)
-def rep_keyword(n): return n.copy(c=SWAP_TABLE.get(n.txt, n.txt))
+@replacement(*KEYWORD_NODE_NAMES, "oper_lit", order=(54.1, "Lang keywords ← cpy keywords"))
+def rep_keyword(n): return n.copy(c=py_escape_var(SWAP_TABLE.get(n.txt, n.txt)))
 
-replacement("parser_main", order=100, recurse_children='A')(whitespace_unparser)
-@reduction("BLOCK", recurse_children='B', order=100)
+replacement("parser_main", recurse_children='A', order=(100, "Unparse whitespace"))(whitespace_unparser)
+@reduction("BLOCK", recurse_children='B', order=(100, "Flatten blocks"))
 def BLOCK(n): return n.C
-@replacement("expr", recurse_children='B', order=100)
-def expr(n): return n.copy(c=J́(n.C, Node('w', ś)))
+
+def incompat_char(x, y):
+    good_chars = "~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"
+    return x not in good_chars and y not in good_chars
+def flat_all(n):
+    skips = "lamb", "lamb_h", "lamb_b", "lamb_h_preset", "lamb_h_implicit", "lamb_h_normal", "lamb_h_py", "lamb_h_exprs"
+    if not n.C: return n
+    
+    cc, s = [], peekable(ᴍ(flat_all, n.C))
+    while (α := next(s)) and s:
+        β = s.peek()
+        cc.append(α)
+        if α.t in skips or β.t in skips:
+            continue
+        if (a:=α.txt) and (b:=β.txt) and incompat_char(a[-1], b[0]):
+            cc.append(Ń('w', ' '))
+    cc.append(α)
+    return n.copy(c=cc)
+    
+replacement("exprs", order=(101, "Insert spaces"))(flat_all)
 
 # § node transpilers
-@generator("oper_lit", *KEYWORD_NODE_NAMES)
-def gen_oper_lit     (n): return SWAP_TABLE.get(n.txt, n.txt) + ś
-@generator("variable_", "op_spec")
+@generator(*KEYWORD_NODE_NAMES, "oper_lit")
+def gen_oper_lit     (n): return n.txt
+@generator("variable_", "var_spec")
 def gen_variable     (n): return py_escape_var(n.txt)
 
 # strings
 @generator("str_guts")
 def gen_str_guts     (n): return py_escape_string(n.txt)
 @generator("str_escape")
-def gen_str_escape   (n): return "'" + py_escape_string(n.txt[1:]) + "'"
+def gen_str_escape   (n): return "'" + py_escape_string(n.txt) + "'"
 @generator("str_sub")
-def gen_str_sub      (n): return "{" + gen(n.C[1]) + "}"
+def gen_str_sub      (n): return "{" + gen(n.C[0]) + "}"
 @generator("str_spec_char")
 def gen_str_spec_char(n): return "'" + py_special_mapper(n.txt) + "'"
 @generator("str_cpy")
-def gen_special_str(n, *, r='"'):
-    for c in n.c[1:-1]:
-        match c.t:
-            case "str_escape"   : r += py_escape_string(c.txt[1:])
-            case "str_spec_char": r += py_special_mapper(c.txt)
-            case _              : r += gen(c)
+def gen_special_str(n):
+    r='f"'
+    for c in n.c:
+        if   c.t == "str_escape"   : r += py_escape_string(c.txt)
+        elif c.t == "str_spec_char": r += py_special_mapper(c.txt)
+        else                       : r += gen(c)
     return r + '"'
 
 # lambdas

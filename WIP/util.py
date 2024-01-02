@@ -3,7 +3,7 @@ from traceback_with_variables import activate_by_import
 from collections import namedtuple as NT
 from functools import reduce, partial
 from itertools import accumulate, pairwise
-from more_itertools import windowed, split_at, mark_ends
+from more_itertools import windowed, split_at, mark_ends, peekable
 import colored
 import regex as re
 from enum import Enum
@@ -36,7 +36,7 @@ def J́(L, s, l=ⴴ, r=ⴴ):
 
 enum = enumerate
 R = lambda *a,**k:open(*a,**k).read()
-HXO = lambda x: hex(ord(x))[2:]
+HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), type(l[0])() if ⵌ(l) else [])
 rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
 spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))

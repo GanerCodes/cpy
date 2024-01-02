@@ -1,3 +1,75 @@
+𝑏,𝑙 = bool, list
+𝕋,𝔽 = True,False
+ᐹ = isinstance
+☾ = 𝚲print(⠤𝔸,⠶𝕂)∨𝔸₀
+ᴍ = 𝚲𝑙(map(⠤𝔸,⠶𝕂))
+∈ = ②x in y
+⊻ = ②𝑏(x) ^ 𝑏(y)
+⊼ = ②¬(𝑏(x) ∧ 𝑏(y))
+⛶ = ①[x]
+
+⋄ = ②(x¿xᐹ𝑙¡⛶x→+[y])
+LITERAL_OPS_ = {
+    ␛∧: ①x∧y, ␛∨: ①x∨y,
+    ␛+: ①x+y, ␛-: ①x+y,
+    ␛*: ①x+y, ␛/: ①x/y,
+    ␛¬: ① ¬x,
+    '//': ①x//y }
+
+ ↑ header stuff
+
+¬ᴍ0⋄2⋄1⋄4→☾
+
+
+
+ 1∈{2,3}→☾
+ ☾→☾
+
+🟑🟑🟑
+x ∈ Y ⊂ z
+(x ∈ Y) ∧ (Y ⊂ z)
+⊻(a ∧ b, c ∈ D)
+a∨b ⊻ c∨d ; a∨b ⊻ c∨d
+a∨b ⊻ c ⊻ d
+(a∨b)⊻(_:=c) ∧ (_⊻d)
+⊻(a∨b,_:=c) ∧ ⊻(_,d)
+
+a ⊻ c∧(c⊻d)
+
+‹d"d›
+
+egg = ‹che"ese〚2+aᵇ〛›
+
+a ∧ b ⊻ c
+a⊻b⊻c
+a⊻(b∨c)
+a ∧ b ⊻ c ∈ D
+class AbsoluteWrapper:
+    def __init__(𝕊, *a, **k):
+        (𝕊.f, *𝕊.a), 𝕊.k = a, k
+    def __call__(𝕊, *a, **k):
+        return type(𝕊)(𝕊.f, *a, **k)
+
+
+x ∈ Y ⊂ z
+(x ∈ Y) ∧ (Y ⊂ z)
+⊻(a ∧ b, c ∈ D)
+a∨b ⊻ c∨d ; a∨b ⊻ c∨d
+a∨b ⊻ c ⊻ d
+(a∨b)⊻(_:=c) ∧ (_⊻d)
+⊻(a∨b,_:=c) ∧ ⊻(_,d)
+
+class Node:
+    __slots__ = ('t', 'c')
+    t = x ¿ y > 2 ¡ z
+    ⊢ __init__(𝕊, t=ᐦ, c=ᗜ):
+        𝕊.t, 𝕊.c = t, c or []
+    ⊢ __eq__(𝕊, n):
+        if ᐹ(n, ᔐ):
+            return 𝕊.t == n
+        assert n ᐹ Node
+        ↪ 𝕊.t == n.t and 𝕊.c == n.c
+
 calc_indent = ⥌n ↦ nᵗ ≡ ␛W ∧ n.c.split('\n')₋₁.count(' ') // 4 ∨ 0
 calc_indent = lambda n: n.t == "W" and n.c.split('\n')[-1].count(' ') // 4 or 0
 
@@ -8,10 +80,10 @@ a<b+2<c
 <
 <꜠
  a + 2⋅b + c
-🟑🟑🟑
+
 ⨳a<b<c⨳
 
-a < b < c
+z < b < c
 a < b
 b < c
 
@@ -48,25 +120,6 @@ if x+2: yield y+2
 
 ¿ 2: ☾ 1
 h = a¿b¡c
-
-class Node:
-    __slots__ = ('t', 'c')
-    t = x ¿ y > 2 ¡ z
-    ⊢ __init__(𝕊, t=ᐦ, c=ᗜ):
-        𝕊.t, 𝕊.c = t, c or []
-    ⊢ __eq__(𝕊, n):
-        if ᐹ(n, ᔐ):
-            return 𝕊.t == n
-        assert n ᐹ Node
-        ↪ 𝕊.t == n.t and 𝕊.c == n.c
-
-class AbsoluteWrapper:
-    def __init__(𝕊, *a, **k):
-        (𝕊.f, *𝕊.a), 𝕊.k = a, k
-    def __call__(𝕊, *a, **k):
-        if len(a) == 1 and callable(a[0]):
-            return 𝕊.f(a[0], *𝕊.a, **𝕊.k)
-        return type(𝕊)(𝕊.f, *a, **k)
 
  def p_indent_stack(S, n=0):
      r = []

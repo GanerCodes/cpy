@@ -38,45 +38,6 @@ class Node:
     text = lambda 𝕊: 𝕊.c if ᐹ(𝕊.c, ᔐ) else ᒍ(ᐦ, ᴍ(Node.text, 𝕊.c))
     txt = PRP(text)
     print = lambda 𝕊,d=100,p=0,m=64,w=64,s=3,N=Z.lR+'∅'+Z.W,F=lambda x,s=Z.P+'_'+Z.W:ᖇ(x,ń,s),D=lambda x,a=Z.G,b=Z.W:a+x+b,X=lambda x,a=Z.bdB,b=Z.bBLA:a+x+b:𝕊.t=="oper" and ((Y:=lambda v:ⵉ(𝕊.C[v].print(d,1)[0][1],ś,1)[-1]) and [(p,D('╴')+f"oper {Y(0)}|{Y(1)}|{Y(2)}")]) or d and (p and [(p,f"{D("╴╮╷"[ᖲ(𝕊.C)*(1+(p<2))])}{𝕊.t or N} {X(F(𝕊.txt[:m]) or N)}{((l:=ⵌ(𝕊.txt))>m) and f"……+{l-w}" or ᐦ}"),*((C:=[c.print(d-1,p+1) for c in 𝕊.C]) and sum([[(a,D("├│╰ "[(i+2>ⵌ(C))*2+ᖲ(o)]+"─ "[o>0]*(s-1))+d) for o,(a,d) in enum(v)] for i,v in enum(C)],[]))] or print(*(x[1] for x in 𝕊.print(d,1)),sep=ń)) or [(p,𝕊.t+'.'*3)]
-    
-    # def print(𝕊,d=100,p=0,
-    #         m=64,w=64,s=3,
-    #         N=Z.lR+'∅'+Z.W,
-    #         F=lambda x,s=Z.P+'_'+Z.W:ᖇ(x,ń,s),
-    #         D=lambda x:Z.G+x+Z.W,
-    #         X=lambda x:Z.bdB+x+Z.bBLA,
-    #         Y=lambda v,𝕊,*a: ⵉ(𝕊.C[v].print(*a)[0][1],ś,1)[-1]
-    #     ):
-    #     if 𝕊.t == "oper":
-    #         return [[p, '╴'+f"oper {Y(0,𝕊,d,p)}|{Y(1,𝕊,d,p)}|{Y(2,𝕊,d,p)}"]]
-    #     if d:
-    #         if p:
-    #             C = [c.print(d-1,p+1) for c in 𝕊.C]
-    #             l = ⵌ(𝕊.txt)
-                
-    #             if 𝕊.C:
-    #                 T = '╷' if p<2 else '╮'
-    #             else:
-    #                 T = '╴'
-    #             T += (𝕊.t or N) +ś+ (F(𝕊.txt[:m]) or N)
-    #             if l>m:
-    #                 T += f"……+{l-w}"
-                
-    #             k = [[p,T]]
-    #             for i, v in enum(C):
-    #                 for o, (a, d) in enum(v):
-    #                     if i+2 > ⵌ(C):
-    #                         t = ś if o else '╰'
-    #                     else:
-    #                         t = '│' if o else '├'
-    #                     v[o][1] = (ś if o>0 else '─')*(s-1) + d
-    #                 k += v
-    #             # print(len(k))
-    #             return k
-    #         else:
-    #             print(*(x[1] for x in 𝕊.print(d,1)), sep=ń)
-    #     else:
-    #         return [[p,𝕊.t+'.'*3]]
 
 NULL = Node("NULL")
 Ń = Node.n

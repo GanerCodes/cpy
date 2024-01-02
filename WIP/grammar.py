@@ -5,23 +5,24 @@ from op import OP, OP_MANAGER
 
 content_filter = lambda n: n.t or n.c
 content_reducer = lambda n: not n.t
-def P2N(p, F=content_filter, R=content_reducer):
-    args = F, R
-    if p.expr_name.startswith('__'):
-        return Node('__')
-    if p.expr_name.endswith('_'):
-        return Node(p.expr_name, 
-            p.children and
-                ᒍ(ᐦ, (P2N(x, *args).txt for x in p.children)) 
-            or 
-                p.text)
+def P2N(p, F=content_filter, R=content_reducer, red=ⴳ):
+    args = F, R, red
+    if red:
+        if p.expr_name.startswith('__'):
+            return Node('__')
+        if p.expr_name.endswith('_'):
+            return Node(p.expr_name, 
+                p.children and
+                    ᒍ(ᐦ, (P2N(x, *args).txt for x in p.children)) 
+                or 
+                    p.text)
     
     C = []
     for n in p.children:
         n = P2N(n, *args)
-        if n.t.startswith('__') or F and not F(n):
+        if (n.t.startswith('__') and red) or (F and not F(n)):
             continue
-        if not n.S and (n.t.startswith('_') or R and R(n)):
+        if not n.S and ((n.t.startswith('_') and red) or (R and R(n))):
             C.extend(n.c)
             continue
         C.append(n)
@@ -30,7 +31,7 @@ def P2N(p, F=content_filter, R=content_reducer):
 class Lang:
     def __init__(𝕊, lang_file):
         lang_t = R(lang_file)
-        𝕊.ops, gram, code_head, code_gen = 𝕊.parse_lang(lang_t)
+        𝕊.ops, 𝕊.op_orders, gram, code_head, code_gen = 𝕊.parse_lang(lang_t)
         𝕊.op_man = OP_MANAGER(𝕊.ops)
         𝕊.dynamic_parsers = DynamicParser(𝕊, code_head, code_gen)
         𝕊.gram = 𝕊.dynamic_parsers.parse_gram(gram)
@@ -108,10 +109,11 @@ class Lang:
         sections = spl_H(raw, r"«{3,}([^»]*)»{3,}")
         
         op_norm, op_spec = 𝕊.parse_secs(sections['OPERATORS'])
+        op_orders = {i: {h[0] for h in l} for i, l in enum(op_norm)}
         ops = 𝕊.gen_norm_ops(op_norm)
         ops |= 𝕊.gen_spec_ops(op_spec, ops)
         
-        return ops, sections["GRAMMAR"], sections["HEADERS"], sections["GENERATORS"]
+        return ops, op_orders, sections["GRAMMAR"], sections["HEADERS"], sections["GENERATORS"]
     
     def parse_as(𝕊, p, content, **kw):
         gram = 𝕊.gram[p]
@@ -119,21 +121,15 @@ class Lang:
         return p
     
     def clean_comments(𝕊, content):
-        return 𝕊.parse_as("parser_comment", content, F=lambda n: n.t != "comment").txt
+        return 𝕊.parse_as("parser_comment", content, F=lambda n: n.t != "comment", red=ⴴ).txt
     
     def parse_content(𝕊, content):
         n = 𝕊.parse_as("parser_main", content)
-        # n.print()
         n = 𝕊.dynamic_parsers.tree_transform(n)
-        # n.print()
         return 𝕊.dynamic_parsers.gen(n)
     
 l = Lang("cpy.lang")
 reparsed = l("test.txt")
-print('-'*50+ń+reparsed)
-
-# N: Nullary
-# S: Suffix
-# P: Prefix
-# B: Binary
-# I: Include self in right subgrouping (Right assoc.)
+print(ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{v}" for i,v in enum(ⵉ(reparsed, ń)))))
+print()
+exec(reparsed)
