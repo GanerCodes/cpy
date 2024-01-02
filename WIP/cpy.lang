@@ -110,8 +110,8 @@ kw_pfx = merge_shorthands("""
     return ␉ continue ␉ break ␉ pass
     import ␉ global ␉ nonlocal
     raise ␉ assert ␉ del ␉ async""")
-kw_inline = merge_shorthands("""
-    is ␉ or ␉ and ␉ not ␉ if ␉ elif ␉ else ␉ for ␉ yield""")
+kw_neverswouce = merge_shorthands("""if ␉ elif ␉ else ␉ for ␉ yield""")
+kw_inline = merge_shorthands("""is ␉ or ␉ and ␉ not""") | kw_neverswouce
 kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
 var_spec = set("ℵ𝕋𝔽îπτ□∅∞ᐦ")
@@ -125,7 +125,7 @@ register("KW_PFX_COLON", kw_pfx_colon)
 «««««««««««««««««««««««««««««««««« OPERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 ;ᴺ ,ᴺᴾᴵ󰁜
-=ᴺ ⮂ᴺᴾ󰁜 ↪ᴺᴾ󰁜 ↺ᴺ󰁜 ⇥ᴺ󰁜
+=ᴺᴾ󰁜 ⮂ᴺᴾ󰁜 ↪ᴺᴾ󰁜 ↺ᴺ󰁜 ⇥ᴺ󰁜
 ⠤ᴾ󰁜 ⠶ᴾ󰁜 :ᴺ󰁜
 ␀1ᴵᴮ ¿ᴺᴾ󰁜 ⸘ᴺᴾ󰁜 ¡ᴺᴾ󰁜
 ⨳ᴮᴾ󰀒ᴺ
@@ -178,7 +178,7 @@ _norm_expr_atom = (lamb / _gen_expr_atom) __E?
 _gen_expr_atom = group / _str / var_spec / oper / _kw / _script / variable_
 variable_ = (!W !oper !var_spec !_script ~"[^𝗮-𝘇␛𝚲⥌↦①②③④󰅂\\\"\\' \\[\\](){}⁅⁆〚〛⟨⟩‹›]")+
 
-group = ~"[\\[({⁅⟨〚]" exprs ~"[\\])}⁆⟩〛]"
+group = ~"[\\[({⁅⟨〚]" __W? exprs __W? ~"[\\])}⁆⟩〛]"
 
 oper = oper_mod_l oper_lit oper_mod_r
 oper_mod_l = ~"[⟥]*"
@@ -214,13 +214,14 @@ str_py_sub = ~"\\\\."
 
 w = ~"[ \t]+"
 W = ~"[ \t\n]+"
-__w = w
+__w = w ''
+__W = W ''
 __text_breaker = __E / &kw_spec / &var_spec / !variable_
 __E = __w / __escaped_newline
 __escaped_newline = __escape '\n'
 __escape = '␛'
 
-comment = ~"([|#][^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
+comment = ~"((|#)[^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
 
 «««««««««««««««««««««««««««««««««« GENERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
@@ -239,7 +240,11 @@ replacement("parser_main", recurse_children='A', order=O0)(whitespace_parser)
 def expr_types(n): return n.copy("expr")
 
 @replacement(*KEYWORD_NODE_NAMES, order=(1, "Lang keywords → cpy keywords"))
-def rep_keyword(n): return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
+def rep_keyword(n):
+    if n.txt in kw_inline: # keyword that are just ops
+        return OP.sym_to_node(KEYWORDS_TO_CPY.get(n.txt, n.txt))
+    else:
+        return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
 
 @replacement("expr", recurse_children='B', order=(50, "Parse expressions"))
 def expr(n): return into_expr(parse_expr(ᖵ(lambda x: x.t != 'w', n.C)))
@@ -279,7 +284,6 @@ def mkbltnop(op_l): # format builtins if needed
 demodp = lambda o: (o.C[0].txt, o.C[1], o.C[2].txt)
 def transform_oper(op_): # apply modifiers to op
     m_l, op_l, m_r = demodp(op_)
-    print(f"{m_l=} {op_l=} {m_r=}")
     if not (m_l or m_r):
         return op_l
     op_n = mkbltnop(op_l)
@@ -311,7 +315,7 @@ def op_call(n):
             case '←': return R
             case '.': return mkexp(l, op_l, r)
             case '≔': return mkgxp(l, op_l, R)
-            case ':'|'¿'|'⸘'|'¡':
+            case ':'|'¿'|'⸘'|'¡'|'=':
                       return mkexp(op_l, r)
             case ','|'⮂'|'↺'|'⇥'|'↪':
                       return mkexp(op_l, r)
@@ -319,9 +323,7 @@ def op_call(n):
                       return mkgxp(op_l, R)
             case ('∨'|'∧') if L and R:
                       return mkgxp(L, op_l, R)
-            case ('@') if not L and R:
-                      return mkexp(op_l, R)
-            case ('⠤'|'⠶'|'*'|'**') if not L and R:
+            case ('⠤'|'⠶'|'@'|'*'|'**') if not L and R:
                       return mkexp(op_l, r)
     
     op_l = transform_oper(op_)
@@ -343,11 +345,11 @@ replacement("op_call", recurse_children='B', order=(53, "Refactor op calls"))(op
 
 @replacement("oper", order=(54, "Refactor sitting ops"))
 def rep_oper(n):
+    if n.C[1].txt in kw_neverswouce:
+        return n
     if not (n.C[2].txt or n.C[0].txt):
         n = n.copy(c=[n.C[0], n.C[1], n.C[2].copy(c="´")])
-    print(f"{n=}")
     k = transform_oper(n)
-    print(f"{k=}")
     return k
 
 @replacement(*KEYWORD_NODE_NAMES, "oper_lit", order=(54.1, "Lang keywords ← cpy keywords"))
@@ -427,4 +429,4 @@ def gen_lamb(n):
         else      : H += f',*{PY_ARGS},**{PY_KWARGS}'
     else:
         assert ⴴ
-    return f"(lambda {H}: {gen(b.C[0])})"
+    return f"(lambda {H}:{gen(b.C[0])})"

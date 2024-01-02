@@ -113,7 +113,7 @@ class DynamicParser:
         𝕊.code_namespace[name] = toks
         𝕊.grammar_imports[name.lower()] = 𝕊.format_grammar_toks(toks)
     
-    rgx4grammar = SMD(lambda x: f'~"{ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\\\')}"')
+    rgx4grammar = SMD(lambda x: f'~"{ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\'*2)}"')
     def parse_gram(𝕊, gram):
         gram = f"{GRAM_HEADER}{
             ᒍ(ń, (f"{i}={𝕊.rgx4grammar(v)}" for \
