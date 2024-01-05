@@ -40,11 +40,11 @@
 
 def swag_arrow(n, arrow, layers):
     spl_ops = reduce(lambda x,y:x|y, layers[:arrow.o])
-    α, β = partition(partial(𝕊.get_op, layer=is_this_arrow))
+    α, β = partition(ρ(𝕊.get_op, layer=is_this_arrow))
     if arrow.d == 'r':
-        n = partition(β, partial(𝕊.get_op, layer=spl_ops))
+        n = partition(β, ρ(𝕊.get_op, layer=spl_ops))
     if arrow.d == 'l':
-        n = partition(α, partial(𝕊.get_op, layer=spl_ops))
+        n = partition(α, ρ(𝕊.get_op, layer=spl_ops))
 
 𝜶 ᴍ 𝑥∨𝑦+2 = 𝜶 ᴍ 𝑥∨(𝑦+2)
 𝜶 ᴍ 𝑥∨𝑦→+2 = 𝜶 ᴍ (𝑥∨𝑦)+2

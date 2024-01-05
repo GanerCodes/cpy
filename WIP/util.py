@@ -1,62 +1,83 @@
-from traceback_with_variables import activate_by_import
+# from traceback_with_variables import activate_by_import
 
 from collections import namedtuple as NT
-from functools import reduce, partial
-from itertools import accumulate, pairwise
-from more_itertools import windowed, split_at, mark_ends, peekable
+from functools import reduce, partial as ρ
+from itertools import accumulate, pairwise, starmap, chain
+from more_itertools import *
 import colored
+import regex
 import regex as re
 from enum import Enum
 
+
 # poorman's cpy
-print = lambda *a,__print=print,**k: __print(*a,**k) or a and a[0]
+wrg = lambda F: lambda*a,**k:[*F(*a,**k)]
+print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 (ń,ś),ᐦ = '\n ', ''
 ⴳ, ⴴ, ᗜ = True, False, None
 ᖲ, ᖱ, ᒪ = bool, dict, list
 ᔐ, ᒍ, ᖇ, ⵉ, ⵐ = str, str.join, str.replace, str.split, str.strip
+ᖵ, ζ = wrg(filter), wrg(zip)
+ᖶ = lambda f,v:ᖵ(lambda x:not f(x), v)
 ⵌ, ⵗ = len, range
-ᴍ, ζ = lambda*a,**k:[*map(*a,**k)], lambda*a,**k:[*zip(*a,**k)]
-ᖵ    = lambda*a,**k:[*filter(*a,**k)]
 Т, ᐹ = type, isinstance
 ⴷ, ⴸ = all, any
-ᴍᴍ = lambda n,f,l: ᴍ(f,l) if n<=1 else [ᴍᴍ(n-1,f,c) for c in l]
+ᴍ, ᴍs, ᴍᴍ = wrg(map), wrg(starmap), lambda n,f,l: ᴍ(f,l) if n<2 else [ᴍᴍ(n-1,f,c) for c in l]
 ε = lambda x: [x] if x else []
+δ = lambda x: [] if x is ᗜ else [x]
 SMD, CMD, PRP = staticmethod, classmethod, property
-
-def J́(L, s, l=ⴴ, r=ⴴ):
-    if ⵌ(L) == 0: return [s]*ᖲ(l or r)
-    if ⵌ(L) == 1: return [s]*ᖲ(l)+L+[s]*ᖲ(r)
-    r, e = [s] if l else [], (L := L.copy()).pop()
-    while L:
-        r += [L.pop(0), s]
-    r.append(e)
-    if r:
-        r.append(s)
-    return r
 
 enum = enumerate
 R = lambda *a,**k:open(*a,**k).read()
+ID = lambda x: x
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
-flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), type(l[0])() if ⵌ(l) else [])
+flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
 rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
 spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
 collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
-_V,P=0,partial(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(' '*(_V-1+(n<0))+'|'+('←→'[n>0]if n else' '),*a,**k),0)
+_V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
+
+class ᗮ: __xor__=lambda 𝕊,o:not o
+ᗮ=ᗮ()
+
+def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
+    if ⵌ(L) == 0: return [s]*ᖲ(E and (l or r))
+    if ⵌ(L) == 1: return [s]*ᖲ(l)+L+[s]*ᖲ(r)
+    R, e = [s] if l else [], (L := L.copy()).pop()
+    while L:
+        R += [L.pop(0), s]
+    R.append(e)
+    if r:
+        R.append(s)
+    return R
+
+def map_groups(l, F, M, I=ID, O=ID):
+    t = []
+    for k in l:
+        if F(k):
+            t.append(I(k))
+            continue
+        if t:
+            yield M(t)
+            t = []
+        yield O(k)
+    if t:
+        yield M(t)
 
 class Z:
-    s=[colored.Fore.WHITE+colored.Back.BLACK]
+    s = [colored.Fore.WHITE+colored.Back.BLACK]
+    d_b, d_f = colored.Back.__dict__, colored.Fore.__dict__
     def __getattr__(𝕊, a):
         if a == 'p':
             Z.s.pop()
         else:
-            if a[0] == 'b': m, a = colored.Back, a[1:]
-            else: m = colored.Fore
+            if a[0] == 'b': m, a = Z.d_b, a[1:]
+            else: m = Z.d_f
             if   a[0] == 'd': a =  "DARK_" + a[1:]
             elif a[0] == 'l': a = "LIGHT_" + a[1:]
-            Z.s += [getattr(m,
-                min(filter(lambda x: x.startswith(a), dir(m)), key=ⵌ))]
+            Z.s.append(m[min(ᖵ(lambda x: x.startswith(a), m), key=ⵌ)])
         return Z.s[-1]
 Z=Z()
 

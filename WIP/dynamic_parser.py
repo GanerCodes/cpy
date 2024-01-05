@@ -38,7 +38,7 @@ class DynamicParser:
     def _apply_tree_manip(𝕊, m, n, order):
         N = n.copy()
         if m.recurse_children == 'B' and not N.S:
-            N.c = ᴍ(partial(𝕊.lang_tree_manip, order=order), N.c)
+            N.c = ᴍ(ρ(𝕊.lang_tree_manip, order=order), N.c)
         N = m(N)
         if ᐹ(N, ᒪ):
             N = Ń('∅', *N)
@@ -47,7 +47,7 @@ class DynamicParser:
             return N.c
         else:
             if m.recurse_children == 'A' and not N.S:
-                N.c = ᴍ(partial(𝕊.lang_tree_manip, order=order), N.c)
+                N.c = ᴍ(ρ(𝕊.lang_tree_manip, order=order), N.c)
         return N
     
     def lang_tree_manip(𝕊, N, order):
@@ -125,11 +125,12 @@ class DynamicParser:
         return {
             "register": 𝕊.register_tokset,
               "op_man": 𝕊.lang.op_man,
+               "CONST": {},
                 "lang": 𝕊.lang }
     def get_namespace_gen(𝕊):
         return {
-            "replacement": AbsoluteWrapper(partial(𝕊.add_manip, "replacement")),
-              "reduction": AbsoluteWrapper(partial(𝕊.add_manip, "reduction")),
+            "replacement": AbsoluteWrapper(ρ(𝕊.add_manip, "replacement")),
+              "reduction": AbsoluteWrapper(ρ(𝕊.add_manip, "reduction")),
               "generator": AbsoluteWrapper(𝕊.add_generator),
              "parse_expr": 𝕊.lang.op_man.parse_expr,
               "into_expr": into_expr,

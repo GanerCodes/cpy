@@ -36,11 +36,11 @@ class Lang:
         𝕊.dynamic_parsers = DynamicParser(𝕊, code_head, code_gen)
         𝕊.gram = 𝕊.dynamic_parsers.parse_gram(gram)
     
-    def __call__(𝕊, content_file):
+    def __call__(𝕊, content_file, **K):
         content = R(content_file)
         if "parser_comment" in 𝕊.gram:
             content = 𝕊.clean_comments(content)
-        content = 𝕊.parse_content(content)
+        content = 𝕊.parse_content(content, **K)
         return content
     
     @staticmethod
@@ -63,7 +63,7 @@ class Lang:
                 if mod & set('BS'): kw['L'] = meal.copy()
                 if mod & set('BP'): kw['R'] = meal.copy()
                 op = OP(op_t, mod, **kw)
-                op.f = partial(make_op_call, op)
+                op.f = ρ(make_op_call, op)
                 ops[op_t] = op
         return ops
     
@@ -85,7 +85,7 @@ class Lang:
                 mod, ops[R].R)
             
             op = OP(op_t, mod, **kw)
-            op.f = partial(make_op_call, op)
+            op.f = ρ(make_op_call, op)
             
             gen_ops[op_t] = op
         return gen_ops
@@ -123,13 +123,22 @@ class Lang:
     def clean_comments(𝕊, content):
         return 𝕊.parse_as("parser_comment", content, F=lambda n: n.t != "comment", red=ⴴ).txt
     
-    def parse_content(𝕊, content):
+    def parse_content(𝕊, content, **K):
         n = 𝕊.parse_as("parser_main", content)
+        𝕊.dynamic_parsers.code_namespace["CONST"] = K
         n = 𝕊.dynamic_parsers.tree_transform(n)
         return 𝕊.dynamic_parsers.gen(n)
-    
-l = Lang("cpy.lang")
-reparsed = l("test.txt")
-print(ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{v}" for i,v in enum(ⵉ(reparsed, ń)))))
-print()
-exec(reparsed)
+
+if __name__ == "__main__":
+    l = Lang("cpy.lang")
+    prs = ρ(l, "test.txt")
+
+    normal = prs()
+    pretty = prs(NOVAR=1)
+
+    print(normal)
+    print()
+    print(ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{v}" for i,v in enum(ⵉ(pretty, ń)))))
+    print()
+    exec(normal)
+    print()

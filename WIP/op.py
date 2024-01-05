@@ -8,7 +8,7 @@ class OP:
     _or  = staticmethod(lambda x, y: x | 1 << _OP_TYPES.index(y))
     
     @classmethod
-    def sym_to_node(ℂ, s, l=ᐦ, r=ᐦ):
+    def TND(ℂ, s, l=ᐦ, r=ᐦ):
         return Node.n("oper", 
             ("oper_mod_l", l),
             ("oper_lit"  , s),
