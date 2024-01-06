@@ -1,15 +1,15 @@
 from util import *
-from node import Node
+from node import *
 
 _OP_TYPES = "NPSB"
 class OP:
     __slots__ = tuple("tvFLRf")
-    _and = staticmethod(lambda x, y: x & 1 << _OP_TYPES.index(y))
-    _or  = staticmethod(lambda x, y: x | 1 << _OP_TYPES.index(y))
+    _and = SMD(lambda x, y: x & 1 << _OP_TYPES.index(y))
+    _or  = SMD(lambda x, y: x | 1 << _OP_TYPES.index(y))
     
     @classmethod
     def TND(ℂ, s, l=ᐦ, r=ᐦ):
-        return Node.n("oper", 
+        return Ń("oper", 
             ("oper_mod_l", l),
             ("oper_lit"  , s),
             ("oper_mod_r", r))

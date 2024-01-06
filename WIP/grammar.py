@@ -1,3 +1,4 @@
+from peggle import Parser
 from util import *
 from dynamic_parser import DynamicParser, make_op_call
 from node import Node

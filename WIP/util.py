@@ -2,12 +2,13 @@
 
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
-from itertools import accumulate, pairwise, starmap, chain
+from itertools import accumulate, pairwise, starmap, chain, filterfalse
 from more_itertools import *
 import colored
 import regex
 import regex as re
 from enum import Enum
+
 
 
 # poorman's cpy
@@ -17,8 +18,7 @@ print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 ⴳ, ⴴ, ᗜ = True, False, None
 ᖲ, ᖱ, ᒪ = bool, dict, list
 ᔐ, ᒍ, ᖇ, ⵉ, ⵐ = str, str.join, str.replace, str.split, str.strip
-ᖵ, ζ = wrg(filter), wrg(zip)
-ᖶ = lambda f,v:ᖵ(lambda x:not f(x), v)
+ᖵ, ᖶ, ζ = wrg(filter), wrg(filterfalse), wrg(zip)
 ⵌ, ⵗ = len, range
 Т, ᐹ = type, isinstance
 ⴷ, ⴸ = all, any
@@ -26,7 +26,7 @@ print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 ε = lambda x: [x] if x else []
 δ = lambda x: [] if x is ᗜ else [x]
 SMD, CMD, PRP = staticmethod, classmethod, property
-
+FS = frozenset
 enum = enumerate
 R = lambda *a,**k:open(*a,**k).read()
 ID = lambda x: x
@@ -41,6 +41,23 @@ _V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))
 
 class ᗮ: __xor__=lambda 𝕊,o:not o
 ᗮ=ᗮ()
+
+import cProfile, pstats, io
+from pstats import SortKey
+__proft = ⴴ
+def togprof():
+    global __proft
+    if __proft:
+        __proft.disable()
+        s = io.StringIO()
+        sortby = SortKey.CUMULATIVE
+        ps = pstats.Stats(__proft, stream=s).sort_stats(sortby)
+        ps.print_stats()
+        print(s.getvalue())
+        __proft = ⴴ
+        return breakpoint()
+    __proft = cProfile.Profile()
+    __proft.enable()
 
 def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
     if ⵌ(L) == 0: return [s]*ᖲ(E and (l or r))

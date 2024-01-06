@@ -5,9 +5,9 @@ class Node:
     
     Ń = CMD(lambda 𝕋,t,*C:𝕋(t,[𝕋(c=c) if ᐹ(c,ᔐ) else (𝕋.Ń(*c) if ᐹ(c,ᒪ|tuple) else c) for c in C]))
     
-    def __init__(𝕊, t=ᐦ, c=ᗜ):
+    def __init__(𝕊, t=ᐦ, c=None):
         assert ᐹ(t, ᔐ|tuple)
-        𝕊.t, 𝕊.c = t, [] if c is ᗜ else c
+        𝕊.t, 𝕊.c = t, [] if c is None else c
     
     def __len__(𝕊):
         return ⵌ(𝕊.C)
@@ -28,42 +28,53 @@ class Node:
         return f"{𝕊.t}{f"[{ᒍ(',', ᴍ(ᔐ, 𝕊.c))}]" if 𝕊.L else \
             f"⟨{f'"{𝕊.c}"' if 𝕊.S else f"{Т(𝕊.c)} {𝕊.c}"}⟩"}"
     
-    def copy(𝕊, t=ᗜ, c=ᗜ, deep=0):
-        T = 𝕊.t if t is ᗜ else t
-        C = 𝕊.c if c is ᗜ else c
+    def copy(𝕊, t=None, c=None, deep=0):
+        T = 𝕊.t if t is None else t
+        C = 𝕊.c if c is None else c
+        n = type(𝕊)
         if ᐹ(C, ᔐ) or not deep:
-            return Т(𝕊)(T, C)
+            return n(T, C)
         if deep == 1:
-            return Т(𝕊)(T, C.copy(deep=deep))
+            return n(T, C.copy(deep=deep))
         if deep  > 1:
-            return Т(𝕊)(T, ᴍ(ρ(Т(𝕊).copy, deep=deep), C))
-        assert ⴴ
+            return n(T, ᴍ(ρ(n.copy, deep=deep), C))
+        assert False
     
     def filter(𝕊, f, rec=ⴳ):
-        if not 𝕊.C: return 𝕊
+        if not (C := 𝕊.C): return 𝕊
         p = ρ(Т(𝕊).filter, f=f, rec=rec)
-        C = ᴍ(p, 𝕊.C) if rec else 𝕊.C
-        return 𝕊.copy(c=ᖵ(f, C))
+        C = [p(c) for c in 𝕊.c] if rec else 𝕊.c
+        return 𝕊.copy(c=[c for c in C if f(c)])
     
+    generic_flatten = lambda n: n.c if ᐹ(n, Node) and n.L else [n.c]
     def flatten_kids(𝕊, f, r=ᗜ, rec=ⴳ):
-        if not 𝕊.L: return 𝕊
-        if r is ᗜ: r = lambda n: n.c if ᐹ(n,Т(𝕊)) and n.L else [n.c]
+        if not 𝕊.C: return 𝕊
+        if r is None: r = Т(𝕊).generic_flatten
         p = ρ(Т(𝕊).flatten_kids, f=f, r=r, rec=rec)
-        C = ᴍ(p, 𝕊.C) if rec else 𝕊.C
-        return 𝕊.copy(c=sum([r(c) if f(c) else [c] for c in C], []))
+        C = [p(c) for c in 𝕊.c] if rec else 𝕊.c
+        return 𝕊.copy(c=ᒪ(chain(*[r(c) if f(c) else [c] for c in C])))
         
     def child_killer(𝕊, f, rec=ⴳ):
-        return 𝕊.flatten_kids(f, lambda n: [], rec=rec)
+        if not 𝕊.C: return 𝕊
+        C = [c for c in 𝕊.c if not f(c)]
+        if rec:
+            C = [c.child_killer(f, rec) for c in C]
+        return Node(𝕊.t, C)
     
-    def find_replace(𝕊, f, r, collect=ⴴ, *, L=ᗜ):
-        if top := L is ᗜ: L = []
+    def collect_kids(𝕊, f, *, L=ᗜ):
+        if L is None: L = []
+        if f(𝕊): L.append(𝕊)
+        if 𝕊.L:
+            p = ρ(Т(𝕊).collect_kids, f=f, L=L)
+            for c in 𝕊.c: p(c)
+        return L
+    
+    def find_replace(𝕊, f, r):
         N = 𝕊.copy()
         if N.L:
-            N.c = ᴍ(ρ(Т(𝕊).find_replace, f=f, r=r, collect=collect, L=L), N.c)
-        if f(N):
-            L.append(N)
-            N = r(N)
-        return (N, L) if top and collect else N
+            p = ρ(Т(𝕊).find_replace, f=f, r=r)
+            N.c = [p(c) for c in 𝕊.c]
+        return r(N) if f(N) else N
     
     def lstrip(𝕊, f=lambda n: n.t and n.t in "wW"):
         C = 𝕊.C.copy()
@@ -76,10 +87,18 @@ class Node:
     def strip(𝕊, f=ᗜ):
         return 𝕊.lstrip(*(F:=δ(f))).rstrip(*F)
     
-    g = PRP(lambda 𝕊: (𝕊.t, 𝕊.c))
+    def text(𝕊):
+        if ᐹ(𝕊, Node):
+            if 𝕊.S:
+                return 𝕊.c
+            if 𝕊.L:
+                return ᒍ(ᐦ, ᴍ(Т(𝕊).text, 𝕊.c))
+            return f"¿ {𝕊.c}"
+        return f"‼ <{Т(𝕊).__name__}> {𝕊}"
+    
     S, L = PRP(lambda 𝕊: ᐹ(𝕊.c, ᔐ)), PRP(lambda 𝕊: ᐹ(𝕊.c, ᒪ))
     C = PRP(lambda 𝕊: 𝕊.c if 𝕊.L else [])
-    text = lambda 𝕊: (ᒍ(ᐦ, ᴍ(Т(𝕊).text, 𝕊.c)) if 𝕊.L else Т(𝕊).text(𝕊.c)) if ᐹ(𝕊, Node) else 𝕊 if ᐹ(𝕊, ᔐ) else f"{Т(𝕊)} {𝕊}"
+    
     txt = PRP(text)
     pr = PRP(lambda 𝕊: print(𝕊))
     def print(𝕊,d=100,p=0,m=64,w=64,s=3,N=Z.lR+'∅'+Z.W,

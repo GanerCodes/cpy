@@ -1,0 +1,58 @@
+parser_main = exprs
+parser_comment = (⠶str ∨ comment ∨ ~‹.›)*
+
+exprs = W? (⠶expr W?)*
+expr = (
+    (kw_pfx_colon_expr = ⠶norm_expr_atom+)
+        ∨ (kw_pfx_expr = ⠶vkw_pfx norm_expr)
+          ∨ (norm_expr = ⠶vkw_pfx_colon 󰆴E? ↷ (expr_not_colon? 󰆴':') expr?))
+
+expr_not_colon = (¬':' ⠶norm_expr_atom)+
+expr_not_comma = (¬',' ⠶norm_expr_atom)+
+
+vkw_pfx_colon = ⮞kw_spec kw_pfx_colon ∨ kw_pfx_colon ⮞text_breaker
+vkw_pfx       = ⮞kw_spec kw_pfx       ∨ kw_pfx       ⮞text_breaker
+vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
+
+norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
+gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
+var = (¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦①②③④󰅂"'\[\](){}⁅⁆〚〛⟨⟩‹ ␛␛␛›]›)+
+
+group = ~‹[\[({⁅⟨〚]› (󰆴W? ↷ exprs) ~‹[\])}⁆⟩〛]›
+
+oper = (
+    (oper_mod_l = ~‹[⟥]*›)
+     oper_lit
+    (oper_mod_r = ~‹[´꜠ᵜ⟤]*›))
+
+script = (
+    (supscript = ~‹[ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶◌◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾◌◌◌˜]+›)
+  ∨ (subscript = ~‹[ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎﹠﹩﹪◌]+›))
+
+lamb = (
+    ( 
+        (lamb_h_py = 󰆴"lambda" ⮞text_breaker ⠶expr_not_colon 󰆴':')
+      ∨ (lamb_h_normal = 
+            󰆴'⥌' 󰆴E? 
+            ⠶((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴E?)*
+            󰆴'↦' )
+      ∨ (lamb_h_preset = ~"[𝚲①②③④]")
+      ∨ (lamb_h_implicit = var 󰆴'↦') 󰆴E?)
+    (lamb_b = (exprs 󰆴'󰅂') ∨ expr_not_comma))
+
+str = str_cpy ∨ str_py ∨ str_escape ∨ str_spec_char
+str_cpy = 󰆴'‹' (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)* 󰆴'›'
+str_sub = 󰆴'〚' exprs 󰆴'〛'
+str_spec_char = ~‹[𝗮-𝘇]›
+str_guts = ~‹[^〚␛␛␛›]+›
+str_escape = 󰆴"␛␛" ~‹.›
+str_py = ((‹"› (str_py_sub ∨ ~‹[^"\]+›)* ‹"›)
+       ∨  (‹'› (str_py_sub ∨ ~‹[^'\]+›)* ‹'›))
+str_py_sub = ~‹\\.›
+
+w = ~‹[ \t]+›
+W = ~‹[ \t\n]+›
+text_breaker = ⮞(E ∨ kw_spec ∨ var_spec ∨ ¬var)
+E = w ∨ ‹␛␛\n›
+
+comment = ~"((|#)[^\\n]*(\\n|\\Z))|(🟑[^🟑]*(🟑|\\Z))|(֎[^֎]*(֎|\\Z))"s
