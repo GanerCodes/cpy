@@ -1,71 +1,6 @@
-x += 2
-
-֎
-x = 2 + a.b += 2
-
-x += y
-
-a.b.c[2][2].k
-
-
-def split_target(l):
-    l, t = l.copy(), []
-    while l:
-        α = l.pop()
-        if α.t == "oper":
-            if α.txt == '.':
-                return '.', l, t
-            assert ⴴ
-        if α.t == "group" and \
-                α.C[0].txt == '[' and \
-                α.C[2].txt == ']':
-            return 'l', l, α.C[1]
-        t.insert(0, α)
-    return ᐦ, l
-
-def make_inline_asgn(α, Σ, β):
-    α = split_target(α.C)
-    if ⵌ(α) == 2:
-        return mkgxp(
-            α[1],
-            ("oper_lit", ":="),
-            mkgxp(
-                ("op_call",
-                mkexp(α[1]), Σ, mkexp(β))))
-    
-    τ, κ, ν = α
-    if τ == '.':
-        ρ1, ρ2 = "setattr_ret_", "setitem_ret_"
-    else:
-        ρ1, ρ2 = "getattr", "getitem"
-        ν = ("str_escape", ν)
-    
-    EQCLN = ("oper_lit", ":=")
-    ρ1, ρ2 = mkvar(ρ1), mkvar(ρ2)
-    κ, ν = mkgxp(κ), mkgxp(ν)
-    Ń("expr_",
-        ρ1,
-        mkgrp(Ń("expr_",
-            ("expr_", þ1 := ("var", 'Δ'), EQCLN, κ)
-            COMMA,
-            ("expr_", þ2 := ("var", 'δ'), EQCLN, ν)
-            COMMA,
-            ("expr",
-                ("expr_",
-                    ρ2,
-                    mkgrp(Ń("expr_",
-                        þ1, COMMA, þ2))),
-                Σ, β))))
-        
-    
-a.b += 2 
-setattr_ret_(Δ:=(a), δ:=('b'), getattr(Δ,δ)+2)
-
-a['b'] += 2
-setitem_ret_(Δ:=(a), δ:=('b'), getitem(Δ,δ)+2)
-
- ֎
-🟑
+getitem = ②x[y]
+setattr_ret_ = ③setattr(x,y,z) ∨ z
+setitem_ret_ = ③x.__setitem__(y,z) ∨ z
 ⮌ functools ⨡ reduce
 ⮌ inspect ⨡ currentframe, getframeinfo
 ⨡ traceback, sys
@@ -82,8 +17,6 @@ LITERAL_OPS_ = {
     '==':②x≡y, '!=':②x≠y,
     '//': ②x//y }
 
-∋ = ②y ∈ x
-
 
 𝑏,𝑙 = bool, list
 𝕋,𝔽,□ = True, False, None
@@ -91,6 +24,8 @@ LITERAL_OPS_ = {
 𝕝 = ①[*𝔸]¿x≅NULL¡[x]
 󰈲 = ①𝑙(filter(*𝕝(*𝔸,□),x))
 𝕣 = ①x󰈲①x≇NULL
+
+∋ = ②y ∈ x
 
 ᐹ = isinstance
 ☾ = 𝚲print(⠤𝔸,⠶𝕂)∨𝔸₀
@@ -106,7 +41,6 @@ LITERAL_OPS_ = {
 ! = ①1…←x+1→Π1
 ⋄ = ②(x¿xᐹ𝑙¡⛶x→+[y])
 
-☾ 1⋄2⋄3
-
- 1⋄2 ζ 3⋄4 ſ ②x🃌→⌃←🃌y󰅂
- ((1⋄2) ζ (3⋄4)) ſ (②x🃌→⌃←🃌y󰅂)
+x = 5
+☾←x≥=2
+➰ x -= 1 → ☾: □

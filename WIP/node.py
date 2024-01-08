@@ -70,10 +70,10 @@ class Node:
             for c in 𝕊: p(c)
         return L
     
-    def find_replace(𝕊, f, r):
+    def find_replace(𝕊, f, r, rec=ⴳ):
         N = 𝕊.copy()
-        if N.L:
-            p = ρ(Т(𝕊).find_replace, f=f, r=r)
+        if N.L and rec != 0:
+            p = ρ(Т(𝕊).find_replace, f=f, r=r, rec=rec if rec else 0)
             N.c = [p(c) for c in 𝕊.c]
         return r(N) if f(N) else N
     

@@ -4,6 +4,8 @@
 
 «««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
+from whitespace_tools import *
+
 py_bad_string_chr  = lambda s, bad="\\\"'{}": s in bad
 py_escape_char     = lambda c, u='\\u': u+HXO(c) if py_bad_string_chr(c) else c
 py_escape_string   = lambda s: ᐦ.join(py_escape_char(c) for c in s)
@@ -23,62 +25,6 @@ inv = lambda z: {y:x for x,y in z.items()}
 rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
 COMMA, COLON, EQCLN = Node("oper_lit", ','), Node("oper_lit", ':'), ("oper_lit", ":=")
-
-def p_indent_stack(S, n=0):
-    r = []
-    while S:
-        indent, *exprs = S[0]
-        if indent > n:
-            r.append(p_indent_stack(S, indent))
-        elif indent < n:
-            break
-        else:
-            S.pop(0)
-            r.extend(exprs)
-    return Node("BLOCK", r)
-
-def whitespace_parser(n):
-    calc_indent = lambda n: n.t == 'W' and n.c.split('\n')[-1].count(' ') // 4 or 0
-    if n.S: return n
-    N = n.copy()
-    N.c = ᴍ(whitespace_parser, N.c)
-    
-    if N.t == "exprs":
-        if not N.C: return N
-        
-        c_pre = N.C[0]
-        blocks = [[indent_pre := calc_indent(c_pre)]]
-        for c in N.C:
-            if c.t == 'W':
-                c_pre = c
-                continue
-            indent = calc_indent(c_pre)
-            if indent == indent_pre:
-                blocks[-1].append(c)
-            else:
-                blocks.append([indent, c])
-            indent_pre = indent
-        N.c = p_indent_stack(blocks, blocks[0][0]).c
-    
-    elif N.t == "group" and N.C[0].c == '〚':
-        raise NotImplementedError
-    
-    return N
-
-def whitespace_unparser(n, i=0):
-    if n.S: return n
-    N = n.copy()
-    
-    if N.t == "BLOCK":
-        i += 1
-    if N.t in ("BLOCK", "exprs"):
-        sep = Node("N", ń+ś*4*i)
-        N.c = sum(([sep, n] if n.t != "BLOCK" else [n] for n in N.c), [])
-        if N.c and N.t == "exprs":
-            N.c.pop(0)
-    
-    N.c = [whitespace_unparser(c, i) for c in N.c]
-    return N
 
 OPS_BUILTIN = {
     'S': ᐦ,
@@ -132,17 +78,18 @@ for k, v in lang.ops.items():
     if not v.B or 'δ' in v: continue
     n = OP(k+'=', 'B=', L, lang.ops["␀ASGN_MRK"].R, v.f)
     new_ops[n.t] = n
-for k, v in lang.ops.items():
-    if 'δ' in v or k in L: continue
-    v.R |= set(new_ops)
 lang.ops |= new_ops
+for k, v in lang.ops.items():
+    if k in L: continue
+    v.R |= set(new_ops)
 
 «««««««««««««««««««««««««««««««««« OPERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 ⨡ᴺᴾ󰁔
-␀ASGN_MRK ;ᴺᴾ󰁔 ,ᴺᴾ󰁔
+;ᴺᴾ󰁔 ,ᴺᴾ󰁔
 =ᴺᴾ󰁔 ⮂ᴺᴾ󰁔 ↪ᴺᴾ󰁔 ⮌ᴺᴾ󰁔 ↺ᴺ󰁔 ⇥ᴺ󰁔 ➰ᴺᴾ󰁔 ∀ ␛
-⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴺ󰁔
+⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴮᴾᴺ󰁔
+␀ASGN_MRKᴮ
 ␀1ᴵᴮ ¿ᴺᴾ󰁔 ⸘ᴺᴾ󰁔 ¡ᴺᴾ󰁔
 ⨳ᴮᴾ󰀒ᴺ
 ⊻ᴮᴺ󰁖 ␉ ⨁ᴮᴺ󰁖 ␉ ∨ᴮᴺ󰁜 ␉ ⊼ᴮᴺ󰁖 ␉ ∧ᴮᴺ󰁜
@@ -164,7 +111,7 @@ lang.ops |= new_ops
      ⋀ᴾ󰀒ᴺ ⋁ᴾ󰀒ᴺ
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮ
-.ᴵᴮ󰁏󰁔
+.ᴮ󰁏󰁔
 ...ᴺ
 
  .｜:=ᴵᴮ󰁜󰁏｜␀1
@@ -344,45 +291,47 @@ def σ_20():
         n="Parse expressions"))
     (lambda n: n.copy(c=into_expr(parse_expr(n.C)).c)))
 
+# 󰤱 recurse
 def σ_21():
     def split_target(l):
         l, t = l.copy(), []
         while l:
             α = l.pop()
-            if α.t == "oper":
-                if α.txt == '.':
-                    return '.', l, t
-                assert ⴴ
+            if α == '.':
+                return '.', l, t[0]
+            if α.t == "op_call":
+                assert α.C[1].txt == '.'
+                l = l + [*α.C[0], '.', *α.C[2]]
+                continue
             if α.t == "group" and (α.C[0].txt, α.C[2].txt) == ('[', ']'):
                 return 'l', l, α.C[1]
             t.insert(0, α)
-        return [t]
+        assert ⵌ(t) == 1
+        return ᐦ, ᗜ, t[0]
 
     def make_inline_asgn(α, Σ, β):
-        # BP(f"{α=} {Σ=} {β=}")
-        α = split_target(α.C)
-        if ⵌ(α) == 1:
-            α, = α
-            print(f"{α=} {Σ=} {β=}")
-            return mkgxp(
-                α, EQCLN, mkgxp(
-                    ("op_call", mkexp(α), Σ, mkexp(β))))
+        τ, κ, ν = split_target(α.C)
         
-        τ, κ, ν = α
+        if τ == ᐦ:
+            return mkgrp(Ń("expr_",
+                ν, EQCLN, mkgxp(
+                    ("op_call", mkexp(ν), Σ, β))))
+        
         if τ == '.':
-            ρ1, ρ2 = "setattr_ret_", "setitem_ret_"
+            ρ1, ρ2 = "setattr_ret_", "getattr"
+            ν = ("str__", f'"{py_escape_var(ν.txt)}"')
         else:
-            ρ1, ρ2 = "getattr", "getitem"
-            ν = ("str_escape", ν)
+            ρ1, ρ2 = "setitem_ret_", "getitem"
         
-        ρ1, ρ2 = mkvar( ρ1), mkvar( ρ2)
-        þ1, þ2 = mkvar('Δ'), mkvar('δ')
-        κ , ν  = mkgxp( κ ), mkgxp( ν )
-        Ń("expr_",
+        κ = [Ń("expr_", '.') if i == '.' else i for i in κ]
+        ρ1, ρ2 = mkvar( ρ1 ), mkvar( ρ2 )
+        þ1, þ2 = mkvar('🜄0'), mkvar('🜄1')
+        κ , ν  = mkgxp( *κ ), mkgxp(  ν )
+        return Ń("expr_",
             ρ1, mkgrp(Ń("expr_",
                 ("expr_", þ1, EQCLN, κ), COMMA,
                 ("expr_", þ2, EQCLN, ν), COMMA,
-                ("expr", ("expr_",
+                ("op_call", ("expr_",
                         ρ2,
                         mkgrp(Ń("expr_",
                             þ1, COMMA, þ2))),
@@ -390,12 +339,13 @@ def σ_21():
     
     @(yield replacement(
         "op_call",
-        rec='B',
+        rec='A',
         n="Refactor assignment infix opertators"))
     def _(n):
         α, Σ, β = n.C
         if '=' not in lang.ops[Σ.txt]: return n
         Σ = OP.TND(Σ.txt[:-1])
+        # n.print()
         return make_inline_asgn(α, Σ, β)
 
 def σ_25():
@@ -423,7 +373,7 @@ def make_cmp_chain(n, layers=ᗜ):
         return rec(n)
     r = ⴴ
     
-    tmp_v = mkexp(mkvar("🜄"))
+    tmp_v = mkexp(mkvar("🜄🜄"))
     for H,T,(a,(b,),c) in mark_ends(windowed(C, 3, step=2)):
         c = mkexp_rec(c)
         v = mkexp(("op_call", H and mkexp_rec(a) or tmp_v,
@@ -569,21 +519,6 @@ def σ_48():
         *n.C[2:])))
 
 def σ_50():
-    def incompat_char(x, y):
-        good_chars = "~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"
-        return not (x in good_chars or y in good_chars)
-    
-    def flat_all(n):
-        if not n.C: return n
-        cc, s = [], peekable([flat_all(c) for c in n.C])
-        while ((α := next(s)) or 1) and s:
-            β = s.peek()
-            cc.append(α)
-            if (a:=α.txt) and (b:=β.txt) and incompat_char(a[-1], b[0]):
-                cc.append(Node('w', ś))
-        cc.append(α)
-        return n.copy(c=cc)
-
     ((yield replacement(
         "kw_pfx_colon_expr",
         rec='B',
@@ -594,7 +529,7 @@ def σ_50():
         "parser_main",
         rec='B',
         n="Insert spaces"))
-    (flat_all))
+    (add_spaces))
 
 # § node transpilers
 @generator(*KEYWORD_NODE_NAMES, "oper_lit")
