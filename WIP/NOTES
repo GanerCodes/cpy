@@ -1,9 +1,12 @@
+TODO:
+    F STRINGS
+    TYPEHINTS {PROB DONT DO THIS ONE}
+
 1⋄2 ζ 3⋄4 ſ ②x🃌→⌃←🃌y󰅂
 ((1⋄2) ζ (3⋄4)) ſ (②x🃌→⌃←🃌y󰅂)
 
 ②x🃌→⌃←🃌y󰅂 = ②(x🃌)⌃(🃌y)󰅂 = ②(🃌(x))⌃(🃌(y))󰅂
 ②x🃌→f←🃌y󰅂 = ②f(x🃌, 🃌y)󰅂 = ②f(🃌(x), 🃌(y))󰅂
-
 
 ‹A␛›C〚2+2〛D␛␛E␛𝗻F𝗻›
 ␛x 𝗻 ␛𝗻

@@ -1,6 +1,6 @@
 from util import *
 from node import *
-from parsimonious.grammar import Grammar
+from peggle import Parser
 
 GRAM_HEADER = ""
 CODE_HEADER = """\
@@ -35,18 +35,34 @@ class AbsoluteWrapper:
         return type(𝕊)(𝕊.f, *a, **k)
 
 class DynamicParser:
+    def __init__(𝕊, lang, code_head, code_gen):
+        𝕊.lang, 𝕊.generators, 𝕊.grammar_imports = lang, {}, {}
+        𝕊.tree_manips = {"replacement": {}, "reduction": {}}
+        𝕊.code_namespace = 𝕊.get_namespace_head()
+        exec(CODE_HEADER+code_head, 𝕊.code_namespace)
+        𝕊.register_tokset("OPER_LIT", 𝕊.lang.ops.keys())
+        𝕊.code_namespace |= 𝕊.get_namespace_gen()
+        exec(code_gen, 𝕊.code_namespace)
+        for k,v in 𝕊.code_namespace.items():
+            if not k.startswith("σ_"):
+                continue
+            𝕊.parse_manip_layer(k, v)
+    
+    def __repr__(𝕊):
+        return f"{Т(𝕊).__name__}[orders={𝕊.get_orders()}]"
+    
     def _apply_tree_manip(𝕊, m, n, order):
         N = n.copy()
-        if m.recurse_children == 'B' and not N.S:
+        if m.rec == 'B' and not N.S:
             N.c = ᴍ(ρ(𝕊.lang_tree_manip, order=order), N.c)
         N = m(N)
         if ᐹ(N, ᒪ):
             N = Ń('∅', *N)
-            if m.recurse_children == 'A' and not N.S:
+            if m.rec == 'A' and not N.S:
                 return 𝕊.lang_tree_manip(N, order).c
             return N.c
         else:
-            if m.recurse_children == 'A' and not N.S:
+            if m.rec == 'A' and not N.S:
                 N.c = ᴍ(ρ(𝕊.lang_tree_manip, order=order), N.c)
         return N
     
@@ -63,10 +79,32 @@ class DynamicParser:
                 cc.extend(h)
             else:
                 cc.append(𝕊.lang_tree_manip(n, order))
-        return Node(N.t, cc)
+        return N.copy(c=cc)
     
-    def add_manip(𝕊, type, f, *names, recurse_children=ⴴ, order=1):
-        f.recurse_children = recurse_children
+    def parse_manip_layer(𝕊, f_n, f):
+        o_num, manips = int(f_n.split('_', 1)[1]), []
+        it = iter(f())
+        
+        if ᐹ(α := next(it), ᔐ):
+            α, pfx = next(it), f"{α}: "
+        else:
+            pfx = ᐦ
+        
+        while it:
+            h = Holder()
+            try:
+                β = it.send(h.s)
+            except StopIteration:
+                break
+            finally:
+                manips.append((h.A[0], α))
+            α = β
+        
+        order = (o_num, pfx+ᒍ(" | ", (m[1].K.pop(*"n□") for m in manips)))
+        for f, (a, k) in manips:
+            𝕊.add_manip(k.pop("type"), f, *a, order=order, **k)
+    def add_manip(𝕊, type, f, *names, rec=ⴴ, order=1):
+        f.rec = rec
         𝕊.tree_manips[type].setdefault(order, {})
         for name in names:
             𝕊.tree_manips[type][order][name] = f
@@ -74,6 +112,7 @@ class DynamicParser:
         return 𝕊.tree_manips[type].get(order, {}).get(t)
 
     def general_tree_manip(𝕊, n): # metasyntactical manipulations
+        n = n.copy()
         if not n.S:
             n.c = ᴍ(𝕊.general_tree_manip, n.c)
         match n.t:
@@ -86,16 +125,13 @@ class DynamicParser:
     
     def tree_transform(𝕊, n):
         n = 𝕊.general_tree_manip(n)
-        print(f"{Z.red}{'-'*100}{Z.wh}")
-        n.print()
-        print()
+        if DEBUG: (print(f"{Z.red}{'-'*100}{Z.wh}"), n.print(), print())
         for order in 𝕊.get_orders():
-            print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}")
             n = 𝕊.lang_tree_manip(n, order)
-            n.print()
-            # breakpoint()
-            print(f"{Z.bpu}-{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}\n")
-        print(f"{Z.red}{'-'*100}{Z.wh}")
+            if DEBUG:
+                print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}")
+                n.print()
+        if DEBUG: print(f"{Z.red}{'-'*100}{Z.wh}")
         return n
     
     def add_generator(𝕊, f, *names):
@@ -113,13 +149,9 @@ class DynamicParser:
         𝕊.code_namespace[name] = toks
         𝕊.grammar_imports[name.lower()] = 𝕊.format_grammar_toks(toks)
     
-    rgx4grammar = SMD(lambda x: f'~"{ᖇ(ᖇ(x, '"', '\\"'), '\\', '\\'*2)}"')
     def parse_gram(𝕊, gram):
-        gram = f"{GRAM_HEADER}{
-            ᒍ(ń, (f"{i}={𝕊.rgx4grammar(v)}" for \
-                  i,v in 𝕊.grammar_imports.items()))
-            }\n{gram}"
-        return Grammar(gram)
+        new_rules = { i:Node('~', re.compile(v)) for i,v in 𝕊.grammar_imports.items() }
+        return Parser(gram).merge_rules(new_rules)
     
     def get_namespace_head(𝕊):
         return {
@@ -129,19 +161,10 @@ class DynamicParser:
                 "lang": 𝕊.lang }
     def get_namespace_gen(𝕊):
         return {
-            "replacement": AbsoluteWrapper(ρ(𝕊.add_manip, "replacement")),
-              "reduction": AbsoluteWrapper(ρ(𝕊.add_manip, "reduction")),
+            "replacement": lambda *a,**k:Holder().s(*a,type="replacement",**k),
+              "reduction": lambda *a,**k:Holder().s(*a,type="reduction"  ,**k),
               "generator": AbsoluteWrapper(𝕊.add_generator),
              "parse_expr": 𝕊.lang.op_man.parse_expr,
               "into_expr": into_expr,
-               "parse_as": 𝕊.lang.parse_as,
+                   "gram": lambda *a,**k: 𝕊.lang.gram(*a,**k),
                     "gen": 𝕊.gen } | 𝕊.get_namespace_head()
-    
-    def __init__(𝕊, lang, code_head, code_gen):
-        𝕊.lang, 𝕊.generators, 𝕊.grammar_imports = lang, {}, {}
-        𝕊.tree_manips = {"replacement": {}, "reduction": {}}
-        𝕊.code_namespace = 𝕊.get_namespace_head()
-        𝕊.register_tokset("OPER_LIT", 𝕊.lang.ops.keys())
-        exec(CODE_HEADER+code_head, 𝕊.code_namespace)
-        𝕊.code_namespace |= 𝕊.get_namespace_gen()
-        exec(code_gen, 𝕊.code_namespace)

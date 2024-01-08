@@ -7,28 +7,13 @@ class OP:
     _and = SMD(lambda x, y: x & 1 << _OP_TYPES.index(y))
     _or  = SMD(lambda x, y: x | 1 << _OP_TYPES.index(y))
     
-    @classmethod
-    def TND(ℂ, s, l=ᐦ, r=ᐦ):
-        return Ń("oper", 
-            ("oper_mod_l", l),
-            ("oper_lit"  , s),
-            ("oper_mod_r", r))
-    
     def __init__(𝕊, t, v=ᐦ, L=ᗜ, R=ᗜ, f=print):
         v, F = set(ᖵ(lambda x: x in _OP_TYPES, v)), \
                set(ᖵ(lambda x: x not in _OP_TYPES, v))
         𝕊.t, 𝕊.v, 𝕊.F = t, reduce(𝕊._or, v, 0), F
         𝕊.L, 𝕊.R, 𝕊.f = L or set(), R or set(), f
-    
-    def __contains__(𝕊, v):
-        return v in 𝕊.F
-    
-    def mod(𝕊, v):
-        return Т(𝕊)(𝕊.t, v, 𝕊.L, 𝕊.R, 𝕊.f)
-    
-    def __repr__(𝕊):
-        return f"⟨{𝕊.t}│{bin(𝕊.v)[2:].zfill(ⵌ(_OP_TYPES))[::-1]}{f"│{𝕊.F}⟩" if 𝕊.F else '⟩'}"
-    
+    def __contains__(𝕊, v): return v in 𝕊.F
+    def __repr__(𝕊): return f"⟨{𝕊.t}│{bin(𝕊.v)[2:].zfill(ⵌ(_OP_TYPES))[::-1]}{f"│{𝕊.F}⟩" if 𝕊.F else '⟩'}"
     def __getattr__(𝕊, a):
         if a == 'M': # unary works as prefix AND suffix
             return 𝕊.P and 𝕊.S
@@ -46,6 +31,16 @@ class OP:
     def __call__(𝕊, L, R, op_):
         assert 𝕊.check_args(L, R), "Invalid args for op!"
         return 𝕊.f(L, R, op_)
+    
+    def copy(𝕊): return Т(𝕊)(𝕊.t, 𝕊.v, 𝕊.L.copy(), 𝕊.R.copy(), 𝕊.f)
+    def mod(𝕊, v): return Т(𝕊)(𝕊.t, v, 𝕊.L, 𝕊.R, 𝕊.f)
+    
+    @classmethod
+    def TND(ℂ, s, l=ᐦ, r=ᐦ):
+        return Ń("oper", 
+            ("oper_mod_l", l),
+            ("oper_lit"  , s),
+            ("oper_mod_r", r))
     
     @classmethod
     def is_op(ℂ, n, ops=ᗜ):
@@ -112,7 +107,7 @@ class OP:
         
         assert ⴴ
 
-class OP_MANAGER:
+class OP_Manager:
     def __init__(𝕊, table):
         𝕊.table = table
         # print(𝕊.table['∨'].R) and exit()
@@ -121,6 +116,9 @@ class OP_MANAGER:
         L, op_t, R = OP.is_op(n)
         op = 𝕊.table[op_t]
         return 𝕊.gen_op(L, op, R)
+    
+    def __repr__(𝕊):
+        return f"{Т(𝕊).__name__}[table={𝕊.table}]"
     
     def gen_op(𝕊, l, op, r):
         l, r = l.txt, r.txt

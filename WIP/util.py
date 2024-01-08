@@ -1,15 +1,13 @@
+DEBUG = 0 + 1
+
 # from traceback_with_variables import activate_by_import
 
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
 from itertools import accumulate, pairwise, starmap, chain, filterfalse
 from more_itertools import *
-import colored
-import regex
+import colored, regex
 import regex as re
-from enum import Enum
-
-
 
 # poorman's cpy
 wrg = lambda F: lambda*a,**k:[*F(*a,**k)]
@@ -23,13 +21,14 @@ print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 Т, ᐹ = type, isinstance
 ⴷ, ⴸ = all, any
 ᴍ, ᴍs, ᴍᴍ = wrg(map), wrg(starmap), lambda n,f,l: ᴍ(f,l) if n<2 else [ᴍᴍ(n-1,f,c) for c in l]
-ε = lambda x: [x] if x else []
-δ = lambda x: [] if x is ᗜ else [x]
+ε = lambda x, y=ᗜ: [x if y is None else y] if x else []
+δ = lambda x: [] if x is None else [x]
 SMD, CMD, PRP = staticmethod, classmethod, property
 FS = frozenset
 enum = enumerate
 R = lambda *a,**k:open(*a,**k).read()
 ID = lambda x: x
+BP = lambda *a,sep=ń,**k: (print(*a,sep=sep,**k), breakpoint())
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
 rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
@@ -39,25 +38,38 @@ collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
 _V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
 
-class ᗮ: __xor__=lambda 𝕊,o:not o
+class ᗮ:__xor__=lambda 𝕊,o:not o
 ᗮ=ᗮ()
 
-import cProfile, pstats, io
-from pstats import SortKey
-__proft = ⴴ
+def part(l, f):
+    l, a = l.copy(), []
+    while l:
+        if f(v := l.pop(0)):
+            return a, v, l
+        a.append(v)
+    assert False
+
+import line_profiler, cProfile, pstats, atexit, io
+lnprof, __proft = line_profiler.LineProfiler(), ⴴ
+atexit.register(lnprof.print_stats)
 def togprof():
     global __proft
     if __proft:
         __proft.disable()
         s = io.StringIO()
-        sortby = SortKey.CUMULATIVE
-        ps = pstats.Stats(__proft, stream=s).sort_stats(sortby)
+        ps = pstats.Stats(__proft, stream=s).sort_stats(pstats.SortKey.CUMULATIVE)
         ps.print_stats()
         print(s.getvalue())
         __proft = ⴴ
-        return breakpoint()
-    __proft = cProfile.Profile()
-    __proft.enable()
+        return BP()
+    (__proft := cProfile.Profile()).enable()
+
+class Holder:
+    __slots__ = "A","K"
+    def __init__(𝕊,*a,**k):𝕊.A=𝕊.K='∅'
+    def s(𝕊,*a,**k):𝕊.A,𝕊.K=a,k;return 𝕊
+    __iter__=lambda 𝕊:iter((𝕊.A,𝕊.K))
+    __repr__=lambda 𝕊:f"Holder: {𝕊.A=} {𝕊.K=}"
 
 def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
     if ⵌ(L) == 0: return [s]*ᖲ(E and (l or r))

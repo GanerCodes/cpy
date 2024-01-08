@@ -1,0 +1,306 @@
+⮌ functools ⨡ reduce
+⮌ inspect ⨡ currentframe, getframeinfo
+⨡ traceback, sys
+
+NULL = object()
+
+LITERAL_OPS_ = {
+    ␛∧: ②x∧y, ␛∨: ②x∨y,
+    ␛+: ②x+y, ␛-: ②x-y,
+    ␛*: ②x⋅y, ␛/: ②x/y,
+    ␛¬: ② ¬x, ␛∈: ②x in y,
+    '//': ②x//y }
+
+𝑏,𝑙 = bool, list
+𝕋,𝔽,□ = True, False, None
+
+𝕝 = ①[*𝔸]¿x≅NULL¡[x]
+󰈲 = ①𝑙(filter(*𝕝(*𝔸,□),x))
+𝕣 = ①x󰈲①x≇NULL
+
+ᐹ = isinstance
+☾ = 𝚲print(⠤𝔸,⠶𝕂)∨𝔸₀
+⭥ = ①𝑙(range(x))
+… = ②𝑙(range(x,y))
+ſ = ②reduce(y,x,⠤𝕣(𝔸))
+Π = ①ſ´(x,⋅,⠤𝕣(𝔸))
+ᴍ = ②𝑙(map(y,x))
+∋ = ②y ∈ x
+⨁ = ②𝑏(x) ≡ 𝑏(y)
+⊻ = ②𝑏(x) ^ 𝑏(y)  ∧←x∨y
+⊼ = ②𝑏(x) ∧ 𝑏(y)→¬∧←x∨y
+⛶ = ①[x]
+! = ①1…←x+1→Π1
+⋄ = ②(x¿xᐹ𝑙¡⛶x→+[y])
+
+10!☾
+3>2>1 ⨁ 1<2<3 → ☾
+0 ⊻ 1 ⊻ 0 → ☾
+1 ⊻ 0 ⊻ 1 → ☾
+1 ⊻ 1 ⊻ 1 → ☾
+0 ⊻ 0 ⊻ 0 → ☾
+
+⨡ ast, inspect
+
+ [x for x in ⭥10]
+ [x ∀ x in ⭥10]
+
+
+
+
+
+
+
+ ⮌ functools ⨡ reduce
+ ⮌ inspect ⨡ currentframe, getframeinfo
+ ⨡ traceback, sys
+
+ NULL = object()
+
+ LITERAL_OPS_ = {
+     ␛∧: ②x∧y, ␛∨: ②x∨y,
+     ␛+: ②x+y, ␛-: ②x-y,
+     ␛*: ②x⋅y, ␛/: ②x/y,
+     ␛¬: ② ¬x,
+   '//': ②x//y }
+
+ 𝑏,𝑙 = bool, list
+ 𝕋,𝔽,□ = True, False, None
+
+ 𝕝 = ①[*𝔸]¿x≅NULL¡[x]
+ 󰈲 = ①𝑙(filter(*𝕝(*𝔸,□),x))
+ 𝕣 = ①x󰈲①x≇NULL
+
+ ᐹ = isinstance
+ ☾ = 𝚲print(⠤𝔸,⠶𝕂)∨𝔸₀
+ ⭥ = ①𝑙(range(x))
+ … = ②𝑙(range(x,y))
+ ſ = ②reduce(y,x,⠤𝕣(𝔸))
+ Π = ①ſ´(x,⋅,⠤𝕣(𝔸))
+ ᴍ = ②𝑙(map(y,x))
+ ∈ = ②x in y
+ ∋ = ②y ∈ x
+ ⨁ = ②𝑏(x) ≡ 𝑏(y)
+ ⊻ = ②𝑏(x) ^ 𝑏(y)  ∧←x∨y
+ ⊼ = ②𝑏(x) ∧ 𝑏(y)→¬∧←x∨y
+ ⛶ = ①[x]
+ ! = ①1…←x+1→Π1
+ ⋄ = ②(x¿xᐹ𝑙¡⛶x→+[y])
+
+ 10!☾
+ 3>2>1 ⨁ 1<2<3 → ☾
+ 0 ⊻ 1 ⊻ 0 → ☾
+ 1 ⊻ 0 ⊻ 1 → ☾
+ 1 ⊻ 1 ⊻ 1 → ☾
+ 0 ⊻ 0 ⊻ 0 → ☾
+
+ [x for x in ⭥10]
+ [x ∀ x in ⭥10]
+
+ ↑ header stuff
+
+ from traceback_with_variables import activate_by_import
+ print(𝕣([1]))
+    
+
+ {1,2}∋1∈{3,2} ☾
+ {1,2}∋1∈{3,2}
+ def op_call(n):
+     l, op_, r = n.C
+     op = op_man[op_]
+     t = KEYWORDS_TO_CPY.get(op.t, op.t)
+     m_l, op_l, m_r = demodp(op_)
+     L, R = l != NULL and mkgrp(l), r != NULL and mkgrp(r)
+    
+     if 'ρ' in op and not (m_l or m_r):
+         match t:
+             case '→': return L
+             case '←': return R
+             case '≔': return mkgxp(l, op_l, R)
+             case '.'|'∀': return mkexp(l, op_l, r)
+             case ':'|'¿'|'⸘'|'¡':
+                       return mkexp(op_l, r)
+             case ','|'⮂'|'↺'|'⇥'|'↪':
+                       return mkexp(op_l, r)
+             case ('¬') if R:
+                       return mkgxp(op_l, R)
+             case ('∨'|'∧') if L and R:
+                       return mkgxp(L, op_l, R)
+             case ('@') if not L and R:
+                       return mkexp(op_l, R)
+             case ('⠤'|'⠶'|'*'|'**') if not L and R:
+                       return mkexp(op_l, r)
+    
+     op_l = transform_oper(op_)
+     COMMA = ("oper_lit", ',')
+    
+     A = (op_l, L, m_l, t, m_r, R)
+     if op.S and L and not op.B:
+         return try_builtin('S', *A) or mkexp(mkbltnop(op_), mkgxp(L))
+     if op.P and R and not op.B:
+         return try_builtin('P', *A) or mkexp(mkbltnop(op_), mkgxp(R))
+     if op.B and L and R:
+         return try_builtin('B', *A) or mkexp(mkbltnop(op_), mkgxp(   L, COMMA,    R))
+     if op.S and L:
+         return try_builtin('S', *A) or mkexp(mkbltnop(op_), mkgxp(   L, COMMA, NULL))
+     if op.P and R:
+         return try_builtin('P', *A) or mkexp(mkbltnop(op_), mkgxp(NULL, COMMA,    R))
+     return mkbltnop(op_)
+ replacement("op_call", recurse_children='B', order=(53, "Refactor op calls"))(op_call)
+
+ # lambdas
+ @generator("lamb")
+ def gen_lamb(n):
+     h, b = n.C
+     h = h.C[0]
+     if h.t == "lamb_h_preset":
+         H = ᐦ.join(x+',' for x in [*"xyzw"[:"𝚲①②③④".index(h.txt)]])
+         H = f"{H}*{PY_ARGS},**{PY_KWARGS}"
+     elif h.t == "lamb_h_implicit":
+         H = f"{h.C[0].txt},*{PY_ARGS},**{PY_KWARGS}"
+     elif h.t in ("lamb_h_normal", "lamb_h_py"):
+         h = h.C[1]
+         expr = split_at(h.C, lambda x: x.txt == ',')
+         has_a = has_k = ⴴ
+         for e in expr:
+             if not (t := ⵐ(ᒍ(ᐦ, (k.txt for k in e)))): continue
+             if t[:2] == '**': has_k = ⴳ
+             elif t[0] == '*': has_a = ⴳ
+        
+         H = gen(h)
+         if has_a and has_k: pass
+         elif has_a: H += f',**{PY_KWARGS}'
+         elif has_k: H += f',*{PY_ARGS}'
+         else      : H += f',*{PY_ARGS},**{PY_KWARGS}'
+     else:
+         assert ⴴ
+     return f"(lambda {H}:{gen(b.C[0])})"
+
+  ①☾x☾󰅂ᴍ'hello'
+
+
+
+   1∈{2,3}→☾
+   ☾→☾
+
+  🟑🟑🟑
+  x ∈ Y ⊂ z
+  (x ∈ Y) ∧ (Y ⊂ z)
+  ⊻(a ∧ b, c ∈ D)
+  a∨b ⊻ c∨d ; a∨b ⊻ c∨d
+  a∨b ⊻ c ⊻ d
+  (a∨b)⊻(_:=c) ∧ (_⊻d)
+  ⊻(a∨b,_:=c) ∧ ⊻(_,d)
+
+  a ⊻ c∧(c⊻d)
+
+  ‹d"d›
+
+  egg = ‹che"ese〚2+aᵇ〛›
+
+  a ∧ b ⊻ c
+  a⊻b⊻c
+  a⊻(b∨c)
+  a ∧ b ⊻ c ∈ D
+  class AbsoluteWrapper:
+      def __init__(𝕊, *a, **k):
+          (𝕊.f, *𝕊.a), 𝕊.k = a, k
+      def __call__(𝕊, *a, **k):
+          return type(𝕊)(𝕊.f, *a, **k)
+
+
+  x ∈ Y ⊂ z
+  (x ∈ Y) ∧ (Y ⊂ z)
+  ⊻(a ∧ b, c ∈ D)
+  a∨b ⊻ c∨d ; a∨b ⊻ c∨d
+  a∨b ⊻ c ⊻ d
+  (a∨b)⊻(_:=c) ∧ (_⊻d)
+  ⊻(a∨b,_:=c) ∧ ⊻(_,d)
+
+  class Node:
+      __slots__ = ('t', 'c')
+      t = x ¿ y > 2 ¡ z
+      ⊢ __init__(𝕊, t=ᐦ, c=ᗜ):
+          𝕊.t, 𝕊.c = t, c or []
+      ⊢ __eq__(𝕊, n):
+          if ᐹ(n, ᔐ):
+              return 𝕊.t == n
+          assert n ᐹ Node
+          ↪ 𝕊.t == n.t and 𝕊.c == n.c
+
+  calc_indent = ⥌n ↦ nᵗ ≡ ␛W ∧ n.c.split('\n')₋₁.count(' ') // 4 ∨ 0
+  calc_indent = lambda n: n.t == "W" and n.c.split('\n')[-1].count(' ') // 4 or 0
+
+  (a, *b, ⠤c, **d, ⠶e)
+  a<b+2<c
+  1<a∈b
+  +
+  <
+  <꜠
+   a + 2⋅b + c
+
+  ⨳a<b<c⨳
+
+  z < b < c
+  a < b
+  b < c
+
+  a⋅b+c⋅d
+
+  2+(a∨b)
+  a ⊻ b∨c ⊻ d
+
+  2+꜠
+
+  ᴍ꜠
+  ᴍ꜠ x
+  a ᴍᵜ b
+
+  2+2
+  +꜠
+
+  10⭥ᴍ⭥꜠´
+
+
+  calc_indent = lambda n: n.t == "W" and n.c.split('\n')[-1].count(' ') // 4 or 0
+   ⭥10ᴍ①x⋅x󰅂→ζ␛a⋅10→+←2
+  aΣb
+  a
+      b
+          c
+  d
+      e
+          f
+      g
+  h
+  if x+2: yield y+2
+  ¿ x+2: yield y+2
+
+  ¿ 2: ☾ 1
+  h = a¿b¡c
+
+   def p_indent_stack(S, n=0):
+       r = []
+       while S:
+           indent, *exprs = S[0]
+           if indent > n:
+               r.append(p_indent_stack(S, indent))
+           elif indent < n:
+               break
+           else:
+               S.pop(0)
+               r.extend(exprs)
+       return Node("BLOCK", r)
+
+   ⊢ p_indent_stack(S, n=0):
+       r = []
+       ➰ S:
+           indent, ⠤exprs = S₀
+           ¿ indent > n:
+               r.append(p_indent_stack(S, indent))
+           ⸘ indent < n:
+               break
+           ¡:
+               S.pop(0)
+               r.extend(exprs)
+       ↪ Node("BLOCK", r)
