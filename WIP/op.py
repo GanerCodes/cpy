@@ -110,7 +110,6 @@ class OP:
 class OP_Manager:
     def __init__(𝕊, table):
         𝕊.table = table
-        # print(𝕊.table['∨'].R) and exit()
     
     def __getitem__(𝕊, n):
         L, op_t, R = OP.is_op(n)

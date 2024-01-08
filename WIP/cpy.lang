@@ -22,7 +22,7 @@ mdt = lambda y: ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
 inv = lambda z: {y:x for x,y in z.items()}
 rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
-COMMA, COLON = Node("oper_lit", ','), Node("oper_lit", ':')
+COMMA, COLON, EQCLN = Node("oper_lit", ','), Node("oper_lit", ':'), ("oper_lit", ":=")
 
 def p_indent_stack(S, n=0):
     r = []
@@ -127,10 +127,14 @@ register("VAR_SPEC", var_spec)
 # 2 + a *= 5 ¿ z - 2*y ¡ 2 + z
 
 new_ops = {}
+L = {'.'}
 for k, v in lang.ops.items():
     if not v.B or 'δ' in v: continue
-    n = OP(k+'=', 'B', v.L, lang.ops["␀ASGN_MRK"].R, v.f)
+    n = OP(k+'=', 'B=', L, lang.ops["␀ASGN_MRK"].R, v.f)
     new_ops[n.t] = n
+for k, v in lang.ops.items():
+    if 'δ' in v or k in L: continue
+    v.R |= set(new_ops)
 lang.ops |= new_ops
 
 «««««««««««««««««««««««««««««««««« OPERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
@@ -339,6 +343,60 @@ def σ_20():
         rec='B',
         n="Parse expressions"))
     (lambda n: n.copy(c=into_expr(parse_expr(n.C)).c)))
+
+def σ_21():
+    def split_target(l):
+        l, t = l.copy(), []
+        while l:
+            α = l.pop()
+            if α.t == "oper":
+                if α.txt == '.':
+                    return '.', l, t
+                assert ⴴ
+            if α.t == "group" and (α.C[0].txt, α.C[2].txt) == ('[', ']'):
+                return 'l', l, α.C[1]
+            t.insert(0, α)
+        return [t]
+
+    def make_inline_asgn(α, Σ, β):
+        # BP(f"{α=} {Σ=} {β=}")
+        α = split_target(α.C)
+        if ⵌ(α) == 1:
+            α, = α
+            print(f"{α=} {Σ=} {β=}")
+            return mkgxp(
+                α, EQCLN, mkgxp(
+                    ("op_call", mkexp(α), Σ, mkexp(β))))
+        
+        τ, κ, ν = α
+        if τ == '.':
+            ρ1, ρ2 = "setattr_ret_", "setitem_ret_"
+        else:
+            ρ1, ρ2 = "getattr", "getitem"
+            ν = ("str_escape", ν)
+        
+        ρ1, ρ2 = mkvar( ρ1), mkvar( ρ2)
+        þ1, þ2 = mkvar('Δ'), mkvar('δ')
+        κ , ν  = mkgxp( κ ), mkgxp( ν )
+        Ń("expr_",
+            ρ1, mkgrp(Ń("expr_",
+                ("expr_", þ1, EQCLN, κ), COMMA,
+                ("expr_", þ2, EQCLN, ν), COMMA,
+                ("expr", ("expr_",
+                        ρ2,
+                        mkgrp(Ń("expr_",
+                            þ1, COMMA, þ2))),
+                    Σ, β))))
+    
+    @(yield replacement(
+        "op_call",
+        rec='B',
+        n="Refactor assignment infix opertators"))
+    def _(n):
+        α, Σ, β = n.C
+        if '=' not in lang.ops[Σ.txt]: return n
+        Σ = OP.TND(Σ.txt[:-1])
+        return make_inline_asgn(α, Σ, β)
 
 def σ_25():
     @(yield reduction(
