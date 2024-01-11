@@ -1,8 +1,6 @@
 from util import *
 from node import *
-
-from sys import setrecursionlimit
-setrecursionlimit(100000000)
+import sys
 
 escape = lambda x,t='ݺ':ᖇ(ᖇ(ᖇ(x,"␛␛",t),'␛',ᐦ),t,'␛')
 
@@ -96,11 +94,11 @@ class Gram:
     def merge_rules(𝕊, rules): return Gram(𝕊.rules | rules)
     def print_rules(𝕊): [(print(f'Rule "{k}":'), v.print()) for k, v in 𝕊.rules.items()]
     
-    def run(𝕊, χ, r, *, 𝑓, gseg, m, content):
+    def run(𝕊, χ, r, *, 𝑓, gseg, m, content, z=0):
         t, c, m = r.t, r.c, {} if m is None else m
         if t == '←':
             α, β = c
-            j = 𝑓(χ, β)
+            j = 𝑓(χ, β, z=z+1)
             if j:
                 return j[0].copy(e=α.c), j[1]
             else: # var bind to something that failed, wat do?
@@ -117,7 +115,7 @@ class Gram:
                     return
                 return j
             
-            j = 𝑓(χ, 𝕊.rules[c])
+            j = 𝑓(χ, 𝕊.rules[c], z=z+1)
             if j:
                 α, β = j
                 m[k] = r = Node(c, [α]), β
@@ -128,24 +126,24 @@ class Gram:
         if t in "*+∧":
             R = []
             if t in '*+': # as many as possible
-                while v := 𝑓(χ, c[0]):
+                while v := 𝑓(χ, c[0], z=z+1):
                     α, χ = v
                     R.append(α)
                 if t == '+' and not R: return # empty plus we leave!!!1
             else: # concatination
                 for x in c:
-                    if not (v := 𝑓(χ, x)): return
+                    if not (v := 𝑓(χ, x, z=z+1)): return
                     α, χ = v
                     R.append(α)
             return Node(t, R), χ
         match t:
             case '?': # its okay you can eat when you want to
-                if v := 𝑓(χ, c[0]):
+                if v := 𝑓(χ, c[0], z=z+1):
                     return Node(t, [v[0]]), v[1]
                 return QUESTION, χ
             case '∨': # pick first
                 for x in c:
-                    if (v := 𝑓(χ, x)): return v
+                    if (v := 𝑓(χ, x, z=z+1)): return v
             case '~'|'ᔐ': # regex/str
                 if (ƨ := gseg(χ)) is None: return
                 if t == '~':
@@ -157,18 +155,18 @@ class Gram:
                 p = χ+R
                 return Node(t, slice(χ, p)), p
             case '❗': # match or die
-                if not (v := 𝑓(χ, c[0])): assert ⴴ
+                if not (v := 𝑓(χ, c[0], z=z+1)): assert ⴴ
                 return Node(t, [v[0]]), v[1]
             case '󰆴': # eat & delete
-                if not (v := 𝑓(χ, c[0])): return
+                if not (v := 𝑓(χ, c[0], z=z+1)): return
                 return Node(t, [v[0]]), v[1]
             case '⠶'|'ƨ': # flatten / atom
-                if v := 𝑓(χ, c[0]): return Node(t, v[0].c), v[1]
+                if v := 𝑓(χ, c[0], z=z+1): return Node(t, v[0].c), v[1]
             case '⮞': # positive lookahead
-                if not (v := 𝑓(χ, c[0])): return
+                if not (v := 𝑓(χ, c[0], z=z+1)): return
                 return Node(t, [v[0]]), χ
             case '¬': # negative lookahead
-                if v := 𝑓(χ, c[0]): return
+                if v := 𝑓(χ, c[0], z=z+1): return
                 return LOOKAHEAD_NEG, χ
             case _: # unwillingly die
                 assert ⴴ, f"Invalid instruction '{t}'!"

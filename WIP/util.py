@@ -1,4 +1,4 @@
-DEBUG = 0 + 1
+DEBUG = 0 #+ 1
 
 # from traceback_with_variables import activate_by_import
 
@@ -7,6 +7,7 @@ from functools import reduce, partial as ρ
 from itertools import accumulate, pairwise, starmap, \
                       chain, filterfalse, groupby
 from more_itertools import *
+import textwrap as TW
 import colored, regex
 import regex as re
 
@@ -31,7 +32,7 @@ R = lambda *a,**k:open(*a,**k).read()
 ID = lambda x: x
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
-wrap = lambda x,w=120,q='\t': TW.indent('\n'.join(TW.wrap(x, width=w)), q)
+wrap = lambda x,w=120,q='\t': ᒍ(ń, TW.wrap(x, width=w, subsequent_indent=q))
 rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
 spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
@@ -106,12 +107,14 @@ class SCRIPT:
     sup2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUP.__getitem__, x))
     sub2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUB.__getitem__, x))
 
-import line_profiler, textwrap as TW, cProfile, pstats, atexit, io
+import sys, resource, threading, line_profiler, cProfile, pstats, atexit, io
+from inspect import getouterframes, currentframe
+sys.setrecursionlimit(1_000_000)
 lnprof, __proft = line_profiler.LineProfiler(), ⴴ
 atexit.register(lnprof.print_stats)
 def BP(*a):
     for i, x in enum(a):
-        print(f"{Z.r}BP{Z.w} - {Z.g}{i}{Z.w}:{wrap(ᔐ(x))}")
+        print(f"{Z.r}BP{Z.w} - {Z.g}{i}{Z.w}:\t{wrap(ᔐ(x),q='\t')}")
     print()
     breakpoint()
     if a: return a[0]
