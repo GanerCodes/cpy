@@ -16,23 +16,29 @@ py_escape_var      = lambda s: ᒍ(ᐦ, ((ord(c)>127 or c in '!') and '_'+HXO(c)
 mkgrp = lambda *X, b="()": Ń("group", b[0], ⵌ(X)==1 and X[0] or X, b[1])
 mkgxp = lambda *X, b="()": mkgrp(mkexp(*X), b=b)
 mkexp = lambda *X: Ń("expr", *X)
-mkvar = lambda x: Ń("var", x)
 mkstr = lambda x: Ń("str", '"', x, '"')
+mkvar = lambda x: Node("var", x)
+
+mkexp_ = lambda *n: Node("expr_", ᒪ(n))
+mkgxp_ = lambda *n: mkgrp(mkexp_(*n))
+fcall_ = lambda f,*n: mkexp_(f, mkgxp_(*J́(n, COMMA)))
+mknex_ = lambda a, b: mkexp_(a, EQCLN, b)
 
 sst = lambda x: set(ᖵ(ᗜ,ᴍ(ⵐ,ⵉ(ᖇ(x,'␉',ń),ń))))
 mdt = lambda y: ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
 inv = lambda z: {y:x for x,y in z.items()}
 rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
-COMMA, COLON, EQCLN = Node("oper_lit", ','), Node("oper_lit", ':'), ("oper_lit", ":=")
+COMMA, COLON, EQCLN = (Node("oper_lit", x) for x in ⵉ(", : :=", ś))
+þ0, þ1, þ2, þþ = ᴍ(mkvar, ⵉ("þ0 þ1 þ2 þþ", ś))
 
 OPS_BUILTIN = {
     'S': ᐦ,
     'N': """; ␉ : ␉ , ␉ if ␉ elif ␉ else ␉ for""",
     'P': """+ ␉ - ␉ * ␉ ~  ␉   ** ␉  not ␉ yield""",
     'B': """+ ␉ - ␉ * ␉ @  ␉   ** ␉   // ␉  < ␉ > ␉ % ␉ .
-            & ␉ ^ ␉ | ␉ /  ␉   != ␉   == ␉ << ␉ >>
-                               in ␉   is ␉ or ␉ and""" }
+            & ␉ ^ ␉ | ␉ /  ␉   != ␉   == ␉ << ␉ >>␉>= ␉ <=
+           in ␉ not in␉ is ␉is not␉   or ␉ and""" }
 OPS_BUILTIN = {k:sst(v) for k,v in OPS_BUILTIN.items()}
 OPS_BUILTIN['A'] = set.union(*map(set,OPS_BUILTIN.values()))
 
@@ -40,12 +46,12 @@ OPS_COMP = ᖵ(ᗜ, ({s for s in l if 'λ' in lang.ops[s]} for l in lang.op_orde
 
 SWAP_TABLE = mdt("""
     ⋅   * ␉ ⌃    ** ␉ ≡     == ␉ ≤ <= ␉ ≔ := ␉ ¯ -
-    ⠤   * ␉ ⠶    ** ␉ ≠     != ␉ ≥ >= ␉ ÷ /
+    ⠤   * ␉ ⠶    ** ␉ ≠     != ␉ ≥ >= ␉ ÷ / ␉ ⹏ //
     ∨  or ␉ ≅    is ␉ 󰆴    del ␉ Ω class
     ¬ not ␉ ¿    if ␉ ⊢    def ␉ ➰ while
     ∧ and ␉ ⸘  elif ␉ ⮂  yield ␉ ↪ return
     ∀ for ␉ ¡  else ␉ ⇥  break ␉ ↺ continue
-    ∈  in ␉ ⮌  from ␉ ⨡ import ␉ ≇ is not""")
+    ∈  in ␉ ⮌  from ␉ ⨡ import ␉ ≇ is not ␉ ∉ not in""")
 KEYWORDS_TO_CPY=rmk(inv(SWAP_TABLE), sst("* ␉ **"))
 
 merge_shorthands = lambda z: (z:=sst(z)) | {x for x,y in SWAP_TABLE.items() if y in z}
@@ -59,10 +65,10 @@ kw_pfx = merge_shorthands("""
     import ␉ global ␉ nonlocal
     raise ␉ assert ␉ del ␉ async""")
 kw_neverswouce = merge_shorthands("""if ␉ elif ␉ else ␉ for ␉ yield""")
-kw_inline = merge_shorthands("""in ␉ is ␉ is not ␉ or ␉ and ␉ not""") | kw_neverswouce
+kw_inline = merge_shorthands("""in ␉ is ␉ is not ␉ not in ␉ or ␉ and ␉ not""") | kw_neverswouce
 kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
-var_spec = set("ℵ𝕋𝔽îπτ□∅∞ᐦ")
+var_spec = set("ℵ𝕋𝔽ⴳⴴ✓✗îπτ□∅∞ᐦ")
 
 register("KW", kw)
 register("KW_PFX", kw_pfx)
@@ -70,14 +76,12 @@ register("KW_SPEC", kw_spec)
 register("KW_PFX_COLON", kw_pfx_colon)
 register("VAR_SPEC", var_spec)
 
-# 2 + a *= 5 ¿ z - 2*y ¡ 2 + z
-
-new_ops = {}
 L = {'.'}
-for k, v in lang.ops.items():
-    if not v.B or 'δ' in v: continue
-    n = OP(k+'=', 'B=', L, lang.ops["␀ASGN_MRK"].R, v.f)
-    new_ops[n.t] = n
+sel = [(v.t+'=', v) for v in lang.ops.values() if v.B and 'δ' not in v] \
+    + [(":=", lang.ops['≔']), ('≔', lang.ops.pop('≔'))]
+new_ops = {}
+for k, v in sel:
+    new_ops[k] = OP(k, "B=", L, lang.ops["␀ASGN_MRK"].R, v.f)
 lang.ops |= new_ops
 for k, v in lang.ops.items():
     if k in L: continue
@@ -88,15 +92,15 @@ for k, v in lang.ops.items():
 ⨡ᴺᴾ󰁔
 ;ᴺᴾ󰁔 ,ᴺᴾ󰁔
 =ᴺᴾ󰁔 ⮂ᴺᴾ󰁔 ↪ᴺᴾ󰁔 ⮌ᴺᴾ󰁔 ↺ᴺ󰁔 ⇥ᴺ󰁔 ➰ᴺᴾ󰁔 ∀ ␛
-⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴮᴾᴺ󰁔
-␀ASGN_MRKᴮ
+⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴮᴾᴺ󰁏󰁔
 ␀1ᴵᴮ ¿ᴺᴾ󰁔 ⸘ᴺᴾ󰁔 ¡ᴺᴾ󰁔
+␀ASGN_MRKᴮ ≔ᴮ󰁜
 ⨳ᴮᴾ󰀒ᴺ
 ⊻ᴮᴺ󰁖 ␉ ⨁ᴮᴺ󰁖 ␉ ∨ᴮᴺ󰁜 ␉ ⊼ᴮᴺ󰁖 ␉ ∧ᴮᴺ󰁜
 ≡ᴮᴺ󰁍󰁖 ≠ᴮᴺ󰁍󰁖 ≤ᴮᴺ󰁍󰁖 ≥ᴮᴺ󰁍󰁖 ∈ᴮᴺ󰁖 ∉ᴮᴺ󰁖 ∌ᴮᴺ󰁖 ∋ᴮᴺ󰁖 ␛
-      <ᴮᴺ󰁖󰁏 >ᴮᴺ󰁖󰁏 ␛
-      ≮ᴮᴺ󰁖 ≯ᴮᴺ󰁖 ⊈ᴮᴺ󰁖 ⊆ᴮᴺ󰁖 ⊄ᴮᴺ󰁖 ⊂ᴮᴺ󰁖 ⊃ᴮᴺ󰁖 ⊅ᴮᴺ󰁖 ⊇ᴮᴺ󰁖 ⊉ᴮᴺ󰁖
-ᴍᴮᴺ ſᴮᴺ Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ
+      <=ᴮᴺ󰁍󰁖 >=ᴮᴺ󰁍󰁖 <ᴮᴺ󰁖󰁏 >ᴮᴺ󰁖󰁏 ␛
+      ⊊ᴮᴺ󰁖 ⊄ᴮᴺ󰁖 ⊂ᴮᴺ󰁖 ⊃ᴮᴺ󰁖 ⊅ᴮᴺ󰁖  ⊋ᴮᴺ󰁖
+ᴍᴮᴺ ſᴮᴺ Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ 󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ
 ᐹᴮᴺ ζᴮᴺ
 |ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
 <<ᴮᴺ >>ᴮᴺ
@@ -105,7 +109,7 @@ for k, v in lang.ops.items():
 ∘ᴮᴺ ○ᴮᴺ ⋄ᴮᴺ
 ◄ᴮᴺ󰁏 ►ᴮᴺ󰁏
 ∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴮᴺ ∖ᴮᴺ
-//ᴮᴺ /ᴮᴺ  ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞  *ᴮᴺᴾ󰁞  ⋅ᴮᴺ  !󰀒ᴺ ␛
+//ᴮᴺ ⹏ᴮᴺ  /ᴮᴺ  ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞  *ᴮᴺᴾ󰁞  ⋅ᴮᴺ  !󰀒ᴺ ␛
      ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ  󷹄ᴮᴾ󰀒ᴺ  ☾ᴾ󰀒ᴺ 🃌ᴾ󰀒ᴺ ␛
      ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ   ⍉ᴾ󰀒ᴺ   ᴙᴾ󰀒ᴺ ␛
      ⋀ᴾ󰀒ᴺ ⋁ᴾ󰀒ᴺ
@@ -114,8 +118,6 @@ for k, v in lang.ops.items():
 .ᴮ󰁏󰁔
 ...ᴺ
 
- .｜:=ᴵᴮ󰁜󰁏｜␀1
- .｜ ≔ᴵᴮ󰁜󰁏｜␀1
   ｜  ←ᴾ󰁜󰁏｜␀1
 ␀1｜  →󰀒󰁜󰁏｜
 
@@ -139,7 +141,7 @@ vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
 gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
-var = (¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦①②③④󰅂"'\[\](){}⁅⁆〚〛⟨⟩‹ ␛␛␛›]›)+
+var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰅂"'\[\](){}⁅⁆〚〛⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨〚]› (W? ↷ exprs) ~‹[\])}⁆⟩〛]›
 
@@ -159,7 +161,7 @@ lamb = (
             󰆴('⥌' Æ?)
             ⠶((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴Æ?)*
             󰆴'↦' )
-      ∨ (lamb_h_preset = ~"[𝚲①②③④]")
+      ∨ (lamb_h_preset = ~"[𝚲󰲡󰲣󰲥󰲧]")
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ⠶((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 
@@ -180,7 +182,7 @@ text_breaker = ⮞(E ∨ kw_spec ∨ var_spec ∨ ¬var)
 E = w ∨ ~‹␛␛[\\\n]›
 Æ = W ∨ ~‹␛␛[\\\n]›
 
-comment = ~‹((|#)[^\n]*(\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))›
+comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))›
 
 «««««««««««««««««««««««««««««««««« GENERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
@@ -197,12 +199,18 @@ def σ_00():
         else:
             return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
     
+    ((yield reduction(
+        "supscript",
+        n="Swap Superscripts"))
+    (lambda n: [OP.TND('.'), mkvar(n.txt)]))
+    
     ((yield replacement(
         "norm_expr", "expr_not_colon", "expr_not_comma",
-        rec='B', n="Normalize expression types"))
+        rec='B',
+        n="Normalize expression types"))
     (lambda n: n.copy("expr")))
     
-    ((yield reduction(
+    ((yield replacement(
         "subscript",
         rec='A',
         n="Subscripts to brackets"))
@@ -256,7 +264,7 @@ def σ_15():
     ((yield replacement(
         "lamb_h_preset"))
     (lambda n: Ń("lamb_h",
-            *ᴍ(lambda t: mkexp(mkvar(t)), "xyzw"[:"𝚲①②③④".index(n.c)]),
+            *ᴍ(lambda t: mkexp(mkvar(t)), "xyzw"[:"𝚲󰲡󰲣󰲥󰲧".index(n.c)]),
             ARG_A, ARG_K)))
     
     ((yield replacement(
@@ -270,8 +278,7 @@ def σ_15():
             lambda x: OP.is_op(x) and (k:=op_man[x]).t == ',')))
         has_a = has_k = ⴴ
         for c in C:
-            if not c.C or (o:=c.C[0]) != "oper":
-                continue
+            if not c.C or (o:=c.C[0]) != "oper": continue
             k = o.C[1].c
             if   k in ( "*", "⠤"): has_a = ⴳ
             elif k in ("**", "⠶"): has_k = ⴳ
@@ -291,7 +298,6 @@ def σ_20():
         n="Parse expressions"))
     (lambda n: n.copy(c=into_expr(parse_expr(n.C)).c)))
 
-# 󰤱 recurse
 def σ_21():
     def split_target(l):
         l, t = l.copy(), []
@@ -310,32 +316,18 @@ def σ_21():
         return ᐦ, ᗜ, t[0]
 
     def make_inline_asgn(α, Σ, β):
-        τ, κ, ν = split_target(α.C)
+        τ, κ, χ = split_target(α.C)
         
-        if τ == ᐦ:
-            return mkgrp(Ń("expr_",
-                ν, EQCLN, mkgxp(
-                    ("op_call", mkexp(ν), Σ, β))))
+        if τ == ᐦ: return \
+            mkgrp(mknex_(χ, mkgxp(Σ and ("op_call", mkexp(χ), Σ, β) or β)))
         
-        if τ == '.':
-            ρ1, ρ2 = "setattr_ret_", "getattr"
-            ν = ("str__", f'"{py_escape_var(ν.txt)}"')
-        else:
-            ρ1, ρ2 = "setitem_ret_", "getitem"
-        
-        κ = [Ń("expr_", '.') if i == '.' else i for i in κ]
-        ρ1, ρ2 = mkvar( ρ1 ), mkvar( ρ2 )
-        þ1, þ2 = mkvar('🜄0'), mkvar('🜄1')
-        κ , ν  = mkgxp( *κ ), mkgxp(  ν )
-        return Ń("expr_",
-            ρ1, mkgrp(Ń("expr_",
-                ("expr_", þ1, EQCLN, κ), COMMA,
-                ("expr_", þ2, EQCLN, ν), COMMA,
-                ("op_call", ("expr_",
-                        ρ2,
-                        mkgrp(Ń("expr_",
-                            þ1, COMMA, þ2))),
-                    Σ, β))))
+        κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
+        χ = mkgxp(τ == '.' and ("str_", f'"{py_escape_var(χ.txt)}"') or χ)
+        ρ = τ == '.' and "attr" or "item"
+        γ = Σ and Node("op_call", [fcall_(mkvar("get"+ρ), þ1, þ2), Σ, þ0]) or þ0
+        return fcall_(
+            mkvar("set"+ρ+"_ret_"),
+            *ᴍs(mknex_, ([þ0,β],[þ1,κ],[þ2,χ])), γ)
     
     @(yield replacement(
         "op_call",
@@ -343,9 +335,10 @@ def σ_21():
         n="Refactor assignment infix opertators"))
     def _(n):
         α, Σ, β = n.C
+        if Σ.c[0].txt or Σ.c[2].txt: return n
+        if Σ.txt in ('≔', ':='): return make_inline_asgn(α, None, β)
         if '=' not in lang.ops[Σ.txt]: return n
         Σ = OP.TND(Σ.txt[:-1])
-        # n.print()
         return make_inline_asgn(α, Σ, β)
 
 def σ_25():
@@ -359,34 +352,34 @@ def σ_25():
             return [*n.C[0].C, n.C[1], *n.C[2].C]
         return [n]
 
-def make_cmp_chain(n, layers=ᗜ):
-    layers = layers or OPS_COMP
-    layer, *layers = layers
-    
-    rec = lambda n: layers and make_cmp_chain(n, layers=layers) or n
-    mkexp_rec = lambda N: rec(mkexp(*N))
-    
-    C = ᒪ(split_at(n.C,
-        lambda x: OP.is_op(x) and (k:=op_man[x]).t in layer and k.B,
-        keep_separator=ⴳ))
-    if ⵌ(C) < 3:
-        return rec(n)
-    r = ⴴ
-    
-    tmp_v = mkexp(mkvar("🜄🜄"))
-    for H,T,(a,(b,),c) in mark_ends(windowed(C, 3, step=2)):
-        c = mkexp_rec(c)
-        v = mkexp(("op_call", H and mkexp_rec(a) or tmp_v,
-                              b,
-                              T and c or mkexp(("op_call", tmp_v, OP.TND('≔'), c))))
-        r = mkexp(("op_call", r, OP.TND('∧'), v)) if r else v
-    return n.copy(c=[r])
-
 def σ_30():
-    yield "Generate comparison chains"
+    def make_cmp_chain(n, layers=ᗜ):
+        layers = layers or OPS_COMP
+        layer, *layers = layers
+        
+        rec = lambda n: layers and make_cmp_chain(n, layers=layers) or n
+        mkexp_rec = lambda N: rec(mkexp(*N))
+        
+        C = ᒪ(split_at(n.C,
+            lambda x: OP.is_op(x) and (k:=op_man[x]).t in layer and k.B,
+            keep_separator=ⴳ))
+        if ⵌ(C) < 3:
+            return rec(n)
+        r = ⴴ
+        
+        for H,T,(a,(b,),c) in mark_ends(windowed(C, 3, step=2)):
+            c = mkexp_rec(c)
+            v = mkexp(("op_call",
+                H and mkexp_rec(a) or þþ,
+                b,
+                T and c or mknex_(þþ, c)))
+            r = mkexp(("op_call", r, OP.TND('∧'), v)) if r else v
+        return n.copy(c=[r])
+    
     ((yield replacement(
         "expr",
-        rec='B'))
+        rec='B',
+        n="Generate comparison chains"))
     (make_cmp_chain))
 
 demodp = lambda o: (o.C[0].txt, o.C[1], o.C[2].txt)

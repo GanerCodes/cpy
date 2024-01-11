@@ -53,18 +53,18 @@ class DynamicParser:
     
     def _apply_tree_manip(𝕊, m, n, order):
         N = n.copy()
-        if m.rec == 'B' and not N.S:
-            N.c = ᴍ(ρ(𝕊.lang_tree_manip, order=order), N.c)
+        if m.rec and 'B' in m.rec and not N.S:
+            N.c = 𝕊.lang_tree_manip(Node('∅', N.c), order).c
         N = m(N)
         if ᐹ(N, ᒪ):
-            N = Ń('∅', *N)
-            if m.rec == 'A' and not N.S:
+            N = Node('∅', N)
+            if m.rec and 'A' in m.rec and not N.S:
                 return 𝕊.lang_tree_manip(N, order).c
             return N.c
         else:
-            if m.rec == 'A' and not N.S:
-                N.c = ᴍ(ρ(𝕊.lang_tree_manip, order=order), N.c)
-        return N
+            if m.rec and 'A' in m.rec and not N.S:
+                N.c = 𝕊.lang_tree_manip(N.copy('∅'), order).c
+            return N
     
     def lang_tree_manip(𝕊, N, order):
         if m := 𝕊.get_manip("replacement", order, N.t):
@@ -125,13 +125,11 @@ class DynamicParser:
     
     def tree_transform(𝕊, n):
         n = 𝕊.general_tree_manip(n)
-        if DEBUG: (print(f"{Z.red}{'-'*100}{Z.wh}"), n.print(), print())
+        DEBUG and (print(f"{Z.red}{'-'*100}{Z.wh}"), n.print())
         for order in 𝕊.get_orders():
             n = 𝕊.lang_tree_manip(n, order)
-            if DEBUG:
-                print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}")
-                n.print()
-        if DEBUG: print(f"{Z.red}{'-'*100}{Z.wh}")
+            DEBUG and (print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}"), n.print())
+        DEBUG and print(f"{Z.red}{'-'*100}{Z.wh}")
         return n
     
     def add_generator(𝕊, f, *names):

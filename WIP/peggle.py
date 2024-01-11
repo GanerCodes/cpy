@@ -1,6 +1,9 @@
 from util import *
 from node import *
 
+from sys import setrecursionlimit
+setrecursionlimit(100000000)
+
 escape = lambda x,t='ݺ':ᖇ(ᖇ(ᖇ(x,"␛␛",t),'␛',ᐦ),t,'␛')
 
 def mk(t, *c):
@@ -11,7 +14,7 @@ def mk(t, *c):
 
 def parse_elm(N):
     pre, n, suf = N
-    l1, l2 = partition("❗⠶".__contains__, sorted(pre.txt, key="❗⠶󰆴¬⮞~".index))
+    l1, l2 = partition("❗⠶ƨ".__contains__, sorted(pre.txt, key="❗⠶ƨ󰆴¬⮞~".index))
     for k in chain(l1, suf.txt, l2):
         n = mk(k, n)
     return n
@@ -52,63 +55,72 @@ def gram_convert(t):
         
     return rules
 
+CHECK = Node('✓')
+QUESTION = Node('?')
+LOOKAHEAD_NEG = Node('¬')
 class Gram:
-    def __init__(𝕊, rules):
-        𝕊.rules = rules
+    def __init__(𝕊, rules): 𝕊.rules = rules
+    def __contains__(𝕊, c): return c in 𝕊.rules
+    def __repr__(𝕊): return f"{Т(𝕊).__name__}[rules={𝕊.rules}]"
     
     def __call__(𝕊, content, rule="main", allow_deletes=ⴳ):
-        𝕊.ST = content
-        tree = 𝕊.run([Node(('□', i), c) for i, c in enum(content)], Node("rname", rule))
+        content = ᒪ(content)
+        secs = {((α:=(z:=ᒪ(y))[0][0],β:=z[-1][0]+1)):ᒍ(ᐦ,content[α:β]) for x,y in groupby(enum(content), lambda x: ᐹ(x[1],ᔐ)) if x}
+        gseg = ρ(𝕊.get_segment, d=secs, k=tuple(secs.keys()))
+        𝑓 = ρ(𝕊.run, m={}, content=content, gseg=gseg)
+        𝑓.keywords['f'] = 𝑓
+        tree = 𝑓(0, Node("rname", rule))
         
-        if not tree or tree[1]:
+        if not tree or tree[1] != ⵌ(content):
             if tree:
                 assert ⴴ, f"Didn't finish:\n\tCurrent tree: {tree[0]}\n\tRemainder: {tree[1]}"
             else:
                 assert ⴴ, f"Didn't finish, failed!"
-        return 𝕊.chop(tree[0], allow_deletes=allow_deletes)
+        
+        return 𝕊.chop(tree[0], allow_deletes=allow_deletes, content=content)
     
-    def __contains__(𝕊, c):
-        return c in 𝕊.rules
+    @staticmethod
+    def get_segment(χ, d, k):
+        a, b = 0, ⵌ(k)
+        while True:
+            n = (a + b) // 2
+            α, β = γ = k[n]
+            if α <= χ <= β: return d[γ][χ-α:]
+            if   α > χ:
+                if b == n: return
+                a, b = a, n
+            elif β < χ:
+                if a == n: return
+                a, b = n, B
     
-    def __repr__(𝕊):
-        return f"{Т(𝕊).__name__}[rules={𝕊.rules}]"
+    def merge_rules(𝕊, rules): return Gram(𝕊.rules | rules)
+    def print_rules(𝕊): [(print(f'Rule "{k}":'), v.print()) for k, v in 𝕊.rules.items()]
     
-    def print_rules(𝕊):
-        for k, v in 𝕊.rules.items():
-            print(f'Rule "{k}":')
-            v.print()
-    
-    def merge_rules(𝕊, rules):
-        return Gram(𝕊.rules | rules)
-    
-    def run(𝕊, s, r, *, m=ᗜ):
+    def run(𝕊, χ, r, *, 𝑓, gseg, m, content):
         t, c, m = r.t, r.c, {} if m is None else m
         if t == '←':
             α, β = c
-            j = 𝕊.run(s, β, m=m)
+            j = 𝑓(χ, β)
             if j:
                 return j[0].copy(e=α.c), j[1]
-            else:
-                ...
+            else: # var bind to something that failed, wat do?
                 return
         if t == "rname":
             if c == '✗': # die
                 assert ⴴ
             if c == '✓': # good
-                return Node('✓'), s
+                return CHECK, χ
             
-            loc = s[0].t[1] if s else -1
-            k = loc, c
+            k = χ, c
             if k in m:
                 if not (j := m[k]):
                     return
-                return j[0], s[j[1]:]
+                return j
             
-            j = 𝕊.run(s, 𝕊.rules[c], m=m)
+            j = 𝑓(χ, 𝕊.rules[c])
             if j:
-                α, σ = j
-                r = Node(c, [α]), σ
-                m[k] = r[0], ⵌ(s)-ⵌ(σ)
+                α, β = j
+                m[k] = r = Node(c, [α]), β
             else:
                 m[k] = r = None
             return r
@@ -116,71 +128,65 @@ class Gram:
         if t in "*+∧":
             R = []
             if t in '*+': # as many as possible
-                while v := 𝕊.run(s, c[0], m=m):
-                    α, s = v
+                while v := 𝑓(χ, c[0]):
+                    α, χ = v
                     R.append(α)
                 if t == '+' and not R: return # empty plus we leave!!!1
             else: # concatination
                 for x in c:
-                    if not (v := 𝕊.run(s, x, m=m)): return
-                    α, s = v
+                    if not (v := 𝑓(χ, x)): return
+                    α, χ = v
                     R.append(α)
-            return Node(t, R), s
+            return Node(t, R), χ
         match t:
             case '?': # its okay you can eat when you want to
-                if v := 𝕊.run(s, c[0], m=m):
+                if v := 𝑓(χ, c[0]):
                     return Node(t, [v[0]]), v[1]
-                return Node(t), s
+                return QUESTION, χ
             case '∨': # pick first
                 for x in c:
-                    if (v := 𝕊.run(s, x, m=m)): return v
+                    if (v := 𝑓(χ, x)): return v
             case '~'|'ᔐ': # regex/str
-                L = s[0].t[1] if s else 10**12
-                st = 𝕊.ST[L:]
+                if (ƨ := gseg(χ)) is None: return
                 if t == '~':
-                    if not (ma := c.match(st)): return
+                    if not (ma := c.match(ƨ)): return
                     R = ma.span()[1]
                 elif t == 'ᔐ':
-                    if not st.startswith(c): return
+                    if not ƨ.startswith(c): return
                     R = ⵌ(c)
-                return Node(t, s[:R]), s[R:]
+                p = χ+R
+                return Node(t, slice(χ, p)), p
             case '❗': # match or die
-                if not (v := 𝕊.run(s, c[0], m=m)): assert ⴴ
+                if not (v := 𝑓(χ, c[0])): assert ⴴ
                 return Node(t, [v[0]]), v[1]
             case '󰆴': # eat & delete
-                if not (v := 𝕊.run(s, c[0], m=m)): return
+                if not (v := 𝑓(χ, c[0])): return
                 return Node(t, [v[0]]), v[1]
-            case '⠶': # flatten
-                if v := 𝕊.run(s, c[0], m=m): return Node(t, v[0].c), v[1]
+            case '⠶'|'ƨ': # flatten / atom
+                if v := 𝑓(χ, c[0]): return Node(t, v[0].c), v[1]
             case '⮞': # positive lookahead
-                if not (v := 𝕊.run(s, c[0], m=m)): return
-                return Node(t, [v[0]]), s
+                if not (v := 𝑓(χ, c[0])): return
+                return Node(t, [v[0]]), χ
             case '¬': # negative lookahead
-                if v := 𝕊.run(s, c[0], m=m): return
-                return Node(t), s
+                if v := 𝑓(χ, c[0]): return
+                return LOOKAHEAD_NEG, χ
             case _: # unwillingly die
                 assert ⴴ, f"Invalid instruction '{t}'!"
     
-    def chop(𝕊, n, allow_deletes=ⴳ):
-            # .print() \
+    def chop(𝕊, n, allow_deletes=ⴳ, *, content):
         return n \
-            .child_killer(lambda n,S=FS("⮞¬"+'󰆴'*allow_deletes): n.t in S or (n.t == '✓' and not n.e)) \
-            .flatten_kids(lambda n,S=FS("∧∨~+*?ᔐ⠶⮞❗"): n.t in S) \
+            .child_killer(lambda n,S=FS("⮞¬"+'󰆴'*allow_deletes): n.t in S and not n.e) \
             .find_replace(
-                lambda n: n.L,
-                lambda n: n.copy(c=ᒪ(map_groups(n.C,
-                    lambda n: ᐹ(n.t,tuple) and n.t[0]=='□',
-                    lambda l: Ń(ᐦ, ᒍ(ᐦ, l)),
-                    lambda n: n.txt)))) \
-            .find_replace(lambda n: n.L and ⵌ(n) == 1 and n.C[0].t in "~ᔐ",
-                          lambda n: n.copy(c=n.txt)) \
-            .flatten_kids(lambda n: n.t == '⠶')
+                lambda n, S=FS("ᔐ~"): n.t in S,
+                lambda n: Node(c=ᒍ(ᐦ,content[n.c]))) \
+            .find_replace(lambda n: n.t=='ƨ', lambda n: Node(ᐦ,n.txt)) \
+            .flatten_kids(lambda n,S=FS("∧∨~+*?ƨᔐ⮞⠶❗"): n.t in S) \
+            .find_replace(lambda n: ⵌ(n)==1 and ᐹ(β:=n.c[0],Node) and not β.t,
+                          lambda n: n.copy(c=n.txt))
     
 ŕ, ñ = ρ(re.compile, flags=regex.V0), Node
-Parser = lambda g, B=Gram({'statements': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('*', [ñ('∧', [ñ('∨', [ñ('rname', 'comment'), ñ('rname', 'elm_o')]), ñ('?', [ñ('rname', 'W')])])])])]), 'comment': ñ('∨', [ñ('~', ŕ('[\ueb26#][^\\n]*'))]), 'elm_o': ñ('∨', [ñ('∧', [ñ('rname', 'elm_a'), ñ('*', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∨'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_a')])])])]), 'elm_a': ñ('∨', [ñ('∧', [ñ('rname', 'elm_j'), ñ('*', [ñ('∧', [ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∧'), ñ('?', [ñ('rname', 'W')])]), ñ('?', [ñ('rname', 'w')])]), ñ('rname', 'elm_j')])])])]), 'elm_j': ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')]), '_elm_j': ñ('∨', [ñ('∧', [ñ('rname', 'elm'), ñ('?', [ñ('rname', 'W')]), ñ('~', ŕ('[⯅⯆△▽↷]')), ñ('?', [ñ('rname', 'W')]), ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')])])]), 'elm': ñ('∨', [ñ('∧', [ñ('rname', 'prefix'), ñ('∨', [ñ('rname', 'assign_eql'), ñ('rname', 'assign_cln'), ñ('rname', 'group'), ñ('rname', 'str'), ñ('rname', 'rname')]), ñ('rname', 'suffix')])]), 'assign_eql': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '='), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_o')])]), 'assign_cln': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', ':'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_j')])]), 'group': ñ('∨', [ñ('∧', [ñ('ᔐ', '('), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'group_inner'), ñ('ᔐ', ')')])]), 'group_inner': ñ('∨', [ñ('*', [ñ('∧', [ñ('rname', 'elm_o'), ñ('?', [ñ('rname', 'W')])])])]), 'str1': ñ('∨', [ñ('~', ŕ('"(␛.|[^"])*"'))]), 'str2': ñ('∨', [ñ('~', ŕ("'(␛.|[^'])*'"))]), 'str3': ñ('∨', [ñ('~', ŕ('‹(␛.|[^›])*›'))]), 'str': ñ('∨', [ñ('rname', 'str1'), ñ('rname', 'str2'), ñ('rname', 'str3')]), 'rname': ñ('∨', [ñ('~', ŕ('[^⯅⯆△▽↷󰆴()?❗⮞.:⠶✗+*=¬∨∧~‹#\'" \\t\\n]+|✗'))]), 'prefix': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'w')]), ñ('+', [ñ('∧', [ñ('~', ŕ('[󰆴❗⮞⠶~¬]')), ñ('?', [ñ('rname', 'W')])])])]), ñ('?', [ñ('rname', 'w')])]), 'suffix': ñ('∨', [ñ('∧', [ñ('+', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('~', ŕ('[*+?]'))])]), ñ('?', [ñ('rname', 'w')])]), ñ('?', [ñ('rname', 'w')])]), 'w': ñ('∨', [ñ('~', ŕ('([ \\t]|␛\\n)+'))]), 'W': ñ('∨', [ñ('~', ŕ('([ \\t\\n]|␛\\n)+'))])}): Gram(gram_convert(B(g, "statements")))
-
+Parser = lambda g, B=Gram({'statements': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('*', [ñ('∧', [ñ('∨', [ñ('rname', 'comment'), ñ('rname', 'elm_o')]), ñ('?', [ñ('rname', 'W')])])])])]), 'comment': ñ('∨', [ñ('~', ŕ('[\ueb26#][^\\n]*'))]), 'elm_o': ñ('∨', [ñ('∧', [ñ('rname', 'elm_a'), ñ('*', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∨'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_a')])])])]), 'elm_a': ñ('∨', [ñ('∧', [ñ('rname', 'elm_j'), ñ('*', [ñ('∧', [ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∧'), ñ('?', [ñ('rname', 'W')])]), ñ('?', [ñ('rname', 'w')])]), ñ('rname', 'elm_j')])])])]), 'elm_j': ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')]), '_elm_j': ñ('∨', [ñ('∧', [ñ('rname', 'elm'), ñ('?', [ñ('rname', 'W')]), ñ('~', ŕ('[⯅⯆△▽↷]')), ñ('?', [ñ('rname', 'W')]), ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')])])]), 'elm': ñ('∨', [ñ('∧', [ñ('rname', 'prefix'), ñ('∨', [ñ('rname', 'assign_eql'), ñ('rname', 'assign_cln'), ñ('rname', 'group'), ñ('rname', 'str'), ñ('rname', 'rname')]), ñ('rname', 'suffix')])]), 'assign_eql': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '='), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_o')])]), 'assign_cln': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', ':'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_j')])]), 'group': ñ('∨', [ñ('∧', [ñ('ᔐ', '('), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'group_inner'), ñ('ᔐ', ')')])]), 'group_inner': ñ('∨', [ñ('*', [ñ('∧', [ñ('rname', 'elm_o'), ñ('?', [ñ('rname', 'W')])])])]), 'str1': ñ('∨', [ñ('~', ŕ('"(␛.|[^"])*"'))]), 'str2': ñ('∨', [ñ('~', ŕ("'(␛.|[^'])*'"))]), 'str3': ñ('∨', [ñ('~', ŕ('‹(␛.|[^›])*›'))]), 'str': ñ('∨', [ñ('rname', 'str1'), ñ('rname', 'str2'), ñ('rname', 'str3')]), 'rname': ñ('∨', [ñ('~', ŕ('[^⯅⯆△▽↷󰆴()?❗⮞.:⠶ƨ✗+*=¬∨∧~‹#\'" \\t\\n]+|✗'))]), 'prefix': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'w')]), ñ('+', [ñ('∧', [ñ('~', ŕ('[󰆴❗⮞⠶ƨ~¬]')), ñ('?', [ñ('rname', 'W')])])])]), ñ('?', [ñ('rname', 'w')])]), 'suffix': ñ('∨', [ñ('∧', [ñ('+', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('~', ŕ('[*+?]'))])]), ñ('?', [ñ('rname', 'w')])]), ñ('?', [ñ('rname', 'w')])]), 'w': ñ('∨', [ñ('~', ŕ('([ \\t]|␛\\n)+'))]), 'W': ñ('∨', [ñ('~', ŕ('([ \\t\\n]|␛\\n)+'))])}): Gram(gram_convert(B(g, "statements")))
 if __name__ == "__main__":
-    # togprof()
     p = Parser(r"""
         main    = (entry 󰆴W?)*
         entry   = (
@@ -194,8 +200,6 @@ if __name__ == "__main__":
         w       = ~‹[ \t]+›
         W       = ~‹[ \t\n]+›
     """)
-    # togprof()
-    
     p.print_rules()
     
     c = r"""[section]
@@ -205,12 +209,9 @@ if __name__ == "__main__":
     [anothersection]
     key123 = "swooce"
     key456="yet another one here"
-    """ * 1
+    """ * 100
     
-    # togprof()
+    togprof()
     tr = p(c)
-    
-    print(tr['sand'])
-    
-    # togprof()
+    togprof()
     tr.print()

@@ -2,6 +2,8 @@ from util import *
 from dynamic_parser import DynamicParser, make_op_call
 from node import Node
 from op import OP, OP_Manager
+from sys import setrecursionlimit
+setrecursionlimit(100_000)
 
 class Lang:
     def __init__(𝕊, lang_file):
@@ -98,20 +100,29 @@ class Lang:
                       𝕊.gram(content, "parser_main")))
 
 if __name__ == "__main__":
+    import dynamic_parser, time, ast
+    
     pr = lambda g: print(ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{v}" for i,v in enum(ⵉ(g, ń)))))
     
+    tI = time.time()
     l = Lang("cpy.lang")
-    prs = ρ(l, "test.txt")
+    tΔl = time.time() - tI
     
-    normal = prs()
+    # prs = ρ(l, "test.txt")
+    prs = ρ(l, "test2.txt")
     pretty = prs(NOVAR=1)
     
-    import ast
+    dynamic_parser.DEBUG = 0
+    
+    tI = time.time()
+    normal = prs()
+    tΔc = time.time() - tI
+    
+    print("\nNORMAL:")
     pr(normal)
-    print()
-    pr(ast.unparse(ast.parse(normal)))
-    print()
+    print("\nNO-CONVERT-VARS:")
     pr(pretty)
-    print()
+    print("\nAST REPARSE:")
+    pr(ast.unparse(ast.parse(normal)))
+    print(f"\n{tΔl=}, {tΔc=}, {tΔl+tΔc=}\nEXECUTION:")
     exec(normal)
-    print()

@@ -4,7 +4,8 @@ DEBUG = 0 + 1
 
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
-from itertools import accumulate, pairwise, starmap, chain, filterfalse
+from itertools import accumulate, pairwise, starmap, \
+                      chain, filterfalse, groupby
 from more_itertools import *
 import colored, regex
 import regex as re
@@ -28,9 +29,9 @@ FS = frozenset
 enum = enumerate
 R = lambda *a,**k:open(*a,**k).read()
 ID = lambda x: x
-BP = lambda *a,sep=ń,**k: (print(*a,sep=sep,**k), breakpoint())
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
+wrap = lambda x,w=120,q='\t': TW.indent('\n'.join(TW.wrap(x, width=w)), q)
 rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
 spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
@@ -49,21 +50,6 @@ def part(l, f):
         a.append(v)
     assert False
 
-import line_profiler, cProfile, pstats, atexit, io
-lnprof, __proft = line_profiler.LineProfiler(), ⴴ
-atexit.register(lnprof.print_stats)
-def togprof():
-    global __proft
-    if __proft:
-        __proft.disable()
-        s = io.StringIO()
-        ps = pstats.Stats(__proft, stream=s).sort_stats(pstats.SortKey.CUMULATIVE)
-        ps.print_stats()
-        print(s.getvalue())
-        __proft = ⴴ
-        return BP()
-    (__proft := cProfile.Profile()).enable()
-
 class Holder:
     __slots__ = "A","K"
     def __init__(𝕊,*a,**k):𝕊.A=𝕊.K='∅'
@@ -72,6 +58,7 @@ class Holder:
     __repr__=lambda 𝕊:f"Holder: {𝕊.A=} {𝕊.K=}"
 
 def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
+    L = ᒪ(L)
     if ⵌ(L) == 0: return [s]*ᖲ(E and (l or r))
     if ⵌ(L) == 1: return [s]*ᖲ(l)+L+[s]*ᖲ(r)
     R, e = [s] if l else [], (L := L.copy()).pop()
@@ -118,3 +105,24 @@ class SCRIPT:
     SUB = ᖱ(ζ(CHAR_SUB, CHAR_NRM))
     sup2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUP.__getitem__, x))
     sub2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUB.__getitem__, x))
+
+import line_profiler, textwrap as TW, cProfile, pstats, atexit, io
+lnprof, __proft = line_profiler.LineProfiler(), ⴴ
+atexit.register(lnprof.print_stats)
+def BP(*a):
+    for i, x in enum(a):
+        print(f"{Z.r}BP{Z.w} - {Z.g}{i}{Z.w}:{wrap(ᔐ(x))}")
+    print()
+    breakpoint()
+    if a: return a[0]
+def togprof():
+    global __proft
+    if __proft:
+        __proft.disable()
+        s = io.StringIO()
+        ps = pstats.Stats(__proft, stream=s).sort_stats(pstats.SortKey.CUMULATIVE)
+        ps.print_stats()
+        print(s.getvalue())
+        __proft = ⴴ
+        return BP()
+    (__proft := cProfile.Profile()).enable()

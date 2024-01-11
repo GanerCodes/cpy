@@ -3,14 +3,14 @@ from util import *
 class Node:
     __slots__ = 't', 'c', 'e'
     
-    Ń = CMD(lambda 𝕋,t,*C:𝕋(t,[𝕋(c=c) if ᐹ(c,ᔐ) else (𝕋.Ń(*c) if ᐹ(c,ᒪ|tuple) else c) for c in C]))
+    Ń = CMD(lambda 𝕋,t,*C: 𝕋(t,[𝕋(c=c) if ᐹ(c,ᔐ) else (𝕋.Ń(*c) if ᐹ(c,ᒪ|tuple) else c) for c in C]))
     
     def __init__(𝕊, t=ᐦ, c=None, e=ᐦ):
         assert ᐹ(t, ᔐ|tuple)
         𝕊.t, 𝕊.c, 𝕊.e = t, [] if c is None else c, e
-    
-    def __len__(𝕊):
-        return ⵌ(𝕊.C)
+    def __len__(𝕊): return ⵌ(𝕊.C)
+    def __bool__(𝕊): return True
+    def __repr__(𝕊): return f"{Т(𝕊).__name__}{(𝕊.t, 𝕊.c, 𝕊.e)!r}"
     
     def __iter__(𝕊):
         assert 𝕊.L
@@ -21,11 +21,8 @@ class Node:
         if not ᐹ(n, Т(𝕊)): return ⴴ
         return 𝕊.t == n.t and 𝕊.c == n.c
     
-    def __repr__(𝕊):
-        return f"{Т(𝕊).__name__}{(𝕊.t, 𝕊.c, 𝕊.e)!r}"
-    
     def __str__(𝕊):
-        return f"{𝕊.t}{f"({𝕊.e})" if 𝕊.e else ᐦ}{f"[{ᒍ(',', ᴍ(ᔐ, 𝕊.c))}]" if 𝕊.L else \
+        return f"{𝕊.t or 'ᔐ'}{f"({𝕊.e})" if 𝕊.e else ᐦ}{f"[{ᒍ(',', ᴍ(ᔐ, 𝕊.c))}]" if 𝕊.L else \
             f"⟨{f'"{𝕊.c}"' if 𝕊.S else f"{Т(𝕊.c)} {𝕊.c}"}⟩"}"
     
     def __getitem__(𝕊, s, rec=ⴴ):
@@ -71,11 +68,11 @@ class Node:
         return L
     
     def find_replace(𝕊, f, r, rec=ⴳ):
-        N = 𝕊.copy()
-        if N.L and rec != 0:
+        if 𝕊.L and rec != 0:
+            𝕊 = 𝕊.copy()
             p = ρ(Т(𝕊).find_replace, f=f, r=r, rec=rec if rec else 0)
-            N.c = [p(c) for c in 𝕊.c]
-        return r(N) if f(N) else N
+            𝕊.c = [p(c) for c in 𝕊.c]
+        return r(𝕊) if f(𝕊) else 𝕊
     
     def child_index(𝕊, f):
         for i, c in enum(𝕊.C):
@@ -124,6 +121,8 @@ class Node:
         J=lambda x,a=Z.G  ,b=Z.w   :a+x+b):
         if ᗮ^ᐹ(𝕊, Node):
             return [(p, Node.text(𝕊))]
+        if 𝕊.t == "oper" and 𝕊.L and ⵌ(𝕊) == 3:
+            return [(p, f" oper[{𝕊.c[0].c or N}|{𝕊.c[1].c}|{𝕊.c[2].c or N}]")]
         if d:
             if p:
                 C=[Node.print(c,d-1,p+1) for c in 𝕊.C]
