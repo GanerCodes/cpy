@@ -57,16 +57,17 @@ def whitespace_unparser(n, i=0):
     N.c = [whitespace_unparser(c, i) for c in N.c]
     return N
 
+def incompat_char(x, y, good_chars = "~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"):
+    return x not in good_chars and y not in good_chars
 def add_spaces(n):
-    def incompat_char(x, y):
-        good_chars = "~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"
-        return not (x in good_chars or y in good_chars)
     if not n.C: return n
     cc, s = [], peekable([add_spaces(c) for c in n.C])
-    while ((α := next(s)) or 1) and s:
+    while True:
+        α = next(s)
+        if not s: break
         β = s.peek()
         cc.append(α)
-        if (a:=α.txt) and (b:=β.txt) and incompat_char(a[-1], b[0]):
+        if incompat_char(α.rchar(), β.lchar()):
             cc.append(Node('w', ś))
     cc.append(α)
     return n.copy(c=cc)

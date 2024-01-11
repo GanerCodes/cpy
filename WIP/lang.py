@@ -105,24 +105,27 @@ def main():
     tI = time.time()
     l = Lang("cpy.lang")
     tΔl = time.time() - tI
-    prs = ρ(l, "test2.txt")
+    prs = ρ(l, "test.txt")
     
     pretty = prs(NOVAR=1)
     
     dynamic_parser.DEBUG = 0
     
+    # togprof()
     tI = time.time()
     normal = prs()
     tΔc = time.time() - tI
+    # togprof()
     
     print("NORMAL:")
     pr(normal)
+    open("TEST.OUTPUT",'w').write(normal)
     print("\nNO-CONVERT-VARS:")
     pr(pretty)
     print("\nAST REPARSE:")
     pr(ast.unparse(ast.parse(normal)))
     print(f"\n{tΔl=}, {tΔc=}, {tΔl+tΔc=}\nEXECUTION:")
-    exec(normal)
+    exec(normal, ω:={}, ω)
 
 if __name__ == "__main__":
     main()

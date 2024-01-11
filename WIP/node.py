@@ -100,6 +100,21 @@ class Node:
     def strip(𝕊, f=ᗜ):
         return 𝕊.lstrip(*(F:=δ(f))).rstrip(*F)
     
+    def lchar(𝕊):
+        if 𝕊.S: return 𝕊.c[0]
+        if 𝕊.C:
+            for c in 𝕊.C:
+                if x := c.lchar():
+                    return x
+        return ᐦ
+    def rchar(𝕊):
+        if 𝕊.S: return 𝕊.c[-1]
+        if 𝕊.C:
+            for c in reversed(𝕊.C):
+                if x := c.rchar():
+                    return x
+        return ᐦ
+    
     def text(𝕊):
         if ᐹ(𝕊, Node):
             if 𝕊.S:

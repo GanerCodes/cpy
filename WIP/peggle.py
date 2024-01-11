@@ -153,7 +153,7 @@ class Gram:
                     if not ƨ.startswith(c): return
                     R = ⵌ(c)
                 p = χ+R
-                return Node(t, slice(χ, p)), p
+                return Node(t, (χ, p)), p
             case '❗': # match or die
                 if not (v := 𝑓(χ, c[0], z=z+1)): assert ⴴ
                 return Node(t, [v[0]]), v[1]
@@ -176,7 +176,7 @@ class Gram:
             .child_killer(lambda n,S=FS("⮞¬"+'󰆴'*allow_deletes): n.t in S and not n.e) \
             .find_replace(
                 lambda n, S=FS("ᔐ~"): n.t in S,
-                lambda n: Node(c=ᒍ(ᐦ,content[n.c]))) \
+                lambda n: Node(c=ᒍ(ᐦ,content[n.c[0]:n.c[1]]))) \
             .find_replace(lambda n: n.t=='ƨ', lambda n: Node(ᐦ,n.txt)) \
             .flatten_kids(lambda n,S=FS("∧∨~+*?ƨᔐ⮞⠶❗"): n.t in S) \
             .find_replace(lambda n: ⵌ(n)==1 and ᐹ(β:=n.c[0],Node) and not β.t,

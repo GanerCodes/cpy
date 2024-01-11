@@ -157,10 +157,10 @@ script = (
 lamb = (
     ( 
         (lamb_h_py = 󰆴"lambda" ⮞text_breaker 󰆴Æ ⠶expr_not_colon 󰆴':')
-      ∨ (lamb_h_normal = 
+      ∨ (lamb_h_normal = (
             󰆴('⥌' Æ?)
             ⠶((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴Æ?)*
-            󰆴'↦' )
+            󰆴'↦' ))
       ∨ (lamb_h_preset = ~"[𝚲󰲡󰲣󰲥󰲧]")
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ⠶((exprs 󰆴'󰅂') ∨ expr_not_comma)))

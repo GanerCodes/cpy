@@ -1,10 +1,11 @@
+𝑏,𝑙,𝑠,ᔐ = bool, list, set, str
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ filterfalse, product
 
 getitem, setitem = 󰲣x[y], 󰲥x.__setitem__(y,z)
 setattr_ret_ = 󰲧setattr(y,z,w) ∨ w
 setitem_ret_ = 󰲧setitem(y,z,w) ∨ w
-OP_DUPER_ = f↦󰲡f(x,x,⠤𝔸,⠶𝕂)
+OP_DUPER_ = f↦󰲡f(x,x,⠤𝔸,⠶𝕂) # _1d460
 OP_SWAPA_ = f↦󰲣f(y,x,⠤𝔸,⠶𝕂)
 NULL = object()
 ✓,✗ = ⴳ,ⴴ = 𝕋,𝔽 = True, False
@@ -21,8 +22,9 @@ LITERAL_OPS_ = {
     "is":󰲣x≅y, "is not":󰲣x≇y,
     "in":󰲣x∈y, "not in":󰲣x∉y }
 
-⊢ ⨳´(α, β): assert β, 𝕝(β, ᐦ)
-𝑏,𝑙,𝑠,ᔐ = bool, list, set, str
+⊢ ⨳´(α, β):
+    assert α, 𝕝(β, ᐦ)
+    return α
 𝕝, 𝕣 = 󰲡[*𝔸]¿x≅NULL¡[x], 󰲡x󰈲󰲡x≇NULL
 
 ⊂ = 󰲣𝑠(x).issubset(𝑠(y))
@@ -83,14 +85,9 @@ LITERAL_OPS_ = {
 
 ⨳ 󰲣x󰒼yⁱⁿᵈᵉˣΣᐦ󰅂("deaaabb", "bbdae") ≡ "bbdaaae"
 
-
 🟑
+1…10 ᴍ ⹏´꜠ → ☾
  x ∈ y ∉ z
  2 > 1 > 0 
-1…10 ᴍ ⹏´꜠ → ☾
 ☾ ← 3 ⹏ 2
-¬´
  ⟥´꜠ᵜ⟤
-
-
- brb ~3/4 min
