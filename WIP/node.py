@@ -46,12 +46,20 @@ class Node:
         return 𝕊.copy(c=[c for c in C if f(c)])
     
     generic_flatten = lambda n: n.c if ᐹ(n, Node) and n.L else [n.c]
-    def flatten_kids(𝕊, f, r=ᗜ, rec=ⴳ):
-        if not 𝕊.C: return 𝕊
-        if r is None: r = Т(𝕊).generic_flatten
-        p = ρ(Т(𝕊).flatten_kids, f=f, r=r, rec=rec)
-        C = [p(c) for c in 𝕊] if rec else 𝕊.c
-        return 𝕊.copy(c=ᒪ(chain(*[r(c) if f(c) else [c] for c in C])))
+    def flatten_kids(𝕊, f, r=ᗜ, rec=ⴳ, *, 𝑓_=ᗜ):
+        if not (C := 𝕊.C): return 𝕊
+        if not 𝑓_:
+            if r is None: r = Т(𝕊).generic_flatten
+            𝑓_ = ρ(Т(𝕊).flatten_kids, f=f, r=r, rec=rec)
+            𝑓_.keywords['f_'] = 𝑓_
+        if rec: C = [𝑓_(c) for c in C]
+        cc = []
+        for c in C:
+            if f(c):
+                cc.extend(r(c))
+            else:
+                cc.append(c)
+        return 𝕊.copy(c=cc)
     
     def child_killer(𝕊, f, rec=ⴳ):
         if not 𝕊.C: return 𝕊

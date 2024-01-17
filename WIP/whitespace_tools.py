@@ -61,7 +61,7 @@ def incompat_char(x, y, good_chars = "~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"):
     return x not in good_chars and y not in good_chars
 def add_spaces(n):
     if not n.C: return n
-    cc, s = [], peekable([add_spaces(c) for c in n.C])
+    cc, s = [], peekable(add_spaces(c) for c in n.C)
     while True:
         α = next(s)
         if not s: break

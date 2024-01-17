@@ -108,8 +108,9 @@ class DynamicParser:
         𝕊.tree_manips[type].setdefault(order, {})
         for name in names:
             𝕊.tree_manips[type][order][name] = f
-    def get_manip(𝕊, type, order, t):
-        return 𝕊.tree_manips[type].get(order, {}).get(t)
+    def get_manip(𝕊, T, order, t):
+        if s := 𝕊.tree_manips[T].get(order):
+            return s.get(t)
 
     def general_tree_manip(𝕊, n): # metasyntactical manipulations
         n = n.copy()
