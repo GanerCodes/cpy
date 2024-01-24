@@ -191,7 +191,7 @@ if __name__ == "__main__":
         entry   = (
             (section=󰆴'[' wrd 󰆴']') 󰆴W?
             (pair = (
-                (sand:key   = ⠶wrd) 󰆴(w? ↷ '=') egg:✓
+                (coolPropertyExample:key   = ⠶wrd) 󰆴(w? ↷ '=')
                 (value = (wrd ∨ str)+) 󰆴W? ) )* )
 
         str     = ~‹"[^"]+"›
