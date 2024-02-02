@@ -1,2 +1,5 @@
 {
+    "code-runner.executorMap": {
+        "python": "cd $dir && py $fileName",
+    }
 }
