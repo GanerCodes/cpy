@@ -206,7 +206,7 @@ if A.directory:
 elif A.file and not A.no_fdir:
     D = pdr(parse_implicit_filename(A.file, in_ext, out_ext))
 else:
-    D = A.cur_dir
+    D = cur_dir
 D = P.realpath(D)
 
 mappings = []
