@@ -18,8 +18,9 @@ pprint = PrettyPrinter(2).pprint
 Ω pait:
     ⨡ subprocess as ρ
     ⊢ __call__(𝕊,s,⠤𝔸,⠶𝕂):
+        b = 𝕂.pop("background",𝔽)
         proc = 𝕊󰁜.Popen(s.split(' '),⠤𝔸,⠶𝕂)
-        ↪ (proc.wait()∧𝔽 ¿ "background"∉𝕂) ∨ proc
+        ↪ (proc.wait()∧𝔽 ¿ ¬b) ∨ proc
     _parse = 𝕊,o↦o.read().decode()
     r = 𝕊↦𝕊(⠤𝔸,⠶𝕂).return_code
     S = 𝕊↦𝕊._parse(𝕊(⠤𝔸,stdout=𝕊󰁜.PIPE,⠶𝕂).stdout)

@@ -5,7 +5,7 @@ class Node:
     
     Ń = CMD(lambda 𝕋,t,*C: 𝕋(t,[𝕋(c=c) if ᐹ(c,ᔐ) else (𝕋.Ń(*c) if ᐹ(c,ᒪ|tuple) else c) for c in C]))
     
-    def __init__(𝕊, t=ᐦ, c=None, e=ᐦ):
+    def __init__(𝕊, t=ᐦ, c=ᗜ, e=ᐦ):
         assert ᐹ(t, ᔐ|tuple)
         𝕊.t, 𝕊.c, 𝕊.e = t, [] if c is None else c, e
     def __len__(𝕊): return ⵌ(𝕊.C)
@@ -114,14 +114,14 @@ class Node:
             for c in 𝕊.C:
                 if x := c.lchar():
                     return x
-        return ᐦ
+        return ''
     def rchar(𝕊):
         if 𝕊.S: return 𝕊.c[-1]
         if 𝕊.C:
             for c in reversed(𝕊.C):
                 if x := c.rchar():
                     return x
-        return ᐦ
+        return ''
     
     def text(𝕊):
         if ᐹ(𝕊, Node):

@@ -96,36 +96,3 @@ class Lang:
         return 𝕊.dynamic_parsers.gen(
                   𝕊.dynamic_parsers.tree_transform(
                       𝕊.gram(content, "parser_main")))
-
-def main():
-    import dynamic_parser, time, ast
-    
-    pr = lambda g: print(ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" for i,v in enum(ⵉ(g, ń)))))
-    
-    tI = time.time()
-    l = Lang("cpy.lang")
-    tΔl = time.time() - tI
-    prs = ρ(l, "test.txt")
-    
-    pretty = prs(NOVAR=1)
-    
-    dynamic_parser.DEBUG = 0
-    
-    # togprof()
-    tI = time.time()
-    normal = prs()
-    tΔc = time.time() - tI
-    # togprof()
-    
-    print("NORMAL:")
-    pr(normal)
-    open("TEST.OUTPUT",'w').write(normal)
-    print("\nNO-CONVERT-VARS:")
-    pr(pretty)
-    print("\nAST REPARSE:")
-    pr(ast.unparse(ast.parse(normal)))
-    print(f"\n{tΔl=}, {tΔc=}, {tΔl+tΔc=}\nEXECUTION:")
-    exec(normal, ω:={}, ω)
-
-if __name__ == "__main__":
-    main()

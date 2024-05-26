@@ -1,7 +1,0 @@
-exec("""
-a = 1
-def f():
-    print('a' in globals())
-    print('a' in locals())
-
-f()""")

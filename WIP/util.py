@@ -1,5 +1,3 @@
-DEBUG = 0 #+ 1
-
 # from traceback_with_variables import activate_by_import
 
 from collections import namedtuple as NT
@@ -107,25 +105,28 @@ class SCRIPT:
     sup2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUP.__getitem__, x))
     sub2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUB.__getitem__, x))
 
-import sys, resource, threading, line_profiler, cProfile, pstats, atexit, io
-from inspect import getouterframes, currentframe
-sys.setrecursionlimit(1_000_000)
-lnprof, __proft = line_profiler.LineProfiler(), ⴴ
-atexit.register(lnprof.print_stats)
-def BP(*a):
-    for i, x in enum(a):
-        print(f"{Z.r}BP{Z.w} - {Z.g}{i}{Z.w}:\t{wrap(ᔐ(x),q='\t')}")
-    print()
-    breakpoint()
-    if a: return a[0]
-def togprof():
-    global __proft
-    if __proft:
-        __proft.disable()
-        s = io.StringIO()
-        ps = pstats.Stats(__proft, stream=s).sort_stats(pstats.SortKey.CUMULATIVE)
-        ps.print_stats()
-        print(s.getvalue())
-        __proft = ⴴ
-        return BP()
-    (__proft := cProfile.Profile()).enable()
+BP = togprof = lambda *a: 0
+def ENABLE_DEBUG():
+    global BP, togprof, __proft, lnprof
+    import sys, resource, threading, line_profiler, cProfile, pstats, atexit, io
+    from inspect import getouterframes, currentframe
+    sys.setrecursionlimit(1_000_000)
+    lnprof, __proft = line_profiler.LineProfiler(), ⴴ
+    atexit.register(lnprof.print_stats)
+    def BP(*a):
+        for i, x in enum(a):
+            print(f"{Z.r}BP{Z.w} - {Z.g}{i}{Z.w}:\t{wrap(ᔐ(x),q='\t')}")
+        print()
+        breakpoint()
+        if a: return a[0]
+    def togprof():
+        global __proft
+        if __proft:
+            __proft.disable()
+            s = io.StringIO()
+            ps = pstats.Stats(__proft, stream=s).sort_stats(pstats.SortKey.CUMULATIVE)
+            ps.print_stats()
+            print(s.getvalue())
+            __proft = ⴴ
+            return BP()
+        (__proft := cProfile.Profile()).enable()
