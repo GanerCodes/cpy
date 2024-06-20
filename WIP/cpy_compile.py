@@ -1,48 +1,51 @@
-import sys ; from pathlib import Path ; sys.path+=[z:=f"{Path(__file__).absolute().parent}",z+"/compiler"] ; # wow i sure love pythno
 from util import *
-
-# import util ; util.ENABLE_DEBUG()
-# import dynamic_parser ; dynamic_parser.DEBUG = 1
-
 from compiler.lang import Lang
+import dynamic_parser
 import os
 
-CACHE_DIR = "/tmp/cpy_cache"
-os.makedirs(CACHE_DIR, exist_ok=ⴳ)
-
-def test(lang_file, test_file, debug_level=1, **K):
-    import time
-    if debug_level > 0:
-        import util ; util.ENABLE_DEBUG()
-    if debug_level > 1:
-        import dynamic_parser ; dynamic_parser.DEBUG = 0
+CPY_DIR = os.path.dirname(os.path.abspath(__file__))
+class Compiler:
+    def __init__(𝕊, cache_dir, gram_cache_dir):
+        os.makedirs(cache_dir, exist_ok=ⴳ)
+        os.makedirs(gram_cache_dir, exist_ok=ⴳ)
+        𝕊.cache_dir = cache_dir
+        𝕊.gram_cache_dir = gram_cache_dir
     
-    pr = lambda g: print(ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" for i,v in enum(ⵉ(g, ń)))))
+    def __call__(𝕊, lang_name, code, use_cache=ⴳ, **K): # refactor?
+        ver, code = 𝕊.extract_version(code)
+        if use_cache and os.path.isfile(cache := f"{𝕊.cache_dir}/{sha256(ver + code)}"):
+            return R(cache)
+        code = 𝕊.get_lang(lang_name, ver, use_cache)(code, **K)
+        return use_cache and W(cache, code) or code
     
-    tI = time.time()
-    l = Lang(lang_file)
-    tΔl = time.time() - tI
-    
-    togprof()
-    tI = time.time()
-    result = l(test_file, **K)
-    tΔc = time.time() - tI
-    togprof()
-    
-    print("CODE:") ; pr(result)
-    print(f"\n{tΔl=} + {tΔc=} = {tΔl+tΔc}")
+    def get_lang(𝕊, name, ver=ᐦ, use_cache=ⴳ, **K):
+        if not os.path.isdir(folder := f"{CPY_DIR}/languages/{name}{'-'*ᖲ(ver)+ver}"):
+            raise Exception(f"Unable to find language folder {folder}")
+        if not os.path.isfile(file := f"{folder}/lang"):
+            raise Exception(f"Unable to find lang file {file}")
+        return Lang(R(file), ver, use_cache and 𝕊.gram_cache_dir or ᗜ)
+        # I think this is scuffed, if you change the lang file it doesn't detect?
 
-l = Lang("languages/☾/lang")
-p = "languages/☾/code"
-l(f"{p}/header.☾")+ń+l(f"{p}/tests.☾")
+    def extract_version(𝕊, code, ver=ᐦ):
+        if (C := code.lstrip()).startswith("❗"):
+            ver, code = ⵉ(C, ń, 1)
+            ver = ver.lstrip("❗").strip()
+        return ver, code
 
-# def hash_code(handle, check_version=ⴳ, **K) → ver_hash
-
-# def compile_file(handle, cache=CACHE_DIR, **K) → ᔐ
-
-# cache manager:
-#     /tmp/cpy_cache
-#         ver_filehash → result
-
-# Provided by lang:
-#     def compile(text, main_file=False, **K) → ᔐ
+    def test_timing(𝕊, lang, code, debug_level=1, **K):
+        import time, util, dynamic_parser
+        
+        if debug_level > 0: util.ENABLE_DEBUG()
+        if debug_level > 1: dynamic_parser.DEBUG = 1
+        
+        tI = time.time()
+        lang = 𝕊.get_lang(lang, use_cache=ⴴ)
+        tΔl = time.time() - tI
+        
+        togprof()
+        tI = time.time()
+        result = lang(code, **K)
+        tΔc = time.time() - tI
+        togprof()
+        
+        print(f"CODE:\n{prettify_code(result)}\n\n{tΔl=} + {tΔc=} = {tΔl+tΔc}")

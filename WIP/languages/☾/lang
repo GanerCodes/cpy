@@ -5,6 +5,7 @@
 «««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 from whitespace_tools import *
+from string import digits
 
 py_bad_string_chr  = lambda s, bad="\\\"'{}": s in bad
 py_escape_char     = lambda c, u='\\u': u+HXO(c) if py_bad_string_chr(c) else c
@@ -70,11 +71,11 @@ kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
 var_spec = set("ℵ𝕋𝔽ⴳⴴ✓✗îπτ□∅∞ᐦ")
 
-register("KW", kw)
-register("KW_PFX", kw_pfx)
-register("KW_SPEC", kw_spec)
-register("KW_PFX_COLON", kw_pfx_colon)
-register("VAR_SPEC", var_spec)
+register("kw", kw)
+register("kw_pfx", kw_pfx)
+register("kw_spec", kw_spec)
+register("kw_pfx_colon", kw_pfx_colon)
+register("var_spec", var_spec)
 
 L = {'.'}
 sel = [(v.t+'=', v) for v in lang.ops.values() if v.B and 'δ' not in v] \
@@ -100,7 +101,7 @@ for k, v in lang.ops.items():
 ≡ᴮᴺ󰁍󰁖 ≠ᴮᴺ󰁍󰁖 ≤ᴮᴺ󰁍󰁖 ≥ᴮᴺ󰁍󰁖 ∈ᴮᴺ󰁖 ∉ᴮᴺ󰁖 ∌ᴮᴺ󰁖 ∋ᴮᴺ󰁖 ␛
       <=ᴮᴺ󰁍󰁖 >=ᴮᴺ󰁍󰁖 <ᴮᴺ󰁖󰁏 >ᴮᴺ󰁖󰁏 ␛
       ⊊ᴮᴺ󰁖 ⊄ᴮᴺ󰁖 ⊂ᴮᴺ󰁖 ⊃ᴮᴺ󰁖 ⊅ᴮᴺ󰁖  ⊋ᴮᴺ󰁖
-ᴍᴮᴺ ſᴮᴺ Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ 󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ
+ꟿᴮᴺ ᴍᴮᴺ ſᴮᴺ Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ 󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ
 ᐹᴮᴺ ζᴮᴺ
 |ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
 <<ᴮᴺ >>ᴮᴺ
@@ -109,9 +110,9 @@ for k, v in lang.ops.items():
 ∘ᴮᴺ ○ᴮᴺ ⋄ᴮᴺ
 ◄ᴮᴺ󰁏 ►ᴮᴺ󰁏
 ∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴮᴺ ∖ᴮᴺ
-//ᴮᴺ ⹏ᴮᴺ  /ᴮᴺ  ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞  *ᴮᴺᴾ󰁞  ⋅ᴮᴺ  !󰀒ᴺ ␛
-     ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ  󷹄ᴮᴾ󰀒ᴺ  ☾ᴾ󰀒ᴺ 🃌ᴾ󰀒ᴺ ␛
-     ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ   ⍉ᴾ󰀒ᴺ   ᴙᴾ󰀒ᴺ ␛
+//ᴮᴺ ⹏ᴮᴺ  /ᴮᴺ   ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞 *ᴮᴺᴾ󰁞 ⋅ᴮᴺ  !󰀒ᴺ ␛
+     ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ  🃌ᴾ󰀒ᴺ ␛
+     ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ  ⴵᴾ󰀒ᴺ ␛
      ⋀ᴾ󰀒ᴺ ⋁ᴾ󰀒ᴺ
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮ
@@ -120,6 +121,7 @@ for k, v in lang.ops.items():
 
   ｜  ←ᴾ󰁜󰁏｜␀1
 ␀1｜  →󰀒󰁜󰁏｜
+␀1｜  ⥉ᴮ󰁜󰁏｜␀1
 
 «««««««««««««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
@@ -141,22 +143,21 @@ vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
 gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
-var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰅂"'\[\](){}⁅⁆〚〛⟨⟩‹ ␛␛␛›]›)+
+var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
-group = ~‹[\[({⁅⟨〚]› (W? ↷ exprs) ~‹[\])}⁆⟩〛]›
+group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
+
+script = (
+    (supscript = ƨ(SUPSCRIPT+))
+  ∨ (subscript = ƨ(SUBSCRIPT+)))
 
 oper = (
     (oper_mod_l = ~‹[⟥]*›)
      oper_lit
-    (oper_mod_r = ~‹[´꜠ᵜ⟤]*›))
-
-script = (
-    (supscript = ~‹[ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶◌◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾◌◌◌˜]+›)
-  ∨ (subscript = ~‹[ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎﹠﹩﹪◌]+›))
+    (oper_mod_r = ƨ((~‹[´꜠ᵜ⟤]+› ∨ supscript)*)))
 
 lamb = (
-    ( 
-        (lamb_h_py = 󰆴"lambda" ⮞text_breaker 󰆴Æ ⠶expr_not_colon 󰆴':')
+    (   (lamb_h_py = 󰆴"lambda" ⮞text_breaker 󰆴Æ ⠶expr_not_colon 󰆴':')
       ∨ (lamb_h_normal = (
             󰆴('⥌' Æ?)
             ⠶((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴Æ?)*
@@ -167,9 +168,9 @@ lamb = (
 
 str = str_cpy ∨ str_py ∨ str_escape ∨ str_spec_char
 str_cpy = 󰆴'‹' (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)* 󰆴'›'
-str_sub = 󰆴'〚' exprs 󰆴'〛'
+str_sub = 󰆴'⟦' exprs 󰆴'⟧'
 str_spec_char = ~‹[𝗮-𝘇]›
-str_guts = ~"[^〚␛␛›]+"
+str_guts = ~"[^⟦␛␛›]+"
 str_escape = 󰆴"␛␛" ~‹.›
 str_py = ((‹"› (str_py_sub ∨ ~‹[^"\\]+›)* ‹"›)
        ∨  (‹'› (str_py_sub ∨ ~‹[^'\\]+›)* ‹'›))
@@ -205,16 +206,16 @@ def σ_00():
     (lambda n: [OP.TND('.'), mkvar(n.txt)]))
     
     ((yield replacement(
-        "norm_expr", "expr_not_colon", "expr_not_comma",
-        rec='B',
-        n="Normalize expression types"))
-    (lambda n: n.copy("expr")))
-    
-    ((yield replacement(
         "subscript",
         rec='A',
         n="Subscripts to brackets"))
     (lambda n: mkgrp(gram(n.c, "exprs"), b="[]")))
+    
+    ((yield replacement(
+        "norm_expr", "expr_not_colon", "expr_not_comma",
+        rec='B',
+        n="Normalize expression types"))
+    (lambda n: n.copy("expr")))
     
     ((yield replacement(
         "W",
@@ -390,14 +391,24 @@ def mkbltnop(op_l): # format builtins if needed
     return mkexp(mkvar("LITERAL_OPS_"), mkgrp(mkstr(t), b="[]"))
 def transform_oper(op_): # apply modifiers to op
     m_l, op_l, m_r = demodp(op_)
-    if not (m_l or m_r):
-        return op_l
+    if not (m_l or m_r): return op_l
     op_n = mkbltnop(op_l)
     mkmod = lambda op, x: mkexp(mkvar(f"OP_{x}_"), mkgrp(op))
+    
     if '⟥' in m_l: op_n = mkmod(op_n, "LNULL")
-    if '⟤' in m_r: op_n = mkmod(op_n, "RNULL")
-    if 'ᵜ' in m_r: op_n = mkmod(op_n, "SWAPA")
-    if '꜠' in m_r: op_n = mkmod(op_n, "DUPER")
+    
+    rmods = ᐦ
+    for m in m_r:
+        if m in "⟥⟤ᵜ꜠´":
+            match m:
+                case '⟤': op_n = mkmod(op_n, "RNULL")
+                case 'ᵜ': op_n = mkmod(op_n, "SWAPA")
+                case '꜠': op_n = mkmod(op_n, "DUPER")
+        else:
+            rmods += m
+    if rmods:
+        rmods = SCRIPT.sup2nrm(rmods)
+        op_n = mkexp(op_n, Node("expr_", f'["{rmods}"]'))
     return op_n
 
 def σ_35():
@@ -430,6 +441,7 @@ def σ_35():
                 match t:
                     case '→': return L
                     case '←': return R
+                    case '⥉': return mkgxp(R, L)
                     case '≔': return mkgxp(l, op_l, R)
                     case ('¬') if L or R:
                             return mkgxp(op_l, L or R)

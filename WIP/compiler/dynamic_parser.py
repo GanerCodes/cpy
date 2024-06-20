@@ -40,7 +40,9 @@ class DynamicParser:
         𝕊.tree_manips = {"replacement": {}, "reduction": {}}
         𝕊.code_namespace = 𝕊.get_namespace_head()
         exec(CODE_HEADER+code_head, 𝕊.code_namespace)
-        𝕊.register_tokset("OPER_LIT", 𝕊.lang.ops.keys())
+        𝕊.register_tokset("oper_lit", 𝕊.lang.ops.keys())
+        𝕊.register_tokset("SUPSCRIPT", SCRIPT.CHAR_SUP)
+        𝕊.register_tokset("SUBSCRIPT", SCRIPT.CHAR_SUB)
         𝕊.code_namespace |= 𝕊.get_namespace_gen()
         exec(code_gen, 𝕊.code_namespace)
         for k,v in 𝕊.code_namespace.items():
@@ -146,7 +148,7 @@ class DynamicParser:
         return rgx_or(sorted(toks, key=ⵌ, reverse=ⴳ))
     def register_tokset(𝕊, name, toks):
         𝕊.code_namespace[name] = toks
-        𝕊.grammar_imports[name.lower()] = 𝕊.format_grammar_toks(toks)
+        𝕊.grammar_imports[name] = 𝕊.format_grammar_toks(toks)
     
     def parse_gram(𝕊, gram):
         new_rules = { i:Node('~', re.compile(v)) for i,v in 𝕊.grammar_imports.items() }

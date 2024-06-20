@@ -1,13 +1,18 @@
 # from traceback_with_variables import activate_by_import
 
+import sys ; from pathlib import Path ; sys.path+=[z:=str(Path(__file__).absolute().parent),z+"/compiler"] ; # wow i sure love pythno
+from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
+from sys import setrecursionlimit
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
 from itertools import accumulate, pairwise, starmap, \
                       chain, filterfalse, groupby
 from more_itertools import *
+from pickle import loads, dumps
 import textwrap as TW
-import colored, regex
-import regex as re
+import os, re, colored
+
+setrecursionlimit(1_000_000)
 
 # poorman's cpy
 wrg = lambda F: lambda*a,**k:[*F(*a,**k)]
@@ -26,7 +31,8 @@ print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 SMD, CMD, PRP = staticmethod, classmethod, property
 FS = frozenset
 enum = enumerate
-R = lambda *a,**k:open(*a,**k).read()
+R = lambda p  ,m='r':(((f:=open(p,m)). read( )   )   , f.close())[0]
+W = lambda p,c,m='w':(((f:=open(p,m)).write(c), c)[1], f.close())[0]
 ID = lambda x: x
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
@@ -37,9 +43,12 @@ reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
 collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
 _V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
+prettify_code = lambda g: ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" for i,v in enum(ⵉ(g, ń))))
 
 class ᗮ:__xor__=lambda 𝕊,o:not o
 ᗮ=ᗮ()
+class hashDict(dict):
+    __hash__ = lambda 𝕊:hash(frozenset(𝕊.items()))
 
 def part(l, f):
     l, a = l.copy(), []
@@ -106,11 +115,11 @@ class SCRIPT:
     sub2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUB.__getitem__, x))
 
 BP = togprof = lambda *a: 0
+DEBUG = ⴴ
 def ENABLE_DEBUG():
     global BP, togprof, __proft, lnprof
-    import sys, resource, threading, line_profiler, cProfile, pstats, atexit, io
+    import resource, threading, line_profiler, cProfile, pstats, atexit, io
     from inspect import getouterframes, currentframe
-    sys.setrecursionlimit(1_000_000)
     lnprof, __proft = line_profiler.LineProfiler(), ⴴ
     atexit.register(lnprof.print_stats)
     def BP(*a):

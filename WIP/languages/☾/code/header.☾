@@ -1,6 +1,10 @@
-𝑏,𝑙,𝑠,ᔐ = bool, list, set, str
+ NTS:
+ Just added ⥉, seems to work?
+ Just added ꟿ for starmap, ez
+
+𝑑,𝑏,𝑙,𝑠,ᔐ,𝑖,𝑓 = dict, bool, list, set, str, int, float
 ⮌ functools ⨡ reduce
-⮌ itertools ⨡ filterfalse, product
+⮌ itertools ⨡ starmap, filterfalse, product
 
 getitem, setitem = 󰲣x[y], 󰲥x.__setitem__(y,z)
 setattr_ret_ = 󰲧setattr(y,z,w) ∨ w
@@ -11,6 +15,12 @@ NULL = object()
 ✓,✗ = ⴳ,ⴴ = 𝕋,𝔽 = True, False
 ᗜ = □ = None
 ᐦ = ''
+
+Ω 𝑐𝑑(𝑑):
+    ⊢ __init__(𝕊, 𝑓, ⠤𝔸, ⠶𝕂):
+        𝕊.𝑓 = 𝑓
+        super().__init__(⠤𝔸,⠶𝕂)
+    __call__ = 𝕊↦𝕊.𝑓(⠤𝔸,⠶𝕂)
 
 LITERAL_OPS_ = {
     ␛∧: 󰲣x∧y, ␛∨: 󰲣x∨y, ␛+: 󰲣x+y, ␛-: 󰲣x-y,
@@ -31,32 +41,37 @@ LITERAL_OPS_ = {
 ⊃ = 󰲣𝑠(y).issubset(𝑠(x))
 ⊊ = 󰲣𝑠(α≔x).issubset(𝑠(β≔y)) ∧ α≠β
 ⊋ = 󰲣𝑠(α≔y).issubset(𝑠(β≔x)) ∧ α≠β
-⊄ = 󰲣¬(x⊂y)
-⊅ = 󰲣¬(x⊃y)
+⊄ = 󰲣¬ ← x⊂y
+⊅ = 󰲣¬ ← x⊃y
 ∪ = 󰲣𝑠(x) | 𝑠(y)
 ∩ = 󰲣𝑠(x) & 𝑠(y)
 ∖ = 󰲣𝑠(x) - 𝑠(y)
 ⨉ = 𝚲product(⠤𝕣(𝔸))ᴍ𝑙
-∋ = 󰲣y ∈ x
-∌ = 󰲣y ∉ x
+∋ = 󰲣y∈x
+∌ = 󰲣y∉x
 ᐹ = isinstance
 
-🃌 = 󰲡len(x)
-↨ = 󰲡𝑙(enumerate(x))
-ᴙ = 󰲡𝑙(x)﹕﹕₋₁
+🃌 = 󰲡len←x
+ᴙ = 𝑐𝑑(󰲡(x≔𝑙←x→¿¬(xᐹᔐ)¡□)► x﹕﹕₋₁󰅂, l=󰲡𝑙←x→﹕﹕₋₁)
 ⍉ = 󰲡ζ(⠤x)
-⭥ = 󰲡𝑙(range(x))
-⤉ = 󰲣max(𝕣(𝔸))
-⤈ = 󰲣min(𝕣(𝔸))
- 󷹄 = 󰲣¿𝕣(𝔸)
-⛶ = 󰲡[x]
+↨ = 󰲡𝑙←enumerate←x
+⭥ = 󰲡𝑙←range←x
+⤉ = 󰲣max←𝕣←𝔸
+⤈ = 󰲣min←𝕣←𝔸
+ⴵ = 󰲡x∧(1¿x>0¡¯1)∨0
+ 󷹄 = 󰲣¿𝕣(𝔸)¡
+⛶ = 𝑐𝑑(󰲡[x], s=󰲡{x}, t=󰲡(x, ))
 ! = 󰲡1…←x+1→Π1
-… = 󰲣𝑙(range(x,y))
+… = 󰲣𝑙←range(x,y)
 
  where 𝒾 is an iter:
  ᒍ = 
-   
+   (𝒾,𝑜): 
+   ᒍˡ, ᒍʳ
+   ᒍʳˡ = ᒍˡʳ
  󰛔 = 
+   (ᔐ,ᔐ): ᔐ.replace
+   (𝒾,𝑜):   replace ; 󰛔ʳ
  󰘬 = 
    (𝒾, ): spl by falsy
    ( ,𝒾): spl by falsy (keep sep)
@@ -73,6 +88,7 @@ LITERAL_OPS_ = {
 ☾ = 𝚲print(⠤𝔸,⠶𝕂)∨𝔸₀
 ζ = 𝚲𝑙(zip(⠤𝕣(𝔸)))
 ᴍ = 󰲣𝑙(map(y,x))
+ꟿ = 󰲣𝑙(starmap(y,x))
 ſ = 󰲣reduce(y,x,⠤𝕣(𝔸))
 Π = 󰲡ſ´(x,⋅,⠤𝕣(𝔸))
 Σ = 󰲡ſ´(x,+,⠤𝕣(𝔸))
@@ -86,40 +102,3 @@ LITERAL_OPS_ = {
 ⨁ = 󰲣𝑏(x)≡𝑏(y)
 ⊻ = 󰲣𝑏(x)^𝑏(y)  ∧←x∨y
 ⊼ = 󰲣𝑏(x)∧𝑏(y)→¬∧←x∨y
-
-⨳   "ab" ⊂ "abc"
-⨳   "ab" ⊂ "ab"
-⨳  "abc" ⊃ "ab"
-⨳   "ab" ⊃ "ab"
-⨳   "ab" ⊊ "abc"
-⨳  "abc" ⊋ "ab"
-⨳ ¬("ab" ⊋ "ab")
-⨳ ¬("ab" ⊊ "ab")
-⨳ "ab"⨉꜠ ≡ [␛a⋄␛a, ␛a⋄␛b, ␛b⋄␛a, ␛b⋄␛b]
-⨳ 𝑙∘'aa' ≡ 𝑙("aa")
-⨳ 𝑙○𝑠∘'aab' ∈ [␛a⋄␛b, ␛b⋄␛a]
-⨳ 𝚲𝔸󰈲󰲡␛1∈x󰅂Σᐦ󰅂(‹ab›, ‹a1b›, ‹1dd›) ≡ "a1b1dd"
-
-⨳ 'deab' 󰒼 ≡ 𝑙("abde")
-⨳ 'deab' 󰒽 ≡ 𝑙("edba")
-
-⨳ 󰲣x󰒼yⁱⁿᵈᵉˣΣᐦ󰅂("deaaabb", "bbdae") ≡ "bbdaaae"
-
-⭥20ſ+→☾
-
-x ≔ 10
-y = 2 * x += x → ☾
-☾ x
-Ω ω: __init__ = 𝕊↦(𝕊.y≔0)►□
-𝕩 = ω()
-(𝕩.y += 1)☾
-
-
-0…10 ᴍ 󰲡⛶x⌃2󰅂 Σ → 󰈲 󰲡x%2≡1󰅂 → ☾
-
-🟑
-1…10 ᴍ ⹏´꜠ → ☾
- x ∈ y ∉ z
- 2 > 1 > 0 
-☾ ← 3 ⹏ 2
- ⟥´꜠ᵜ⟤

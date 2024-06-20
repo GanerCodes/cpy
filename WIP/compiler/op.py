@@ -38,9 +38,9 @@ class OP:
     @classmethod
     def TND(ℂ, s, l=ᐦ, r=ᐦ):
         return Ń("oper", 
-            ("oper_mod_l", l),
+            ("oper_mod_l", l or Node(ᐦ)),
             ("oper_lit"  , s),
-            ("oper_mod_r", r))
+            ("oper_mod_r", r or Node(ᐦ)))
     
     @classmethod
     def is_op(ℂ, n, ops=ᗜ):
@@ -105,7 +105,7 @@ class OP:
         if 𝕊.P and rl       : return L  + [𝕊(ᗜ , rl, op_)], rr # Prefix
         if 𝕊.N              : return L  + [𝕊(ᗜ ,  ᗜ, op_)], R  # Nullary
         
-        assert ⴴ
+        assert ⴴ, f"Unable to apply operator {𝕊}: {ll=}; {lr=}; {rl=}; {rr=}"
 
 class OP_Manager:
     def __init__(𝕊, table):
@@ -136,8 +136,9 @@ class OP_Manager:
                 case 'ᵜ':
                     if ⴸ((x:=op.P, y:=op.S)):
                         op = op.mod(op.N*'N'+y*'S'+x*'P'+op.B*'B')
-                case _:
-                    assert ⴴ
+                # we now have custom mods
+                # case _:
+                    # assert ⴴ
         return op
     
     def parse_expr(𝕊, n):

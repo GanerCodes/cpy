@@ -1,18 +1,27 @@
 from util import *
-from dynamic_parser import DynamicParser, make_op_call
+from dynamic_parser import DynamicParser, make_op_call, CODE_HEADER
 from node import Node
 from op import OP, OP_Manager
+from time import time
 
 class Lang:
-    def __init__(𝕊, lang_file):
-        lang_t = R(lang_file)
-        𝕊.ops, 𝕊.op_orders, gram, code_head, code_gen = 𝕊.parse_lang(lang_t)
+    def __init__(𝕊, lang_t, ver=ᐦ, cache_dir=ᗜ): # refactor?
+        𝕊.ver, 𝕊.ops, 𝕊.op_orders, gram, code_head, code_gen = ver, *𝕊.parse_lang(lang_t)
         𝕊.op_man = OP_Manager(𝕊.ops)
         𝕊.dynamic_parsers = DynamicParser(𝕊, code_head, code_gen)
+        if cache_dir is not ᗜ:
+            cache = f"{cache_dir}/{(h := 'g'+sha256(gram))}"
+            if h in os.listdir(cache_dir):
+                try:
+                    𝕊.gram = loads(R(cache, m='rb'))
+                    return
+                except Exception:
+                    print(f"Corrupted Cache? Deleting {cache}")
+                    os.remove(cache)
         𝕊.gram = 𝕊.dynamic_parsers.parse_gram(gram)
+        cache_dir is ᗜ or W(cache, dumps(𝕊.gram), m='wb')
     
-    def __call__(𝕊, content_file, **K):
-        content = R(content_file)
+    def __call__(𝕊, content, **K):
         if "parser_comment" in 𝕊.gram:
             content = 𝕊.gram(content, "parser_comment", allow_deletes=ⴴ) \
                 .child_killer(lambda n: n.t == "comment").txt

@@ -50,7 +50,6 @@ def gram_convert(t):
             .flatten_kids(lambda n: ⵌ(n) == 1 and n.t == "group") \
             .find_replace(lambda n: n.t == "group", lambda n: n.copy('∧')) \
             .find_replace(lambda n: n.t == "str", lambda n: n.copy('ᔐ', n.txt))
-        
     return rules
 
 CHECK = Node('✓')
@@ -74,7 +73,6 @@ class Gram:
                 assert ⴴ, f"Didn't finish:\n\tCurrent tree: {tree[0]}\n\tRemainder: {tree[1]}"
             else:
                 assert ⴴ, f"Didn't finish, failed!"
-        
         return 𝕊.chop(tree[0], allow_deletes=allow_deletes, content=content)
     
     @staticmethod
@@ -99,15 +97,11 @@ class Gram:
         if t == '←':
             α, β = c
             j = 𝑓(χ, β, z=z+1)
-            if j:
-                return j[0].copy(e=α.c), j[1]
-            else: # var bind to something that failed, wat do?
-                return
+            if j: return j[0].copy(e=α.c), j[1]
+            return # var bind to something that failed, wat do?
         if t == "rname":
-            if c == '✗': # die
-                assert ⴴ
-            if c == '✓': # good
-                return CHECK, χ
+            if c == '✗': assert ⴴ # die
+            if c == '✓': return CHECK, χ # good
             
             k = χ, c
             if k in m:
@@ -182,7 +176,7 @@ class Gram:
             .find_replace(lambda n: ⵌ(n)==1 and ᐹ(β:=n.c[0],Node) and not β.t,
                           lambda n: n.copy(c=n.txt))
     
-ŕ, ñ = ρ(re.compile, flags=regex.V0), Node
+ŕ, ñ = re.compile, Node
 Parser = lambda g, B=Gram({'statements': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('*', [ñ('∧', [ñ('∨', [ñ('rname', 'comment'), ñ('rname', 'elm_o')]), ñ('?', [ñ('rname', 'W')])])])])]), 'comment': ñ('∨', [ñ('~', ŕ('[\ueb26#][^\\n]*'))]), 'elm_o': ñ('∨', [ñ('∧', [ñ('rname', 'elm_a'), ñ('*', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∨'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_a')])])])]), 'elm_a': ñ('∨', [ñ('∧', [ñ('rname', 'elm_j'), ñ('*', [ñ('∧', [ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∧'), ñ('?', [ñ('rname', 'W')])]), ñ('?', [ñ('rname', 'w')])]), ñ('rname', 'elm_j')])])])]), 'elm_j': ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')]), '_elm_j': ñ('∨', [ñ('∧', [ñ('rname', 'elm'), ñ('?', [ñ('rname', 'W')]), ñ('~', ŕ('[⯅⯆△▽↷]')), ñ('?', [ñ('rname', 'W')]), ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')])])]), 'elm': ñ('∨', [ñ('∧', [ñ('rname', 'prefix'), ñ('∨', [ñ('rname', 'assign_eql'), ñ('rname', 'assign_cln'), ñ('rname', 'group'), ñ('rname', 'str'), ñ('rname', 'rname')]), ñ('rname', 'suffix')])]), 'assign_eql': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '='), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_o')])]), 'assign_cln': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', ':'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_j')])]), 'group': ñ('∨', [ñ('∧', [ñ('ᔐ', '('), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'group_inner'), ñ('ᔐ', ')')])]), 'group_inner': ñ('∨', [ñ('*', [ñ('∧', [ñ('rname', 'elm_o'), ñ('?', [ñ('rname', 'W')])])])]), 'str1': ñ('∨', [ñ('~', ŕ('"(␛.|[^"])*"'))]), 'str2': ñ('∨', [ñ('~', ŕ("'(␛.|[^'])*'"))]), 'str3': ñ('∨', [ñ('~', ŕ('‹(␛.|[^›])*›'))]), 'str': ñ('∨', [ñ('rname', 'str1'), ñ('rname', 'str2'), ñ('rname', 'str3')]), 'rname': ñ('∨', [ñ('~', ŕ('[^⯅⯆△▽↷󰆴()?❗⮞.:⠶ƨ✗+*=¬∨∧~‹#\'" \\t\\n]+|✗'))]), 'prefix': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'w')]), ñ('+', [ñ('∧', [ñ('~', ŕ('[󰆴❗⮞⠶ƨ~¬]')), ñ('?', [ñ('rname', 'W')])])])]), ñ('?', [ñ('rname', 'w')])]), 'suffix': ñ('∨', [ñ('∧', [ñ('+', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('~', ŕ('[*+?]'))])]), ñ('?', [ñ('rname', 'w')])]), ñ('?', [ñ('rname', 'w')])]), 'w': ñ('∨', [ñ('~', ŕ('([ \\t]|␛\\n)+'))]), 'W': ñ('∨', [ñ('~', ŕ('([ \\t\\n]|␛\\n)+'))])}): Gram(gram_convert(B(g, "statements")))
 
 if __name__ == "__main__":
