@@ -53,14 +53,15 @@ def basic_cpy_interactive_session(print_code=ⴴ, cache=ⴳ):
             r = eval(code, ns)
             return print_code and print(r) or r
         else:
-            return capture_output(exec, code, ns)
+            r = capture_output(exec, code, ns)
+            return print_code and print(r) or r
     return interactive
 
 if __name__ == "__main__":
     cpy = basic_cpy_interactive_session(ⴳ, ⴴ)
     def refresh(c):
         try:
-            print(cpy(c))
+            cpy(c)
         except Exception as e:
             import traceback
             print(traceback.format_exc())
