@@ -5,6 +5,7 @@ from datetime import datetime
 from functools import reduce
 from itertools import groupby
 from subprocess import Popen
+from traceback import format_exc
 from os import path as P
 
 ⴳ,ⴴ = True, False
@@ -279,10 +280,11 @@ sys.path.insert(0, import_dir)
 try:
     runpy.run_path(f, run_name="__main__")
     exit_code = 0
-except KeyboardInterrupt:
-    exit_code = 1 # jank?
 except SystemExit as e:
     exit_code = e.code
+except:
+    exit_code = 1 # jank?
+    print(format_exc())
 finally:
     os.chdir(cur_dir)
     
