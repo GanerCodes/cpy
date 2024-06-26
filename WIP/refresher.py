@@ -89,7 +89,7 @@ if __name__ == "__main__":
     from sys import argv
     if len(argv) > 1:
         cpy = basic_cpy_interactive_session(ⴴ, ⴳ, ns={ "__file__": (f := argv[1]) })
-        cpy(+R(f), cap_stdout=ⴴ)
+        cpy(''+R(f), cap_stdout=ⴴ)
         exit(0)
     
     cpy = basic_cpy_interactive_session(ⴳ, ⴴ)
