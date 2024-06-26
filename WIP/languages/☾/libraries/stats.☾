@@ -4,5 +4,5 @@
 
 binom_cdf = ⥌P,N ↦ 󰲣(binom.cdf(y,N,P) - binom.cdf(x,N,P))
 norm_cdf = ⥌μ=0,σ=1 ↦ 󰲣(k≔NormalDist(μ,σ)).cdf(y)-k.cdf(x)    
-z_inv = p ↦ norm.ppf(p)
- conf_int = 
+z_inv = ⥌p,μ=0,σ=1↦norm.ppf(p,loc=μ,scale=σ)
+conf_int = ⥌𝔵,σ,n,ci↦𝔵±z_inv(½⋅←ci+1)⋅σ/√n

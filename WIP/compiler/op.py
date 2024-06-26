@@ -70,8 +70,7 @@ class OP:
             stack = [𝕊.R]
             for i, n in enum(nodes):
                 O = 𝕊.is_op(n)
-                if not O:
-                    continue
+                if not O: continue
                 _, op_t, _ = O
                 
                 while stack:
@@ -79,19 +78,16 @@ class OP:
                         stack += [op_man[n].R]
                         break
                     stack.pop()
-                if not stack:
-                    break
+                if not stack: break
             else:
                 i += 1
         elif d == 'l':
             for i, n in [*enum(nodes)][::-1]:
                 O = 𝕊.is_op(n)
-                if not O:
-                    continue
+                if not O: continue
                 _, op_t, _ = O
                 
-                if op_t not in 𝕊.L:
-                    break
+                if op_t not in 𝕊.L: break
         return nodes[:i], nodes[i:]
         
     def apply(𝕊, L, R, op_man, op_):

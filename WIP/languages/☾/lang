@@ -84,6 +84,7 @@ new_ops = {}
 for k, v in sel:
     new_ops[k] = OP(k, "B=", L, lang.ops["␀ASGN_MRK"].R, v.f)
 lang.ops |= new_ops
+
 for k, v in lang.ops.items():
     if k in L: continue
     v.R |= set(new_ops)
