@@ -79,6 +79,7 @@ LITERAL_OPS_ = {
 ⛶ = 𝑐𝑑(󰲡[x], s=󰲡{x}, t=󰲡(x,))
 … = 󰲣𝑙←range(x,y)
 ! = 󰲡1…←x+1→Π1
+± = 𝚲[¯h₀,+h₀]¿(h≔𝕣(𝔸))🃌≡1¡[h₀-h₁,h₀+h₁]
 
  where 𝒾 is an iter:
  ᒍ = 
