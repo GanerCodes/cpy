@@ -21,9 +21,9 @@ import_dir = cdr("imports")
 
 VERSION = "a"
 TIME_SIG = datetime.now().strftime("%Y/%m/%d_%H:%M:%S")
-GENERAL_HEADER =  "from sys import path as __PATH; " \
-                 f"__PATH.insert(0, '{import_dir.replace('\\', '/')}') ; " \
-                  "del __PATH ; " \
+GENERAL_HEADER = f"from sys import path as P;" \
+                 f"((p:='{import_dir.replace('\\', '/')}')not in P)and P.insert(0,p);" \
+                 f"del P,p;" \
                  f"from CPY_HEADER import * # CPY-{VERSION}-{TIME_SIG} \n"
 QUIET_MODE = ⴴ
 VERBOSE_MODE = ⴴ # enabled globally if relevent flag is present
@@ -276,7 +276,7 @@ debug(f'File to execute: "{f}"')
 os.chdir(pdr(f) if A.cd_file else D)
 
 sys.argv = [f, *A.progargs]
-sys.path.insert(0, import_dir)
+import_dir in sys.path or sys.path.insert(0, import_dir)
 try:
     runpy.run_path(f, run_name="__main__")
     exit_code = 0

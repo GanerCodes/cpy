@@ -59,15 +59,18 @@ def whitespace_unparser(n, i=0):
 
 def incompat_char(x, y, good_chars = "~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"):
     return x not in good_chars and y not in good_chars
-def add_spaces(n):
+def add_spaces(n, ignore_nodes=()):
     if not n.C: return n
-    cc, s = [], peekable(add_spaces(c) for c in n.C)
-    while True:
-        α = next(s)
-        if not s: break
-        β = s.peek()
+    cc, s = [], peekable(add_spaces(c, ignore_nodes) for c in n.C)
+    if n.t in ignore_nodes:
+        cc = list(s)
+    else:
+        while True:
+            α = next(s)
+            if not s: break
+            β = s.peek()
+            cc.append(α)
+            if incompat_char(α.rchar(), β.lchar()):
+                cc.append(Node('w', ś))
         cc.append(α)
-        if incompat_char(α.rchar(), β.lchar()):
-            cc.append(Node('w', ś))
-    cc.append(α)
     return n.copy(c=cc)

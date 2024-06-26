@@ -1,6 +1,10 @@
 # from traceback_with_variables import activate_by_import
+import sys
+from pathlib import Path
+_insp = lambda x: x in sys.path or sys.path.insert(0, x)
+_insp(z := str(Path(__file__).absolute().parent))
+_insp(z+"/compiler")
 
-import sys ; from pathlib import Path ; sys.path+=[z:=str(Path(__file__).absolute().parent),z+"/compiler"] ; # wow i sure love pythno
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
 from sys import setrecursionlimit
 from collections import namedtuple as NT
@@ -45,8 +49,6 @@ enlist = lambda x: [x]
 _V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
 prettify_code = lambda g: ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" for i,v in enum(ⵉ(g, ń))))
 
-class ᗮ:__xor__=lambda 𝕊,o:not o
-ᗮ=ᗮ()
 class hashDict(dict):
     __hash__ = lambda 𝕊:hash(frozenset(𝕊.items()))
 

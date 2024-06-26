@@ -142,7 +142,7 @@ class Node:
         D=lambda x,a=Z.G  ,b=Z.W   :a+x+b,
         X=lambda x,a=Z.bdB,b=Z.bBLA:a+x+b,
         J=lambda x,a=Z.G  ,b=Z.w   :a+x+b):
-        if ᗮ^ᐹ(𝕊, Node):
+        if not ᐹ(𝕊, Node):
             return [(p, Node.text(𝕊))]
         if 𝕊.t == "oper" and 𝕊.L and ⵌ(𝕊) == 3:
             return [(p, f" oper[{𝕊.c[0].c or N}|{𝕊.c[1].c}|{𝕊.c[2].c or N}]")]

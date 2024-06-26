@@ -534,7 +534,7 @@ def σ_50():
         "parser_main",
         rec='B',
         n="Insert spaces"))
-    (add_spaces))
+    (ρ(add_spaces, ignore_nodes=("str_cpy", ))))
 
 # § node transpilers
 @generator(*KEYWORD_NODE_NAMES, "oper_lit")
