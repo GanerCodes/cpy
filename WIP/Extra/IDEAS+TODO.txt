@@ -1,3 +1,34 @@
+Cool chars: [Note: Font Manager is good at finding these]
+  ⌘ℿ⩇⌢⌣⏜⏝≬𝄞⋿⦁⦂⦇⦈⦉⦊⨾⩤⩥϶⛯
+   󰔟󰆏󰆍󰆒󰸇󰉉󰅌󰆏󰄷󰄶󰈝󰈔󰈕󰴜󰏢󰈋󰋋 󰈸󰠩󰥓
+  󰩹󰩺 
+  󰣡󰣢󰣣󰣤󰣥󰣦󰣧 󰫃󰫄󰫅󰫆󰫇󰫈 󰯁󰯂󰯃
+  󰎣󰎦󰎩󰎬󰎮󰎰󰎵󰎸󰎻󰎾
+  󱣬󰈴 󰒼 󰒽 󰨑󱓝 󰘣󰘡  
+  󰅲 󰅪 󰅩 󰅴
+  ᕻᓐᓒᔥᣛ ᔇᔅᔉᔊᓪᣗᕐᔾᖮ ᣜᣝᓫᕑᣞᣟᐝ ᗮᐪ󰂅ᓑᣕᐡᐢ ᐤᐞᐠᑊᘁᣔ
+  
+  GG: "Ⴚ" : group
+  RR: "ⴽ" : ring
+  FF: "Ғ" : field
+  CC: "Ƈ" : category
+  MO: "Ɱ" : module
+  VV: "Ѵ" : vector space
+  TT: "Ƭ" : topological space
+  ME: "Ӎ" : metric space
+  LL: "Ꝉ" : lee group
+  DD: "Ɗ" : domain
+  
+   sp: "ᔲ" suppose/assume
+  aut: "🜬" automorphism
+  end: "🜧" endomorphism
+  alg: "🜳" algebraic closure
+Bad spacing:
+  Gal: "㏿" galois group
+  hom: "ꖾ" category hom morphisms
+   re: "โ" real part
+   cx: "ใ" complex imaginary part
+
 
 
 
