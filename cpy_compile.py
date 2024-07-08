@@ -25,7 +25,7 @@ class Compiler:
         return use_cache and W(cache, code) or code
     
     def get_lang(𝕊, name, ver=ᐦ, use_cache=ⴳ, **K):
-        if not os.path.isdir(folder := f"{CPY_DIR}/languages/{name}{'-'*ᖲ(ver)+ver}"):
+        if not os.path.isdir(folder := f"{CPY_DIR}/Languages/{name}{'-'*ᖲ(ver)+ver}"):
             raise Exception(f"Unable to find language folder {folder}")
         if not os.path.isfile(file := f"{folder}/lang"):
             raise Exception(f"Unable to find lang file {file}")

@@ -26,9 +26,9 @@ def refresher(path, 𝑓):
 def basic_cpy_session(cache=ⴳ, ns=ᗜ, hns=ᗜ, **𝕂):
     compiler = Compiler(CACHE_DIR, GRAM_CACHE_DIR)
     
-    lang_pfx = f"{CPY_DIR}/languages/☾"
-    header_fp = f"{lang_pfx}/code/header.☾"
-    lib_fp = f"{lang_pfx}/libraries"
+    lang_pfx = f"{CPY_DIR}/Languages/☾"
+    header_fp = f"{lang_pfx}/Code/header.☾"
+    lib_fp = f"{lang_pfx}/Libraries"
     
     header = R(header_fp)
     hns = {} if hns is ᗜ else hns
