@@ -11,11 +11,17 @@ class Compiler:
         𝕊.cache_dir = cache_dir
         𝕊.gram_cache_dir = gram_cache_dir
     
-    def __call__(𝕊, lang_name, code, use_cache=ⴳ, **K): # refactor?
+    def __call__(𝕊, lang_name, code, use_cache=ⴳ, code_post_process=ᗜ, **K): # refactor?
         ver, code = 𝕊.extract_version(code)
-        if use_cache and os.path.isfile(cache := f"{𝕊.cache_dir}/{sha256(ver + code)}"):
+        to_hash = ver + code
+        if code_post_process is not ᗜ:
+            assert hasattr(code_post_process, "ver"), "Post processor version missing!"
+            to_hash = sha256(to_hash) + ᔐ(code_post_process.ver)
+        if use_cache and os.path.isfile(cache := f"{𝕊.cache_dir}/{sha256(to_hash)}"):
             return R(cache)
         code = 𝕊.get_lang(lang_name, ver, use_cache)(code, **K)
+        if code_post_process is not ᗜ:
+            code = code_post_process(code)
         return use_cache and W(cache, code) or code
     
     def get_lang(𝕊, name, ver=ᐦ, use_cache=ⴳ, **K):

@@ -113,7 +113,7 @@ for k, v in lang.ops.items():
 ∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴮᴺ ∖ᴮᴺ
 //ᴮᴺ ⹏ᴮᴺ  /ᴮᴺ   ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞 *ᴮᴺᴾ󰁞 ⋅ᴮᴺ  √ᴾᴺ
      !󰀒ᴺ  ⋀ᴾ󰀒ᴺ  ⋁ᴾ󰀒ᴺ ␛
-     ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ  🃌ᴾ󰀒ᴺ ␛
+     ⭥ᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ  🃌ᴾ󰀒ᴺ ▢ᴮᴾ󰀒ᴺ ␛
      ᒍᴮᴺ  󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ  ⴵᴾ󰀒ᴺ ␛
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮ
@@ -276,9 +276,14 @@ def σ_15():
     @(yield replacement(
         "lamb_h_normal", "lamb_h_py"))
     def _(n):
-        C = ᴍ(Node.strip, ᴍs(mkexp, split_at(n.C,
-            lambda x: OP.is_op(x) and (k:=op_man[x]).t == ',')))
+        C = ᴍ(Node.strip,
+              ᴍs(mkexp,
+                 split_at(
+                    n.C,
+                    lambda x: OP.is_op(x) and (k:=op_man[x]).t == ',')))
         has_a = has_k = ⴴ
+        
+        C = ᖵ(lambda x: x.txt, C) # b/c ⥌↦ has empty an expr
         for c in C:
             if not c.C or (o:=c.C[0]) != "oper": continue
             k = o.C[1].c

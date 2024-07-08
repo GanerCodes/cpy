@@ -35,9 +35,10 @@ print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 SMD, CMD, PRP = staticmethod, classmethod, property
 FS = frozenset
 enum = enumerate
-R = lambda p  ,m='r':(((f:=open(p,m)). read( )   )   , f.close())[0]
-W = lambda p,c,m='w':(((f:=open(p,m)).write(c), c)[1], f.close())[0]
+R = lambda p  ,m="r" :(((f:=open(p,m)). read( )   )   , f.close())[0]
+W = lambda p,c,m="w+":(((f:=open(p,m)).write(c), c)[1], f.close())[0]
 ID = lambda x: x
+ZIL = lambda *a,**k: None
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
 wrap = lambda x,w=120,q='\t': ᒍ(ń, TW.wrap(x, width=w, subsequent_indent=q))
@@ -75,8 +76,7 @@ def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
     while L:
         R += [L.pop(0), s]
     R.append(e)
-    if r:
-        R.append(s)
+    if r: R.append(s)
     return R
 
 def map_groups(l, F, M, I=ID, O=ID):
@@ -116,10 +116,13 @@ class SCRIPT:
     sup2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUP.__getitem__, x))
     sub2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUB.__getitem__, x))
 
-BP = togprof = lambda *a: 0
+DEBUG_NS = { "mk": lambda x:lambda *𝔸,**𝕂:DEBUG_NS[x](*𝔸,**𝕂),
+             "BP": ZIL, "togprof": ZIL }
+BP = DEBUG_NS["mk"]("BP")
+togprof = DEBUG_NS["mk"]("togprof")
 DEBUG = ⴴ
 def ENABLE_DEBUG():
-    global BP, togprof, __proft, lnprof
+    global __proft, lnprof
     import resource, threading, line_profiler, cProfile, pstats, atexit, io
     from inspect import getouterframes, currentframe
     lnprof, __proft = line_profiler.LineProfiler(), ⴴ
@@ -130,7 +133,7 @@ def ENABLE_DEBUG():
         print()
         breakpoint()
         if a: return a[0]
-    def togprof():
+    def togprof(bp=ⴴ):
         global __proft
         if __proft:
             __proft.disable()
@@ -139,5 +142,6 @@ def ENABLE_DEBUG():
             ps.print_stats()
             print(s.getvalue())
             __proft = ⴴ
-            return BP()
+            return bp and BP()
         (__proft := cProfile.Profile()).enable()
+    DEBUG_NS["BP"], DEBUG_NS["togprof"] = BP, togprof

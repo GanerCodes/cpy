@@ -77,6 +77,7 @@ LITERAL_OPS_ = {
 ⴵ = sign = 󰲡x∧(1¿x>0¡¯1)∨0
  󷹄 = 󰲣¿𝕣(𝔸)¡
 ⛶ = 𝑐𝑑(󰲡[x], s=󰲡{x}, t=󰲡(x,))
+▢ = 𝚲round(⠤𝕣(𝔸))
 … = 󰲣𝑙←range(x,y)
 ! = 󰲡1…←x+1→Π1
 ± = 𝚲[¯h₀,+h₀]¿(h≔𝕣(𝔸))🃌≡1¡[h₀-h₁,h₀+h₁]
@@ -122,7 +123,8 @@ LITERAL_OPS_ = {
 󰒽 = 󰲣sorted(x,key=𝕝(y,□)₀,reverse=✓)
 ∘ = 󰲣x(y)
 ○ = 󰲣𝚲x(y(⠤𝔸,⠶𝕂))
-⋄ = 󰲣(x¿xᐹ𝑙¡⛶x→+[y])
+Ω 𝑙𝑙(𝑙): □
+⋄ = 󰲣(x¿xᐹ𝑙𝑙¡x≔𝑙𝑙((x,))).append(y)►x
 ⨁ = 󰲣𝑏(x)≡𝑏(y)  xand
 ⊻ = 󰲣𝑏(x)^𝑏(y)  ∧←x∨y  xor
 ⊼ = 󰲣𝑏(x)∧𝑏(y)→¬∧←x∨y  nand
@@ -133,7 +135,7 @@ LITERAL_OPS_ = {
     r = cpy(c, ⠤𝔸, ⠶𝕂)
     ↪ cpyⁿˢ ¿get_ns¡ r
 
-⊢ 󰋺(𝔣, *𝔸, g=✓):
+⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗):
     ⮌ argparse ⨡ Namespace
     ⮌ sys ⨡ path as P, _getframe as GF
     ⮌ os ⨡ path, listdir
@@ -142,12 +144,13 @@ LITERAL_OPS_ = {
         ¿¬path.isdir(p): ↺
         ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡path.isfile(z≔‹⟦p⟧/⟦𝔣⟧⟦x⟧›) ∧ z󰅂: ⇥
     ⨳(f, ‹Cannot find "⟦𝔣⟧"›)
-    with open(f, ␛r) as 𝐟:
-        m = 󱠨(␛+𝐟.read(), get_ns=✓, cap_stdout=✗,
-              ns={"__file__" : f})
+    ¿just_get_path: ↪f
+    with open(f, ␛r) as 𝐟: code = 𝐟.read()
+    m = 󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__file__" : f})
     𝑘 = (m󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝔸
     G = GF(1).f_globals
     ∀k∈𝑘: Gₖ = mₖ
+    ¿store_code: m[‹__cpy_code__›] = code
     m = Namespace(**m)
     ¿g: G[path.splitext(path.split(𝔣)₁)₀] = m
     ↪ m

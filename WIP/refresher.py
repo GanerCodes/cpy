@@ -23,11 +23,7 @@ def refresher(path, 𝑓):
             cur = r
         sleep(1 / 15)
 
-def cpy_timing_test(c, **𝕂):
-    compiler = Compiler(CACHE_DIR, GRAM_CACHE_DIR)
-    compiler.test_timing("☾", c, **𝕂)
-
-def basic_cpy_session(cache=ⴳ, ns=ᗜ, hns=ᗜ):
+def basic_cpy_session(cache=ⴳ, ns=ᗜ, hns=ᗜ, **𝕂):
     compiler = Compiler(CACHE_DIR, GRAM_CACHE_DIR)
     
     lang_pfx = f"{CPY_DIR}/languages/☾"
@@ -41,16 +37,20 @@ def basic_cpy_session(cache=ⴳ, ns=ᗜ, hns=ᗜ):
     
     lib_fp in sys.path or sys.path.insert(0, lib_fp)
     
-    exec(compiler("☾", header, cache), hns)
+    exec(compiler("☾", header, cache, **𝕂), hns)
     ns = {} if ns is ᗜ else ns
     ns["__builtins__"] = ns.get("__builtins__", {}) | hns["__builtins__"] | hns
     ns.setdefault("__name__", "__main__")
     ns.setdefault("__file__", ᗜ)
-    return lambda c: compiler("☾", c, cache), ns
+    return lambda c, **𝕁: compiler("☾", c, cache, **𝕂|𝕁), ns
 
-def basic_cpy_interactive_session(print_code=ⴴ, cache=ⴳ, **𝕂):
+def basic_cpy_interactive_session(print_code=ⴴ, cache=ⴳ, sanity=ⴳ, **𝕂):
+    if sanity:
+        import ast
+        𝕂["code_post_process"] = lambda x: ast.unparse(ast.parse(x))
+        𝕂["code_post_process"].ver = "basic_py_reparse"
     compiler, ns = basic_cpy_session(cache, **𝕂)
-    def interactive(c, return_mode=ⴴ, return_code=ⴴ, cap_stdout=ⴳ):
+    def interactive(c, return_mode=ⴴ, return_code=ⴴ, cap_stdout=ⴳ, **𝕂):
         # import dynamic_parser ; dynamic_parser.DEBUG = 1
         
         mode = "eval"
@@ -61,7 +61,7 @@ def basic_cpy_interactive_session(print_code=ⴴ, cache=ⴳ, **𝕂):
         s = min(ⵌ(l)-ⵌ(C) for l in lns if (C := l.lstrip(ś)))
         c = ᒍ(ń, (l[s:] for l in lns))
         
-        (t1 := time(), code := compiler(c), t := time() - t1)
+        (t1 := time(), code := compiler(c, **𝕂), t := time() - t1)
         print_code and print(f"Code ({t=}):\n{prettify_code(code)}")
         
         if return_code or return_mode:
@@ -82,7 +82,13 @@ def basic_cpy_interactive_session(print_code=ⴴ, cache=ⴳ, **𝕂):
     interactive.ns = ns
     return interactive
 
-# cpy_timing_test('☾(‹A⟦B⟧C⟦D⟧E›)', debug_level=2) ; exit()
+def cpy_timing_test(c, **𝕂):
+    ENABLE_DEBUG()
+    compiler = Compiler(CACHE_DIR, GRAM_CACHE_DIR)
+    compiler.test_timing("☾", c, **𝕂)
+
+def debug_test_exit(code):
+    cpy_timing_test(code, debug_level=2) ; exit()
 
 if __name__ == "__main__":
     import traceback
@@ -91,6 +97,9 @@ if __name__ == "__main__":
         cpy = basic_cpy_interactive_session(ⴴ, ⴳ, ns={ "__file__": (f := argv[1]) })
         cpy(''+R(f), cap_stdout=ⴴ)
         exit(0)
+    
+    # debug_test_exit("""☾(‹A⟦B⟧C⟦D⟧E›)""")
+    # debug_test_exit("""⥌↦1""")
     
     cpy = basic_cpy_interactive_session(ⴳ, ⴴ)
     def refresh(c):
@@ -101,4 +110,8 @@ if __name__ == "__main__":
                 print(traceback.format_exc())
             except Exception as e:
                 print(f'mfw Exception Exception: {e}')
-    refresher("/tmp/cpy_test/test.☾", refresh)
+    refresh_file = "/tmp/cpy_test/test.☾"
+    if not os.path.isfile(refresh_file):
+        os.makedirs(os.path.dirname(refresh_file), exist_ok=ⴳ)
+        W(refresh_file, ' ☾‹Hello world!›')
+    refresher(refresh_file, refresh)
