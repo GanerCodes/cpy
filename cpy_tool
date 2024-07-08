@@ -1,5 +1,0 @@
-#!/bin/sh
-DIR="$(readlink -m "$0/..")"
-PYTHONUNBUFFERED=x
-unset PYTHONHOME
-exec "$DIR/bin/cpy_binary" "$DIR/cpy_compile.py" "$@"

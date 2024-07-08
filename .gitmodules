@@ -1,3 +1,0 @@
-[submodule "cpython-fork"]
-	path = cpython-fork
-	url = https://github.com/GanerCodes/cpython
