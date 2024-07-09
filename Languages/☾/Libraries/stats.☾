@@ -15,8 +15,8 @@ t_inv       = ⥌x,df        ↦ tsat.ppf(x, df=df)
 z_inv       = ⥌x,μ=0,σ=1   ↦ norm.ppf(x, loc=μ,scale=σ)
 χ_inv       = ⥌x,df        ↦ chi2.ppf(x, df=df)
 
-conf_int_t  = ⥌ci,𝔵,n,s=1  ↦ 𝔵±t_inv(½⋅←ci+1, n-1)⋅s/√n
-conf_int_z  = ⥌ci,𝔵,n,s=1  ↦ 𝔵±z_inv(½⋅←ci+1     )⋅s/√n
+conf_int_t  = ⥌ci,𝔵,n,s=1  ↦ 𝔵∓t_inv(½⋅←ci+1, n-1)⋅s/√n
+conf_int_z  = ⥌ci,𝔵,n,s=1  ↦ 𝔵∓z_inv(½⋅←ci+1     )⋅s/√n
 
 z_score     = ⥌𝔵,n,μ=0,σ=1 ↦ 𝔵-μ→/←σ/√n
 t_from_data = ⥌d,μ         ↦ mean∘d - μ →/ (std(d, ddof=1) /← √🃌d)
