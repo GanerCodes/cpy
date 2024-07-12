@@ -1,0 +1,32 @@
+⫰: abs
+⫯: ¯abs
+
+fold now has init modifier
+    [3]ſ¹+
+    ⯈ 4
+
+ᴍ: now handles strings well
+ᴍⁿ: n layered map
+    [1⋄2,3⋄4] ᴍ² √
+    ⯈ [[1.0, 1.4142135623730951], [1.7320508075688772, 2.0]]
+ᴍ⁻ⁿ: layers above any atom
+    confusing so like:
+        ["some", ["cool", [[["strings"]]]]] ᴍ⁻² ᴙ
+        ⯈ ['emos', ['looc', [[['sgnirts']]]]]
+        ["some", ["cool", [[["h"]]]]] ᴍ⁻¹ ᔐ.upper
+        ⯈ [['S', 'O', 'M', 'E'], [['C', 'O', 'O', 'L'], [[[['H']]]]]]
+         i think ᴍ⁻¹ is the same as ᴍ󰂃...?
+ᴍ󰂃: also a thing
+  
+Where '⨁' ⫢ operator
+  ⨁󰀂ᴬᴾ󰀙    ⟶ ⨁["󰀂ᴬᴾ󰀙"]
+  ⨁ᵃ       ⟶ ⨁[a]
+  ⨁¹⁺¹     ⟶ ⨁[1+1]
+  ⨁¹⁺¹𐞑ᴶ𐞑ˣ ⟶ ⨁[1+1,"J",x]
+
+Keybinded ⥉, 𐞑
+Changed binds for ⟥⟤
+
+"egg"⬄"g"
+⯈ "e"
+needs more work to be more general
