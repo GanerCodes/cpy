@@ -17,10 +17,11 @@ LITERAL_OPS_ = {
 getitem, setitem = 󰲣x[y], 󰲥x.__setitem__(y,z)
 setattr_ret_ = 󰲧setattr(y,z,w) ∨ w
 setitem_ret_ = 󰲧setitem(y,z,w) ∨ w
-OP_DUPER_ = f↦󰲡f(x,x,⠤𝔸,⠶𝕂) # ꜠
-OP_SWAPA_ = f↦󰲣f(y,x,⠤𝔸,⠶𝕂) # ᵜ
-OP_LNULL_ = f↦󰲡f(NULL,x,⠤𝔸,⠶𝕂) # ⟥
-OP_RNULL_ = f↦󰲡f(x,NULL,⠤𝔸,⠶𝕂) # ⟤
+OP_DUPER_ = 𝑓↦󰲡𝑓(x,x,⠤𝔸,⠶𝕂) # ꜠
+OP_SWAPA_ = 𝑓↦󰲣𝑓(y,x,⠤𝔸,⠶𝕂) # ᵜ
+OP_LNULL_ = 𝑓↦󰲡𝑓(NULL,x,⠤𝔸,⠶𝕂) # ⟥
+OP_RNULL_ = 𝑓↦󰲡𝑓(x,NULL,⠤𝔸,⠶𝕂) # ⟤
+OP_BSTAR_ = 𝑓↦󰲡𝑓(⠤x    ,⠤𝔸,⠶𝕂) # ≺
 NULL = object()
 ✓,✗ = ⴳ,ⴴ = 𝕋,𝔽 = True, False
 ᗜ = □ = None
@@ -121,7 +122,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ¿xᐹᔐ ∧← y≅NULL ∨ yᐹᔐ:
         ↪x.strip(⠤𝕣((y,)))
     ✗⨳  󰤱
- where 𝒾 is an iter:
+ where 𝒾 is an iter:  "hi"⟥Σ⟤0 OP_LNULL_(_03a3)('hi') * 0
  ᒍ =  󰤱
    (𝒾,𝑜): 
    ᒍˡ, ᒍʳ
