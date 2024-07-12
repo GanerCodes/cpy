@@ -17,6 +17,7 @@ fold now has init modifier
         ⯈ [['S', 'O', 'M', 'E'], [['C', 'O', 'O', 'L'], [[[['H']]]]]]
          i think ᴍ⁻¹ is the same as ᴍ󰂃...?
 ᴍ󰂃: also a thing
+ꟿⁿ: starmap works the same way
   
 Where '⨁' ⫢ operator
   ⨁󰀂ᴬᴾ󰀙    ⟶ ⨁["󰀂ᴬᴾ󰀙"]
