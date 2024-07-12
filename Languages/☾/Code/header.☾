@@ -68,11 +68,11 @@ is_iter = 󰲡hasattr(x,"__iter__")
 Ω ſ´:
     __slots__ = ()
     __getitem__ = ⥌𝕊,z↦󰲣reduce(y,x,z)
-    __call__ = staticmethod(󰲣reduce(y,x))
+    __call__ = staticmethod(󰲣reduce(y,x,⠤𝔸))
 Ω ᴍ´:
     𝑓 = staticmethod(_map_d)
     __slots__ = ()
-    __getitem__ = ⥌𝕊,i↦󰲣𝕊.𝑓(x,y,i)
+    __getitem__ = ⥌𝕊,i↦⥌x,y,i=i↦𝕊.𝑓(x,y,i)
     __call__ = ⥌𝕊,x,y↦𝕊.𝑓(x,y,1)
 Ω ꟿ´(ᴍ´):
     𝑓 = staticmethod(⥌x,y,i↦_map_d(x,󰲡y(⠤(x¿is_iter(x)¡(x,))),i))
