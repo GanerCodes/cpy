@@ -5,7 +5,7 @@
 «««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 from whitespace_tools import *
-from string import digits
+from string import digits, ascii_uppercase
 
 py_bad_string_chr  = lambda s, bad="\\\"'{}": s in bad
 py_escape_char     = lambda c, u='\\u': u+HXO(c) if py_bad_string_chr(c) else c
@@ -413,8 +413,9 @@ def transform_oper(op_): # apply modifiers to op
         else:
             rmods += m
     if rmods:
-        rmods = SCRIPT.sup2nrm(rmods)
-        op_n = mkexp(op_n, Node("expr_", f'["{rmods}"]'))
+        rmods = ᒍ(',', (f'"{x}"' if FS(x).issubset(ascii_uppercase) else lang(x) \
+                    for x in SCRIPT.sup2nrm(rmods).split('𐞑')))
+        op_n = mkexp(op_n, Node("expr_", f'[{rmods}]'))
     return op_n
 
 def σ_35():

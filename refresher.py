@@ -100,6 +100,7 @@ if __name__ == "__main__":
     
     # debug_test_exit("""☾(‹A⟦B⟧C⟦D⟧E›)""")
     # debug_test_exit("""⥌↦1""")
+    # debug_test_exit("""A ᴍᵃ𐞑ᵇ B""")
     
     cpy = basic_cpy_interactive_session(ⴳ, ⴴ)
     def refresh(c):

@@ -4,7 +4,7 @@ Cool chars: [Note: Font Manager is good at finding these]
   󰩹󰩺 
   󰣡󰣢󰣣󰣤󰣥󰣦󰣧 󰫃󰫄󰫅󰫆󰫇󰫈 󰯁󰯂󰯃
   󰎣󰎦󰎩󰎬󰎮󰎰󰎵󰎸󰎻󰎾
-  󱣬󰈴 󰒼 󰒽 󰨑󱓝 󰘣󰘡  
+  󱣬󰈴 󰨑󱓝 󰘣󰘡  
   󰅲 󰅪 󰅩 󰅴
   ᕻᓐᓒᔥᣛ ᔇᔅᔉᔊᓪᣗᕐᔾᖮ ᣜᣝᓫᕑᣞᣟᐝ ᗮᐪ󰂅ᓑᣕᐡᐢ ᐤᐞᐠᑊᘁᣔ
   
@@ -28,8 +28,6 @@ Bad spacing:
   hom: "ꖾ" category hom morphisms
    re: "โ" real part
    cx: "ใ" complex imaginary part
-
-
 
 
 op_maps ᴍ①x󰘬𝘀 ᴍ①x󰛔␛𝐬⋄𝘀
