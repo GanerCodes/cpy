@@ -125,11 +125,9 @@ class Node:
     
     def text(𝕊):
         if ᐹ(𝕊, Node):
-            if 𝕊.S:
-                return 𝕊.c
-            if 𝕊.L:
-                return ᒍ(ᐦ, ᴍ(Т(𝕊).text, 𝕊.c))
-            return f"¿ {𝕊.c}"
+            if 𝕊.S: return 𝕊.c
+            if 𝕊.L: return ᒍ(ᐦ, ᴍ(Т(𝕊).text, 𝕊.c))
+            return f"¿ {type(𝕊.c)}]{𝕊.c}"
         return f"‼ <{Т(𝕊).__name__}> {𝕊}"
     
     S, L = PRP(lambda 𝕊: ᐹ(𝕊.c, ᔐ)), PRP(lambda 𝕊: ᐹ(𝕊.c, ᒪ))

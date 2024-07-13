@@ -31,3 +31,16 @@ Changed binds for ⟥⟤
 "egg"⬄"g"
 ⯈ "e"
 needs more work to be more general
+
+made ⟥ and ⟤ work... maybe? i think?
+
+tracebacks show the python code now, terrible monkey things had to be done to do it
+
+added ≺, basically
+    1⋄2≺+
+    ⯈ 3
+
+* Added hex, binary, and octal parsing
+* Random fixes, one tricky peggle bug
+* Added some more test cases
+We still have the bugs with op swapping and stuff not chaning pres orders

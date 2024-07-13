@@ -15,7 +15,7 @@ class OP:
     def __contains__(𝕊, v): return v in 𝕊.F
     def __repr__(𝕊): return f"⟨{𝕊.t}│{bin(𝕊.v)[2:].zfill(ⵌ(_OP_TYPES))[::-1]}{f"│{𝕊.F}⟩" if 𝕊.F else '⟩'}"
     def __getattr__(𝕊, a):
-        if a == 'M': # unary works as prefix AND suffix
+        if a == 'M': # unary that works as prefix AND suffix
             return 𝕊.P and 𝕊.S
             
         if ⴷ(ᴍ(_OP_TYPES.__contains__, a)):
@@ -61,6 +61,7 @@ class OP:
         if l or r:
             return 𝕊.P and R or L and 𝕊.S
         return 𝕊.N
+        
     
     def part(𝕊, nodes, d, op_man):
         assert d in "lr"
@@ -71,26 +72,42 @@ class OP:
             for i, n in enum(nodes):
                 O = 𝕊.is_op(n)
                 if not O: continue
-                _, op_t, _ = O
+                l, op_t, r = O
                 
                 while stack:
-                    if op_t in stack[-1]:
+                    # print(f"{n=} {op_man[n]=}")
+                    pretend_op = op_t
+                    if '≺' in l.txt:
+                        pretend_op = 'ᴍ' # 󷹇 stupid
+                    
+                    if pretend_op in stack[-1]:
                         stack += [op_man[n].R]
                         break
+                    
+                    # 󷹇 weird
+                    if (𝕊.P or (𝕊.B and not 𝕊.S)) \
+                            and op_man[n].t in op_man.table["⨳"].R \
+                            and op_man[n].P \
+                            and i == 0:
+                        stack += [op_man[n].R]
+                        break
+                        
                     stack.pop()
-                if not stack: break
+                else:
+                    break
             else:
                 i += 1
         elif d == 'l':
             for i, n in [*enum(nodes)][::-1]:
                 O = 𝕊.is_op(n)
                 if not O: continue
-                _, op_t, _ = O
-                
+                l, op_t, r = O
                 if op_t not in 𝕊.L: break
         return nodes[:i], nodes[i:]
         
     def apply(𝕊, L, R, op_man, op_):
+        # print(f"{L=} {op_=} {R=}")
+        
         ll, lr = 𝕊.part(L, 'l', op_man)
         rl, rr = 𝕊.part(R, 'r', op_man)
         
@@ -120,7 +137,10 @@ class OP_Manager:
         for u in l:
             match u:
                 case '⟥':
-                    assert op.B and not r
+                    assert op.B
+                    op = op.mod(op.N*'N'+"P")
+                case '≺': # 󰤱
+                    assert op.B
                     op = op.mod(op.N*'N'+"S")
                 case _:
                     assert ⴴ
@@ -128,13 +148,16 @@ class OP_Manager:
             match u:
                 case '꜠':
                     assert op.B
-                    op = op.mod(op.N*'N'+"PS")
+                    op = op.mod(op.N*'N' + ((op.P*'P' + op.S*'S') or "PS"))
                 case 'ᵜ':
                     if ⴸ((x:=op.P, y:=op.S)):
                         op = op.mod(op.N*'N'+y*'S'+x*'P'+op.B*'B')
-                # we now have custom mods
-                # case _:
-                    # assert ⴴ
+                        # 󰤱 you idot lopsided operations are busted with this system
+                case '⟤':
+                    assert op.B
+                    op = op.mod(op.N*'N'+"S")
+                case _:
+                    pass # postfix modifiers can be dynamic
         return op
     
     def parse_expr(𝕊, n):

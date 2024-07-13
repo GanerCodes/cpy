@@ -1,25 +1,27 @@
 # I: Include self in group (right asoc.)
 # α: basic concat
+# δ: x <op>= y doesn't make sense
 # ρ: *special*
 
 «««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 from whitespace_tools import *
 from string import digits, ascii_uppercase
+from unicodedata import is_normalized
 
+py_special_mapper  = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
 py_bad_string_chr  = lambda s, bad="\\\"'{}": s in bad
 py_escape_char     = lambda c, u='\\u': u+HXO(c) if py_bad_string_chr(c) else c
 py_escape_string   = lambda s: ᐦ.join(py_escape_char(c) for c in s)
-py_special_mapper  = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
-py_escape_var      = lambda s: ᒍ(ᐦ, ((ord(c)>127 or c in '!') and '_'+HXO(c) or c for c in s)) \
-                            if 'NOVAR' not in CONST and s != '!=' else s
+py_ok_identifier   = lambda x: x in digits or is_normalized("NFKC", x) and x.isidentifier()
+py_escape_var      = lambda s: ᒍ(ᐦ, (c if ord(c)<127 and c!='!' or py_ok_identifier(c) else 'ᐧ'+HXO(c) for c in s)) \
+                                    if 'NOVAR' not in CONST and s != '!=' else s
 
 mkgrp = lambda *X, b="()": Ń("group", b[0], ⵌ(X)==1 and X[0] or X, b[1])
 mkgxp = lambda *X, b="()": mkgrp(mkexp(*X), b=b)
 mkexp = lambda *X: Ń("expr", *X)
 mkstr = lambda x: Ń("str", '"', x, '"')
 mkvar = lambda x: Node("var", x)
-
 mkexp_ = lambda *n: Node("expr_", ᒪ(n))
 mkgxp_ = lambda *n: mkgrp(mkexp_(*n))
 fcall_ = lambda f,*n: mkexp_(f, mkgxp_(*J́(n, COMMA)))
@@ -120,9 +122,9 @@ for k, v in lang.ops.items():
 .ᴮ󰁏󰁔
 ...ᴺ
 
-  ｜  ←ᴾ󰁜󰁏｜␀1
-␀1｜  →󰀒󰁜󰁏｜
-␀1｜  ⥉ᴮ󰁜󰁏｜␀1
+  ｜  ←ᴾ󰁏󰁜｜␀1
+␀1｜  →󰀒󰁏󰁜｜
+␀1｜  ⥉ᴮ󰁏󰁜｜␀1
 
 «««««««««««««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
@@ -143,7 +145,8 @@ vkw_pfx       = ⮞kw_spec kw_pfx       ∨ kw_pfx       ⮞text_breaker
 vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
-gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
+gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ number ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
+number = ƨ(~‹\.[0-9]+|0[oxbOXB][0-9]+|[0-9]+e[0-9]+|[0-9]+(\.([0-9]+))?›)
 var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
@@ -153,7 +156,7 @@ script = (
   ∨ (subscript = ƨ(SUBSCRIPT+)))
 
 oper = (
-    (oper_mod_l = ~‹[⟥]*›)
+    (oper_mod_l = ~‹[⟥≺]*›)
      oper_lit
     (oper_mod_r = ƨ((~‹[´꜠ᵜ⟤]+› ∨ supscript)*)))
 
@@ -401,6 +404,7 @@ def transform_oper(op_): # apply modifiers to op
     op_n = mkbltnop(op_l)
     mkmod = lambda op, x: mkexp(mkvar(f"OP_{x}_"), mkgrp(op))
     
+    if '≺' in m_l: op_n = mkmod(op_n, "BSTAR")
     if '⟥' in m_l: op_n = mkmod(op_n, "LNULL")
     
     rmods = ᐦ
