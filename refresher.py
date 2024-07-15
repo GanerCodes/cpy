@@ -36,8 +36,8 @@ def remember_code_for_tracebacks(path, code, *, funky_monkey={"monkeys": set()})
     funky_monkey["monkeys"].add(path)
     traceback.linecache.cache[path] = (ᐦ, ᐦ, code.split(ń), )
 
-def exec_with_tb(code, ns):
-    file = ns.get("__file__", "cpy-interactive")
+def exec_with_tb(code, ns, file=ᗜ):
+    if file is ᗜ: file = ns.get("__file__", "cpy-interactive")
     compiled = compile(code, file, "exec")
     remember_code_for_tracebacks(file, code)
     return exec(compiled, ns)
@@ -45,17 +45,15 @@ def exec_with_tb(code, ns):
 def basic_cpy_session(cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", **𝕂):
     compiler = Compiler(CACHE_DIR, GRAM_CACHE_DIR)
     
-    lang_pfx = f"{CPY_DIR}/Languages/☾"
-    header_fp = f"{lang_pfx}/Code/header.☾"
-    lib_fp = f"{lang_pfx}/Libraries"
+    lang_pfx  = os.path.abspath(f"{CPY_DIR}/Languages/☾")
+    header_fp = os.path.abspath(f"{lang_pfx}/Code/header.☾")
+    lib_fp    = os.path.abspath(f"{lang_pfx}/Libraries")
+    if lib_fp not in sys.path: sys.path.insert(0, lib_fp)
     
     header = R(header_fp)
     hns = {} if hns is ᗜ else hns
     hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
     hns.setdefault("__file__", header_fp)
-    
-    if lib_fp not in sys.path: sys.path.insert(0, lib_fp)
-    
     header_py = compiler("☾", header, cache, **𝕂)
     exec_with_tb(header_py, hns)
     ns = {} if ns is ᗜ else ns
@@ -117,7 +115,8 @@ if __name__ == "__main__":
     import traceback
     from sys import argv
     if len(argv) > 1:
-        cpy = basic_cpy_interactive_session(ⴴ, ⴳ, ns={ "__file__": (f := argv[1]) })
+        cpy = basic_cpy_interactive_session(ⴴ, ⴳ, ns={ "__file__": (f := os.path.abspath(argv[1])) })
+        sys.argv.pop(0)
         cpy(''+R(f), cap_stdout=ⴴ)
         exit(0)
     

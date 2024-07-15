@@ -44,3 +44,10 @@ added ≺, basically
 * Random fixes, one tricky peggle bug
 * Added some more test cases
 We still have the bugs with op swapping and stuff not chaning pres orders
+
+* Added some normalization to some paths
+* Trim the caller program from argv
+
+added 
+    it just calls a function
+    "f " is "f()"
