@@ -147,7 +147,7 @@ vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
 gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ number ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
-number = ƨ(~‹\.[0-9]+|0[oxbOXB][0-9]+|[0-9]+e[0-9]+|[0-9]+(\.([0-9]+))?›)
+number = ƨ(~‹\.[0-9]+|0[obOB][0-9]+|0[xX][0-9a-fA-F]+|[0-9]+e[0-9]+|[0-9]+(\.([0-9]+))?›)
 var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›

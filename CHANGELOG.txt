@@ -51,3 +51,5 @@ We still have the bugs with op swapping and stuff not chaning pres orders
 added 
     it just calls a function
     "f " is "f()"
+
+fixed hex lol
