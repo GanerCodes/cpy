@@ -182,7 +182,7 @@ str_py = ((‹"› (str_py_sub ∨ ~‹[^"\\]+›)* ‹"›)
 
 str_py_sub = ~‹\\.›
 
-w = ~‹[ \t]+›
+w = ~‹([ \t]*␛␛\n[ \t]*)+› ∨ ~‹[ \t]+›
 W = ~‹[ \t\n]+›
 text_breaker = ⮞(E ∨ kw_spec ∨ var_spec ∨ ¬var)
 E = w ∨ ~‹␛␛[\\\n]›

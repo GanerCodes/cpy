@@ -3,7 +3,7 @@ from compiler.lang import Lang
 import dynamic_parser
 import os
 
-CPY_DIR = os.path.dirname(os.path.abspath(__file__))
+CPY_DIR = Path(__file__).parent.parent
 class Compiler:
     def __init__(𝕊, cache_dir, gram_cache_dir):
         os.makedirs(cache_dir, exist_ok=ⴳ)
@@ -25,9 +25,9 @@ class Compiler:
         return use_cache and W(cache, code) or code
     
     def get_lang(𝕊, name, ver=ᐦ, use_cache=ⴳ, **K):
-        if not os.path.isdir(folder := f"{CPY_DIR}/Languages/{name}{'-'*ᖲ(ver)+ver}"):
+        if not os.path.isdir(folder := CPY_DIR / f"Languages/{name}{'-'*ᖲ(ver)+ver}"):
             raise Exception(f"Unable to find language folder {folder}")
-        if not os.path.isfile(file := f"{folder}/lang"):
+        if not os.path.isfile(file := folder / "lang"):
             raise Exception(f"Unable to find lang file {file}")
         return Lang(R(file), ver, use_cache and 𝕊.gram_cache_dir or ᗜ)
         # I think this is scuffed, if you change the lang file it doesn't detect?

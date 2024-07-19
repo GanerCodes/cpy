@@ -6,6 +6,6 @@ Need: Python3.12+, prob a Linux Environment
 Need: JuliaMono Nerd Font + a few extra symbols I made  
 > [The font is in /Extra]  
   
-Install packages: `python -m pip install -r requirements.txt`  
+Install: `./install.sh`  
   
-Run a file: `python refresher.py /path/to/file.☾`  
+Run a file: `☾ /path/to/file.☾`  

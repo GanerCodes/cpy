@@ -1,4 +1,3 @@
-# from traceback_with_variables import activate_by_import
 import sys
 from pathlib import Path
 _insp = lambda x: x in sys.path or sys.path.insert(0, x)

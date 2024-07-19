@@ -53,3 +53,8 @@ added 
     "f " is "f()"
 
 fixed hex lol
+
+Added basic cli mode, tldr "☾" with no args opens it.
+refresher is "☾ --refresher"
+
+added install script [linux only rn]
