@@ -37,9 +37,6 @@ def whitespace_parser(n):
             indent_pre = indent
         N.c = p_indent_stack(blocks, blocks[0][0]).c
     
-    elif N.t == "group" and N.C[0].c == '〚':
-        raise NotImplementedError
-    
     return N
 
 def whitespace_unparser(n, i=0):
@@ -57,7 +54,7 @@ def whitespace_unparser(n, i=0):
     N.c = [whitespace_unparser(c, i) for c in N.c]
     return N
 
-def incompat_char(x, y, good_chars = "~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"):
+def incompat_char(x, y, good_chars="~*/@%&^|-+=:;,.#<>()[]{}' \"\n\t\\"):
     return x not in good_chars and y not in good_chars
 def add_spaces(n, ignore_nodes=()):
     if not n.C: return n
@@ -74,3 +71,5 @@ def add_spaces(n, ignore_nodes=()):
                 cc.append(Node('w', ś))
         cc.append(α)
     return n.copy(c=cc)
+
+def force_indent(s, ind=ś*4): return ᒍ(ń, (ind+x for x in ⵉ(s,ń)))

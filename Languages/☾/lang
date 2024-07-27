@@ -10,7 +10,7 @@ from string import digits, ascii_uppercase
 from unicodedata import is_normalized
 
 py_special_mapper  = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
-py_bad_string_chr  = lambda s, bad="\\\"'{}": s in bad
+py_bad_string_chr  = lambda s, bad="\n\t\\\"'{}": s in bad
 py_escape_char     = lambda c, u='\\u': u+HXO(c) if py_bad_string_chr(c) else c
 py_escape_string   = lambda s: ᐦ.join(py_escape_char(c) for c in s)
 py_ok_identifier   = lambda x: x in digits or is_normalized("NFKC", x) and x.isidentifier()
@@ -555,6 +555,12 @@ def gen_oper_lit     (n): return py_escape_var(n.txt) # n.txt
 def gen_variable     (n): return py_escape_var(n.txt)
 @generator("NULL")
 def gen_variable     (n): return "NULL"
+@generator("group")
+def gen_group        (n):
+    if n.C[0].txt == '⟦':
+        content = next(filter(ⵐ, ᴍ(gen, n.C[1:-1])))
+        return f'''(exec("def _EXE():\\n{py_escape_string(force_indent(content))}",globals(),locals()),_EXE)[1]()'''
+    return n.C[0].txt + ᒍ(ᐦ, ᴍ(gen, n.C[1:-1])) + n.C[-1].txt
 
 # strings
 @generator("str_guts")

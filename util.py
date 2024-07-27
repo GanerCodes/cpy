@@ -14,6 +14,7 @@ from more_itertools import *
 from pickle import loads, dumps
 import textwrap as TW
 import os, re, colored
+exit_ = exit
 
 setrecursionlimit(1_000_000)
 
@@ -46,8 +47,12 @@ spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
 collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
-_V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
 prettify_code = lambda g: ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" for i,v in enum(ⵉ(g, ń))))
+_V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
+
+def time_test(𝑓, *𝔸, **𝕂):
+    t0 = time.time()
+    return 𝑓(*𝔸, **𝕂), time.time() - t0
 
 class hashDict(dict):
     __hash__ = lambda 𝕊:hash(frozenset(𝕊.items()))
