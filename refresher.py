@@ -17,13 +17,18 @@ def capture_output(𝑓, *𝔸, **𝕂):
         except Exception as e: print(traceback.format_exc())
     return r, s.getvalue()
 
-def remember_code_for_tracebacks(path, code, *, funky_monkey={"monkeys": set()}):
+# stupid monkeypatching garvbarebefshiskodjl
+sys.excepthook = traceback.print_exception
+def remember_code_for_tracebacks(path, code, *, funky_monkey={"monkeys": set()}, monkemonEeamnoNEKEEE={}):
+    monkemonEeamnoNEKEEE[path] = code.split(ń)
     if "monke" not in funky_monkey:
         funky_monkey["monke"] = traceback.linecache.checkcache
         funky_monkey["monkeys"].add(path)
         def monkeymonkeymonkeymonkeymonkey(munkee=None):
             if munkee in funky_monkey["monkeys"]: return
             return funky_monkey["monke"](munkee)
+        gl = traceback.linecache.getlines
+        # traceback.linecache.getlines = lambda x, *A: monkemonEeamnoNEKEEE[path] if x in monkemonEeamnoNEKEEE else gl(x, *A)
         traceback.linecache.checkcache = monkeymonkeymonkeymonkeymonkey
     funky_monkey["monkeys"].add(path)
     traceback.linecache.cache[path] = (ᐦ, ᐦ, code.split(ń), )

@@ -21,3 +21,20 @@ conf_int_z  = ⥌ci,𝔵,n,s=1  ↦ 𝔵∓z_inv(½⋅←ci+1     )⋅s/√n
 z_score     = ⥌𝔵,n,μ=0,σ=1 ↦ 𝔵-μ→/←σ/√n
 t_from_data = ⥌d,μ         ↦ mean∘d - μ →/ (std(d, ddof=1) /← √🃌d)
 pooled_var  = ⥌n1,n2,s1,s2 ↦ (n1-1)⋅s1⌃2 + (n2-1)⋅s2⌃2 → / ← n1+n2-2
+
+⊢ ANOVA(Y, ⠶𝕂):
+    ⨡ pandas as pd
+    ⨡ statsmodels.api as sm
+    ⮌ statsmodels.formula.api ⨡ ols
+    
+    df = pd.DataFrame(𝕂)
+    df ᴍ 󰲡dfₓ ≔ dfₓ.astype("category")
+
+    df["Interaction"] = df ᴍ 󰲡dfₓ.cat.codes󰅂 Π
+    df["Response"] = Y
+    
+    model = ols(‹Response ~ ⟦" * ".join(𝕂)⟧›, data=df).fit 
+    anova_table = sm.stats.anova_lm(model, typ=2)
+
+    𝐜, 𝐩 = model.params, model.pvalues
+    ↪ anova_table, 𝐜, 𝐩

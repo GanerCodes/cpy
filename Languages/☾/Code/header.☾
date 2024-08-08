@@ -167,9 +167,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ⊻ = 󰲣𝑏(x)^𝑏(y)  ∧←x∨y  xor
 ⊼ = 󰲣𝑏(x)∧𝑏(y)→¬∧←x∨y  nand
 
-⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, ⠶𝕂):
+⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□, ⠶𝕂):
     ⮌ refresher ⨡ basic_cpy_interactive_session
-    cpy = basic_cpy_interactive_session(✗, ✓, ns=ns)
+    cpy = basic_cpy_interactive_session(✗, ✓, ns=ns, fname=fname)
     r = cpy(c, ⠤𝔸, ⠶𝕂)
     ↪ cpyⁿˢ ¿get_ns¡ r
 
@@ -177,14 +177,15 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ⮌ argparse ⨡ Namespace
     ⮌ sys ⨡ path as P, _getframe as GF
     ⮌ os ⨡ path, listdir
+    ⮌ pathlib ⨡ Path as 𝐩
     f = □
-    ∀p∈P:
+    ∀p∈(␛., ⠤P):
         ¿¬path.isdir(p): ↺
-        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡path.isfile(z≔‹⟦p⟧/⟦𝔣⟧⟦x⟧›) ∧ z󰅂: ⇥
+        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡path.isfile(𝐩(z≔‹⟦p⟧/⟦𝔣⟧⟦x⟧›)) ∧ z󰅂: ⇥
     ⨳(f, ‹Cannot find "⟦𝔣⟧"›)
     ¿just_get_path: ↪f
     with open(f, ␛r) as 𝐟: code = 𝐟.read()
-    m = 󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__file__" : f})
+    m = 󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": f}, fname=f)
     𝑘 = (m󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝔸
     G = GF(1).f_globals
     ∀k∈𝑘: Gₖ = mₖ
