@@ -67,3 +67,5 @@ fixed bug with tracebacks
 added 𝑡 for tuples b/c it was missing for some reason
 
 print flush by default (idk if this changes anything but it don't hurt)
+
+added bindings (and fixed a bug) for special chars i.e. 𝗻

@@ -175,7 +175,7 @@ str = str_cpy ∨ str_py ∨ str_escape ∨ str_spec_char
 str_cpy = 󰆴'‹' (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)* 󰆴'›'
 str_sub = 󰆴'⟦' exprs 󰆴'⟧'
 str_spec_char = ~‹[𝗮-𝘇]›
-str_guts = ~"[^⟦␛␛›]+"
+str_guts = ~"[^𝗮-𝘇⟦␛␛›]+"
 str_escape = 󰆴"␛␛" ~‹.›
 str_py = ((‹"› (str_py_sub ∨ ~‹[^"\\]+›)* ‹"›)
        ∨  (‹'› (str_py_sub ∨ ~‹[^'\\]+›)* ‹'›))
