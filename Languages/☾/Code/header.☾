@@ -1,6 +1,6 @@
 exec('from math import *')
 󰆴 factorial, e, pi, tau, sqrt, cbrt
-𝑑,𝑏,𝑙,𝑠,ᔐ,𝑖,𝑓 = dict, bool, list, set, str, int, float
+𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = dict, bool, list, tuple, set, str, int, float
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ starmap, filterfalse, product
 
@@ -36,6 +36,7 @@ NULL = object()
 ⅚,⅝ = 5/6,5/8
 ⅞ = 7/8
 
+𝕝, 𝕣 = 󰲡[⠤𝔸]¿x≅NULL¡[x], 󰲡x󰈲󰲡x≇NULL
 is_iter = 󰲡hasattr(x,"__iter__")
 ⊢ _get_depths(x):
     ¿¬is_iter(x): ↪{0}
@@ -71,7 +72,15 @@ is_iter = 󰲡hasattr(x,"__iter__")
 Ω ᴍ´:
     𝑓 = staticmethod(_map_d)
     __slots__ = ()
-    __getitem__ = ⥌𝕊,i↦⥌x,y,i=i↦𝕊.𝑓(x,y,i)
+    ⊢ __getitem__(𝕊, i):
+        S, 𝑓 = 𝑠←i ¿iᐹ𝑡¡ (i,), □
+        ¿s≔␛D→∈S: 𝑓 = f↦󰲣𝑑(f(x.items(),y))
+        ⸘s≔␛K→∈S: 𝑓 = f↦󰲣𝑑(f(x.keys(),y)ζx.values())
+        ⸘s≔␛V→∈S: 𝑓 = f↦󰲣𝑑(x.keys()ζf(x.values(),y))
+        ¿𝑓:
+            S.discard(s)
+            ↪ 𝑓(S ∧ 𝕊[S.pop()] ∨ 𝕊)
+        ↪ ⥌x,y,i=i↦𝕊.𝑓(x,y,i)
     __call__ = ⥌𝕊,x,y↦𝕊.𝑓(x,y,1)
 Ω ꟿ´(ᴍ´):
     𝑓 = staticmethod(⥌x,y,i↦_map_d(x,󰲡y(⠤(x¿is_iter(x)¡(x,))),i))
@@ -80,9 +89,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ᴍ,ꟿ,ſ,√=ᴍ´(),ꟿ´(),ſ(),√´()
 
 ⊢ ⨳´(α, β):
+    ¿α≅NULL: α,β=β,α
     assert α, 𝕝(β, ᐦ)
     ↪ α
-𝕝, 𝕣 = 󰲡[⠤𝔸]¿x≅NULL¡[x], 󰲡x󰈲󰲡x≇NULL
 
 ⊂ = 󰲣𝑠(x).issubset(𝑠←y)
 ⊃ = 󰲣𝑠(y).issubset(𝑠←x)
@@ -107,8 +116,8 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ⍉ = 󰲡ζ(⠤x)
 ↨ = 󰲡𝑙←enumerate←x
 ⭥ = 󰲡𝑙←range←x
-⤉ = 󰲣max←𝕣←𝔸
-⤈ = 󰲣min←𝕣←𝔸
+⤉ = 𝚲max(𝔸₀,key=𝔸₁﹕∧𝔸₁∨□)
+⤈ = 𝚲min(𝔸₀,key=𝔸₁﹕∧𝔸₁∨□)
 ⴵ = sign = 󰲡x∧(1¿x>0¡¯1)∨0
  󷹄 = 󰲣¿𝕣(𝔸)¡
 ⛶ = 𝑐𝑑(󰲡[x], S=󰲡{x}, T=󰲡(x,))
@@ -150,7 +159,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ∀v∈𝑋:
         ¿ v:↪v
     ↪v
-☾ = 𝚲print(⠤𝔸,⠶𝕂)∨𝔸∧𝔸₀
+☾ = ⥌⠤𝔸,flush=ⴳ↦print(⠤𝔸,flush=flush,⠶𝕂)∨𝔸∧𝔸₀
 ζ = 𝚲𝑙(zip(⠤𝕣(𝔸)))
 󰈲 = 󰲡𝑙(filter     (⠤𝕝(⠤𝔸,□),x))
 󰈳 = 󰲡𝑙(filterfalse(⠤𝕝(⠤𝔸,□),x))

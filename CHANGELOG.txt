@@ -58,3 +58,12 @@ Added basic cli mode, tldr "☾" with no args opens it.
 refresher is "☾ --refresher"
 
 added install script [linux only rn]
+
+fixed bug with tracebacks
+(Need to fix cli mode not showing errors)
+
+ᴍ and ꟿ support ᴰ ᴷ ⱽ for mapping dicts, dict keys, and dict values
+
+added 𝑡 for tuples b/c it was missing for some reason
+
+print flush by default (idk if this changes anything but it don't hurt)
