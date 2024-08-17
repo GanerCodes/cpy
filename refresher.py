@@ -11,11 +11,11 @@ def capture_output(𝑓, *𝔸, **𝕂):
     from contextlib import redirect_stdout
     import io
     
-    r = ᗜ
     with redirect_stdout(s := io.StringIO()):
-        try                  : r = 𝑓(*𝔸, **𝕂)
-        except Exception as e: print(traceback.format_exc())
-    return r, s.getvalue()
+        try:
+            return (𝑓(*𝔸, **𝕂), ⴳ), s.getvalue()
+        except Exception as e:
+            return (e, ⴴ), s.getvalue()+ń+traceback.format_exc()
 
 # stupid monkeypatching garvbarebefshiskodjl
 sys.excepthook = traceback.print_exception
@@ -98,9 +98,12 @@ def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ
         
         mode = force_exec and "exec" or dynamic_compile and "dynamic" or "eval"
         𝑓 = lambda: run_inj_tb(code, ns, mode=mode)
-        r, o = capture_output(𝑓) if cap_stdout else (𝑓(), ᗜ)
+        if cap_stdout:
+            (r, ə), o = capture_output(𝑓)
+        else:
+            r, o = 𝑓(), ᗜ
         
-        print_output and o is not ᗜ and print(o)
+        if print_output and o is not ᗜ: print(o)
         return r
     interactive.ns = ns
     if interactive_defaults:
@@ -117,7 +120,7 @@ def cpy_test(c, level=2, timing_test=ⴴ, exit=ⴴ, **𝕂):
 cpy_timing_test = ρ(cpy_test, level=0, timing_test=ⴳ)
 debug_test_exit = ρ(cpy_timing_test, exit=ⴳ)
 
-def run_print_exception(f, *𝔸, **𝕂):
+def run_print_exception(𝑓, *𝔸, **𝕂):
     try:
         return print(𝑓(*𝔸, **𝕂))
     except Exception:
@@ -171,11 +174,11 @@ if __name__ == "__main__":
         cpy(R(f), cap_stdout=ⴴ, force_exec=ⴳ)
         exit(0)
     
+    cpy_kwargs.setdefault("interactive_defaults", {})["dynamic_compile"] = ⴳ
     cpy = basic_cpy_interactive_session(
-                        print_code = "--debug" in argv,
-                      print_output = ⴴ,
-                   dynamic_compile = ⴳ,
-                   **cpy_kwargs )
+                          print_code="--debug" in argv,
+                        print_output=ⴳ,
+                        **cpy_kwargs)
     while ⴳ:
         c = input("✝ ")
         print('»', end=ś)
