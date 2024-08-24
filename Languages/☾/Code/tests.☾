@@ -43,6 +43,11 @@ d = d()
 2
 ⨳ {1:2, 3:5} ꟿᴰ 󰲣(x+y,x⋅y)󰅂 ≡ {3:2,8:15}
 
+⨳  [␛a,"b"] ≡ ␛a⋄␛b
+⨳ ‹a b cd›⍭ ≡ ␛a⋄␛b⋄"cd"
+⨳    ‹a b›⍭ ≡ (␛a⛶ →⋄← ␛b⛶)
+⨳ ‹a bc k›⍭ ≡ [␛a⋄"bc",␛k⛶]
+
  󰤱 test 󱠨 and 󰋺
 
 ☾ "All tests pased!"

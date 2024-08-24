@@ -69,3 +69,7 @@ added 𝑡 for tuples b/c it was missing for some reason
 print flush by default (idk if this changes anything but it don't hurt)
 
 added bindings (and fixed a bug) for special string chars i.e. 𝗻
+
+added ⍭, basically (use special char highlighting PLS):
+    ‹a b›⍭ = ['a', 'b']
+    ‹k j a b›⍭ = [['k','j'], ['a','b']]
