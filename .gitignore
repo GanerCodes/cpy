@@ -1,5 +1,7 @@
 __pycache__/
 /bin/☾
-/Extra/FontCompose/JuliaMono/Output/*
-!/Extra/FontCompose/JuliaMono/Output/99_JuliaMono-Regular.ttf
-!/Extra/FontCompose/JuliaMono/Output/.XCompose
+/Extra/FontCompose/FontPatcher/
+/Extra/FontCompose/JuliaMono/
+/Extra/FontCompose/Output/*
+!/Extra/FontCompose/Output/99_JuliaMono-Regular.ttf
+!/Extra/FontCompose/Output/.XCompose
