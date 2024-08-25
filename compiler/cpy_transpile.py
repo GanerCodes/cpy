@@ -41,14 +41,12 @@ class Compiler:
     def test(𝕊, lang, code, debug_level=1, test_timing=ⴴ, **𝕂):
         import time, util, dynamic_parser
         
-        def qwrap(𝑊, 𝑓, *𝔸, **𝕂): # stupid code
-            r = 𝑓(*𝔸, **𝕂)
-            return 𝑊(r) if 𝑊 else (r,0)
+        qwrap = lambda 𝑊, 𝑓, *𝔸, **𝕂: 𝑊(𝑓, *𝔸, **𝕂) if 𝑊 else (𝑓(*𝔸, **𝕂), 0)
+        𝑤 = lambda *𝔸, **𝕂: qwrap(test_timing and time_test, *𝔸, **𝕂)
         
         if debug_level > 0: util.ENABLE_DEBUG()
         if debug_level > 1: dynamic_parser.DEBUG = 1
         
-        𝑤 = lambda*𝔸,**𝕂:qwrap(test_timing and time_test, *𝔸, **𝕂)
         lang, tΔl = 𝑤(𝕊.get_lang, lang, do_cache=ⴴ)
         if test_timing: togprof()
         resl, tΔc = 𝑤(lang, code, **𝕂)

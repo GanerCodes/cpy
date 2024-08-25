@@ -73,3 +73,7 @@ added bindings (and fixed a bug) for special string chars i.e. 𝗻
 added ⍭, basically (use special char highlighting PLS):
     ‹a b›⍭ = ['a', 'b']
     ‹k j a b›⍭ = [['k','j'], ['a','b']]
+
+added 𝔦𝔪𝔭(␛s), imports some misc sys related things for ease of use
+
+Working on massive overhaul for compose/font stuff!

@@ -1,4 +1,8 @@
-from util import *
+try:
+    from util import *
+except:
+    import sys ; sys.path.insert(0, "..") ; from util import *
+
 from node import *
 import sys
 
@@ -152,6 +156,9 @@ class Gram:
             case '󰆴': # eat & delete
                 if not (v := 𝑓(χ, c[0], z=z+1)): return
                 return Node(t, [v[0]]), v[1]
+            case 'ƨ':
+                if not (v := 𝑓(χ, c[0], z=z+1)): return
+                return Node(t, [v[0]]), v[1]
             case '⠶'|'ƨ': # flatten / atom
                 if not (v := 𝑓(χ, c[0], z=z+1)): return
                 if t == '⠶': return Node(t, v[0].c), v[1]
@@ -174,6 +181,8 @@ class Gram:
             .find_replace(
                 lambda n, S=FS("ᔐ~"): n.t in S,
                 lambda n: Node(c=ᒍ(ᐦ,content[n.c[0]:n.c[1]]))) \
+            .find_replace(lambda n: n.t == "ƨ",
+                          lambda n: Node(c=ᒍ(ᐦ, [k.txt for k in n.c]))) \
             .flatten_kids(lambda n,S=FS("∧∨~+*?ƨᔐ⮞⠶❗"): n.t in S) \
             .find_replace(lambda n: ⵌ(n)==1 and ᐹ(β:=n.c[0],Node) and not β.t,
                           lambda n: n.copy(c=n.txt))
@@ -215,8 +224,16 @@ def test_peggle():
     """)
     c = """20.2 .1323 .125 a a bb C CCC"""
     
+    p = Parser(r"""
+        main = main = ƨ("A:" 󰆴(~‹a›)) "b" 󰆴"c" ⠶("a" "b") ƨ(a+)
+        a = "h"
+    """)
+    c = """A:abcabhhhhhhhh"""
+    
+    print("Rules:")
     p.print_rules()
     togprof()
+    print("Results:")
     tr = p(c)
     togprof()
     tr.print()

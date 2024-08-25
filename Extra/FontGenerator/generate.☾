@@ -1,0 +1,13 @@
+𝔦𝔪𝔭∘␛s ; ldir
+
+𝐑 = subprocess.run
+
+‹sh cloneRepos.sh›⍭⥉𝐑
+
+ ‹python3.12 FontPatcher/font-patcher --careful --mono ›␛
+ ‹--complete --has-no-italic --out Fonts --name JuliaMono ›␛
+ ‹JuliaMono/JuliaMono-Regular.ttf›⍭⥉𝐑
+
+Fs = ‹Fonts/JuliaMono-Regular.ttf Fonts/customSymbols.ttf›⍭
+‹fontforge mergeFonts.ff ⟦Fs₀⟧ ⟦Fs₁⟧ Fonts/Julia2.otf›⍭⥉𝐑
+

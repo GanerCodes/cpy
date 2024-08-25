@@ -1,11 +1,8 @@
 from util import *
 from cpy_transpile import Compiler, CPY_DIR
-from time import time, sleep
 import subprocess, traceback
 
 CACHE_DIR = GRAM_CACHE_DIR = "/tmp/cpy_cache"
-
-# import peggle ; peggle.test_peggle() ; exit()
 
 def capture_output(𝑓, *𝔸, **𝕂):
     from contextlib import redirect_stdout
@@ -133,8 +130,8 @@ if __name__ == "__main__":
     from sys import argv
     import readline
     
-    # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧
-    # """.strip(), exit=ⴳ)
+    # cpy_test("""cheese = 1""", exit=ⴳ)
+    # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧""".strip(), exit=ⴳ)
     # debug_test_exit("""(20.2, .1323, a+.125)""")
     # debug_test_exit("""(20.2, 1323, 0.125)""")
     # debug_test_exit("""-⟥Σb""")

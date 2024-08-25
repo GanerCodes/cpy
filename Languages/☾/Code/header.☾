@@ -103,7 +103,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ∪ = 󰲣𝑠(x) | 𝑠(y)
 ∩ = 󰲣𝑠(x) & 𝑠(y)
 ∖ = 󰲣𝑠(x) - 𝑠(y)
-⨉ = 𝚲product(⠤𝕣(𝔸))ᴍ𝑙
+⨉ = 𝚲product(⠤v₀ ¿(1≡🃌←v≔𝕣(𝔸))¡ v)ᴍ𝑙
 ∋ = 󰲣y∈x
 ∌ = 󰲣y∉x
 ᐹ = isinstance
@@ -118,8 +118,8 @@ is_iter = 󰲡hasattr(x,"__iter__")
 
 ↨ = 󰲡𝑙←enumerate←x
 ⭥ = 󰲡𝑙←range←x
-⤉ = 𝚲max(𝔸₀,key=𝔸₁﹕∧𝔸₁∨□)
-⤈ = 𝚲min(𝔸₀,key=𝔸₁﹕∧𝔸₁∨□)
+⤉ = 𝚲max(𝔸₀,key=𝔸₁﹕∧𝔸₁≇NULL∨□)
+⤈ = 𝚲min(𝔸₀,key=𝔸₁﹕∧𝔸₁≇NULL∨□)
 ⴵ = sign = 󰲡x∧(1¿x>0¡¯1)∨0
  󷹄 = 󰲣¿𝕣(𝔸)¡
 ⛶ = 𝑐𝑑(󰲡[x], S=󰲡{x}, T=󰲡(x,))
@@ -204,5 +204,23 @@ is_iter = 󰲡hasattr(x,"__iter__")
     m = Namespace(**m)
     ¿g: G[path.splitext(path.split(𝔣)₁)₀] = m
     ↪ m
+
+⊢ 𝔦𝔪𝔭(x):
+    match x:
+        case ␛s:  system stuff
+            ⨡ os, sys, subprocess
+            ⮌ pathlib ⨡ Path as 𝐩
+            ⮌ subprocess ⨡ Popen as 𝐫
+            
+            i=0
+            ➰i+=1:
+                G = sys._getframe(i).f_globals
+                ¿G["__file__"]≠__file__: ⇥
+            G["ᐧ1d429"] = 𝐩
+            G["ᐧ1d42b"] = 𝐫
+            G["subprocess"] = subprocess
+            G["os"] = os
+            G["sys"] = sys
+            G["ldir"] = 𝚲G["__file__"] ⥉𝐩→.parent ⥉os.chdir
 
  dot = 𝚲𝔸⍉ᴍΠ´Σ

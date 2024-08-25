@@ -5,6 +5,7 @@ _insp(z := str(Path(__file__).absolute().parent))
 _insp(z+"/compiler")
 
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
+from time import time, sleep
 from sys import setrecursionlimit
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
@@ -51,8 +52,8 @@ prettify_code = lambda g: ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" f
 _V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
 
 def time_test(𝑓, *𝔸, **𝕂):
-    t0 = time.time()
-    return 𝑓(*𝔸, **𝕂), time.time() - t0
+    t0 = time()
+    return 𝑓(*𝔸, **𝕂), time() - t0
 
 class hashDict(dict):
     __hash__ = lambda 𝕊:hash(frozenset(𝕊.items()))
