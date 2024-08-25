@@ -1,0 +1,77 @@
+ 󰤱 make it not shuffle things when adding new characters
+
+𝔦𝔪𝔭∘␛s
+⨡ fontforge as ℱℱ
+⨡ psMat as 𝒫ℳ
+⊢ supersubscriptify(path_i, path_o, chars_s, chars_n, chars_𝒸, pua_s=0x100000, pua_e=0x10FFFD):
+    pua_ran = pua_s, pua_e
+    fnt = ℱℱ.open(path_i →.resolve ⥉ ᔐ)
+    w = 1200  󰤱 detect from font?
+    
+    ⨳ (2⋅(chars_s🃌 + chars_n🃌)+(chars_𝒸 ᴍ🃌 Σ) →<← pua_ranᴙ≺-)
+
+    𝔯,𝔰,𝔱 = "𝔯𝔰𝔱"
+    𝔗 = ℊ↦𝔸ꟿ󰲡(
+            ℊ.addReference(fnt[ord←𝔸₀].glyphname)
+                ¿x≡𝔯¡
+            ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸))
+        ) ◄← ℊ.width ≔ w
+
+    ⊢ add_sub_sup_scripts(chars, δ, scale=ⴳ):
+        ∀i,c ∈ chars↨:
+            r = □⋄□
+            ∀o,(Δ,m) ∈ ↨←0⋄chars🃌 ζ "bp":
+                ℊ = fnt.createChar(
+                    L≔δ⋄i⋄Δ Σ,
+                    N≔‹⟦c⟧_su⟦m⟧›)
+                
+                ¿ scale:
+                    ¿m≡␛b: t = [𝔯⋄c, 𝔰⋄.60, 𝔱⋄.15⋅w⋄¯.10⋅w]
+                    ⸘m≡␛p: t = [𝔯⋄c, 𝔰⋄.65, 𝔱⋄.15⋅w⋄ .65⋅w]
+                ¡:
+                    ¿m≡␛b: t = [𝔯⋄c, 𝔱⋄0⋄.35⋅¯w]
+                    ⸘m≡␛p: t = [𝔯⋄c, 𝔱⋄0⋄.35⋅ w]
+                try:
+                     𝔗(ℊ, ⠤t) ►← r󰂼 ≔ chr∘L
+                except Exception as e:
+                    ☾´(c, end=ᐦ)
+                    ☾e
+            ⮂ c⋄r
+
+    ⊢ add_multichar(n, L, s):
+        ℊ = fnt.createChar(L, ‹⟦s⟧_mchar›)
+        t = [𝔯⋄s₀]
+        ¿n∈2⋄3:
+            t += [𝔱⋄¯⅘⋅w⋄0, 𝔱⋄¯⅘⋅w⋄0, 𝔯⋄s₁]
+            ¿n≡2: t += [𝔱⋄.9⋅w⋄0, 𝔰⋄⅗]
+            ⸘n≡3: t += [𝔱⋄¯⅘⋅w⋄0,
+                        𝔯⋄s₂, 𝔱⋄⅖⋅w⋄¯⅗⋅w, 𝔰⋄½, 𝔱⋄.55⋅w⋄½⋅w]
+        ⸘n≡4:
+            t += [𝔱⋄¯w⋄⅗⋅w]
+            t += [𝔯⋄s₁, 𝔱⋄0⋄1.3⋅w]
+            t += [𝔯⋄s₂, 𝔱⋄¯w⋄⅗⋅w]
+            t += [𝔯⋄s₃, 𝔱⋄0⋄¯1.9⋅w, 𝔰⋄⅖, 𝔱⋄.7⋅w⋄⅗⋅w]
+        ↪ 𝔗(ℊ, ⠤t) ►← s⋄←chr∘L
+    add_multichars = ⥌n,𝒞,δ ↦ 𝒞↨ꟿ󰲣add_multichar(n, δ+x, y)
+
+    chr_grps = 2…5 ᴍn↦chars_𝒸󰈲󰲡x🃌≡n
+    δ = [pua_s, chars_s🃌⋅2, chars_n🃌⋅2, chr_grps₀🃌, chr_grps₁🃌] ␛
+            ſ󰁺⁰󰁻 󰲣x+[x₋₁+y]󰅂 → ₁﹕
+    ‹The following characters are missing: ›☾
+    scripts = [ 𝑑←add_sub_sup_scripts(chars_s, δ₀         ),
+                𝑑←add_sub_sup_scripts(chars_n, δ₁, scale=ⴴ) ] ſ |
+    ᐦ☾
+    multis = [ 𝑑←add_multichars(2, chr_grps₀, δ₂),
+               𝑑←add_multichars(3, chr_grps₁, δ₃),
+               𝑑←add_multichars(4, chr_grps₂, δ₄) ] ſ |
+    fnt.generate((ℴ ≔ path_o.resolve) ⥉ ᔐ) →►← fnt.close
+    ↪ scripts, multis
+
+ 󱾄󱽽󱾌 󱾁󱾌 󱽿󱾊󱾇󱾏 𐂷🌲🌳🌴🎄🎋 󱹯󱹡󱹟󱹮󱹡󱹰 󱹩󱹡󱹯󱹯󱹝󱹣󱹡 A𝔸𝓐𝐀𝐴𝔄𝕬🄐Ⓐ🄰🅐А𝗔 ; little snowman 󱼩
+
+ ↓↓ done ∈ each function because i want to keep characters
+ ∀c∈pua_s…←pua_e+1: try(fnt.removeGlyph(fntᶜ))
+
+ chatgpt is terrible at coding and this garbage doesnt even compile
+ fnt.selection.select(("ranges",None),pua_s,pua_s+2⋅chars🃌+doubles🃌)
+ fnt.selection.CenterInWidth()

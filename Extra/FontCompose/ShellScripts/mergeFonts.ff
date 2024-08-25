@@ -1,0 +1,10 @@
+#!/bin/env fontforge
+
+Open($2)
+Select(0uF7000, 0uF7FFF)
+Copy()
+Open($1)
+Select(0uF7000, 0uF7FFF)
+Paste()
+Generate($3)
+Close()

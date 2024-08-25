@@ -1,0 +1,52 @@
+𝔦𝔪𝔭←␛s
+⨡ string as 𝐒
+⮌ peggle ⨡ Parser, Node
+
+symmap = {
+        ␛(: "parenleft"  , ␛): "parenright"  ,
+        ␛{: "braceleft"  , ␛}: "braceright"  ,
+        ␛[: "bracketleft", ␛]: "bracketright",
+        ␛<: "less"       , ␛>: "greater"     ,
+        ␛+: "plus"       , ␛-: "minus"       ,
+        ␛/: "slash"      , ␛\: "backslash"   ,
+        ␛!: "exclam"     , ␛?: "question"    ,
+        ␛.: "period"     , ␛,: "comma"       ,
+        ␛:: "colon"      , ␛;: "semicolon"   ,
+        ␛&: "ampersand"  , ␛%: "percent"     ,
+        ␛=: "equal"      , ␛*: "asterisk"    ,
+        ␛_: "underscore" , ␛|: "bar"         ,
+        ␛^: "asciicircum", ␛~: "asciitilde"  ,
+        ␛#: "numbersign" , ␛$: "dollar"      ,
+        ␛': "apostrophe" , ␛": "quotedbl"    ,
+        ␛𝕊: "space"      , ␛ᴍ: "Multi_key"   ,
+        ␛ : "space"      ,
+        ⠶𝑑(𝐒.ascii_letters+𝐒.digits ᴍ󰲡x⋄꜠) }
+xcompose_from_seqs = 󰲡x.items ꟿ󰲣‹<Multi_key>⟦y⟧:"⟦x⟧"𝗻›󰅂 Σ
+⊢ generate_compose(out=ᗜ, pcomp="compose.✍⚙"  ⥉𝐩,
+                          pgram="compose.gram"⥉𝐩, no_write=ⴴ):
+    ⨳ no_write∨out≇ᗜ
+    Ω 𝔥:
+        __init__ = 󰲣x.x≔←y.x¿yᐹ𝔥¡y→►□
+        __iter__ = 󰲡x⛶⥉iter
+    ⊢ gen_rule(n):
+        ¿nᵗ≡"letter": ↪n.txt ⥉ 𝔥
+        ¿nᵗ≡"macref": ↪macs[n.txt]
+        ¿nᵗ≡"concat": ↪nᶜ ᴍgen_rule →⨉→ ᴍ𝔥
+        ¿nᵗ≡"looper": ↪nᶜ ᴍgen_rule ſ󰁺󰁻 󰲣x+(y⛶¿yᐹ𝔥¡y)
+    p = pgram⋄pcompᴍ󰲡x.open.read󰅂 ſᴾᵃʳˢᵉʳ ∘ ␛
+          ᴍ󰲡y≔xᶜ→₀⋄(y₁ᶜᴍ󰲡x ¿xᐹᔐ¡ x.txt)
+    macs = p󰈲󰲡x₀ᵗ≡"mac_head"󰅂 ꟿ󰲣(x.txt, yᴍ𝔥)󰅂 ⥉𝑑
+    seqs = p󰈲󰲡x₀ᵗ≡"seq_head"󰅂 ꟿ󰲣(Node("concat",xᶜ), y)
+    red = 󰲣y.append(x) ¿xᐹ𝔥∧(x≔x.x)ᐹᔐ¡ xᴍ󰲡red(x,y)󰅂
+     we assume no dups
+    seqs = seqs ꟿ󰲣yζ(gen_rule∘x ᴍ󰲡red(x,y≔[])►y)󰅂 Σ ⥉𝑑
+    new = (og ≔ symmap ꟿᴰ 󰲣(x,‹<⟦y⟧>›)󰅂) | {}
+    seqs.items ꟿr≔󰲣newₓ≔yᴍ⥌z↦(og ¿z∈og¡ new) ¿z∈new¡ new≔r(z,seqs)󰅂Σᐦ
+    
+    ∀z,k in new.items: ☾(z,k)
+    
+    seqs = new∩seqs ᴍ 󰲡(x,newₓ)󰅂 ⥉ 𝑑
+    ¿¬no_write: out⥉𝐩→.open(␛w).write(xcompose_from_seqs ∘ seqs)
+    ↪seqs
+
+¿ __name__≡"__main__": generate_compose(no_write=ⴳ) ☾
