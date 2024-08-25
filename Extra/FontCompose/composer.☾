@@ -39,7 +39,7 @@ xcompose_from_seqs = 󰲡x.items ꟿ󰲣‹<Multi_key>⟦y⟧:"⟦x⟧"𝗻�
     seqs = p󰈲󰲡x₀ᵗ≡"seq_head"󰅂 ꟿ󰲣(Node("concat",xᶜ), y)
     red = 󰲣y.append(x) ¿xᐹ𝔥∧(x≔x.x)ᐹᔐ¡ xᴍ󰲡red(x,y)󰅂
      we assume no dups
-    seqs = seqs ꟿ󰲣yζ(gen_rule∘x ᴍ󰲡red(x,y≔[])►y)󰅂 Σ ⥉𝑑
+    seqs = seqs ꟿ󰲣yζ(gen_rule∘x ᴍ󰲡red(x,y≔[])►y󰈳󰲡x≡␛ᐦ)󰅂 Σ ⥉𝑑
     new = (og ≔ symmap ꟿᴰ 󰲣(x,‹<⟦y⟧>›)󰅂) | {}
     seqs.items ꟿr≔󰲣newₓ≔yᴍ⥌z↦(og ¿z∈og¡ new) ¿z∈new¡ new≔r(z,seqs)󰅂Σᐦ
     

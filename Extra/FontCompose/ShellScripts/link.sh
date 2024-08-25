@@ -8,4 +8,4 @@ doas ln -s "$(realpath "/Configs/Fonts")" /usr/share/fonts/Fonts
 
 sleep 0.1 && fc-cache -fv
 
-# Test chars → 󷹀󷹃󷹂󷹇󷹁󷹛󷹚󷹭󷹮󷹯󷹰
+# Test chars → 󷹀󷹃󷹂󷹇󷹁󷹛󷹚󷹭󷹮󷹯󷹰󰁌􀭢􀮨

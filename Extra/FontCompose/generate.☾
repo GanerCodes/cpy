@@ -64,4 +64,4 @@
             ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
     os.rename(font, fold / ‹99_JuliaMono-Regular.ttf›)
 
-¿__name__≡"__main__": config_font_and_compose  (enabled_stages=‹Supersubscriptified›⍭)
+¿__name__≡"__main__": config_font_and_compose (enabled_stages=‹Supersubscriptified›⍭)
