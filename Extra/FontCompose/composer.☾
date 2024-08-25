@@ -43,8 +43,6 @@ xcompose_from_seqs = 󰲡x.items ꟿ󰲣‹<Multi_key>⟦y⟧:"⟦x⟧"𝗻�
     new = (og ≔ symmap ꟿᴰ 󰲣(x,‹<⟦y⟧>›)󰅂) | {}
     seqs.items ꟿr≔󰲣newₓ≔yᴍ⥌z↦(og ¿z∈og¡ new) ¿z∈new¡ new≔r(z,seqs)󰅂Σᐦ
     
-    ∀z,k in new.items: ☾(z,k)
-    
     seqs = new∩seqs ᴍ 󰲡(x,newₓ)󰅂 ⥉ 𝑑
     ¿¬no_write: out⥉𝐩→.open(␛w).write(xcompose_from_seqs ∘ seqs)
     ↪seqs

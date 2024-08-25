@@ -118,8 +118,8 @@ is_iter = 󰲡hasattr(x,"__iter__")
 
 ↨ = 󰲡𝑙←enumerate←x
 ⭥ = 󰲡𝑙←range←x
-⤉ = 𝚲max(𝔸₀,key=𝔸₁﹕∧𝔸₁≇NULL∨□)
-⤈ = 𝚲min(𝔸₀,key=𝔸₁﹕∧𝔸₁≇NULL∨□)
+⤉ = 𝚲max(𝔸₀,key=𝔸₁﹕∧𝔸₁≇NULL∧𝔸₁∨□)
+⤈ = 𝚲min(𝔸₀,key=𝔸₁﹕∧𝔸₁≇NULL∧𝔸₁∨□)
 ⴵ = sign = 󰲡x∧(1¿x>0¡¯1)∨0
  󷹄 = 󰲣¿𝕣(𝔸)¡
 ⛶ = 𝑐𝑑(󰲡[x], S=󰲡{x}, T=󰲡(x,))
