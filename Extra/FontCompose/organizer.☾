@@ -1,0 +1,27 @@
+ partition pua
+ sup/sub partitioning
+
+⮌ platform ⨡ uname
+⮌ random ⨡ randint, seed
+seed∘uname₁
+
+pua = 0x100000, 0x10FFFD  we own this plane
+
+puaΔ = pua₀ + randint(0, puaᴙ ≺- →⋅.9 ⥉ 𝑖)
+o≔pua₀⋄puaΔ⋄pua₁ ᴍhex →►← ‹Offset: ⟦o₀⟧ ≤ ⟦o₁⟧ < ⟦o₂⟧›☾
+
+pua_mapping = {
+    (0x100000, 0x100004): "ᵃᵇᶜᵉ",
+}
+
+
+unsafe = z ↦ 𝑘≔(pua_mapping ᴍ󰲡((𝑗≔x)₀≤z<x₁ ∧ 𝑗)󰅂) →⋁∧𝑘₀
+⊢ find_pua_spots(⠤strs):
+     input is ᔐs we want together i.e. ("ᵃᵇᶜ", "¹²³")
+    ∀𝕤∈strs:
+        𝕏 = pua₀
+        ➰𝕐 ≔ unsafe∘𝕏:
+            𝕐☾
+            𝕏 = 𝕐₁ ¿𝕐₁≤pua₁¡ pua₀
+        𝕐☾
+find_pua_spots("¹²³")
