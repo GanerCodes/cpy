@@ -4,4 +4,5 @@ __pycache__/
 /Extra/FontCompose/JuliaMono/
 /Extra/FontCompose/Output/*
 !/Extra/FontCompose/Output/99_JuliaMono-Regular.ttf
+!/Extra/FontCompose/Output/customSymbols.ttf
 !/Extra/FontCompose/Output/.XCompose
