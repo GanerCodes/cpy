@@ -13,15 +13,23 @@ o≔pua₀⋄puaΔ⋄pua₁ ᴍhex →►← ‹Offset: ⟦o₀⟧ ≤ ⟦o₁�
 pua_mapping = {
     (0x100000, 0x100004): "ᵃᵇᶜᵉ",
 }
+inv_pua_map = pua_mapping.items ꟿ󰲣yᴍ z↦(z,x)󰅂󰅂Σ ⥉ 𝑑
 
-unsafe = z ↦ 𝑘≔(pua_mapping ᴍ󰲡(𝑗≔x)₀≤z<x₁ ∧ 𝑗󰅂) →⋁∧𝑘₀
+unsafe = z ↦ 𝑘≔(pua_mapping ᴍ󰲡(𝑗≔x)₀≤z<x₁ ∧ 𝑗󰅂 󰈲) →⋁∧𝑘₀
 ⊢ find_pua_spots(⠤strs):
      input is ᔐs we want together i.e. ("ᵃᵇᶜ", "¹²³")
     ∀𝕤∈strs:
-        𝕏 = pua₀
-        ➰𝕐 ≔ unsafe∘𝕏:
-            𝕏 = 𝕐₁ ¿𝕐₁≤pua₁¡ pua₀
-            ids = 𝕤🃌⭥ᴍ𝕏+x
-            ids ᴍ󰲡safe∘x
-        𝕐☾
+        𝕏 = puaΔ
+        ➰ⴳ:
+            ¿𝕐 ≔ unsafe∘𝕏:
+                𝕏 = 𝕐₁ ¿𝕐₁<pua₁¡ pua₀
+                ↺
+            ids ≔ 𝕤🃌⭥ᴍ󰲡𝕏+x
+            ¿z ≔ ids 󰑅 unsafe:
+                𝕏 = z₁
+            ¡: ⇥
+        
+        pua_mapping[r≔(ids₀, ids₋₁)] = 𝕤
+        inv_pua_map |= (𝕤ᴍ󰲡(x,r)󰅂 ⥉ 𝑑)
+        
 find_pua_spots("¹²³")
