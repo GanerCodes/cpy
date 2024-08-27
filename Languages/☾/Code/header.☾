@@ -82,6 +82,17 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ƒ = staticmethod(⥌x,y,z=NULL↦
         accumulate(x,y,⠶{}¿z≡NULL¡{"initial":z})⥉𝑙)
 
+  ᗯ
+ Ω ᗯ´:
+ ᗯ²
+
+⊢ _window(𝕏, l=1, r=1, m=ⴳ):  󰤱
+    p = □⛶⋅←l+1
+    ∀x∈(⠤𝕏, □⛶⋅←r+1):
+       p[0:]
+       ⮂ (a, b, x)
+       a, b = b, x
+
 Ω ᴍ´:
     ƒ = staticmethod(_map_d)
     ⊢ __getitem__(𝕊, i):
