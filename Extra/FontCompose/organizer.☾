@@ -1,15 +1,25 @@
  partition pua
  sup/sub partitioning
 
+𝔦𝔪𝔭∘␛s
+⨡ json
 ⮌ platform ⨡ uname
 ⮌ random ⨡ randint, seed
 seed∘uname₁
 
-pua = 0x100000, 0x10FFFD  we own this plane
+pua = 0x100000 ⋄ 0x10FFFD  we own this plane
 
 puaΔ = pua₀ + randint(0, puaᴙ ≺- →⋅.9 ⥉ 𝑖)
 o≔pua₀⋄puaΔ⋄pua₁ ᴍhex →►← ‹Offset: ⟦o₀⟧ ≤ ⟦o₁⟧ < ⟦o₂⟧›☾
 
+lm≔{} →►← pua_maps_in ≔ 𝐩(‹PuaMaps›).glob("*.json") ␛
+            →ᴍ 󰲡json.load(x.open) ␛
+                →ᴍᴷ󰲡x.split∘␛| ᴍ󰲡𝑖(x,16)󰅂 ⥉𝑡󰅂 ␛
+                →.items ꟿ󰲣x₀…x₁ζy ꟿ⥌l,c↦
+                (lmₗ≡l ⨳ ‹⟦c⟧→⟦l⟧←⟦lmₗ⟧›) ¿l∈lm¡ lmₗ≔c
+rags = lm.items 󰒼 Ϝ󰁺⁰󰁱⁰󰁻 󰲣1 ¿y≡x₁+1¡ 0󰅂 → ₁﹕
+rags☾
+exit
 pua_mapping = {
     (0x100000, 0x100004): "ᵃᵇᶜᵉ",
 }
@@ -18,7 +28,9 @@ inv_pua_map = pua_mapping.items ꟿ󰲣yᴍ z↦(z,x)󰅂󰅂Σ ⥉ 𝑑
 unsafe = z ↦ 𝑘≔(pua_mapping ᴍ󰲡(𝑗≔x)₀≤z<x₁ ∧ 𝑗󰅂 󰈲) →⋁∧𝑘₀
 ⊢ find_pua_spots(⠤strs):
      input is ᔐs we want together i.e. ("ᵃᵇᶜ", "¹²³")
+    global pua_mapping, inv_pua_map
     ∀𝕤∈strs:
+        𝕤 󰈳 󰲡x∈inv_pua_map
         𝕏 = puaΔ
         ➰ⴳ:
             ¿𝕐 ≔ unsafe∘𝕏:
@@ -31,5 +43,7 @@ unsafe = z ↦ 𝑘≔(pua_mapping ᴍ󰲡(𝑗≔x)₀≤z<x₁ ∧ 𝑗󰅂 �
         
         pua_mapping[r≔(ids₀, ids₋₁)] = 𝕤
         inv_pua_map |= (𝕤ᴍ󰲡(x,r)󰅂 ⥉ 𝑑)
+    
+    inv_pua_map☾
         
 find_pua_spots("¹²³")

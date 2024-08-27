@@ -1,8 +1,14 @@
+ 󰤱 a 󰑁 3 = a﹕₋₃
+ 󰤱 make ⨳ take a error handler arg
+ 󰤱 try OPERATOR except
+ 󰤱 better star f
+ 󰤱 fs⟶ſ ␠ FS⟶Ϝ
+
 exec('from math import *')
 󰆴 factorial, e, pi, tau, sqrt, cbrt
 𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = dict, bool, list, tuple, set, str, int, float
 ⮌ functools ⨡ reduce
-⮌ itertools ⨡ starmap, filterfalse, product
+⮌ itertools ⨡ starmap, filterfalse, product, accumulate
 
 LITERAL_OPS_ = {
     ␛∧: 󰲣x∧y, ␛∨: 󰲣x∨y, ␛+: 󰲣x+y, ␛-: 󰲣x-y,
@@ -63,16 +69,21 @@ is_iter = 󰲡hasattr(x,"__iter__")
     __getitem__ = ⥌𝕊,x↦super().__getitem__(x) ¿x∈𝕊¡ 𝕊.𝑔(x)
 
 Ω √´:
-    __slots__ = ()
     __getitem__ = ⥌𝕊,x↦⥌y↦y⌃(1/x)
     __call__ = ⥌𝕊,x↦x⌃½
+
 Ω ſ´:
-    __slots__ = ()
-    __getitem__ = ⥌𝕊,z↦󰲣reduce(y,x,z)
-    __call__ = staticmethod(󰲣reduce(y,x,⠤𝔸))
+    ƒ = staticmethod(⥌x,y,z=NULL↦
+        reduce(y,x,⠤()¿z≡NULL¡(z,)))
+    __getitem__ = ⥌𝕊,z↦󰲣𝕊.ƒ(x,y,z)
+    __call__     =⥌𝕊  ↦ 𝕊.ƒ(⠤𝔸)
+
+Ω Ϝ´(ſ´):
+    ƒ = staticmethod(⥌x,y,z=NULL↦
+        accumulate(x,y,⠶{}¿z≡NULL¡{"initial":z})⥉𝑙)
+
 Ω ᴍ´:
     ƒ = staticmethod(_map_d)
-    __slots__ = ()
     ⊢ __getitem__(𝕊, i):
         S, ƒ = 𝑠←i ¿iᐹ𝑡¡ (i,), □
         ¿s≔␛D→∈S: ƒ = f↦󰲣𝑑(f(x.items(),y))
@@ -85,9 +96,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
     __call__ = ⥌𝕊,x,y↦𝕊.ƒ(x,y,1)
 Ω ꟿ´(ᴍ´):
     ƒ = staticmethod(⥌x,y,i↦_map_d(x,󰲡y(⠤(x¿is_iter(x)¡(x,))),i))
-    __slots__ = ()
 
-ᴍ,ꟿ,ſ,√=ᴍ´(),ꟿ´(),ſ(),√´()
+√´ = √´()
+ᴍ´,ꟿ´,ſ´,Ϝ´ = ᴍ´(),ꟿ´(),ſ(),Ϝ´()
 
 ⊢ ⨳´(α, β):
     ¿α≅NULL: α,β=β,α
@@ -103,8 +114,6 @@ is_iter = 󰲡hasattr(x,"__iter__")
 󰑅´ = 𝑐𝑑(_wherest, I=󰲣_wherest(x,y,ⴳ))
 󰑁´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵƒ¡ 𝕏﹕ᵢ
 󰑃´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵƒ¡ 𝕏ᵢ₊₁﹕
-
- 󰤱 a 󰑁 3 = a﹕₋₃
 
 ⊂ = 󰲣𝑠(x).issubset(𝑠←y)
 ⊃ = 󰲣𝑠(y).issubset(𝑠←x)
