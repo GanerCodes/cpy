@@ -20,7 +20,7 @@ symmap = {
         ␛': "apostrophe" , ␛": "quotedbl"    ,
         ␛𝕊: "space"      , ␛ᴍ: "Multi_key"   ,
         ⠶𝑑(𝐒.ascii_letters+𝐒.digits ᴍ󰲡x⋄꜠) }
-xcompose_from_seqs = 󰲡x.itemsꟿ󰲣‹⟦␛ᴍ+x ᴍ󰲡‹<⟦symmapₓ⟧>›󰅂Σ⟧:"⟦y⟧"⟦𝔸∧␛#+𝔸₀∨ᐦ⟧𝗻›󰅂 Σ
+xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹⟦␛ᴍ+xᴍ󰲡‹<⟦symmapₓ⟧>›󰅂Σ⟧:"⟦y₀⟧" # ⟦𝘀.join←y₀ᴍhex○ord⟧⟦‹ ; ⟦y₁⟧›¿y🃌>1¡ᐦ⟧𝗻›󰅂 󰒼󰲡x🃌⋄x󰅂 Σ
 ⊢ generate_compose(out=ᗜ, pcomp="compose.✍⚙"  ⥉𝐩,
                           pgram="compose.gram"⥉𝐩, no_write=ⴴ):
     ⨳ no_write∨out≇ᗜ

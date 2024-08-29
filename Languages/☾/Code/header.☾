@@ -217,32 +217,14 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ⊻ = 󰲣𝑏(x)^𝑏(y)  ∧←x∨y  xor
 ⊼ = 󰲣𝑏(x)∧𝑏(y)→¬∧←x∨y  nand
 
-⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□, ⠶𝕂):
-    ⮌ refresher ⨡ basic_cpy_interactive_session
-    cpy = basic_cpy_interactive_session(✗, ✓, ns=ns, fname=fname)
-    r = cpy(c, ⠤𝔸, ⠶𝕂)
-    ↪ cpyⁿˢ ¿get_ns¡ r
-
-⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗):
-    ⮌ argparse ⨡ Namespace
-    ⮌ sys ⨡ path as P, _getframe as GF
-    ⮌ os ⨡ path, listdir
-    ⮌ pathlib ⨡ Path as 𝐩
-    f = □
-    ∀p∈(␛., ⠤P):
-        ¿¬path.isdir(p): ↺
-        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡path.isfile(𝐩(z≔‹⟦p⟧/⟦𝔣⟧⟦x⟧›)) ∧ z󰅂: ⇥
-    ⨳(f, ‹Cannot find "⟦𝔣⟧"›)
-    ¿just_get_path: ↪f
-    with open(f, ␛r) as 𝐟: code = 𝐟.read()
-    m = 󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": f}, fname=f)
-    𝑘 = (m󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝔸
-    G = GF(1).f_globals
-    ∀k∈𝑘: Gₖ = mₖ
-    ¿store_code: m[‹__cpy_code__›] = code
-    m = Namespace(**m)
-    ¿g: G[path.splitext(path.split(𝔣)₁)₀] = m
-    ↪ m
+⊢ ⓦ(⠤𝔸, 𝐀=□):
+    𝐀∨=[]
+    ⠤𝔸, ƒ = 𝔸
+    ¿¬𝔸: ↪ƒ(⠤𝐀)
+    𝕒, ⠤𝔸 = 𝔸
+    with 𝕒 as 𝐚:
+        𝐀.append∘𝐚
+        ↪ ⓦ(⠤𝔸, ƒ, 𝐀=𝐀)
 
 Ω nosee(𝑠):
     __init__ = 𝕊↦super().__init__() ► 𝔸∧(𝔸₀ᴍ𝕊.add) →►□
@@ -267,6 +249,34 @@ is_iter = 󰲡hasattr(x,"__iter__")
             G["subprocess"] = subprocess
             G["os"], G["sys"] = os, sys
             G["time"], G["sleep"] = time, sleep
-            G["ldir"] = 𝚲os.chdir←Gₕ
+            G["ldir"] = 𝚲os.chdir←Gₕ
+
+⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□, ⠶𝕂):
+    ⮌ refresher ⨡ basic_cpy_interactive_session
+    cpy = basic_cpy_interactive_session(✗, ✓, ns=ns, fname=fname)
+    r = cpy(c, ⠤𝔸, ⠶𝕂)
+    ↪ cpyⁿˢ ¿get_ns¡ r
+
+⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗):
+    ⮌ argparse ⨡ Namespace
+    ⮌ sys ⨡ path as P, _getframe as GF
+    ⮌ os ⨡ path, listdir
+    ⮌ pathlib ⨡ Path as 𝐩
+    f = □
+    ∀p∈(␛., ⠤P):
+        ¿¬path.isdir(p): ↺
+        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡path.isfile(𝐩(z≔‹⟦p⟧/⟦𝔣⟧⟦x⟧›)) ∧ z󰅂: ⇥
+    ⨳(f, ‹Cannot find "⟦𝔣⟧"›)
+    ¿just_get_path: ↪f
+    with open(f, ␛r) as 𝐟: code = 𝐟.read()
+    m = 󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": f}, fname=f)
+    𝑘 = (m󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝔸
+    G = GF(1).f_globals
+    ¿"__exports__"∈m: 𝑘+=m["__exports__"]
+    ¿store_code: m[‹__cpy_code__›] = code
+    ¿g: G[path.splitext(path.split(𝔣)₁)₀] = m
+    ∀k∈𝑘: Gₖ = mₖ
+    m = Namespace(**m)
+    ↪ m
 
  dot = 𝚲𝔸⍉ᴍΠ´Σ

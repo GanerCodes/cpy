@@ -42,8 +42,9 @@ to_ranges = lm↦[
 ⊢ save_pua():
     lms = to_ranges(lm) ꟿᴷ󰲣‹⟦hex(x)⟧|⟦hex(y)⟧›
     t = time⋅100 ⥉𝑖
-    pua_maps_in ᴍ 󰲡x.rename(pua_fold / ‹Old› / ‹⟦t⟧_⟦x.name⟧›)
-    json.dump(lms, pua_fold / ‹pua_log.json›→.open∘␛w)
+    pua_maps_in ᴍ 󰲡x.rename(y ≔ pua_fold/‹Old/⟦t⟧_⟦x.name⟧›) ► ‹Moved "⟦x⟧"↦"⟦y⟧"›☾
+    json.dump(lms, (d≔pua_fold/‹pua_log.json›)→.open∘␛w)
+    ‹Wrote pua mapping to "⟦d⟧"›☾
     ↪ lms
 
 get_codepoints = ⥌C, p↦
@@ -58,12 +59,10 @@ get_codepoints = ⥌C, p↦
     
     get_seq = 󰲡x∈ℭ∧ℭₓ ∨ x∈symmap∧x
     
-    supsub = (ℭ ∪ special_symkeys) ∖ ignore_scripts
-    sub = get_codepoints(supsubᴍ󰲡x₀, "sub") ꟿᴰ󰲣(x, (⠤y, x∈ℭ∧ℭₓ ∨← ␛/⋅(1+←x∉special_symkeys)+get_seq∘x))
-    sup = get_codepoints(supsubᴍ󰲡x₀, "sup") ꟿᴰ󰲣(x, (⠤y, x∈ℭ∧ℭₓ ∨← ␛\⋅(1+←x∉special_symkeys)+get_seq∘x))
-    mul = get_codepoints(multichars, "mul") ꟿᴰ󰲣(x, (⠤y, x∈ℭ∧ℭₓ ∨← ⋀(K≔xᴍget_seq) ∧ (Kᴍ󰲡x+␛𝕊󰅂Σᐦ)))
-    sets = sub⋄sup⋄mul
-    ↪ 𝒞 | 𝑑(setsſ| →.items 󰈲󰲡x₁ ₂󰅂 ꟿ󰲣(y₂,(chr←y₁,y₀))), ⠤sets
-
- get_codepoints(["a", "bl", "c"], "sub")☾
- save_pua☾
+    supsub = (ℭ ∪ special_symkeys) ∖ ignore_scripts 󰒼
+    sub = get_codepoints(supsubᴍ󰲡x₀, "sub") ꟿᴰ󰲣(x, (⠤y, y₁∈ℭ∧ℭₓ ∨← ␛/⋅(1+←x∉special_symkeys)+get_seq∘x, x∉no_scale))
+    sup = get_codepoints(supsubᴍ󰲡x₀, "sup") ꟿᴰ󰲣(x, (⠤y, y₁∈ℭ∧ℭₓ ∨← ␛\⋅(1+←x∉special_symkeys)+get_seq∘x, x∉no_scale))
+    mul = get_codepoints(multichars, "mul") ꟿᴰ󰲣(x, (⠤y, y₁∈ℭ∧ℭₓ ∨← ⋀(K≔xᴍget_seq) ∧ (Kᴍ󰲡x+␛𝕊󰅂Σᐦ)))
+    
+    S = sub⋄sup⋄mul
+    ↪ 𝒞 | 𝑑(S ᴍ 𝑑.items ᴍ 𝑙 ſ+ 󰈲󰲡x₁ ₂󰅂 ꟿ󰲣(y₂,(chr←y₁,y₀))), ⠤S

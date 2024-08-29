@@ -139,8 +139,11 @@ if __name__ == "__main__":
     # debug_test_exit("""⥌↦1""")
     # debug_test_exit("""A ᴍᵃ𐞑ᵇ B""")
     
-    cpy_kwargs = { "interactive_defaults": { "global_verbose_debug": argv.count("--verbose") } }
-    if "--refresher" in argv:
+    agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], (argv.clear() or argv.extend(y)))[0]
+    # agets = 󰲡sys.argv.count(y≔"--"+x) ◄← sys.argv󰈲=󰲡x≠y
+    
+    cpy_kwargs = { "interactive_defaults": { "global_verbose_debug": agets("verbose") } }
+    if agets("--refresher"):
         def refresher(path, 𝑓):
             cur = ᐦ
             while ⴳ:
@@ -163,6 +166,8 @@ if __name__ == "__main__":
         refresher(refresh_file, refresh)
         exit(0)
     
+    arg_debug = agets("debug")
+    
     if len(argv) > 1:
         cpy = basic_cpy_interactive_session(ⴴ, ⴴ, ⴳ,
             ns={ "__file__": (f := os.path.abspath(argv[1])) },
@@ -173,7 +178,7 @@ if __name__ == "__main__":
     
     cpy_kwargs.setdefault("interactive_defaults", {})["dynamic_compile"] = ⴳ
     cpy = basic_cpy_interactive_session(
-                          print_code="--debug" in argv,
+                          print_code=arg_debug,
                         print_output=ⴳ,
                         **cpy_kwargs)
     while ⴳ:

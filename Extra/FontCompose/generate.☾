@@ -1,7 +1,6 @@
 𝔦𝔪𝔭∘␛s ; ldir
 
- 󰤱 command line tool for configuring
- 󰤱 generate_compose shouldn't be build sss
+ 󰤱 better configs
 
 󰋺(⠤‹composer symmap generate_compose xcompose_from_seqs›⍭)
 󰋺(⠤‹organizer get_new_chars save_pua›⍭)
@@ -25,8 +24,6 @@
 
     ¿check_reclone: ‹sh ShellScripts/cloneRepos.sh›⍭⥉𝐑
 
-     ?!/&$%:
-
     stages = {}
     ⊢ stage1(fi, fo):
         ‹python3.12 FontPatcher/font-patcher --careful --mono ›␛
@@ -42,30 +39,40 @@
     stages["CustomSymbols"] = stage2
 
     𝒞, sub, sup, mul = get_new_chars(force_include, no_scale, multichars, ignore_scripts, special_symkeys)
-
     ⊢ stage3():
         xcompose_out.open(␛w).write(xcompose_from_seqs∘𝒞)
+        save_pua
     stages["Compose"] = stage3
     stage3.no_font = ⴳ
     
     ⊢ stage4(fi, fo):
-        □
-         󰤱
+        󰋺(⠤‹multisupersubscriptify load_font save_font add_script add_multichar›⍭)
+        
+        𝒻 = load_font(fi)
+        
+        sub.items ꟿ󰲣add_script   (𝒻, y₁, y₀, x, ␛b, y₃)
+        sup.items ꟿ󰲣add_script   (𝒻, y₁, y₀, x, ␛p, y₃)
+        mul.items ꟿ󰲣add_multichar(𝒻, y₁, y₀, x)
+        
+        save_font(𝒻, fo)
     stages["Multisupersubscriptified"] = stage4
 
     font = ‹JuliaMono/JuliaMono-Regular.ttf›⥉𝐩→.resolve
-    ∀s,𝑓∈stages.items:
-        ¿ hasattr(𝑓, "no_font"):
-            𝑓
+    ∀s,ƒ∈stages.items:
+        ¿hasattr(ƒ, "no_font"):
+            ƒ
             ↺
         fo = fold / ‹⟦font.stem⟧_⟦s⟧⟦font.suffix⟧›
         ¿s∈enabled_stages:
             ‹Running stage ⟦s⟧, "⟦font⟧" ↦ "⟦fo⟧"›☾
-            𝑓(font, font≔fo)
+            ƒ(font, font≔fo)
         ⸘fo.exists:
             ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
     os.rename(font, fold / ‹99_JuliaMono-Regular.ttf›)
 
 ¿__name__≡"__main__":
-     config_font_and_compose 
-    config_font_and_compose(enabled_stages=‹Multisupersubscriptified›⍭)
+    cfac = 󰲡config_font_and_compose(enabled_stages=x⍭)
+    match sys.argv🃌>1∧sys.argv₁∨"medium":
+        case "compose": cfac←‹Compose›
+        case  "medium": cfac←‹CustomSymbols Compose Multisupersubscriptified›
+        case    "full": cfac←‹Nerd CustomSymbols Compose Multisupersubscriptified›

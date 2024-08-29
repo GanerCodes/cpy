@@ -49,6 +49,7 @@ d = d()
 ⨳ ‹a bc k›⍭ ≡ [␛a⋄"bc",␛k⛶]
 
  󰤱 test 󱠨 and 󰋺
+ 󰤱 test a lot of stuff
 
 ☾ "All tests pased!"
 
