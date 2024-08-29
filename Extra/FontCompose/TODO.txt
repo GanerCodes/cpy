@@ -1,7 +1,0 @@
-1. Hardcode some define big open PUA areas
-    [100000 - 10FFFF] gives 65k
-        this is a lot-ish but if we need more we should have support for more ranges
-2. for all symnames (i.e. "α_sup") that we have defined, put them into their spots.
-3. choose a RANDOM (so two people dont add chars to the same place) consecuitive space in PUA for the rest of the symbols to add 
-4. add the chars and the range to the magic log file
-

@@ -139,11 +139,15 @@ if __name__ == "__main__":
     # debug_test_exit("""⥌↦1""")
     # debug_test_exit("""A ᴍᵃ𐞑ᵇ B""")
     
-    agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], (argv.clear() or argv.extend(y)))[0]
+    agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], argv.clear(), argv.extend(y))[0]
     # agets = 󰲡sys.argv.count(y≔"--"+x) ◄← sys.argv󰈲=󰲡x≠y
     
     cpy_kwargs = { "interactive_defaults": { "global_verbose_debug": agets("verbose") } }
-    if agets("--refresher"):
+    if agets("no-cache"): cpy_kwargs["do_cache"] = ⴴ
+    
+    print()
+    
+    if agets("refresher"):
         def refresher(path, 𝑓):
             cur = ᐦ
             while ⴳ:
@@ -152,12 +156,12 @@ if __name__ == "__main__":
                     cur = r
                 sleep(1 / 15)
         
-        cpy = basic_cpy_interactive_session(
+        cpy = basic_cpy_interactive_session(**ᖱ(
                 print_code   = ⴳ,
                 print_output = ⴳ,
                 do_cache     = ⴴ,
-                sanity       = ⴴ,
-                **cpy_kwargs)
+                sanity       = ⴴ
+            ) | cpy_kwargs)
         refresh = lambda c: run_print_exception(cpy, c)
         refresh_file = "/tmp/cpy_test/test.☾"
         if not os.path.isfile(refresh_file):
@@ -169,18 +173,21 @@ if __name__ == "__main__":
     arg_debug = agets("debug")
     
     if len(argv) > 1:
-        cpy = basic_cpy_interactive_session(ⴴ, ⴴ, ⴳ,
-            ns={ "__file__": (f := os.path.abspath(argv[1])) },
-            **cpy_kwargs)
+        cpy = basic_cpy_interactive_session(**ᖱ(
+                print_code   = ⴴ,
+                print_output = ⴴ,
+                do_cache     = ⴳ,
+                ns = { "__file__": (f := os.path.abspath(argv[1])) }
+            ) | cpy_kwargs)
         sys.argv.pop(0)
         cpy(R(f), cap_stdout=ⴴ, force_exec=ⴳ)
         exit(0)
     
     cpy_kwargs.setdefault("interactive_defaults", {})["dynamic_compile"] = ⴳ
-    cpy = basic_cpy_interactive_session(
-                          print_code=arg_debug,
-                        print_output=ⴳ,
-                        **cpy_kwargs)
+    cpy = basic_cpy_interactive_session(**ᖱ(
+          print_code   = arg_debug,
+          print_output = ⴳ,
+        ) | cpy_kwargs)
     while ⴳ:
         c = input("✝ ")
         print('»', end=ś)

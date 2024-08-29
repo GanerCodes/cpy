@@ -175,7 +175,8 @@ lamb = (
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ⠶((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 
-str = str_cpy ∨ str_py ∨ str_escape ∨ str_spec_char
+str = str_star ∨ str_cpy ∨ str_py ∨ str_escape ∨ str_spec_char
+str_star = "󰦥"
 str_cpy = 󰆴'‹' (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)* 󰆴'›'
 str_sub = 󰆴'⟦' exprs 󰆴'⟧'
 str_spec_char = ~‹[𝗮-𝘇]›
@@ -195,6 +196,8 @@ E = w ∨ ~‹␛␛\n›
 comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))›
 
 «««««««««««««««««««««««««««««««««« GENERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
+
+# 󰤱 ƨ((󰆴"󰦥󰦥󰦥󰦥󰦥") (((¬󰦥󰦥󰦥󰦥󰦥) ~‹.....›)*) (󰆴"󰦥󰦥󰦥󰦥󰦥")?)
 
 # § tree manipulation
 KEYWORD_NODE_NAMES = ("kw", "kw_pfx", "kw_pfx_colon")
