@@ -1,6 +1,6 @@
 set -e && cd "${0%/*}"
 
-cp ./Output/99_JuliaMono-Regular.ttf /Configs/Fonts/99_JuliaMono-Regular.ttf
+cp ../Output/99_JuliaMono-Regular.ttf /Configs/Fonts/99_JuliaMono-Regular.ttf
 
 # doas rm /usr/local/share/fonts/Fonts || :
 # doas ln -s "$(realpath "/Configs/Fonts")" /usr/local/share/fonts/Fonts

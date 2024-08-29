@@ -47,22 +47,18 @@ to_ranges = lm↦[
     ‹Wrote pua mapping to "⟦d⟧"›☾
     ↪ lms
 
-get_codepoints = ⥌C, p↦
-    c ≔ pua_conseq(L≔Cᴍ󰲡‹⟦p⟧_⟦x⟧›)₁ ␛
-    →►← Cζ(Lζ←cᴍ󰲡x∈L∧cₓ󰅂󰈲) ⥉𝑑
+get_codepoints = ⥌C,p↦pua_conseq(N≔Cᴍ󰲡‹⟦p⟧_⟦x⟧›) ►← NζCꟿ󰲣(chr←mlₓ,x,y)󰅂
 
 ⊢ get_new_chars(force_include, no_scale, multichars,
                 ignore_scripts, special_symkeys):
     𝒞 = generate_compose(no_write=ⴳ)
     
     ℭ = 𝒞.items 󰈲󰲡x₁🃌≡1󰅂 ꟿ󰲣(y,x)󰅂 ⥉ 𝑑
-    
     get_seq = 󰲡x∈ℭ∧ℭₓ ∨ x∈symmap∧x
     
     supsub = (ℭ ∪ special_symkeys) ∖ ignore_scripts 󰒼
-    sub = get_codepoints(supsubᴍ󰲡x₀, "sub") ꟿᴰ󰲣(x, (⠤y, y₁∈ℭ∧ℭₓ ∨← ␛/⋅(1+←x∉special_symkeys)+get_seq∘x, x∉no_scale))
-    sup = get_codepoints(supsubᴍ󰲡x₀, "sup") ꟿᴰ󰲣(x, (⠤y, y₁∈ℭ∧ℭₓ ∨← ␛\⋅(1+←x∉special_symkeys)+get_seq∘x, x∉no_scale))
-    mul = get_codepoints(multichars, "mul") ꟿᴰ󰲣(x, (⠤y, y₁∈ℭ∧ℭₓ ∨← ⋀(K≔xᴍget_seq) ∧ (Kᴍ󰲡x+␛𝕊󰅂Σᐦ)))
-    
+    sub = get_codepoints(    supsub, "sub") ꟿ󰲥 (x,y,z,x∈ℭ∧ℭₓ ∨←  (j≔get_seq←z) ∧ ␛/⋅(1+←z∉special_symkeys)+(z≡␛/∧␛𝕊∨j), x∉no_scale)
+    sup = get_codepoints(    supsub, "sup") ꟿ󰲥 (x,y,z,x∈ℭ∧ℭₓ ∨←  (j≔get_seq←z) ∧ ␛\⋅(1+←z∉special_symkeys)+(z≡␛\∧␛𝕊∨j), x∉no_scale)
+    mul = get_codepoints(multichars, "mul") ꟿ󰲥 (x,y,z,x∈ℭ∧ℭₓ ∨← ⋀(K≔zᴍget_seq) ∧ ␛ᴍ+(Kᴍ󰲡x+␛𝕊󰅂Σᐦ))
     S = sub⋄sup⋄mul
-    ↪ 𝒞 | 𝑑(S ᴍ 𝑑.items ᴍ 𝑙 ſ+ 󰈲󰲡x₁ ₂󰅂 ꟿ󰲣(y₂,(chr←y₁,y₀))), ⠤S
+    ↪ 𝒞 | 𝑑(S ſ+ 󰈲󰲡x₃󰅂 ꟿ󰲧(w,(x,y))), ⠤S

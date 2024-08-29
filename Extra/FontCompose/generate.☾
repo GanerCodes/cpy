@@ -4,8 +4,9 @@
 
 󰋺(⠤‹composer symmap generate_compose xcompose_from_seqs›⍭)
 󰋺(⠤‹organizer get_new_chars save_pua›⍭)
+󰋺(‹shut›)
 
-𝐑 = 󰲡subprocess.run(x ◄ ☾‹Running command: "⟦x⟧"›)
+𝐑 = ⥌x,y=□↦‹Running command: "⟦𝘀.join←x⟧"›☾ ► ( ᣆʸ 𝚲shut)∘𝚲subprocess.run←x
 ⊢ config_font_and_compose(
         check_reclone=ⴳ,
         gen_xcompose=ⴳ,
@@ -17,8 +18,8 @@
         multichars =
             "𝓵𝓷 𝓵𝓰 𝘁𝗿 𝗦𝗟 𝗚𝗟 𝗿𝗸 𝘀𝘁 𝗪⁵ 𝗘𝗻𝗱 𝗔𝘂𝘁 𝗚𝗮𝗹 𝗸𝗲𝗿 𝓵𝓸𝓰 𝘀𝗶𝗻 𝗰𝗼𝘀 𝘁𝗮𝗻 𝘀𝗲𝗰 𝗰𝘀𝗰 𝗰𝗼𝘁 𝗔𝘀𝘀 𝗮𝗿𝗴 𝗺𝗶𝗻 𝗺𝗮𝘅 𝗲𝘅𝗽 𝗱𝗶𝘃 𝗱𝗲𝘁 𝗱𝗲𝗴 𝗲𝗿𝗳 𝗶𝗻𝘁 𝗴𝗰𝗱 𝗹𝗰𝗺 𝗵𝗼𝗺 𝗼𝗯𝗷 𝗹𝗶𝗺 𝗶𝗻𝗳 𝘀𝘂𝗽 𝗺𝗼𝗱 𝗣𝗚𝗟 𝗣𝗦𝗟 𝘀𝗴𝗻 𝘁𝗼𝗿 𝘄𝗿𝘁 𝗪𝗧𝗦 𝗪𝗧* 𝘃𝗮𝗿 𝘀𝘁𝗱 𝗰𝗼𝘃 𝗦𝗣𝗘𝗖 𝗦𝗜𝗡𝗛 𝗖𝗢𝗦𝗛 𝗧𝗔𝗡𝗛 𝗦𝗘𝗖𝗛 𝗖𝗦𝗖𝗛 𝗖𝗢𝗧𝗛 𝗖𝗛𝗔𝗥 𝗖𝗨𝗥𝗟 𝗙𝗥𝗢𝗕 𝗚𝗥𝗔𝗗 𝗥𝗔𝗡𝗞 𝗦𝗣𝗔𝗡 𝗪𝗟𝗢𝗚 𝗘𝗥𝗙𝗖 𝗠𝗘𝗠𝗘 𝗡𝗨𝗟𝗟 𝗩𝗢𝗜𝗗 𝗖𝗢𝗥𝗥"⍭,
         ignore_scripts =
-            ‹abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθικλμνξπρςστυφχψωΓΔΘΞΠΣΦΨΩ0123456789,<>;+-/*=(){}[]⊥∞›,
-        special_symkeys = ‹?!/&$%:›,
+            ‹abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθικλμνξπρςστυφχψωΓΔΘΞΠΣΦΨΩ0123456789,;<>+-*=(){}[]⊥∞›,
+        special_symkeys = ‹$:%&?!/\›,
         fold = ‹Output›⥉𝐩→.resolve):
     xcompose_out = fold / ".XCompose"
 
@@ -35,7 +36,7 @@
     ⊢ stage2(fi, fo):
         f2 = fold / ‹..› / ‹customSymbols.ttf› → .resolve
          f3 = ‹/tmp/emoji/static/NotoEmoji-Regular.ttf›⥉𝐩  doesn't work w/ fontforge or fonttools 󰂁-󰂂
-        ‹fontforge ShellScripts/mergeFonts.ff ⟦fi⟧ ⟦f2⟧ ⟦fo⟧›⍭⥉𝐑
+        𝐑(‹fontforge ShellScripts/mergeFonts.ff ⟦fi⟧ ⟦f2⟧ ⟦fo⟧›⍭, ⴳ)
     stages["CustomSymbols"] = stage2
 
     𝒞, sub, sup, mul = get_new_chars(force_include, no_scale, multichars, ignore_scripts, special_symkeys)
@@ -47,17 +48,16 @@
     
     ⊢ stage4(fi, fo):
         󰋺(⠤‹multisupersubscriptify load_font save_font add_script add_multichar›⍭)
-        
         𝒻 = load_font(fi)
-        
-        sub.items ꟿ󰲣add_script   (𝒻, y₁, y₀, x, ␛b, y₃)
-        sup.items ꟿ󰲣add_script   (𝒻, y₁, y₀, x, ␛p, y₃)
-        mul.items ꟿ󰲣add_multichar(𝒻, y₁, y₀, x)
-        
+        sub ꟿ󰲩 add_script   (𝒻, x, y, z, ␛b, v)
+        sup ꟿ󰲩 add_script   (𝒻, x, y, z, ␛p, v)
+        mul ꟿ󰲧 add_multichar(𝒻, x, y, z)
         save_font(𝒻, fo)
     stages["Multisupersubscriptified"] = stage4
 
     font = ‹JuliaMono/JuliaMono-Regular.ttf›⥉𝐩→.resolve
+    shutil.copy(font, font ≔ fold / name ≔ font.name)
+    
     ∀s,ƒ∈stages.items:
         ¿hasattr(ƒ, "no_font"):
             ƒ
@@ -68,11 +68,12 @@
             ƒ(font, font≔fo)
         ⸘fo.exists:
             ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
-    os.rename(font, fold / ‹99_JuliaMono-Regular.ttf›)
+    shutil.copy(font, fold / ‹99_⟦name⟧›)
 
 ¿__name__≡"__main__":
-    cfac = 󰲡config_font_and_compose(enabled_stages=x⍭)
-    match sys.argv🃌>1∧sys.argv₁∨"medium":
+    fold = ‹Output›⥉𝐩→.resolve
+    cfac = 󰲡config_font_and_compose(enabled_stages=x⍭, fold=fold)
+    match sys.argv🃌>1∧sys.argv₁∨(fold.glob∘"*Nerd*"⥉𝑙→∧"medium"∨"full"):
         case "compose": cfac←‹Compose›
         case  "medium": cfac←‹CustomSymbols Compose Multisupersubscriptified›
         case    "full": cfac←‹Nerd CustomSymbols Compose Multisupersubscriptified›

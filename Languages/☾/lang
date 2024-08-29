@@ -152,7 +152,7 @@ vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
 gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ number ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
 number = ƨ(~‹\.[0-9]+|0[obOB][0-9]+|0[xX][0-9a-fA-F]+|[0-9]+e[0-9]+|[0-9]+(\.([0-9]+))?›)
-var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
+var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
 
@@ -171,7 +171,7 @@ lamb = (
             󰆴('⥌' Æ?)
             ⠶((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴Æ?)*
             󰆴'↦' ))
-      ∨ (lamb_h_preset = ~"[𝚲󰲡󰲣󰲥󰲧]")
+      ∨ (lamb_h_preset = ~"[𝚲󰲡󰲣󰲥󰲧󰲩]")
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ⠶((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 
@@ -189,8 +189,8 @@ str_py_sub = ~‹\\.›
 w = ~‹([ \t]*␛␛\n[ \t]*)+› ∨ ~‹[ \t]+›
 W = ~‹[ \t\n]+›
 text_breaker = ⮞(E ∨ kw_spec ∨ var_spec ∨ ¬var)
-E = w ∨ ~‹␛␛[\\\n]›
-Æ = W ∨ ~‹␛␛[\\\n]›
+E = w ∨ ~‹␛␛\n›
+Æ = W ∨ ~‹␛␛\n›
 
 comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))›
 
@@ -274,7 +274,7 @@ def σ_15():
     ((yield replacement(
         "lamb_h_preset"))
     (lambda n: Ń("lamb_h",
-            *ᴍ(lambda t: mkexp(mkvar(t)), "xyzw"[:"𝚲󰲡󰲣󰲥󰲧".index(n.c)]),
+            *ᴍ(lambda t: mkexp(mkvar(t)), "xyzwv"[:"𝚲󰲡󰲣󰲥󰲧󰲩".index(n.c)]),
             ARG_A, ARG_K)))
     
     ((yield replacement(

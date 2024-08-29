@@ -16,12 +16,12 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
     ) ◄← ℊ.width ≔ w
 
 ⊢ char_maker(ƒ):
-    ⊢ 𝑓(𝒻, l, n, *𝔸, ⠶𝕂):
-        ℊ = 𝒻.createChar(l, n)
+    ⊢ 𝑓(𝒻, c, n, *𝔸, ⠶𝕂):
+        ℊ = 𝒻.createChar(l≔ord←c, n)
         try: 
             𝔗(𝒻, ℊ, ƒ(*𝔸, ⠶𝕂))
         except Exception as e:
-            ‹Failed to generate "⟦n⟧" @ ⟦hex←l⟧: ⟦e⟧›☾
+            ‹Failed to generate "⟦n⟧" (⟦c⟧ @ ⟦hex←l⟧): ⟦e⟧›☾
     ↪ 𝑓
 
 @char_maker

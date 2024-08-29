@@ -234,7 +234,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ⊢ 𝔦𝔪𝔭(x):
     match x:
         case ␛s:  system stuff
-            ⨡ os, sys, subprocess
+            ⨡ os, sys, shutil, subprocess
             ⮌ pathlib ⨡ Path as 𝐩
             ⮌ subprocess ⨡ Popen as 𝐫
             ⮌ time ⨡ time, sleep
@@ -247,7 +247,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
             G["ᐧ1d42b"] = 𝐫
             G[h≔"ᐧ1d429ᐧ1d41d"] = 𝚲G["__file__"] ⥉𝐩→.parent
             G["subprocess"] = subprocess
-            G["os"], G["sys"] = os, sys
+            G["os"], G["sys"], G["shutil"] = os, sys, shutil
             G["time"], G["sleep"] = time, sleep
             G["ldir"] = 𝚲os.chdir←Gₕ
 
