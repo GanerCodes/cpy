@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e && cd $(dirname `realpath -s $0`)
+set -e && cd "$(dirname `realpath -s $0`)"
 
 DEST=~/.local/bin/☾
 
