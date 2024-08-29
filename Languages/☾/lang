@@ -152,7 +152,7 @@ vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
 gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ number ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
 number = ƨ(~‹\.[0-9]+|0[obOB][0-9]+|0[xX][0-9a-fA-F]+|[0-9]+e[0-9]+|[0-9]+(\.([0-9]+))?›)
-var = ƨ(¬W ¬oper ¬var_spec ¬script ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
+var = ƨ(¬W ¬oper ¬var_spec ¬script ¬"󰦥󰦥󰦥󰦥󰦥" ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
 
@@ -176,7 +176,7 @@ lamb = (
     (lamb_b = ⠶((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 
 str = str_star ∨ str_cpy ∨ str_py ∨ str_escape ∨ str_spec_char
-str_star = "󰦥"
+str_star = (󰆴"󰦥󰦥󰦥󰦥󰦥") ~‹((?!(󰦥󰦥󰦥󰦥󰦥))(.|\n))*› 󰆴("󰦥󰦥󰦥󰦥󰦥" ∨ ✓)
 str_cpy = 󰆴'‹' (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)* 󰆴'›'
 str_sub = 󰆴'⟦' exprs 󰆴'⟧'
 str_spec_char = ~‹[𝗮-𝘇]›
@@ -553,7 +553,7 @@ def σ_50():
         "parser_main",
         rec='B',
         n="Insert spaces"))
-    (ρ(add_spaces, ignore_nodes=("str_cpy", "str_py"))))
+    (ρ(add_spaces, ignore_nodes=("str_cpy", "str_py", "str_star"))))
 
 # § node transpilers
 @generator(*KEYWORD_NODE_NAMES, "oper_lit")
@@ -572,7 +572,7 @@ def gen_group        (n):
 # strings
 @generator("str_guts")
 def gen_str_guts     (n): return py_escape_string(n.txt)
-@generator("str_escape")
+@generator("str_escape", "str_star")
 def gen_str_escape   (n): return "'" + py_escape_string(n.txt) + "'"
 @generator("str_sub")
 def gen_str_sub      (n): return "{" + gen(n.C[0]) + "}"

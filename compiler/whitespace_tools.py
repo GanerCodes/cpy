@@ -67,6 +67,7 @@ def add_spaces(n, ignore_nodes=()):
             if not s: break
             β = s.peek()
             cc.append(α)
+            if not (α.c and β.c): continue
             if incompat_char(α.rchar(), β.lchar()):
                 cc.append(Node('w', ś))
         cc.append(α)
