@@ -580,7 +580,7 @@ def gen_str_sub      (n): return "{" + gen(n.C[0]) + "}"
 def gen_str_spec_char(n): return "'" + py_special_mapper(n.txt) + "'"
 @generator("str_cpy")
 def gen_special_str(n):
-    r='f"""'
+    r=' f"""'
     for c in n.c:
         if   c.t == "str_escape"   : r += py_escape_string(c.txt)
         elif c.t == "str_spec_char": r += py_special_mapper(c.txt)
