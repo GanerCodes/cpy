@@ -6,16 +6,9 @@
 «««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 from whitespace_tools import *
-from string import digits, ascii_uppercase
-from unicodedata import is_normalized
-
-py_special_mapper  = lambda c, m={'𝗻':'\\n','𝘀':' ','𝘁':'\\t'}: m[c]
-py_bad_string_chr  = lambda s, bad="\n\t\\\"'{}": s in bad
-py_escape_char     = lambda c, u='\\u': u+HXO(c) if py_bad_string_chr(c) else c
-py_escape_string   = lambda s: ᐦ.join(py_escape_char(c) for c in s)
-py_ok_identifier   = lambda x: x in digits or is_normalized("NFKC", x) and x.isidentifier()
-py_escape_var      = lambda s: ᒍ(ᐦ, (c if ord(c)<127 and c!='!' or py_ok_identifier(c) else 'ᐧ'+HXO(c) for c in s)) \
-                                    if 'NOVAR' not in CONST and s != '!=' else s
+from string import ascii_uppercase
+from py_naming_tools import * 
+py_escape_var = lambda x, f=py_escape_var: f(x, 'NOVAR' not in CONST)
 
 mkgrp = lambda *X, b="()": Ń("group", b[0], ⵌ(X)==1 and X[0] or X, b[1])
 mkgxp = lambda *X, b="()": mkgrp(mkexp(*X), b=b)
@@ -196,8 +189,6 @@ E = w ∨ ~‹␛␛\n›
 comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))›
 
 «««««««««««««««««««««««««««««««««« GENERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
-
-# 󰤱 ƨ((󰆴"󰦥󰦥󰦥󰦥󰦥") (((¬󰦥󰦥󰦥󰦥󰦥) ~‹.....›)*) (󰆴"󰦥󰦥󰦥󰦥󰦥")?)
 
 # § tree manipulation
 KEYWORD_NODE_NAMES = ("kw", "kw_pfx", "kw_pfx_colon")

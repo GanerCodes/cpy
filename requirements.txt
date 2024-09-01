@@ -2,3 +2,4 @@ more_itertools
 line_profiler
 colored
 regex
+json5

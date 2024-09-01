@@ -16,7 +16,7 @@
 
 exec('from math import *')
 󰆴 factorial, e, pi, tau, sqrt, cbrt
-𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = dict, bool, list, tuple, set, str, int, float
+𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = object, dict, bool, list, tuple, set, str, int, float
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ starmap, filterfalse, product, accumulate
 
@@ -40,7 +40,7 @@ OP_SWAPA_ = ƒ↦󰲣ƒ(y,x,⠤𝔸,⠶𝕂) # ᵜ
 OP_LNULL_ = ƒ↦󰲡ƒ(␀,x,⠤𝔸,⠶𝕂) # ⟥
 OP_RNULL_ = ƒ↦󰲡ƒ(x,␀,⠤𝔸,⠶𝕂) # ⟤
 OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
-␀ = NULL = object()
+␀ = NULL = 𝑜()
 ✓,✗ = ⴳ,ⴴ = 𝕋,𝔽 = True, False
 𝒞ℳ, 𝒮ℳ = classmethod, staticmethod
 ᗜ = □ = None
@@ -126,13 +126,14 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ↪ α
 
 ᣆ´ = 𝑐𝑑(ƒ ≔ 󰲣y(x) ¿(𝔸₀ ¿𝔸🃌¡ x)¡ x, 𝑔=a↦󰲣ƒ(x,y,a))
-⊢ _wherest(𝕏, ƒ, I=ⴴ):
+⊢ _wherest(𝕏, ƒ=𝑏, I=ⴴ):
+    ƒ = ƒ≅␀∧𝑏∨ƒ
     ∀i,x∈↨𝕏:
         ¿ƒ(x): ↪ i ¿I¡ x
     ↪ □
-󰑅´ = 𝑐𝑑(_wherest, I=󰲣_wherest(x,y,ⴳ))
-󰑁´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵ(ƒ≅␀∧𝑏∨ƒ)¡ 𝕏﹕ᵢ
-󰑃´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵ(ƒ≅␀∧𝑏∨ƒ)¡ 𝕏ᵢ﹕
+󰑅´ = 𝑐𝑑(_wherest, I=𝚲_wherest(⠤𝔸,I=ⴳ))
+󰑁´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵƒ¡ 𝕏﹕ᵢ
+󰑃´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵƒ¡ 𝕏ᵢ﹕
 ⊂ = 󰲣𝑠(x).issubset(𝑠←y)
 ⊃ = 󰲣𝑠(y).issubset(𝑠←x)
 ⊊ = 󰲣(α≔𝑠←x).issubset(β≔𝑠←y) ∧ α≠β
@@ -227,6 +228,14 @@ is_iter = 󰲡hasattr(x,"__iter__")
         𝐀.append∘𝐚
         ↪ ⓦ(⠤𝔸, ƒ, 𝐀=𝐀)
 
+Ω ℵ(𝑑):
+    __init__ = 𝕊↦super().__init__(⠤𝔸,⠶𝕂)
+    __setattr__ = 𝑑.__setitem__
+    __getattr__ = 𝑑.__getitem__
+    __iter__ = 𝕊↦iter(𝕊.items())
+    __repr__ = 𝕊↦‹ℵ(⟦␛,𝘀→.join←𝕊ꟿ󰲣‹⟦x⟧=⟦y⟧›⟧)›
+    copy = 𝕊↦ℵ(⠶super().copy())
+    
 Ω nosee(𝑠):
     __init__ = 𝕊↦super().__init__() ► 𝔸∧(𝔸₀ᴍ𝕊.add) →►□
     __call__ = ⥌𝕊,x↦𝕊.add(x) ► x
@@ -259,25 +268,24 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ↪ cpyⁿˢ ¿get_ns¡ r
 
 ⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗):
-    ⮌ argparse ⨡ Namespace
+    ⮌ py_naming_tools ⨡ py_escape_var as PEV
     ⮌ sys ⨡ path as P, _getframe as GF
     ⮌ os ⨡ path, listdir
     ⮌ pathlib ⨡ Path as 𝐩
     f = □
     ∀p∈(␛., ⠤P):
         ¿¬path.isdir(p): ↺
-        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡path.isfile(𝐩(z≔‹⟦p⟧/⟦𝔣⟧⟦x⟧›)) ∧ z󰅂: ⇥
+        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡z≔𝐩(‹⟦p⟧/⟦𝔣⟧⟦x⟧›)→.is_file() ∧ z󰅂: ⇥
     ⨳(f, ‹Cannot find "⟦𝔣⟧"›)
     ¿just_get_path: ↪f
-    with open(f, ␛r) as 𝐟: code = 𝐟.read()
-    m = 󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": f}, fname=f)
-    𝑘 = (m󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝔸
+    with f.open() as 𝐟: code = 𝐟.read()
+    m = ℵ(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": ᔐ←f}, fname=ᔐ←f))
+    𝑘 = (m.keys󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝔸
     G = GF(1).f_globals
-    ¿"__exports__"∈m: 𝑘+=m["__exports__"]
+    ¿"__exports__"∈m.keys: 𝑘+=m.__exports__
     ¿store_code: m[‹__cpy_code__›] = code
-    ¿g: G[path.splitext(path.split(𝔣)₁)₀] = m
+    ¿g: G[PEV←f.stem] = m
     ∀k∈𝑘: Gₖ = mₖ
-    m = Namespace(**m)
     ↪ m
 
  dot = 𝚲𝔸⍉ᴍΠ´Σ
