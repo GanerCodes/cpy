@@ -26,6 +26,8 @@ class Node:
             f"⟨{f'"{𝕊.c}"' if 𝕊.S else f"{Т(𝕊.c)} {𝕊.c}"}⟩"}"
     
     def __getitem__(𝕊, s, rec=ⴴ):
+        if ᐹ(s, int):
+            return 𝕊.c[s]
         q = 𝕊.C.copy()
         while q:
             c = q.pop(0)
@@ -132,7 +134,6 @@ class Node:
     
     S, L = PRP(lambda 𝕊: ᐹ(𝕊.c, ᔐ)), PRP(lambda 𝕊: ᐹ(𝕊.c, ᒪ))
     C = PRP(lambda 𝕊: 𝕊.c if 𝕊.L else [])
-    
     txt = PRP(text)
     pr = PRP(lambda 𝕊: print(𝕊))
     def print(𝕊,d=100,p=0,m=64,w=64,s=3,N=Z.lR+'∅'+Z.W,

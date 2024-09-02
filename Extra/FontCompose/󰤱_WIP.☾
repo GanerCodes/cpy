@@ -1,0 +1,77 @@
+GRAM = ␛
+󰦥󰦥󰦥󰦥󰦥
+main = 󰆴Ω? △ ⠶rule
+
+rule = rule_macro ∨ ⠶rule_not_macro
+rule_macro = ¡ word 󰆴W? ⠶(⟶ compose_body ∨ rule_not_macro)
+
+rule_not_macro = R_S_C ∨ R_S_0 ∨ R_C_S ∨ R_C ∨ R_S_1
+R_S_C = (⠶  style_hbra  compose_head) (body_recurse ∨ ⠶compose_body_options)
+R_S_0 = (   style_head              ) (body_recurse ∨ (sty compose_body))
+R_C_S = ( compose_head   ⠶style_hbra) (body_recurse ∨ ⠶compose_body_options)
+R_C   = ( compose_head              ) (body_recurse ∨ ⠶compose_body_options)
+R_S_1 = (⠶  style_hbra              ) (body_recurse ∨ (sty? compose_body))
+compose_body_options = (⟶ compose_body) ∨ compose_body
+body_recurse = ⦑ ⠶main ⦒
+
+style_hbra = ⦑ ⠶style_head ⦒ 󰆴w?
+style_head = ⠶tuple
+tuple = chain ∨ (| (| ✓)*)
+pair  = ƨ(word) 󰆴W? ⦑ ⠶tuple? ⦒
+chain = (pair ∨ word)+ 󰆴W?
+
+macref = ⟨ (¡ ⯆ word) ⟩
+
+compose_body = ( ⟦ (compose_body ∨ 󰆴Ω)* ⟧
+                 ∨ ((str ∨ ¬(~‹⟦⟧\t\n ›) ~‹.›) 󰆴w?)+ )
+compose_head = ⠶(
+    ( (looper = ⟦ ⠶compose_head ⟧)
+    ∨ (concat = ⁅ ⠶compose_head ⁆)
+    ∨ macref ∨ lookup) 󰆴W?)+ 󰆴W?
+lookup = ƨ(str ∨ chr)
+word   = ƨ(str ∨ chr+)
+str    = ƨ(esc ∨ ('"' (esc ∨ ~‹[^"].›)* '"'))
+sty    = 󰆴w? ↷ ~‹[𝔏ℜ]›
+esc    = 󰆴‹␛␛› ~‹.?›
+
+bad = ~‹[^𝔏ℜ⟨⟩⟦⟧⁅⁆⦑⦒"␠⟶\t\n ]›
+chr = ¬bad ~‹.›
+
+(⟦=󰆴(W?↷'⟦'))(⟧=󰆴(W?↷'⟧'))(⁅=󰆴(W?↷'⁅'))(⁆=󰆴(W?↷'⁆'))
+(⦑=󰆴(W?↷'⦑'))(⦒=󰆴(W?↷'⦒'))(⟨=󰆴(W?↷'⟨'))(⟩=󰆴(W?↷'⟩'))
+(¡=󰆴(W?↷'¡'))(|=󰆴(W?↷'|'))(⟶=󰆴(W?↷'⟶'))
+
+w = ~‹[ \t]+›
+W = ~‹[ \t\n]+›
+Ω = ~‹[ \t\n␠]+›
+󰦥󰦥󰦥󰦥󰦥
+
+dat = ␛
+󰦥󰦥󰦥󰦥󰦥
+¡ alp ⟶ ABC
+¡ num ⦑
+  abc ⦑c⦑A⦒⦒ ⟶ ❗RSC2
+⦒
+⦑c⦑A⦒⦒ abc ⟶ ❗RSC
+abc ⦑c⦑A⦒⦒ ⟶ ❗RCS
+abc        ⟶ ❗RC
+⦑c⦑A⦒⦒     ⟶ ❗RS1_ex1
+⦑c⦑A⦒⦒  ℜ  ⟶ ❗RS1_ex2
+ c⦑A⦒   ℜ    ❗RS0
+󰦥󰦥󰦥󰦥󰦥
+ a⟦b⟧⟨alp⟩ ⦑c⦑f00⦒⦒ WEE
+ c⦑f00⦒ ℜ aosidjiao
+
+⮌ peggle ⨡ Parser
+󰋺(‹󰤱_WIP_COLORS›, ‹decor›)
+
+⊢ parse(dat, gram=Parser(GRAM)):
+    dat = 𝗻.join←dat.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
+    root = gram∘dat
+    root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
+     root = root.find_replace(
+       󰲡xᵗ == "style_head",
+       󰲡decor(x))
+    ↪ root
+
+parse∘dat → .print

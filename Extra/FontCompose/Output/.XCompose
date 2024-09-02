@@ -2383,6 +2383,7 @@
 <Multi_key><slash><slash><s><h><o><c><k>:"􊺰" # 0x10aeb0 ; sub_😳
 <Multi_key><slash><slash><s><p><a><r><k>:"􊱔" # 0x10ac54 ; sub_✨
 <Multi_key><slash><slash><slash><dollar>:"􊲲" # 0x10acb2 ; sub_﹩
+<Multi_key><slash><slash><slash><exclam>:"􊲰" # 0x10acb0 ; sub_﹖
 <Multi_key><slash><slash><slash><period>:"􊪴" # 0x10aab4 ; sub_÷
 <Multi_key><slash><slash><underscore><S>:"􊫉" # 0x10aac9 ; sub_ϲ
 <Multi_key><slash><slash><w><r><i><t><e>:"􊱏" # 0x10ac4f ; sub_✍
@@ -2986,7 +2987,6 @@
 <Multi_key><slash><slash><c><slash><space>:"􊺹" # 0x10aeb9 ; sub_🟑
 <Multi_key><slash><slash><q><bracketright>:"􊱟" # 0x10ac5f ; sub_⟧
 <Multi_key><slash><slash><slash><asterisk>:"􊲡" # 0x10aca1 ; sub_
-<Multi_key><slash><slash><slash><question>:"􊲰" # 0x10acb0 ; sub_﹖
 <Multi_key><slash><slash><w><b><braceleft>:"􊱗" # 0x10ac57 ; sub_❴
 <Multi_key><backslash><backslash><D><space>:"􋍷" # 0x10b377 ; sup_🜂
 <Multi_key><backslash><backslash><E><slash>:"􋁆" # 0x10b046 ; sup_∄
@@ -3081,7 +3081,6 @@
 <Multi_key><backslash><backslash><period><b>:"􋁚" # 0x10b05a ; sup_∵
 <Multi_key><backslash><backslash><period><t>:"􋁙" # 0x10b059 ; sup_∴
 <Multi_key><slash><slash><asciitilde><slash>:"􊮙" # 0x10ab99 ; sub_≁
-<Multi_key><slash><slash><backslash><exclam>:"􊲘" # 0x10ac98 ; sub_ꜝ
 <Multi_key><slash><slash><c><c><bracketleft>:"􊬏" # 0x10ab0f ; sub_‹
 <Multi_key><slash><slash><colon><parenright>:"􊺤" # 0x10aea4 ; sub_😊
 <Multi_key><slash><slash><numbersign><space>:"􊯐" # 0x10abd0 ; sub_⌗
@@ -3178,6 +3177,7 @@
 <Multi_key><backslash><backslash><u><w><space>:"􋁗" # 0x10b057 ; sup_∪
 <Multi_key><backslash><backslash><w><f><space>:"􊽺" # 0x10af7a ; sup_ƒ
 <Multi_key><slash><slash><backslash><asterisk>:"􊲢" # 0x10aca2 ; sub_
+<Multi_key><slash><slash><backslash><question>:"􊲘" # 0x10ac98 ; sub_ꜝ
 <Multi_key><slash><slash><equal><equal><slash>:"􊮣" # 0x10aba3 ; sub_≢
 <Multi_key><slash><slash><equal><equal><space>:"􊮢" # 0x10aba2 ; sub_≡
 <Multi_key><slash><slash><o><v><e><r><j><o><y>:"􊻉" # 0x10aec9 ; sub_🥹
@@ -3284,6 +3284,7 @@
 <Multi_key><backslash><backslash><s><h><o><c><k>:"􋍲" # 0x10b372 ; sup_😳
 <Multi_key><backslash><backslash><s><p><a><r><k>:"􋄖" # 0x10b116 ; sup_✨
 <Multi_key><backslash><backslash><slash><dollar>:"􋅴" # 0x10b174 ; sup_﹩
+<Multi_key><backslash><backslash><slash><exclam>:"􋅲" # 0x10b172 ; sup_﹖
 <Multi_key><backslash><backslash><slash><period>:"􊽶" # 0x10af76 ; sup_÷
 <Multi_key><backslash><backslash><underscore><S>:"􊾋" # 0x10af8b ; sup_ϲ
 <Multi_key><backslash><backslash><w><r><i><t><e>:"􋄑" # 0x10b111 ; sup_✍
@@ -3371,7 +3372,6 @@
 <Multi_key><backslash><backslash><c><slash><space>:"􋍻" # 0x10b37b ; sup_🟑
 <Multi_key><backslash><backslash><q><bracketright>:"􋄡" # 0x10b121 ; sup_⟧
 <Multi_key><backslash><backslash><slash><asterisk>:"􋅣" # 0x10b163 ; sup_
-<Multi_key><backslash><backslash><slash><question>:"􋅲" # 0x10b172 ; sup_﹖
 <Multi_key><backslash><backslash><w><b><braceleft>:"􋄙" # 0x10b119 ; sup_❴
 <Multi_key><slash><slash><backslash><bracketright>:"􊻺" # 0x10aefa ; sub_󰁻
 <Multi_key><slash><slash><colon><colon><parenleft>:"􊺭" # 0x10aead ; sub_😞
@@ -3396,7 +3396,6 @@
 <Multi_key><slash><slash><bracketleft><bracketleft>:"􊱠" # 0x10ac60 ; sub_⟨
 <Multi_key><slash><slash><colon><colon><parenright>:"􊺲" # 0x10aeb2 ; sub_🙃
 <Multi_key><backslash><backslash><asciitilde><slash>:"􋁛" # 0x10b05b ; sup_≁
-<Multi_key><backslash><backslash><backslash><exclam>:"􋅚" # 0x10b15a ; sup_ꜝ
 <Multi_key><backslash><backslash><c><c><bracketleft>:"􊿑" # 0x10afd1 ; sup_‹
 <Multi_key><backslash><backslash><colon><parenright>:"􋍦" # 0x10b366 ; sup_😊
 <Multi_key><backslash><backslash><numbersign><space>:"􋂒" # 0x10b092 ; sup_⌗
@@ -3480,6 +3479,7 @@
 <Multi_key><slash><slash><bracketright><bracketright>:"􊱡" # 0x10ac61 ; sub_⟩
 <Multi_key><slash><slash><e><bracketleft><underscore>:"􊯊" # 0x10abca ; sub_⋸
 <Multi_key><backslash><backslash><backslash><asterisk>:"􋅤" # 0x10b164 ; sup_
+<Multi_key><backslash><backslash><backslash><question>:"􋅚" # 0x10b15a ; sup_ꜝ
 <Multi_key><backslash><backslash><equal><equal><slash>:"􋁥" # 0x10b065 ; sup_≢
 <Multi_key><backslash><backslash><equal><equal><space>:"􋁤" # 0x10b064 ; sup_≡
 <Multi_key><backslash><backslash><o><v><e><r><j><o><y>:"􋎋" # 0x10b38b ; sup_🥹
