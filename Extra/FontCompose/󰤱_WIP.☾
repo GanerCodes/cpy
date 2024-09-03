@@ -10,11 +10,11 @@ R_S_C = ( ⠶style_hbra compose_head) (body_recurse ∨ ⠶compose_body_options)
 R_S_0 = (  style_head             ) (body_recurse ∨ (sty output_chars))
 R_C_S = (compose_head  ⠶style_hbra) (body_recurse ∨ ⠶compose_body_options)
 R_C   = (compose_head             ) (body_recurse ∨ ⠶compose_body_options)
-R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ (sty? output_chars))
+R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ (sty? ⟶? output_chars))
 compose_body_options = (⟶ output_chars) ∨ output_chars
 body_recurse = ⦑ ⠶main ⦒
 
-style_hbra = ⦑ ⠶style_head ⦒ 󰆴w?
+style_hbra = ⦑ style_head ⦒ 󰆴w?
 style_head = ⠶tuple
 tuple = chain ∨ (| (| ✓)*)
 pair  = ƨ(word) 󰆴W? ⦑ ⠶tuple? ⦒
@@ -22,19 +22,19 @@ chain = (pair ∨ word)+ 󰆴W?
 
 macref = ⟨ (¡ ⯆ word) ⟩
 
-output_chars = ( ⟦ (output_chars ∨ 󰆴Ω)* ⟧
-                 ∨ ((str ∨ ¬(~‹⟦⟧\t\n ›) ~‹.›) 󰆴w?)+ )
+output_chars = ( ⟦ (⠶output_chars ∨ 󰆴Ω)* ⟧
+                 ∨ ((str ∨ ~‹[^"⟦⟧\t\n ]›) 󰆴w?)+ )+
 compose_head = ⠶(
     ( (looper = ⟦ ⠶compose_head ⟧)
     ∨ (concat = ⁅ ⠶compose_head ⁆)
     ∨ macref ∨ lookup) 󰆴W?)+ 󰆴W?
-lookup = ƨ(str ∨ chr)
+lookup = ƨ(str ∨ chr ∨ '|')
 word   = ƨ(str ∨ chr+)
-str    = ƨ(esc ∨ ('"' (esc ∨ ~‹[^"].›)* '"'))
+str    = ƨ(esc ∨ (󰆴'"' ((esc ∨ ~‹[^"]›)*) 󰆴'"'))
 sty    = 󰆴w? ↷ ~‹[𝔏ℜ]›
 esc    = 󰆴‹␛␛› ~‹.?›
 
-bad = ~‹[𝔏ℜ⟨⟩⟦⟧⁅⁆⦑⦒"␠⟶\t\n ]›
+bad = ~‹[𝔏ℜ⟨⟩⟦⟧⁅⁆⦑⦒"|␠⟶\t\n ]›
 chr = (¬bad) ~‹.›
 
 (⟦=󰆴(W?↷'⟦'))(⟧=󰆴(W?↷'⟧'))(⁅=󰆴(W?↷'⁅'))(⁆=󰆴(W?↷'⁆'))
@@ -48,20 +48,45 @@ W = ~‹[ \t\n]+›
 
 dat = ␛
 󰦥󰦥󰦥󰦥󰦥
+a|bc ⦑c⦑A⦒|1⦒ ⟶ ❗RCS
 ¡ alp ⟶ ABC
 ¡ num ⦑
   abc ⦑c⦑A⦒⦒ ⟶ ❗RSC2
 ⦒
 
 ⦑c⦑A⦒⦒ abc ⟶ ❗RSC
-abc ⦑c⦑A⦒⦒ ⟶ ❗RCS
 abc        ⟶ ❗RC
 ⦑c⦑A⦒⦒     ⟶ ❗RS1_ex1
 ⦑c⦑A⦒⦒  ℜ  ⟶ ❗RS1_ex2
- c⦑A⦒   ℜ    ❗RS0
+ c⦑A|b⦒ ℜ    RS0 ␛␛␛""abccc" ⟦
+         asdaaa
+         asd asd asd ␛j
+⟧
 󰦥󰦥󰦥󰦥󰦥
  a⟦b⟧⟨alp⟩ ⦑c⦑f00⦒⦒ WEE
  c⦑f00⦒ ℜ aosidjiao
+
+fargs = ƒ↦ƒ.__code__.co_varnames[:ƒ.__code__.co_argcount]
+gen, gens = n↦ƒ↦gensₙ≔ƒ, {}
+gen(␛c)←⥌x=□,y=□,z=□↦{ ⠶x∧{          "color": 🌈.h2hl←x}∨{},
+                       ⠶y∧{"backgroundColor": 🌈.h2hl←y}∨{},
+                       ⠶z∧{    "borderColor": 🌈.h2hl←z}∨{} }
+gen(␛B)←⥌x,y=1,r=1↦ℵ(borderStyle  = ‹s solid d dashed›⍭⥉𝑑→ₓ,
+                     borderWidth  = ‹⟦y⟧px›,
+                     borderRadius = ‹⟦r⟧px›)
+gen(␛b)←𝚲ℵ(fontStyle="bold")
+gen(␛u)←𝚲ℵ(textDecoration=‹underline ⟦x⟧px›)
+⊢ decor(n):
+    r = {}
+    ∀ε∈n:
+        t = εᵗ
+        ¿t ≡ "word":    
+            r |= gens[ε.txt]
+        ⸘t ≡ "pair":
+            ƒ = gens[εᶜ₀.txt]
+            ə = εᶜ₁ ᴍ󰲡□ ¿xᵗ≡␛✓¡ x.txt
+            r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)ζə¿k≇□})
+    ↪ r ∨ n.txt
 
 ⮌ peggle ⨡ Parser
 󰋺(‹󰤱_WIP_COLORS›, ‹decor›)
@@ -73,6 +98,11 @@ abc        ⟶ ❗RC
      root = root.find_replace(
        󰲡xᵗ == "style_head",
        󰲡decor(x))
+    root.print
+    root = root.find_replace(
+      󰲡1,
+      󰲡xᵗ∧(xᵗ,xᶜ)∨xᶜ)
     ↪ root
 
-parse∘dat → .print
+ parse∘dat → .print
+parse∘dat → ☾
