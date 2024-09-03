@@ -1,16 +1,16 @@
 GRAM = ␛
 󰦥󰦥󰦥󰦥󰦥
-main = 󰆴Ω? △ ⠶rule
+main = 󰆴Ω? (rule 󰆴Ω?)*
 
 rule = rule_macro ∨ ⠶rule_not_macro
-rule_macro = ¡ word 󰆴W? ⠶(⟶ compose_body ∨ rule_not_macro)
+rule_macro = ¡ word 󰆴W? (⠶(⟶ compose_body ∨ rule_not_macro))
 
 rule_not_macro = R_S_C ∨ R_S_0 ∨ R_C_S ∨ R_C ∨ R_S_1
-R_S_C = (⠶  style_hbra  compose_head) (body_recurse ∨ ⠶compose_body_options)
-R_S_0 = (   style_head              ) (body_recurse ∨ (sty compose_body))
-R_C_S = ( compose_head   ⠶style_hbra) (body_recurse ∨ ⠶compose_body_options)
-R_C   = ( compose_head              ) (body_recurse ∨ ⠶compose_body_options)
-R_S_1 = (⠶  style_hbra              ) (body_recurse ∨ (sty? compose_body))
+R_S_C = ( ⠶style_hbra compose_head) (body_recurse ∨ ⠶compose_body_options)
+R_S_0 = (  style_head             ) (body_recurse ∨ (sty compose_body))
+R_C_S = (compose_head  ⠶style_hbra) (body_recurse ∨ ⠶compose_body_options)
+R_C   = (compose_head             ) (body_recurse ∨ ⠶compose_body_options)
+R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ (sty? compose_body))
 compose_body_options = (⟶ compose_body) ∨ compose_body
 body_recurse = ⦑ ⠶main ⦒
 
@@ -34,8 +34,8 @@ str    = ƨ(esc ∨ ('"' (esc ∨ ~‹[^"].›)* '"'))
 sty    = 󰆴w? ↷ ~‹[𝔏ℜ]›
 esc    = 󰆴‹␛␛› ~‹.?›
 
-bad = ~‹[^𝔏ℜ⟨⟩⟦⟧⁅⁆⦑⦒"␠⟶\t\n ]›
-chr = ¬bad ~‹.›
+bad = ~‹[𝔏ℜ⟨⟩⟦⟧⁅⁆⦑⦒"␠⟶\t\n ]›
+chr = (¬bad) ~‹.›
 
 (⟦=󰆴(W?↷'⟦'))(⟧=󰆴(W?↷'⟧'))(⁅=󰆴(W?↷'⁅'))(⁆=󰆴(W?↷'⁆'))
 (⦑=󰆴(W?↷'⦑'))(⦒=󰆴(W?↷'⦒'))(⟨=󰆴(W?↷'⟨'))(⟩=󰆴(W?↷'⟩'))
@@ -52,6 +52,7 @@ dat = ␛
 ¡ num ⦑
   abc ⦑c⦑A⦒⦒ ⟶ ❗RSC2
 ⦒
+
 ⦑c⦑A⦒⦒ abc ⟶ ❗RSC
 abc ⦑c⦑A⦒⦒ ⟶ ❗RCS
 abc        ⟶ ❗RC
@@ -67,7 +68,7 @@ abc        ⟶ ❗RC
 
 ⊢ parse(dat, gram=Parser(GRAM)):
     dat = 𝗻.join←dat.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
-    root = gram∘dat
+    root = gram(dat, DEBUG=✗)
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
      root = root.find_replace(
        󰲡xᵗ == "style_head",
