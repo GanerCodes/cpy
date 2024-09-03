@@ -3,15 +3,15 @@ GRAM = ␛
 main = 󰆴Ω? (rule 󰆴Ω?)*
 
 rule = rule_macro ∨ ⠶rule_not_macro
-rule_macro = ¡ word 󰆴W? (⠶(⟶ compose_body ∨ rule_not_macro))
+rule_macro = ¡ word 󰆴W? (⠶(⟶ output_chars ∨ rule_not_macro))
 
 rule_not_macro = R_S_C ∨ R_S_0 ∨ R_C_S ∨ R_C ∨ R_S_1
 R_S_C = ( ⠶style_hbra compose_head) (body_recurse ∨ ⠶compose_body_options)
-R_S_0 = (  style_head             ) (body_recurse ∨ (sty compose_body))
+R_S_0 = (  style_head             ) (body_recurse ∨ (sty output_chars))
 R_C_S = (compose_head  ⠶style_hbra) (body_recurse ∨ ⠶compose_body_options)
 R_C   = (compose_head             ) (body_recurse ∨ ⠶compose_body_options)
-R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ (sty? compose_body))
-compose_body_options = (⟶ compose_body) ∨ compose_body
+R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ (sty? output_chars))
+compose_body_options = (⟶ output_chars) ∨ output_chars
 body_recurse = ⦑ ⠶main ⦒
 
 style_hbra = ⦑ ⠶style_head ⦒ 󰆴w?
@@ -22,7 +22,7 @@ chain = (pair ∨ word)+ 󰆴W?
 
 macref = ⟨ (¡ ⯆ word) ⟩
 
-compose_body = ( ⟦ (compose_body ∨ 󰆴Ω)* ⟧
+output_chars = ( ⟦ (output_chars ∨ 󰆴Ω)* ⟧
                  ∨ ((str ∨ ¬(~‹⟦⟧\t\n ›) ~‹.›) 󰆴w?)+ )
 compose_head = ⠶(
     ( (looper = ⟦ ⠶compose_head ⟧)
