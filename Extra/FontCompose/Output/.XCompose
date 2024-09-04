@@ -3487,6 +3487,7 @@
 <Multi_key><slash><slash><slash><slash><underscore><s>:"􊼳" # 0x10af33 ; sub_󰃵
 <Multi_key><Multi_key><w><s><G><space><w><s><L><space>:"􋐩" # 0x10b429 ; mul_𝗚𝗟
 <Multi_key><Multi_key><w><s><S><space><w><s><L><space>:"􋐨" # 0x10b428 ; mul_𝗦𝗟
+<Multi_key><Multi_key><w><s><l><space><w><s><n><space>:"􋑮" # 0x10b46e ; mul_𝗹𝗻
 <Multi_key><Multi_key><w><s><r><space><w><s><k><space>:"􋐪" # 0x10b42a ; mul_𝗿𝗸
 <Multi_key><Multi_key><w><s><s><space><w><s><t><space>:"􋐫" # 0x10b42b ; mul_𝘀𝘁
 <Multi_key><Multi_key><w><s><t><space><w><s><r><space>:"􋐧" # 0x10b427 ; mul_𝘁𝗿
@@ -3707,6 +3708,7 @@
 <Multi_key><backslash><backslash><period><bracketleft><bracketright>:"􋐡" # 0x10b421 ; sup_󷹭
 <Multi_key><w><d><o>:"\overline{}" # 0x5c 0x6f 0x76 0x65 0x72 0x6c 0x69 0x6e 0x65 0x7b 0x7d
 <Multi_key><backslash><backslash><backslash><backslash><underscore><s>:"􋎯" # 0x10b3af ; sup_󰁝
+<Multi_key><Multi_key><w><s><A><space><w><s><r><space><w><s><g><space>:"􋑭" # 0x10b46d ; mul_𝗔𝗿𝗴
 <Multi_key><Multi_key><w><s><A><space><w><s><s><space><w><s><s><space>:"􋐸" # 0x10b438 ; mul_𝗔𝘀𝘀
 <Multi_key><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􋐮" # 0x10b42e ; mul_𝗔𝘂𝘁
 <Multi_key><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􋐭" # 0x10b42d ; mul_𝗘𝗻𝗱
@@ -3732,6 +3734,7 @@
 <Multi_key><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􋐰" # 0x10b430 ; mul_𝗸𝗲𝗿
 <Multi_key><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􋑃" # 0x10b443 ; mul_𝗹𝗰𝗺
 <Multi_key><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􋑆" # 0x10b446 ; mul_𝗹𝗶𝗺
+<Multi_key><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􋑯" # 0x10b46f ; mul_𝗹𝗼𝗴
 <Multi_key><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􋐻" # 0x10b43b ; mul_𝗺𝗮𝘅
 <Multi_key><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􋐺" # 0x10b43a ; mul_𝗺𝗶𝗻
 <Multi_key><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􋑉" # 0x10b449 ; mul_𝗺𝗼𝗱

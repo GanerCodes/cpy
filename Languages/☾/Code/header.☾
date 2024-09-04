@@ -285,7 +285,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ¿"__exports__"∈m.keys: 𝑘+=m.__exports__
     ¿store_code: m[‹__cpy_code__›] = code
     ¿g: G[PEV←f.stem] = m
-    ∀k∈𝑘: Gₖ = mₖ
+    ∀k∈𝑘ᴍPEV: Gₖ = mₖ
     ↪ m
 
  dot = 𝚲𝔸⍉ᴍΠ´Σ
