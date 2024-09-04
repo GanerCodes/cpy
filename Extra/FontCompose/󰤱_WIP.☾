@@ -114,3 +114,14 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
 
  parse∘dat → .print
 parse∘dat → ☾
+
+
+
+🟑
+󰤱: extract out style regex exprs
+󰤱: invent the not-bad Node
+󰤱: better macros
+󰤱: make R_S/_?/C's same format
+    ℵ(style={}, seq=ᐦ, data=[])
+󰤱: finish 󰤱
+🟑
