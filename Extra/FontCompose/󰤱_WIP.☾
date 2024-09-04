@@ -1,22 +1,25 @@
+⮌ peggle ⨡ Parser
+🌈 = 󰋺("🌈")
+
 GRAM = ␛
 󰦥󰦥󰦥󰦥󰦥
 main = 󰆴Ω? (rule 󰆴Ω?)*
 
 rule = rule_macro ∨ ⠶rule_not_macro
-rule_macro = ¡ word 󰆴W? (⠶(⟶ output_chars ∨ rule_not_macro))
+rule_macro = ¡ (word) 󰆴W? ❗ (⠶(⟶ output_chars ∨ rule_not_macro ∨ body_recurse))
 
 rule_not_macro = R_S_C ∨ R_S_0 ∨ R_C_S ∨ R_C ∨ R_S_1
 R_S_C = ( ⠶style_hbra compose_head) (body_recurse ∨ ⠶compose_body_options)
 R_S_0 = (  style_head             ) (body_recurse ∨ (sty output_chars))
 R_C_S = (compose_head  ⠶style_hbra) (body_recurse ∨ ⠶compose_body_options)
 R_C   = (compose_head             ) (body_recurse ∨ ⠶compose_body_options)
-R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ (sty? ⟶? output_chars))
-compose_body_options = (⟶ output_chars) ∨ output_chars
+R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ ((sty? ✓) (⟶? ✓) output_chars))
+compose_body_options = ((⟶? ✓) output_chars)
 body_recurse = ⦑ ⠶main ⦒
 
 style_hbra = ⦑ style_head ⦒ 󰆴w?
 style_head = ⠶tuple
-tuple = chain ∨ (| (| ✓)*)
+tuple = ((| (| ✓)*)? chain)+
 pair  = ƨ(word) 󰆴W? ⦑ ⠶tuple? ⦒
 chain = (pair ∨ word)+ 󰆴W?
 
@@ -48,21 +51,24 @@ W = ~‹[ \t\n]+›
 
 dat = ␛
 󰦥󰦥󰦥󰦥󰦥
-a|bc ⦑c⦑A⦒|1⦒ ⟶ ❗RCS
+a|bc ⦑c⦑A⦒|u⦒ ⟶ ❗RCS
 ¡ alp ⟶ ABC
 ¡ num ⦑
-  abc ⦑c⦑A⦒⦒ ⟶ ❗RSC2
+  abc ⦑c⦑1⦒⦒ ⟶ ❗RSC2
 ⦒
 
 ⦑c⦑A⦒⦒ abc ⟶ ❗RSC
 abc        ⟶ ❗RC
 ⦑c⦑A⦒⦒     ⟶ ❗RS1_ex1
 ⦑c⦑A⦒⦒  ℜ  ⟶ ❗RS1_ex2
- c⦑A|b⦒ ℜ    RS0 ␛␛␛""abccc" ⟦
+ c⦑|A⦒B⦑s|0⦒ ℜ    RS0 ␛␛␛""abccc" ⟦
          asdaaa
          asd asd asd ␛j
 ⟧
 󰦥󰦥󰦥󰦥󰦥
+
+ dat = 󰦥󰦥󰦥󰦥󰦥abc ⦑c⦑af|2||a⦒u|c⦑ff⦒u⦒ ⟶ ❗RSC2󰦥󰦥󰦥󰦥󰦥
+
  a⟦b⟧⟨alp⟩ ⦑c⦑f00⦒⦒ WEE
  c⦑f00⦒ ℜ aosidjiao
 
@@ -75,33 +81,35 @@ gen(␛B)←⥌x,y=1,r=1↦ℵ(borderStyle  = ‹s solid d dashed›⍭⥉
                      borderWidth  = ‹⟦y⟧px›,
                      borderRadius = ‹⟦r⟧px›)
 gen(␛b)←𝚲ℵ(fontStyle="bold")
-gen(␛u)←𝚲ℵ(textDecoration=‹underline ⟦x⟧px›)
+gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
 ⊢ decor(n):
-    r = {}
-    ∀ε∈n:
-        t = εᵗ
-        ¿t ≡ "word":    
-            r |= gens[ε.txt]
-        ⸘t ≡ "pair":
-            ƒ = gens[εᶜ₀.txt]
-            ə = εᶜ₁ ᴍ󰲡□ ¿xᵗ≡␛✓¡ x.txt
-            r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)ζə¿k≇□})
-    ↪ r ∨ n.txt
+    R = []
+    ∀n∈n:
+        r = {}
+        ∀t,v∈n₁:
+            ¿t ≡ "word":
+                r |= gens[v]
+            ⸘t ≡ "pair":
+                t, v = v
+                v = v₁
+                ə = v ꟿ󰲣□ ¿x≡␛✓¡ 𝘀.join(yꟿ󰲣y)
+                ƒ = gensₜ
+                r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)ζə¿k≇□})
+        R += r⛶
+    ↪ R
 
-⮌ peggle ⨡ Parser
-󰋺(‹󰤱_WIP_COLORS›, ‹decor›)
+⊢ RCR(ι, f, r):
+    ¿ιᐹ𝑡→¬: ↪ι
+    ν = ι↦(ι₀, ι₁ ᴍ󰲡RCR(x,f,r) ¿xᐹ𝑙¡ x)
+    ↪ r∘ι ¿f∘ι¡ ν∘ι
 
 ⊢ parse(dat, gram=Parser(GRAM)):
     dat = 𝗻.join←dat.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
     root = gram(dat, DEBUG=✗)
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
-     root = root.find_replace(
-       󰲡xᵗ == "style_head",
-       󰲡decor(x))
     root.print
-    root = root.find_replace(
-      󰲡1,
-      󰲡xᵗ∧(xᵗ,xᶜ)∨xᶜ)
+    root = root.find_replace(󰲡✓, 󰲡xᵗ∧(xᵗ,xᶜ)∨xᶜ)
+    root = RCR(root, 󰲡x₀≡"style_head", 󰲡("STYLE",decor(x₁)))
     ↪ root
 
  parse∘dat → .print
