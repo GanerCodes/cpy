@@ -84,14 +84,16 @@ gen(␛B)←⥌x,y=1,r=1↦ℵ(borderStyle  = ‹s solid d dashed›⍭⥉
 gen(␛b)←𝚲ℵ(fontStyle="bold")
 gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
 ⊢ decor(n):
+    n.P☾
     R = []
     ∀n∈n:
         r = {}
-        ∀t,v∈n₁:
+        ∀ń∈n₁:
+            t, v = ńᵗ, ńᶜ
             ¿t ≡ "word":
-                r |= gens[v]
+                r |= gensᵥ
             ⸘t ≡ "pair":
-                t, v = v
+                t, v = vᵗ, vᶜ
                 v = v₁
                 ə = v ꟿ󰲣□ ¿x≡␛✓¡ 𝘀.join(yꟿ󰲣y)
                 ƒ = gensₜ
@@ -110,11 +112,9 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
-    root.P☾
-    
-    
-    exit
-    root = root.frp(󰲡xᵗ≡"style_head", 󰲡x.copy(c=decor(xᶜ)))
+     root.P☾
+     exit
+    root = root.frp(󰲡xᵗ≡"style_head", 󰲡x.copy(c=decor(x)))
     ↪ root
 
 parse∘dat → ☾
