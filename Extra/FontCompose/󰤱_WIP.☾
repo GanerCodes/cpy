@@ -4,18 +4,17 @@
 
 GRAM = ␛
 󰦥󰦥󰦥󰦥󰦥
-main = 󰆴Ω? (rule 󰆴Ω?)*
+main = 󰆴Ω? ((rule ∨ ⠶body_recurse) 󰆴Ω?)*
 
 rule = rule_macro ∨ ⠶rule_not_macro
-rule_macro = ¡ (word) 󰆴W? ❗ (⠶(⟶ output_chars ∨ rule_not_macro ∨ body_recurse))
+rule_macro = ¡ word 󰆴W? (⠶(⟶ results ∨ rule_not_macro ∨ body_recurse))
 
 rule_not_macro = R_S_C ∨ R_S_0 ∨ R_C_S ∨ R_C ∨ R_S_1
-R_S_C = ( ⠶style_hbra compose_head) (body_recurse ∨ ⠶compose_body_options)
-R_S_0 = (  style_head             ) (body_recurse ∨ (sty output_chars))
-R_C_S = (compose_head  ⠶style_hbra) (body_recurse ∨ ⠶compose_body_options)
-R_C   = (compose_head             ) (body_recurse ∨ ⠶compose_body_options)
-R_S_1 = ( ⠶style_hbra             ) (body_recurse ∨ ((sty? ✓) (⟶? ✓) output_chars))
-compose_body_options = ((⟶? ✓) output_chars)
+R_S_C = ( ⠶style_hbra compose_head) (body_recurse ∨ ✓         ⟶? results)
+R_S_0 = (           ✓   style_head) (body_recurse ∨ sty       ⟶? results)
+R_C_S = (compose_head  ⠶style_hbra) (body_recurse ∨ ✓         ⟶? results)
+R_C   = (compose_head            ✓) (body_recurse ∨ ✓         ⟶? results)
+R_S_1 = (           ✓  ⠶style_hbra) (body_recurse ∨ (sty ∨ ✓) ⟶? results)
 body_recurse = ⦑ ⠶main ⦒
 
 style_hbra = ⦑ style_head ⦒ 󰆴w?
@@ -26,8 +25,9 @@ chain = (pair ∨ word)+ 󰆴W?
 
 macref = ⟨ (¡ ⯆ word) ⟩
 
-output_chars = ( ⟦ (⠶output_chars ∨ 󰆴Ω)* ⟧
-                 ∨ ((str ∨ ~‹[^"⟦⟧\t\n ]›) 󰆴w?)+ )+
+results = ( ⟦ (⠶output_chars ∨ 󰆴Ω)* ⟧
+              ∨ macref
+              ∨ ((str ∨ ~‹[^␠"⟦⟧⟨⟩\t\n ]›) 󰆴w?)+ )+
 compose_head = ⠶(
     ( (looper = ⟦ ⠶compose_head ⟧)
     ∨ (concat = ⁅ ⠶compose_head ⁆)
@@ -38,7 +38,7 @@ str    = ƨ(esc ∨ (󰆴'"' ((esc ∨ ~‹[^"]›)*) 󰆴'"'))
 sty    = 󰆴w? ↷ ~‹[𝔏ℜ]›
 esc    = 󰆴‹␛␛› ~‹.?›
 
-bad = ~‹[𝔏ℜ⟨⟩⟦⟧⁅⁆⦑⦒"|␠⟶\t\n ]›
+bad = ~‹[𝔏ℜ⟨⟩⟦⟧⁅⁆⦑⦒"|¡␠⟶\t\n ]›
 chr = (¬bad) ~‹.›
 
 (⟦=󰆴(W?↷'⟦'))(⟧=󰆴(W?↷'⟧'))(⁅=󰆴(W?↷'⁅'))(⁆=󰆴(W?↷'⁆'))
@@ -52,26 +52,19 @@ W = ~‹[ \t\n]+›
 
 dat = ␛
 󰦥󰦥󰦥󰦥󰦥
-a|bc ⦑c⦑A⦒|u⦒ ⟶ ❗RCS
-¡ alp ⟶ ABC
-¡ num ⦑
-  abc ⦑c⦑1⦒⦒ ⟶ ❗RSC2
+
+⦑c⦑A00⦒⦒ c ⦑
+    w ⟶ ➰ ␠ c𝕊 ⟶ ↨
 ⦒
 
-⦑c⦑A⦒⦒ abc ⟶ ❗RSC
-abc        ⟶ ❗RC
-⦑c⦑A⦒⦒     ⟶ ❗RS1_ex1
-⦑c⦑A⦒⦒  ℜ  ⟶ ❗RS1_ex2
- c⦑|A⦒B⦑s|0⦒ ℜ    RS0 ␛␛␛""abccc" ⟦
-         asdaaa
-         asd asd asd ␛j
-⟧
 󰦥󰦥󰦥󰦥󰦥
 
- dat = 󰦥󰦥󰦥󰦥󰦥abc ⦑c⦑af|2||a⦒u|c⦑ff⦒u⦒ ⟶ ❗RSC2󰦥󰦥󰦥󰦥󰦥
+🟑dat = 󰦥󰦥󰦥󰦥󰦥
+¡ abc ⟶ abcdefg
+ᴍabc ⟶ hi␛aa"aaa"⟨mac1¡mac2⟩joe
+󰦥󰦥󰦥󰦥󰦥🟑
+ dat = 󰦥󰦥󰦥󰦥󰦥 a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123 󰦥󰦥󰦥󰦥󰦥
 
- a⟦b⟧⟨alp⟩ ⦑c⦑f00⦒⦒ WEE
- c⦑f00⦒ ℜ aosidjiao
 
 fargs = ƒ↦ƒ.__code__.co_varnames[:ƒ.__code__.co_argcount]
 gen, gens = n↦ƒ↦gensₙ≔ƒ, {}
@@ -84,18 +77,16 @@ gen(␛B)←⥌x,y=1,r=1↦ℵ(borderStyle  = ‹s solid d dashed›⍭⥉
 gen(␛b)←𝚲ℵ(fontStyle="bold")
 gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
 ⊢ decor(n):
-    n.P☾
     R = []
     ∀n∈n:
         r = {}
-        ∀ń∈n₁:
-            t, v = ńᵗ, ńᶜ
+        ∀n∈n:
+            t, v = nᵗ, nᶜ
             ¿t ≡ "word":
-                r |= gensᵥ
+                r |= gens[v₀ᵗ]
             ⸘t ≡ "pair":
-                t, v = vᵗ, vᶜ
-                v = v₁
-                ə = v ꟿ󰲣□ ¿x≡␛✓¡ 𝘀.join(yꟿ󰲣y)
+                t, c = v₀ᵗ, v₁ᶜ
+                ə = c ᴍ󰲡□ ¿xᵗ≡␛✓¡ 𝘀.join(x.extract(󰲡¬xᶜ,Δ=✗)ᴍ󰲡xᵗ)
                 ƒ = gensₜ
                 r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)ζə¿k≇□})
         R += r⛶
@@ -106,32 +97,46 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     ν = ι↦(ι₀, ι₁ ᴍ󰲡RCR(x,f,r) ¿xᐹ𝑙¡ x)
     ↪ r∘ι ¿f∘ι¡ ν∘ι
 
+⊢ parse_compose_node(n):
+    ¿nᵗ≡"lookup": ↪ [n₀ᵗ]
+    ¿nᵗ≡"macref": ↪ [␛λ]
+    seqs = n ᴍ parse_compose_node
+    ¿nᵗ≡"looper": ↪ seqsΣ[]
+    ↪ [ᐦ⛶,⠤seqs]ſ󰲣x⨉yꟿ+
+
+head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
 ⊢ parse(dat, gram=Parser(GRAM)):
     dat = 𝗻.join←dat.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
     root = gram(dat, DEBUG=✗)
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
-     root.P☾
-     exit
-    root = root.frp(󰲡xᵗ≡"style_head", 󰲡x.copy(c=decor(x)))
+    root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍(xᴍ󰲡xᵗ󰅂Σᐦ)]))
+    root = root.ftrp("R_S_C"⍭, 󰲡x.copy(c=[x₁,x₀,⠤x₂﹕]))
+    root = root.ftrp("results"⍭,
+        󰲡x.ftrp("str", 󰲡𝐍(x₀ᵗ))␛
+          .ftrp("macref", 󰲡x.copy(c=xᴍ󰲡x₀)))
+    
+    ⊢ adjust_headhead(n):
+        c, s, ⠤n = n
+        ↪ 𝐍("head",
+            𝐍([ᐦ] ¿cᵗ≡␛✓¡ parse_compose_node(c)),
+            𝐍({ } ¿sᵗ≡␛✓¡ decor(s)),
+            ⠤n)
+    root = root.ftrp(head_types, adjust_headhead, ✓)
+    root, rgx_rules = root.extract(󰲡xᵗ≡"rule" ∧ (α≔x₀)ᵗ≡"head" ∧ (α≔α₂→ ᵗ)≡"sty" ∧ α₀ᵗ≡␛ℜ, Δ=✓)
+    rgx_rules ᴍ= 󰲡(α≔𝑙∘x₀)₁ᵗ⋄α₃
+    
+    root.P☾
+    root = root.ftrp("head"⍭, 󰲡x.copy(c=[xᶜ₀,xᶜ₁,xᶜ₃]))
+    
+     󰤱 stuff ⓦ rgx_rules
     ↪ root
 
-parse∘dat → ☾
- parse∘dat → ☾
-
- n = 𝐍.ft(("a", [
-         ("b", "hello"),
-         ("c", "asdas"),
-         ("d", [
-             ("", 1),
-             ("k", "joe")
-         ])
-     ])).tt☾
- n.extract(󰲡xᵗ∈"k")☾
-
-
+parse∘dat→ ᴾ☾
 🟑
+󰤱: new regex style
+    
 󰤱: extract out style regex exprs
 󰤱: better macros
 󰤱: make R_S/_?/C's same format

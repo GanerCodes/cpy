@@ -10,13 +10,15 @@
     ft = 𝒮ℳ←󰲡𝐍(x₀,⠤x₁ᴍ𝐍ᶠᵗ¿x₁ᐹ𝑙|𝑡∧x₁🃌≡2¡x₁⛶)
     copy  = ⥌𝕊,t=□,c=□↦𝐍(𝕊ᵗ¿t≅□¡t, ⠤𝕊ᶜ¿c≅□¡c)
     rcopy = ⥌𝕊,t=□↦𝐍(𝕊ᵗ¿t≅□¡t, ⠤𝕊ᶜᴍ𝐍.rcopy)¿𝕊ᐹ𝐍¡𝕊
-    frp = ⥌𝕊,f,r↦ r(𝕊) ¿f(𝕊)¡ 𝕊.copy(c=𝕊ᴍ󰲡𝐍.frp(x,f,r))
-    ⊢ extract(𝕊, f, E=□, β=✓):
+    frp = ⥌𝕊,f,r,pre=✗↦((mk≔󰲡x.copy(c=xᴍ󰲡x.frp(f,r,pre))) ► (r(𝕊) ¿f((𝕊≔mk(𝕊))¿pre¡𝕊)¡ (𝕊¿pre¡mk(𝕊))))
+    ftrp = ⥌𝕊,fs,r,pre=✗↦𝕊.frp(󰲡xᵗ∈fs, r, pre)
+    ⊢ extract(𝕊, f, E=□, β=✓, Δ=✗):
         L = r, E = [[], []¿(ρ≔E≅□)¡E]
         𝕊ᴍ󰲡L[𝑏←f←x].append(x)
         n = 𝕊.copy(c=rᴍ󰲡𝐍.extract(x,f,E))
-        ↪ E ¿ρ∧β¡ n
-    filter = ⥌𝕊,f↦𝕊.extract(¬○f,⠤𝔸,⠶𝕂,β=✗)
+        
+        ↪ ((n, E) ¿Δ¡ E) ¿ρ∧β¡ n
+    filter = ⥌𝕊,f↦𝕊.extract(¬○f,⠤𝔸,⠶𝕂,β=✗,Δ=✗)
     
     ⊢ P(𝕊):
         clc = ⥌x,c="BL"↦getattr(Z,c)+x+Zᵂ
@@ -29,7 +31,7 @@
             ↪ 𝗻.join(x ᙡ ꟿ󰲥(O[n≔1-x≅□+z≅□]+y+(ms-ML(y))⋅𝘀+Cₙ))
         ¿¬←𝕊ᐹ𝐍: ↪ᔐ∘𝕊
         ∅ = clc(␛∅, "RE")
-        nam = 𝕊ᵗ ∨ ∅
+        nam = (𝕊ᵗ.P¿𝕊ᵗᐹ𝐍¡ᔐ∘𝕊ᵗ) ∨ ∅
         start = box∘nam
 
         (╴,╮), m0, m1, m2 = ‹─┬ ┬─ ├╰ │ ›⍭ᴍ²clc
