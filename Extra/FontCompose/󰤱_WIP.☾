@@ -52,13 +52,16 @@ W = ~‹[ \t\n]+›
 
 dat = ␛
 󰦥󰦥󰦥󰦥󰦥
-¡ alf ⟶ abcdefghi
+¡ alf ⟶ abcdefghi␛h"asd"
 ¡ joe ⦑c⦑A00⦒⦒ c ⦑
     w ⟶ ➰ ␠ c𝕊 ⟶ ↨
     ¡ hi ⟶ AAA
 ⦒
 EEE⟨joe⟩ ⟶ EE
 a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123
+
+⦑c⦑A⦒u⦒ ℜ ⟶ abceef"asda"␛"a
+
 󰦥󰦥󰦥󰦥󰦥
 
 🟑dat = 󰦥󰦥󰦥󰦥󰦥
@@ -129,6 +132,8 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root, rgx_rules = root.extract(
         󰲡xᵗ≡"rule" ∧ (α≔x₀)ᵗ≡"head" ∧ (α≔α₂→ ᵗ)≡"sty" ∧ α₀ᵗ≡␛ℜ, Δ=✓)
     rgx_rules ᴍ= 󰲡(α≔𝑙∘x₀)₁ᵗ⋄α₃
+    rgx_rules ꟿ= 󰲣(x,yᴍ󰲡xᵗ)
+    rgx_rules☾
     
     root = root.frp(󰲡xᵗ≡"head"∧x₂ᵗ≠"body_recurse", 󰲡x.copy(c=[xᶜ₀,xᶜ₁,xᶜ₃]))
     
@@ -136,16 +141,14 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     macros ᴍ= 󰲡x₀
     
     macros, strmacs = macros 󰀒 𝑏○󰲡x₀ᵗ≡"word" ∧ x₁ᵗ≡"results"
+    strmacs = strmacs 󰲡x₀ ₀ᵗ󰅂 ᴍⱽ󰲡x₀ ₁ ᴍ󰲡xᵗ
     
-    macrosᴍ󰲡xᴾ☾
-    ☾ᐦ
-    ☾ᐦ
-    strmacsᴍ󰲡xᴾ☾
-    ☾ᐦ
-    ☾ᐦ
+    
+    
     ↪ root
 
 parse∘dat→ ᴾ☾
 🟑
-󰤱: finish 󰤱
+󰤱: regex doesn't have macros 󰂼_Ȯ
+󰤱: the rest ⭗􋁕⭗
 🟑
