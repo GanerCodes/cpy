@@ -23,11 +23,11 @@ tuple = ((| (| ✓)*)? chain)+
 pair  = ƨ(word) 󰆴W? ⦑ ⠶tuple? ⦒
 chain = (pair ∨ word)+ 󰆴W?
 
-macref = ⟨ (¡ ⯆ word) ⟩
+macref = 󰆴w? 󰆴"⟨" 󰆴W? (¡ ⯆ word) 󰆴W? 󰆴"⟩" 󰆴w?
 
 results = ( ⟦ (⠶results ∨ 󰆴Ω)* ⟧
-              ∨ macref
-              ∨ ((str ∨ ~‹[^␠"⟦⟧⟨⟩\t\n ]›) 󰆴w?)+ )+
+            ∨ macref
+            ∨ ((str ∨ ~‹[^␠"⟦⟧⟨⟩\t\n ]›) 󰆴w?)+ )+
 compose_head = ⠶(
     ( (looper = ⟦ ⠶compose_head ⟧)
     ∨ (concat = ⁅ ⠶compose_head ⁆)
@@ -55,20 +55,15 @@ dat = ␛
 ¡ alf ⟶ ab⟨HI⟩cdefghi␛h"asd"
 ¡ joe ⦑c⦑A00⦒⦒ c ⦑
     w ⟶ ➰ ␠ c𝕊 ⟶ ↨
-    ¡ HI ⟶ AAA
+    a⟨alf⟩ ⟶ αβγΔ⟨more_greke⟩
 ⦒
-EEE⟨joe⟩ ⟶ EE
-a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123
-
-⦑c⦑A⦒u⦒ ℜ ⟶ abce⟨joe⟩ef"asda"␛"a
 
 󰦥󰦥󰦥󰦥󰦥
-
-🟑dat = 󰦥󰦥󰦥󰦥󰦥
-¡ abc ⟶ abcdefg
-ᴍabc ⟶ hi␛aa"aaa"⟨mac1¡mac2⟩joe
-󰦥󰦥󰦥󰦥󰦥🟑
-
+ EEE⟨joe⟩ ⟶ EE
+ a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123
+ ⦑c⦑A⦒u⦒ ℜ ⟶ abce⟨joe⟩ef"asda"␛"a
+ ¡ abc ⟶ abcdefg
+ ᴍabc ⟶ hi␛aa"aaa"⟨mac1¡mac2⟩joe
 
 fargs = ƒ↦ƒ.__code__.co_varnames[:ƒ.__code__.co_argcount]
 gen, gens = n↦ƒ↦gensₙ≔ƒ, {}
@@ -102,11 +97,11 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     ↪ r∘ι ¿f∘ι¡ ν∘ι
 
 ⊢ parse_compose_node(n):
-    ¿nᵗ≡"lookup": ↪ [n₀ᵗ]
-    ¿nᵗ≡"macref": ↪ [␛λ]
+    ¿nᵗ≡"lookup": ↪ [[n₀ᵗ]]
+    ¿nᵗ≡"macref": ↪ [[nᴍ󰲡xᵗ]]
     seqs = n ᴍ parse_compose_node
     ¿nᵗ≡"looper": ↪ seqsΣ[]
-    ↪ [ᐦ⛶,⠤seqs]ſ󰲣x⨉yꟿ+
+    ↪ seqsſ󰲣x⨉yꟿ+
 
 head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
 ⊢ parse(dat, gram=Parser(GRAM)):
@@ -116,10 +111,12 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
     root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍(xᴍ󰲡xᵗ󰅂Σᐦ)]))
+    
     root = root.ftrp("R_S_C"⍭, 󰲡x.copy(c=[x₁,x₀,⠤x₂﹕]))
     root = root.ftrp("results"⍭,
-        󰲡x.ftrp("str", 󰲡𝐍(x₀ᵗ))␛
-          .ftrp("macref", 󰲡x.copy(c=xᴍ󰲡x₀)))
+        󰲡x.ftrp("str", 󰲡𝐍(x₀ᵗ)))
+    root = root.ftrp("macref"⍭,
+        󰲡x.ftrp("macref", 󰲡x.copy(c=xᴍ󰲡x₀)))
     
     ⊢ adjust_headhead(n):
         c, s, ⠤n = n
@@ -144,7 +141,12 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     macros, strmacs = macros 󰀒 𝑏○󰲡x₀ᵗ≡"word" ∧ x₁ᵗ≡"results"
     strmacs = strmacs 󰲡x₀ ₀ᵗ󰅂 ᴍⱽ󰲡conv_res(x₀ ₁ )
     
-    macros☾
+    "macros:"☾
+    macrosᴍ󰲡x.P☾
+    "rgx_rules:"☾
+    rgx_rules☾
+    
+    strmacs☾
     
     ↪ root
 
