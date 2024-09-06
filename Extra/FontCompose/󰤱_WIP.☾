@@ -128,7 +128,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     rgx_rules ᴍ= 󰲡(α≔𝑙∘x₀)₁ᵗ⋄α₃
     
     root.P☾
-    root = root.ftrp("head"⍭, 󰲡x.copy(c=[xᶜ₀,xᶜ₁,xᶜ₃]))
+    root = root.frp(󰲡xᵗ≡"head"∧x₂ᵗ≠"body_recurse", 󰲡x.copy(c=[xᶜ₀,xᶜ₁,xᶜ₃]))
     
      󰤱 stuff ⓦ rgx_rules
     ↪ root
