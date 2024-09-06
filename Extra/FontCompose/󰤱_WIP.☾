@@ -7,7 +7,7 @@ GRAM = ␛
 main = 󰆴Ω? ((rule ∨ ⠶body_recurse) 󰆴Ω?)*
 
 rule = rule_macro ∨ ⠶rule_not_macro
-rule_macro = ¡ word 󰆴W? (⠶(⟶ results ∨ rule_not_macro ∨ body_recurse))
+rule_macro = ¡ word 󰆴W? (⠶(⟶ (body_recurse ∨ results) ∨ rule_not_macro ∨ body_recurse))
 
 rule_not_macro = R_S_C ∨ R_S_0 ∨ R_C_S ∨ R_C ∨ R_S_1
 R_S_C = ( ⠶style_hbra compose_head) (body_recurse ∨ ✓         ⟶? results)
@@ -27,7 +27,7 @@ macref = 󰆴w? 󰆴"⟨" 󰆴W? (¡ ⯆ word) 󰆴W? 󰆴"⟩" 󰆴w?
 
 results = ( ⟦ (⠶results ∨ 󰆴Ω)* ⟧
             ∨ macref
-            ∨ ((str ∨ ~‹[^␠"⟦⟧⟨⟩\t\n ]›) 󰆴w?)+ )+
+            ∨ ((str ∨ ~‹[^␠"⟦⟧⟨⟩⦑⦒\t\n ]›) 󰆴w?)+ )+
 compose_head = ⠶(
     ( (looper = ⟦ ⠶compose_head ⟧)
     ∨ (concat = ⁅ ⠶compose_head ⁆)
@@ -52,13 +52,21 @@ W = ~‹[ \t\n]+›
 
 dat = ␛
 󰦥󰦥󰦥󰦥󰦥
-¡ alf ⟶ ab⟨HI⟩cdefghi␛h"asd"
-¡ joe ⦑c⦑A00⦒⦒ c ⦑
+
+¡ letters ⟶ abcdef
+⦑c⦑A00⦒⦒ ℜ ⟶ [⟨letter⟩]
+
+¡ GREEK ⦑c⦑00F⦒⦒ ⦑ a𝕊⟶α ␠ b𝕊⟶β ⦒
+
+wiᴍ⟨GREEK⟩ ⟶ 𝜶𝜸𝜷
+
+c ⦑
     w ⟶ ➰ ␠ c𝕊 ⟶ ↨
-    a⟨alf⟩ ⟶ αβγΔ⟨more_greke⟩
+    a⟨GREEK⟩ ⟶ 🃌⇥
 ⦒
 
 󰦥󰦥󰦥󰦥󰦥
+
  EEE⟨joe⟩ ⟶ EE
  a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123
  ⦑c⦑A⦒u⦒ ℜ ⟶ abce⟨joe⟩ef"asda"␛"a
@@ -111,7 +119,6 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
     root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍(xᴍ󰲡xᵗ󰅂Σᐦ)]))
-    
     root = root.ftrp("R_S_C"⍭, 󰲡x.copy(c=[x₁,x₀,⠤x₂﹕]))
     root = root.ftrp("results"⍭,
         󰲡x.ftrp("str", 󰲡𝐍(x₀ᵗ)))
@@ -121,8 +128,8 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     ⊢ adjust_headhead(n):
         c, s, ⠤n = n
         ↪ 𝐍("head",
-            𝐍([ᐦ] ¿cᵗ≡␛✓¡ parse_compose_node(c)),
-            𝐍({ } ¿sᵗ≡␛✓¡ decor(s)),
+            𝐍([] ¿cᵗ≡␛✓¡ parse_compose_node(c)),
+            𝐍({} ¿sᵗ≡␛✓¡ decor(s)),
             ⠤n)
     root = root.ftrp(head_types, adjust_headhead, ✓)
     
@@ -138,19 +145,23 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root, macros = root.extract(󰲡xᵗ≡"rule"∧x₀ᵗ≡"rule_macro", Δ=✓, pre=✓)
     macros ᴍ= 󰲡x₀
     
-    macros, strmacs = macros 󰀒 𝑏○󰲡x₀ᵗ≡"word" ∧ x₁ᵗ≡"results"
+    r = macros  𝑏○󰲡x₀ᵗ≡"word" ∧ x₁ᵗ≡"results"
+    macros, strmacs = r.get(ⴴ, []), r.get(ⴳ, [])
     strmacs = strmacs 󰲡x₀ ₀ᵗ󰅂 ᴍⱽ󰲡conv_res(x₀ ₁ )
     
-    "macros:"☾
-    macrosᴍ󰲡x.P☾
-    "rgx_rules:"☾
-    rgx_rules☾
+    macros = macros ᴍ󰲡(x₀ ₀ᵗ, x₁﹕)󰅂 ⥉𝑑
     
-    strmacs☾
+    all_rules = strmacs | macros | {"ROOT": root.copy("body_recurse")}
+    
+     all_rules.itemsꟿ󰲣‹⟦x⟧›☾►yᴍ󰲡x.P☾
+    
+    ∀k,v∈all_rules.items:
+        ‹⟦k⟧:𝗻⟦v⟧›☾
     
     ↪ root
 
-parse∘dat→ ᴾ☾
+parse∘dat
+ → ᴾ☾
 🟑
 󰤱: the rest ⭗􋁕⭗
 🟑
