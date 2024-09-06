@@ -52,18 +52,19 @@ W = ~‹[ \t\n]+›
 
 dat = ␛
 󰦥󰦥󰦥󰦥󰦥
-
-⦑c⦑A00⦒⦒ c ⦑
+¡ alf ⟶ abcdefghi
+¡ joe ⦑c⦑A00⦒⦒ c ⦑
     w ⟶ ➰ ␠ c𝕊 ⟶ ↨
+    ¡ hi ⟶ AAA
 ⦒
-
+EEE⟨joe⟩ ⟶ EE
+a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123
 󰦥󰦥󰦥󰦥󰦥
 
 🟑dat = 󰦥󰦥󰦥󰦥󰦥
 ¡ abc ⟶ abcdefg
 ᴍabc ⟶ hi␛aa"aaa"⟨mac1¡mac2⟩joe
 󰦥󰦥󰦥󰦥󰦥🟑
- dat = 󰦥󰦥󰦥󰦥󰦥 a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123 󰦥󰦥󰦥󰦥󰦥
 
 
 fargs = ƒ↦ƒ.__code__.co_varnames[:ƒ.__code__.co_argcount]
@@ -124,22 +125,27 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             𝐍({ } ¿sᵗ≡␛✓¡ decor(s)),
             ⠤n)
     root = root.ftrp(head_types, adjust_headhead, ✓)
-    root, rgx_rules = root.extract(󰲡xᵗ≡"rule" ∧ (α≔x₀)ᵗ≡"head" ∧ (α≔α₂→ ᵗ)≡"sty" ∧ α₀ᵗ≡␛ℜ, Δ=✓)
+    
+    root, rgx_rules = root.extract(
+        󰲡xᵗ≡"rule" ∧ (α≔x₀)ᵗ≡"head" ∧ (α≔α₂→ ᵗ)≡"sty" ∧ α₀ᵗ≡␛ℜ, Δ=✓)
     rgx_rules ᴍ= 󰲡(α≔𝑙∘x₀)₁ᵗ⋄α₃
     
-    root.P☾
     root = root.frp(󰲡xᵗ≡"head"∧x₂ᵗ≠"body_recurse", 󰲡x.copy(c=[xᶜ₀,xᶜ₁,xᶜ₃]))
     
-     󰤱 stuff ⓦ rgx_rules
+    root, macros = root.extract(󰲡xᵗ≡"rule"∧x₀ᵗ≡"rule_macro", Δ=✓, pre=✓)
+    macros ᴍ= 󰲡x₀
+    
+    macros, strmacs = macros 󰀒 𝑏○󰲡x₀ᵗ≡"word" ∧ x₁ᵗ≡"results"
+    
+    macrosᴍ󰲡xᴾ☾
+    ☾ᐦ
+    ☾ᐦ
+    strmacsᴍ󰲡xᴾ☾
+    ☾ᐦ
+    ☾ᐦ
     ↪ root
 
 parse∘dat→ ᴾ☾
 🟑
-󰤱: new regex style
-    
-󰤱: extract out style regex exprs
-󰤱: better macros
-󰤱: make R_S/_?/C's same format
-    ℵ(style={}, seq=ᐦ, data=[])
 󰤱: finish 󰤱
 🟑
