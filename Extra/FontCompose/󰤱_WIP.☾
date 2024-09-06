@@ -25,7 +25,7 @@ chain = (pair ∨ word)+ 󰆴W?
 
 macref = ⟨ (¡ ⯆ word) ⟩
 
-results = ( ⟦ (⠶output_chars ∨ 󰆴Ω)* ⟧
+results = ( ⟦ (⠶results ∨ 󰆴Ω)* ⟧
               ∨ macref
               ∨ ((str ∨ ~‹[^␠"⟦⟧⟨⟩\t\n ]›) 󰆴w?)+ )+
 compose_head = ⠶(
@@ -52,15 +52,15 @@ W = ~‹[ \t\n]+›
 
 dat = ␛
 󰦥󰦥󰦥󰦥󰦥
-¡ alf ⟶ abcdefghi␛h"asd"
+¡ alf ⟶ ab⟨HI⟩cdefghi␛h"asd"
 ¡ joe ⦑c⦑A00⦒⦒ c ⦑
     w ⟶ ➰ ␠ c𝕊 ⟶ ↨
-    ¡ hi ⟶ AAA
+    ¡ HI ⟶ AAA
 ⦒
 EEE⟨joe⟩ ⟶ EE
 a⟦A⁅⟦abc⟧⟦cd⟧⟨mac⟩⁆⟧ ⟶ 0123
 
-⦑c⦑A⦒u⦒ ℜ ⟶ abceef"asda"␛"a
+⦑c⦑A⦒u⦒ ℜ ⟶ abce⟨joe⟩ef"asda"␛"a
 
 󰦥󰦥󰦥󰦥󰦥
 
@@ -131,24 +131,24 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     
     root, rgx_rules = root.extract(
         󰲡xᵗ≡"rule" ∧ (α≔x₀)ᵗ≡"head" ∧ (α≔α₂→ ᵗ)≡"sty" ∧ α₀ᵗ≡␛ℜ, Δ=✓)
-    rgx_rules ᴍ= 󰲡(α≔𝑙∘x₀)₁ᵗ⋄α₃
-    rgx_rules ꟿ= 󰲣(x,yᴍ󰲡xᵗ)
-    rgx_rules☾
+    rgx_rules ᴍ= 󰲡x.copy(c=(α≔𝑙∘x₀)₁ᵗ⋄α₃)
     
+    conv_res = 󰲡x ᴍ󰲡x ᴍ󰲡 xᵗ󰅂 ¿x🃌¡ xᵗ
+    
+    rgx_rules ꟿ= 󰲣(x, conv_res(y))
     root = root.frp(󰲡xᵗ≡"head"∧x₂ᵗ≠"body_recurse", 󰲡x.copy(c=[xᶜ₀,xᶜ₁,xᶜ₃]))
     
     root, macros = root.extract(󰲡xᵗ≡"rule"∧x₀ᵗ≡"rule_macro", Δ=✓, pre=✓)
     macros ᴍ= 󰲡x₀
     
     macros, strmacs = macros 󰀒 𝑏○󰲡x₀ᵗ≡"word" ∧ x₁ᵗ≡"results"
-    strmacs = strmacs 󰲡x₀ ₀ᵗ󰅂 ᴍⱽ󰲡x₀ ₁ ᴍ󰲡xᵗ
+    strmacs = strmacs 󰲡x₀ ₀ᵗ󰅂 ᴍⱽ󰲡conv_res(x₀ ₁ )
     
-    
+    macros☾
     
     ↪ root
 
 parse∘dat→ ᴾ☾
 🟑
-󰤱: regex doesn't have macros 󰂼_Ȯ
 󰤱: the rest ⭗􋁕⭗
 🟑
