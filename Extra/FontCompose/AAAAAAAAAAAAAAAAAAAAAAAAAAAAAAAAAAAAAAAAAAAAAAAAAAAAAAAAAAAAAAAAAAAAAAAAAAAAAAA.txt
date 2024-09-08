@@ -8,6 +8,8 @@ atom = macadd ∨ macref ∨ looper ∨ concat ∨ lookup
 
 
 
+⟦
+
 ¡alpha  ⁅⟦abcdefghijklmnopqrstuvwxyz⟧⁆
 ¡ALPHA  ⁅⟦ABCDEFGHIJKLMNOPQRSTUVWXYZ⟧⁆
 ¡number ⁅⟦0123456789                ⟧⁆
