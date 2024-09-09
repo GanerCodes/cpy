@@ -65,11 +65,11 @@ class Gram:
     def __contains__(𝕊, c): return c in 𝕊.rules
     def __repr__(𝕊): return f"{Т(𝕊).__name__}[rules={𝕊.rules}]"
     
-    def __call__(𝕊, content, rule="main", allow_deletes=ⴳ, DEBUG=ⴴ):
+    def __call__(𝕊, content, rule="main", allow_deletes=ⴳ, DEBUG=ⴴ, **𝕂):
         content = ᒪ(content)
         secs = {((α:=(z:=ᒪ(y))[0][0],β:=z[-1][0]+1)):ᒍ(ᐦ,content[α:β]) for x,y in groupby(enum(content), lambda x: ᐹ(x[1],ᔐ)) if x}
         gseg = ρ(𝕊.get_segment, d=secs, k=tuple(secs.keys()))
-        𝑓 = ρ(𝕊.dbg_run if DEBUG else 𝕊.run, m={}, content=content, gseg=gseg)
+        𝑓 = ρ(𝕊.dbg_run if DEBUG else 𝕊.run, m={}, content=content, gseg=gseg, **𝕂)
         𝑓.keywords['f'] = 𝑓
         tree = 𝑓(0, Node("rname", rule))
         if not tree or tree[1] != ⵌ(content):
@@ -96,27 +96,32 @@ class Gram:
     def merge_rules(𝕊, rules): return Gram(𝕊.rules | rules)
     def print_rules(𝕊): [(print(f'Rule "{k}":'), v.print()) for k, v in 𝕊.rules.items()]
     
-    def dbg_run(𝕊, χ, r, *, 𝑓, gseg, m, content, z=0):
+    def dbg_run(𝕊, χ, r, *, 𝑓, gseg, m, content, z=0, ONLY_NAMED=ⴴ):
         wr = lambda x: Z.G+x+Z.W
+        
+        LE = lambda x: len(x)-sum(x.count(y)*len(y) for y in (Z.G, Z.W, Z.BL, Z.bYEL, Z.bBLA))
         
         t, c = r.t, r.c
         convs = lambda t,c: f"{Z.BL}{c}{Z.W}" if t == "rname" else f"{t}"
         nam = convs(t,c)
         
-        fmt = lambda c, l: ᒍ(ᐦ, c[:l] + [
-            Z.bYEL+[K:=(c[l] if l<ⵌ(c) else ń),ś][K==ń]+Z.bBLA,
-            [ᐦ,ń][K == ń]] + c[l+1:])
+        def fmt(A, c, l, B=ᐦ, sf=ⴴ):
+            c = ᒍ(ᐦ, [*c[:l], Z.bYEL+[K:=(c[l] if l<ⵌ(c) else (l==ⵌ(c) and ś or ᐦ)),ś][K==ń]+Z.bBLA, [ᐦ,ń][K == ń], *c[l+1:]])
+            return ń.join([(Gram.ind[:-2] if (sf and not i) else Gram.ind)+(ś*(LE(A)-sf*2) if i else A)+x for i,x in enumerate(c.split(ń))])+B
         
-        print(f"{Gram.ind}→ {nam}: {wr('󰅁')}{fmt(content, χ)}{wr('󰅂')}")
-        
-        Gram.ind += "│ " if t == "rname" else "  "
-        res = 𝕊.run(χ, r, 𝑓=𝑓, gseg=gseg, m=m, content=content, z=z)
-        
-        n2 = f"{wr('󰅁')}{fmt(content, res[1])}{wr('󰅂')}" if res else '∅'
-        Gram.ind = Gram.ind[:-2]
-        print(f"{Gram.ind}← {nam}: {n2}")
-        
-        return res
+        if not ONLY_NAMED or t == "rname":
+            Gram.ind += "│ " if t == "rname" else "  "
+            print(fmt(f"→ {nam}: {wr('󰅁')}", content, χ, wr('󰅂'), sf=ⴳ))
+            res = 𝕊.run(χ, r, 𝑓=𝑓, gseg=gseg, m=m, content=content, z=z)
+            Gram.ind = Gram.ind[:-2]
+            
+            if res:
+                print(fmt(f"← {nam}: {wr('󰅁')}", content, res[1], wr('󰅂')))
+            else:
+                print(fmt(f"← {nam}: ", "∅", 99))
+            return res
+        else:
+            return 𝕊.run(χ, r, 𝑓=𝑓, gseg=gseg, m=m, content=content, z=z)
     
     def run(𝕊, χ, r, *, 𝑓, gseg, m, content, z=0):
         t, c, m = r.t, r.c, {} if m is None else m
