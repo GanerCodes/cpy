@@ -1,13 +1,41 @@
-macadd = ¡ (, ⯆ word) 󰆴W? atom
+GRAM = ␛
+󰦥󰦥󰦥󰦥󰦥
+main = 󰆴W? ↷ atom 
+
+atom = macadd ∨ macref ∨ results ∨ style ∨ looper ∨ concat ∨ lookup
+
+macadd = ¡ (',' ⯆ word) 󰆴W? atom
 macref = ⟨ (
       (macref_tag  =(󰆴@ word))
-    ∨ (macref_notag=(word))
+    ∨ (macref_notag=(   word))
 ) ⟩
 
-atom = macadd ∨ macref ∨ looper ∨ concat ∨ lookup
+results = 󰅁 (󰆴W ∨ str ∨ macref ∨ ~‹[^󰅂]›)* 󰅂
 
-
+style = ⦑ ⠶tuple ⦒ 󰆴w?
+tuple = ((| (| ✓)*)? chain)+
+pair  = ƨ(word) 󰆴W? ⦑ ⠶tuple? ⦒
+chain = (pair ∨ word)+ 󰆴W?
 
+lookup = str ∨ ƨ(chr ∨ '|')
+word   = ƨ(str ∨ chr+)
+str    = ƨ(esc ∨ (󰆴'"' ((esc ∨ ~‹[^"]›)*) 󰆴'"'))
+esc    = 󰆴‹␛␛› ~‹.?›
+
+bad = ~‹[⟨⟩⟦⟧⁅⁆⦑⦒"|¡␠\t\n ]›
+chr = (¬bad) ~‹.›
+
+w = ~‹[ \t]+›
+W = ~‹[ \t\n]+›
+
+(⟦=󰆴(W?↷'⟦'))(⟧=󰆴(W?↷'⟧'))(⁅=󰆴(W?↷'⁅'))(⁆=󰆴(W?↷'⁆'))
+(⦑=󰆴(W?↷'⦑'))(⦒=󰆴(W?↷'⦒'))(⟨=󰆴(W?↷'⟨'))(⟩=󰆴(W?↷'⟩'))
+(¡=󰆴(W?↷'¡'))(|=󰆴(W?↷'|'))(⟶=󰆴(W?↷'⟶'))(@=󰆴(W?↷'@'))
+(,=󰆴(W?↷','))
+󰦥󰦥󰦥󰦥󰦥
+
+DAT = ␛
+󰦥󰦥󰦥󰦥󰦥
 ⟦
 
 ¡alpha  ⁅⟦abcdefghijklmnopqrstuvwxyz⟧⁆
@@ -56,3 +84,4 @@ atom = macadd ∨ macref ∨ looper ∨ concat ∨ lookup
 ⟧⁆
 
 ⟧
+󰦥󰦥󰦥󰦥󰦥

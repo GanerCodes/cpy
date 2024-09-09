@@ -102,16 +102,17 @@ class Gram:
         t, c = r.t, r.c
         convs = lambda t,c: f"{Z.BL}{c}{Z.W}" if t == "rname" else f"{t}"
         nam = convs(t,c)
-        print(f"{Gram.ind}→ {nam}: {wr('󰅁')}{
-            ᒍ(ᐦ, content[:χ] + [Z.YEL+"│"+Z.W] + content[χ:])
-        }{wr('󰅂')}")
+        
+        fmt = lambda c, l: ᒍ(ᐦ, c[:l] + [
+            Z.bYEL+[K:=(c[l] if l<ⵌ(c) else ń),ś][K==ń]+Z.bBLA,
+            [ᐦ,ń][K == ń]] + c[l+1:])
+        
+        print(f"{Gram.ind}→ {nam}: {wr('󰅁')}{fmt(content, χ)}{wr('󰅂')}")
         
         Gram.ind += "│ " if t == "rname" else "  "
         res = 𝕊.run(χ, r, 𝑓=𝑓, gseg=gseg, m=m, content=content, z=z)
         
-        n2 = f"{wr('󰅁')}{
-            ᒍ(ᐦ, content[:res[1]] + [Z.YEL+"│"+Z.W] + content[res[1]:])
-        }{wr('󰅂')}" if res else '∅'
+        n2 = f"{wr('󰅁')}{fmt(content, res[1])}{wr('󰅂')}" if res else '∅'
         Gram.ind = Gram.ind[:-2]
         print(f"{Gram.ind}← {nam}: {n2}")
         
