@@ -18,7 +18,7 @@ o≔pua₀⋄puaΔ⋄pua₁ ᴍhex →►← ‹Offset: ⟦o₀⟧ ≤ ⟦o₁�
 pua_fold = 𝐩𝐝 / ‹PuaMaps›
 lm≔{} →►← pua_maps_in ≔ 𝑙∘pua_fold.glob("*.json") ␛
             →ᴍ 󰲡json.load(x.open) ␛
-                →ᴍᴷ󰲡x.split∘␛| ᴍ󰲡𝑖(x,16)󰅂 ⥉𝑡󰅂 ␛
+                →ꟿᴷ󰲡x.split∘␛| ᴍ󰲡𝑖(x,16)󰅂 ⥉𝑡󰅂 ␛
                 →.items ꟿ󰲣x₀…x₁ζy ꟿ⥌l,c↦
                 (c≡lmₗ ⨳ ‹⟦c⟧→⟦l⟧←⟦lmₗ⟧›) ¿l∈lm¡ lmₗ≔c
 ml = lm ꟿᴰ 󰲣(y,x)
@@ -40,7 +40,7 @@ to_ranges = lm↦[
     ] ᙧ¹ ꟿ󰲣((x,y), x…yᴍ󰲡lmₓ󰅂)󰅂 ⥉ 𝑑
 
 ⊢ save_pua():
-    lms = to_ranges(lm) ꟿᴷ󰲣‹⟦hex(x)⟧|⟦hex(y)⟧›
+    lms = to_ranges(lm) ꟿᴷ󰲣 ‹⟦hex(x₀)⟧|⟦hex(x₁)⟧›
     t = time⋅100 ⥉𝑖
     pua_maps_in ᴍ 󰲡x.rename(y ≔ pua_fold/‹Old/⟦t⟧_⟦x.name⟧›) ► ‹Moved "⟦x⟧"↦"⟦y⟧"›☾
     json.dump(lms, (d≔pua_fold/‹pua_log.json›)→.open∘␛w)
