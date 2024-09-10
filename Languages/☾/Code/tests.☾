@@ -48,6 +48,9 @@ d = d()
 ⨳    ‹a b›⍭ ≡ (␛a⛶ →⋄← ␛b⛶)
 ⨳ ‹a bc k›⍭ ≡ [␛a⋄"bc",␛k⛶]
 
+⨳ 󰻾(22) ≡ 22
+⨳ 󰻾¹⁴("hiii") ≡ 14
+
  󰤱 test 󱠨 and 󰋺
  󰤱 test a lot of stuff
 

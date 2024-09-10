@@ -80,3 +80,5 @@ Working on massive overhaul for compose/font stuff!
 
 AAAAAAAAAAAAAa
 ehehehhehe
+
+ⴳ, ⴴ now have a self-returning call method
