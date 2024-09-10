@@ -82,3 +82,8 @@ AAAAAAAAAAAAAa
 ehehehhehe
 
 ⴳ, ⴴ now have a self-returning call method
+
+we now have
+    ⨳ 󰻾(22) ≡ 22
+    ⨳ 󰻾¹⁴("hiii") ≡ 14
+
