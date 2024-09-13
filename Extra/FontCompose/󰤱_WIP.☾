@@ -43,17 +43,15 @@ w⟦
 
 󰦥󰦥󰦥󰦥󰦥
 
-DAT = 󰦥󰦥󰦥󰦥󰦥
-⟦ab⟧󰅁αα󰅂
-αα󰅁β󰅂β󰅁γ󰅂γ󰅁Δ󰅂Δ󰅁ε󰅂
-󰦥󰦥󰦥󰦥󰦥
+ DAT = 󰦥󰦥󰦥󰦥󰦥⟦ab⟧󰅁αα󰅂
+ αα󰅁β󰅂β󰅁γ󰅂γ󰅁Δ󰅂Δ󰅁ε󰅂󰦥󰦥󰦥󰦥󰦥
 
 ⨡ string as 𝐒
 ⮌ peggle ⨡ Parser
 🌈 = 󰋺∘␛🌈
 󰋺(␛𝐍, ␛𝐍)
 󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script add_multichar›⍭)
-󰋺("organizer", ‹get_codepoints›)
+󰋺("organizer", ‹get_codepoint›)
 
 
 GRAM = ␛
@@ -212,7 +210,64 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
                       out = x,
                      seqs = yꟿ󰲣x,
                      tags = yꟿ󰲣ℵ󰁺󰁻(y).TAG  󰅂Σ[] ⥉ 𝑠,
-                    style = yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹| ⥉ ℵ)
+                    style = yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹| ⥉ ℵ) ␛
+          ⥉ ℵ
+    
+    get_psuedo_seqs = c↦c⛶ ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
+    make_script_seq_pre = ⥌p,s,c↦p⋅(2-←c∈symmap)+(␛𝕊¿c≡p¡s)  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
+    
+    ∀k∈(symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res):
+        resₖ = ℵ(T="NC", out=k, seqs=get_psuedo_seqs(k), tags=[], style=ℵ)
+    ∀k∈FORCE_INCLUDE:
+        resₖ = ℵ(T="NC", out=k, seqs=[["𝕊"]⋅10], tags=[], style=ℵ)
+    
+    char = 󰲣(x, y, get_codepoint(x,y)₀)
+    
+    ∀m∈MULTICHARS.strip⍭:
+        k = char(m, "mul")₂
+        resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
+    ∀m,mode∈𝑙(res.keys)⨉‹sub sup›⍭:
+        k = char(m, mode)₂
+        resₖ = ℵ(T= mode, ⭡= [m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
+    
+    ⮌ pathlib ⨡ Path as 𝐩
+    𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf") 
+    
+    𝔔 = res.keys󰈲󰲡resₓ.get("needs_gen")
+    ➰ 𝔔:
+        𝑞 = 𝔔.pop∘0
+        𝑒 = res[𝑞]
+        
+        ¿(𝑒.⭡ 󰈲 󰲡"needs_gen"∈resₓ):
+            𝔔.append(𝑒)
+            ↺
+        ⭡ = 𝑒.⭡ ᴍ󰲡resₓ
+        
+        𝐴 = (𝒻, 𝑒.out, ‹⟦𝑒ᵀ⟧_⟦𝑒.out⟧›)
+        
+        ¿𝑒ᵀ≡"mul":
+            add_multichar(⠤𝐴, ⭡ᴍ󰲡x.out󰅂Σᐦ)
+            󰆴 𝑒["needs_gen"]
+        ¡:
+            add_script(⠤𝐴, ⭡₀.out, 𝑒ᵀ₋₁, "NO_SCALE"∉𝑒.style)
+            󰆴 𝑒["needs_gen"]
+    
+    save_font(𝒻, 𝐩∘"Output/AQWESEOME.ttf")
+    exit
+            
+    ∀s∈MULTICHARS.strip⍭:
+        resₛ = ℵ(
+            T      = "mul",
+            out    = □,
+            parent = s,
+            seqs   = sᴍ󰲡[x, ␛𝕊]󰅂Σ[␛ᴍ],
+            tags   = sᴍ󰲡resₓ.tags󰅂ſˢᵉᵗ⁽⁾∪,
+            style  = sᴍ󰲡resₓ.style󰅂ſ󰁸󰁹| ⥉ ℵ
+        )
+    res☾
+     add sup/sub/multi
+    
+    exit
     
     ⊢ normalize_seqs(d):
         𝔔 = d.items ꟿ⥌k,v↦ v.seqsᴍ󰲡(k,x)󰅂󰅂 Σ []
@@ -258,79 +313,11 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     
     exit
     
-     ⊢ normalize_seqs(d):  i will not be adding branch enumerating
-         q = d.values ⥉ 𝑙
-         𝐫 = {}
-         ➰ q:
-             𝔢 = q.pop∘0
-             𝔖 = 𝔢.seqs
-             𝐒 = []
-             ➰ 𝔖:
-                 ns = ᐦ
-                 𝔰 = 𝔖.pop∘0
-                 ∀s∈𝔰:
-                     ¿s≡␛ᐦ: ↺
-                     ¿sᐹ𝑡:
-                         ⨳ s₀≡"LIT"
-                         ¿s₁∉𝐫: ⇥
-                         𝔰 = 𝐫[s₁].seqs
-                         ¿𝔰🃌>1:
-                             𝔰ᴍ𝔢.copy()∀h∈
-                         ns += 𝐫[s₁]₀ ₀
-                     ⸘s∈symmap: ns += s
-                     ⸘s∈     𝐫: ns += 𝐫
-                     ¡: ⇥
-                 ¡:
-                     ¿c≡␛◌: ↺  make a quoted ◌ work
-                     res.setdefault(c,[]).append((ns,𝐭))
-                     ↺
-                  AAAAAAAAAAA
-             ¡:
-                 q.append(𝔢)
-             q.append(C)
-        
-    
-     res.itemsᴍ☾
-    exit
-    
-     ➰ lets:
-         C = (S, 𝐭, c) = lets.pop∘0
-         ns = ᐦ
-         ∀s∈S:
-             ¿s≡␛ᐦ: ↺
-             ¿sᐹ𝑡:
-                 ⨳ s₀≡"LIT"
-                 ¿s₁∈res: ⇥
-                 ns += res[s₁]₀ ₀
-             ⸘s∈symmap: ns += s
-             ⸘s∈   res: ns += resₛ ₀ ₀
-             ¡: ⇥
-         ¡:
-             ¿c≡␛◌: ↺  make a quoted ◌ work
-             res.setdefault(c,[]).append((ns,𝐭))
-             ↺
-         lets.append(C)
-    
-    ∀c∈res:
-        seqs = resᴍ󰲡x₀
-        styles, tags = {}, []
-        ∀k,v∈(res ꟿ 󰲣y.items⥉𝑙󰅂 Σ[]):
-            ¿k≡"STYLE": styles |= (v ſ |)
-            ⸘k≡  "TAG":   tags += v
-        res = ℵ(
-            T="reg",
-            out=c,
-            seqs=seqs,
-            tags=tags,
-            style=styles)
-    
     SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip ꟿ⁰ ζ´ ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
     already_script = 󰲣j≔SCRIPT_EXIST.get(x,ⴴ)→∧(␛◌≠H≔j[y≡␛p] →∧H)
     
     ⮌ pathlib ⨡ Path as 𝐩
     𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf") 
-    get_psuedo_seqs = c↦c⛶ ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
-    make_script_seq_pre = ⥌p,s,c↦p⋅(2-←c∈symmap)+(␛𝕊¿c≡p¡s)  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
     
     ∀k∈(symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res):
         resₖ = ℵ(T="NC", out=k, seqs=get_psuedo_seqs(k), tags=[], style={})

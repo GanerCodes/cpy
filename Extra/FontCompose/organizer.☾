@@ -47,6 +47,7 @@ to_ranges = lm↦[
     ‹Wrote pua mapping to "⟦d⟧"›☾
     ↪ lms
 
+get_codepoint = ⥌c,p↦pua_conseq(⛶n≔‹⟦p⟧_⟦c⟧›) ► (chr←mlₙ,n,c)
 get_codepoints = ⥌C,p↦pua_conseq(N≔Cᴍ󰲡‹⟦p⟧_⟦x⟧›) ►← NζCꟿ󰲣(chr←mlₓ,x,y)󰅂
 
 ⊢ get_new_chars(force_include, no_scale, multichars,
