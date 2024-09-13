@@ -23,6 +23,15 @@ lm≔{} →►← pua_maps_in ≔ 𝑙∘pua_fold.glob("*.json") ␛
                 (c≡lmₗ ⨳ ‹⟦c⟧→⟦l⟧←⟦lmₗ⟧›) ¿l∈lm¡ lmₗ≔c
 ml = lm ꟿᴰ 󰲣(y,x)
 
+⊢ pua_single(𝔡):
+    global puaΔ
+    ¿𝔡∈ml: ↪ lm, ml
+    puaΔ -= 1
+    ➰puaΔ+=1:
+        ¿puaΔ∉lm: ⇥
+    lm[puaΔ], ml[𝔡] = 𝔡, puaΔ
+    ↪ lm, ml
+
 ⊢ pua_conseq(𝔡):  ᔐs to be together
     global lm, ml
     𝔡 󰈳= 󰲡x∈ml
@@ -47,7 +56,7 @@ to_ranges = lm↦[
     ‹Wrote pua mapping to "⟦d⟧"›☾
     ↪ lms
 
-get_codepoint = ⥌c,p↦pua_conseq(⛶n≔‹⟦p⟧_⟦c⟧›) ► (chr←mlₙ,n,c)
+get_codepoint = ⥌c,p↦pua_single(n≔‹⟦p⟧_⟦c⟧›) ►← (chr←mlₙ,n,c)
 get_codepoints = ⥌C,p↦pua_conseq(N≔Cᴍ󰲡‹⟦p⟧_⟦x⟧›) ►← NζCꟿ󰲣(chr←mlₓ,x,y)󰅂
 
 ⊢ get_new_chars(force_include, no_scale, multichars,
