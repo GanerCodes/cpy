@@ -1,3 +1,5 @@
+upside down 1 for -1?
+
 chr ℵ(
     c: chr
     id: ord
@@ -29,4 +31,3 @@ change compose format
             ⦑style_head ⟶ℭ/ℜ⟶ chars/regex⦒
         Type 𝐛 : use last compose rule output
             ⦑style_head⦒
-        

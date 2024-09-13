@@ -39,6 +39,7 @@ w⟦
 ⟧
 
 ⦑c⦑ff9dc6⦒⦒ ⦑N⦒ ⟦hi⟧ ⟶ AB
+⟦hI⟧ ⟶ AB
 
 󰦥󰦥󰦥󰦥󰦥
 
@@ -192,7 +193,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
     root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍(xᴍ󰲡xᵗ󰅂Σᐦ)]))
-    root = root.ftrp("style"⍭, 󰲡x.copy(c=[𝐍(decor(x))]))
+    root = root.ftrp(   "style"⍭, 󰲡x.copy(c=[𝐍(decor(x))]))
     root = root.ftrp("p_looper"⍭, 󰲡x.copy("looper"), ✓)
     root = root.ftrp("p_concat"⍭, 󰲡x.copy("concat"), ✓)
     mac, lets = supermcdoublerecursivecomposeoutputstyleparsemachine(root)
@@ -203,24 +204,27 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     
      letsꟿ𝚲𝘀.join←𝔸ᴍᔐ→☾
     
-    res = {}
-    ➰ lets:
-        C = (S, 𝐭, c) = lets.pop∘0
-        ns = ᐦ
-        ∀s∈S:
-            ¿s≡␛ᐦ: ↺
-            ¿sᐹ𝑡:
-                ⨳ s₀≡"LIT"
-                ¿s₁∈res: ⇥
-                ns += res[s₁]₀ ₀
-            ⸘s∈symmap: ns += s
-            ⸘s∈   res: ns += resₛ ₀ ₀
-            ¡: ⇥
-        ¡:
-            ¿c≡␛◌: ↺  make a quoted ◌ work
-            res.setdefault(c,[]).append((ns,𝐭))
-            ↺
-        lets.append(C)
+    res = lets  󰲡x₋₁󰅂 ꟿⱽ󰲣yᴍ󰲡x﹕₋₁
+    res.itemsᴍ☾
+    exit
+    
+     ➰ lets:
+         C = (S, 𝐭, c) = lets.pop∘0
+         ns = ᐦ
+         ∀s∈S:
+             ¿s≡␛ᐦ: ↺
+             ¿sᐹ𝑡:
+                 ⨳ s₀≡"LIT"
+                 ¿s₁∈res: ⇥
+                 ns += res[s₁]₀ ₀
+             ⸘s∈symmap: ns += s
+             ⸘s∈   res: ns += resₛ ₀ ₀
+             ¡: ⇥
+         ¡:
+             ¿c≡␛◌: ↺  make a quoted ◌ work
+             res.setdefault(c,[]).append((ns,𝐭))
+             ↺
+         lets.append(C)
     
     ∀c∈res:
         seqs = resᴍ󰲡x₀
@@ -244,8 +248,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     make_script_seq_pre = ⥌p,s,c↦p⋅(2-←c∈symmap)+(␛𝕊¿c≡p¡s)  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
     
     ∀k∈(symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res):
-        resₖ = ℵ(T="NC", out=k, seqs=get_psuedo_seqs(k),
-                 tags=[], style={})
+        resₖ = ℵ(T="NC", out=k, seqs=get_psuedo_seqs(k), tags=[], style={})
     
     ∀s∈MULTICHARS.strip⍭:
         ¿¬gs≔(sᴍ󰲡x∈res󰅂→⋀): ‹Multi "⟦s⟧" has no sequence.›
@@ -268,7 +271,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         ∀𝔭,⒨,g∈ζ´(‹/\›, ‹sub sup›⍭, G):
             g.append(ℵ(
                 T=⒨, parent=k,
-                out = already_script(k, ⒨₋₁) ∨ □,
+                out=already_script(k, ⒨₋₁)∨□,
                 seqs=vˢᵉˢ ᴍ󰲡make_script_seq_pre(𝔭,x,k),
                 tags=vᵗᵃᵍˢ + ⒨⛶,
                 style=vˢᵗʸˡᵉ))
@@ -299,16 +302,6 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
 
 parse∘DAT
 
- 󰤱 auto insert sub/sup versions
- 󰤱 add section for composite characters
-     󰤱 color default derived from first char
  󰤱 add section for "style ⟶ rgx"
  󰤱 the rest of it
-
-🟑
-non-pre: allow running process to continue until the proc terms or blcosk a resource
-preemptive: may stop cur run proc and choose another proc to run.
-
-upside down 1 for -1?
-🟑
  maybe add a thing that disallows base symmap keys from generating even if inside the compose so we can style em?

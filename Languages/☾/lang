@@ -64,7 +64,7 @@ kw_neverswouce = merge_shorthands("""if ␉ elif ␉ else ␉ for ␉ yield""")
 kw_inline = merge_shorthands("""in ␉ is ␉ is not ␉ not in ␉ or ␉ and ␉ not""") | kw_neverswouce
 kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
-var_spec = set("ℵ𝕋𝔽ⴳⴴ✓✗îπτ□∅∞ᐦ")
+var_spec = set("ⴳⴴ✓✗îπτ□∅∞ᐦ")
 
 register("kw", kw)
 register("kw_pfx", kw_pfx)
@@ -117,7 +117,7 @@ for k, v in lang.ops.items():
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮ
 ᴺ󰀒
-󰻾ᴺ
+󰻾ᴺ ℵᴺ
 .ᴮ󰁏󰁔
 ...ᴺ
 
