@@ -1,0 +1,325 @@
+𝔦𝔪𝔭∘␛s
+⨡ string as 𝐒
+⮌ tempfile ⨡ NamedTemporaryFile as NTF
+⮌ json5 ⨡ load as jl
+⮌ json ⨡ dumps as jds
+⮌ peggle ⨡ Parser
+🌈 = 󰋺∘␛🌈
+󰋺(␛𝐍, ␛𝐍)
+󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script add_multichar›⍭)
+󰋺("organizer", ⠤‹get_codepoint save_pua›⍭)
+
+symmap = {
+        ␛(: "parenleft"  , ␛): "parenright"  ,
+        ␛{: "braceleft"  , ␛}: "braceright"  ,
+        ␛[: "bracketleft", ␛]: "bracketright",
+        ␛<: "less"       , ␛>: "greater"     ,
+        ␛+: "plus"       , ␛-: "minus"       ,
+        ␛/: "slash"      , ␛\: "backslash"   ,
+        ␛!: "exclam"     , ␛?: "question"    ,
+        ␛@: "at"         ,
+        ␛.: "period"     , ␛,: "comma"       ,
+        ␛:: "colon"      , ␛;: "semicolon"   ,
+        ␛&: "ampersand"  , ␛%: "percent"     ,
+        ␛=: "equal"      , ␛*: "asterisk"    ,
+        ␛_: "underscore" , ␛|: "bar"         ,
+        ␛^: "asciicircum", ␛~: "asciitilde"  ,
+        ␛#: "numbersign" , ␛$: "dollar"      ,
+        ␛': "apostrophe" , ␛": "quotedbl"    ,
+        ␛𝕊: "space"      , ␛ᴍ: "Multi_key"   , ␛◌: ␛◌,
+        ⠶𝑑(𝐒.ascii_letters+𝐒.digits ᴍ󰲡x⋄꜠) }
+
+fargs = ƒ↦ƒ.__code__.co_varnames[:ƒ.__code__.co_argcount]
+⊢ hsh(s):
+        ¿ᐹ(s, 𝑑): ↪ 𝑡((k,hsh(v))∀k,v∈s.items)
+        ¿ᐹ(s, 𝑙): ↪ 𝑡(hsh(v) ∀v∈s)
+        ↪ s
+
+gen, gens = n↦ƒ↦gensₙ≔ƒ, {}
+gen(␛c)←⥌x=□,y=□,z=□↦{ ⠶x∧{          "color": 🌈.h2hl←x}∨{},
+                       ⠶y∧{"backgroundColor": 🌈.h2hl←y}∨{},
+                       ⠶z∧{    "borderColor": 🌈.h2hl←z}∨{} }
+gen(␛B)←⥌x,y=1,r=1↦ℵ(borderStyle  = ‹s solid d dashed›⍭⥉𝑑→ₓ,
+                     borderWidth  = ‹⟦y⟧px›,
+                     borderRadius = ‹⟦r⟧px›)
+gen(␛b)←𝚲ℵ(fontStyle="bold")
+gen(␛N)←𝚲ℵ(NO_SCALE=ⴳ)
+gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
+⊢ decor(n, multi=ⴴ):
+    R = []
+    ∀n∈n:
+        r = {}
+        ∀n∈n:
+            t, v = nᵗ, nᶜ
+            ¿t ≡ "word":
+                r |= gens[v₀ᵗ]
+            ⸘t ≡ "pair":
+                t, c = v₀ᵗ, v₁ᶜ
+                ə = c ᴍ󰲡□ ¿xᵗ≡␛✓¡ 𝘀.join(x.extract(󰲡¬xᶜ,Δ=✗)ᴍ󰲡xᵗ)
+                ƒ = gensₜ
+                r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)ζə¿k≇□})
+        R += r⛶
+    ↪ R¿multi¡R₀
+
+⊢ supermcdoublerecursivecomposeoutputstyleparsemachine(
+        n, pre=□, mac=□, res=□):
+    
+    mac, pre, res = {}¿mac≅□¡mac, []¿pre≅□¡pre, []¿res≅□¡res
+    𝕤 = 𝚲supermcdoublerecursivecomposeoutputstyleparsemachine(⠤𝔸,mac=mac,res=res)
+    ¿nᵗ≡"main":
+        𝕤(n.copy(t="looper"),pre)
+        ↪ mac, res
+    ¿nᵗ≡"looper": ↪ nᴍ󰲡𝕤(x,pre)󰅂Σ[]
+    ¿nᵗ≡"concat":
+        seqs, L = [pre], nᴍ󰲡x
+        ➰L:
+            N = L.pop∘0
+            nseqs = []
+            ∀p∈seqs:
+                nseqs += 𝕤(N, p)  [seq]
+            seqs = nseqs
+        ↪ seqs
+    ¿nᵗ≡"style":  ↪ [[⠤pre, ("STYLE", n₀ᵗ)]]
+    ¿nᵗ≡"lookup": ↪ [pre+(("LIT", n₀ ₀ᵗ)¿n₀ᵗ≡"str"¡n₀ᵗ)⛶]  󰤱 strs (󷹇 they special!)
+    ¿nᵗ≡"results":
+        C, ⠤nᶜ = n
+        res.append((pre, (C₀¿C🃌¡C)ᵗ))
+        ↪ [pre]
+    ¿nᵗ≡"macadd":
+        ⠤w, s = n
+        seqs = 𝕤(s, pre +← wᴍ󰲡("TAG", x₀ᵗ))
+        w ᴍ󰲡mac.setdefault(x₀ᵗ,[]).extend(seqs)
+        ↪ seqs
+    ¿nᵗ≡"macref":
+        n = n₀
+        val = mac[nam ≔ n₀ ₀ᵗ ֎󰤱􊽨֎]
+        ¿nᵗ≡"macref_tag":
+            □ pre += [("TAG", nam)]
+        ¡:
+            val ᴍ= 󰲡x 󰈳󰲡xᐹ𝑡∧x₀≡"TAG"
+        ↪ val ᴍ󰲡pre+x
+
+⊢ normalize_seqs(d):  comically slow lol
+    𝔔 = d.items ꟿ⥌k,v↦v.seqsᴍ󰲡(k,x)󰅂󰅂 Σ []
+    𝔒 = []
+    ➰ 𝔔:
+        (k, v) = 𝔔.pop∘0
+        ℭ = v.copy
+        ns = ᐦ
+        ➰ ℭ:
+            ə = ℭ.pop∘0
+            ¿əᐹ𝑡→¬:
+                ¿ə≡␛ᐦ:
+                    ↺
+                ⸘ə∈symmap:
+                    ns += ə
+                    ↺
+                ¡:
+                    𝔔.append((k, [(␛✓, ns), ("LIT", ə), ⠤ℭ]))
+                    ⇥
+            
+            op, s = ə
+            ⨳ op∈‹LIT ✓›⍭
+            ¿op≡␛✓:
+                ns += s
+                ↺
+            ¿¬v≔𝔒󰈲󰲡x₀≡s󰅂 →∧ v🃌≠dₖ.seqs🃌:
+                𝔔.append((k, [(␛✓, ns), ə, ⠤ℭ]))
+                ⇥
+            ¿v🃌≡1:
+                ns += v₀ ₁
+                ↺
+            ∀h∈v:
+                𝔔.append((k, [(␛✓, ns + h₁), ⠤ℭ]))
+            ⇥
+        ¡:
+             ¿k≡␛◌: ↺  make a quoted ◌ work
+            𝔒.append((k, ns))
+    𝔒 = 󰲡x₀
+    𝔒 = 𝔒ꟿⱽ󰲣𝑠(yᴍ󰲡x₁)
+    ↪ d ꟿⱽ 󰲣y(seqs=𝔒ₓ)
+
+⊢ collect_styles(d):
+    stylez = {}
+    ∀k,v∈d.items:
+        ¿¬v.style: ↺
+        stylez.setdefault(hsh(v.style), (v.style, []))₁.append(k)
+    ↪ stylez.valuesꟿ󰲣(x.pop("NO_SCALE", □)►x,yΣᐦ)
+
+xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹⟦␛ᴍ+xᴍ󰲡‹<⟦symmapₓ⟧>›󰅂Σ⟧:"⟦y₀.replace(⠤‹\ \\›⍭)⟧" # ⟦𝘀.join←y₀ᴍhex○ord⟧⟦‹ ; ⟦y₁⟧›¿y🃌>1¡ᐦ⟧𝗻›󰅂 󰒼󰲡x🃌⋄x󰅂 Σ
+
+⊢ edit_vs_settings(dat, p):
+    p = 𝐩∘p→.expanduser.resolve
+    shutil.copy(p, x≔𝐩←NTF(delete=ⴴ).name)
+    ☾‹Backing up old settings to temp file: ⟦x⟧›,
+    
+    jargs = ℵ(ensure_ascii=✗, indent=□, separators=",:")
+    j = jl(p.open←"rb")
+    
+    nj = dat | j.get("☾.highlight_extra", {})
+    TXT = (p.open←"r"→.read)
+    inj = ‹𝗻𝘁/*DON'T REMOVE THE START/END COMMENTS IN THIS SECTION THIS IS HOW WE FIGURE OUT WHERE EVERYTHING IS*/𝗻𝘁"highlight.regexes": ⟦jds(nj, ⠶jargs)⟧›
+    S, E = "BEG PLEAD"⍭ᴍ󰲡‹/*󰦥󰦥󰦥⟦x⟧󰦥󰦥󰦥*/›
+    (q≔S⋄Eᴍ󰲡x∈TXT󰅂Σ→∈0⋄2) ⨳ "Malformed indicators!"
+    TXT = TXT﹕₋₁.rstrip.rstrip∘␛, + TXT₋₁
+    ¿¬q:
+        "Creating indicators!"☾
+        ¿¬(TXT≔TXT.rstrip).lstrip: TXT = ␛{⋄␛}
+        TXT₋₁≡␛} ⨳ "Please don't end your settings with a comment!"
+        txt=TXT⥉𝑙
+        txt₋₁﹕ = ‹,𝗻𝘁⟦S⟧⟦inj⟧⟦E⟧𝗻}›
+    ¡:
+        txt=TXT⥉𝑙
+        txt[TXT.index∘S+S🃌:ei] = inj+␛,⋅((ei≔TXT.index∘E)+E🃌<TXT🃌-2)
+    p.open∘␛w→.write(txtΣᐦ)
+
+GRAM = ␛
+󰦥󰦥󰦥󰦥󰦥
+main = (󰆴W ∨ concat)*
+
+atom = 󰆴w? ↷ (macadd ∨ macref ∨ results ∨ style ∨ p_looper ∨ p_concat ∨ lookup)
+
+macadd = 󰆴'¡' (󰆴W? ↷ (󰆴',' ⯆ word)) concat
+macref = 󰆴'⟨' 󰆴W? ↷ (
+      (macref_tag  =(󰆴@ word))
+    ∨ (macref_notag=(   word))
+) 󰆴'⟩'
+
+results = (
+    (󰆴(W? '󰅁') (󰆴W ∨ str ∨ ~‹[^󰅂]›)* 󰆴'󰅂')
+   ∨(󰆴⟶        (󰆴w ∨ str ∨ ~‹[^␠⟧⁆⟩\n\t ]›)*)
+)
+
+style = 󰆴'⦑' (󰆴W? ↷ (⠶tuple ∨ ✓)) 󰆴'⦒'
+tuple = ((| (| ✓)*)? chain)+
+pair  = ƨ(word) 󰆴W? ⦑ ⠶tuple? ⦒
+chain = (pair ∨ word)+ 󰆴W?
+
+concat = (⠶atom)+
+p_looper = 󰆴'⟦' (󰆴W ∨ ⠶atom)* 󰆴'⟧'
+p_concat = 󰆴'⁅' (󰆴W ∨ ⠶atom)* 󰆴'⁆'
+
+lookup = str ∨ ƨ(chr ∨ '|' ∨ ',')
+word   = ƨ(str ∨ chr+)
+str    = ƨ(⠶esc ∨ (󰆴'"' ((esc ∨ ~‹[^"]›)*) 󰆴'"'))
+esc    = 󰆴‹␛␛› ~‹.?›
+
+chr = ¬bad ~‹.›
+bad = ~‹["␠⟨⟩⟦⟧⁅⁆⦑⦒¡,|\t\n ]›
+
+w = ~‹[ \t]+›
+W = ~‹[ \t\n␠]+›
+
+(⟦=󰆴(W?↷'⟦'))(⟧=󰆴(W?↷'⟧'))(⁅=󰆴(W?↷'⁅'))(⁆=󰆴(W?↷'⁆'))
+(⦑=󰆴(W?↷'⦑'))(⦒=󰆴(W?↷'⦒'))(⟨=󰆴(W?↷'⟨'))(⟩=󰆴(W?↷'⟩'))
+(󰅁=󰆴(W?↷'󰅁'))(󰅂=󰆴(W?↷'󰅂'))(⟶=󰆴(W?↷'⟶'))(¡=󰆴(W?↷'¡'))
+(|=󰆴(W?↷'|'))(@=󰆴(W?↷'@'))(,=󰆴(W?↷','))
+󰦥󰦥󰦥󰦥󰦥
+ 󰤱 newlines/seps in ⟦⟧ become concats
+
+head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
+⊢ process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH, gram=Parser(GRAM)):
+    dat = 𝗻.join←DAT.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
+    
+    root = gram(dat🟑, DEBUG=✓, ONLY_NAMED=✓🟑)  ← perf optmz herez
+    root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
+    root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
+    root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
+    root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍(xᴍ󰲡xᵗ󰅂Σᐦ)]))
+    root = root.ftrp(   "style"⍭, 󰲡x.copy(c=[𝐍(decor(x))]))
+    root = root.ftrp("p_looper"⍭, 󰲡x.copy("looper"), ✓)
+    root = root.ftrp("p_concat"⍭, 󰲡x.copy("concat"), ✓)
+    mac, lets = supermcdoublerecursivecomposeoutputstyleparsemachine(root)
+    
+    res = lets ꟿ 󰲣x  󰲡xᐹ𝑡∧x₀∈(‹TAG STYLE›⍭)∧x₀󰅂 ␛
+                    ⥉ 󰲡(x.pop(✗), (x ꟿⱽ󰲣 yᴍ 󰲡x₁󰅂))󰅂 ␛
+                    → +y⛶ᵀ󰅂 ␛
+                󰲡x₋₁󰅂␛
+               ꟿⱽ󰲣yᴍ󰲡x﹕₋₁󰅂󰅂␛
+               ꟿⱽ󰲣ℵ(    T = "reg",
+                      out = x,
+                     seqs = yꟿ󰲣x,
+                     tags = yꟿ󰲣ℵ󰁺󰁻(y).TAG  󰅂Σ[] ⥉ 𝑠,
+                    style = yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹| ⥉ ℵ) ␛
+          ⥉ ℵ
+    
+    get_psuedo_seqs = c↦[c⛶] ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
+    make_script_seq_pre = ⥌p,s,c↦[p]⋅(2-←c∈symmap)+[␛𝕊¿c≡p¡s]  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
+    SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip ꟿ⁰ ζ´ ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
+    already_script = 󰲣j≔SCRIPT_EXIST.get(x,ⴴ) →∧ ␛◌≠H≔j[y≡␛p] →∧ H
+    char = 󰲣(x, y, y≠"mul"∧already_script(x,y₋₁) ∨ get_codepoint(x,y)₀)
+    
+    force_include = 𝑠(DAT + MULTICHARS)Σᐦ
+    
+    (symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res) ᴍ k↦resₖ≔ℵ(
+        T="NC",  out=k, seqs=get_psuedo_seqs(k), tags=𝑠(), style=ℵ)
+    (force_include 󰈳󰲡x∈res) ᴍ k↦resₖ≔ℵ(
+        T="reg", out=k, seqs=[[␛◌]]            , tags=𝑠(), style=ℵ)
+    
+    ℭ, ℜ = "ℭℜ" ᴍ󰲡mac.get(x, {})ᴍ󰲡x₁﹕
+    ℭᴍ󰲡x󰈳 󰲡 x₀≡"TAG"󰅂 ␛
+        ᴍ 󰲡 x¿xᐹᔐ¡x₁󰅂 ␛
+        ꟿ⁰s↦𝔸ᴍ󰲡resₓ.style|=s
+    
+    ∀m∈MULTICHARS.strip⍭:
+        k = char(m, "mul")₂
+        resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
+    ∀_∈SCRIPT_DEPTH⭥:
+        ∀m,moder ∈ 𝑙(res.keys) ⨉ ‹sub sup›⍭:
+            k = char(m, moder)₂
+            resₖ = ℵ(T=moder, ⭡=[m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
+    
+    𝐆 = []   
+    𝔔 = res.keys󰈲󰲡resₓ.get("needs_gen")
+    ➰ 𝔔:
+        𝑞 = 𝔔.pop∘0
+        𝑒 = res[𝑞]
+        
+        ¿(𝑒.⭡ 󰈲 󰲡"needs_gen"∈resₓ):
+            𝔔.append(𝑞)
+            ↺
+        ⭡ = 𝑒.⭡ ᴍ󰲡resₓ
+        
+        𝐴 = (𝑒.out, ‹⟦𝑒ᵀ⟧_⟦𝑒.out⟧›)
+        
+        outs = ⭡ᴍ󰲡x.out
+        ¿𝑒ᵀ≡"mul":
+            𝐆.append( [add_multichar, (⠤𝐴, outsΣᐦ)] )
+            style = ((h ≔ ⭡ 󰑅 󰲡"style"∈x)∧h.style) ∨ {}
+            𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[]]
+        ¡:
+            parent = ⭡₀
+            𝐆.append( [add_script, (⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁, "NO_SCALE"∉resᵣ.get("style", {}))] )
+            style = parent.get("style", {})
+            𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
+        
+        ref = 𝑒.get("ref", ℵ)
+        𝑒.seqs += ref.get("seqs", [])
+        𝑒.tags  =      [⠤⭡, 𝑒, ref] ᴍ󰲡x.get("tags" ,set())󰅂 ſˢᵉᵗ⁽⁾ |
+        𝑒.style = style |← [𝑒, ref] ᴍ󰲡x.get("style",   {})󰅂 ſ󰁸󰁹    |
+        󰆴 𝑒["needs_gen"] , 𝑒["ref"]
+    
+    res = normalize_seqs(res)  󰤱 - multichar output sub/sup
+    
+    cmp_seqs = res.values 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqsᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
+    
+    ⊢ convert_styles(styles):
+        esc = 󰲣y ſˣ 󰲣x.replace(⠤y)
+        r = {}
+        ∀s,C∈styles:
+            C=‹([⟦esc(C, ‹\ \\ ] \] -‍ \-›⍭)⟧]+)›
+            r󰂕 = {"decorations": [𝑑(s)]}
+        ↪r
+    
+    styles = convert_styles(collect_styles(res))  󰤱
+    xcomp = xcompose_from_seqs(cmp_seqs)
+    ∀R∈ℜ:
+        (l,), s = R ᴮ 󰲡xᐹ𝑡∧x₀≡"STYLE"
+        l = l¿lᐹᔐ¡l₁
+        stylesₗ≔{"decorations": sᴍ󰲡x¿xᐹᔐ¡x₁}
+    save_pua
+    
+    ↪ ℵ(res=res, styles=styles, xcompose=xcomp,
+        add_glyphs  = 𝒻↦𝒻◄←𝐆ꟿ󰲣x(𝒻, ⠤y),
+        set_codium  = 󰲡edit_vs_settings(styles, x),
+        set_compose = 󰲡ⓦ(open(x,␛w), 󰲡x.write(xcomp)))

@@ -17,6 +17,7 @@
 exec('from math import *')
 󰆴 factorial, e, pi, tau, sqrt, cbrt
 𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = object, dict, bool, list, tuple, set, str, int, float
+⮌ py_naming_tools ⨡ py_escape_var as PEV
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ starmap, filterfalse, product, accumulate
 
@@ -141,12 +142,12 @@ is_iter = 󰲡hasattr(x,"__iter__")
     assert α, β≅␀∧ᐦ∨β
     ↪ α
 
-ᣆ´ = 𝑐𝑑(ƒ ≔ 󰲣y(x) ¿(𝔸₀ ¿𝔸🃌¡ x)¡ x, 𝑔=a↦󰲣ƒ(x,y,a))
 ⊢ _wherest(𝕏, ƒ=𝑏, I=ⴴ):
     ƒ = ƒ≅␀∧𝑏∨ƒ
     ∀i,x∈↨𝕏:
         ¿ƒ(x): ↪ i ¿I¡ x
     ↪ □
+ᣆ´ = 𝑐𝑑(ƒ ≔ 󰲣y(x) ¿(𝔸₀ ¿𝔸🃌¡ x)¡ x, 𝑔=a↦󰲣ƒ(x,y,a))
 󰑅´ = 𝑐𝑑(_wherest, I=𝚲_wherest(⠤𝔸,I=ⴳ))
 󰑁´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵƒ¡ 𝕏﹕ᵢ
 󰑃´ = ⥌𝕏,ƒ=𝑏↦□ ¿□≅i≔𝕏󰑅ᴵƒ¡ 𝕏ᵢ﹕
@@ -289,9 +290,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
             ➰i+=1:
                 G = sys._getframe(i).f_globals
                 ¿G["__file__"]≠__file__: ⇥
-            G["ᐧ1d429"] = 𝐩
-            G["ᐧ1d42b"] = 𝐫
-            G[h≔"ᐧ1d429ᐧ1d41d"] = 𝚲G["__file__"] ⥉𝐩→.parent
+            G[PEV(␛𝐩)] = 𝐩
+            G[PEV(␛𝐫)] = 𝐫
+            G[h≔PEV("𝐩𝐝")] = 𝚲G["__file__"] ⥉𝐩→.parent
             G["subprocess"] = subprocess
             G["os"], G["sys"], G["shutil"] = os, sys, shutil
             G["time"], G["sleep"] = time, sleep
@@ -304,7 +305,6 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ↪ cpyⁿˢ ¿get_ns¡ r
 
 ⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗):
-    ⮌ py_naming_tools ⨡ py_escape_var as PEV
     ⮌ sys ⨡ path as P, _getframe as GF
     ⮌ os ⨡ path, listdir
     ⮌ pathlib ⨡ Path as 𝐩
