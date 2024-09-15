@@ -289,7 +289,9 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[]]
         ¡:
             parent = ⭡₀
-            𝐆.append( [add_script, (⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁, "NO_SCALE"∉resᵣ.get("style", {}))] )
+            ‹⟦parent.out=⟧ ⟦𝑒ᵀ₋₁⟧ ⟦outs=⟧›☾
+            ¿¬already_script(parent.out, 𝑒ᵀ₋₁):  󰤱 make it overwrite the target for consistancy?
+                𝐆.append( [add_script, (⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁, "NO_SCALE"∉resᵣ.get("style", {}))] )
             style = parent.get("style", {})
             𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
         
@@ -311,7 +313,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             r󰂕 = {"decorations": [𝑑(s)]}
         ↪r
     
-    styles = convert_styles(collect_styles(res))  󰤱
+    styles = convert_styles(collect_styles(res))  󰤱 again multichar output stuff
     xcomp = xcompose_from_seqs(cmp_seqs)
     ∀R∈ℜ:
         (l,), s = R ᴮ 󰲡xᐹ𝑡∧x₀≡"STYLE"
@@ -320,6 +322,6 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     save_pua
     
     ↪ ℵ(res=res, styles=styles, xcompose=xcomp,
-        add_glyphs  = 𝒻↦𝒻◄←𝐆ꟿ󰲣x(𝒻, ⠤y),
+        add_glyphs  = 𝒻↦𝒻◄←𝐆ꟿ󰲣x(𝒻, ⠤y☾),
         set_codium  = 󰲡edit_vs_settings(styles, x),
         set_compose = 󰲡ⓦ(open(x,␛w), 󰲡x.write(xcomp)))

@@ -164,7 +164,7 @@ c⟦ ⁅ro⟶▢⁆⁅od⟶⁆
    ⁅ ⟦␛"^\⁅/⟦𝕊/⟧⁆⟧             ⟶ ᐦ⌃∖🟑֎      ⁆
    ⁅ ⟨alpha⟩𝕊 ⟶ 🃌⇥↺⠤↨⮌◌≾ᒍ◌➰ᴍ◌⩫☾◌↪ᔐ⍉◌◌◌◌⮂⥌  ⁆
    ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶◌◌◌🜌🝇◌◌◌◌◌◌◌ᴙ󰆴◌◌◌◌◌𝚲  ⁆ ⟧
-
+🟑
 ⟨LPINK⟩;⟦ ⁅ ⟦{}⟧ ⟶ "⎧⎪⎨⎩" "⎫⎪⎬⎭" ⁆
           ⁅ ⟦()⟧ ⟶ "⎛⎜⎝" "⎞⎟⎠"   ⁆
           ⁅ ⟦[]⟧ ⟶ "⎡⎢⎣" "⎤⎥⎦"   ⁆
@@ -223,20 +223,20 @@ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789αβγδεζηθϑ
 ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬₀₁₂₃₄₅₆₇₈₉󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣󰄎󰄟󰄞󰄏₊₋₌₍₎󰄗󰄘󰄕󰄖˷﹖﹠﹩﹪﹕◌
 ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙⁰¹²³⁴⁵⁶⁷⁸⁹󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋󰁱󰂂󰂁󰁲⁺⁻⁼⁽⁾󰁺󰁻󰁸󰁹˜◌◌◌◌◌ꜝ 󰦥󰦥󰦥󰦥󰦥
 
-SCRIPT_DEPTH = 1
+SCRIPT_DEPTH = 2
 
 󰋺("process.☾", ⠤"process load_font save_font 𝐩 𝐫"⍭)
 r = process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH)
 ¿APPLY_VSCODE_CONF: r.set_codium(CODE_CONFIGS_PATH)
 ¿GENERATE_XCOMPOSE: r.set_compose(‹Output/.XCompose›)
- 𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf")
- r.add_glyphs(𝒻)
- save_font(𝒻, 𝐩∘"Output/99_JuliaMono-Regular.ttf")
+𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf")
+r.add_glyphs(𝒻)
+save_font(𝒻, 𝐩∘"Output/99_JuliaMono-Regular.ttf")
 𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
 𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
 𝐫( ‹xrdb "/Configs/X11_Configs/.Xresources"›              ,shell=✓)
 𝐫( ‹xset r rate 250 60›                                   ,shell=✓)
 𝐫( ‹xmodmap "/Configs/X11_Configs/.Xmodmap"›              ,shell=✓)
 𝐫( ‹xmodmap -e "keycode 134 = Multi_key"›                 ,shell=✓)
- 𝐫( ‹./ShellScripts/link_font.sh›                        ,shell=✓)
+𝐫( ‹./ShellScripts/link_font.sh›                        ,shell=✓)
  maybe add a thing that disallows base symmap keys from generating even if inside the compose so we can style em?
