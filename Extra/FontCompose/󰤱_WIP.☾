@@ -7,52 +7,196 @@ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789αβγδεζηθϑ
 ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬₀₁₂₃₄₅₆₇₈₉󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣󰄎󰄟󰄞󰄏₊₋₌₍₎󰄗󰄘󰄕󰄖˷﹖﹠﹩﹪﹕◌
 ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙⁰¹²³⁴⁵⁶⁷⁸⁹󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋󰁱󰂂󰂁󰁲⁺⁻⁼⁽⁾󰁺󰁻󰁸󰁹˜◌◌◌◌◌ꜝ 󰦥󰦥󰦥󰦥󰦥
 
+SCRIPT_DEPTH = 1
+
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
 
+¡PINK    ⦑c⦑ff55ff⦒⦒ ␠ ¡ORANGE ⦑c⦑f6b845⦒⦒
+¡DBLUE   ⦑c⦑5a45f6⦒⦒ ␠ ¡LBLUE  ⦑c⦑67f8f1⦒⦒
+¡YELLOW  ⦑c⦑f6d645⦒⦒ ␠ ¡RED    ⦑c⦑ff3333⦒⦒
+¡REDPINK ⦑c⦑f64585⦒⦒ ␠ ¡GREEN  ⦑c⦑7feb2d⦒⦒
+¡DBLEEN  ⦑c⦑57a5a6⦒⦒ ␠ ¡DGREEN ⦑c⦑78c59e⦒⦒
+¡DRED    ⦑c⦑b56⦒⦒    ␠ ¡PURPLE ⦑c⦑d900ff⦒⦒
+¡BLUE    ⦑c⦑67f⦒⦒    ␠ ¡DPINK  ⦑c⦑dd88c0⦒⦒
+¡DORANGE ⦑c⦑c6b835⦒⦒
+
+¡d4⟦wsad⟧ ␠ ¡c4⟦qezc⟧ ␠ ¡d8⟦wsadqezc⟧
+¡D4⟦WSAD⟧ ␠ ¡C4⟦QEZC⟧ ␠ ¡D8⟦WSADQEZC⟧
 ¡alpha  ⟦abcdefghijklmnopqrstuvwxyz⟧
 ¡ALPHA  ⟦ABCDEFGHIJKLMNOPQRSTUVWXYZ⟧
 ¡number ⟦0123456789                ⟧
 ¡letter ⟦⟨@alpha⟩⟨@ALPHA⟩          ⟧
 ¡letnum ⟦⟨@letter⟩⟨@number⟩        ⟧
-¡greek ⦑c⦑A00⦒⦒ ⟦
-  ⁅⟦⁅_s⁆⁅0⟦-ᐦv⟧⁆ab⁅d⟦egpᐦ⟧⁆⁅e⟦ᐦt⟧⁆⁅f⟦ei⟧⁆⁅Fi⁆⁅io⁆⟧𝕊 ⟶
-      ς    Θθϑ  αβ   δ∇∂Δ     εη     φϕ    Φ   ι  ⁆
-  ⁅⟦kl⁅mu⁆⁅p⟦ᐦs⟧⁆⁅P⟦ᐦs⟧⁆⁅rh⁆sSt⁅up⁆vwW⁅x⟦iᐦ⟧⁆yYzZ⟧𝕊 ⟶
-    κλ  μ    πΨ     Πψ    ρ σΣτ  υ νωΩ   Ξχ  γΓζξ ⁆
+¡greek ⟨LBLUE⟩ ⟦
+  ⁅⟦⁅_s⁆⁅0⟦-ᐦv⟧⁆ab⁅d⟦egpᐦ⟧⁆⁅e⟦ᐦt⟧⁆⁅f⟦ei⟧⁆⁅Fi⁆⁅io⁆⟧𝕊
+   ⟶  ς    Θθϑ  αβ   δ∇∂Δ     εη     φϕ    Φ   ι  ⁆
+  ⁅⟦kl⁅mu⁆⁅p⟦ᐦs⟧⁆⁅P⟦ᐦs⟧⁆⁅rh⁆sSt⁅up⁆vwW⁅x⟦iᐦ⟧⁆yYzZ⟧𝕊
+   ⟶κλ  μ    πΨ     Πψ    ρ σΣτ  υ νωΩ   Ξχ  γΓζξ ⁆
 ⟧
+X𝕊⟶Χ ␠ _S⟶ϲ
 
 ¡lngeek ⟦⟨@letnum⟩⁅ᴍ⟨@greek⟩⁆⟧
 
-¡dstruk q⟨@letnum⟩ ⟶ 𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡
+ micheal's mathematical monikers
+¡MMM ⟨DORANGE⟩ ⟦
+    ⁅chain⟶󰿨⁆⁅generated𝕊by⟶⚙⁆⁅find⟶󰍉⁆⁅element⟶⁆⁅fix⟶⁆⁅metric𝕊⟶󰍒⁆
+    ⁅matrix⟶󰘨⁆⁅tree⟶󱁕⁆⁅graph⟶󰡷⁆⁅family⟶󱘎⁆⁅derangement⟶⁆⁅set𝕊⟶󰬀⁆
+    ⁅partition⟶󱇙⁆⁅relation⟶󰑇⁆⁅category⟶󰫰⁆⁅functor⟶◌⁆⁅morphism⟶⁆
+    ⁅ID⟶󰫶⁆⁅UFD⟶󰬂⁆⁅PID⟶󰫽⁆⁅ED⟶󰫲⁆⁅ICD⟶◌⁆⁅GCDD⟶◌⁆⁅DVR⟶⁆⁅function⟶󰊕⁆
+    ⁅topological𝕊space⟶⁆⁅lattice⟶󱗿⁆⁅domain⟶󰫱⁆⁅form⟶◌⁆⁅ideal⟶󱧡⁆
+    ⁅ijection⟶󰎑⁆⁅imorphism⟶󰉷⁆⁅transformation⟶◌⁆⁅homomorphism⟶󰠩⁆
+    ⁅semiring⟶◌⁆⁅magma⟶◌⁆⁅monoid⟶◌⁆⁅semigroup⟶◌⁆⁅quasigroup⟶◌⁆
+    ⁅loop⟶➰⁆⁅algebra⟶󰫮⁆⁅salgebra⟶◌⁆⁅bijection⟶◌⁆⁅surjection⟶◌⁆
+    ⁅basis⟶◌⁆⁅group⟶󰫴⁆⁅ring⟶󰫿⁆⁅TS⟶⁆⁅field⟶󰫳⁆⁅vector𝕊space⟶󰬃⁆
+    ⁅measure⟶󰑭⁆⁅path⟶󰉽⁆⁅holds⟶✓⁆⁅transformation⟶󰊄⁆⁅example⟶⁆
+    ⁅object⟶▢⁆⁅point⟶⁆⁅line⟶◌⁆⁅node⟶◌⁆⁅edge⟶◌⁆⁅topology⟶󰬁⁆
+    ⁅neighborhood⟶󰷔⁆⁅space⟶◌⁆⁅manifold⟶⁆⁅atlas⟶◌⁆⁅chart⟶◌⁆
+    ⁅polynomial⟶󰡱⁆⁅scalar⟶ᾇ⁆⁅vector⟶⁆⁅module⟶󰫺⁆⁅tensor⟶◌⁆
+    ⁅metricm⟶󰣰⁆⁅MS⟶󰍒⁆ ⟧
 
-w⟦
-  ¡bold       b⟨@lngeek⟩ ⦑c⦑ff9dc6⦒⦒ 󰅁𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗𝞁𝝝𝝷𝞋𝝰𝝱𝝳𝝯𝞉𝝙𝝴𝝶𝞅𝝫𝞍𝝸𝝹𝝺𝝻𝝿𝞇𝝥𝝭𝞀𝞂𝝨𝞃𝞄𝝼𝞈𝝮𝝣𝞆𝝲𝝘𝝵𝝽 󰅂
-  ¡ital       i⟨@lngeek⟩ ⦑c⦑f6b845⦒⦒ 󰅁𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍◌◌◌◌◌◌◌◌◌◌𝝇𝜣𝜽𝝑𝜶𝜷𝜹𝜵𝝏𝜟𝜺𝜼𝝋𝜱𝝓𝜾𝜿𝝀𝝁𝝅𝝍𝜫𝜳𝝆𝝈𝜮𝝉𝝊𝝂𝝎𝜴𝜩𝝌𝜸𝜞𝜻𝝃 󰅂
-  ¡math,bold  s⟨@letnum⟩ ⦑ ⦒ ⟶ 𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵
-  ¡frak       f⟨@letnum⟩ ⦑ ⦒ ⟶ 𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ◌◌◌◌◌◌◌◌◌◌
-  ¡frak,bold  F⟨@letnum⟩ ⦑ ⦒ ⟶ 𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅◌◌◌◌◌◌◌◌◌◌
-  ¡mathscript m⟨@letnum⟩ ⦑ ⦒ ⟶ 𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵◌◌◌◌◌◌◌◌◌◌
-  ¡para       p⟨@letnum⟩ ⦑N⦒ ⟶ ⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵🄐🄑🄒🄓🄔🄕🄖🄗🄘🄙🄚🄛🄜🄝🄞🄟🄠🄡🄢🄣🄤🄥🄦🄧🄨🄩◌⑴⑵⑶⑷⑸⑹⑺⑻⑼
-  ¡circle     c⟨@letnum⟩ ⦑N⦒ ⟶ ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ◌󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱
-  ¡circlen2   C⟨@number⟩ ⦑N⦒ ⟶                                                     ⓪①②③④⑤⑥⑦⑧⑨
-⟧
+¡dstruk q⟨@letnum⟩ ⟨REDPINK⟩ ⟶ 𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡
+w⟦ ¡bold       b⟨@lngeek⟩ ⟨DPINK⟩     ⟶ 𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗𝞁𝝝𝝷𝞋𝝰𝝱𝝳𝝯𝞉𝝙𝝴𝝶𝞅𝝫𝞍𝝸𝝹𝝺𝝻𝝿𝞇𝝥𝝭𝞀𝞂𝝨𝞃𝞄𝝼𝞈𝝮𝝣𝞆𝝲𝝘𝝵𝝽
+   ¡ital       i⟨@lngeek⟩ ⟨ORANGE⟩    ⟶ 𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍◌◌◌◌◌◌◌◌◌◌𝝇𝜣𝜽𝝑𝜶𝜷𝜹𝜵𝝏𝜟𝜺𝜼𝝋𝜱𝝓𝜾𝜿𝝀𝝁𝝅𝝍𝜫𝜳𝝆𝝈𝜮𝝉𝝊𝝂𝝎𝜴𝜩𝝌𝜸𝜞𝜻𝝃
+   ¡math,bold  s⟨@letnum⟩ ⟨DBLUE⟩     ⟶ 𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵
+   ¡frak       f⟨@letnum⟩ ⟨RED⟩       ⟶ 𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ◌◌◌◌◌◌◌◌◌◌
+   ¡frak,bold  F⟨@letnum⟩ ⟨RED⟩       ⟶ 𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅◌◌◌◌◌◌◌◌◌◌
+   ¡mathscript m⟨@letnum⟩ ⟨LBLUE⟩     ⟶ 𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵◌◌◌◌◌◌◌◌◌◌
+   ¡para       p⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒ ⟶ ⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵🄐🄑🄒🄓🄔🄕🄖🄗🄘🄙🄚🄛🄜🄝🄞🄟🄠🄡🄢🄣🄤🄥🄦🄧🄨🄩◌⑴⑵⑶⑷⑸⑹⑺⑻⑼
+   ¡circle     c⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒ ⟶ ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ◌󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱
+   ¡circlen2   C⟨@number⟩ ⟨YELLOW⟩⦑N⦒ ⟶                                                     ⓪①②③④⑤⑥⑦⑧⑨ ⟧
+⟨GREEN⟩ ⟦
+    ⁅W⟨ALPHA⟩ ⟶ ◌◌ƇƊ◌ҒႺ◌◌◌◌ꝈⱮ◌◌◌◌ⴽ𝖲Ƭ◌Ѵ◌◌◌◌⁆
+    ⁅Wm⟶Ӎ⁆ ⁅wf𝕊⟶ƒ⁆ ⟧
+wS⟦lP⟧⟶ℓ℘ ␠ wh⟦NBn⟧⟶ℵתℶ
 
-⦑c⦑ff9dc6⦒⦒ ⦑N⦒ ⟦hi⟧ ⟶ AB
-⟦hI⟧ ⟶ AB
+⟨DBLEEN⟩ ⟦
+    ⁅0⟦ 3          ⟧ ⟶  ↉       ⁆
+    ⁅1⟦23456789⁅10⁆⟧ ⟶ ½⅓¼⅕⅙⅐⅛⅑⅒⁆
+    ⁅2⟦ 3 5        ⟧ ⟶  ⅔ ⅖     ⁆
+    ⁅3⟦  45  8     ⟧ ⟶   ¾⅗  ⅜  ⁆
+    ⁅4⟦   5        ⟧ ⟶    ⅘     ⁆
+    ⁅5⟦    6 8     ⟧ ⟶     ⅚ ⅝  ⁆
+    ⁅7⟦      8     ⟧ ⟶       ⅞  ⁆ ⟧
+⟨DGREEN⟩ ⟦
+    ⁅⟦⁅ns⟦gG⟧⁆⁅D⟦𝕊g⟧⁆⁅d⟦oO⟧⁆⟧
+     ⟶    ⊲⊳   🜂🜄     ᐄᐂ               ⁆
+    ⁅o⟦𝕊dlp-/x+v⁅⟦o⁅oo⁆⟧𝕊⁆⟧
+     ⟶ ⋅⎊⎉⌾⊖⨸⊗⊕⬡    •⬤                 ⁆
+    ⁅O⟦𝕊⁅⟦+x⟧𝕊⁆⁅o⟦𝕊o⟧⁆⁅O𝕊⁆⟧
+     ⟶ ∘  ⨁⨂      ⊙⨀    ○              ⁆
+    ⁅⟦⁅[]⁆⁅#⟦⁅[]⁆R𝕊#\⟧⁆⟧
+     ⟶  □      ⊞ ⵌ⌗⨳♯                  ⁆
+    ⁅ T⟦⟨d4⟩⟨D4⟩⟧𝕊          ⟶ △▽▷◁⯅⯆⯇⯈ ⁆
+    ⁅ '⟦1234⟧               ⟶ ′″‴⁗     ⁆
+    ⁅ ⟦ᐦ\⟧..                ⟶ …¨       ⁆
+    ⁅ ?⟦?rR!⟧               ⟶ ¿⸮␦⸘     ⁆
+    ⁅ !⟦!𝕊@?⟧               ⟶ ¡❗‼‽     ⁆ ⟧
+ ⏶⏷⏴⏵▲▼▶◀🞁🞃🞀🞂▴▾◂▸▵▿◃▹◢◣◤◥◸◹◺◿
 
-󰦥󰦥󰦥󰦥󰦥
+⟨PINK⟩ ⟦
+    ⁅vt⟶⨃⁆⁅ic⟶⯈⁆⁅IC⟶⮞⁆⁅is⟶⫢⁆⁅AA⟶∀⁆⁅st⟶✣⁆
+    ⁅ ai⟦AD⟧ ⟶ 󷹛󷹚 ⁆
+    ⁅ E⟦𝕊/⟧  ⟶ ∃∄ ⁆
+    ⁅ .⟦tb⟧  ⟶ ∴∵ ⁆
+    ⁅ ⟦sS⟧r  ⟶ ƨƧ ⁆
+    ⁅ FF⟦𝕊R⟧ ⟶ ᖵᖶ ⁆ ⟧
 
- DAT = 󰦥󰦥󰦥󰦥󰦥⟦ab⟧󰅁αα󰅂
- αα󰅁β󰅂β󰅁γ󰅂γ󰅁Δ󰅂Δ󰅁ε󰅂󰦥󰦥󰦥󰦥󰦥
+⟨DRED⟩ ⟦
+    ⁅n𝕊⟶¬⁆⁅int⟶∫⁆⁅inv⟶󷹁⁆⁅vv⟶‖⁆⁅/.⟶÷⁆⁅sq⟶√⁆⁅*𝕊⟶∗⁆
+    ⁅ ⟦xX⟧⟦xX⟧               ⟶ ⨯×◌⨉     ⁆
+    ⁅ v⟦ws⟧⟦𝕊ws-.⁅v⟦ws⟧⁆⁅eq⁆xn_⟧
+          󰅁 ∧⩚◌⩜⩑   ⩕◌    ⩞ ⩟⊼⩠
+            ∨◌⩛⩝⩒   ⩙⩖    ⩢ ⊻⊽⩣ 󰅂       ⁆
+    ⁅ V⟦ᐦV⟧⟦WS⟧              ⟶ ⋀⋁⩓⩔     ⁆
+    ⁅ ⟦<>⟧⟦/⁅=𝕊⁆⁅=/⁆⟧        ⟶ ≮≤≰≯≥≱   ⁆
+    ⁅ ⟦⁅-+⁆⁅+-⁆⟧             ⟶ ∓±       ⁆
+    ⁅ if⟦fgtq⟧               ⟶ ⟺⇕󷹂󷹃     ⁆
+    ⁅ .⟦[(⟧⟦)]⟧              ⟶ 󷹯󷹭󷹮󷹰     ⁆
+    ⁅ a⟦+-⟧                  ⟶ ⫰⫯       ⁆
+    ⁅ |⟦𝕊/⟧                  ⟶ ∣∤       ⁆
+    ⁅ e⟦⁅⟦[]⟧⟦𝕊/_⟧⁆⁅⟦ws⟧𝕊⁆⟧  ⟶ ∈∉⋸∋∌◌⟒⫙ ⁆
+    ⁅ U⟦ws⟧                  ⟶ ⋃⋂       ⁆
+    ⁅ ~⟦/<⟧                  ⟶ ≁≺       ⁆
+    ⁅ =⟦/⁅=⟦𝕊/⟧⁆⟧            ⟶ ≠≡≢      ⁆
+    ⁅ eq⟦adDt.q⁅i⟦𝕊/⟧⁆⟧
+      ⟶  ≈≔≝≜󷹀≟   ≅≇                    ⁆
+    ⁅ u⟦⁅⟨d4⟩𝕊⁆⁅⟦ad⟧⟦/n⁅_𝕊⁆⁅_/⁆⟧⁆⟧
+      ⟶   ∪∩⊃⊂  ⊅⊋⊇⊉ ⊄⊊  ⊆   ⊈          ⁆ ⟧
 
+nt⟶󷹇 ␠ to⟶󰤱 ␠ sec⟶§ ␠ com⟶
+88⟶∞ ␠ {}⟶∅ ␠ ()⟶
+he⟦kx⟧                   ⟶ ✓✗
+pl⟦[]𝕊⟧                  ⟶ փ
+F⟦-|⟧                    ⟶ ─│
+q⟦[]⟧                    ⟶ ␛⟦␛⟧
+⟦⁅[[⁆⁅]]⁆⟧               ⟶ ␛⟨␛⟩
+⟦⁅𝕊⟦𝕊ᴍ⟧⁆⁅ᴍ𝕊⁆⟧            ⟶   "‍"
+⟦⁅NL⁆⁅SP⁆⁅HT⁆⁅DEL⁆⁅ESC⁆⟧ ⟶ ␤ "␠" ␉ ␡ "␛␛"
+
+⟨BLUE⟩⟦
+    ⁅a⟦ ⁅ ⟦⁅ws⁆⁅ad⁆⁅qc⁆⁅ez⁆⟧ ⟶ ⭥⟷⤡⤢     ⁆
+        ⁅ ⟨D4⟩𝕊              ⟶ ⭡⭣⭠⭢     ⁆
+        ⁅ ⟦⁅WW⁆⁅SS⁆⁅AA⁆⁅DD⁆⟧ ⟶ ⬆⬇⬅➡     ⁆
+        ⁅ ⟦lx⟧⟦ad⟧           ⟶ ⟵⟶⇜⇝     ⁆
+        ⁅ i⟦⟨d4⟩⁅⟦ad⟧/⁆⟧𝕊    ⟶ ⇑⇓⇐⇒⇍⇏   ⁆
+        ⁅ c⟨c4⟩              ⟶ ⌜⌝⌞⌟     ⁆
+        ⁅ f⟨c4⟩              ⟶ ⌈⌉⌊⌋     ⁆
+        ⁅ m⟨d4⟩              ⟶ ↥↧↤↦     ⁆
+        ⁅ t⟨d4⟩              ⟶ ⊥⊤⊣⊢     ⁆
+        ⁅ .⟨d4⟩              ⟶ ⋮⋯⋰⋱     ⁆
+        ⁅ ⟨d8⟩               ⟶ ↑↓←→↖↗↙↘ ⁆ ⟧⁆
+    ⁅A⟦ ⁅ ⟨d8⟩𝕊              ⟶ 🡹🡻🡸🡺🡼🡽🡿🡾 ⁆
+        ⁅ C⟦⁅W⟦AD⟧S⁆⁅H⟦AD⟧⁆⟧
+         ⟶     ↶↷      ↩↪               ⁆ ⟧⁆ ⟧
+
+CC⟦BDLWS⟧⟶ᖲᖱᒪⴷⴸ
+c⟦ ⁅ro⟶▢⁆⁅od⟶⁆
+   ⁅ a⟦cwslr⟧                  ⟶ 󷹄⤉⤈◄►      ⁆
+   ⁅ b⟦ad⟧                     ⟶ ⟥⟤         ⁆
+   ⁅ c⟦[]tfndscW⟧              ⟶ ‹›ⴳⴴᗜ꜠ᵜ𐞑ᗯ  ⁆
+   ⁅ i⟦cdims⟧                  ⟶ 󰋺⹏󱠨⨡ᐹ      ⁆
+   ⁅ s⟦pmnw⟧                   ⟶ ⍭ꟿⴵ⥉       ⁆
+   ⁅ ⟦sf⟧⟦+-⟧                  ⟶ 󰒼󰒽󰈲󰈳       ⁆
+   ⁅ ⟦()[]{}⟧                  ⟶ ❴❵␛⁅␛⁆␛󰅁␛󰅂 ⁆
+   ⁅ ⟦␛"^\⁅/⟦𝕊/⟧⁆⟧             ⟶ ᐦ⌃∖🟑֎      ⁆
+🟑֎ awesome editor moment
+   ⁅ ⟨alpha⟩𝕊 ⟶ 🃌⇥↺⠤↨⮌◌◌≾ᒍ◌◌ᴍ◌⩫☾◌↪ᔐ⍉◌◌➰◌⮂⥌  ⁆
+   ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶◌◌◌🜌🝇◌◌◌◌◌◌◌ᴙ󰆴◌◌◌◌◌𝚲  ⁆ ⟧
+
+;⟦ ⁅ ⟦{}⟧ ⟶ "⎧⎪⎨⎩" "⎫⎪⎬⎭" ⁆
+   ⁅ ⟦()⟧ ⟶ "⎛⎜⎝" "⎞⎟⎠"   ⁆
+   ⁅ ⟦[]⟧ ⟶ "⎡⎢⎣" "⎤⎥⎦"   ⁆
+   ⁅ int  ⟶ "⌠⎮⌡"         ⁆
+   ⁅ sum  ⟶ "⎲⎳"          ⁆
+   ⁅ box  ⟶ "┌┬┐├┼┤└┴┘"   ⁆ ⟧
+
+⟦+-⟧1⟶👍👎 ␠ ap⟨d4⟩⟶👆👇👈👉
+wave⟶👋 ␠ ok⟶👌 ␠ clap⟶👏 ␠ fist⟶✊
+pray⟶🙏 ␠ praise⟶🙌
+<3⟶🩷 ␠ <4⟶💕 ␠ <5⟶💞 ␠ <6⟶💘
+<7⟶"❤️‍🔥" ␠ <8⟶💖 ␠ <!⟶❣️ ␠ <cat⟶😻 ␠ hug⟶🫂
+:)⟶😊 ␠ (;⟶😉 ␠ ::)⟶🙃 ␠ :(⟶😕 ␠ ::(⟶😞
+lol⟶😆 ␠ joy⟶😂 ␠ rofl⟶🤣 ␠ overjoy⟶🥹 ␠ heh⟶😏
+love⟶🥰 ␠ heyes⟶😍 ␠ kiss⟶😚 ␠ hkiss⟶😘
+yum⟶😋 ␠ chill⟶😌 ␠ blush⟶🤭 ␠ shock⟶😳 ␠ need⟶🤤 ␠ hot⟶🥵
+hmm⟶🤔 ␠ sus⟶🤨 ␠ mad⟶😤 ␠ pls⟶🥺 ␠ sob⟶😭
+cool⟶😎 ␠ eye𝕊⟶👁️ ␠ eyes⟶👀 ␠ cheer⟶🎉 ␠ spark⟶✨ ␠ lit⟶🔥
+gear⟶⚙️ ␠ peace⟶✌ ␠ write⟶✍ ␠ imdead⟶💀 ␠ muscle⟶💪
+ᴍdesov⟶"\overline{}"
+shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
+
+󰦥󰦥󰦥󰦥󰦥  🟑
+ 󰤱 newlines/seps in ⟦⟧ become concats
+ DAT = 󰦥󰦥󰦥󰦥󰦥⟦ab⟧󰅁αα󰅂 ␠ αα󰅁β󰅂β󰅁γ󰅂γ󰅁Δ󰅂Δ󰅁ε󰅂󰦥󰦥󰦥󰦥󰦥
+
+𝔦𝔪𝔭∘␛s
 ⨡ string as 𝐒
 ⮌ peggle ⨡ Parser
 🌈 = 󰋺∘␛🌈
 󰋺(␛𝐍, ␛𝐍)
 󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script add_multichar›⍭)
 󰋺("organizer", ‹get_codepoint›)
-
 
 GRAM = ␛
 󰦥󰦥󰦥󰦥󰦥
@@ -68,7 +212,7 @@ macref = 󰆴'⟨' 󰆴W? ↷ (
 
 results = (
     (󰆴(W? '󰅁') (󰆴W ∨ str ∨ ~‹[^󰅂]›)* 󰆴'󰅂')
-   ∨(󰆴⟶        (󰆴w ∨ str ∨ ~‹[^⟧⁆⟩\n\t ]›)*)
+   ∨(󰆴⟶        (󰆴w ∨ str ∨ ~‹[^␠⟧⁆⟩\n\t ]›)*)
 )
 
 style = 󰆴'⦑' (󰆴W? ↷ (⠶tuple ∨ ✓)) 󰆴'⦒'
@@ -86,10 +230,10 @@ str    = ƨ(⠶esc ∨ (󰆴'"' ((esc ∨ ~‹[^"]›)*) 󰆴'"'))
 esc    = 󰆴‹␛␛› ~‹.?›
 
 chr = ¬bad ~‹.›
-bad = ~‹["⟨⟩⟦⟧⁅⁆⦑⦒¡,|\t\n ]›
+bad = ~‹["␠⟨⟩⟦⟧⁅⁆⦑⦒¡,|\t\n ]›
 
 w = ~‹[ \t]+›
-W = ~‹[ \t\n]+›
+W = ~‹[ \t\n␠]+›
 
 (⟦=󰆴(W?↷'⟦'))(⟧=󰆴(W?↷'⟧'))(⁅=󰆴(W?↷'⁅'))(⁆=󰆴(W?↷'⁆'))
 (⦑=󰆴(W?↷'⦑'))(⦒=󰆴(W?↷'⦒'))(⟨=󰆴(W?↷'⟨'))(⟩=󰆴(W?↷'⟩'))
@@ -114,7 +258,7 @@ symmap = {
         ␛^: "asciicircum", ␛~: "asciitilde"  ,
         ␛#: "numbersign" , ␛$: "dollar"      ,
         ␛': "apostrophe" , ␛": "quotedbl"    ,
-        ␛𝕊: "space"      , ␛ᴍ: "Multi_key"   ,
+        ␛𝕊: "space"      , ␛ᴍ: "Multi_key"   , ␛◌: ␛◌,
         ⠶𝑑(𝐒.ascii_letters+𝐒.digits ᴍ󰲡x⋄꜠) }
 
 fargs = ƒ↦ƒ.__code__.co_varnames[:ƒ.__code__.co_argcount]
@@ -186,12 +330,12 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
         ¡:
             val ᴍ= 󰲡x 󰈳󰲡xᐹ𝑡∧x₀≡"TAG"
         ↪ val ᴍ󰲡pre+x
-⊢ normalize_seqs(d):
+
+⊢ normalize_seqs(d):  comically slow lol
     𝔔 = d.items ꟿ⥌k,v↦v.seqsᴍ󰲡(k,x)󰅂󰅂 Σ []
     𝔒 = []
     ➰ 𝔔:
         (k, v) = 𝔔.pop∘0
-        ‹⟦k=⟧: ⟦v=⟧›☾
         ℭ = v.copy
         ns = ᐦ
         ➰ ℭ:
@@ -227,11 +371,48 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     𝔒 = 𝔒ꟿⱽ󰲣𝑠(yᴍ󰲡x₁)
     ↪ d ꟿⱽ 󰲣y(seqs=𝔒ₓ)
 
+⊢ collect_styles(d):
+    stylez = {}
+    ∀k,v∈d.items:
+        ¿¬v.style: ↺
+        stylez.setdefault(hsh(v.style), (v.style, []))₁.append(k)
+    ↪ stylez.valuesꟿ󰲣(x.pop("NO_SCALE", □)►x,yΣᐦ)
+
+xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹⟦␛ᴍ+xᴍ󰲡‹<⟦symmapₓ⟧>›󰅂Σ⟧:"⟦y₀⟧" # ⟦𝘀.join←y₀ᴍhex○ord⟧⟦‹ ; ⟦y₁⟧›¿y🃌>1¡ᐦ⟧𝗻›󰅂 󰒼󰲡x🃌⋄x󰅂 Σ
+
+⮌ tempfile ⨡ NamedTemporaryFile as NTF
+⮌ json5 ⨡ load as jl
+⮌ json  ⨡ dumps as jds
+⊢ edit_vs_settings(dat, p):
+    p = 𝐩∘p→.expanduser.resolve
+    shutil.copy(p, x≔𝐩←NTF(delete=ⴴ).name)
+    ☾‹Backing up old settings to temp file: ⟦x⟧›,
+    
+    jargs = ℵ(ensure_ascii=✗, indent=□, separators=",:")
+    j = jl(p.open←"rb")
+    
+    nj = dat | j.get("☾.highlight_extra", {})
+    TXT = (p.open←"r"→.read)
+    inj = ‹𝗻𝘁/*DON'T REMOVE THE START/END COMMENTS IN THIS SECTION THIS IS HOW WE FIGURE OUT WHERE EVERYTHING IS*/𝗻𝘁"highlight.regexes": ⟦jds(nj, ⠶jargs)⟧›
+    S, E = "BEG PLEAD"⍭ᴍ󰲡‹/*󰦥󰦥󰦥⟦x⟧󰦥󰦥󰦥*/›
+    (q≔S⋄Eᴍ󰲡x∈TXT󰅂Σ→∈0⋄2) ⨳ "Malformed indicators!"
+    TXT = TXT﹕₋₁.rstrip.rstrip∘␛, + TXT₋₁
+    ¿¬q:
+        "Creating indicators!"☾
+        ¿¬(TXT≔TXT.rstrip).lstrip: TXT = ␛{⋄␛}
+        TXT₋₁≡␛} ⨳ "Please don't end your settings with a comment!"
+        txt=TXT⥉𝑙
+        txt₋₁﹕ = ‹,𝗻𝘁⟦S⟧⟦inj⟧⟦E⟧𝗻}›
+    ¡:
+        txt=TXT⥉𝑙
+        txt[TXT.index∘S+S🃌:ei] = inj+␛,⋅((ei≔TXT.index∘E)+E🃌<TXT🃌-2)
+    p.open∘␛w→.write(txtΣᐦ)
+
 head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
 ⊢ parse(dat, gram=Parser(GRAM), SCRIPT_EXIST=SCRIPT_EXIST):
     dat = 𝗻.join←dat.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
     
-    root = gram(dat🟑, DEBUG=✓, ONLY_NAMED=✓🟑)  ← most perf optmz herez
+    root = gram(dat🟑, DEBUG=✓, ONLY_NAMED=✓🟑)  ← perf optmz herez
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
@@ -257,24 +438,23 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     make_script_seq_pre = ⥌p,s,c↦[p]⋅(2-←c∈symmap)+[␛𝕊¿c≡p¡s]  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
     SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip ꟿ⁰ ζ´ ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
     already_script = 󰲣j≔SCRIPT_EXIST.get(x,ⴴ) →∧ ␛◌≠H≔j[y≡␛p] →∧ H
-    
-    ∀k∈(symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res):
-        resₖ = ℵ(T="NC", out=k, seqs=get_psuedo_seqs(k), tags=set(), style=ℵ)
-    ∀k∈FORCE_INCLUDE:
-        resₖ = ℵ(T="NC", out=k, seqs=[["𝕊"]⋅10], tags=set(), style=ℵ)
-    
     char = 󰲣(x, y, y≠"mul"∧already_script(x,y₋₁) ∨ get_codepoint(x,y)₀)
+    
+    force_include = 𝑠(FORCE_INCLUDE + MULTICHARS)Σᐦ
+    
+    (symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res) ᴍ k↦resₖ≔ℵ(
+        T="NC",  out=k, seqs=get_psuedo_seqs(k), tags=𝑠(), style=ℵ)
+    (force_include 󰈳󰲡x∈res) ᴍ k↦resₖ≔ℵ(
+        T="reg", out=k, seqs=[[␛◌]]            , tags=𝑠(), style=ℵ)
     
     ∀m∈MULTICHARS.strip⍭:
         k = char(m, "mul")₂
         resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
-    ∀_∈2⭥:
-        ∀m,mode∈𝑙(res.keys)⨉‹sub sup›⍭:
-            k = char(m, mode)₂
-            resₖ = ℵ(T=mode, ⭡=[m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
+    ∀_∈SCRIPT_DEPTH⭥:
+        ∀m,moder ∈ 𝑙(res.keys) ⨉ ‹sub sup›⍭:
+            k = char(m, moder)₂
+            resₖ = ℵ(T=moder, ⭡=[m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
     
-    ⮌ pathlib ⨡ Path as 𝐩
-    𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf") 
     
     𝐆 = []   
     𝔔 = res.keys󰈲󰲡resₓ.get("needs_gen")
@@ -287,7 +467,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             ↺
         ⭡ = 𝑒.⭡ ᴍ󰲡resₓ
         
-        𝐴 = (𝒻, 𝑒.out, ‹⟦𝑒ᵀ⟧_⟦𝑒.out⟧›)
+        𝐴 = (𝑒.out, ‹⟦𝑒ᵀ⟧_⟦𝑒.out⟧›)
         
         outs = ⭡ᴍ󰲡x.out
         ¿𝑒ᵀ≡"mul":
@@ -300,92 +480,42 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             style = parent.get("style", {})
             𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
         
-        𝑒.tags = [⠤⭡,𝑒] ᴍ󰲡x.get("tags", set())󰅂 ſˢᵉᵗ⁽⁾ |
-        𝑒.style = style | 𝑒.get("style", {})
-        󰆴 𝑒["needs_gen"]
+        ref = 𝑒.get("ref", ℵ)
+        𝑒.seqs += ref.get("seqs", [])
+        𝑒.tags  =      [⠤⭡, 𝑒, ref] ᴍ󰲡x.get("tags" ,set())󰅂 ſˢᵉᵗ⁽⁾ |
+        𝑒.style = style |← [𝑒, ref] ᴍ󰲡x.get("style",   {})󰅂 ſ󰁸󰁹    |
+        󰆴 𝑒["needs_gen"] , 𝑒["ref"]
     
-     𝐆ꟿ󰲣x(⠤y)
+    res = normalize_seqs(res)  󰤱 - multichar output sub/sup
+     resꟿⱽ☾
     
-    res = normalize_seqs(res)
-    resꟿⱽ☾
+    cmp_seqs = res.values 󰈳󰲡xᵀ≡"NC"󰅂 ᴍc↦c.seqsᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
     
-    save_font(𝒻, 𝐩∘"Output/AQWESEOME.ttf")
-    exit
-            
-    ∀s∈MULTICHARS.strip⍭:
-        resₛ = ℵ(
-            T      = "mul",
-            out    = □,
-            parent = s,
-            seqs   = sᴍ󰲡[x, ␛𝕊]󰅂Σ[␛ᴍ],
-            tags   = sᴍ󰲡resₓ.tags󰅂ſˢᵉᵗ⁽⁾∪,
-            style  = sᴍ󰲡resₓ.style󰅂ſ󰁸󰁹| ⥉ ℵ
-        )
-    res☾
-     add sup/sub/multi
+    ⊢ convert_styles(styles):
+        esc = 󰲣y ſˣ 󰲣x.replace(⠤y)
+        r = {}
+        ∀s,C∈styles:
+            C=‹([⟦esc(C, ‹] \] -‍ \-›⍭)⟧]+)›
+            r󰂕 = {"decorations": [𝑑(s)]}
+        ↪r
     
-    exit
-    res = normalize_seqs(res)☾
-     
-    exit
+    styles = convert_styles(collect_styles(res))  󰤱
+    CODE_CONFIGS_PATH = ‹~/.config/VSCodium/User/settings.json›
+    edit_vs_settings(styles, CODE_CONFIGS_PATH)
+    styles.itemsꟿ☾
     
-    ⮌ pathlib ⨡ Path as 𝐩
-    𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf") 
-    
-    ∀k∈(symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res):
-        resₖ = ℵ(T="NC", out=k, seqs=get_psuedo_seqs(k), tags=[], style={})
-    
-    ∀s∈MULTICHARS.strip⍭:
-        ¿¬gs≔(sᴍ󰲡x∈res󰅂→⋀): ‹Multi "⟦s⟧" has no sequence.›
-        resₛ = ℵ(
-            T      = "mul",
-            out    = □,
-            parent = s,
-            seqs   = [‹ᴍ⟦sᴍ󰲡resₓ.seqs₀+␛𝕊󰅂Σᐦ⟧›] ¿gs¡ [],
-            tags   = sᴍ󰲡(resₓ.tags ¿ x∈res¡ [])󰅂Σ[],
-            style  = res[s₀].style ¿s₀∈res¡ {})
-    chars = res.values󰈲󰲡xᵀ≡"mul"
-    bases = chars ᴍ󰲡xᵖᵃʳᵉⁿᵗ
-    out_chars = get_codepoints(bases, "mul")
-    ∀n,c ∈ charsζout_chars:
-        add_multichar(𝒻, c₀, c₁, c₂)
-        res[nᵒᵘᵗ ≔ c₀] = n
-    
-    G = to_subs, to_sups = [], []
-    ∀k,v∈res.items:
-        ∀𝔭,⒨,g∈ζ´(‹/\›, ‹sub sup›⍭, G):
-            g.append(ℵ(
-                T=⒨, parent=k,
-                out=already_script(k, ⒨₋₁)∨□,
-                seqs=vˢᵉˢ ᴍ󰲡make_script_seq_pre(𝔭,x,k),
-                tags=vᵗᵃᵍˢ + ⒨⛶,
-                style=vˢᵗʸˡᵉ))
-    ∀k∈FORCE_INCLUDE:
-        ∀⒨∈‹sub sup›⍭:
-            g.append(ℵ(T=⒨, parent=k, out=□, seqs=[], tags=⒨⛶, style=[]))
-    
-    ∀⒨,g∈ζ´(‹sub sup›⍭, G):
-        chars = g 󰈲󰲡xᵒᵘᵗ≡□ ∧ xᵖᵃʳᵉⁿᵗ🃌≡1  󰤱 make multis workkk
-        bases = chars ᴍ󰲡xᵖᵃʳᵉⁿᵗ
-        out_chars = get_codepoints(bases, ⒨)
-        ∀n,c ∈ charsζout_chars:
-            add_script(𝒻, c₀, c₁, c₂, ⒨₋₁, "NO_SCALE"∉n.style)
-            res[nᵒᵘᵗ ≔ c₀] = n
-    
-    stylez = {}
-    ∀k,v∈res.items:
-        stylez.setdefault(hsh(v.style), (v.style, []))₁.append(k)
-    stylez = stylez.valuesꟿ󰲣(x.pop("NO_SCALE", □)►x,yΣᐦ)
-    
-    res.itemsꟿ󰲣‹⟦x⟧: ⟦yˢᵉˢ⟧›☾
-    
-    save_font(𝒻, 𝐩∘"Output/AQWESEOME.ttf")
-    
-     get_codepoints("")☾
-     to_subs☾
-     res☾
+    ↪ ℵ(add_glyphs = 𝒻↦𝐆ꟿ󰲣x(𝒻, ⠤y),
+          xcompose = xcompose_from_seqs(cmp_seqs))
 
-parse∘DAT
+r = parse∘DAT
+ r.xcompose☾
+
+ ⮌ pathlib ⨡ Path as 𝐩
+ 𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf")
+ r.add_glyphs∘𝒻
+ save_font(𝒻, 𝐩∘"Output/AQWESEOME.ttf")
+
+
 
  󰤱 add section for "style ⟶ rgx"
  󰤱 the rest of it
