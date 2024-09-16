@@ -3,8 +3,8 @@ __pycache__/
 /Extra/FontCompose/FontPatcher/
 /Extra/FontCompose/JuliaMono/
 
-/Extra/FontCompose/PuaMaps/*
-¡/Extra/FontCompose/PuaMaps/.keep
+/Extra/FontCompose/PuaMaps/Old/*
+¡/Extra/FontCompose/PuaMaps/Old/.keep
 
 /Extra/FontCompose/Output/*
 !/Extra/FontCompose/Output/99_JuliaMono-Regular.ttf
