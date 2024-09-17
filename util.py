@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 _insp = lambda x: x in sys.path or sys.path.insert(0, x)
-_insp(z := str(Path(__file__).absolute().parent))
-_insp(z+"/compiler")
+_insp(cpy_dir := str(Path(__file__).absolute().parent))
+_insp(cpy_dir+"/compiler")
 
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
 from time import time, sleep
@@ -43,7 +43,7 @@ ZIL = lambda *a,**k: None
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
 wrap = lambda x,w=120,q='\t': ᒍ(ń, TW.wrap(x, width=w, subsequent_indent=q))
-rgx_or = lambda x: f"({ᒍ(')|(', ᴍ(re.escape, x))})"
+rgx_or = lambda x: f"({ᒍ(")|(", ᴍ(re.escape, x))})"
 spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
 collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
@@ -113,13 +113,26 @@ class Z:
 Z=Z()
 
 class SCRIPT:
-    CHAR_NRM = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ0123456789:,<>;?!+-/*=(){}[]&$%~𐞑∞"""
-    CHAR_SUP = """ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾󰁸󰁹󰁺󰁻◌◌◌˜𐞑󰂃"""
-    CHAR_SUB = """ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎󰄕󰄖󰄗󰄘﹠﹩﹪◌◌"""
-    SUP = ᖱ(ζ(CHAR_SUP, CHAR_NRM))
-    SUB = ᖱ(ζ(CHAR_SUB, CHAR_NRM))
-    sup2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUP.__getitem__, x))
-    sub2nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.SUB.__getitem__, x))
+    SCRIPT_FILE_LOC = f"{cpy_dir}/FontCompose/.SCRIPT_MAP"
+    SUP, SUB, NRM = {}, {}, {}
+    with open(SCRIPT_FILE_LOC) as f:
+        CH = CHAR_NRM, CHAR_SUP, CHAR_SUB = \
+               f.read().strip().split('\n')
+    for n,p,b in zip(*CH):
+        SUP[n], SUB[n] = p, b
+        NRM[b] = NRM[p] = n
+    sup = lambda s, SUP=SUP: str.join(ᐦ, (SUP.get(c, c) for c in s))
+    sub = lambda s, SUB=SUB: str.join(ᐦ, (SUB.get(c, c) for c in s))
+    nrm = lambda s, NRM=NRM: str.join(ᐦ, (NRM.get(c, c) for c in s))
+
+# class SCRIPT:
+#     CHAR_NRM = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ0123456789:,<>;?!+-/*=(){}[]&$%~𐞑∞"""
+#     CHAR_SUP = """ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾󰁸󰁹󰁺󰁻◌◌◌˜𐞑󰂃"""
+#     CHAR_SUB = """ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎󰄕󰄖󰄗󰄘﹠﹩﹪◌◌"""
+#     SUP = ᖱ(ζ(CHAR_SUP, CHAR_NRM))
+#     SUB = ᖱ(ζ(CHAR_SUB, CHAR_NRM))
+#     NRM = SUP | SUB
+#     nrm = lambda x: ᒍ(ᐦ, ᴍ(SCRIPT.NRM.__getitem__, x))
 
 DEBUG_NS = { "mk": lambda x:lambda *𝔸,**𝕂:DEBUG_NS[x](*𝔸,**𝕂),
              "BP": ZIL, "togprof": ZIL }

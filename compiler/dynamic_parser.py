@@ -41,8 +41,8 @@ class DynamicParser:
         𝕊.code_namespace = 𝕊.get_namespace_head()
         exec(CODE_HEADER+code_head, 𝕊.code_namespace)
         𝕊.register_tokset("oper_lit", 𝕊.lang.ops.keys())
-        𝕊.register_tokset("SUPSCRIPT", SCRIPT.CHAR_SUP)
-        𝕊.register_tokset("SUBSCRIPT", SCRIPT.CHAR_SUB)
+        𝕊.register_tokset("SUPSCRIPT", SCRIPT.CHAR_SUP, ⴳ)
+        𝕊.register_tokset("SUBSCRIPT", SCRIPT.CHAR_SUB, ⴳ)
         𝕊.code_namespace |= 𝕊.get_namespace_gen()
         exec(code_gen, 𝕊.code_namespace)
         for k,v in 𝕊.code_namespace.items():
@@ -116,11 +116,7 @@ class DynamicParser:
 
     def general_tree_manip(𝕊, n): # metasyntactical manipulations
         n = n.copy()
-        if not n.S:
-            n.c = ᴍ(𝕊.general_tree_manip, n.c)
-        match n.t:
-            case "supscript": n.c = SCRIPT.sup2nrm(n.c)
-            case "subscript": n.c = SCRIPT.sub2nrm(n.c)
+        if not n.S: n.c = ᴍ(𝕊.general_tree_manip, n.c)
         return n
     
     def get_orders(𝕊):
@@ -146,9 +142,13 @@ class DynamicParser:
     
     def format_grammar_toks(𝕊, toks):
         return rgx_or(sorted(toks, key=ⵌ, reverse=ⴳ))
-    def register_tokset(𝕊, name, toks):
+    def register_tokset(𝕊, name, toks, conseq=ⴴ):
         𝕊.code_namespace[name] = toks
-        𝕊.grammar_imports[name] = 𝕊.format_grammar_toks(toks)
+        if all(len(t) == 1 for t in toks):
+            res = f"[{ᒍ(ᐦ, ((t in ']\\-')*'\\'+t for t in toks))}]{ᖲ(conseq)*'+'}"
+        else:
+            res = 𝕊.format_grammar_toks(toks)
+        𝕊.grammar_imports[name] = res
     
     def parse_gram(𝕊, gram):
         new_rules = { i:Node('~', re.compile(v)) for i,v in 𝕊.grammar_imports.items() }

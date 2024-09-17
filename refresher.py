@@ -130,7 +130,8 @@ if __name__ == "__main__":
     from sys import argv
     import readline
     
-    # cpy_test("""cheese = 1""", exit=ⴳ)
+    # cpy_test("""󰆴 factorial, e, pi, tau, sqrt, cbrt""", exit=ⴳ)
+    # cpy_test("""􊬲ₐaₐ􊬲""", exit=ⴳ)
     # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧""".strip(), exit=ⴳ)
     # debug_test_exit("""(20.2, .1323, a+.125)""")
     # debug_test_exit("""(20.2, 1323, 0.125)""")

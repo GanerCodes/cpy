@@ -89,7 +89,7 @@ class Lang:
         op_norm = ᴍ(ⵉ, op_norm)
         def parse_oper_dec(x, *, rgx=re.compile(ᖇ("([^𝕩]+)([𝕩]*)", '𝕩', SCRIPT.CHAR_SUP))):
             x, y = rgx.match(x).groups()
-            return x, set(SCRIPT.sup2nrm(y))
+            return x, set(SCRIPT.nrm(y))
         
         op_norm = ᴍᴍ(2, parse_oper_dec, op_norm)
         

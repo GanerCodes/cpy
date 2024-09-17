@@ -1,12 +1,12 @@
 __pycache__/
 /bin/☾
-/Extra/FontCompose/FontPatcher/
-/Extra/FontCompose/JuliaMono/
+/FontCompose/FontPatcher/
+/FontCompose/JuliaMono/
 
-/Extra/FontCompose/PuaMaps/Old/*
-¡/Extra/FontCompose/PuaMaps/Old/.keep
+/FontCompose/PuaMaps/Old/*
+¡/FontCompose/PuaMaps/Old/.keep
 
-/Extra/FontCompose/Output/*
-!/Extra/FontCompose/Output/99_JuliaMono-Regular.ttf
-!/Extra/FontCompose/Output/customSymbols.ttf
-!/Extra/FontCompose/Output/.XCompose
+/FontCompose/Output/*
+!/FontCompose/Output/99_JuliaMono-Regular.ttf
+!/FontCompose/Output/.XCompose
+!/FontCompose/Output/.SCRIPT_MAP

@@ -255,7 +255,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         T="NC",  out=k, seqs=get_psuedo_seqs(k), tags=𝑠(), style=ℵ)
     (force_include 󰈳󰲡x∈res) ᴍ k↦resₖ≔ℵ(
         T="reg", out=k, seqs=[[␛◌]]            , tags=𝑠(), style=ℵ)
-    
+    res.pop(𝗻, □)  lol
     ℭ, ℜ = "ℭℜ" ᴍ󰲡mac.get(x, {})ᴍ󰲡x₁﹕
     ℭᴍ󰲡x󰈳 󰲡 x₀≡"TAG"󰅂 ␛
         ᴍ 󰲡 x¿xᐹᔐ¡x₁󰅂 ␛
@@ -266,6 +266,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
     ∀_∈SCRIPT_DEPTH⭥:
         ∀m,moder ∈ 𝑙(res.keys) ⨉ ‹sub sup›⍭:
+            ¿m🃌>1: ↺  󰤱
             k = char(m, moder)₂
             resₖ = ℵ(T=moder, ⭡=[m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
     
@@ -289,7 +290,6 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[]]
         ¡:
             parent = ⭡₀
-            ‹⟦parent.out=⟧ ⟦𝑒ᵀ₋₁⟧ ⟦outs=⟧›☾
             ¿¬already_script(parent.out, 𝑒ᵀ₋₁):  󰤱 make it overwrite the target for consistancy?
                 𝐆.append( [add_script, (⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁, "NO_SCALE"∉resᵣ.get("style", {}))] )
             style = parent.get("style", {})
@@ -302,6 +302,10 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         󰆴 𝑒["needs_gen"] , 𝑒["ref"]
     
     res = normalize_seqs(res)  󰤱 - multichar output sub/sup
+    
+    𝕩 = res.values 󰈲󰲡x.out🃌≡1 ∧ xᵀ∈‹sub sup›⍭
+    𝕩 = 𝕩  󰲡x.⭡₀󰅂 →.items ꟿ󰲣 y󰒽󰲡xᵀ󰅂ᴍ󰲡x.out󰅂 Σ x
+    script_map≔𝕩⍉ᴍΣ´→ᴍ🃌⥉𝑠→🃌≡1→⨳‹Unequal sup/sub/norm counts!›
     
     cmp_seqs = res.values 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqsᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
     
@@ -321,7 +325,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         stylesₗ≔{"decorations": sᴍ󰲡x¿xᐹᔐ¡x₁}
     save_pua
     
-    ↪ ℵ(res=res, styles=styles, xcompose=xcomp,
-        add_glyphs  = 𝒻↦𝒻◄←𝐆ꟿ󰲣x(𝒻, ⠤y☾),
+    ↪ ℵ(res=res, styles=styles, xcompose=xcomp, script_map=script_map,
+        add_glyphs  = 𝒻↦𝒻◄←𝐆ꟿ󰲣x(𝒻, ⠤y),
         set_codium  = 󰲡edit_vs_settings(styles, x),
         set_compose = 󰲡ⓦ(open(x,␛w), 󰲡x.write(xcomp)))

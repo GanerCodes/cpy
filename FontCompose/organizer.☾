@@ -1,10 +1,4 @@
- partition pua
- sup/sub partitioning
-
 𝔦𝔪𝔭∘␛s
-
-cmsr = 󰋺(⠤‹composer xcompose_from_seqs symmap generate_compose›⍭)
-
 ⨡ json
 ⮌ platform ⨡ uname
 ⮌ random ⨡ randint, seed

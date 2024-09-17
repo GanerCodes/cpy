@@ -1,9 +1,10 @@
  ««««««««««««««««««««««««««««««««« GENERAL »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
-CODE_CONFIGS_PATH = ‹~/.config/VSCodium/User/settings.json›
-APPLY_VSCODE_CONF = ⴳ
-ENSURE_FONT_REPOS = ⴳ
-GENERATE_XCOMPOSE = ⴳ
+VSCODE_CONF_PATH  = ‹~/.config/VSCodium/User/settings.json›
+APPLY_VSCODE_CONF = ✓
+GENERATE_XCOMPOSE = ✓
+GENERATE_FONT     = ✗
+CHECK_REPOS       = ✓
  ACTIVE_STAGE_MODE = ‹full›  compose, medium, full
 
 DAT = ␛
@@ -227,16 +228,38 @@ SCRIPT_DEPTH = 2
 
 󰋺("process.☾", ⠤"process load_font save_font 𝐩 𝐫"⍭)
 r = process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH)
-¿APPLY_VSCODE_CONF: r.set_codium(CODE_CONFIGS_PATH)
+¿APPLY_VSCODE_CONF: r.set_codium(VSCODE_CONF_PATH)
 ¿GENERATE_XCOMPOSE: r.set_compose(‹Output/.XCompose›)
-𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf")
-r.add_glyphs(𝒻)
-save_font(𝒻, 𝐩∘"Output/99_JuliaMono-Regular.ttf")
-𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
-𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
-𝐫( ‹xrdb "/Configs/X11_Configs/.Xresources"›              ,shell=✓)
-𝐫( ‹xset r rate 250 60›                                   ,shell=✓)
-𝐫( ‹xmodmap "/Configs/X11_Configs/.Xmodmap"›              ,shell=✓)
-𝐫( ‹xmodmap -e "keycode 134 = Multi_key"›                 ,shell=✓)
-𝐫( ‹./ShellScripts/link_font.sh›                        ,shell=✓)
+¿GENERATE_FONT:
+    𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf")
+    r.add_glyphs(𝒻)
+    save_font(𝒻, 𝐩∘"Output/99_JuliaMono-Regular.ttf")
+ⓦ(open(‹.SCRIPT_MAP›, ␛w), 󰲡x.write←𝗻.join←r.script_map)
+
+class SCRIPT:
+    SCRIPT_FILE_LOC = ".SCRIPT_MAP"
+    SUP, SUB, NRM = {}, {}, {}
+    with open(SCRIPT_FILE_LOC) as f:
+        CH = CHAR_NRM, CHAR_SUP, CHAR_SUB = \
+               f.read().strip().split('\n')
+    for n,p,b in zip(*CH):
+        SUP[n], SUB[n] = p, b
+        NRM[b] = NRM[p] = n
+    sup = lambda s, SUP=SUP: str.join(ᐦ, (SUP.get(c, c) for c in s))
+    sub = lambda s, SUB=SUB: str.join(ᐦ, (SUB.get(c, c) for c in s))
+    nrm = lambda s, NRM=NRM: str.join(ᐦ, (NRM.get(c, c) for c in s))
+A = "abcd󰋺"→☾
+B = SCRIPT.sup(A)→☾
+C = SCRIPT.sub(B)→☾
+D = SCRIPT.nrm(C)→☾
+E = SCRIPT.nrm(D)→☾
+
+ 𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
+ 𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
+ 𝐫( ‹xrdb "/Configs/X11_Configs/.Xresources"›              ,shell=✓)
+ 𝐫( ‹xset r rate 250 60›                                   ,shell=✓)
+ 𝐫( ‹xmodmap "/Configs/X11_Configs/.Xmodmap"›              ,shell=✓)
+ 𝐫( ‹xmodmap -e "keycode 134 = Multi_key"›                 ,shell=✓)
+ 𝐫( ‹./ShellScripts/link_font.sh›                          ,shell=✓)
+
  maybe add a thing that disallows base symmap keys from generating even if inside the compose so we can style em?

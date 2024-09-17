@@ -150,14 +150,12 @@ var = ƨ(¬W ¬oper ¬var_spec ¬script ¬"󰦥󰦥󰦥󰦥󰦥" ~‹[^𝗮-𝘇
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
 
-script = (
-    (supscript = ƨ(SUPSCRIPT+))
-  ∨ (subscript = ƨ(SUBSCRIPT+)))
+script = ((supscript = ƨ(SUPSCRIPT)) ∨ (subscript = ƨ(SUBSCRIPT)))
 
 oper = (
     (oper_mod_l = ~‹[⟥≺]*›)
      oper_lit
-    (oper_mod_r = ƨ((~‹[´꜠ᵜ⟤]+› ∨ supscript)*)))
+    (oper_mod_r = ƨ((~‹[´꜠ᵜ𐞑⟤]+› ∨ supscript)*)))
 
 lamb = (
     (   (lamb_h_py = 󰆴"lambda" ⮞text_breaker 󰆴Æ ⠶expr_not_colon 󰆴':')
@@ -181,7 +179,7 @@ str_py = ((‹"› (str_py_sub ∨ ~‹[^"\\]+›)* ‹"›)
 
 str_py_sub = ~‹\\.›
 
-w = ~‹([ \t]*␛␛\n[ \t]*)+› ∨ ~‹[ \t]+›
+w = ~‹([ \t]*␛␛\n[ \t]*)+|[ \t]+›
 W = ~‹[ \t\n]+›
 text_breaker = ⮞(E ∨ kw_spec ∨ var_spec ∨ ¬var)
 E = w ∨ ~‹␛␛\n›
@@ -207,13 +205,13 @@ def σ_00():
     ((yield reduction(
         "supscript",
         n="Swap Superscripts"))
-    (lambda n: [OP.TND('.'), mkvar(n.txt)]))
+    (lambda n: [OP.TND('.'), mkvar(SCRIPT.nrm(n.txt))]))
     
     ((yield replacement(
         "subscript",
         rec='A',
         n="Subscripts to brackets"))
-    (lambda n: mkgrp(gram(n.c, "exprs"), b="[]")))
+    (lambda n: mkgrp(gram(SCRIPT.nrm(n.c), "exprs"), b="[]")))
     
     ((yield replacement(
         "norm_expr", "expr_not_colon", "expr_not_comma",
@@ -418,7 +416,7 @@ def transform_oper(op_): # apply modifiers to op
             rmods += m
     if rmods:
         rmods = ᒍ(',', (f'"{x}"' if FS(x).issubset(ascii_uppercase) else lang(x) \
-                    for x in SCRIPT.sup2nrm(rmods).split('𐞑')))
+                    for x in SCRIPT.nrm(rmods).split('𐞑')))
         op_n = mkexp(op_n, Node("expr_", f'[{rmods}]'))
     return op_n
 
