@@ -3,7 +3,7 @@
 VSCODE_CONF_PATH  = ‹~/.config/VSCodium/User/settings.json›
 APPLY_VSCODE_CONF = ✓
 GENERATE_XCOMPOSE = ✓
-GENERATE_FONT     = ✗
+GENERATE_FONT     = ✓
 CHECK_REPOS       = ✓
  ACTIVE_STAGE_MODE = ‹full›  compose, medium, full
 
@@ -217,7 +217,7 @@ shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
 ¡ℜ ⦑c⦑7feb2d⦒            ⦒ "(󰦥{5})"
 󰦥󰦥󰦥󰦥󰦥
 
-MULTICHARS = 󰦥󰦥󰦥󰦥󰦥 𝓵𝓷 𝓵𝓰 𝘁𝗿 𝗦𝗟 𝗚𝗟 𝗿𝗸 𝘀𝘁 𝗪⁵ 𝗘𝗻𝗱 𝗔𝘂𝘁 𝗚𝗮𝗹 𝗸𝗲𝗿 𝓵𝓸𝓰 𝘀𝗶𝗻 𝗰𝗼𝘀 𝘁𝗮𝗻 𝘀𝗲𝗰 𝗰𝘀𝗰 𝗰𝗼𝘁 𝗔𝘀𝘀 𝗮𝗿𝗴 𝗺𝗶𝗻 𝗺𝗮𝘅 𝗲𝘅𝗽 𝗱𝗶𝘃 𝗱𝗲𝘁 𝗱𝗲𝗴 𝗲𝗿𝗳 𝗶𝗻𝘁 𝗴𝗰𝗱 𝗹𝗰𝗺 𝗵𝗼𝗺 𝗼𝗯𝗷 𝗹𝗶𝗺 𝗶𝗻𝗳 𝘀𝘂𝗽 𝗺𝗼𝗱 𝗣𝗚𝗟 𝗣𝗦𝗟 𝘀𝗴𝗻 𝘁𝗼𝗿 𝘄𝗿𝘁 𝗪𝗧𝗦 𝗪𝗧* 𝘃𝗮𝗿 𝘀𝘁𝗱 𝗰𝗼𝘃 𝗦𝗣𝗘𝗖 𝗦𝗜𝗡𝗛 𝗖𝗢𝗦𝗛 𝗧𝗔𝗡𝗛 𝗦𝗘𝗖𝗛 𝗖𝗦𝗖𝗛 𝗖𝗢𝗧𝗛 𝗖𝗛𝗔𝗥 𝗖𝗨𝗥𝗟 𝗙𝗥𝗢𝗕 𝗚𝗥𝗔𝗗 𝗥𝗔𝗡𝗞 𝗦𝗣𝗔𝗡 𝗪𝗟𝗢𝗚 𝗘𝗥𝗙𝗖 𝗠𝗘𝗠𝗘 𝗡𝗨𝗟𝗟 𝗩𝗢𝗜𝗗 𝗖𝗢𝗥𝗥 󰦥󰦥󰦥󰦥󰦥
+MULTICHARS = 󰦥󰦥󰦥󰦥󰦥 𝓵𝓷 𝓵𝓰 𝘁𝗿 𝗦𝗟 𝗚𝗟 𝗿𝗸 𝘀𝘁 𝗪⁵ 𝗘𝗻𝗱 𝗔𝘂𝘁 𝗚𝗮𝗹 𝗸𝗲𝗿 𝓵𝓸𝓰 𝘀𝗶𝗻 𝗰𝗼𝘀 𝘀𝗶𝗻𝗵 𝗰𝗼𝘀𝗵 𝘁𝗮𝗻 𝘀𝗲𝗰 𝗰𝘀𝗰 𝗰𝗼𝘁 𝗔𝘀𝘀 𝗔𝗿𝗴 𝗮𝗿𝗴 𝗺𝗶𝗻 𝗺𝗮𝘅 𝗲𝘅𝗽 𝗱𝗶𝘃 𝗱𝗲𝘁 𝗱𝗲𝗴 𝗲𝗿𝗳 𝗶𝗻𝘁 𝗴𝗰𝗱 𝗹𝗰𝗺 𝗵𝗼𝗺 𝗼𝗯𝗷 𝗹𝗶𝗺 𝗶𝗻𝗳 𝘀𝘂𝗽 𝗺𝗼𝗱 𝗣𝗚𝗟 𝗣𝗦𝗟 𝘀𝗴𝗻 𝘁𝗼𝗿 𝘄𝗿𝘁 𝗪𝗧𝗦 𝗪𝗧* 𝘃𝗮𝗿 𝘀𝘁𝗱 𝗰𝗼𝘃 𝗦𝗣𝗘𝗖 𝗦𝗜𝗡𝗛 𝗖𝗢𝗦𝗛 𝗧𝗔𝗡𝗛 𝗦𝗘𝗖𝗛 𝗖𝗦𝗖𝗛 𝗖𝗢𝗧𝗛 𝗖𝗛𝗔𝗥 𝗖𝗨𝗥𝗟 𝗙𝗥𝗢𝗕 𝗚𝗥𝗔𝗗 𝗥𝗔𝗡𝗞 𝗦𝗣𝗔𝗡 𝗪𝗟𝗢𝗚 𝗘𝗥𝗙𝗖 𝗠𝗘𝗠𝗘 𝗡𝗨𝗟𝗟 𝗩𝗢𝗜𝗗 𝗖𝗢𝗥𝗥 󰦥󰦥󰦥󰦥󰦥
 
 SCRIPT_EXIST = 󰦥󰦥󰦥󰦥󰦥
 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789αβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ,<>;+-*=()[]{}~?&$%:!
@@ -236,30 +236,15 @@ r = process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH)
     save_font(𝒻, 𝐩∘"Output/99_JuliaMono-Regular.ttf")
 ⓦ(open(‹.SCRIPT_MAP›, ␛w), 󰲡x.write←𝗻.join←r.script_map)
 
-class SCRIPT:
-    SCRIPT_FILE_LOC = ".SCRIPT_MAP"
-    SUP, SUB, NRM = {}, {}, {}
-    with open(SCRIPT_FILE_LOC) as f:
-        CH = CHAR_NRM, CHAR_SUP, CHAR_SUB = \
-               f.read().strip().split('\n')
-    for n,p,b in zip(*CH):
-        SUP[n], SUB[n] = p, b
-        NRM[b] = NRM[p] = n
-    sup = lambda s, SUP=SUP: str.join(ᐦ, (SUP.get(c, c) for c in s))
-    sub = lambda s, SUB=SUB: str.join(ᐦ, (SUB.get(c, c) for c in s))
-    nrm = lambda s, NRM=NRM: str.join(ᐦ, (NRM.get(c, c) for c in s))
-A = "abcd󰋺"→☾
-B = SCRIPT.sup(A)→☾
-C = SCRIPT.sub(B)→☾
-D = SCRIPT.nrm(C)→☾
-E = SCRIPT.nrm(D)→☾
+¿GENERATE_XCOMPOSE:
+    𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
+    𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
+¿GENERATE_FONT:
+    𝐫( ‹./ShellScripts/link_font.sh›                          ,shell=✓)
 
- 𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
- 𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
  𝐫( ‹xrdb "/Configs/X11_Configs/.Xresources"›              ,shell=✓)
  𝐫( ‹xset r rate 250 60›                                   ,shell=✓)
  𝐫( ‹xmodmap "/Configs/X11_Configs/.Xmodmap"›              ,shell=✓)
  𝐫( ‹xmodmap -e "keycode 134 = Multi_key"›                 ,shell=✓)
- 𝐫( ‹./ShellScripts/link_font.sh›                          ,shell=✓)
 
  maybe add a thing that disallows base symmap keys from generating even if inside the compose so we can style em?

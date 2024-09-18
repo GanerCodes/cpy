@@ -287,7 +287,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         ¿𝑒ᵀ≡"mul":
             𝐆.append( [add_multichar, (⠤𝐴, outsΣᐦ)] )
             style = ((h ≔ ⭡ 󰑅 󰲡"style"∈x)∧h.style) ∨ {}
-            𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[]]
+            𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[␛ᴍ]]
         ¡:
             parent = ⭡₀
             ¿¬already_script(parent.out, 𝑒ᵀ₋₁):  󰤱 make it overwrite the target for consistancy?
