@@ -1,66 +1,69 @@
- 󰤱 lol
-
 𝔦𝔪𝔭∘␛s ; ldir
-󰋺(‹shut›)
+󰋺("CONFIGURE", *)
+󰋺("shut")
+󰋺("process", ⠤"process load_font save_font 𝐩 𝐫"⍭)
 
 𝐑 = ⥌x,y=□↦‹Running command: "⟦𝘀.join←x⟧"›☾ ► ( ᣆʸ 𝚲shut)∘𝚲subprocess.run←x
-⊢ config_font_and_compose(
-        check_reclone=ⴳ,
-        enabled_stages=‹Nerd CustomSymbols›⍭,
-        fold = ‹Output›⥉𝐩→.resolve):
-    xcompose_out = fold / ".XCompose"
+cp = shutil.copy
 
-    ¿check_reclone: ‹sh ShellScripts/cloneRepos.sh›⍭⥉𝐑
+fold = ‹Output›⥉𝐩→.resolve
+𝑟 = process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH)
 
-    stages = {}
-    ⊢ stage1(fi, fo):
-        ‹python3.12 FontPatcher/font-patcher --careful --mono ›␛
-        ‹--complete --has-no-italic --out ⟦fold⟧ --name JuliaMono ›␛
-        ‹⟦fi⟧›⍭⥉𝐑
-        os.rename(fold / "JuliaMono-Regular.ttf", fo)
-    stages["Nerd"] = stage1
+stages = {}
+⊢ 𝕗(fi, fo):
+    ‹python3.12 FontPatcher/font-patcher --careful --mono ›␛
+    ‹--complete --has-no-italic --out ⟦fold⟧ --name JuliaMono ›␛
+    ‹⟦fi⟧›⍭⥉𝐑
+    os.rename(fold / "JuliaMono-Regular.ttf", fo)
+stages["Nerd"] = 𝕗
 
-    ⊢ stage2(fi, fo):
-        f2 = fold / ‹..› / ‹customSymbols.ttf› → .resolve
-         f3 = ‹/tmp/emoji/static/NotoEmoji-Regular.ttf›⥉𝐩  doesn't work w/ fontforge or fonttools 󰂁-󰂂
-        𝐑(‹fontforge ShellScripts/mergeFonts.ff ⟦fi⟧ ⟦f2⟧ ⟦fo⟧›⍭, ⴳ)
-    stages["CustomSymbols"] = stage2
+⊢ 𝕗(fi, fo):
+    f2 = fold / ‹..› / ‹customSymbols.ttf› → .resolve
+     f3 = ‹/tmp/emoji/static/NotoEmoji-Regular.ttf›⥉𝐩  doesn't work w/ fontforge or fonttools 󰂁-󰂂
+    𝐑(‹fontforge ShellScripts/mergeFonts.ff ⟦fi⟧ ⟦f2⟧ ⟦fo⟧›⍭, ⴳ)
+stages["CustomSymbols"] = 𝕗
 
-     𝒞, sub, sup, mul = get_new_chars(force_include, no_scale, multichars, ignore_scripts, special_symkeys)
-     ⊢ stage3():
-         xcompose_out.open(␛w).write(xcompose_from_seqs∘𝒞)
-         save_pua
-     stages["Compose"] = stage3
-     stage3.no_font = ⴳ
-    
-     ⊢ stage4(fi, fo):
-         󰋺(⠤‹multisupersubscriptify load_font save_font add_script add_multichar›⍭)
-         𝒻 = load_font(fi)
-         sub ꟿ󰲩 add_script   (𝒻, x, y, z, ␛b, v)
-         sup ꟿ󰲩 add_script   (𝒻, x, y, z, ␛p, v)
-         mul ꟿ󰲧 add_multichar(𝒻, x, y, z)
-         save_font(𝒻, fo)
-     stages["Multisupersubscriptified"] = stage4
+⊢ 𝕗(fi, fo):
+    𝒻 = load_font(fi)
+    𝒻.removeGlyph("filter")  mfw duplicate names
+    𝑟.add_glyphs(𝒻)
+    save_font(𝒻, fo)
+stages["ProcedualChars"] = 𝕗
 
-    font = ‹JuliaMono/JuliaMono-Regular.ttf›⥉𝐩→.resolve
-    shutil.copy(font, font ≔ fold / name ≔ font.name)
-    
-    ∀s,ƒ∈stages.items:
-        ¿hasattr(ƒ, "no_font"):
-            ƒ
-            ↺
-        fo = fold / ‹⟦font.stem⟧_⟦s⟧⟦font.suffix⟧›
-        ¿s∈enabled_stages:
-            ‹Running stage ⟦s⟧, "⟦font⟧" ↦ "⟦fo⟧"›☾
-            ƒ(font, font≔fo)
-        ⸘fo.exists:
-            ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
-     shutil.copy(font, fold / ‹99_⟦name⟧›)
+enabled_stages = [        NERDFONT ∧ "Nerd",
+                    CUSTOM_SYMBOLS ∧ "CustomSymbols",
+                   PROCEDUAL_CHARS ∧ "ProcedualChars" ]
+¿CHECK_REPOS:
+    ‹sh ShellScripts/cloneRepos.sh›⍭⥉𝐑
+¿GENERATE_XCOMPOSE:
+    𝑟.set_compose(f ≔ fold / ‹.XCompose›)
+    ⓦ(open(‹.SCRIPT_MAP›, ␛w),
+          󰲡x.write←𝗻.join←𝑟.script_map)
+    ¿COPY_OUT_XCOMPOSE:
+        cp(f, COPY_OUT_XCOMPOSE)
+¿CODE_STYLE_CONFIG:
+    𝑟.set_codium(PATH_CODE_CONFIG)
 
-¿__name__≡"__main__":
-    fold = ‹Output›⥉𝐩→.resolve
-    cfac = 󰲡config_font_and_compose(enabled_stages=x⍭, fold=fold)
-    match sys.argv🃌>1∧sys.argv₁∨(fold.glob∘"*Nerd*"⥉𝑙→∧"medium"∨"full"):
-        case "compose": cfac←‹Compose›
-        case  "medium": cfac←‹CustomSymbols Compose Multisupersubscriptified›
-        case    "full": cfac←‹Nerd CustomSymbols Compose Multisupersubscriptified›
+cp(font ≔ 𝐩(‹JuliaMono/JuliaMono-Regular.ttf›).resolve,
+   font ≔ fold / name ≔ font.name)
+
+∀s,ƒ∈stages.items:
+    ¿hasattr(ƒ, "no_font"):
+        ƒ
+        ↺
+    fo = fold / ‹⟦font.stem⟧_⟦s⟧⟦font.suffix⟧›
+    ¿s∈enabled_stages:
+        ‹Running stage ⟦s⟧, "⟦font⟧" ↦ "⟦fo⟧"›☾
+        ƒ(font, font≔fo)
+    ⸘fo.exists:
+        ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
+cp(font, font ≔ fold / ‹99_⟦name⟧›)
+¿COPY_OUT_FONT: cp(font, COPY_OUT_FONT)
+
+ ¿__name__≡"__main__":
+     fold = ‹Output›⥉𝐩→.resolve
+     cfac = 󰲡config_font_and_compose(enabled_stages=x⍭, fold=fold)
+     match sys.argv🃌>1∧sys.argv₁∨(fold.glob∘"*Nerd*"⥉𝑙→∧"medium"∨"full"):
+         case "compose": cfac←‹Compose›
+         case  "medium": cfac←‹CustomSymbols Compose Multisupersubscriptified›
+         case    "full": cfac←‹Nerd CustomSymbols Compose Multisupersubscriptified›

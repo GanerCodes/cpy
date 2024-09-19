@@ -1,11 +1,12 @@
- ««««««««««««««««««««««««««««««««« GENERAL »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
-
-VSCODE_CONF_PATH  = ‹~/.config/VSCodium/User/settings.json›
-APPLY_VSCODE_CONF = ✓
-GENERATE_XCOMPOSE = ✓
-GENERATE_FONT     = ✓
+PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
+COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
+COPY_OUT_FONT     = ‹/Configs/Fonts/99_JuliaMono-Regular.ttf›
 CHECK_REPOS       = ✓
- ACTIVE_STAGE_MODE = ‹full›  compose, medium, full
+CODE_STYLE_CONFIG = ✓
+GENERATE_XCOMPOSE = ✓
+NERDFONT          = ✓
+CUSTOM_SYMBOLS    = ✓
+PROCEDUAL_CHARS   = ✓
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
@@ -42,7 +43,7 @@ X𝕊⟶Χ ␠ _S⟶ϲ
     ⁅chain⟶󰿨⁆⁅generated𝕊by⟶⚙⁆⁅find⟶󰍉⁆⁅element⟶⁆⁅fix⟶⁆⁅metric𝕊⟶󰍒⁆
     ⁅matrix⟶󰘨⁆⁅tree⟶󱁕⁆⁅graph⟶󰡷⁆⁅family⟶󱘎⁆⁅derangement⟶⁆⁅set𝕊⟶󰬀⁆
     ⁅partition⟶󱇙⁆⁅relation⟶󰑇⁆⁅category⟶󰫰⁆⁅functor⟶◌⁆⁅morphism⟶⁆
-    ⁅id⟶󰻾⁆⁅ID⟶󰫶⁆⁅UFD⟶󰬂⁆⁅PID⟶󰫽⁆⁅ED⟶󰫲⁆⁅ICD⟶◌⁆⁅GCDD⟶◌⁆⁅DVR⟶⁆
+    ⁅id𝕊⟶󰻾⁆⁅ID⟶󰫶⁆⁅UFD⟶󰬂⁆⁅PID⟶󰫽⁆⁅ED⟶󰫲⁆⁅ICD⟶◌⁆⁅GCDD⟶◌⁆⁅DVR⟶⁆
     ⁅function⟶󰊕⁆⁅topological𝕊space⟶⁆⁅lattice⟶󱗿⁆⁅domain⟶󰫱⁆⁅form⟶◌⁆
     ⁅ideal⟶󱧡⁆⁅ijection⟶󰎑⁆⁅imorphism⟶󰉷⁆⁅transformation⟶◌⁆
     ⁅homomorphism⟶󰠩⁆⁅semiring⟶◌⁆⁅magma⟶◌⁆⁅monoid⟶◌⁆⁅semigroup⟶◌⁆
@@ -67,7 +68,8 @@ w⟦ ¡bold       b⟨@lngeek⟩ ⟨DPINK⟩     ⟶ 𝐚𝐛𝐜𝐝𝐞𝐟�
 ⟨GREEN⟩ ⟦
     ⁅W⟨ALPHA⟩ ⟶ ◌◌ƇƊ◌ҒႺ◌◌◌◌ꝈⱮ◌◌◌◌ⴽ𝖲Ƭ◌Ѵ◌◌◌◌⁆
     ⁅Wm⟶Ӎ⁆ ⁅w⟦fF⟧𝕊⟶ƒ󰊕⁆ ⟧
-wS⟦lP⟧⟶ℓ℘ ␠ ⟨PINK⟩wh⟦NBn⟧⟶ℵתℶ
+⟨LBLUE⟩ wS⟦lP⟧⟶ℓ℘
+⟨PINK⟩wh⟦NBn⟧⟶ℵתℶ
 
 ⟨DBLEEN⟩ ⟦
     ⁅0⟦ 3          ⟧ ⟶  ↉       ⁆
@@ -164,7 +166,7 @@ c⟦ ⁅ro⟶▢⁆⁅od⟶⁆
    ⁅ ⟦()[]{}⟧                  ⟶ ❴❵␛⁅␛⁆␛󰅁␛󰅂 ⁆
    ⁅ ⟦␛"^\⁅/⟦𝕊/⟧⁆⟧             ⟶ ᐦ⌃∖🟑֎      ⁆
    ⁅ ⟨alpha⟩𝕊 ⟶ 🃌⇥↺⠤↨⮌◌≾ᒍ◌➰ᴍ◌⩫☾◌↪ᔐ⍉◌◌◌◌⮂⥌  ⁆
-   ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶◌◌◌🜌🝇◌◌◌◌◌◌◌ᴙ󰆴◌◌◌◌◌𝚲  ⁆ ⟧
+   ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶◌◌◌🜌🝇◌◌◌◌◌◌◌ᴙ◌󰆴◌◌◌◌𝚲  ⁆ ⟧
 🟑
 ⟨LPINK⟩;⟦ ⁅ ⟦{}⟧ ⟶ "⎧⎪⎨⎩" "⎫⎪⎬⎭" ⁆
           ⁅ ⟦()⟧ ⟶ "⎛⎜⎝" "⎞⎟⎠"   ⁆
@@ -174,7 +176,8 @@ c⟦ ⁅ro⟶▢⁆⁅od⟶⁆
           ⁅ box  ⟶ "┌┬┐├┼┤└┴┘"   ⁆ ⟧
 
 ⟦+-⟧1⟶👍👎 ␠ ap⟨d4⟩⟶👆👇👈👉
-<⟦345678!⁅cat⁆⟧ ⟶ 🩷💕💞💘"❤️‍🔥"💖❣️😻
+<⟦345678␛!⁅cat⁆⟧ ⟶ 🩷💕💞💘"❤️‍🔥"💖"❣"😻
+
 (;⟶😉 ␠ :⟦ᐦ:⟧⟦()⟧⟶😕😊😞🙃
 heh⟶😏 ␠ cool⟶😎 ␠ blush⟶🤭 ␠ overjoy⟶🥹
 hmm⟶🤔 ␠ kiss⟶😚 ␠ chill⟶😌 ␠ muscle⟶💪
@@ -200,7 +203,7 @@ shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
 ¡ℭ ⦑c⦑00d5ff⦒            ⦒ •ᖵᖶ↪⮌↺⇥➰⮂⚇
 ¡ℭ ⦑c⦑6ec0a5⦒            ⦒ 󰋺ᗜńśᐦ
 ¡ℭ ⦑c⦑cff576⦒            ⦒ 󷹇⌾⎉󰂆†
-¡ℭ ⦑c⦑9646ff⦒            ⦒ ζᐹ󱠨
+¡ℭ ⦑c⦑9646ff⦒            ⦒ ζᐹ󱠨󰻾
 ¡ℭ ⦑c⦑b738da⦒            ⦒ ⴵ⭥⟷⬄ᒍ󰛔󰘬ᴙ↨⍭⤉⤈󷹄☾🃌⛶⍉⨳▢󰑁󰑅󰑃󰸵󰸷ᣆ
 ¡ℭ ⦑c⦑e0f⦒               ⦒ ⟥⟤´꜠ᵜ𐞑
 ¡ℭ ⦑c⦑0f0⦒               ⦒ ✓ⴳ
@@ -226,25 +229,15 @@ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789αβγδεζηθϑ
 
 SCRIPT_DEPTH = 2
 
-󰋺("process.☾", ⠤"process load_font save_font 𝐩 𝐫"⍭)
-r = process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH)
-¿APPLY_VSCODE_CONF: r.set_codium(VSCODE_CONF_PATH)
-¿GENERATE_XCOMPOSE: r.set_compose(‹Output/.XCompose›)
-¿GENERATE_FONT:
-    𝒻 = load_font(𝐩∘"Output/JuliaMono-Regular_Nerd_CustomSymbols.ttf")
-    r.add_glyphs(𝒻)
-    save_font(𝒻, 𝐩∘"Output/99_JuliaMono-Regular.ttf")
-ⓦ(open(‹.SCRIPT_MAP›, ␛w), 󰲡x.write←𝗻.join←r.script_map)
+¿ __name__ ≡ "__main__": 󰋺("generate")
 
-¿GENERATE_XCOMPOSE:
-    𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
-    𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
-¿GENERATE_FONT:
-    𝐫( ‹./ShellScripts/link_font.sh›                          ,shell=✓)
-
+ ¿GENERATE_XCOMPOSE:
+     𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
+     𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
+ ¿GENERATE_FONT:
+     𝐫( ‹./ShellScripts/link_font.sh›                          ,shell=✓)
  𝐫( ‹xrdb "/Configs/X11_Configs/.Xresources"›              ,shell=✓)
  𝐫( ‹xset r rate 250 60›                                   ,shell=✓)
  𝐫( ‹xmodmap "/Configs/X11_Configs/.Xmodmap"›              ,shell=✓)
  𝐫( ‹xmodmap -e "keycode 134 = Multi_key"›                 ,shell=✓)
-
  maybe add a thing that disallows base symmap keys from generating even if inside the compose so we can style em?

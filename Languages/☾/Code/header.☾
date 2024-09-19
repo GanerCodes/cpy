@@ -2,6 +2,7 @@
  󰤱 make ⨳ take a error handler arg
  󰤱 try OPERATOR except
  󰤱 better star f
+ 𝍱 = ½π = ½τ
 
  10⭥ ᗒ⌃2+⟞   ⟶   10⭥ᴍ¹⥌⟞↦⟞⌃2+⟞
    5 ᗌ⌃2+⟞   ⟶     5ᴍ⁰⥌⟞↦⟞⌃2+⟞
@@ -288,8 +289,8 @@ is_iter = 󰲡hasattr(x,"__iter__")
             ➰i+=1:
                 G = sys._getframe(i).f_globals
                 ¿G["__file__"]≠__file__: ⇥
-            G[PEV(␛𝐩)] = 𝐩
-            G[PEV(␛𝐫)] = 𝐫
+            G[PEV←␛𝐩] = 𝐩
+            G[PEV←␛𝐫] = 𝐫
             G[h≔PEV("𝐩𝐝")] = 𝚲G["__file__"] ⥉𝐩→.parent
             G["subprocess"] = subprocess
             G["os"], G["sys"], G["shutil"] = os, sys, shutil

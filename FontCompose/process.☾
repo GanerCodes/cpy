@@ -264,11 +264,16 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     ∀m∈MULTICHARS.strip⍭:
         k = char(m, "mul")₂
         resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
+    
+    seen = 𝑠
     ∀_∈SCRIPT_DEPTH⭥:
-        ∀m,moder ∈ 𝑙(res.keys) ⨉ ‹sub sup›⍭:
-            ¿m🃌>1: ↺  󰤱
-            k = char(m, moder)₂
-            resₖ = ℵ(T=moder, ⭡=[m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
+        ∀m ∈ 𝑙(res.keys):
+            ¿m∈seen: ↺
+            ∀moder ∈ ‹sub sup›⍭:
+                ¿m🃌>1: ↺  󰤱
+                k = char(m, moder)₂
+                resₖ = ℵ(T=moder, ⭡=[m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
+            seen.add(m)
     
     𝐆 = []   
     𝔔 = res.keys󰈲󰲡resₓ.get("needs_gen")
@@ -290,8 +295,10 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[␛ᴍ]]
         ¡:
             parent = ⭡₀
-            ¿¬already_script(parent.out, 𝑒ᵀ₋₁):  󰤱 make it overwrite the target for consistancy?
-                𝐆.append( [add_script, (⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁, "NO_SCALE"∉resᵣ.get("style", {}))] )
+            ¿¬already_script(parent.out, 𝑒ᵀ₋₁):  󰤱 overwrite target?
+                𝐆.append( [add_script, (
+                    ⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁,
+                    ⭡₀ᵀ∈‹sub sup›⍭ ∨ "NO_SCALE"∉resᵣ.get("style", {}))] )
             style = parent.get("style", {})
             𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
         
