@@ -11,7 +11,7 @@
     
     ¿c≡␛u: ↪ƒ ← 𝕩.upper
     ¿c≡␛l: ↪ƒ ← 𝕩.lower
-    ¿c≡␛r: ↪ƒ ← 𝕩﹕﹕₋₁ 
+    ¿c≡␛r: ↪ƒ ← 𝕩ᴙ
     ¿c≡␛f: ↪ƒ ← 𝕩.replace(𝗻, ᐦ)
     ¿c≡␛z: ↪ƒ ← 𝗻.join(𝕩.split∘𝗻 →⍉ ᴍ ᐦ.join)
     ¿c≡␛w: ↪ƒ ← Sˢᵘᵖ∘𝕩
