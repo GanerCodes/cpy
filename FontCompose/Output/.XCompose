@@ -7924,10 +7924,12 @@
 <Multi_key><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􋐮" # 0x10b42e
 <Multi_key><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􋐭" # 0x10b42d
 <Multi_key><Multi_key><w><s><G><space><w><s><a><space><w><s><l><space>:"􋐯" # 0x10b42f
+<Multi_key><Multi_key><w><s><L><space><w><s><o><space><w><s><g><space>:"􀰧" # 0x100c27
 <Multi_key><Multi_key><w><s><P><space><w><s><G><space><w><s><L><space>:"􋑊" # 0x10b44a
 <Multi_key><Multi_key><w><s><P><space><w><s><S><space><w><s><L><space>:"􋑋" # 0x10b44b
 <Multi_key><Multi_key><w><s><W><space><w><s><T><space><w><s><S><space>:"􋑏" # 0x10b44f
 <Multi_key><Multi_key><w><s><a><space><w><s><r><space><w><s><g><space>:"􋐹" # 0x10b439
+<Multi_key><Multi_key><w><s><c><space><w><s><i><space><w><s><s><space>:"􀰒" # 0x100c12
 <Multi_key><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space>:"􋐳" # 0x10b433
 <Multi_key><Multi_key><w><s><c><space><w><s><o><space><w><s><t><space>:"􋐷" # 0x10b437
 <Multi_key><Multi_key><w><s><c><space><w><s><o><space><w><s><v><space>:"􋑓" # 0x10b453
@@ -7944,6 +7946,7 @@
 <Multi_key><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􋐰" # 0x10b430
 <Multi_key><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􋑃" # 0x10b443
 <Multi_key><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􋑆" # 0x10b446
+<Multi_key><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􋑯" # 0x10b46f
 <Multi_key><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􋐻" # 0x10b43b
 <Multi_key><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􋐺" # 0x10b43a
 <Multi_key><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􋑉" # 0x10b449
@@ -8398,10 +8401,12 @@
 <Multi_key><slash><slash><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􋟬" # 0x10b7ec
 <Multi_key><slash><slash><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􋟪" # 0x10b7ea
 <Multi_key><slash><slash><Multi_key><w><s><G><space><w><s><a><space><w><s><l><space>:"􋟮" # 0x10b7ee
+<Multi_key><slash><slash><Multi_key><w><s><L><space><w><s><o><space><w><s><g><space>:"􀰬" # 0x100c2c
 <Multi_key><slash><slash><Multi_key><w><s><P><space><w><s><G><space><w><s><L><space>:"􋠤" # 0x10b824
 <Multi_key><slash><slash><Multi_key><w><s><P><space><w><s><S><space><w><s><L><space>:"􋠦" # 0x10b826
 <Multi_key><slash><slash><Multi_key><w><s><W><space><w><s><T><space><w><s><S><space>:"􋠮" # 0x10b82e
 <Multi_key><slash><slash><Multi_key><w><s><a><space><w><s><r><space><w><s><g><space>:"􋠂" # 0x10b802
+<Multi_key><slash><slash><Multi_key><w><s><c><space><w><s><i><space><w><s><s><space>:"􀰨" # 0x100c28
 <Multi_key><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space>:"􋟶" # 0x10b7f6
 <Multi_key><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><t><space>:"􋟾" # 0x10b7fe
 <Multi_key><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><v><space>:"􋠶" # 0x10b836
@@ -8418,6 +8423,7 @@
 <Multi_key><slash><slash><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􋟰" # 0x10b7f0
 <Multi_key><slash><slash><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􋠖" # 0x10b816
 <Multi_key><slash><slash><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􋠜" # 0x10b81c
+<Multi_key><slash><slash><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􀰪" # 0x100c2a
 <Multi_key><slash><slash><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􋠆" # 0x10b806
 <Multi_key><slash><slash><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􋠄" # 0x10b804
 <Multi_key><slash><slash><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􋠢" # 0x10b822
@@ -8523,10 +8529,12 @@
 <Multi_key><backslash><backslash><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􋟭" # 0x10b7ed
 <Multi_key><backslash><backslash><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􋟫" # 0x10b7eb
 <Multi_key><backslash><backslash><Multi_key><w><s><G><space><w><s><a><space><w><s><l><space>:"􋟯" # 0x10b7ef
+<Multi_key><backslash><backslash><Multi_key><w><s><L><space><w><s><o><space><w><s><g><space>:"􀰭" # 0x100c2d
 <Multi_key><backslash><backslash><Multi_key><w><s><P><space><w><s><G><space><w><s><L><space>:"􋠥" # 0x10b825
 <Multi_key><backslash><backslash><Multi_key><w><s><P><space><w><s><S><space><w><s><L><space>:"􋠧" # 0x10b827
 <Multi_key><backslash><backslash><Multi_key><w><s><W><space><w><s><T><space><w><s><S><space>:"􋠯" # 0x10b82f
 <Multi_key><backslash><backslash><Multi_key><w><s><a><space><w><s><r><space><w><s><g><space>:"􋠃" # 0x10b803
+<Multi_key><backslash><backslash><Multi_key><w><s><c><space><w><s><i><space><w><s><s><space>:"􀰩" # 0x100c29
 <Multi_key><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space>:"􋟷" # 0x10b7f7
 <Multi_key><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><t><space>:"􋟿" # 0x10b7ff
 <Multi_key><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><v><space>:"􋠷" # 0x10b837
@@ -8543,6 +8551,7 @@
 <Multi_key><backslash><backslash><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􋟱" # 0x10b7f1
 <Multi_key><backslash><backslash><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􋠗" # 0x10b817
 <Multi_key><backslash><backslash><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􋠝" # 0x10b81d
+<Multi_key><backslash><backslash><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􀰫" # 0x100c2b
 <Multi_key><backslash><backslash><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􋠇" # 0x10b807
 <Multi_key><backslash><backslash><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􋠅" # 0x10b805
 <Multi_key><backslash><backslash><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􋠣" # 0x10b823
@@ -8577,10 +8586,12 @@
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􌺮" # 0x10ceae
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􌺪" # 0x10ceaa
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><G><space><w><s><a><space><w><s><l><space>:"􌺲" # 0x10ceb2
+<Multi_key><slash><slash><slash><slash><Multi_key><w><s><L><space><w><s><o><space><w><s><g><space>:"􀰶" # 0x100c36
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><P><space><w><s><G><space><w><s><L><space>:"􌼞" # 0x10cf1e
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><P><space><w><s><S><space><w><s><L><space>:"􌼢" # 0x10cf22
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><W><space><w><s><T><space><w><s><S><space>:"􌼲" # 0x10cf32
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><a><space><w><s><r><space><w><s><g><space>:"􌻚" # 0x10ceda
+<Multi_key><slash><slash><slash><slash><Multi_key><w><s><c><space><w><s><i><space><w><s><s><space>:"􀰮" # 0x100c2e
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space>:"􌻂" # 0x10cec2
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><t><space>:"􌻒" # 0x10ced2
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><v><space>:"􌽂" # 0x10cf42
@@ -8597,6 +8608,7 @@
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􌺶" # 0x10ceb6
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􌼂" # 0x10cf02
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􌼎" # 0x10cf0e
+<Multi_key><slash><slash><slash><slash><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􀰲" # 0x100c32
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􌻢" # 0x10cee2
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􌻞" # 0x10cede
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􌼚" # 0x10cf1a
@@ -8640,10 +8652,12 @@
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􌺯" # 0x10ceaf
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􌺫" # 0x10ceab
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><G><space><w><s><a><space><w><s><l><space>:"􌺳" # 0x10ceb3
+<Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><L><space><w><s><o><space><w><s><g><space>:"􀰷" # 0x100c37
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><P><space><w><s><G><space><w><s><L><space>:"􌼟" # 0x10cf1f
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><P><space><w><s><S><space><w><s><L><space>:"􌼣" # 0x10cf23
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><W><space><w><s><T><space><w><s><S><space>:"􌼳" # 0x10cf33
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><a><space><w><s><r><space><w><s><g><space>:"􌻛" # 0x10cedb
+<Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><c><space><w><s><i><space><w><s><s><space>:"􀰯" # 0x100c2f
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space>:"􌻃" # 0x10cec3
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><t><space>:"􌻓" # 0x10ced3
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><c><space><w><s><o><space><w><s><v><space>:"􌽃" # 0x10cf43
@@ -8660,6 +8674,7 @@
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􌺷" # 0x10ceb7
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􌼃" # 0x10cf03
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􌼏" # 0x10cf0f
+<Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􀰳" # 0x100c33
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􌻣" # 0x10cee3
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􌻟" # 0x10cedf
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􌼛" # 0x10cf1b
@@ -8678,10 +8693,12 @@
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􌺰" # 0x10ceb0
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􌺬" # 0x10ceac
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><G><space><w><s><a><space><w><s><l><space>:"􌺴" # 0x10ceb4
+<Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><L><space><w><s><o><space><w><s><g><space>:"􀰸" # 0x100c38
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><P><space><w><s><G><space><w><s><L><space>:"􌼠" # 0x10cf20
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><P><space><w><s><S><space><w><s><L><space>:"􌼤" # 0x10cf24
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><W><space><w><s><T><space><w><s><S><space>:"􌼴" # 0x10cf34
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><a><space><w><s><r><space><w><s><g><space>:"􌻜" # 0x10cedc
+<Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><c><space><w><s><i><space><w><s><s><space>:"􀰰" # 0x100c30
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space>:"􌻄" # 0x10cec4
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><t><space>:"􌻔" # 0x10ced4
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><v><space>:"􌽄" # 0x10cf44
@@ -8698,6 +8715,7 @@
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􌺸" # 0x10ceb8
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􌼄" # 0x10cf04
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􌼐" # 0x10cf10
+<Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􀰴" # 0x100c34
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􌻤" # 0x10cee4
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􌻠" # 0x10cee0
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􌼜" # 0x10cf1c
@@ -8740,10 +8758,12 @@
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><A><space><w><s><u><space><w><s><t><space>:"􌺱" # 0x10ceb1
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><E><space><w><s><n><space><w><s><d><space>:"􌺭" # 0x10cead
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><G><space><w><s><a><space><w><s><l><space>:"􌺵" # 0x10ceb5
+<Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><L><space><w><s><o><space><w><s><g><space>:"􀰹" # 0x100c39
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><P><space><w><s><G><space><w><s><L><space>:"􌼡" # 0x10cf21
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><P><space><w><s><S><space><w><s><L><space>:"􌼥" # 0x10cf25
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><W><space><w><s><T><space><w><s><S><space>:"􌼵" # 0x10cf35
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><a><space><w><s><r><space><w><s><g><space>:"􌻝" # 0x10cedd
+<Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><c><space><w><s><i><space><w><s><s><space>:"􀰱" # 0x100c31
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space>:"􌻅" # 0x10cec5
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><t><space>:"􌻕" # 0x10ced5
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><c><space><w><s><o><space><w><s><v><space>:"􌽅" # 0x10cf45
@@ -8760,6 +8780,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><k><space><w><s><e><space><w><s><r><space>:"􌺹" # 0x10ceb9
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><l><space><w><s><c><space><w><s><m><space>:"􌼅" # 0x10cf05
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><l><space><w><s><i><space><w><s><m><space>:"􌼑" # 0x10cf11
+<Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><l><space><w><s><o><space><w><s><g><space>:"􀰵" # 0x100c35
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><m><space><w><s><a><space><w><s><x><space>:"􌻥" # 0x10cee5
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><m><space><w><s><i><space><w><s><n><space>:"􌻡" # 0x10cee1
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><m><space><w><s><o><space><w><s><d><space>:"􌼝" # 0x10cf1d
