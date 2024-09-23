@@ -70,14 +70,14 @@ X𝕊⟶Χ ␠ _S⟶ϲ
 ¡fat          wB⟨@letnum⟩ ⟨DORANGE⟩    ⟶ 󰫮󰫯󰫰󰫱󰫲󰫳󰫴󰫵󰫶󰫷󰫸󰫹󰫺󰫻󰫼󰫽󰫾󰫿󰬀󰬁󰬂󰬃󰬄󰬅󰬆󰬇◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌󰬹󰬺󰬻󰬼󰬽󰬾󰬿󰭀󰭁󰭂 
 ¡para         wp⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒  ⟶ ⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵🄐🄑🄒🄓🄔🄕🄖🄗🄘🄙🄚🄛🄜🄝🄞🄟🄠🄡🄢🄣🄤🄥🄦🄧🄨🄩◌⑴⑵⑶⑷⑸⑹⑺⑻⑼
 ¡circle       wc⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒  ⟶ ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ◌󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱
-¡box          Wb⟨@ALPHA⟩               ⟶ 🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉
-¡BOX          WB⟦⟨@ALPHA⟩⟨d4⟩⁅v⟦ws⟧⁆'⟧ ⟶ 󰬈󰬉󰬊󰬋󰬌󰬍󰬎󰬏󰬐󰬑󰬒󰬓󰬔󰬕󰬖󰬗󰬘󰬙󰬚󰬛󰬜󰬝󰬞󰬟󰬠󰬡⍐⍗⍇⍈⟎⟏⍞
-¡CIRCLE       WC⟨@ALPHA⟩               ⟶ 🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩
- ¡para        WP⟦⁅1⟦⟨@number⟩⟧⁆⁅20⁆⟧          ⟨YELLOW⟩⦑N⦒ ⟶ ⑽⑾⑿⒀⒁⒂⒃⒄⒅⒆⒇
- ¡mocircnums  WC⟦⟨@number⟩⁅1⟦⟨@number⟩⟧⁆⁅20⁆⟧ ⟨YELLOW⟩⦑N⦒ ⟶ ⓪①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
-¡michealwhy    ⟨@number⟩.                                 ⟶ ◌⒈⒉⒊⒋⒌⒍⒎⒏⒐
-¡recycleaing ⟦ ⁅ ⁅rrr⟦𝕊⟨@number⟩⟧⁆⟶♺◌♳♴♵♶♷♸♹◌◌ ⁆
-               ⁅ ᴍ⟦⁅WC⁆⁅wc⁆⟧r     ⟶♼♽             ⁆ ⟧
+¡CIRCLE       WC⟨@ALPHA⟩  ⟨ORANGE⟩⦑N⦒  ⟶ 🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩
+¡box ⟨REDPINK⟩Wb⟨@ALPHA⟩               ⟶ 🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉
+¡BOX ⟨REDPINK⟩WB⟦⟨@ALPHA⟩⟨d4⟩⁅v⟦ws⟧⁆'⟧ ⟶ 󰬈󰬉󰬊󰬋󰬌󰬍󰬎󰬏󰬐󰬑󰬒󰬓󰬔󰬕󰬖󰬗󰬘󰬙󰬚󰬛󰬜󰬝󰬞󰬟󰬠󰬡⍐⍗⍇⍈⟎⟏⍞
+¡para         WP⟦⁅1⟦⟨number⟩⟧⁆⁅20⁆⟧          ⟨YELLOW⟩⦑N⦒ ⟶ ⑽⑾⑿⒀⒁⒂⒃⒄⒅⒆⒇
+¡mocircnums   WC⟦⟨@number⟩⁅1⟦⟨number⟩⟧⁆⁅20⁆⟧ ⟨YELLOW⟩⦑N⦒ ⟶ ⓪①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
+¡michealwhy   ⟨@number⟩.                                 ⟶ ◌⒈⒉⒊⒋⒌⒍⒎⒏⒐
+¡recycleaing  ⟦⁅rrr⟦𝕊⟨@number⟩⟧⁆⁅ᴍ⟦⁅WC⁆⁅wc⁆⟧r⁆⟧
+              ⟶     ♺ ◌♳♴♵♶♷♸♹◌◌     ♼   ♽
 ⟨GREEN⟩ ⟦
     ⁅W⟨ALPHA⟩𝕊 ⟶ ◌◌ƇƊ◌ҒႺ◌◌◌◌ꝈⱮ◌◌◌◌ⴽ𝖲Ƭ◌Ѵ◌◌◌◌⁆
     ⁅Wm𝕊⟶Ӎ⁆ ⁅w⟦fF⟧𝕊⟶ƒ󰊕⁆ ⟧
@@ -224,14 +224,14 @@ hmm⟶🤔 ␠ kiss⟶😚 ␠ chill⟶😌 ␠ muscle⟶💪
 hot⟶🥵 ␠ love⟶🥰 ␠ heyes⟶😍 ␠ imdead⟶💀
 joy⟶😂 ␠ need⟶🤤 ␠ hkiss⟶😘 ␠ praise⟶🙌
 lol⟶😆 ␠ rofl⟶🤣 ␠ shock⟶😳 ␠ pray⟶🙏
-mad⟶😤 ␠ eye𝕊⟶👁️ ␠ cheer⟶🎉 ␠ fist⟶✊
-yum⟶😋 ␠ eyes⟶👀 ␠ spark⟶✨  ␠ dino⟶󱍢
-hug⟶🫂 ␠ wave⟶👋 ␠ peace⟶✌  ␠ fire⟶󱐚
+mad⟶😤 ␠ eye𝕊⟶👁️ ␠ cheer⟶🎉 ␠ wheel⟶✇
+yum⟶😋 ␠ eyes⟶👀 ␠ spark⟶✨  ␠ heart⟶♡
+hug⟶🫂 ␠ wave⟶👋 ␠ peace⟶✌  ␠ piece⟶☮
 lit⟶🔥 ␠ clap⟶👏 ␠ write⟶✍  ␠ spin⟶߷
-sob⟶😭 ␠   ok⟶👌 ␠ gear⟶   ␠ piece⟶☮
+sob⟶😭 ␠   ok⟶👌 ␠ gear⟶   ␠ fire⟶󱐚
 
-snowman⟶☃ ␠ wheel⟶✇
-pirate⟶󰨈 ␠ dagger⟶† ␠ heart⟶♡ ␠ ostar⟶⍟
+snowman⟶☃ ␠ fist⟶✊ ␠ dino⟶󱍢
+pirate⟶󰨈 ␠ dagger⟶† ␠ ostar⟶⍟
 CM⟶⚇ ␠ 0x⟶󱊧 ␠ OX⟶☠
 weed⟦𝕊/⟧⟶󰞦󱙮
 
