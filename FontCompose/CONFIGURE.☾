@@ -1,6 +1,6 @@
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ‹/Configs/Fonts/99_JuliaMono-Regular.ttf›
+COPY_OUT_FONT     = ✗  ‹/Configs/Fonts/99_JuliaMono-Regular.ttf›
 CHECK_REPOS       = ✓
 CODE_STYLE_CONFIG = ✓
 GENERATE_XCOMPOSE = ✓
@@ -20,6 +20,7 @@ DAT = ␛
 ¡DRED    ⦑c⦑b56⦒⦒    ␠ ¡PURPLE ⦑c⦑d900ff⦒⦒
 ¡BLUE    ⦑c⦑67f⦒⦒    ␠ ¡DPINK  ⦑c⦑dd88c0⦒⦒
 ¡DORANGE ⦑c⦑c6b835⦒⦒ ␠ ¡LPINK  ⦑c⦑eeccee⦒⦒
+¡LBLURP  ⦑c⦑6d60fc⦒⦒
 
 ¡d4⟦wsad⟧ ␠ ¡c4⟦qezc⟧ ␠ ¡d8⟦wsadqezc⟧
 ¡D4⟦WSAD⟧ ␠ ¡C4⟦QEZC⟧ ␠ ¡D8⟦WSADQEZC⟧
@@ -58,26 +59,25 @@ X𝕊⟶Χ ␠ _S⟶ϲ
  micheal's mathematical monikers
 ¡MMM ⟨DORANGE⟩ ⟦ ⁅algebra⟶󰫮⁆⁅graph⟶󰡷⁆⁅holds⟶✓⁆⁅generated𝕊by⟶⚙⁆⁅ID⟶󰫶⁆⁅metricm⟶󰣰⁆⁅basis⟶󰨥⁆⁅topology⟶󰬁⁆⁅VS⟶󰬃⁆⁅ideal⟶󱧡⁆⁅point⟶⁆⁅vector𝕊⟶󰬃⁆⁅module⟶󰫺⁆⁅polynomial⟶󰡱⁆⁅path⟶󰉽⁆⁅vector𝕊space⟶󰬃⁆⁅ED⟶󰫲⁆⁅ieal⟶󱧡⁆⁅MS⟶󰍒⁆⁅topological𝕊space⟶⁆⁅edge⟶󰝊⁆⁅object⟶▢⁆⁅scalar⟶ᾇ⁆⁅domain⟶󰫱⁆⁅node⟶⁆⁅chain⟶󰿨⁆⁅line⟶󰕞⁆⁅surjection⟶󰚥⁆⁅vector⟶⁆⁅lattice⟶󱗿⁆⁅morphism⟶⁆⁅manifold⟶⁆⁅imorphism⟶󰉷⁆⁅fix⟶⁆⁅space⟶󱁐⁆⁅topological𝕊⟶⁆⁅DVR⟶⁆⁅homomorphism⟶󰠩⁆⁅find⟶󰍉⁆⁅ijection⟶󰎑⁆⁅form⟶␌⁆⁅gen𝕊by⟶⚙⁆⁅id𝕊⟶󰻾⁆⁅loop⟶➰⁆⁅element⟶⁆⁅functor⟶󱨹⁆⁅salgebra⟶󰊰⁆⁅tree⟶󱁕⁆⁅transformation⟶󰊄⁆⁅vectorv⟶⁆⁅UFD⟶󰬂⁆⁅relation⟶󰑇⁆⁅neighborhood⟶󰷔⁆⁅derangement⟶⁆⁅function⟶󰊕⁆⁅group⟶󰫴⁆⁅tensor⟶󰗴⁆⁅set𝕊⟶󰬀⁆⁅TS⟶⁆⁅category⟶󰫰⁆⁅partition⟶󱇙⁆⁅metric𝕊⟶󰍒⁆⁅example⟶⁆⁅family⟶󱘎⁆⁅measure⟶󰑭⁆⁅field⟶󰫳⁆⁅fix⟶⁆⁅ring⟶󰫿⁆⁅PID⟶󰫽⁆ ⟧
 
-¡dstruk q⟨@letnum⟩ ⟨REDPINK⟩ ⟶ 𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡
-w⟦ ¡bold       b⟨@lngeek⟩ ⟨DPINK⟩     ⟶ 𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗𝞁𝝝𝝷𝞋𝝰𝝱𝝳𝝯𝞉𝝙𝝴𝝶𝞅𝝫𝞍𝝸𝝹𝝺𝝻𝝿𝞇𝝥𝝭𝞀𝞂𝝨𝞃𝞄𝝼𝞈𝝮𝝣𝞆𝝲𝝘𝝵𝝽
-   ¡ital       i⟨@lngeek⟩ ⟨ORANGE⟩    ⟶ 𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍◌◌◌◌◌◌◌◌◌◌𝝇𝜣𝜽𝝑𝜶𝜷𝜹𝜵𝝏𝜟𝜺𝜼𝝋𝜱𝝓𝜾𝜿𝝀𝝁𝝅𝝍𝜫𝜳𝝆𝝈𝜮𝝉𝝊𝝂𝝎𝜴𝜩𝝌𝜸𝜞𝜻𝝃
-   ¡math,bold  s⟨@letnum⟩ ⟨DBLUE⟩     ⟶ 𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵
-   ¡frak       f⟨@letnum⟩ ⟨RED⟩       ⟶ 𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ◌◌◌◌◌◌◌◌◌◌
-   ¡frak,bold  F⟨@letnum⟩ ⟨RED⟩       ⟶ 𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅◌◌◌◌◌◌◌◌◌◌
-   ¡mathscript m⟨@letnum⟩ ⟨LBLUE⟩     ⟶ 𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵◌◌◌◌◌◌◌◌◌◌
-   ¡para       p⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒ ⟶ ⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵🄐🄑🄒🄓🄔🄕🄖🄗🄘🄙🄚🄛🄜🄝🄞🄟🄠🄡🄢🄣🄤🄥🄦🄧🄨🄩◌⑴⑵⑶⑷⑸⑹⑺⑻⑼
-   ¡circle     c⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒ ⟶ ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ◌󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱
-   ¡para       c⟦⁅1⟦⟨@number⟩⟧⁆⁅20⁆⟧ ⟨YELLOW⟩⦑N⦒ ⟶ ⑽⑾⑿⒀⒁⒂⒃⒄⒅⒆⒇
-   ¡mocircnums C⟦⟨@number⟩⁅1⟦⟨@number⟩⟧⁆⁅20⁆⟧ ⟨YELLOW⟩⦑N⦒ ⟶ ⓪①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳ ⟧
-¡mathscript,bold ms⟨@letter⟩              ⟶ 𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩
-¡fat             wB⟦⟨@ALPHA⟩⟨@number⟩⟧    ⟶ 󰫮󰫯󰫰󰫱󰫲󰫳󰫴󰫵󰫶󰫷󰫸󰫹󰫺󰫻󰫼󰫽󰫾󰫿󰬀󰬁󰬂󰬃󰬄󰬅󰬆󰬇󰬹󰬺󰬻󰬼󰬽󰬾󰬿󰭀󰭁󰭂
-¡box             Wb⟨@ALPHA⟩               ⟶ 🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉
-¡BOX             WB⟦⟨@ALPHA⟩⟨d4⟩⁅v⟦ws⟧⁆'⟧ ⟶ 󰬈󰬉󰬊󰬋󰬌󰬍󰬎󰬏󰬐󰬑󰬒󰬓󰬔󰬕󰬖󰬗󰬘󰬙󰬚󰬛󰬜󰬝󰬞󰬟󰬠󰬡⍐⍗⍇⍈⟎⟏⍞
-¡CIRCLE          WC⟨@ALPHA⟩               ⟶ 🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩
-¡michealwhy        ⟨@number⟩.             ⟶ ◌⒈⒉⒊⒋⒌⒍⒎⒏⒐
-¡recycleaing ⟦ ⁅ ⁅rrr⟨@number⟩⁆⟶◌♳♴♵♶♷♸♹◌◌ ⁆
-               ⁅ ᴍ⟦⁅WC⁆⁅wc⁆⟧r  ⟶♼♽         ⁆
-               ⁅ rrr𝕊          ⟶♺          ⁆ ⟧
+¡dstruk        q⟨@letnum⟩ ⟨REDPINK⟩    ⟶ 𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡
+¡bold         wb⟨@lngeek⟩ ⟨DPINK⟩      ⟶ 𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗𝞁𝝝𝝷𝞋𝝰𝝱𝝳𝝯𝞉𝝙𝝴𝝶𝞅𝝫𝞍𝝸𝝹𝝺𝝻𝝿𝞇𝝥𝝭𝞀𝞂𝝨𝞃𝞄𝝼𝞈𝝮𝝣𝞆𝝲𝝘𝝵𝝽
+¡ital         wi⟨@lngeek⟩ ⟨ORANGE⟩     ⟶ 𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍◌◌◌◌◌◌◌◌◌◌𝝇𝜣𝜽𝝑𝜶𝜷𝜹𝜵𝝏𝜟𝜺𝜼𝝋𝜱𝝓𝜾𝜿𝝀𝝁𝝅𝝍𝜫𝜳𝝆𝝈𝜮𝝉𝝊𝝂𝝎𝜴𝜩𝝌𝜸𝜞𝜻𝝃
+¡math,bold    ws⟨@letnum⟩ ⟨DBLUE⟩      ⟶ 𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵
+¡frak         wf⟨@letnum⟩ ⟨RED⟩        ⟶ 𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ◌◌◌◌◌◌◌◌◌◌
+¡frak,bold    wF⟨@letnum⟩ ⟨RED⟩        ⟶ 𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅◌◌◌◌◌◌◌◌◌◌
+¡mscript      wm⟨@letnum⟩ ⟨LBLUE⟩      ⟶ 𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵◌◌◌◌◌◌◌◌◌◌
+¡mscript,bold ms⟨@letnum⟩ ⟨LBLURP⟩     ⟶ 𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩◌◌◌◌◌◌◌◌◌◌
+¡fat          wB⟨@letnum⟩ ⟨DORANGE⟩    ⟶ 󰫮󰫯󰫰󰫱󰫲󰫳󰫴󰫵󰫶󰫷󰫸󰫹󰫺󰫻󰫼󰫽󰫾󰫿󰬀󰬁󰬂󰬃󰬄󰬅󰬆󰬇◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌󰬹󰬺󰬻󰬼󰬽󰬾󰬿󰭀󰭁󰭂 
+¡para         wp⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒  ⟶ ⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵🄐🄑🄒🄓🄔🄕🄖🄗🄘🄙🄚🄛🄜🄝🄞🄟🄠🄡🄢🄣🄤🄥🄦🄧🄨🄩◌⑴⑵⑶⑷⑸⑹⑺⑻⑼
+¡circle       wc⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒  ⟶ ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ◌󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱
+¡box          Wb⟨@ALPHA⟩               ⟶ 🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉
+¡BOX          WB⟦⟨@ALPHA⟩⟨d4⟩⁅v⟦ws⟧⁆'⟧ ⟶ 󰬈󰬉󰬊󰬋󰬌󰬍󰬎󰬏󰬐󰬑󰬒󰬓󰬔󰬕󰬖󰬗󰬘󰬙󰬚󰬛󰬜󰬝󰬞󰬟󰬠󰬡⍐⍗⍇⍈⟎⟏⍞
+¡CIRCLE       WC⟨@ALPHA⟩               ⟶ 🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩
+ ¡para        WP⟦⁅1⟦⟨@number⟩⟧⁆⁅20⁆⟧          ⟨YELLOW⟩⦑N⦒ ⟶ ⑽⑾⑿⒀⒁⒂⒃⒄⒅⒆⒇
+ ¡mocircnums  WC⟦⟨@number⟩⁅1⟦⟨@number⟩⟧⁆⁅20⁆⟧ ⟨YELLOW⟩⦑N⦒ ⟶ ⓪①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
+¡michealwhy    ⟨@number⟩.                                 ⟶ ◌⒈⒉⒊⒋⒌⒍⒎⒏⒐
+¡recycleaing ⟦ ⁅ ⁅rrr⟦𝕊⟨@number⟩⟧⁆⟶♺◌♳♴♵♶♷♸♹◌◌ ⁆
+               ⁅ ᴍ⟦⁅WC⁆⁅wc⁆⟧r     ⟶♼♽             ⁆ ⟧
 ⟨GREEN⟩ ⟦
     ⁅W⟨ALPHA⟩𝕊 ⟶ ◌◌ƇƊ◌ҒႺ◌◌◌◌ꝈⱮ◌◌◌◌ⴽ𝖲Ƭ◌Ѵ◌◌◌◌⁆
     ⁅Wm𝕊⟶Ӎ⁆ ⁅w⟦fF⟧𝕊⟶ƒ󰊕⁆ ⟧

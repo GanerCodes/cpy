@@ -63,7 +63,6 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
 
 ⊢ supermcdoublerecursivecomposeoutputstyleparsemachine(
         n, pre=□, mac=□, res=□):
-    n☾
     mac, pre, res = {}¿mac≅□¡mac, []¿pre≅□¡pre, []¿res≅□¡res
     𝕤 = 𝚲supermcdoublerecursivecomposeoutputstyleparsemachine(⠤𝔸,mac=mac,res=res)
     ¿nᵗ≡"main":
