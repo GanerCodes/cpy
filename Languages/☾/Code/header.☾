@@ -13,12 +13,13 @@
  🡸🡺
  󰩀󱈲󰙨⹔ 󰘟 󰑂 󰑅 󰑄 󱗘 󱕛     
 
+
 exec('from math import *')
 󰆴 factorial, e, pi, tau, sqrt, cbrt
 𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = object, dict, bool, list, tuple, set, str, int, float
 ⮌ py_naming_tools ⨡ py_escape_var as PEV
 ⮌ functools ⨡ reduce
-⮌ itertools ⨡ starmap, filterfalse, product, accumulate
+⮌ itertools ⨡ starmap, filterfalse, product, accumulate, zip_longest
 
 LITERAL_OPS_ = {
     ␛∧: 󰲣x∧y, ␛∨: 󰲣x∨y,
@@ -41,7 +42,7 @@ OP_LNULL_ = ƒ↦󰲡ƒ(␀,x,⠤𝔸,⠶𝕂) # ⟥
 OP_RNULL_ = ƒ↦󰲡ƒ(x,␀,⠤𝔸,⠶𝕂) # ⟤
 OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 ␀ = NULL = 𝑜()
-✓,✗ = ⴳ,ⴴ = 𝕋,𝔽 = True, False
+✓,✗ = 𝕋,𝔽 = True, False
 𝒞ℳ, 𝒮ℳ, 𝗙 = classmethod, staticmethod, callable
 ᗜ = □ = None
 π = 3.14159265358979323
@@ -58,6 +59,23 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 
 𝕝, 𝕣 = 󰲡[⠤𝔸]¿x≅␀¡[x], 󰲡x󰈲󰲡x≇␀
 is_iter = 󰲡hasattr(x,"__iter__")
+⬤ = 𝑜()
+⊢ ´(ƒ):
+    ⊢ 𝒻(⠤𝓐,⠶𝓚):
+        ⊢ 𝑓(⠤𝔸,⠶𝕂):
+            nonlocal 𝓐, 𝓚
+            𝓐, 𝔸 = 𝑙(𝓐), 𝑙(𝔸)
+            𝓚 = 𝑙(𝓚.items())
+            a, k = [], {}
+            ➰𝓐:
+                x = 𝓐.pop(0)
+                a.append(𝔸.pop(0) ¿x≡⬤¡ x)
+            ➰𝓚:
+                x, y = 𝓚.pop(0)
+                kₓ = 𝔸.pop(0) ¿y≡⬤¡ y
+            ↪ ƒ(⠤a+𝔸,⠶k|𝕂)
+        ↪ 𝑓
+    ↪ 𝒻
 
 Ω ⴳ(𝑖):
     __new__ = ℂ↦𝑖.__new__(ℂ,1)
