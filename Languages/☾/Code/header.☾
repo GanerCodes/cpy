@@ -1,4 +1,4 @@
- 󰤱 add tests for Ϝᙎᙡᗢᙧᣆ󰑅󰑁󰑃
+ 󰤱 add tests/docs for Ϝᙎᙡᗢᙧᣆ󰑅󰑁󰑃ℵℶ
  󰤱 make ⨳ take a error handler arg
  󰤱 try OPERATOR except
  󰤱 better star f
@@ -267,29 +267,36 @@ is_iter = 󰲡hasattr(x,"__iter__")
         𝐀.append∘𝐚
         ↪ ⓦ(⠤𝔸, ƒ, 𝐀=𝐀)
 
- this is weird, we don't needs 2 classes
+ all this be weird
 Ω ℵ´(𝑑):
+    𝐶𝑛 = ␛ℵ
     __init__ = 𝕊↦super().__init__(⠤𝔸,⠶𝕂)
     __setattr__ = 𝑑.__setitem__
     __getitem__ = ⥌𝕊,x↦𝑑.__getitem__(𝕊,x) ¿x∈𝕊¡ 𝕊.getdef()
     __getattr__ = __getitem__
     __iter__ = 𝕊↦iter(𝕊.items())
-    __repr__ = 𝕊↦‹ℵ⟦‹[⟦h₀⟧]›¿0∈(h≔𝕊.__dict__)¡ᐦ⟧(⟦␛,𝘀→.join←𝕊ꟿ󰲣‹⟦x⟧=⟦y⟧›⟧)›
+    __repr__ = 𝕊↦‹⟦𝕊.__class__.𝐶𝑛⟧⟦‹[⟦h₀⟧]›¿0∈(h≔𝕊.__dict__)¡ᐦ⟧(⟦␛,𝘀→.join←𝕊.itemsꟿ󰲣‹⟦x⟧=⟦y⟧›⟧)›
     __call__ = 𝕊↦𝑑.update(𝕊,⠤𝔸,⠶𝕂)►𝕊
     __or__   = ⥌𝕊,x↦𝕊.copy()(x)
     hasdef = ⥌𝕊↦0∈𝕊.__dict__
     getdef = ⥌𝕊↦𝕊.__dict__₀
     setdef = ⥌𝕊,x↦𝕊.__dict__₀≔x→►𝕊
     ⊢ copy(𝕊):
-        r = ℵ´(super().copy())
+        r = type(𝕊)(super().copy())
         ¿𝕊.hasdef(): r.setdef(𝕊.getdef())
         ↪ r
-Ω ℵ´(ℶ≔ℵ´):
-    __getitem__ = ⥌𝕊,x↦ℶ().setdef(x)
-    __call__ = 𝕊↦ℶ(⠤𝔸,⠶𝕂)
-    __or__   = ⥌𝕊,x↦ℶ()|x
-    __repr__ = 𝚲"ℵ()"
-ℵ´ = ℵ´()
+Ω ℶ(ℵ´):
+    𝐶𝑛 = ␛ℶ
+    __iter__ = 𝕊↦iter(𝕊.values())
+Ω _hwrap:
+    ⊢ __init__(𝕊, 𝑐):
+        𝕊􋇑, 𝕊􋇛 = 𝑐, 𝑐􋆷􋇛
+    __getitem__ = ⥌𝕊,x↦𝕊􋇑().setdef(x)
+    __call__ = 𝕊↦𝕊􋇑(⠤𝔸,⠶𝕂)
+    __or__   = ⥌𝕊,x↦𝕊􋇑()|x
+    __repr__ = 𝕊↦‹⟦𝕊􋇛⟧()›
+ℵ´ = _hwrap(ℵ´)
+ℶ  = _hwrap(ℶ )
 
 Ω nosee(𝑠):
     __init__ = 𝕊↦super().__init__() ► 𝔸∧(𝔸₀ᴍ𝕊.add) →►□
@@ -342,10 +349,13 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ↪ m
 
 ֎ 
-$  returncode
-$ᴼ stdout
-$ᴱ stderr
-$ᴾ popen
+$ᴿ􌥡ᴼ􌥡ᴱ􌥡ᴾ􌥡 returncode/out/err/   󷹹
+    󷹇 default is returncode
+    󷹇 ℶ vals, order preserved
+    󷹇 single option gives just value
+    󷹇 P gives popen proxy; running it, iter it, or attr getting does .wait
+
+SUBPROCA()
 ֎
 
  dot = 𝚲𝔸⍉ᴍΠ´Σ
