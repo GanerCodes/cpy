@@ -146,7 +146,7 @@ vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
 gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ number ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
 number = ƨ(~‹\.[0-9]+|0[obOB][0-9]+|0[xX][0-9a-fA-F]+|[0-9]+e[0-9]+|[0-9]+(\.([0-9]+))?›)
-var = ƨ(¬W ¬oper ¬var_spec ¬script ¬"󰦥󰦥󰦥󰦥󰦥" ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰅂"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
+var = ƨ(¬W ¬oper ¬var_spec ¬script ¬"󰦥󰦥󰦥󰦥󰦥" ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰅂$"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
 
@@ -167,9 +167,12 @@ lamb = (
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ⠶((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 
-str = str_star ∨ str_cpy ∨ str_py ∨ str_escape ∨ str_spec_char
+str$ = 󰆴"$" (󰆴w? ↷ (supscript ∨ ✓)) str_cpy_inner 󰆴"󷹹"
+
+str = str_star ∨ str_cpy ∨ str$ ∨ str_py ∨ str_escape ∨ str_spec_char
 str_star = (󰆴"󰦥󰦥󰦥󰦥󰦥") ~‹((?!(󰦥󰦥󰦥󰦥󰦥))(.|\n))*› 󰆴("󰦥󰦥󰦥󰦥󰦥" ∨ ✓)
-str_cpy = 󰆴'‹' (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)* 󰆴'›'
+str_cpy = 󰆴'‹' ⠶str_cpy_inner 󰆴'›'
+str_cpy_inner = (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)*
 str_sub = 󰆴'⟦' exprs 󰆴'⟧'
 str_spec_char = ~‹[𝗮-𝘇]›
 str_guts = ~"[^𝗮-𝘇⟦␛␛›]+"

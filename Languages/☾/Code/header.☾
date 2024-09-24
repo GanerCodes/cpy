@@ -341,4 +341,11 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ∀k∈𝑘ᴍPEV: Gₖ = mₖ
     ↪ m
 
+֎ 
+$  returncode
+$ᴼ stdout
+$ᴱ stderr
+$ᴾ popen
+֎
+
  dot = 𝚲𝔸⍉ᴍΠ´Σ
