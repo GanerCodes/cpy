@@ -94,6 +94,7 @@ we now have
 󰑁, 󰑃 : before, after
 ƒ  (a1,a2,⬤,j=22,h=⬤): partial function
 ƒ: automatically star a function's args
+(also 􊽺, which is cool for stuff like ≡)
 
 ᙎᙡᗢᙧ: windowz
 ᣆ: apply func if...
