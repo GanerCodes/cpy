@@ -98,3 +98,6 @@ we now have
 ᙎᙡᗢᙧ: windowz
 ᣆ: apply func if...
 $ᵒecho epic subprocess calls󷹹
+
+oh also everything has sub/sup/subsub/subsup/supsub/supsup scripts
+oh also font remaking thingy finished check out CONFIGURE.☾ in FontCompose
