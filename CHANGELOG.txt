@@ -87,3 +87,14 @@ we now have
     ⨳ 󰻾(22) ≡ 22
     ⨳ 󰻾¹⁴("hiii") ≡ 14
 
+Ϝ: accumulate
+ℵᵒᵖᵗⁱᵒⁿᵃˡ􋕟ᵈᵉᶠᵃᵘˡᵗ: attr dict (iter does .items)
+ℶᵒᵖᵗⁱᵒⁿᵃˡ􋕟ᵈᵉᶠᵃᵘˡᵗ: attr dict (iter does .values)
+󰑅, 󰑅ᴵ: first, first index of
+󰑁, 󰑃 : before, after
+ƒ  (a1,a2,⬤,j=22,h=⬤): partial function
+ƒ: automatically star a function's args
+
+ᙎᙡᗢᙧ: windowz
+ᣆ: apply func if...
+$ᵒecho epic subprocess calls󷹹
