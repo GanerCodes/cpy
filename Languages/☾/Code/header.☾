@@ -1,7 +1,7 @@
- 󰤱 add tests/docs for Ϝᙎᙡᗢᙧᣆ󰑅󰑁󰑃ℵℶ
+ 󰤱 add tests/docs for Ϝᙎᙡᗢᙧᣆ󰑅󰑁󰑃ℵℶ$/󷹹
  󰤱 make ⨳ take a error handler arg
  󰤱 try OPERATOR except
- 󰤱 better star f
+ 󰤱 better caching for peggle/cpy in general
  𝍱 = ½π = ½τ
 
  10⭥ ᗒ⌃2+⟞   ⟶   10⭥ᴍ¹⥌⟞↦⟞⌃2+⟞
@@ -11,7 +11,7 @@
  ᗏᗕ ᗒᗌ
  x ⭜ y ⭝ z
  🡸🡺
- 󰩀󱈲󰙨⹔ 󰘟 󰑂 󰑅 󰑄 󱗘 󱕛     
+ 󰩀󱈲󰙨⹔ 󰘟 󰑂 󰑅 󰑄 󱗘 󱕛   
 
 
 exec('from math import *')
@@ -288,10 +288,11 @@ is_iter = 󰲡hasattr(x,"__iter__")
 Ω ℶ(ℵ´):
     𝐶𝑛 = ␛ℶ
     __iter__ = 𝕊↦iter(𝕊.values())
-Ω _hwrap:
+Ω _hwrap(𝑑):
     ⊢ __init__(𝕊, 𝑐):
         𝕊􋇑, 𝕊􋇛 = 𝑐, 𝑐􋆷􋇛
     __getitem__ = ⥌𝕊,x↦𝕊􋇑().setdef(x)
+    __setitem__ = ⥌𝕊,x,y↦(⒯≔𝕊􋇑()).__setitem__(x,y) →►← ⒯
     __call__ = 𝕊↦𝕊􋇑(⠤𝔸,⠶𝕂)
     __or__   = ⥌𝕊,x↦𝕊􋇑()|x
     __repr__ = 𝕊↦‹⟦𝕊􋇛⟧()›
@@ -348,14 +349,48 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ∀k∈𝑘ᴍPEV: Gₖ = mₖ
     ↪ m
 
-֎ 
-$ᴿ􌥡ᴼ􌥡ᴱ􌥡ᴾ􌥡 returncode/out/err/   󷹹
-    󷹇 default is returncode
-    󷹇 ℶ vals, order preserved
-    󷹇 single option gives just value
-    󷹇 P gives popen proxy; running it, iter it, or attr getting does .wait
-
-SUBPROCA()
-֎
-
+ O/E/M/R = stdout/stderr/merged/returncode
+ B=binary output, S=shell
+ t = disable trailing newline strip (does nothing with B)
+⊢ SUBPROCA(cmd, 𝒶):
+    ⮌ subprocess ⨡ Popen as 𝐏, DEVNULL as NULL, PIPE, STDOUT
+    ¬(␛M∈𝒶 ∧ 𝒶∩"OE") ⨳ ‹Cannot use STDOUT/ERR and MERGE at once›
+    
+    K = ℵ
+    ¿𝓽≔␛t∈𝒶: 𝒶=𝒶∖␛tΣᐦ
+    ¿𝓑≔␛B∈𝒶: 𝒶=𝒶∖␛BΣᐦ
+    ¿𝓟≔␛P∈𝒶: 𝒶=𝒶∖␛PΣᐦ
+    
+    ¿¬𝒶: 𝒶 = ␛R
+    ¿␛S∈𝒶: Kˢʰᵉˡˡ = ✓
+    ¿␛M∈𝒶:
+        Kˢᵗᵈᵒᵘᵗ , Kˢᵗᵈᵉʳʳ = PIPE, STDOUT
+    ¡:
+        Kˢᵗᵈᵒᵘᵗ = Kˢᵗᵈᵉʳʳ = NULL
+        ¿␛O∈𝒶: Kˢᵗᵈᵒᵘᵗ = PIPE
+        ¿␛E∈𝒶: Kˢᵗᵈᵉʳʳ = PIPE
+    
+    ⊢ p_stream(x):
+        t = getattr(p,x).read
+        ¿𝓑: ↪t
+        t = t.decode("UTF8")
+        ↪ t ¿𝓽¡ t.removesuffix(𝗻)
+    ⊢ extract(p):
+        r = ℶ
+        ¿    𝒶∋v≔␛R: rᵥ=pʳᵉᵗᵘʳⁿᶜᵒᵈᵉ
+        ¿    𝒶∋v≔␛M: rᵥ=p_stream("stdout")
+        ¡:
+            ¿𝒶∋v≔␛O: rᵥ=p_stream("stdout")
+            ¿𝒶∋v≔␛E: rᵥ=p_stream("stderr")
+        ↪ r􊴸 ¿𝒶🃌≡1¡ r
+    Ω Popen_Proxy:
+        __slots__ = ␛p,
+        __init__ = ⥌𝕊,p↦𝕊ᵖ≔p →► □
+        __call__ = 𝕊↦𝕊ᵖ.wait →► extract(p)
+        __getitem__ = 𝕊↦𝕊→.__getitem__(⠤𝔸)
+        __getattr__ = 𝕊↦𝕊→.__getattr__(⠤𝔸)
+        __iter__    = 𝕊↦𝕊→.__iter__   (⠤𝔸)
+    
+    p = 𝐏(cmd⍭, ⠶K)  run = 𝐏(cmd⍭, ⠶K)
+    ↪ Popen_Proxy∘p ᣆ􊽬􋘥 
  dot = 𝚲𝔸⍉ᴍΠ´Σ
