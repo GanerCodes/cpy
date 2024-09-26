@@ -9,44 +9,56 @@ load_font = 󰲡shut(ℱℱ.open    , x.resolve ⥉ ᔐ)
 save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
 
 𝔯,𝔰,𝔱 = "𝔯𝔰𝔱"
-𝔗 = ⥌𝒻,ℊ,𝐭↦𝐭ꟿ󰲡(
+𝔗 = ⥌𝒻,ℊ,𝐭,w=w↦𝐭ꟿ󰲡(
         ℊ.addReference(𝒻[ord←𝔸₀].glyphname)
             ¿x≡𝔯¡
         ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸))
     ) ◄← ℊ.width ≔ w
 
+⊢ remove_char(𝒻, c):
+    try:
+        𝒻.removeGlyph(𝒻󰂼ᵣ􊮎)
+    except Exception as e:
+        ‹Couldn't remove "⟦c⟧": ⟦e⟧›☾
+
 ⊢ char_maker(ƒ):
     ⊢ 𝑓(𝒻, c, n, *𝔸, ⠶𝕂):
         ℊ = 𝒻.createChar(l≔ord←c, n)
         try: 
-            𝔗(𝒻, ℊ, ƒ(*𝔸, ⠶𝕂))
+            𝔗(𝒻, ℊ, ⠤ƒ(𝒻, *𝔸, ⠶𝕂))
         except Exception as e:
-            ‹Failed to generate "⟦n⟧" (⟦c⟧ @ ⟦hex←l⟧): ⟦e⟧›☾
+            ‹Gen Err: "⟦n⟧" (⟦c⟧ @ ⟦hex←l⟧), "⟦e⟧"›☾
     ↪ 𝑓
 
 @char_maker
-⊢ add_script(c, m, scale=ⴳ):
-     󰈲􋐉󰈳􋐊
-    ¿ scale:
-        ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄.60, 𝔱⋄.15⋅w⋄¯.10⋅w]
-        ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄.65, 𝔱⋄.15⋅w⋄ .65⋅w]
+⊢ add_script(𝒻, c, m, scale=ⴳ):
+    ¿scale:
+        W = 𝒻󰂼ᵣ􊮎.width
+        ¿((W⋄w)⤈ →/← (W⋄w)⤉) > .7501: W = w
+        ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄.7, 𝔱⋄.15⋅w⋄¯.20⋅w], W
+        ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄.7, 𝔱⋄.15⋅w⋄ .55⋅w], W
+        
+         ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄½, 𝔱⋄0⋄¯¼⋅W], W⹏2
+         ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄½, 𝔱⋄0⋄+¾⋅W], W⹏2
+        
+         ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄⅔, 𝔱⋄0⋄(¯⅓⋅W)], 𝑖(⅔⋅W)
+         ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄⅔, 𝔱⋄0⋄(+⅔⋅W)], 𝑖(⅔⋅W)
     ¡:
-        ¿m≡␛b: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅¯w]
-        ⸘m≡␛p: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅ w]
-    ↪ t
-
+        ¿m≡␛b: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅¯w], w
+        ⸘m≡␛p: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅ w], w
+ 􋕠|􋕡 􊾯ᴼO󰂡􊼍 􊼇󰂛Iᴵ􊾩 􌎒􊱃□􋄅􌎕 􍛄􍍘󰤃􍍙􍛇 􌥶􋕠􌥴|􌥷􋕡􌥵
 @char_maker
-⊢ add_multichar(s):
+⊢ add_multichar(𝒻, s):
     t = [𝔯⋄s₀]
     ¿N≔s🃌 →< 4:
         t += [𝔱⋄¯⅘⋅w⋄0, 𝔯⋄s₁]
-        ¿N≡2: ↪ t + [𝔱⋄.9⋅w⋄0, 𝔰⋄⅗]
-        ⸘N≡3: ↪ t + [𝔱⋄¯⅘⋅w⋄0, 𝔯⋄s₂, 𝔱⋄⅖⋅w⋄¯⅗⋅w, 𝔰⋄½, 𝔱⋄.55⋅w⋄½⋅w]
+        ¿N≡2: ↪ t + [𝔱⋄.9⋅w⋄0, 𝔰⋄⅗], w
+        ⸘N≡3: ↪ t + [𝔱⋄¯⅘⋅w⋄0, 𝔯⋄s₂, 𝔱⋄⅖⋅w⋄¯⅗⋅w, 𝔰⋄½, 𝔱⋄.55⋅w⋄½⋅w], w
     ¡:
         ↪ t + [      𝔱⋄¯w⋄⅗⋅w,
                𝔯⋄s₁, 𝔱⋄0⋄1.3⋅w,
                𝔯⋄s₂, 𝔱⋄¯w⋄⅗⋅w,
-               𝔯⋄s₃, 𝔱⋄0⋄¯1.9⋅w, 𝔰⋄⅖, 𝔱⋄.7⋅w⋄⅗⋅w]
+               𝔯⋄s₃, 𝔱⋄0⋄¯1.9⋅w, 𝔰⋄⅖, 𝔱⋄.7⋅w⋄⅗⋅w], w
 
  󱾄󱽽󱾌 󱾁󱾌 󱽿󱾊󱾇󱾏 𐂷🌲🌳🌴🎄🎋 󱹯󱹡󱹟󱹮󱹡󱹰 󱹩󱹡󱹯󱹯󱹝󱹣󱹡 A𝔸𝓐𝐀𝐴𝔄𝕬🄐Ⓐ🄰🅐А𝗔 ; little snowman 󱼩
  ↓↓ done ∈ each function because i want to keep characters

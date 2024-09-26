@@ -6,7 +6,7 @@
 ⮌ peggle ⨡ Parser
 🌈 = 󰋺∘␛🌈
 󰋺(␛𝐍, ␛𝐍)
-󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script add_multichar›⍭)
+󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script remove_char add_multichar›⍭)
 󰋺("organizer", ⠤‹get_codepoint save_pua›⍭)
 
 symmap = {
@@ -294,10 +294,11 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[␛ᴍ]]
         ¡:
             parent = ⭡₀
-            ¿¬already_script(parent.out, 𝑒ᵀ₋₁):  󰤱 overwrite target?
-                𝐆.append( [add_script, (
-                    ⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁,
-                    ⭡₀ᵀ∈‹sub sup›⍭ ∨ "NO_SCALE"∉resᵣ.get("style", {}))] )
+            ¿already_script(parent.out, 𝑒ᵀ₋₁):  we remove previous style
+                𝐆.append( [remove_char, (𝑒.out, )] )
+            𝐆.append( [add_script, (
+                ⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁,
+                ⭡₀ᵀ∈‹sub sup›⍭ ∨ "NO_SCALE"∉resᵣ.get("style", {}))] )
             style = parent.get("style", {})
             𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
         

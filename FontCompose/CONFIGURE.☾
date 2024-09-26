@@ -1,11 +1,11 @@
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✗ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.ttf›
-CHECK_REPOS       = ✓
+COPY_OUT_FONT     = ✗ ∨ ‹/Configs/Fonts/99_JuliaMono-Regular.ttf›
+CHECK_REPOS       = ✗
 CODE_STYLE_CONFIG = ✓
 GENERATE_XCOMPOSE = ✓
-NERDFONT          = ✓
-CUSTOM_SYMBOLS    = ✓
+NERDFONT          = ✗
+CUSTOM_SYMBOLS    = ✗
 PROCEDUAL_CHARS   = ✓
 
 DAT = ␛
@@ -272,7 +272,6 @@ SCRIPT_EXIST = 󰦥󰦥󰦥󰦥󰦥
 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789αβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ,<>;+-*=()[]{}~?&$%:!
 ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬₀₁₂₃₄₅₆₇₈₉󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣󰄎󰄟󰄞󰄏₊₋₌₍₎󰄗󰄘󰄕󰄖˷﹖﹠﹩﹪﹕◌
 ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙⁰¹²³⁴⁵⁶⁷⁸⁹󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋󰁱󰂂󰂁󰁲⁺⁻⁼⁽⁾󰁺󰁻󰁸󰁹˜◌◌◌◌◌ꜝ 󰦥󰦥󰦥󰦥󰦥
-
 SCRIPT_DEPTH = 2
 
 ¿ __name__ ≡ "__main__": 󰋺("generate")
