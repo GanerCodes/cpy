@@ -368,6 +368,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ¡:
         ¿¬𝓸: Kˢᵗᵈᵒᵘᵗ = PIPE ¿␛O∈𝒶¡ NULL
         ¿¬𝓮: Kˢᵗᵈᵉʳʳ = PIPE ¿␛E∈𝒶¡ NULL
+    Kᵇᵘᶠˢⁱᶻᵉ = 16⋅1024  󰤱 this is stupid
     
     ⊢ p_stream(x):
         t = getattr(p,x).read
