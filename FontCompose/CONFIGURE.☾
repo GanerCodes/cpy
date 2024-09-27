@@ -1,7 +1,7 @@
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
 COPY_OUT_FONT     = ✗ ∨ ‹/Configs/Fonts/99_JuliaMono-Regular.ttf›
-CHECK_REPOS       = ✗
+CHECK_REPOS       = ✓
 CODE_STYLE_CONFIG = ✓
 GENERATE_XCOMPOSE = ✓
 NERDFONT          = ✗
@@ -49,12 +49,12 @@ X𝕊⟶Χ ␠ _S⟶ϲ
    ⁅ r⟦aiueIE⟧𝕊
     ⟶  аиуэИЭ                                               ⁆ ⟧ 
 
-!notes ⟨DPINK⟩ N⟦0248⁅16⁆⁅32⁆⁅128⁆fns⁅ID⁆⟧
-               ⟶ 𝅝𝅗𝅥𝅘𝅥𝅘𝅥𝅮  𝅘𝅥𝅯   𝅘𝅥𝅰   𝅘𝅥𝅲♭♮♯  𝄽
-!houses wh⟦⁅p⟦𝕊/⟧⁆⁅t⟦𝕊/⟧⁆𝕊x+-123ABGLs⟧
-        ⟶     󱅙󱅚     󱎰󱎱  󰮧󱏗󱏖󱏕󰶀󰶁󰶂󰶃󰶄󰶅󰶆󰳋
-⟦_^⟧⁅__⁆⁅acute⁆⁅aring⁆⁅brev⁆⁅caron⁆⁅dia⁆⁅dot⁆⁅grave⁆⁅hat⁆⁅tilde⁆
-⟶    ˍ¯     ˏ´     ˳˚     ᴗ˘    ˬˇ   ‥¨   ․˙     ˎ`   ꞈˆ     ˷˜
+¡notes ⟨DPINK⟩ N⁅⟦0248⁅16⁆⁅32⁆⁅128⁆fns⁅ID⁆⟧
+                ⟶ 𝅝𝅗𝅥𝅘𝅥𝅘𝅥𝅮  𝅘𝅥𝅯   𝅘𝅥𝅰   𝅘𝅥𝅲♭♮♯  𝄽 ⁆
+¡houses wh⁅⟦⁅p⟦𝕊/⟧⁆⁅t⟦𝕊/⟧⁆𝕊x+-123ABGLs⟧
+          ⟶    󱅙󱅚     󱎰󱎱  󰮧󱏗󱏖󱏕󰶀󰶁󰶂󰶃󰶄󰶅󰶆󰳋⁆
+⁅⟦⟦_^⟧⁅__⁆⁅acute⁆⁅aring⁆⁅brev⁆⁅caron⁆⁅dia⁆⁅dot⁆⁅grave⁆⁅hat⁆⁅tilde⁆⟧
+  ⟶ˍ¯     ˏ´     ˳˚     ᴗ˘    ˬˇ   ‥¨   ․˙     ˎ`   ꞈˆ     ˷˜     ⁆
 
  micheal's mathematical monikers
 ¡MMM ⟨DORANGE⟩ ⟦ ⁅algebra⟶󰫮⁆⁅graph⟶󰡷⁆⁅holds⟶✓⁆⁅generated𝕊by⟶⚙⁆⁅ID⟶󰫶⁆⁅metricm⟶󰣰⁆⁅basis⟶󰨥⁆⁅topology⟶󰬁⁆⁅VS⟶󰬃⁆⁅ideal⟶󱧡⁆⁅point⟶⁆⁅vector𝕊⟶󰬃⁆⁅module⟶󰫺⁆⁅polynomial⟶󰡱⁆⁅path⟶󰉽⁆⁅vector𝕊space⟶󰬃⁆⁅ED⟶󰫲⁆⁅ieal⟶󱧡⁆⁅MS⟶󰍒⁆⁅topological𝕊space⟶⁆⁅edge⟶󰝊⁆⁅object⟶▢⁆⁅scalar⟶ᾇ⁆⁅domain⟶󰫱⁆⁅node⟶⁆⁅chain⟶󰿨⁆⁅line⟶󰕞⁆⁅surjection⟶󰚥⁆⁅vector⟶⁆⁅lattice⟶󱗿⁆⁅morphism⟶⁆⁅manifold⟶⁆⁅imorphism⟶󰉷⁆⁅fix⟶⁆⁅space⟶󱁐⁆⁅topological𝕊⟶⁆⁅DVR⟶⁆⁅homomorphism⟶󰠩⁆⁅find⟶󰍉⁆⁅ijection⟶󰎑⁆⁅form⟶␌⁆⁅gen𝕊by⟶⚙⁆⁅id𝕊⟶󰻾⁆⁅loop⟶➰⁆⁅element⟶⁆⁅functor⟶󱨹⁆⁅salgebra⟶󰊰⁆⁅tree⟶󱁕⁆⁅transformation⟶󰊄⁆⁅vectorv⟶⁆⁅UFD⟶󰬂⁆⁅relation⟶󰑇⁆⁅neighborhood⟶󰷔⁆⁅derangement⟶⁆⁅function⟶󰊕⁆⁅group⟶󰫴⁆⁅tensor⟶󰗴⁆⁅set𝕊⟶󰬀⁆⁅TS⟶⁆⁅category⟶󰫰⁆⁅partition⟶󱇙⁆⁅metric𝕊⟶󰍒⁆⁅example⟶⁆⁅family⟶󱘎⁆⁅measure⟶󰑭⁆⁅field⟶󰫳⁆⁅fix⟶⁆⁅ring⟶󰫿⁆⁅PID⟶󰫽⁆ ⟧
