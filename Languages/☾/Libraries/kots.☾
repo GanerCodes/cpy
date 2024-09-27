@@ -1,0 +1,89 @@
+⮌ os ⨡ chdir, getcwd as pwd_
+⮌ pathlib ⨡ Path as 𝐩
+
+pwd = 𝚲𝐩∘pwd_
+
+Ω :  󰤱
+    W = ⥌f,o=ᐦ↦ⓦ(𝐩(f).open(␛w+o), 󰲡x.write)
+    R = ⥌f,o=ᐦ↦ⓦ(𝐩(f).open(␛r+o), 󰲡x.read )
+
+Ω cd:
+     __slots__ = ␛d, ␛s, ␛c
+    s, c = [], []
+    ⊢ __init__(𝕊, d=□):
+        𝕊.d = d
+    ⊢ __enter__(𝕊):
+        x = 𝕊ᵈ
+        cdˢ.append(cdᶜ🃌→⋄←x≔pwd)
+        ↪ x≇□ ∧ chdir(𝐩∘x) →► pwd
+    ⊢ __exit__(𝕊, ⠤𝔸):
+        i,d = cdˢ.pop(-1)
+        cdᶜ = cdᶜ﹕ᵢ
+        ↪ chdir∘d →► pwd
+    ⊢ __call__(𝕊, d=□):
+        ¿d≅□:
+            chdir(cdᶜ.pop(-1))
+            ↪ pwd
+        cdᶜ.append(pwd)
+        ↪ chdir∘d →► pwd
+    ⊢ __getitem__(𝕊, d):
+        ↪ 𝕊􋕟􋕟ᶜˡᵃˢˢ􋕟􋕟∘d
+
+֎ 
+play_bell = 𝚲$ᴾpaplay /Configs/SFX/bell.ogg󷹹
+
+⮌ requests ⨡ post
+⊢ shorten_url(url):
+	↪ post(shorterner_url, headers={
+		"access": uploader_access_code,
+		"url": url
+	}).content.decode()
+
+⊢ upload_file(fp):
+	fp = fp.strip
+	↪ post(uploader_url, headers={
+		"access": uploader_access_code,
+		"filename": fp
+	}, data=open(fp, 'rb')).content.decode()
+
+upload_file_shorten = fp↦shorten_url∘upload_file∘fp
+
+upload_clipboard_compress_zip = 𝚲[
+	(ln ≔ $ᴼpwd󷹹.strip),
+	$cd ⟦fn ≔ clipboard_paste()⟧/..󷹹,
+	$zip -r ⟦f ≔ ‹/tmp/⟦make_uuid⟧.zip›⟧ ⟦fn⟧󷹹,
+	$cd ⟦ln⟧󷹹,
+	clipboard_copy(upload_file_shorten(f)),
+	play_bell]
+upload_clipboard_shorten_url = 𝚲[
+	clipboard_copy(shorten_url(clipboard_paste)),
+	play_bell]
+upload_clipboard_filepath = 𝚲[
+	clipboard_copy(upload_file_shorten(clipboard_paste)),
+	play_bell]
+upload_clipboard = 𝚲[
+	$echo ⟦clipboard_paste.strip⟧ > ⟦l≔‹/tmp/clipboardstuff›⟧󷹹,
+	clipboard_copy(upload_file_shorten(l)),
+	play_bell]
+֎
+
+¿ __name__≡"__main__":
+    cd = cd
+    pwd☾
+    cd∘"/tmp"
+    pwd☾
+    cd∘"vscode-typescript1000"
+    pwd☾
+    with cd:  
+        pwd☾
+        cd
+        pwd☾
+        with cd["cpy_temp"]:
+            pwd
+        pwd
+        cd
+        pwd☾
+    pwd☾
+
+  = 
+ 
