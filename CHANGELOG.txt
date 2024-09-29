@@ -105,3 +105,12 @@ oh also font remaking thingy finished check out CONFIGURE.☾ in FontCompose
 
 ok superscripts should now act like exponents when the parsed thing isn't an identifier
 ⨳ 2² ≡ 4  😊
+
+Added gambling 😊😊😊
+     /󱅏/ ᴺ : list of N of the random thing
+      /󱅏   = uniform(¯1, 1)/uniform(0, 1)
+      /󱅏 n = uniform/randint(0, n)
+      /󱅏 𝒾 = uniform/randint(𝑖₀, 𝑖₁)
+    x /󱅏 y = uniform/randint(n₀, n₁)
+    𝒾      = shuffle
+    𝒾    n = n choices

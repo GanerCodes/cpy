@@ -1,6 +1,7 @@
 # I: Include self in group (right asoc.)
 # α: basic concat
 # δ: x <op>= y doesn't make sense
+# ν: NULL version self-calls
 # ρ: *special*
 
 «««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
@@ -99,7 +100,7 @@ for k, v in lang.ops.items():
       ⊊ᴮᴺ󰁖 ⊄ᴮᴺ󰁖 ⊂ᴮᴺ󰁖 ⊃ᴮᴺ󰁖 ⊅ᴮᴺ󰁖  ⊋ᴮᴺ󰁖
 ꟿᴮᴺ ᴍᴮᴺ   ſᴮᴺ   Ϝᴮᴺ  Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ 󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ ␛
     ᙎᴮ󰀒ᴺ  ᙡᴮ󰀒ᴺ  ᗢᴮ󰀒ᴺ ᙧᴮ󰀒ᴺ  ᴮᴾ󰀒ᴺ
-ᐹᴮᴺ ζᴮᴺ
+ᐹᴮᴺ ζᴮᴺ ᴮᴾ󰀒ᴺ󰁘 󱅏ᴮᴾ󰀒ᴺ󰁘 ᴮᴾ󰀒ᴺ󰁘
 |ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
 <<ᴮᴺ >>ᴮᴺ
 ∓ᴾᴮᴺ ±ᴾᴮᴺ +ᴾᴮᴺ -ᴾᴮᴺ
@@ -475,6 +476,8 @@ def σ_35():
             return try_builtin('S', *A) or mkexp(mkbltnop(op_), mkgxp(   l, COMMA, NULL))
         if op.P and R:
             return try_builtin('P', *A) or mkexp(mkbltnop(op_), mkgxp(NULL, COMMA,    r))
+        if op.N and 'ν' in op:
+            return mkexp(mkbltnop(op_), mkgxp())
         return mkbltnop(op_)
 
 def σ_40():
