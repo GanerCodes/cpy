@@ -1,24 +1,25 @@
+ 35, Refactor op calls
+
 ⮌ os ⨡ chdir, getcwd as pwd_
 ⮌ pathlib ⨡ Path as 𝐩
 
-pwd = 𝚲𝐩∘pwd_
+try:
+    ⮌ clipboard ⨡ copy, paste
+     = ⥌s=□↦paste¿s≅□¡(copy○ᔐ∘s →► s)
+except Exception:
+    pass
 
 Ω suppar2:
     __init__ = ⥌𝕊,ƒ↦𝕊􊽺≔ƒ →► □
-    __getattr__ = 𝕊↦󰲡𝕊􊽺(x,⠤𝔸,⠶𝕂)
+    __call__ = ⥌𝕊,⠤𝔸,⠶𝕂↦𝕊􊽺(⠤𝔸,⠶𝕂)
+    __getitem__ = __getattr__ = ⥌𝕊,x↦𝚲𝕊􊽺(⠤𝔸,x,⠶𝕂)
 
-Ω :  󰤱
-    o = ⥌f,o=ᐦ↦ⓦ(𝐩(f).open(o))
-    W = ⥌f,o=ᐦ↦ⓦ(ᵒ(f, ␛w+o), 󰲡x.write)
-    R = ⥌f,o=ᐦ↦ⓦ(ᵒ(f, ␛r+o), 󰲡x.read )
+ = suppar2(⥌f  ,o=ᐦ↦𝐩(f).open(o))
+ = suppar2(⥌f  ,o=ᐦ↦ⓦ(  􊯛ᵣ₊󰂼∘f, 󰲡x.read  ))
+ = suppar2(⥌f,𝓬,o=ᐦ↦ⓦ(y≔􊯛₊󰂼∘f, 󰲡x.write∘𝓬 →► y))
 
- suppar2
-
-  = 
- 
-
+pwd = 𝚲𝐩∘pwd_
 Ω cd:
-     __slots__ = ␛d, ␛s, ␛c
     s, c = [], []
     ⊢ __init__(𝕊, d=□):
         𝕊.d = d
@@ -38,6 +39,36 @@ pwd = 𝚲𝐩∘pwd_
         ↪ chdir∘d →► pwd
     ⊢ __getitem__(𝕊, d):
         ↪ 𝕊􋕟􋕟ᶜˡᵃˢˢ􋕟􋕟∘d
+cd = cd
+
+¿ __name__≡"__main__":
+    𝐩("/tmp/eggs").mkdir(parents=✓, exist_ok=✓)
+    pwd☾
+    cd∘"/tmp"
+    pwd☾
+    cd∘"eggs"
+    pwd☾
+    with cd:  
+        pwd☾
+        cd
+        pwd☾
+        with cd["cpy_temp"]:
+            pwd
+        pwd
+        cd
+        pwd☾
+    pwd☾
+    
+    ∘"joexd"
+    ("/tmp/eggasdasd", )
+    ("/tmp/eggasdasd")☾
+
+֎ hmmmmmmmmmmmm
+⊢ 𝓢(n=0):
+    ⨡ sys, types
+    frame = sys._getframe(n+1)
+    ↪ types.FunctionType(frame.f_code, frame.f_globals)
+󰲡1 ¿x≤1¡ 𝓢()(x-1)+𝓢()(x-2)󰅂(5)☾ ֎
 
 ֎ 
 play_bell = 𝚲$ᴾpaplay /Configs/SFX/bell.ogg󷹹
@@ -75,22 +106,3 @@ upload_clipboard = 𝚲[
 	$echo ⟦clipboard_paste.strip⟧ > ⟦l≔‹/tmp/clipboardstuff›⟧󷹹,
 	clipboard_copy(upload_file_shorten(l)),
 	play_bell]
-֎
-
-¿ __name__≡"__main__":
-    cd = cd
-    pwd☾
-    cd∘"/tmp"
-    pwd☾
-    cd∘"vscode-typescript1000"
-    pwd☾
-    with cd:  
-        pwd☾
-        cd
-        pwd☾
-        with cd["cpy_temp"]:
-            pwd
-        pwd
-        cd
-        pwd☾
-    pwd☾

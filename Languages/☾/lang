@@ -205,10 +205,14 @@ def σ_00():
         else:
             return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
     
-    ((yield reduction(
+    @(yield reduction(
         "supscript",
         n="Swap Superscripts"))
-    (lambda n: [OP.TND('.'), mkvar(SCRIPT.nrm(n.txt))]))
+    def _(n):
+        t = gram(SCRIPT.nrm(n.txt), "exprs")
+        T = lang(t.txt.strip())
+        if T.isidentifier(): return [OP.TND('.'), t]
+        return [OP.TND('⌃'), Node(c=lang(t.txt))]
     
     ((yield replacement(
         "subscript",

@@ -102,3 +102,6 @@ $ᵒecho epic subprocess calls󷹹
 
 oh also everything has sub/sup/subsub/subsup/supsub/supsup scripts
 oh also font remaking thingy finished check out CONFIGURE.☾ in FontCompose
+
+ok superscripts should now act like exponents when the parsed thing isn't an identifier
+⨳ 2² ≡ 4  😊
