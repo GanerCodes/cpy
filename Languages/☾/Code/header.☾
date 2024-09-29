@@ -2,6 +2,7 @@
  󰤱 make ⨳ take a error handler arg
  󰤱 try OPERATOR except
  󰤱 better caching for peggle/cpy in general
+ 󰤱 terminal colors and stuff
  𝍱 = ½π = ½τ
 
  10⭥ ᗒ⌃2+⟞   ⟶   10⭥ᴍ¹⥌⟞↦⟞⌃2+⟞
@@ -210,9 +211,8 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ¿xᐹᔐ ∧← y≅␀ ∨ yᐹᔐ:
         ↪x.strip(⠤𝕣((y,)))
     ✗⨳  󰤱
- where 𝒾 is an iter:  "hi"⟥Σ⟤0 OP_L␀_(_03a3)('hi') * 0
  ᒍ =  󰤱
-   (𝒾,𝑜): 
+   (𝒾,𝑜):
    ᒍˡ, ᒍʳ
    ᒍʳˡ = ᒍˡʳ
  󰛔 =  󰤱
@@ -300,6 +300,8 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ℵ´ = _hwrap(ℵ´)
 ℶ  = _hwrap(ℶ )
 
+ dbg_wrap = 𝑓↦𝚲☾´(‹⟦𝑓.__name__⟧: 𝔸=⟦𝔸⟧, 𝕂=⟦𝕂⟧ ↓›) ► 𝑓(⠤𝔸,⠶𝕂)☾
+
 Ω nosee(𝑠):
     __init__ = 𝕊↦super().__init__() ► 𝔸∧(𝔸₀ᴍ𝕊.add) →►□
     __call__ = ⥌𝕊,x↦𝕊.add(x) ► x
@@ -325,10 +327,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
             G["time"], G["sleep"] = time, sleep
             G["ldir"] = 𝚲os.chdir←Gₕ
 
- 󱠨(x, return_code=✓)
 ⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□,
     interactive_𝕂=□, no_isolate=✗,
-    no_isolate_ƒ=󰲡exec(x,globals), ⠶𝕂):
+    no_isolate_ƒ=󰲡exec(x,globals), ⠶𝕂):  󱠨(x, return_code=✓)
     
     ⮌ refresher ⨡ basic_cpy_interactive_session
     cpy = basic_cpy_interactive_session(✗, ✓, ns=ns, fname=fname, ⠶interactive_𝕂∨{})
@@ -360,14 +361,20 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ∀k∈𝑘ᴍPEV: Gₖ = mₖ
     ↪ m
 
-⊢ SUBPROCA(⠤𝔸, ⠶𝕂):
-    global SUBPROCA
-    SUBPROCA = 󰋺("subproca").SUBPROCA
-    ↪ SUBPROCA(⠤𝔸, ⠶𝕂)
+ℳℱ_cache = {}
+⊢ ℳℱ(load):
+    ⊢ ƒ(⠤𝔸,⠶𝕂):
+        ¿ℳℱ_cache∋𝓲≔id(load):
+            𝑓 = ℳℱ_cache􋜆
+        ¡:
+            𝑓 = ℳℱ_cache􋜆 = load
+        ↪ 𝑓(⠤𝔸,⠶𝕂)
+    ↪ ƒ
+SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)
 
 ⮌ random ⨡ shuffle, choice, uniform, randint
 Ω Rand:
-    __slots__ = ␛t, 
+    __slots__ = ␛t,
     __init__ = ⥌𝕊,t↦𝕊ᵗ≔t →► □
     __getitem__ = ⥌𝕊,n↦⥌⠤𝓐,⠶𝓚↦n⭥ᴍ𝚲𝕊(⠤𝓐,⠶𝓚)
     ⊢ __call__(𝕊, x=␀, y=␀):
