@@ -1,6 +1,6 @@
  35, Refactor op calls
 
-⮌ os ⨡ chdir, getcwd as pwd_
+⮌ os ⨡ chdir, getcwd as pwd_, environ as env
 ⮌ pathlib ⨡ Path as 𝐩
 
 try:
@@ -69,40 +69,3 @@ cd = cd
     frame = sys._getframe(n+1)
     ↪ types.FunctionType(frame.f_code, frame.f_globals)
 󰲡1 ¿x≤1¡ 𝓢()(x-1)+𝓢()(x-2)󰅂(5)☾ ֎
-
-֎ 
-play_bell = 𝚲$ᴾpaplay /Configs/SFX/bell.ogg󷹹
-
-⮌ requests ⨡ post
-⊢ shorten_url(url):
-	↪ post(shorterner_url, headers={
-		"access": uploader_access_code,
-		"url": url
-	}).content.decode()
-
-⊢ upload_file(fp):
-	fp = fp.strip
-	↪ post(uploader_url, headers={
-		"access": uploader_access_code,
-		"filename": fp
-	}, data=open(fp, 'rb')).content.decode()
-
-upload_file_shorten = fp↦shorten_url∘upload_file∘fp
-
-upload_clipboard_compress_zip = 𝚲[
-	(ln ≔ $ᴼpwd󷹹.strip),
-	$cd ⟦fn ≔ clipboard_paste()⟧/..󷹹,
-	$zip -r ⟦f ≔ ‹/tmp/⟦make_uuid⟧.zip›⟧ ⟦fn⟧󷹹,
-	$cd ⟦ln⟧󷹹,
-	clipboard_copy(upload_file_shorten(f)),
-	play_bell]
-upload_clipboard_shorten_url = 𝚲[
-	clipboard_copy(shorten_url(clipboard_paste)),
-	play_bell]
-upload_clipboard_filepath = 𝚲[
-	clipboard_copy(upload_file_shorten(clipboard_paste)),
-	play_bell]
-upload_clipboard = 𝚲[
-	$echo ⟦clipboard_paste.strip⟧ > ⟦l≔‹/tmp/clipboardstuff›⟧󷹹,
-	clipboard_copy(upload_file_shorten(l)),
-	play_bell]
