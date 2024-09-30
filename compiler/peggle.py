@@ -74,9 +74,21 @@ class Gram:
         tree = 𝑓(0, Node("rname", rule))
         if not tree or tree[1] != ⵌ(content):
             if tree:
-                assert ⴴ, f"Didn't finish:\n\tCurrent tree: {tree[0]}\n\tRemainder: {tree[1]}"
+                try:
+                    part = 𝕊.chop(tree[0], allow_deletes=allow_deletes, content=content)
+                except Exception:
+                    print("Failed to chop tree!")
+                    part = tree[0]
+                try:
+                    print("Incomplete parse tree:")
+                    part.print()
+                except Exception:
+                    print("Failed to pretty print tree!")
+                    print(f"Current tree: {tree[0]}")
+                print(f"Remainder: {tree[1]}")
+                assert ⴴ, f"Peggle failed to complete!"
             else:
-                assert ⴴ, f"Didn't finish, failed!"
+                assert ⴴ, f"Peggle failed without generating tree!"
         return 𝕊.chop(tree[0], allow_deletes=allow_deletes, content=content)
     
     @staticmethod

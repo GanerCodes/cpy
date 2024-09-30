@@ -85,7 +85,7 @@ def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ
                 𝐥[0] = ᖇ(𝐥[0], j, ś, 1)
                 force_exec = ⴳ
             while 𝐥 and not ⵐ(𝐥[0]): del 𝐥[0]
-        s = min(ⵌ(l)-ⵌ(C) for l in 𝐥 if (C := l.lstrip()))
+        s = min((ⵌ(l)-ⵌ(C) for l in 𝐥 if (C := l.lstrip())), default=0)
         c = ᒍ(ń, (l[s:] for l in 𝐥))
         
         (t1 := time(), code := compiler(c, **𝕂), t := time() - t1)
@@ -191,5 +191,8 @@ if __name__ == "__main__":
         ) | cpy_kwargs)
     while ⴳ:
         c = input("✝ ")
+        if not c:
+            print("God is good!")
+            continue
         print('»', end=ś)
         run_print_exception(cpy, c)
