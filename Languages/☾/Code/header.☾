@@ -141,9 +141,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ƒ = 𝒮ℳ(_map_d)
     ⊢ __getitem__(𝕊, i):
         S, ƒ = 𝑠←i ¿iᐹ𝑡¡ (i,), □
-        ¿s≔␛D→∈S: ƒ = f↦󰲣𝑑←f(x.items(),y)
-        ⸘s≔␛K→∈S: ƒ = f↦󰲣𝑑←f(x.items(),y)ζx.values()
-        ⸘s≔␛V→∈S: ƒ = f↦󰲣𝑑←x.keys()ζf(x.items(),y)
+        ¿s≔␛D→∈S: ƒ = f↦󰲣type(x)←f(x.items(),y)
+        ⸘s≔␛K→∈S: ƒ = f↦󰲣type(x)←f(x.items(),y)ζx.values()
+        ⸘s≔␛V→∈S: ƒ = f↦󰲣type(x)←x.keys()ζf(x.items(),y)
         ¿ƒ:
             S.discard(s)
             ↪ ƒ(S ∧ 𝕊[S.pop()] ∨ 𝕊)
@@ -196,8 +196,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
 
 ↨ = 󰲡𝑙←enumerate←x
 ⭥ = 󰲡𝑙←range←(x ¿xᐹ𝑖¡ x🃌)
-⤉ = 𝚲max(𝔸₀,key=𝔸₁﹕∧𝔸₁≇␀∧𝔸₁∨□)
-⤈ = 𝚲min(𝔸₀,key=𝔸₁﹕∧𝔸₁≇␀∧𝔸₁∨□)
+
+⤉ = 𝚲max(𝔸₀, key=𝔸₁) ¿𝔸₁﹕∧𝗙(𝔸₁)¡ max(⠤𝕣(𝔸))
+⤈ = 𝚲min(𝔸₀, key=𝔸₁) ¿𝔸₁﹕∧𝗙(𝔸₁)¡ min(⠤𝕣(𝔸))
 ⴵ = sign = 󰲡x∧(1¿x>0¡¯1)∨0
  󷹄 = 󰲣¿𝕣(𝔸)¡
 ⛶ = 𝑐𝑑(󰲡[x], S=󰲡{x}, T=󰲡(x,))
