@@ -4,7 +4,7 @@ __pycache__/
 /FontCompose/JuliaMono/
 
 /FontCompose/PuaMaps/Old/*
-¡/FontCompose/PuaMaps/Old/.keep
+!/FontCompose/PuaMaps/Old/.keep
 
 /FontCompose/Output/*
 !/FontCompose/Output/99_JuliaMono-Regular.ttf
