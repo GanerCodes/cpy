@@ -300,7 +300,11 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
                 ⠤𝐴, r≔parent.out, 𝑒ᵀ₋₁,
                 ⭡₀ᵀ∈‹sub sup›⍭ ∨ "NO_SCALE"∉resᵣ.get("style", {}))] )
             style = parent.get("style", {})
-            𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
+            
+            ¿parent.out∈‹ᐦᴍ𝕊›:
+                𝑒.seqs = [[‹/\›[𝑒ᵀ₋₁≡␛p]]+res[parent.out].seqs₀]  bruh
+            ¡:
+                𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
         
         ref = 𝑒.get("ref", ℵ)
         𝑒.seqs += ref.get("seqs", [])
