@@ -44,7 +44,7 @@ def run_inj_tb(code, ns, file=ᗜ, mode="exec"):
     remember_code_for_tracebacks(file, code)
     return (mode == "exec" and exec or eval)(compiled, ns)
 
-def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", **𝕂):
+def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", header_carry=ᗜ, **𝕂):
     compiler = Compiler(CACHE_DIR, GRAM_CACHE_DIR)
     
     lang_pfx  = os.path.abspath(f"{CPY_DIR}/Languages/☾")
@@ -55,9 +55,13 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", **
     hns = {} if hns is ᗜ else hns
     ns  = {} if ns  is ᗜ else ns
     
-    hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
-    hns.setdefault("__file__", header_fp)
-    run_inj_tb(compiler("☾", R(header_fp), do_cache, **𝕂), hns)
+    if header_carry:
+        hns = header_carry
+    else:
+        hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
+        hns.setdefault("__file__", header_fp)
+        run_inj_tb(compiler("☾", R(header_fp), do_cache, **𝕂), hns)
+        hns["__header_namespace__"] = hns
     
     ns["__builtins__"] = { **ns.get("__builtins__", {}), **hns["__builtins__"], **hns }
     ns.setdefault("__name__", "__main__")
