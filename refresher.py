@@ -23,7 +23,11 @@ def remember_code_for_tracebacks(path, code, *, funky_monkey={"monkeys": set()},
         funky_monkey["monkeys"].add(path)
         def monkeymonkeymonkeymonkeymonkey(munkee=None):
             if munkee in funky_monkey["monkeys"]: return
-            return funky_monkey["monke"](munkee)
+            try:
+                return funky_monkey["monke"](munkee)
+            except Exception as e:
+                print("Monke error:", e)
+                return
         gl = traceback.linecache.getlines
         # traceback.linecache.getlines = lambda x, *A: monkemonEeamnoNEKEEE[path] if x in monkemonEeamnoNEKEEE else gl(x, *A)
         traceback.linecache.checkcache = monkeymonkeymonkeymonkeymonkey
