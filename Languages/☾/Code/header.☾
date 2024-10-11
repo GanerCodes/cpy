@@ -270,6 +270,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
  all this be weird
 Ω ℵ´(𝑑):
     𝐶𝑛 = ␛ℵ
+     __json__ = ⥌𝕊,cb,⠤𝓐,⠶𝓚↦ 𝑑(𝕊) ꟿⱽ 󰲣cb(y,⠤𝓐,⠶𝓚)  󰤱 python is trolling i need more STACK
     __init__ = 𝕊↦super().__init__(⠤𝔸,⠶𝕂)
     __setattr__ = 𝑑.__setitem__
     __getitem__ = ⥌𝕊,x↦𝑑.__getitem__(𝕊,x) ¿x∈𝕊¡ 𝕊.getdef()

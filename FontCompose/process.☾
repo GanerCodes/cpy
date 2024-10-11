@@ -6,8 +6,11 @@
 ⮌ peggle ⨡ Parser
 🌈 = 󰋺∘␛🌈
 󰋺(␛𝐍, ␛𝐍)
+󰋺("kots", *)
 󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script remove_char add_multichar›⍭)
 󰋺("organizer", ⠤‹get_codepoint save_pua›⍭)
+
+jdumps = o↦(o.__json__ ¿hasattr(o, jdumps, "__json__")¡ jds)(⠤𝔸, ⠶𝕂)
 
 symmap = {
         ␛(: "parenleft"  , ␛): "parenright"  ,
@@ -214,7 +217,7 @@ W = ~‹[ \t\n␠]+›
 (󰅁=󰆴(W?↷'󰅁'))(󰅂=󰆴(W?↷'󰅂'))(⟶=󰆴(W?↷'⟶'))(¡=󰆴(W?↷'¡'))
 (|=󰆴(W?↷'|'))(@=󰆴(W?↷'@'))(,=󰆴(W?↷','))
 󰦥󰦥󰦥󰦥󰦥
- 󰤱 newlines/seps in ⟦⟧ become concats
+ 󰤱 newlines/seps in ⟦⟧ become concats?
 
 head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
 ⊢ process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH, gram=Parser(GRAM)):
@@ -239,7 +242,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
                       out = x,
                      seqs = yꟿ󰲣x,
                      tags = yꟿ󰲣ℵ󰁺󰁻(y).TAG  󰅂Σ[] ⥉ 𝑠,
-                    style = yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹| ⥉ ℵ) ␛
+                    style = yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹| ⥉ ℵ)󰅂 ␛
           ⥉ ℵ
     
     get_psuedo_seqs = c↦[c⛶] ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
@@ -260,13 +263,15 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         ᴍ 󰲡 x¿xᐹᔐ¡x₁󰅂 ␛
         ꟿ⁰s↦𝔸ᴍ󰲡resₓ.style|=s
     
+    multichars_dat = {}
     ∀m∈MULTICHARS.strip⍭:
         k = char(m, "mul")₂
         resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
+        multichars_datₘ = k
     
     seen = 𝑠
     ∀_∈SCRIPT_DEPTH⭥:
-        ∀m ∈ 𝑙(res.keys):
+        ∀m ∈ 𝑙(res⁻):
             ¿m∈seen: ↺
             ∀moder ∈ ‹sub sup›⍭:
                 ¿m🃌>1: ↺  󰤱
@@ -275,7 +280,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             seen.add(m)
     
     𝐆 = []   
-    𝔔 = res.keys󰈲󰲡resₓ.get("needs_gen")
+    𝔔 = res⁻󰈲󰲡resₓ.get("needs_gen")
     ➰ 𝔔:
         𝑞 = 𝔔.pop∘0
         𝑒 = res[𝑞]
@@ -314,11 +319,11 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     
     res = normalize_seqs(res)  󰤱 - multichar output sub/sup
     
-    𝕩 = res.values 󰈲󰲡x.out🃌≡1 ∧ xᵀ∈‹sub sup›⍭
+    𝕩 = res⁺ 󰈲󰲡x.out🃌≡1 ∧ xᵀ∈‹sub sup›⍭
     𝕩 = 𝕩  󰲡x.⭡₀󰅂 →.items ꟿ󰲣 y󰒽󰲡xᵀ󰅂ᴍ󰲡x.out󰅂 Σ x
     script_map≔𝕩⍉ᴍΣ´→ᴍ🃌⥉𝑠→🃌≡1→⨳‹Unequal sup/sub/norm counts!›
     
-    cmp_seqs = res.values 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqsᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
+    cmp_seqs = res⁺ 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqsᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
     
     ⊢ convert_styles(styles):
         esc = 󰲣y ſˣ 󰲣x.replace(⠤y)
@@ -328,7 +333,10 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             r󰂕 = {"decorations": [𝑑(s)]}
         ↪r
     
-    styles = convert_styles(collect_styles(res))  󰤱 again multichar output stuff
+    styles = collect_styles∘res
+    styles_dat = 𝑑∘styles
+    
+    styles = convert_styles∘styles  󰤱 again multichar output stuff
     xcomp = xcompose_from_seqs(cmp_seqs)
     ∀R∈ℜ:
         (l,), s = R ᴮ 󰲡xᐹ𝑡∧x₀≡"STYLE"
@@ -339,4 +347,6 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     ↪ ℵ(res=res, styles=styles, xcompose=xcomp, script_map=script_map,
         add_glyphs  = 𝒻↦𝒻◄←𝐆ꟿ󰲣x(𝒻, ⠤y),
         set_codium  = 󰲡edit_vs_settings(styles, x),
-        set_compose = 󰲡ⓦ(open(x,␛w), 󰲡x.write(xcomp)))
+        set_compose = 󰲡(x, xcomp),
+        write_multi = 󰲡(x, jdumps(multichars_dat)),
+        write_style = 󰲡(x, jdumps(styles_dat)))

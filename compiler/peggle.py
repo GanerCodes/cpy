@@ -148,9 +148,10 @@ class Gram:
             
             k = χ, c
             if k in m:
-                if not (j := m[k]):
-                    return
-                return j
+                return m[k] or None
+                # if not (j := m[k]):
+                #     return
+                # return j
             
             j = 𝑓(χ, 𝕊.rules[c], z=z+1)
             if j:
