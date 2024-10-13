@@ -149,9 +149,6 @@ class Gram:
             k = χ, c
             if k in m:
                 return m[k] or None
-                # if not (j := m[k]):
-                #     return
-                # return j
             
             j = 𝑓(χ, 𝕊.rules[c], z=z+1)
             if j:
@@ -200,13 +197,9 @@ class Gram:
             case 'ƨ':
                 if not (v := 𝑓(χ, c[0], z=z+1)): return
                 return Node(t, [v[0]]), v[1]
-            case '⠶'|'ƨ': # flatten / atom
+            case '⠶': # flatten / atom
                 if not (v := 𝑓(χ, c[0], z=z+1)): return
-                if t == '⠶': return Node(t, v[0].c), v[1]
-                not_dumb = v[0].collect_kids(lambda n: n.c and all(ᐹ(x,int) for x in n.c))
-                if not not_dumb: return Node("ᔐ", (χ, χ)), χ
-                return Node("ᔐ", (not_dumb[0].c[0], not_dumb[-1].c[1])), v[1]
-                
+                return Node(t, v[0].c), v[1]
             case '⮞': # positive lookahead
                 if not (v := 𝑓(χ, c[0], z=z+1)): return
                 return Node(t, [v[0]]), χ
