@@ -137,7 +137,7 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
         ↪ 󱁕
     󱁕.ftrp(␛ᔐ␛~, reform_str)
     
-    󱁕.frp (ⴳ, 󰲡x◄xᶜ≔(x ᴍ󰲡xᶜ¿xᐹŃ∧xᵗ∈pops¡x⛶󰅂 Σ[]), pre=✓)
+    󱁕.frp (ⴳ, 󰲡x◄xᶜ≔(x ᴍ󰲡(xᴍ󰲡xᶜ󰅂Σ[] ¿xᵗ≡␛⠶¡ xᶜ)¿xᐹŃ∧xᵗ∈pops¡x⛶󰅂 Σ[]), pre=✓)
     
     ⊢ get_txt(󱁕):
         l = []
@@ -152,9 +152,22 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
             set_arrows(c)
     set_arrows(󱁕)
     
+    "tord"☾, tord(󱁕).print
     ↪ 󱁕
-     󱁕 = 󱁕.frp(󰲡x🃌≡1 ∧ x₀ᐹŃ ∧ ¬x₀ᵗ, 󰲡)
-     󱁕 = 󱁕.ftrp(␛ƨ, )
+
+⊢ tord(󱁕):
+    ⊢ tord(󱁕):
+        s = ℵ()
+        ∀k,v ∈ 󱁕ᵉ:
+            ¿k≡␛T: ↪ Node(c=󱁕ᵗ)
+            s􋑺􊬄􋕜ᵢₙₑₓ₍ᵥ₎ = k
+        c = 󱁕ᴍtord
+        ∀i,v∈s: cᵢᵉ = v
+        ↪ Node(󱁕ᵗ, c)
+    󱁕 = tord(󱁕)
+    󱁕 = 󱁕.find_replace(n↦n🃌≡1 ∧ (β≔nᶜ₀)ᐹNode ∧ ¬βᵗ,
+                       n↦n.copy(c=n.txt))
+    ↪ 󱁕
 
 Parser = g↦ℵ(
     rules=g≔make_rules(g),
@@ -167,7 +180,7 @@ Parser = g↦ℵ(
 
 ⮌ peggle ⨡ Parser as ppp, Node
 p = ppp(󰦥󰦥󰦥󰦥󰦥
-main    = 󰆴(W)? (entry 󰆴W?)*
+main    = 󰆴W? (entry 󰆴W?)*
 entry   = (
     ƨ(section=󰆴'[' wrd 󰆴']') 󰆴W?
     (pair = (
@@ -183,10 +196,10 @@ W       = ~‹[ \t\n]+›
 [section]
 somekey = somevalue
 someotherkey=someothervalue
-[anothersection]
-key123 = "swooce"
-key456="yet another one here"
 󰦥󰦥󰦥󰦥󰦥 * 1
+ [anothersection]
+ key123 = "swooce"
+ key456="yet another one here"
 ⊢ conv(x):
     ¿xᵗ≡␛←: ↪ (xᵗ, x₀ᶜ, conv(x₁))
     ¿xᵗ≡"rname": ↪ (␛_⋅(xᶜ∉␛✓␛✗)+xᶜ, )
@@ -196,12 +209,10 @@ rz = ℵ(p.rules) ꟿⱽ 󰲣conv(y)󰅂
 prs = Parser(rz)
 󱁕 = (ƒ ≔ 󰲡Ń(x, ⠤𝔸ᴍ󰲡ƒ(⠤x¿xᐹ𝑡¡x⛶ᵀ)))(
         ⠤prs.parse(𝐷, show_table=✗))
+
+"orig"☾, p(𝐷).print
 res = prs.chop(𝐷, 󱁕)
-
-
-p(𝐷).print
-resᴾ☾
-
+"new"☾, resᴾ☾
 
 exit
  ƒ = 󰲡Node(x, 𝔸ᴍ󰲡ƒ(⠤x¿xᐹ𝑡¡x⛶ᵀ))
