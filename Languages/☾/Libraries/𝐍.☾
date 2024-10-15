@@ -1,0 +1,84 @@
+⮌ util ⨡ Z
+
+Ω 𝐍:
+    ⊢ __init__(𝕊, t, ⠤c): 𝕊.t, 𝕊.c = t, c∨[]
+    __iter__ = 𝕊↦iter(𝕊ᶜ)
+    __repr__ = 𝕊↦‹𝐍⟨⟦𝕊ᵗ∨␛∅⟧⟩⟨⟦", ".join(𝕊ᴍᔐ)⟧⟩›
+    __getitem__ = ⥌𝕊,i↦𝕊ᶜᵢ
+    __len__  = 𝕊↦𝕊ᶜ🃌
+    ft = 𝒮ℳ←󰲡𝐍(x₀,⠤(x₁ᴍ𝐍ᶠᵗ) ¿x₁ᐹ𝑙|𝑡∧x₁🃌≡2¡ (x₁⛶))  obscure-ish
+    tt = 𝕊↦(𝕊ᵗ,𝕊ᶜᴍ󰲡xᵗᵗ ¿xᐹ𝐍¡ x)  wha-
+    copy  = ⥌𝕊,t=□,c=□↦(ᐹ𝕊)(𝕊ᵗ ¿t≅□¡ t, ⠤𝕊ᶜ ¿c≅□¡ c)
+    rcopy = ⥌𝕊,t=□    ↦(ᐹ𝕊)(𝕊ᵗ ¿t≅□¡ t, ⠤𝕊ᶜᴍ(ᐹ𝕊).rcopy) ¿𝕊ᐹ𝐍¡ 𝕊
+    ⊢ frp(𝕊, f ,r, pre=✗):
+        𝓡 = 󰲡x.copy(c=xᴍ󰲡x.frp(f,r,pre))
+        𝕊 = 𝕊 ᣆᵖʳᵉ  𝓡
+        ¿f∘𝕊: ↪ r(𝕊)
+        ↪   𝕊 ᣆᵖʳᵉ􊽬 𝓡
+    ftrp = ⥌𝕊,fs↦𝕊.frp(󰲡xᵗ∈fs, ⠤𝔸)
+    ⊢ extract(𝕊, f, E=□, β=✓, Δ=✗, pre=✗):
+        L = r, E = [[], []¿(ρ≔E≅□)¡E]
+        ℂ = ᐹ𝕊
+        𝝀 = 󰲡ℂ.extract(x,f,E,pre=pre)
+        𝕊ᴍ󰲡L[𝑏←f←x≔x ᣆᵖʳᵉ 𝝀].append(x)
+        n = 𝕊.copy(c=r ¿pre¡ rᴍ𝝀)
+        
+        ↪ ((n, E) ¿Δ¡ E) ¿ρ∧β¡ n
+    filter = ⥌𝕊,f↦𝕊.extract(¬○f,⠤𝔸,⠶𝕂,β=✗,Δ=✗)
+    
+    ⊢ P(𝕊):
+        clc = ⥌x,c="BL"↦getattr(Z,c)+x+Zᵂ
+        ML = 󰲡x🃌-←(Zᵂ,Zᴮᴸ,Zᴿᴱ,Zᵈᴮᴸ,Zᴳᴿᴱ,Z󰀘ᴱᴸ)ᴍk↦x.count(k)⋅🃌k󰅂Σ0
+        ⊢ box(x):
+            (o, c), O, C = ‹[] ⎡⎢⎣ ⎤⎥⎦›⍭ᴍ²(󰲡clc(x,"dBL"))
+            x = x.split←𝗻
+            ¿🃌x≡1: ↪‹⟦o⟧⟦x₀⟧⟦c⟧›
+            ms = xᴍML→⤉
+            ↪ 𝗻.join(x ᙡ ꟿ󰲥(O[n≔1-x≅□+z≅□]+y+(ms-ML(y))⋅𝘀+Cₙ))
+        ¿¬←𝕊ᐹ𝐍: ↪ᔐ∘𝕊
+        ∅ = clc(␛∅, "RE")
+        
+        ⊢ format_e(e):
+            ¿¬e: ↪ᐦ
+            r = []
+            ∀k,v∈e:
+                ¿k≡␛T: r += ⛶clc(␛T, "GRE")
+                ¡    : r += ⛶‹⟦k⟧⟦clc(␛→, "BL")⟧⟦vᵗ⟧›
+            ↪ ‹⟦clc(␛󰅁,"YEL")⟧⟦␛,.join(r)⟧⟦clc(␛󰅂,"YEL")⟧›
+        nam = (𝕊ᵗ.P ¿𝕊ᵗᐹ𝐍¡ (‹⟦𝕊ᵗ⟧⟦format_e(𝕊ᵉ)⟧› ¿𝕊ᐹŃ¡ ᔐ∘𝕊ᵗ)) ∨ ∅
+        start = box∘nam
+
+        (╴,╮), m0, m1, m2 = ‹─┬ ┬─ ├╰ │ ›⍭ᴍ²clc
+
+        ¿𝕊🃌¬: ↪ ‹⟦start⟧⟦╴⟧⟦∅⟧›
+        
+        slns = start.split(𝗻)
+        res, ml = 𝗻.join(slns﹕₋₁), ML(lne≔slns₋₁)
+        ∀i,z∈↨𝕊:
+            l = (z.P¿zᐹ𝐍¡ᔐ∘z).split←𝗻
+            e = i≡𝕊🃌-1
+            l₀  = (m1¿i¡m0)ₑ+l₀
+            l₁﹕ =   l₁﹕ᴍ󰲡m2ₑ+x
+            l = lᴍ󰲡ml⋅𝘀+x
+            ¿¬i:
+                pre = ‹⟦start⟧›
+                l₀ = pre + 𝘀⋅(ml-ML(pre)) + l₀[ml:]
+            res += 𝗻.join(l) + ¬e⋅𝗻
+        ↪ res
+
+ More dynamic and meant to be mutable
+Ω Ń(𝐍):
+    ⊢ __init__(𝕊, t, ⠤c, e=␀): 𝕊ᵗ, 𝕊ᶜ, 𝕊ᵉ = t, ¬c∧[]∨𝑙(c), ℵ􋄅¿e≅␀¡e
+    __repr__ = 𝕊↦‹Ń⟨⟦𝕊ᵗ∨␛∅⟧⟩⟨⟦𝕊ᵉ⟧⟩⟨⟦", ".join(𝕊ᴍᔐ)⟧⟩›
+    __setitem__ = ⥌𝕊,x,y↦𝕊ᶜₓ≔y
+    copy  = ⥌𝕊,t=□,c=□,e=␀↦(ᐹ𝕊)(𝕊ᵗ ¿t≅□¡ t, ⠤𝕊ᶜ ¿c≅□¡ c, e=e)
+    rcopy = ⥌𝕊,t=□        ↦(ᐹ𝕊)(𝕊ᵗ ¿t≅□¡ t, ⠤𝕊ᶜᴍ(ᐹ𝕊).rcopy, e=𝕊ᵉ.copy()) ¿𝕊ᐹ𝐍¡ 𝕊
+    
+    ⊢ frp(𝕊, f ,r, pre=✗):
+        𝓡 = 𝚲𝕊↨ ꟿ󰲣𝕊ₓ≔y.frp(f,r,pre)
+        ¿ pre: 𝓡
+        ¿ f∘𝕊: ↪ r(𝕊)
+        ¿¬pre: 𝓡
+        ↪ 𝕊
+
+__exports__ = ␛𝐍, ␛Ń

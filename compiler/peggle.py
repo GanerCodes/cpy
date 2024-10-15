@@ -247,22 +247,22 @@ def test_peggle():
     key456="yet another one here"
     """ * 100
     
-    p = Parser(r"""
-        main = ((number∨A∨B∨C∨D) 󰆴W?)*
-        number = ƨ(~‹\.[0-9]+|[0-9]+(\.([0-9]+))?|0[oxbOXB][0-9]+|[0-9]+e[0-9]+›)
-        A      = ƨ(‹a›)
-        B      = ƨ(‹b›)+
-        C      = ƨ(~‹C›)+
-        D      = ƨ(‹C› ~‹C+›)
-        W      = ~‹[ \t\n]+›
-    """)
-    c = """20.2 .1323 .125 a a bb C CCC"""
+    # p = Parser(r"""
+    #     main = ((number∨A∨B∨C∨D) 󰆴W?)*
+    #     number = ƨ(~‹\.[0-9]+|[0-9]+(\.([0-9]+))?|0[oxbOXB][0-9]+|[0-9]+e[0-9]+›)
+    #     A      = ƨ(‹a›)
+    #     B      = ƨ(‹b›)+
+    #     C      = ƨ(~‹C›)+
+    #     D      = ƨ(‹C› ~‹C+›)
+    #     W      = ~‹[ \t\n]+›
+    # """)
+    # c = """20.2 .1323 .125 a a bb C CCC"""
     
-    p = Parser(r"""
-        main = main = ƨ("A:" 󰆴(~‹a›)) "b" 󰆴"c" ⠶("a" "b") ƨ(a+)
-        a = "h"
-    """)
-    c = """A:abcabhhhhhhhh"""
+    # p = Parser(r"""
+    #     main = main = ƨ("A:" 󰆴(~‹a›)) "b" 󰆴"c" ⠶("a" "b") ƨ(a+)
+    #     a = "h"
+    # """)
+    # c = """A:abcabhhhhhhhh"""
     
     print("Rules:")
     p.print_rules()

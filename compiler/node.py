@@ -4,11 +4,14 @@ class Node:
     __slots__ = 't', 'c', 'e'
     
     Ń = CMD(lambda 𝕋,t,*C: 𝕋(t,[𝕋(c=c) if ᐹ(c,ᔐ) else (𝕋.Ń(*c) if ᐹ(c,ᒪ|tuple) else c) for c in C]))
+    C = PRP(lambda 𝕊: 𝕊.c if 𝕊.L else [])
+    S = PRP(lambda 𝕊: ᐹ(𝕊.c, ᔐ))
+    L = PRP(lambda 𝕊: ᐹ(𝕊.c, ᒪ))
     
     def __init__(𝕊, t=ᐦ, c=ᗜ, e=ᐦ):
         assert ᐹ(t, ᔐ|tuple)
         𝕊.t, 𝕊.c, 𝕊.e = t, [] if c is None else c, e
-    def __len__(𝕊): return ⵌ(𝕊.C)
+    def __len__ (𝕊): return ⵌ(𝕊.C)
     def __bool__(𝕊): return True
     def __repr__(𝕊): return f"{Т(𝕊).__name__}{(𝕊.t, 𝕊.c, 𝕊.e)!r}"
     
@@ -131,10 +134,8 @@ class Node:
             if 𝕊.L: return ᒍ(ᐦ, ᴍ(Т(𝕊).text, 𝕊.c))
             return f"¿ {type(𝕊.c)}]{𝕊.c}"
         return f"‼ <{Т(𝕊).__name__}> {𝕊}"
-    
-    S, L = PRP(lambda 𝕊: ᐹ(𝕊.c, ᔐ)), PRP(lambda 𝕊: ᐹ(𝕊.c, ᒪ))
-    C = PRP(lambda 𝕊: 𝕊.c if 𝕊.L else [])
     txt = PRP(text)
+    
     pr = PRP(lambda 𝕊: print(𝕊))
     def print(𝕊,d=100,p=0,m=64,w=64,s=3,N=Z.lR+'∅'+Z.W,
         F=lambda x,s=Z.P+'_'+Z.W   :ᖇ(x,ń,s),
