@@ -136,10 +136,16 @@ togprof = DEBUG_NS["mk"]("togprof")
 DEBUG = ⴴ
 def ENABLE_DEBUG():
     global __proft, lnprof
-    import resource, threading, line_profiler, cProfile, pstats, atexit, io
+    import resource, threading, cProfile, pstats, atexit, io
     from inspect import getouterframes, currentframe
-    lnprof, __proft = line_profiler.LineProfiler(), ⴴ
-    atexit.register(lnprof.print_stats)
+    __proft = ⴴ
+    try:
+        import line_profiler
+        lnprof  = line_profiler.LineProfiler()
+        atexit.register(lnprof.print_stats)
+    except Exception:
+        print("Unable to load line_profiler.")
+    
     def BP(*a):
         for i, x in enum(a):
             print(f"{Z.r}BP{Z.w} - {Z.g}{i}{Z.w}:\t{wrap(ᔐ(x),q='\t')}")

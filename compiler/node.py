@@ -114,14 +114,14 @@ class Node:
         return 𝕊.lstrip(*(F:=δ(f))).rstrip(*F)
     
     def lchar(𝕊):
-        if 𝕊.S: return 𝕊.c[0]
+        if 𝕊.S and 𝕊.c: return 𝕊.c[0]
         if 𝕊.C:
             for c in 𝕊.C:
                 if x := c.lchar():
                     return x
         return ''
     def rchar(𝕊):
-        if 𝕊.S: return 𝕊.c[-1]
+        if 𝕊.S and 𝕊.c: return 𝕊.c[-1]
         if 𝕊.C:
             for c in reversed(𝕊.C):
                 if x := c.rchar():

@@ -56,6 +56,7 @@ def gram_convert(t):
             .find_replace(lambda n: n.t == "str", lambda n: n.copy('ᔐ', n.txt))
     return rules
 
+"""
 CHECK, QUESTION, LOOKAHEAD_NEG = Node('✓'), Node('?'), Node('¬')
 class Gram:
     ind = ᐦ
@@ -207,13 +208,16 @@ class Gram:
                           lambda n: n.copy(c=n.txt))
 dd, ñ = re.compile, Node
 BOOTSTRAP = Gram({'statements': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('*', [ñ('∧', [ñ('∨', [ñ('rname', 'comment'), ñ('rname', 'elm_o')]), ñ('?', [ñ('rname', 'W')])])])])]), 'comment': ñ('∨', [ñ('~', dd('[\ueb26#][^\\n]*'))]), 'elm_o': ñ('∨', [ñ('∧', [ñ('rname', 'elm_a'), ñ('*', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∨'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_a')])])])]), 'elm_a': ñ('∨', [ñ('∧', [ñ('rname', 'elm_j'), ñ('*', [ñ('∧', [ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '∧'), ñ('?', [ñ('rname', 'W')])]), ñ('?', [ñ('rname', 'w')])]), ñ('rname', 'elm_j')])])])]), 'elm_j': ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')]), '_elm_j': ñ('∨', [ñ('∧', [ñ('rname', 'elm'), ñ('?', [ñ('rname', 'W')]), ñ('~', dd('[⯅⯆△▽↷]')), ñ('?', [ñ('rname', 'W')]), ñ('∨', [ñ('rname', '_elm_j'), ñ('rname', 'elm')])])]), 'elm': ñ('∨', [ñ('∧', [ñ('rname', 'prefix'), ñ('∨', [ñ('rname', 'assign_eql'), ñ('rname', 'assign_cln'), ñ('rname', 'group'), ñ('rname', 'str'), ñ('rname', 'rname')]), ñ('rname', 'suffix')])]), 'assign_eql': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', '='), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_o')])]), 'assign_cln': ñ('∨', [ñ('∧', [ñ('rname', 'rname'), ñ('?', [ñ('rname', 'W')]), ñ('ᔐ', ':'), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'elm_j')])]), 'group': ñ('∨', [ñ('∧', [ñ('ᔐ', '('), ñ('?', [ñ('rname', 'W')]), ñ('rname', 'group_inner'), ñ('ᔐ', ')')])]), 'group_inner': ñ('∨', [ñ('*', [ñ('∧', [ñ('rname', 'elm_o'), ñ('?', [ñ('rname', 'W')])])])]), 'str1': ñ('∨', [ñ('~', dd('"(␛.|[^"])*"'))]), 'str2': ñ('∨', [ñ('~', dd("'(␛.|[^'])*'"))]), 'str3': ñ('∨', [ñ('~', dd('‹(␛.|[^›])*›'))]), 'str': ñ('∨', [ñ('rname', 'str1'), ñ('rname', 'str2'), ñ('rname', 'str3')]), 'rname': ñ('∨', [ñ('~', dd('[^⯅⯆△▽↷󰆴()?❗⮞.:⠶ƨ✗+*=¬∨∧~‹#\'" \\t\\n]+|✗'))]), 'prefix': ñ('∨', [ñ('∧', [ñ('?', [ñ('rname', 'w')]), ñ('+', [ñ('∧', [ñ('~', dd('[󰆴❗⮞⠶ƨ~¬]')), ñ('?', [ñ('rname', 'W')])])])]), ñ('?', [ñ('rname', 'w')])]), 'suffix': ñ('∨', [ñ('∧', [ñ('+', [ñ('∧', [ñ('?', [ñ('rname', 'W')]), ñ('~', dd('[*+?]'))])]), ñ('?', [ñ('rname', 'w')])]), ñ('?', [ñ('rname', 'w')])]), 'w': ñ('∨', [ñ('~', dd('([ \\t]|␛\\n)+'))]), 'W': ñ('∨', [ñ('~', dd('([ \\t\\n]|␛\\n)+'))])})
-
-# from PEGGLE2_BOOTSTRAP_AAUGH import ForcefeedPeggle1Peggle2 as Gram, BOOTSTRAP_PEGGLE1 as BOOTSTRAP
+"""
+from PEGGLE2_BOOTSTRAP_AAUGH import ForcefeedPeggle1Peggle2 as Gram, BOOTSTRAP_PEGGLE1 as BOOTSTRAP
 Parser = lambda g, *𝔸, **𝕂: Gram(gram_convert(BOOTSTRAP(g, "statements")), *𝔸, **𝕂)
 
 def test_peggle():
+    from PEGGLE2_BOOTSTRAP_AAUGH import ForcefeedPeggle1Peggle2 as Gram, BOOTSTRAP_PEGGLE1 as BOOTSTRAP
+    Parser = lambda g, *𝔸, **𝕂: Gram(gram_convert(BOOTSTRAP(g, "statements")), *𝔸, **𝕂)
+
     p = Parser(r"""
-        main    = (entry 󰆴W?)*
+        main    = z:✓ (entry 󰆴W?)*
         entry   = (
             (section=󰆴'[' wrd 󰆴']') 󰆴W?
             (pair = (
@@ -228,10 +232,6 @@ def test_peggle():
     c = r"""[section]
     somekey = somevalue
     someotherkey=someothervalue
-
-    [anothersection]
-    key123 = "swooce"
-    key456="yet another one here"
     """ * 1
     
     # p = Parser(r"""

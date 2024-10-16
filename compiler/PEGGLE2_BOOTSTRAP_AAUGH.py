@@ -583,13 +583,12 @@ def parse(ᐧ1d437ᐧ, ᐧ1d445ᐧ, start_rule=ᐧ25a1ᐧ):
         elif γ == '←':
             if ᐧ1d436ᐧ[1] not in ᐧ1d520ᐧ:
                 ᐧ1d4e2ᐧ.extend([Γ, (χ, ᐧ1d436ᐧ[1])])
-                continue
-            ᐧ1d454ᐧ, ᐧ1d74cᐧ = ᐧ1d520ᐧ[ᐧ1d436ᐧ[1]][:2]
-            ᐧ1d520ᐧ[ι] = (ᐧ1d454ᐧ, ᐧ1d74cᐧ, ᐧ1d436ᐧ[1])
+            else:
+                ᐧ1d454ᐧ, ᐧ1d74cᐧ = ᐧ1d520ᐧ[ᐧ1d436ᐧ[1]][:2]
+                ᐧ1d520ᐧ[ι] = (ᐧ1d454ᐧ, ᐧ1d74cᐧ, ᐧ1d436ᐧ[1])
+        elif ᐧ1d436ᐧ[0] not in ᐧ1d520ᐧ:
+            ᐧ1d4e2ᐧ.extend([Γ, (χ, ᐧ1d436ᐧ[0])])
         else:
-            if ᐧ1d436ᐧ[0] not in ᐧ1d520ᐧ:
-                ᐧ1d4e2ᐧ.extend([Γ, (χ, ᐧ1d436ᐧ[0])])
-                continue
             ᐧ1d454ᐧ, ᐧ1d74cᐧ = ᐧ1d520ᐧ[ᐧ1d436ᐧ[0]][:2]
             if γ == '⮞':
                 ᐧ1d520ᐧ[ι] = (ᐧ1d454ᐧ, χ)
@@ -641,7 +640,7 @@ def parse_to_tree(ᐧ1d445ᐧ, ᐧ212dᐧ, *ᐧ1d538ᐧ, show_table=ᐧ2717ᐧ, 
     if ι not in (ᐧ1d520ᐧ := ᐧ212dᐧ[χ]):
         return (γ, f'‼∄‼')
     ᐧ1d454ᐧ, ᐧ1d74cᐧ, *ᐧ1d434ᐧ = ᐧ1d520ᐧ[ι]
-    # ᐧ2a33ᐧ(not raise_failed or ᐧ1d454ᐧ, f'Failed to parse tree!')
+    ᐧ2a33ᐧ(not raise_failed or ᐧ1d454ᐧ, f'Failed to parse tree!')
     if γ == '∧':
         o = []
         for r in C:
@@ -652,7 +651,9 @@ def parse_to_tree(ᐧ1d445ᐧ, ᐧ212dᐧ, *ᐧ1d538ᐧ, show_table=ᐧ2717ᐧ, 
         return (γ, *o)
     if γ == 'ᔐ':
         return (γ, C[0])
-    if not ᐧ1d434ᐧ and γ in {*f'∨*+~←?'}:
+    if γ == '?':
+        return (γ, *(ᐧ1d434ᐧ and (ᐧ1d434ᐧ[0] and ᐧ26f6ᐧ['T'](rec(χ, C[0]))) or ()))
+    if not ᐧ1d434ᐧ and γ in {*f'∨*+~←'}:
         return (γ, f'‼∅‼')
     if γ == '~':
         return (γ, ᐧ1d434ᐧ[0].group(0))
@@ -660,23 +661,24 @@ def parse_to_tree(ᐧ1d445ᐧ, ᐧ212dᐧ, *ᐧ1d538ᐧ, show_table=ᐧ2717ᐧ, 
         return (γ, rec(χ, C[ᐧ1d434ᐧ[0]]))
     if γ == '←':
         return (γ, C[0], rec(χ, ᐧ1d434ᐧ[0]))
-    if γ == '?':
-        return (γ, *(ᐧ1d434ᐧ[0] and ᐧ26f6ᐧ['T'](rec(χ, C[0])) or ()))
-    if γ in {*'*+'}:
+    if γ in {*f'*+'}:
         return (γ, *ᴍ(ᐧ1d434ᐧ[0], ᐧf41eᐧ(rec)(ᐧ2b24ᐧ, C[0])))
-    if γ in {*'✓✗'}:
+    if γ in {*f'✓✗⮞¬'}:
         return (γ,)
     return (γ.removeprefix('_'), rec(χ, C[0]))
 
 def chop_tree(ᐧf1055ᐧ, ᐧ1d437ᐧ, remove_trashes=ᐧ2713ᐧ, remove_failed_questions=ᐧ2713ᐧ, remove_lookaheads=ᐧ2713ᐧ):
-    pops = f'∧∨✓✗*+❗⠶' + '?' * remove_failed_questions + '⮞¬' * remove_lookaheads
-    
+    pops = f'∧∨*+❗⠶?'
+    removes = ᐧ1d460ᐧ('\U000f01b4' * remove_trashes + '⮞¬' * remove_lookaheads)
+
     def reform_str(ᐧf1055ᐧ):
         ᐧf1055ᐧ.t, ᐧf1055ᐧ.c, ᐧf1055ᐧ.e.T = (ᐧf1055ᐧ.c[0].t, [], ᐧ2713ᐧ)
         return ᐧf1055ᐧ
     ᐧf1055ᐧ.ftrp('ᔐ~', reform_str)
-    if remove_trashes:
-        ᐧf1055ᐧ = Ń.filter(ᐧf1055ᐧ, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.e.T or x.t != '\U000f01b4')
+    if removes:
+        ᐧf1055ᐧ = Ń.filter(ᐧf1055ᐧ, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.e.T or x.t not in removes)
+    if remove_failed_questions:
+        ᐧf1055ᐧ = Ń.filter(ᐧf1055ᐧ, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (x.e.T or x.t != '?') or x.c)
 
     def splat(ᐧf1055ᐧ):
         ƒ = lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: Σ(ᴍ(x, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.c), []) if x.t == '⠶' else x.c
@@ -689,29 +691,25 @@ def chop_tree(ᐧf1055ᐧ, ᐧ1d437ᐧ, remove_trashes=ᐧ2713ᐧ, remove_failed
         ᐧf1055ᐧ.frp(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.e.T, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ᐧ25baᐧ(l.append(x.t), x), pre=ᐧ2713ᐧ)
         return Σ(l, ᐦ)
     ᐧf1055ᐧ.ftrp('ƨ', lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: Ń(get_txt(x), e=ᐧ2135ᐧ(T=ᐧ2713ᐧ)))
-    
-    # print("chop chop'd"), print(ᐧf1055ᐧ.P()), print()
-    
+
     def set_arrows(ᐧf1055ᐧ):
         if ᐧf1055ᐧ.e.T:
             return
         for i, c in ᐧ21a8ᐧ(ᐧf1055ᐧ):
+            if c.e.T:
+                continue
             if c.t == '←':
                 ᐧf1055ᐧ.e[c[0].t] = ᐧf1055ᐧ[i] = c[1]
             set_arrows(c)
     set_arrows(ᐧf1055ᐧ)
-    
     return ᐧf1055ᐧ
 parse_to_node = lambda ᐧf1055ᐧ, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ƒ := (lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: Ń(x, *ᴍ(ᐧ1d538ᐧ, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ƒ(*(x if ᐹ(x, ᐧ1d461ᐧ) else ᐧ26f6ᐧ['T'](x)))))))(*ᐧf1055ᐧ)
 
 class Peggle2:
-    # __slots__ = ᐧ236dᐧ(f'rules\u2009R')
+    __slots__ = ᐧ236dᐧ(f'rules\u2009R')
 
     def __init__(ᐧ1d54aᐧ, g):
-        if ᐹ(g, Peggle2):
-            ᐧ1d54aᐧ.rules, ᐧ1d54aᐧ.R = g.rules, g.R
-        else:
-            ᐧ1d54aᐧ.rules, ᐧ1d54aᐧ.R = g, make_rules(g)
+        ᐧ1d54aᐧ.rules, ᐧ1d54aᐧ.R = ᐧ22c4ᐧ(g.rules, g.R) if ᐹ(g, Peggle2) else ᐧ22c4ᐧ(g, make_rules(g))
 
     def __repr__(ᐧ1d54aᐧ):
         return f'{ᐹ(NULL, ᐧ1d54aᐧ).__name__}[{ᐧ1f0ccᐧ(ᐧ1d54aᐧ.rules)} Rules, {ᐧ1f0ccᐧ(ᐧ1d54aᐧ.R.T_root)} Normalized]'
@@ -726,13 +724,15 @@ class Peggle2:
         ᐧ2a33ᐧ(not (allow_conflict and conflict), f'Conflicting rules! {conflict}')
         return ᐹ(NULL, ᐧ1d54aᐧ)(Peggle2(ᐧ1d54aᐧ.rules | h))
 
-    def __call__(ᐧ1d54aᐧ, content, rule='main', DEBUG=ᐧ2717ᐧ, chop=ᐧ2713ᐧ, **ᐧ1d542ᐧ):
+    def __call__(ᐧ1d54aᐧ, content, rule='main', DEBUG=ᐧ2717ᐧ, chop=ᐧ2713ᐧ, **ᐧ1d4daᐧ):
         ᐧ2a33ᐧ(not DEBUG, 'Not implemented.')
         c, r = (content, rule)
         root, rule = (ᐧ1d54aᐧ.R.T_root, ᐧ1d54aᐧ.R[r])
         ᐧ212dᐧ = parse(c, root, rule)
         ᐧf1055ᐧ = parse_to_node(parse_to_tree(root, ᐧ212dᐧ, rule))
-        ᐧ1d4b8ᐧ = lambda *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: chop_tree(ᐧf1055ᐧ, c, **ᐧ1d542ᐧ)
+        # ᐧ1d4b8ᐧ = lambda *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (print((h:=chop_tree(ᐧf1055ᐧ, c, **ᐧ1d4daᐧ)).P()), h)[1]
+        ᐧ1d4b8ᐧ = lambda *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: chop_tree(ᐧf1055ᐧ, c, **ᐧ1d4daᐧ)
+        
         return ᐧeba6ᐧ(ᐧ1d4b8ᐧ) if chop else ᐧ2135ᐧ(table=ᐧ212dᐧ, tree=ᐧf1055ᐧ, chop=ᐧ1d4b8ᐧ)
 
     def print_rules(ᐧ1d54aᐧ):
@@ -744,6 +744,7 @@ __exports__ = (Peggle2,)
 from node import Node
 
 def peggle122(rules):
+
     def ƒ(x):
         if x.t == '←':
             return (x.t, x[0].c, ƒ(x[1]))
@@ -768,6 +769,7 @@ def peggle221(ᐧf1055ᐧ):
     return ᐧf1055ᐧ.find_replace(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ᐧ1f0ccᐧ(x) == 1 and ᐹ(x.c[0], Node)) and (not x.c[0].t), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.copy(c=x.txt))
 
 class ForcefeedPeggle1Peggle2(Peggle2):
+
     def __init__(ᐧ1d54aᐧ, x):
         if ᐹ(x, Peggle2):
             super().__init__(x)
@@ -782,11 +784,6 @@ class ForcefeedPeggle1Peggle2(Peggle2):
 GRANDMA_RULES = ᐧ25baᐧ((ŕ := (*map(re.compile, ('[\ueb26#][^\\n]*', '[⯅⯆△▽↷]', '"(␛.|[^"])*"', "'(␛.|[^'])*'", '‹(␛.|[^›])*›', '[^⯅⯆△▽↷\U000f01b4()?❗⮞.:⠶ƨ✗+*=¬∨∧~‹#\ueb26\'" \\t\\n]+|✗', '[\U000f01b4❗⮞⠶ƨ~¬]', '[*+?]', '([ \\t]|␛\\n)+', '([ \\t\\n]|␛\\n)+')),)), ᐧ2218ᐧ(ᐧ2135ᐧ, {'statements': ('∨', ('∧', ('?', ('_W',)), ('*', ('∧', ('∨', ('_comment',), ('_elm_o',)), ('?', ('_W',)))))), 'comment': ('∨', ('~', ŕ[0])), 'elm_o': ('∨', ('∧', ('_elm_a',), ('*', ('∧', ('?', ('_W',)), ('ᔐ', '∨'), ('?', ('_W',)), ('_elm_a',))))), 'elm_a': ('∨', ('∧', ('_elm_j',), ('*', ('∧', ('∨', ('∧', ('?', ('_W',)), ('ᔐ', '∧'), ('?', ('_W',))), ('?', ('_w',))), ('_elm_j',))))), 'elm_j': ('∨', ('__elm_j',), ('_elm',)), '_elm_j': ('∨', ('∧', ('_elm',), ('?', ('_W',)), ('~', ŕ[1]), ('?', ('_W',)), ('∨', ('__elm_j',), ('_elm',)))), 'elm': ('∨', ('∧', ('_prefix',), ('∨', ('_assign_eql',), ('_assign_cln',), ('_group',), ('_str',), ('_rname',)), ('_suffix',))), 'assign_eql': ('∨', ('∧', ('_rname',), ('?', ('_W',)), ('ᔐ', '='), ('?', ('_W',)), ('_elm_o',))), 'assign_cln': ('∨', ('∧', ('_rname',), ('?', ('_W',)), ('ᔐ', ':'), ('?', ('_W',)), ('_elm_j',))), 'group': ('∨', ('∧', ('ᔐ', '('), ('?', ('_W',)), ('_group_inner',), ('ᔐ', ')'))), 'group_inner': ('∨', ('*', ('∧', ('_elm_o',), ('?', ('_W',))))), 'str1': ('∨', ('~', ŕ[2])), 'str2': ('∨', ('~', ŕ[3])), 'str3': ('∨', ('~', ŕ[4])), 'str': ('∨', ('_str1',), ('_str2',), ('_str3',)), 'rname': ('∨', ('~', ŕ[5])), 'prefix': ('∨', ('∧', ('?', ('_w',)), ('+', ('∧', ('~', ŕ[6]), ('?', ('_W',))))), ('?', ('_w',))), 'suffix': ('∨', ('∧', ('+', ('∧', ('?', ('_W',)), ('~', ŕ[7]))), ('?', ('_w',))), ('?', ('_w',))), 'w': ('∨', ('~', ŕ[8])), 'W': ('∨', ('~', ŕ[9]))}))
 BOOTSTRAP = Peggle2(GRANDMA_RULES)
 BOOTSTRAP_PEGGLE1 = ForcefeedPeggle1Peggle2(BOOTSTRAP)
-# print(BOOTSTRAP_PEGGLE1.rules)
-# print(BOOTSTRAP_PEGGLE1.R)
-# print(BOOTSTRAP.R)
-# print(BOOTSTRAP.rules)
-
 if __name__ == '__main__':
     RULE = 'statements'
     CONTENT = '\n    main    = \U000f01b4W? (entry \U000f01b4W?)*\n    entry   = (\n        ƨ(section=\U000f01b4\'[\' wrd \U000f01b4\']\') \U000f01b4W?\n        (pair = (\n            (bruh:key = ⠶wrd) \U000f01b4(w? ↷ \'=\')\n            (value = (wrd ∨ str)+) \U000f01b4W? ) )* )\n    str     = ~‹"[^"]+"›\n    wrd     = ~‹[-\\w]+›\n    w       = ~‹[ \\t]+›\n    W       = ~‹[ \\t\\n]+›\n    '

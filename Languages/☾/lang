@@ -162,17 +162,17 @@ lamb = (
     (   (lamb_h_py = 󰆴"lambda" ⮞text_breaker 󰆴Æ ⠶expr_not_colon 󰆴':')
       ∨ (lamb_h_normal = (
             󰆴('⥌' Æ?)
-            ⠶((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴Æ?)*
+            ((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴Æ?)*
             󰆴'↦' ))
       ∨ (lamb_h_preset = ~"[𝚲󰲡󰲣󰲥󰲧󰲩󰲫]")
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
-    (lamb_b = ⠶((exprs 󰆴'󰅂') ∨ expr_not_comma)))
+    (lamb_b = ((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 
 
 str = str_star ∨ str_cpy ∨ str_$ ∨ str_py ∨ str_escape ∨ str_spec_char
 str_$ = 󰆴('$' w?) (ƨ(supscript) ∨ ✓) 󰆴w? ⠶(⠶str_cpy_inner ∨ '›')* 󰆴(w? '󷹹')
 str_star = (󰆴"󰦥󰦥󰦥󰦥󰦥") ~‹((?!(󰦥󰦥󰦥󰦥󰦥))(.|\n))*› 󰆴("󰦥󰦥󰦥󰦥󰦥" ∨ ✓)
-str_cpy = 󰆴'‹' ⠶(⠶str_cpy_inner ∨ '󷹹')* 󰆴'›'
+str_cpy = 󰆴'‹' (⠶str_cpy_inner ∨ '󷹹')* 󰆴'›'
 str_cpy_inner = (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)
 str_sub = 󰆴'⟦' exprs 󰆴'⟧'
 str_spec_char = ~‹[𝗮-𝘇]›

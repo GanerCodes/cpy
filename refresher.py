@@ -122,8 +122,8 @@ def cpy_test(c, level=2, timing_test=ⴴ, exit=ⴴ, **𝕂):
     compiler.test("☾", c, debug_level=level,
                   test_timing=timing_test, **𝕂)
     if exit: exit_()
-cpy_timing_test = ρ(cpy_test, level=0, timing_test=ⴳ)
-debug_test_exit = ρ(cpy_timing_test, exit=ⴳ)
+cpy_timing_test = lambda x, **𝕂: cpy_test(x, level=0, timing_test=ⴳ, **𝕂)
+debug_test_exit = lambda x, **𝕂: cpy_test(x, exit=ⴳ, **𝕂)
 
 def run_print_exception(𝑓, *𝔸, **𝕂):
     try:
@@ -147,16 +147,15 @@ if __name__ == "__main__":
     # debug_test_exit("""☾(‹A⟦B⟧C⟦D⟧E›)""")
     # debug_test_exit("""⥌↦1""")
     # debug_test_exit("""A ᴍᵃ𐞑ᵇ B""")
-    
-    # debug_test_exit("""x = y""")
+    # debug_test_exit("""x""")
+    # debug_test_exit("""z = x+y""")
+    # debug_test_exit("""⥌x,z=␀,h=𝑎↦z+x""")
     
     agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], argv.clear(), argv.extend(y))[0]
     # agets = 󰲡sys.argv.count(y≔"--"+x) ◄← sys.argv󰈲=󰲡x≠y
     
     cpy_kwargs = { "interactive_defaults": { "global_verbose_debug": agets("verbose") } }
     if agets("no-cache"): cpy_kwargs["do_cache"] = ⴴ
-    
-    print()
     
     if agets("refresher"):
         def refresher(path, 𝑓):
