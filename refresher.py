@@ -148,6 +148,8 @@ if __name__ == "__main__":
     # debug_test_exit("""⥌↦1""")
     # debug_test_exit("""A ᴍᵃ𐞑ᵇ B""")
     
+    # debug_test_exit("""x = y""")
+    
     agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], argv.clear(), argv.extend(y))[0]
     # agets = 󰲡sys.argv.count(y≔"--"+x) ◄← sys.argv󰈲=󰲡x≠y
     

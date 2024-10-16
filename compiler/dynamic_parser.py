@@ -152,7 +152,7 @@ class DynamicParser:
     
     def parse_gram(𝕊, gram):
         new_rules = { i:Node('~', re.compile(v)) for i,v in 𝕊.grammar_imports.items() }
-        return Parser(gram).merge_rules(new_rules)
+        return Parser(gram) | new_rules
     
     def get_namespace_head(𝕊):
         return {

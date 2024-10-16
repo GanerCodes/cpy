@@ -564,7 +564,7 @@ def gen_variable     (n): return py_escape_var(n.txt)
 def gen_variable     (n): return "NULL"
 @generator("group")
 def gen_group        (n):
-    if n.C[0].txt == '⟦':
+    if n.C[0].txt == '⟦': # broken mostly
         content = next(filter(ⵐ, ᴍ(gen, n.C[1:-1])))
         return f'''(exec("def _EXE():\\n{py_escape_string(force_indent(content))}",globals(),locals()),_EXE)[1]()'''
     return n.C[0].txt + ᒍ(ᐦ, ᴍ(gen, n.C[1:-1])) + n.C[-1].txt
