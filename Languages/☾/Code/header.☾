@@ -363,7 +363,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
     with f.open() as 𝐟: code = 𝐟.read()
     ¿just_get_code: ↪ code
     m = ℵ´(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": ᔐ←f}, fname=ᔐ←f))
-    𝑘 = (m.keys󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝔸
+    𝑘 = (m.keys󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝑙(𝔸)
     G = GF(1).f_globals
     ¿"__exports__"∈m.keys: 𝑘+=𝑙(m.__exports__)
     ¿store_code: m[‹__cpy_code__›] = code

@@ -431,8 +431,8 @@ from time import time
 def ᐧ1d4e3ᐧ(s=ᐦ):
     return
     global ᐧ1d4fdᐧ_
+    ᐧ263eᐧ(f'Starting timer')
     if ᐹ(ᐧ1d4fdᐧ_, ᐧ25a1ᐧ):
-        ᐧ263eᐧ(f'Starting timer')
         ᐧ1d4fdᐧ_ = ᐧeba6ᐧ(time)
     else:
         ᐧ263eᐧ(f'{s} took {ᐧeba6ᐧ(time) - ᐧ1d4fdᐧ_}s')
@@ -602,7 +602,7 @@ def parse_to_tree(ᐧ1d445ᐧ, ᐧ212dᐧ, χ, ι, show_table=ᐧ2717ᐧ, raise_
 def chop_tree(ᐧf1055ᐧ, ᐧ1d437ᐧ, remove_trashes=ᐧ2713ᐧ, remove_failed_questions=ᐧ2713ᐧ, remove_lookaheads=ᐧ2713ᐧ):
     pops = f'∧∨*+❗⠶?'
     removes = ᐧ1d460ᐧ('\U000f01b4' * remove_trashes + '⮞¬' * remove_lookaheads)
-    
+
     def reform_str(ᐧf1055ᐧ):
         ᐧf1055ᐧ.t, ᐧf1055ᐧ.c, ᐧf1055ᐧ.e.T = (ᐧf1055ᐧ.c[0].t, [], ᐧ2713ᐧ)
         return ᐧf1055ᐧ
@@ -646,7 +646,6 @@ def chop_tree(ᐧf1055ᐧ, ᐧ1d437ᐧ, remove_trashes=ᐧ2713ᐧ, remove_failed
     ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
     set_arrows(ᐧf1055ᐧ)
     ᐧ1d4e3ᐧ('Set arrows')
-    
     return ᐧf1055ᐧ
 
 def parse_to_node(ᐧf1055ᐧ):
@@ -695,57 +694,69 @@ class Peggle2:
 
     def print_normalized(ᐧ1d54aᐧ):
         ꟿ(ᐧ21a8ᐧ(ᐧ1d54aᐧ.R.T_root), lambda x, y, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ᐧ263eᐧ(f'{x}\t{' '.join(ᴍ(y, ᔐ))}'))
-__exports__ = (Peggle2,)
-from node import Node
-
-def peggle122(rules):
-
-    def ƒ(x):
-        if x.t == '←':
-            return (x.t, x[0].c, ƒ(x[1]))
-        if x.t == 'rname':
-            return ('_' * (x.c not in '✓✗') + x.c,)
-        return (x.t, *(ᴍ(x.c, ƒ) if x.L else (x.c,)))
-    return ꟿ['V'](ᐧ2135ᐧ(rules), lambda x, y, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ƒ(y))
-
-def peggle221(ᐧf1055ᐧ):
-
-    def ƒ(ᐧf1055ᐧ):
-        s = ᐧ2135ᐧ()
-        for k, v in ᐧf1055ᐧ.e:
-            if k == 'T':
-                return Node(c=ᐧf1055ᐧ.t)
-            s[ᐧf1055ᐧ.c.index(v)] = k
-        c = ᴍ(ᐧf1055ᐧ, ƒ)
-        for i, v in s:
-            c[i].e = v
-        return Node(ᐧf1055ᐧ.t, c)
-    ᐧf1055ᐧ = ƒ(ᐧf1055ᐧ)
-    return ᐧf1055ᐧ.find_replace(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ᐧ1f0ccᐧ(x) == 1 and ᐹ(x.c[0], Node)) and (not x.c[0].t), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.copy(c=x.txt))
-
-class ForcefeedPeggle1Peggle2(Peggle2):
-
-    def __init__(ᐧ1d54aᐧ, x):
-        if ᐹ(x, Peggle2):
-            super().__init__(x)
-        else:
-            super().__init__(peggle122(x))
-
-    def __call__(ᐧ1d54aᐧ, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ):
-        return peggle221(super().__call__(*ᐧ1d538ᐧ, **ᐧ1d542ᐧ))
-
-    def __or__(ᐧ1d54aᐧ, x):
-        return super().__or__(peggle122(x))
-
-    def dump_gram(ᐧ1d54aᐧ):
-        return dumps((ᐧ2218ᐧ(ᐧ1d451ᐧ, ᐧ1d54aᐧ.rules), ᐧ2218ᐧ(ᐧ1d451ᐧ, ᐧ1d54aᐧ.R), ᐧeba6ᐧ(ᐧ1d54aᐧ.R.getdef)))
-
-    @ᐧ1d49eᐧᐧ2133ᐧ
-    def load_gram(ᐧ2102ᐧ, gram):
-        ᐧ1d54aᐧ = ᐧ2102ᐧ.__new__(ᐧ2102ᐧ)
-        rules, R, d = loads(gram)
-        ᐧ1d54aᐧ.rules, ᐧ1d54aᐧ.R = (ᐧ2135ᐧ(rules), ᐧ2135ᐧ[d](R))
-        return ᐧ1d54aᐧ
 GRANDMA_RULES = ᐧ25baᐧ((ŕ := (*map(re.compile, ('[\ueb26#][^\\n]*', '[⯅⯆△▽↷]', '"(␛.|[^"])*"', "'(␛.|[^'])*'", '‹(␛.|[^›])*›', '[^⯅⯆△▽↷\U000f01b4()?❗⮞.:⠶ƨ✗+*=¬∨∧~‹#\ueb26\'" \\t\\n]+|✗', '[\U000f01b4❗⮞⠶ƨ~¬]', '[*+?]', '([ \\t]|␛\\n)+', '([ \\t\\n]|␛\\n)+')),)), ᐧ2218ᐧ(ᐧ2135ᐧ, {'statements': ('∨', ('∧', ('?', ('_W',)), ('*', ('∧', ('∨', ('_comment',), ('_elm_o',)), ('?', ('_W',)))))), 'comment': ('∨', ('~', ŕ[0])), 'elm_o': ('∨', ('∧', ('_elm_a',), ('*', ('∧', ('?', ('_W',)), ('ᔐ', '∨'), ('?', ('_W',)), ('_elm_a',))))), 'elm_a': ('∨', ('∧', ('_elm_j',), ('*', ('∧', ('∨', ('∧', ('?', ('_W',)), ('ᔐ', '∧'), ('?', ('_W',))), ('?', ('_w',))), ('_elm_j',))))), 'elm_j': ('∨', ('__elm_j',), ('_elm',)), '_elm_j': ('∨', ('∧', ('_elm',), ('?', ('_W',)), ('~', ŕ[1]), ('?', ('_W',)), ('∨', ('__elm_j',), ('_elm',)))), 'elm': ('∨', ('∧', ('_prefix',), ('∨', ('_assign_eql',), ('_assign_cln',), ('_group',), ('_str',), ('_rname',)), ('_suffix',))), 'assign_eql': ('∨', ('∧', ('_rname',), ('?', ('_W',)), ('ᔐ', '='), ('?', ('_W',)), ('_elm_o',))), 'assign_cln': ('∨', ('∧', ('_rname',), ('?', ('_W',)), ('ᔐ', ':'), ('?', ('_W',)), ('_elm_j',))), 'group': ('∨', ('∧', ('ᔐ', '('), ('?', ('_W',)), ('_group_inner',), ('ᔐ', ')'))), 'group_inner': ('∨', ('*', ('∧', ('_elm_o',), ('?', ('_W',))))), 'str1': ('∨', ('~', ŕ[2])), 'str2': ('∨', ('~', ŕ[3])), 'str3': ('∨', ('~', ŕ[4])), 'str': ('∨', ('_str1',), ('_str2',), ('_str3',)), 'rname': ('∨', ('~', ŕ[5])), 'prefix': ('∨', ('∧', ('?', ('_w',)), ('+', ('∧', ('~', ŕ[6]), ('?', ('_W',))))), ('?', ('_w',))), 'suffix': ('∨', ('∧', ('+', ('∧', ('?', ('_W',)), ('~', ŕ[7]))), ('?', ('_w',))), ('?', ('_w',))), 'w': ('∨', ('~', ŕ[8])), 'W': ('∨', ('~', ŕ[9]))}))
 BOOTSTRAP = Peggle2(GRANDMA_RULES)
-BOOTSTRAP_PEGGLE1 = ForcefeedPeggle1Peggle2(BOOTSTRAP)
+__exports__ = ('Peggle2',)
+if __name__ == '__main__':
+    RULE = 'statements'
+    CONTENT = '\n    main    = \U000f01b4W? (entry \U000f01b4W?)*\n    entry   = (\n        ƨ(section=\U000f01b4\'[\' wrd \U000f01b4\']\') \U000f01b4W?\n        (pair = (\n            (bruh:key = ⠶wrd) \U000f01b4(w? ↷ \'=\')\n            (value = (wrd ∨ str)+) \U000f01b4W? ) )* )\n    str     = ~‹"[^"]+"›\n    wrd     = ~‹[-\\w]+›\n    w       = ~‹[ \\t]+›\n    W       = ~‹[ \\t\\n]+›\n    ' * 100
+    ᐧ263eᐧ(BOOTSTRAP)
+    ᐧf1055ᐧ = BOOTSTRAP(CONTENT, RULE)
+    ᐧ263eᐧ('FINISHED')
+
+def Peggle1Bootstrap(c=ᐧ2135ᐧ()):
+    if 'BOOTSTRAP_PEGGLE1' in c:
+        return (c.ForcefeedPeggle1Peggle2, c.BOOTSTRAP_PEGGLE1)
+
+    def peggle122(rules):
+
+        def ƒ(x):
+            if x.t == '←':
+                return (x.t, x[0].c, ƒ(x[1]))
+            if x.t == 'rname':
+                return ('_' * (x.c not in '✓✗') + x.c,)
+            return (x.t, *(ᴍ(x.c, ƒ) if x.L else (x.c,)))
+        return ꟿ['V'](ᐧ2135ᐧ(rules), lambda x, y, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ƒ(y))
+
+    def peggle221(ᐧf1055ᐧ):
+        from node import Node
+
+        def ƒ(ᐧf1055ᐧ):
+            s = ᐧ2135ᐧ()
+            for k, v in ᐧf1055ᐧ.e:
+                if k == 'T':
+                    return Node(c=ᐧf1055ᐧ.t)
+                s[ᐧf1055ᐧ.c.index(v)] = k
+            c = ᴍ(ᐧf1055ᐧ, ƒ)
+            for i, v in s:
+                c[i].e = v
+            return Node(ᐧf1055ᐧ.t, c)
+        ᐧf1055ᐧ = ƒ(ᐧf1055ᐧ)
+        return ᐧf1055ᐧ.find_replace(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ᐧ1f0ccᐧ(x) == 1 and ᐹ(x.c[0], Node)) and (not x.c[0].t), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.copy(c=x.txt))
+
+    class ForcefeedPeggle1Peggle2(Peggle2):
+
+        def __init__(ᐧ1d54aᐧ, x):
+            if ᐹ(x, Peggle2):
+                super().__init__(x)
+            else:
+                super().__init__(peggle122(x))
+
+        def __call__(ᐧ1d54aᐧ, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ):
+            return peggle221(super().__call__(*ᐧ1d538ᐧ, **ᐧ1d542ᐧ))
+
+        def __or__(ᐧ1d54aᐧ, x):
+            return super().__or__(peggle122(x))
+
+        def dump_gram(ᐧ1d54aᐧ):
+            return dumps((ᐧ2218ᐧ(ᐧ1d451ᐧ, ᐧ1d54aᐧ.rules), ᐧ2218ᐧ(ᐧ1d451ᐧ, ᐧ1d54aᐧ.R), ᐧeba6ᐧ(ᐧ1d54aᐧ.R.getdef)))
+
+        @ᐧ1d49eᐧᐧ2133ᐧ
+        def load_gram(ᐧ2102ᐧ, gram):
+            ᐧ1d54aᐧ = ᐧ2102ᐧ.__new__(ᐧ2102ᐧ)
+            rules, R, d = loads(gram)
+            ᐧ1d54aᐧ.rules, ᐧ1d54aᐧ.R = (ᐧ2135ᐧ(rules), ᐧ2135ᐧ[d](R))
+            return ᐧ1d54aᐧ
+    c.ForcefeedPeggle1Peggle2 = ForcefeedPeggle1Peggle2
+    c.BOOTSTRAP_PEGGLE1 = ForcefeedPeggle1Peggle2(BOOTSTRAP)
+    return (c.ForcefeedPeggle1Peggle2, c.BOOTSTRAP_PEGGLE1)

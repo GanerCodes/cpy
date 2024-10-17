@@ -1,6 +1,6 @@
 from util import *
 from dynamic_parser import DynamicParser, make_op_call, CODE_HEADER
-from PEGGLE2_BOOTSTRAP_AAUGH import ForcefeedPeggle1Peggle2 as Gram
+from peggle import Gram
 from node import Node
 from op import OP, OP_Manager
 from time import time
