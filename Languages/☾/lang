@@ -170,7 +170,7 @@ lamb = (
 
 
 str = str_star ∨ str_cpy ∨ str_$ ∨ str_py ∨ str_escape ∨ str_spec_char
-str_$ = 󰆴('$' w?) (ƨ(supscript) ∨ ✓) 󰆴w? ⠶(⠶str_cpy_inner ∨ '›')* 󰆴(w? '󷹹')
+str_$ = 󰆴('$' w?) (ƨ(supscript) ∨ ✓) 󰆴w? (⠶str_cpy_inner ∨ '›')* 󰆴(w? '󷹹')
 str_star = (󰆴"󰦥󰦥󰦥󰦥󰦥") ~‹((?!(󰦥󰦥󰦥󰦥󰦥))(.|\n))*› 󰆴("󰦥󰦥󰦥󰦥󰦥" ∨ ✓)
 str_cpy = 󰆴'‹' (⠶str_cpy_inner ∨ '󷹹')* 󰆴'›'
 str_cpy_inner = (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)

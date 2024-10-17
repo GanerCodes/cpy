@@ -1,5 +1,6 @@
 from util import *
 from dynamic_parser import DynamicParser, make_op_call, CODE_HEADER
+from PEGGLE2_BOOTSTRAP_AAUGH import ForcefeedPeggle1Peggle2 as Gram
 from node import Node
 from op import OP, OP_Manager
 from time import time
@@ -13,13 +14,13 @@ class Lang:
             cache = f"{cache_dir}/{(h := 'g'+sha256(gram))}"
             if h in os.listdir(cache_dir):
                 try:
-                    𝕊.gram = loads(R(cache, m='rb'))
+                    𝕊.gram = Gram.load_gram(R(cache, m='rb'))
                     return
                 except Exception:
                     print(f"Corrupted Cache? Deleting {cache}")
                     os.remove(cache)
         𝕊.gram = 𝕊.dynamic_parsers.parse_gram(gram)
-        cache_dir is ᗜ or W(cache, dumps(𝕊.gram), m='wb')
+        cache_dir is ᗜ or W(cache, 𝕊.gram.dump_gram(), m='wb')
     
     def __call__(𝕊, content, **K):
         if "parser_comment" in 𝕊.gram:
