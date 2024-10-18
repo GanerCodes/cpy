@@ -431,12 +431,12 @@ from time import time
 def ᐧ1d4e3ᐧ(s=ᐦ):
     return
     global ᐧ1d4fdᐧ_
-    ᐧ263eᐧ(f'Starting timer')
-    if ᐹ(ᐧ1d4fdᐧ_, ᐧ25a1ᐧ):
+    if ᐧ1d4fdᐧ_ is ᐧ25a1ᐧ:
+        ᐧ263eᐧ(f'Starting timer')
         ᐧ1d4fdᐧ_ = ᐧeba6ᐧ(time)
-    else:
-        ᐧ263eᐧ(f'{s} took {ᐧeba6ᐧ(time) - ᐧ1d4fdᐧ_}s')
-        ᐧ1d4fdᐧ_ = ᐧ25a1ᐧ
+        return
+    ᐧ263eᐧ(f'{s} took {ᐧeba6ᐧ(time) - ᐧ1d4fdᐧ_}s')
+    ᐧ1d4fdᐧ_ = ᐧ25a1ᐧ
 
 def parse(ᐧ1d437ᐧ, ᐧ1d445ᐧ, start_rule=ᐧ25a1ᐧ):
     ᐧ212dᐧ, χ = (ᴍ(ᐧ2b65ᐧ(ᐧ1f0ccᐧ(ᐧ1d437ᐧ) + 1), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: {}), 0)
@@ -604,34 +604,74 @@ def chop_tree(ᐧf1055ᐧ, ᐧ1d437ᐧ, remove_trashes=ᐧ2713ᐧ, remove_failed
     removes = ᐧ1d460ᐧ('\U000f01b4' * remove_trashes + '⮞¬' * remove_lookaheads)
 
     def reform_str(ᐧf1055ᐧ):
-        ᐧf1055ᐧ.t, ᐧf1055ᐧ.c, ᐧf1055ᐧ.e.T = (ᐧf1055ᐧ.c[0].t, [], ᐧ2713ᐧ)
+        if ᐧf1055ᐧ.t == 'ᔐ' or ᐧf1055ᐧ.t == '~':
+            ᐧf1055ᐧ.t, ᐧf1055ᐧ.c, ᐧf1055ᐧ.e.T = (ᐧf1055ᐧ.c[0].t, [], ᐧ2713ᐧ)
+        else:
+            for c in ᐧf1055ᐧ:
+                reform_str(c)
         return ᐧf1055ᐧ
     ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
-    ᐧf1055ᐧ.ftrp('ᔐ~', reform_str)
+    reform_str(ᐧf1055ᐧ)
     ᐧ1d4e3ᐧ('Reform_str')
-    if removes:
-        ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
-        ᐧf1055ᐧ = Ń.filter(ᐧf1055ᐧ, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.e.T or x.t not in removes)
-        ᐧ1d4e3ᐧ('Removes')
-    if remove_failed_questions:
-        ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
-        ᐧf1055ᐧ = Ń.filter(ᐧf1055ᐧ, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (x.e.T or x.t != '?') or x.c)
-        ᐧ1d4e3ᐧ('Remove_questions')
+
+    def ƒ(ᐧf1055ᐧ):
+        if ᐧf1055ᐧ.e.T:
+            return True
+        if ᐧf1055ᐧ.t in removes:
+            return
+        if remove_failed_questions and ᐧf1055ᐧ.t == '?':
+            if not ᐧf1055ᐧ.c:
+                return
+            ᐧf1055ᐧ.c = list(filter(ƒ, ᐧf1055ᐧ.c))
+            if not ᐧf1055ᐧ.c:
+                return
+            return True
+        ᐧf1055ᐧ.c = list(filter(ƒ, ᐧf1055ᐧ.c))
+        return True
+    ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
+    ƒ(ᐧf1055ᐧ)
+    ᐧ1d4e3ᐧ('Removes')
 
     def splat(ᐧf1055ᐧ):
-        ƒ = lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: Σ(ᴍ(x, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.c), []) if x.t == '⠶' else x.c
-        ᐧf1055ᐧ.c = Σ(ᴍ(ᐧf1055ᐧ, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ƒ(x) if (ᐹ(x, Ń) and (not x.e.T)) and x.t in pops else ᐧ26f6ᐧ(x)), [])
-        return ᐧf1055ᐧ
+        C = []
+        for c in ᐧf1055ᐧ:
+            if c.e.T:
+                C.append(c)
+                continue
+            v = splat(c)
+            if isinstance(v, list):
+                C.extend(v)
+            elif c.t in pops:
+                if c.t == '⠶':
+                    for l in c:
+                        C.extend(l.c)
+                else:
+                    C.extend(c.c)
+            else:
+                C.append(c)
+        ᐧf1055ᐧ.c = C
     ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
-    ᐧf1055ᐧ.frp(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: not x.e.T, splat, pre=ᐧ2713ᐧ)
+    splat(ᐧf1055ᐧ)
     ᐧ1d4e3ᐧ('Splats')
 
     def get_txt(ᐧf1055ᐧ):
-        l = []
-        ᐧf1055ᐧ.frp(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.e.T, lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ᐧ25baᐧ(l.append(x.t), x), pre=ᐧ2713ᐧ)
-        return Σ(l, ᐦ)
+        if ᐧf1055ᐧ.t == 'ƨ':
+            l = ''
+
+            def ƒ(ᐧf1055ᐧ):
+                nonlocal l
+                if ᐧf1055ᐧ.e.T:
+                    (l := (l + ᐧf1055ᐧ.t))
+                else:
+                    for c in ᐧf1055ᐧ:
+                        ƒ(c)
+            ƒ(ᐧf1055ᐧ)
+            ᐧf1055ᐧ.t, ᐧf1055ᐧ.c, ᐧf1055ᐧ.e = (l, [], ᐧ2135ᐧ(T=ᐧ2713ᐧ))
+            return
+        for c in ᐧf1055ᐧ:
+            get_txt(c)
     ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
-    ᐧf1055ᐧ.ftrp('ƨ', lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: Ń(get_txt(x), e=ᐧ2135ᐧ(T=ᐧ2713ᐧ)))
+    get_txt(ᐧf1055ᐧ)
     ᐧ1d4e3ᐧ('Get_txt')
 
     def set_arrows(ᐧf1055ᐧ):
@@ -685,7 +725,7 @@ class Peggle2:
         ᐧ1d4e3ᐧ('Convert')
         ᐧeba6ᐧ(ᐧ1d4e3ᐧ)
         ᐧf1055ᐧ = parse_to_node(ᐧf1055ᐧ)
-        ᐧ1d4e3ᐧ('Noding')
+        ᐧ1d4e3ᐧ('Nodeing')
         ᐧ1d4b8ᐧ = lambda *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: chop_tree(ᐧf1055ᐧ, c, **ᐧ1d4daᐧ | ᐧ1d542ᐧ)
         return ᐧeba6ᐧ(ᐧ1d4b8ᐧ) if chop else ᐧ2135ᐧ(table=ᐧ212dᐧ, tree=ᐧf1055ᐧ, chop=ᐧ1d4b8ᐧ)
 
@@ -699,10 +739,11 @@ BOOTSTRAP = Peggle2(GRANDMA_RULES)
 __exports__ = ('Peggle2',)
 if __name__ == '__main__':
     RULE = 'statements'
-    CONTENT = '\n    main    = \U000f01b4W? (entry \U000f01b4W?)*\n    entry   = (\n        ƨ(section=\U000f01b4\'[\' wrd \U000f01b4\']\') \U000f01b4W?\n        (pair = (\n            (bruh:key = ⠶wrd) \U000f01b4(w? ↷ \'=\')\n            (value = (wrd ∨ str)+) \U000f01b4W? ) )* )\n    str     = ~‹"[^"]+"›\n    wrd     = ~‹[-\\w]+›\n    w       = ~‹[ \\t]+›\n    W       = ~‹[ \\t\\n]+›\n    ' * 100
+    CONTENT = '\n    main    = \U000f01b4W? (entry \U000f01b4W?)*\n    entry   = (\n        ƨ(section=\U000f01b4\'[\' wrd \U000f01b4\']\') \U000f01b4W?\n        (pair = (\n            (bruh:key = ⠶wrd) \U000f01b4(w? ↷ \'=\')\n            (value = (wrd ∨ str)+) \U000f01b4W? ) )* )\n    str     = ~‹"[^"]+"›\n    wrd     = ~‹[-\\w]+›\n    w       = ~‹[ \\t]+›\n    W       = ~‹[ \\t\\n]+›\n    ' * 2
     ᐧ263eᐧ(BOOTSTRAP)
     ᐧf1055ᐧ = BOOTSTRAP(CONTENT, RULE)
     ᐧ263eᐧ('FINISHED')
+    ᐧ263eᐧ(ᐧeba6ᐧ(ᐧf1055ᐧ.P))
 
 def Peggle1Bootstrap(c=ᐧ2135ᐧ()):
     if 'BOOTSTRAP_PEGGLE1' in c:
@@ -731,8 +772,7 @@ def Peggle1Bootstrap(c=ᐧ2135ᐧ()):
             for i, v in s:
                 c[i].e = v
             return Node(ᐧf1055ᐧ.t, c)
-        ᐧf1055ᐧ = ƒ(ᐧf1055ᐧ)
-        return ᐧf1055ᐧ.find_replace(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ᐧ1f0ccᐧ(x) == 1 and ᐹ(x.c[0], Node)) and (not x.c[0].t), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.copy(c=x.txt))
+        return ƒ(ᐧf1055ᐧ).find_replace(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ᐧ1f0ccᐧ(x) == 1 and ᐹ(x.c[0], Node)) and (not x.c[0].t), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.copy(c=x.txt))
 
     class ForcefeedPeggle1Peggle2(Peggle2):
 

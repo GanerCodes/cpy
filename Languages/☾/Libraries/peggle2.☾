@@ -254,11 +254,16 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
             ¿isinstance(v, list):
                 C.extend(v)
             ⸘cᵗ∈pops:
-                C.extend(cᶜ) ; ↺
-            C.append(c)
-        ¿󱁕ᵗ≡␛⠶: ↪C
+                ¿cᵗ≡␛⠶:
+                    ∀l∈c:
+                        C.extend(lᶜ)
+                ¡:
+                    C.extend(cᶜ)
+            ¡:
+                C.append(c)
         󱁕ᶜ = C
     𝓣 ; splat(󱁕) ; 𝓣("Splats")
+    
      ⊢ splat(󱁕):
          ƒ = 󰲡(xᴍ󰲡xᶜ󰅂Σ[]) ¿xᵗ≡␛⠶¡ xᶜ
          󱁕ᶜ = 󱁕 ᴍ󰲡ƒ(x) ¿xᐹŃ∧¬xᵉ ᵀ∧xᵗ∈pops¡ x⛶󰅂 Σ[]
@@ -270,8 +275,10 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
             l = ''
             ⊢ ƒ(󱁕):
                 nonlocal l
-                ¿󱁕ᵉ ᵀ: l += 󱁕ᵗ
-                ∀c∈󱁕 : ƒ(c)
+                ¿󱁕ᵉ ᵀ:
+                    l += 󱁕ᵗ
+                ¡:
+                    ∀c∈󱁕: ƒ(c)
             ƒ(󱁕)
             󱁕ᵗ, 󱁕ᶜ, 󱁕ᵉ = l, [], ℵ(T=✓)
             ↪
