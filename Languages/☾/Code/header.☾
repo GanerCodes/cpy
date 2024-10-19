@@ -337,13 +337,13 @@ is_iter = 󰲡hasattr(x,"__iter__")
             G["time"], G["sleep"] = time, sleep
             G["ldir"] = 𝚲os.chdir←Gₕ
 
-⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname="cpy_󱠨",
+⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□,
     interactive_𝕂=□, no_isolate=✗,
     no_isolate_ƒ=󰲡exec(x,globals), ⠶𝕂):  󱠨(x, return_code=✓)
     
     ⮌ refresher ⨡ basic_cpy_interactive_session
     cpy = basic_cpy_interactive_session(
-        print_output=✓, ns=ns, fname=fname,
+        print_output=✓, ns=ns, fname="cpy_󱠨" ¿fname≅□¡ fname,
         header_carry=__header_namespace__,
         ⠶interactive_𝕂∨{})
     ¿no_isolate:
