@@ -56,11 +56,11 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", he
     lib_fp    = os.path.abspath(f"{lang_pfx}/Libraries")
     if lib_fp not in sys.path: sys.path.insert(0, lib_fp)
     
-    hns = {} if hns is ᗜ else hns
     ns  = {} if ns  is ᗜ else ns
+    hns = {} if hns is ᗜ else hns
     
     if header_carry:
-        hns = header_carry
+        hns = header_carry | hns
     else:
         hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
         hns.setdefault("__file__", header_fp)
