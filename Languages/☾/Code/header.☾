@@ -339,14 +339,14 @@ is_iter = 󰲡hasattr(x,"__iter__")
 
 ⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□,
     interactive_𝕂=□, no_isolate=✗,
-    no_isolate_ƒ=󰲡exec(x,globals), ⠶𝕂):  󱠨(x, return_code=✓)
+    no_isolate_ƒ=󰲡exec(x,globals()), ⠶𝕂):  󱠨(x, return_code=✓)
     
     ⮌ refresher ⨡ basic_cpy_interactive_session
     cpy = basic_cpy_interactive_session(
         print_output=✓, ns=ns, fname="cpy_󱠨" ¿fname≅□¡ fname,
         header_carry=__header_namespace__,
         ⠶interactive_𝕂∨{})
-    ¿no_isolate:
+    ¿no_isolate: # absolutely beaned
         ¬get_ns ∧ ns≅□ ∧ fname≅□ ⨳
         c = cpy(c, ⠤𝔸, return_code=✓, ⠶𝕂)☾
         ↪ no_isolate_ƒ(c)
