@@ -42,9 +42,10 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
             ¡:
                 ‹Traceback with no file? ⟦ə⟧›☾ ; ⇥
             
+            F = F.split(𝗻)
             pps = ⠤ə.tb_frame.f_code.co_positions,
             s, e, a, b = pps􌿰􋕜ₜ􋕞ₗₐₛₜᵢ􊲗₂
-            F = F.split(𝗻)
+            ¿a≅□: TB += [(f, s, ᐦ, "Missing location!", ᐦ)]
             l = 𝗻.join(Fₛ₋₁﹕ₑ).encode("utf-8")
             A,B,C = l﹕ₐ⋄lₐ﹕⋄l﹕ ᴍ 󰲡x.decode("utf-8")
             TB += [(f, s, highlight(A),
