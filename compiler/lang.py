@@ -49,13 +49,6 @@ class Lang:
                 if mod & set('BS'): kw['L'] = meal.copy()
                 if mod & set('BP'): kw['R'] = meal.copy()
                 
-                if 'B' in mod and not mod & set('Sι'):
-                    kw['R'] |= {x[0] for y in op_norm for x in y if \
-                        'P' in x[1] and not x[1] & set('ιB')}
-                    # X⋅√B = ⋅(X,√(B))
-                    # NOTE: CPY IS BASICALLY BROKEN REEEEEEEEEEE
-                    # WE CAN'T DISTINGUISH a/±c AND a/b±c REEEEEEE
-                
                 op = OP(op_t, mod, **kw)
                 op.f = ρ(make_op_call, op)
                 ops[op_t] = op

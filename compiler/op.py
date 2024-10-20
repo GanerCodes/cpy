@@ -61,13 +61,12 @@ class OP:
         if l or r:
             return 𝕊.P and R or L and 𝕊.S
         return 𝕊.N
-        
     
     def part(𝕊, nodes, d, op_man):
         assert d in "lr"
         
         i = 0
-        if d == 'r': # this code is scary!!1
+        if d == 'r': # 󷹇 this code is scary!!1
             stack = [𝕊.R]
             for i, n in enum(nodes):
                 O = 𝕊.is_op(n)
@@ -79,7 +78,6 @@ class OP:
                     pretend_op = op_t
                     if '≺' in l.txt:
                         pretend_op = 'ᴍ' # 󷹇 stupid
-                    
                     if pretend_op in stack[-1]:
                         stack += [op_man[n].R]
                         break
@@ -107,9 +105,13 @@ class OP:
         
     def apply(𝕊, L, R, op_man, op_):
         # print(f"{L=} {op_=} {R=}")
-        
         ll, lr = 𝕊.part(L, 'l', op_man)
         rl, rr = 𝕊.part(R, 'r', op_man)
+        # print("ll", ll)
+        # print("lr", lr)
+        # print(𝕊)
+        # print("rl", rl)
+        # print("rr", rr)
         
         if rl: rl = op_man.parse_expr(rl)
         

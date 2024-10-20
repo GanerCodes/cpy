@@ -1,3 +1,4 @@
+# P/S/B/N: prefix/suffix/binary/nullary
 # I: Include self in group (right asoc.)
 # α: basic concat
 # δ: x <op>= y doesn't make sense
@@ -116,8 +117,8 @@ for k, v in lang.ops.items():
      ⬄ᴮᴾ󰀒ᴺ ᒍᴮᴺ   󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ ⴵᴾ󰀒ᴺ ␛
      ⍭ᴾ󰀒ᴺ  󰸵ᴮᴺ   󰸷ᴮᴺ
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
-**ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮ
-ᴾᴺ ᴺ󰀒
+**ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮᴺ
+ᴵᴾᴺ ᴺ󰀒
 󰻾ᴺ ℵᴺ ℶᴺ
 .ᴮ󰁏󰁔
 ...ᴺ
@@ -168,7 +169,6 @@ lamb = (
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 
-
 str = str_star ∨ str_cpy ∨ str_$ ∨ str_py ∨ str_escape ∨ str_spec_char
 str_$ = 󰆴('$' w?) (ƨ(supscript) ∨ ✓) 󰆴w? (⠶str_cpy_inner ∨ '›')* 󰆴(w? '󷹹')
 str_star = (󰆴"󰦥󰦥󰦥󰦥󰦥") ~‹((?!(󰦥󰦥󰦥󰦥󰦥))(.|\n))*› 󰆴("󰦥󰦥󰦥󰦥󰦥" ∨ ✓)
@@ -213,7 +213,13 @@ def σ_00():
         t = gram(SCRIPT.nrm(n.txt), "exprs")
         T = lang(t.txt.strip())
         if T.isidentifier(): return [OP.TND('.'), t]
-        return [OP.TND('⌃'), Node(c=lang(t.txt))]
+        return [
+            Node("oper", [
+                Node("oper_mod_l",  ᐦ ),
+                Node("oper_lit"  , '⌃'),
+                Node("oper_mod_r",  ᐦ )]),
+            mkgxp_(Node(c=lang(t.txt)))]
+        # return [OP.TND('⌃'), Node(c=lang(t.txt))]
     
     ((yield replacement(
         "subscript",
@@ -275,7 +281,7 @@ def σ_15():
     ((yield replacement(
         "lamb_h_preset"))
     (lambda n: Ń("lamb_h",
-            *ᴍ(lambda t: mkexp(mkvar(t)), "xyzwvu"[:"𝚲󰲡󰲣󰲥󰲧󰲩󰲫".index(n.c)]),
+            *ᴍ(lambda t: mkexp(mkvar(t)), "xyzwvutsr"[:"𝚲󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱".index(n.c)]),
             ARG_A, ARG_K)))
     
     ((yield replacement(

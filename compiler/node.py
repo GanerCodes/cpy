@@ -144,8 +144,8 @@ class Node:
         J=lambda x,a=Z.G  ,b=Z.w   :a+x+b):
         if not ᐹ(𝕊, Node):
             return [(p, Node.text(𝕊))]
-        if 𝕊.t == "oper" and 𝕊.L and ⵌ(𝕊) == 3:
-            return [(p, f" oper[{𝕊.c[0].c or N}|{𝕊.c[1].c}|{𝕊.c[2].c or N}]")]
+        # if 𝕊.t == "oper" and 𝕊.L and ⵌ(𝕊) == 3:
+        #     return [(p, f" oper[{𝕊.c[0].c or N}|{𝕊.c[1].c}|{𝕊.c[2].c or N}]")]
         if d:
             if p:
                 C=[Node.print(c,d-1,p+1) for c in 𝕊.C]
