@@ -9,8 +9,8 @@ cp = shutil.copy
 fold = ‹Output›⥉𝐩→.resolve
 𝑟 = process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH)
 
- 𝑟.write_multi(fold / "multi.json")  󰤱 fix these
- 𝑟.write_style(fold / "style.json")  󰤱 fix these
+𝑟.write_multi(fold / "multi.json")  󰤱 fix these
+𝑟.write_style(fold / "style.json")  󰤱 fix these
 
 stages = {}
 ⊢ 𝕗(fi, fo):

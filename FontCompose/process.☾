@@ -10,7 +10,7 @@
 󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script remove_char add_multichar›⍭)
 󰋺("organizer", ⠤‹get_codepoint save_pua›⍭)
 
-jdumps = o↦(o.__json__ ¿hasattr(o, jdumps, "__json__")¡ jds)(⠤𝔸, ⠶𝕂)
+jdumps = o↦(o.__json__ ¿hasattr(o, "__json__")¡ jds)(o)
 
 symmap = {
         ␛(: "parenleft"  , ␛): "parenright"  ,
@@ -34,9 +34,9 @@ symmap = {
 
 fargs = ƒ↦ƒ.__code__.co_varnames[:ƒ.__code__.co_argcount]
 ⊢ hsh(s):
-        ¿ᐹ(s, 𝑑): ↪ 𝑡((k,hsh(v))∀k,v∈s.items)
-        ¿ᐹ(s, 𝑙): ↪ 𝑡(hsh(v) ∀v∈s)
-        ↪ s
+    ¿sᐹ𝑑: ↪ 𝑡((k,hsh(v))∀k,v∈s.items)
+    ¿sᐹ𝑙: ↪ 𝑡(hsh(v) ∀v∈s)
+    ↪ s
 
 gen, gens = n↦ƒ↦gensₙ≔ƒ, {}
 gen(␛c)←⥌x=□,y=□,z=□↦{ ⠶x∧{          "color": 🌈.h2hl←x}∨{},
@@ -54,11 +54,11 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
         r = {}
         ∀n∈n:
             t, v = nᵗ, nᶜ
-            ¿t ≡ "word":
-                r |= gens[v₀ᵗ]
-            ⸘t ≡ "pair":
+            ¿t≡"word":
+                r |= gensᵥ􊬣􊫼
+            ⸘t≡"pair":
                 t, c = v₀ᵗ, v₁ᶜ
-                ə = c ᴍ󰲡□ ¿xᵗ≡␛✓¡ 𝘀.join(x.extract(󰲡¬xᶜ,Δ=✗)ᴍ󰲡xᵗ)
+                ə = c ᴍ󰲡□ ¿xᵗ≡␛✓¡ 𝘀.join(x.extract(󰲡x🃌¬,Δ=✗)ᴍ󰲡xᵗ)
                 ƒ = gensₜ
                 r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)ζə¿k≇□})
         R += r⛶
@@ -192,9 +192,9 @@ results = (
    ∨(󰆴⟶        (󰆴w ∨ str ∨ ~‹[^␠⟧⁆⟩\n\t ]›)*)
 )
 
-style = 󰆴'⦑' (󰆴W? ↷ (⠶tuple ∨ ✓)) 󰆴'⦒'
+style = 󰆴'⦑' (󰆴W? ↷ ((⠶tuple) ∨ ✓)) 󰆴'⦒'
 tuple = ((| (| ✓)*)? chain)+
-pair  = ƨ(word) 󰆴W? ⦑ ⠶tuple? ⦒
+pair  = ƨ(word) 󰆴W? ⦑ (tuple)? ⦒
 chain = (pair ∨ word)+ 󰆴W?
 
 concat = (⠶atom)+
@@ -226,9 +226,9 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root = gram(dat🟑, DEBUG=✓, ONLY_NAMED=✓🟑)  ← perf optmz herez
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
-    root = (rep≔󰲡𝐍(x)¿xᐹᔐ¡𝐍(x₀,⠤x₁ᴍrep))∘root
-    root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍(xᴍ󰲡xᵗ󰅂Σᐦ)]))
-    root = root.ftrp(   "style"⍭, 󰲡x.copy(c=[𝐍(decor(x))]))
+    root = (rep≔󰲡𝐍(x) ¿xᐹᔐ¡ 𝐍(x₀,⠤x₁ᴍrep))∘root
+    root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍 ← xᴍ󰲡xᵗ󰅂Σᐦ]))
+    root = root.ftrp(   "style"⍭, 󰲡x.copy(    c=[𝐍 ← decor ← x]))
     root = root.ftrp("p_looper"⍭, 󰲡x.copy("looper"), ✓)
     root = root.ftrp("p_concat"⍭, 󰲡x.copy("concat"), ✓)
     mac, lets = supermcdoublerecursivecomposeoutputstyleparsemachine(root)
@@ -334,7 +334,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         ↪r
     
     styles = collect_styles∘res
-    styles_dat = 𝑑∘styles
+    styles_dat = stylesᴍᴙ⥉𝑑
     
     styles = convert_styles∘styles  󰤱 again multichar output stuff
     xcomp = xcompose_from_seqs(cmp_seqs)

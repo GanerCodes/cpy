@@ -1,0 +1,70 @@
+⨡ traceback
+⮌ pathlib ⨡ Path as 𝐩
+⮌ json ⨡ loads
+⮌ sys ⨡ stdin
+⮌ util ⨡ cpy_dir
+󰋺("kots", *)
+󰋺("🌈", *)
+
+styf = 𝐩(cpy_dir) / "FontCompose/Output/style.json"
+styd = styf ⥉  ⥉ loads ⥉ ℵ
+
+⊢ sty(s, bg=0, de="bec"):
+    ∀k,v∈styd:
+        ¿s∉k ∨ "color"∉v: ↺
+        ↪ termclr(s, v􋕨󰂼ₗ󰂼ᵣ􋕨, bg)
+    ↪ termclr(s, de, bg)
+
+⊢ highlight(l, b=✗):
+    s, *e = l.split(␛ᐧ)
+    e = e ᙧ¹ 0⋄1
+    e = e ꟿ 󰲣chr(𝑖(x,16))+y
+    r = (s+←eΣᐦ) ᴍ 󰲡sty(x, "400" ¿b¡ 0)󰅂 Σᐦ
+    ↪ r
+
+⊢ __error_printer__(ε):
+    ℭ = traceback.linecache.CPY_CACHE
+    ə = ε.__traceback__
+    TB = []
+    ➰✓:
+        g = ə.tb_frame.f_globals
+        ∀_∈␛_:
+            ¿"__file__"∈g:
+                f = g􋕨􋕞􋕞ᵢₗₑ􋕞􋕞􋕨
+                ¿f.endswith("/refresher.py"): ⇥
+                ¿f.endswith("/header.☾"): ⇥
+                ¿f∈ℭ:
+                    F = ℭ
+                ⸘f≔𝐩(f) → .exists:
+                    F = (f)
+                ¡:
+                    ‹Cannot find "⟦f⟧"??›☾ ; ⇥
+            ¡:
+                ‹Traceback with no file? ⟦ə⟧›☾ ; ⇥
+            
+            pps = ⠤ə.tb_frame.f_code.co_positions,
+            s, e, a, b = pps􌿰􋕜ₜ􋕞ₗₐₛₜᵢ􊲗₂
+            F = F.split(𝗻)
+            l = 𝗻.join(Fₛ₋₁﹕ₑ).encode("utf-8")
+            A,B,C = l﹕ₐ⋄lₐ﹕⋄l﹕ ᴍ 󰲡x.decode("utf-8")
+            TB += [(f, s, highlight(A),
+                          highlight(B,✓),
+                          highlight(C))]
+        ¿□≅ə≔ə.tb_next: ⇥
+    
+    CLR1, CLR2 = "faf", "f55"
+    
+    asd = termclr(␛⮡, CLR1)
+    maxl, prevf = TB ⤉ 󰲡x₁, □
+    zf = ᔐ(maxl₁)🃌
+    ∀f,s,A,B,C∈TB:
+        ¿f≠prevf: termclr(f, CLR1)☾
+        ‹⟦asd⟧ ⟦ᔐ(s).zfill(zf)⟧𝘁⟦A⟧⟦B⟧⟦C⟧›☾
+        prevf = f
+    ‹⟦termclr("Error:", CLR2)⟧ ⟦ε⟧›☾
+
+__exports__ = "highlight", "__error_printer__"
+
+¿ __name__≡"__main__":
+    ➰ l≔stdin.readline:
+        ☾´(highlight∘l, end=ᐦ)

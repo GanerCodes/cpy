@@ -311,7 +311,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
     __or__   = ⥌𝕊,x↦𝕊􋇑()|x
     __pow__  = ⥌𝕊,x↦𝕊􋇑()⌃x
     __repr__ = 𝕊↦‹⟦𝕊􋇛⟧()›
-    __bool__ = ⴴ
+    __bool__ = 𝚲✗
 ℵ´ = _hwrap(ℵ´)
 ℶ  = _hwrap(ℶ )
 
@@ -404,3 +404,6 @@ SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)
         ¡                  : ↪ƒ(0,𝕩)
         ⨳✗
 ´,󱅏´,´ = ‹󱅏›ᴍRand
+
+__error_printer__ = ℳℱ(𝚲󰋺("highlighter").__error_printer__)
+__builtins__[t≔"__error_printer__"] = __error_printer__

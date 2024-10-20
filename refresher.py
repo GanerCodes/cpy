@@ -15,8 +15,10 @@ def capture_output(𝑓, *𝔸, **𝕂):
             return (e, ⴴ), s.getvalue()+ń+traceback.format_exc()
 
 # stupid monkeypatching garvbarebefshiskodjl
-sys.excepthook = traceback.print_exception
+if not hasattr(traceback.linecache, "CPY_CACHE"):
+    traceback.linecache.CPY_CACHE = {}
 def remember_code_for_tracebacks(path, code, *, funky_monkey={"monkeys": set()}, monkemonEeamnoNEKEEE={}):
+    traceback.linecache.CPY_CACHE[path] = code
     monkemonEeamnoNEKEEE[path] = code.split(ń)
     if "monke" not in funky_monkey:
         funky_monkey["monke"] = traceback.linecache.checkcache
@@ -51,10 +53,12 @@ def run_inj_tb(code, ns, file=ᗜ, mode="exec"):
 def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", header_carry=ᗜ, **𝕂):
     compiler = Compiler(CACHE_DIR, GRAM_CACHE_DIR)
     
-    lang_pfx  = os.path.abspath(f"{CPY_DIR}/Languages/☾")
-    header_fp = os.path.abspath(f"{lang_pfx}/Code/header.☾")
-    lib_fp    = os.path.abspath(f"{lang_pfx}/Libraries")
-    if lib_fp not in sys.path: sys.path.insert(0, lib_fp)
+    lang_pfx = os.path.abspath(f"{CPY_DIR}/Languages/☾")
+    code_pfx = os.path.abspath(f"{lang_pfx}/Code")
+    libr_pfx = os.path.abspath(f"{lang_pfx}/Libraries")
+    header_f = os.path.abspath(f"{code_pfx}/header.☾")
+    for f in (code_pfx, libr_pfx):
+        f in sys.path or sys.path.insert(0, f)
     
     ns  = {} if ns  is ᗜ else ns
     hns = {} if hns is ᗜ else hns
@@ -63,8 +67,8 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", he
         hns = header_carry | hns
     else:
         hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
-        hns.setdefault("__file__", header_fp)
-        run_inj_tb(compiler("☾", R(header_fp), do_cache, **𝕂), hns)
+        hns.setdefault("__file__", header_f)
+        run_inj_tb(compiler("☾", R(header_f), do_cache, **𝕂), hns)
         hns["__header_namespace__"] = hns
     
     ns["__builtins__"] = { **ns.get("__builtins__", {}), **hns["__builtins__"], **hns }
@@ -134,6 +138,17 @@ def run_print_exception(𝑓, *𝔸, **𝕂):
         except Exception as e:
             print(f'mfw Exception Exception: {e}')
 
+def run_custom_errors(𝑓, ns={}, quit=ⴴ):
+    try:
+        return 𝑓()
+    except Exception as ε:
+        t = "__error_printer__"
+        if t in ns["__builtins__"]:
+            ns["__builtins__"][t](ε)
+        else:
+            raise ε
+        quit and exit(1)
+
 if __name__ == "__main__":
     from sys import argv
     import readline
@@ -170,8 +185,7 @@ if __name__ == "__main__":
                 print_code   = ⴳ,
                 print_output = ⴳ,
                 do_cache     = ⴴ,
-                sanity       = ⴴ
-            ) | cpy_kwargs)
+                sanity       = ⴴ) | cpy_kwargs)
         refresh = lambda c: run_print_exception(cpy, c)
         refresh_file = "/tmp/cpy_test/test.☾"
         if not os.path.isfile(refresh_file):
@@ -181,27 +195,31 @@ if __name__ == "__main__":
         exit(0)
     
     arg_debug = agets("debug")
+    ns = {}
     
     if len(argv) > 1:
+        ns = { "__file__": (f := os.path.abspath(argv[1])) }
         cpy = basic_cpy_interactive_session(**ᖱ(
                 print_code   = ⴴ,
                 print_output = ⴴ,
                 do_cache     = ⴳ,
-                ns = { "__file__": (f := os.path.abspath(argv[1])) }
-            ) | cpy_kwargs)
+                ns           = ns) | cpy_kwargs)
         sys.argv.pop(0)
-        cpy(R(f), cap_stdout=ⴴ, force_exec=ⴳ)
+        
+        run_custom_errors(
+            lambda: cpy(R(f), cap_stdout=ⴴ, force_exec=ⴳ),
+            ns, quit=ⴳ)
         exit(0)
     
     cpy_kwargs.setdefault("interactive_defaults", {})["dynamic_compile"] = ⴳ
     cpy = basic_cpy_interactive_session(**ᖱ(
           print_code   = arg_debug,
           print_output = ⴳ,
-        ) | cpy_kwargs)
+          ns           = ns) | cpy_kwargs)
     while ⴳ:
         c = input("✝ ")
         if not c:
             print("God is good!")
             continue
         print('»', end=ś)
-        run_print_exception(cpy, c)
+        run_custom_errors(lambda: print(cpy(c, cap_stdout=ⴴ)), ns)
