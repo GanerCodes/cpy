@@ -223,12 +223,12 @@ if __name__ == "__main__":
           print_code   = arg_debug,
           print_output = ⴳ,
           ns           = ns) | cpy_kwargs)
-    prompt = f"\x1b[38;2;255;0;135m✝\033[0m "
+    fancy = lambda x: f"\x1b[38;2;255;0;135m{x}\033[0m "
+    prompt = fancy('✝')+ś
     while ⴳ:
         c = input(prompt)
         print(f"\033[1A{prompt + cpy_get_highlighter(ns)(c)}\033[K")
         if not c:
             print("God is good!")
             continue
-        print('»', end=ś)
-        run_custom_errors(lambda: print(cpy(c, cap_stdout=ⴴ)), ns)
+        run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
