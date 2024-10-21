@@ -223,12 +223,23 @@ if __name__ == "__main__":
           print_code   = arg_debug,
           print_output = ⴳ,
           ns           = ns) | cpy_kwargs)
-    fancy = lambda x: f"\x1b[38;2;255;0;135m{x}\033[0m "
-    prompt = fancy('✝')+ś
+    fancy = lambda x: f"\x1b[38;2;255;0;135m{x}\033[0m"
+    swap_ln = lambda x: f"\033[1A{x}\033[K"
+    prompt = fancy('✝') + ś
+    cc_count = 0
     while ⴳ:
-        c = input(prompt)
-        print(f"\033[1A{prompt + cpy_get_highlighter(ns)(c)}\033[K")
-        if not c:
-            print("God is good!")
-            continue
-        run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
+        try:
+            c = input(prompt)
+            cc_count = 0
+            print(swap_ln(prompt + cpy_get_highlighter(ns)(c)))
+            if not c:
+                print("God is good!")
+                continue
+            run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
+        except KeyboardInterrupt:
+            if not cc_count:
+                print(swap_ln("Press ^C again to exit."))
+                cc_count += 1
+                continue
+            print()
+            exit(0)
