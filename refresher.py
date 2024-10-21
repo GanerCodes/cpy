@@ -238,7 +238,7 @@ if __name__ == "__main__":
             run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
         except KeyboardInterrupt:
             if not cc_count:
-                print("Press ^C again to exit.") # 󰤱 make this not break when text typed in input
+                print("\x1b[2K\rPress ^C again to exit.")
                 cc_count += 1
                 continue
             print()
