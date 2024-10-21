@@ -85,7 +85,7 @@ def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ
     compiler, ns = basic_cpy_session(do_cache, **𝕂)
     def interactive(c, return_code=ⴴ, cap_stdout=ⴳ,
                     dynamic_compile=ⴴ, global_verbose_debug=ⴴ,
-                    force_exec=ⴴ, **𝕂):
+                    force_exec=ⴴ, output_printer=print, **𝕂):
         if global_verbose_debug:
             import dynamic_parser
             dynamic_parser.DEBUG = int(global_verbose_debug)
@@ -112,7 +112,7 @@ def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ
         else:
             r, o = 𝑓(), ᗜ
         
-        if print_output and o is not ᗜ: print(o)
+        if print_output and o is not ᗜ: output_printer(o)
         return r
     interactive.ns = ns
     if interactive_defaults:
@@ -138,15 +138,21 @@ def run_print_exception(𝑓, *𝔸, **𝕂):
         except Exception as e:
             print(f'mfw Exception Exception: {e}')
 
+def cpy_get_custom_func(t, d):
+    def 𝑓(ns):
+        if t in ns["__builtins__"]:
+            return ns["__builtins__"][t]
+        return d
+    return 𝑓
+
+cpy_get_error_printer = cpy_get_custom_func("__error_printer__", RAISE)
+cpy_get_highlighter = cpy_get_custom_func("__highlighter__", ID)
+
 def run_custom_errors(𝑓, ns={}, quit=ⴴ):
     try:
         return 𝑓()
     except Exception as ε:
-        t = "__error_printer__"
-        if t in ns["__builtins__"]:
-            ns["__builtins__"][t](ε)
-        else:
-            raise ε
+        cpy_get_error_printer(ns)(ε)
         quit and exit(1)
 
 if __name__ == "__main__":
@@ -211,13 +217,16 @@ if __name__ == "__main__":
             ns, quit=ⴳ)
         exit(0)
     
-    cpy_kwargs.setdefault("interactive_defaults", {})["dynamic_compile"] = ⴳ
+    cpy_kwargs.setdefault("interactive_defaults", {})
+    cpy_kwargs["interactive_defaults"] |= { "dynamic_compile": ⴳ }
     cpy = basic_cpy_interactive_session(**ᖱ(
           print_code   = arg_debug,
           print_output = ⴳ,
           ns           = ns) | cpy_kwargs)
+    prompt = f"\x1b[38;2;255;0;135m✝\033[0m "
     while ⴳ:
-        c = input("✝ ")
+        c = input(prompt)
+        print(f"\033[1A{prompt + cpy_get_highlighter(ns)(c)}\033[K")
         if not c:
             print("God is good!")
             continue

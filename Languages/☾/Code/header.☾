@@ -406,4 +406,6 @@ SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)
 ´,󱅏´,´ = ‹󱅏›ᴍRand
 
 __error_printer__ = ℳℱ(𝚲󰋺("highlighter").__error_printer__)
+__highlighter__   = ℳℱ(𝚲󰋺("highlighter").__highlighter__  )
 __builtins__[t≔"__error_printer__"] = __error_printer__
+__builtins__[t≔"__highlighter__"  ] = __highlighter__

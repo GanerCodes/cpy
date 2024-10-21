@@ -50,6 +50,7 @@ collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
 prettify_code = lambda g: ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" for i,v in enum(ⵉ(g, ń))))
 _V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
+def RAISE(ε): raise ε
 
 def time_test(𝑓, *𝔸, **𝕂):
     t0 = time()
