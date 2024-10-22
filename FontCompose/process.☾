@@ -139,6 +139,7 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
             𝔒.append((k, ns))
     𝔒 = 󰲡x₀
     𝔒 = 𝔒ꟿⱽ󰲣𝑠(yᴍ󰲡x₁)
+    𝔒☾
     ↪ d ꟿⱽ 󰲣y(seqs=𝔒ₓ)
 
 ⊢ collect_styles(d):
@@ -267,6 +268,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     ∀m∈MULTICHARS.strip⍭:
         k = char(m, "mul")₂
         resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
+        (k,resₖ)☾
         multichars_datₘ = k
     
     seen = 𝑠

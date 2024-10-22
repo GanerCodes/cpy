@@ -223,7 +223,7 @@ if __name__ == "__main__":
           print_code   = arg_debug,
           print_output = ⴳ,
           ns           = ns) | cpy_kwargs)
-    fancy = lambda x: f"\x1b[38;2;255;0;135m{x}\033[0m"
+    fancy = lambda x: f"\001\x1b[38;2;255;0;135m\002{x}\001\033[0m\002"
     swap_ln = lambda x: f"\033[1A{x}\033[K"
     prompt = fancy('✝') + ś
     cc_count = 0

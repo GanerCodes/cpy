@@ -562,12 +562,11 @@ def σ_50():
     (ρ(add_spaces, ignore_nodes=("str_cpy", "str_py", "str_star", "str_$"))))
 
 # § node transpilers
-@generator(*KEYWORD_NODE_NAMES, "oper_lit")
-def gen_oper_lit     (n): return py_escape_var(n.txt) # n.txt
-@generator("var", "var_spec")
-def gen_variable     (n): return py_escape_var(n.txt)
-@generator("NULL")
-def gen_variable     (n): return "NULL"
+
+generator(*KEYWORD_NODE_NAMES, "oper_lit", "var", "var_spec")(
+    lambda n: py_escape_var(n.txt))
+generator("NULL")(lambda n: "NULL")
+
 @generator("group")
 def gen_group        (n):
     if n.C[0].txt == '⟦': # broken mostly
@@ -576,14 +575,10 @@ def gen_group        (n):
     return n.C[0].txt + ᒍ(ᐦ, ᴍ(gen, n.C[1:-1])) + n.C[-1].txt
 
 # strings
-@generator("str_guts")
-def gen_str_guts     (n): return py_escape_string(n.txt)
-@generator("str_escape", "str_star")
-def gen_str_escape   (n): return "'" + py_escape_string(n.txt) + "'"
-@generator("str_sub")
-def gen_str_sub      (n): return "{" + gen(n.C[0]) + "}"
-@generator("str_spec_char")
-def gen_str_spec_char(n): return "'" + py_special_mapper(n.txt) + "'"
+generator("str_guts"              )(lambda n: py_escape_string(n.txt))
+generator("str_escape", "str_star")(lambda n: "'" + py_escape_string(n.txt) + "'")
+generator("str_sub"               )(lambda n: "{" + gen(n.C[0]) + "}")
+generator("str_spec_char"         )(lambda n: "'" + py_special_mapper(n.txt) + "'")
 
 def make_str_cpy(n):
     # issue: we don't always want space here
