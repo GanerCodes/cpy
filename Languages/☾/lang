@@ -19,8 +19,8 @@ mkstr = lambda x: Ń("str", '"', x, '"')
 mkvar = lambda x: Node("var", x)
 mkexp_ = lambda *n: Node("expr_", ᒪ(n))
 mkgxp_ = lambda *n: mkgrp(mkexp_(*n))
-fcall_ = lambda f,*n: mkexp_(f, mkgxp_(*J́(n, COMMA)))
-mknex_ = lambda a, b: mkexp_(a, EQCLN, b)
+fcall_ = lambda f,*n,E=[]: mkexp_(f, mkgxp_(*J́(n, COMMA)), *E)
+mknex_ = lambda a, b     : mkexp_(a, EQCLN, b)
 
 sst = lambda x: set(ᖵ(ᗜ,ᴍ(ⵐ,ⵉ(ᖇ(x,'␉',ń),ń))))
 mdt = lambda y: ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
@@ -345,11 +345,11 @@ def σ_21():
         
         κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
         χ = mkgxp(τ == '.' and ("str_", f'"{py_escape_var(χ.txt)}"') or χ)
-        ρ = τ == '.' and "attr" or "item"
+        ρ = τ == '.' and "ATTR" or "ITEM"
         γ = Σ and Node("op_call", [fcall_(mkvar("get"+ρ), þ1, þ2), Σ, þ0]) or þ0
         return fcall_(
-            mkvar("set"+ρ+"_ret_"),
-            *ᴍs(mknex_, ([þ0,β],[þ1,κ],[þ2,χ])), γ)
+            mkvar("CRY_SET"+ρ), β,
+            E=mkgxp_(κ, COMMA, χ))
     
     @(yield replacement(
         "op_call",

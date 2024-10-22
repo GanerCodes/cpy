@@ -1,5 +1,3 @@
- 󰤱 a􊲣􊮝₀ ≔ 1
- 󰤱 make ⨳ take a error handler arg
  󰤱 try OPERATOR except
  󰤱 better caching for peggle/cpy in general
  󰤱 terminal colors and stuff
@@ -33,15 +31,14 @@ LITERAL_OPS_ = {
     "is":󰲣x≅y, "is not":󰲣x≇y,
     "in":󰲣x∈y, "not in":󰲣x∉y }
 
-getitem, setitem = 󰲣x, 󰲥x.__setitem__(y,z)
-setattr_ret_ = 󰲧setattr(y,z,w) ∨ w
-setitem_ret_ = 󰲧setitem(y,z,w) ∨ w
+CRY_SETATTR = z↦󰲣x.__setattr__(y,z) ∨ z
+CRY_SETITEM = z↦󰲣x.__setitem__(y,z) ∨ z
 OP_DUPER_ = ƒ↦󰲡ƒ(x,x,⠤𝔸,⠶𝕂) # ꜠
 OP_SWAPA_ = ƒ↦󰲣ƒ(y,x,⠤𝔸,⠶𝕂) # ᵜ
 OP_LNULL_ = ƒ↦󰲡ƒ(␀,x,⠤𝔸,⠶𝕂) # ⟥
 OP_RNULL_ = ƒ↦󰲡ƒ(x,␀,⠤𝔸,⠶𝕂) # ⟤
 OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
-␀ = NULL = 𝑜()
+NULL = ␀ = 𝑜()
 
 ✓,✗ = True, False
 𝒞ℳ, 𝒮ℳ, 𝗙 = classmethod, staticmethod, callable
@@ -181,9 +178,9 @@ is_iter = 󰲡hasattr(x,"__iter__")
 ᙎ´,ᙡ´,ᗢ´,ᙧ´ = ᙎ´(),ᙡ´(),ᗢ´(),ᙧ´()
 󰸵´,󰸷´ = 󰸵´(),󰸷´()
 
-⊢ ⨳´(α, β):
-    ¿α≅␀: α,β=β,α
-    assert α, β≅␀∧ᐦ∨β
+⊢ ⨳´(α=␀, β=␀):
+    ¿α≅␀: α,β = β,α
+    assert α, "Assertion failed!"¿β≅␀¡β
     ↪ α
 
 ⊢ _wherest(𝕏, ƒ=𝑏, I=ⴴ):
