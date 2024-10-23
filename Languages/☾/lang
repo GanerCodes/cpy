@@ -9,7 +9,7 @@
 
 from whitespace_tools import *
 from string import ascii_uppercase
-from py_naming_tools import * 
+from py_naming_tools import *
 py_escape_var = lambda x, f=py_escape_var: f(x, 'NOVAR' not in CONST)
 
 mkgrp = lambda *X, b="()": Ń("group", b[0], ⵌ(X)==1 and X[0] or X, b[1])
@@ -22,13 +22,13 @@ mkgxp_ = lambda *n: mkgrp(mkexp_(*n))
 fcall_ = lambda f,*n,E=[]: mkexp_(f, mkgxp_(*J́(n, COMMA)), *E)
 mknex_ = lambda a, b     : mkexp_(a, EQCLN, b)
 
-sst = lambda x: set(ᖵ(ᗜ,ᴍ(ⵐ,ⵉ(ᖇ(x,'␉',ń),ń))))
-mdt = lambda y: ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
-inv = lambda z: {y:x for x,y in z.items()}
+sst = lambda x  : set(ᖵ(ᗜ,ᴍ(ⵐ,ⵉ(ᖇ(x,'␉',ń),ń))))
+mdt = lambda y  : ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
+inv = lambda z  : {y:x for x,y in z.items()}
 rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
 COMMA, COLON, EQCLN = (Node("oper_lit", x) for x in ⵉ(", : :=", ś))
-þ0, þ1, þ2, þþ = ᴍ(mkvar, ⵉ("þ0 þ1 þ2 þþ", ś))
+þþ = mkvar("þþ")
 
 OPS_BUILTIN = {
     'S': ᐦ,
@@ -66,7 +66,8 @@ kw_neverswouce = merge_shorthands("""if ␉ elif ␉ else ␉ for ␉ yield""")
 kw_inline = merge_shorthands("""in ␉ is ␉ is not ␉ not in ␉ or ␉ and ␉ not""") | kw_neverswouce
 kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
-var_spec = set("ⴳⴴ✓✗îπτ□∅∞ᐦ")
+var_spec = set("ⴳⴴ✓✗□∅∞󷹺îℇτπ󷺍ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞")
+# ↑ force vars to be one char, will not act as object attribute getter when used as superscript
 
 register("kw", kw)
 register("kw_pfx", kw_pfx)
@@ -74,6 +75,7 @@ register("kw_spec", kw_spec)
 register("kw_pfx_colon", kw_pfx_colon)
 register("var_spec", var_spec)
 
+escaped_var_specs = {*ᴍ(py_escape_var, var_spec)}
 L = {'.'}
 sel = [(v.t+'=', v) for v in lang.ops.values() if v.B and 'δ' not in v] \
     + [(":=", lang.ops['≔']), ('≔', lang.ops.pop('≔'))]
@@ -81,7 +83,6 @@ new_ops = {}
 for k, v in sel:
     new_ops[k] = OP(k, "B=", L, lang.ops["␀ASGN_MRK"].R, v.f)
 lang.ops |= new_ops
-
 for k, v in lang.ops.items():
     if k in L: continue
     v.R |= set(new_ops)
@@ -197,55 +198,41 @@ comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))
 KEYWORD_NODE_NAMES = ("kw", "kw_pfx", "kw_pfx_colon")
 
 def σ_00():
-    @(yield replacement(
-        *KEYWORD_NODE_NAMES,
-        n="Lang keywords → cpy keywords"))
+    @(yield replacement(*KEYWORD_NODE_NAMES, n="Lang keywords → cpy keywords"))
     def _(n):
         if n.txt in kw_inline: # keyword that are just ops
             return OP.TND(KEYWORDS_TO_CPY.get(n.txt, n.txt))
         else:
             return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
     
-    @(yield reduction(
-        "supscript",
-        n="Swap Superscripts"))
+    @(yield reduction("supscript", n="Swap Superscripts"))
     def _(n):
         t = gram(SCRIPT.nrm(n.txt), "exprs")
         T = lang(t.txt.strip())
-        if T.isidentifier(): return [OP.TND('.'), t]
+        if T.isidentifier() and T not in escaped_var_specs:
+            return [OP.TND('.'), t]
         return [
             Node("oper", [
                 Node("oper_mod_l",  ᐦ ),
                 Node("oper_lit"  , '⌃'),
                 Node("oper_mod_r",  ᐦ )]),
             mkgxp_(Node(c=lang(t.txt)))]
-        # return [OP.TND('⌃'), Node(c=lang(t.txt))]
     
-    ((yield replacement(
-        "subscript",
-        rec='A',
-        n="Subscripts to brackets"))
+    ((yield replacement("subscript", rec='A', n="Subscripts to brackets"))
     (lambda n: mkgrp(gram(SCRIPT.nrm(n.c), "exprs"), b="[]")))
     
-    ((yield replacement(
-        "norm_expr", "expr_not_colon", "expr_not_comma",
-        rec='B',
-        n="Normalize expression types"))
+    ((yield replacement("norm_expr", "expr_not_colon", "expr_not_comma", rec='B',
+                        n="Normalize expression types"))
     (lambda n: n.copy("expr")))
     
-    ((yield replacement(
-        "W",
-        n="Trim whitespace"))
+    ((yield replacement("W", n="Trim whitespace"))
     (lambda n: n.copy(c=ń in n.c and ń+ⵉ(n.c,ń)[-1] or n.c)))
 
 def σ_05():
     op_chk = lambda n, o: n.t == "oper" and n.txt == o
     hs_op = lambda C, o: ⴸ(op_chk(c, o) for c in C)
 
-    @(yield replacement(
-        "expr",
-        rec='A',
-        n="Detect for_expr"))
+    @(yield replacement("expr", rec='A', n="Detect for_expr"))
     def _(N):
         if not hs_op(C := N.C, '∀'): return N
         
@@ -260,36 +247,29 @@ def σ_05():
         if σ: cc.append(Node("expr", σ, e="cond"))
         return N.copy("for_expr", c=cc)
     
-    @(yield replacement(
-        "kw_pfx_colon_expr",
-        rec='A',
-        n="Detect for_stmt"))
+    @(yield replacement("kw_pfx_colon_expr", rec='A', n="Detect for_stmt"))
     def _(N):
         if not op_chk(N.C[0], '∀'): return N
         α, _, β = part(N.C[1].C, ρ(op_chk, o='∈'))
         return N.copy("for_stmt", c=[Node("expr", α), Node("expr", β), *N.C[2:]])
 
 def σ_10():
-    ((yield replacement(
-        "parser_main", rec='A', n="Build whitespace blocks"))
+    ((yield replacement("parser_main", rec='A', n="Build whitespace blocks"))
     (whitespace_parser))
 
 ARG_A = mkexp(("oper_lit", "⠤"), mkvar('𝔸'))
 ARG_K = mkexp(("oper_lit", "⠶"), mkvar('𝕂'))
 def σ_15():
     yield "Refactor lambdas"
-    ((yield replacement(
-        "lamb_h_preset"))
+    ((yield replacement("lamb_h_preset"))
     (lambda n: Ń("lamb_h",
             *ᴍ(lambda t: mkexp(mkvar(t)), "xyzwvutsr"[:"𝚲󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱".index(n.c)]),
             ARG_A, ARG_K)))
     
-    ((yield replacement(
-        "lamb_h_implicit"))
+    ((yield replacement("lamb_h_implicit"))
     (lambda n: Ń("lamb_h", mkexp(n.C[0]), ARG_A, ARG_K)))
     
-    @(yield replacement(
-        "lamb_h_normal", "lamb_h_py"))
+    @(yield replacement("lamb_h_normal", "lamb_h_py"))
     def _(n):
         C = ᴍ(Node.strip,
               ᴍs(mkexp,
@@ -308,16 +288,11 @@ def σ_15():
         if not has_k: C.append(ARG_K)
         return Ń("lamb_h", *C)
     
-    ((yield replacement(
-        "lamb_b",
-        rec='A'))
+    ((yield replacement("lamb_b", rec='A'))
     (lambda n: n.copy(t="expr")))
 
 def σ_20():
-    ((yield replacement(
-        "expr",
-        rec='B',
-        n="Parse expressions"))
+    ((yield replacement("expr", rec='B', n="Parse expressions"))
     (lambda n: n.copy(c=into_expr(parse_expr(n.C)).c)))
 
 def σ_21():
@@ -346,9 +321,9 @@ def σ_21():
         ρ = τ == '.' and "ATTR" or "ITEM"
         κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
         χ = mkgxp(("str_", f'"{py_escape_var(χ.txt)}"') if ρ=="ATTR" else χ)
-        if Σ:
+        if Σ: # optimization: pull out some constant nodes
             ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
-            PS, PP = mkvar("PUSH" ), mkvar("POP"  )
+            PS, PP = mkvar("þPSH" ), mkvar("þPOP" )
             return fcall_(ST,
                 fcall_(PS, κ),
                 fcall_(PS, χ),
@@ -359,10 +334,7 @@ def σ_21():
                     Σ, β]))
         return fcall_(mkvar("SET"+ρ), κ, χ, β)
     
-    @(yield replacement(
-        "op_call",
-        rec='A',
-        n="Refactor assignment infix opertators"))
+    @(yield replacement("op_call", rec='A', n="Refactor assignment infix opertators"))
     def _(n):
         α, Σ, β = n.C
         if Σ.c[0].txt or Σ.c[2].txt: return n
@@ -372,10 +344,7 @@ def σ_21():
         return make_inline_asgn(α, Σ, β)
 
 def σ_25():
-    @(yield reduction(
-        "op_call",
-        rec='B',
-        n="Flatten cmp ops"))
+    @(yield reduction("op_call", rec='B', n="Flatten cmp ops"))
     def _(n):
         if 'λ' in op_man[n.C[1]] and \
                 n.C[0] != NULL and n.C[2] != NULL:
@@ -406,10 +375,7 @@ def σ_30():
             r = mkexp(("op_call", r, OP.TND('∧'), v)) if r else v
         return n.copy(c=[r])
     
-    ((yield replacement(
-        "expr",
-        rec='B',
-        n="Generate comparison chains"))
+    ((yield replacement("expr", rec='B', n="Generate comparison chains"))
     (make_cmp_chain))
 
 demodp = lambda o: (o.C[0].txt, o.C[1], o.C[2].txt)
@@ -446,17 +412,11 @@ def σ_35():
     hnul = lambda x: x.copy("NULL_") if x == "NULL" else x
     
     def try_builtin(m, op_l, L, m_l, t, m_r, R): # see if op + arg matches can make a builtin
-        if m_l or m_r:
-            return
-        t_ = SWAP_TABLE.get(t, t)
-        if t_ not in OPS_BUILTIN[m]:
-            return
+        if m_l or m_r: return
+        if SWAP_TABLE.get(t, t) not in OPS_BUILTIN[m]: return
         return mkgxp(*ε(L), op_l, *ε(R))
 
-    @(yield replacement(
-        "op_call",
-        rec='B',
-        n="Refactor op calls"))
+    @(yield replacement("op_call", rec='B', n="Refactor op calls"))
     def _(n):
         l, op_, r = n.C
         op = op_man[op_]
@@ -495,10 +455,7 @@ def σ_35():
         return mkbltnop(op_)
 
 def σ_40():
-    @(yield replacement(
-        "oper",
-        rec='A',
-        n="Refactor sitting ops"))
+    @(yield replacement("oper", rec='A', n="Refactor sitting ops"))
     def _(n):
         if n.C[1].txt in kw_neverswouce:
             return n
@@ -506,50 +463,31 @@ def σ_40():
             n = n.copy(c=[n.C[0], n.C[1], n.C[2].copy(c="´")])
         return transform_oper(n)
     
-    ((yield replacement(
-        *KEYWORD_NODE_NAMES, "oper_lit",
-        n="Lang keywords ← cpy keywords"))
+    ((yield replacement(*KEYWORD_NODE_NAMES, "oper_lit",
+                        n="Lang keywords ← cpy keywords"))
     (lambda n: n.copy(c=py_escape_var(SWAP_TABLE.get(n.txt, n.txt)))))
     
-    ((yield replacement(
-        "lamb",
-        rec='B',
-        n="Format lambda"))
+    ((yield replacement("lamb", rec='B', n="Format lambda"))
     (lambda n: mkgxp(n.C[0], mkgrp(n.C[1]))))
     
-    ((yield replacement(
-        "lamb_h",
-        rec='B',
-        n="Format lambda header"))
+    ((yield replacement("lamb_h", rec='B', n="Format lambda header"))
     (lambda n: Ń("lamb_h", ("kw", "lambda"), *J́(n.C, COMMA), ("oper_lit", ":"))))
 
 def σ_45():
-    ((yield replacement(
-        "parser_main",
-        rec='A',
-        n="Unparse whitespace"))
+    ((yield replacement("parser_main", rec='A', n="Unparse whitespace"))
     (whitespace_unparser))
     
-    ((yield reduction(
-        "BLOCK",
-        rec='B',
-        n="Flatten blocks"))
+    ((yield reduction("BLOCK", rec='B', n="Flatten blocks"))
     (lambda n: n.C))
 
 def σ_48():
-    ((yield replacement(
-        "for_expr",
-        rec='B',
-        n="Build for exprs"))
+    ((yield replacement("for_expr", rec='B', n="Build for exprs"))
     (lambda n: Ń(
         "expr",
         n.C[0], ("kw", "for"), n.C[1], ("kw", "in"), n.C[2],
         *([("kw", "if"), n.C[3]] if n['cond'] else []))))
     
-    ((yield replacement(
-        "for_stmt",
-        rec='B',
-        n="Build for stmt"))
+    ((yield replacement("for_stmt", rec='B', n="Build for stmt"))
     (lambda n: Ń(
         "kw_pfx_colon_expr",
         Node("kw_pfx_colon", "for"),
@@ -557,16 +495,10 @@ def σ_48():
         *n.C[2:])))
 
 def σ_50():
-    ((yield replacement(
-        "kw_pfx_colon_expr",
-        rec='B',
-        n="Add colons"))
+    ((yield replacement("kw_pfx_colon_expr", rec='B', n="Add colons"))
     (lambda n: n.insert_after_marker('M', COLON)))
     
-    ((yield replacement(
-        "parser_main",
-        rec='B',
-        n="Insert spaces"))
+    ((yield replacement("parser_main", rec='B', n="Insert spaces"))
     (ρ(add_spaces, ignore_nodes=("str_cpy", "str_py", "str_star", "str_$"))))
 
 # § node transpilers
@@ -582,7 +514,6 @@ def gen_group        (n):
         return f'''(exec("def _EXE():\\n{py_escape_string(force_indent(content))}",globals(),locals()),_EXE)[1]()'''
     return n.C[0].txt + ᒍ(ᐦ, ᴍ(gen, n.C[1:-1])) + n.C[-1].txt
 
-# strings
 generator("str_guts"              )(lambda n: py_escape_string(n.txt))
 generator("str_escape", "str_star")(lambda n: "'" + py_escape_string(n.txt) + "'")
 generator("str_sub"               )(lambda n: "{" + gen(n.C[0]) + "}")

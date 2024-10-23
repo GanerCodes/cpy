@@ -124,3 +124,10 @@ Added gambling 😊😊😊
 
 a∣b: ✓/✗ if a divides b
 a∤b: take a guess
+
+ℇ is now euler's constant
+
+exponents are now fun 5􊽲 = √5
+    [󷹇 uses hard-coded list of single char identifiers]
+
+fixed nested ≔ and <op>= calls
