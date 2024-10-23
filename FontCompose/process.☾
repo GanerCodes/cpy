@@ -102,10 +102,10 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
         ↪ val ᴍ󰲡pre+x
 
 ⊢ normalize_seqs(d):  comically slow lol
-    𝔔 = d.items ꟿ⥌k,v↦v.seqsᴍ󰲡(k,x)󰅂󰅂 Σ []
+    𝔔 = d ꟿ⥌k,v↦v.seqsᴍ󰲡(k,x)󰅂󰅂 Σ []
     𝔒 = []
     ➰ 𝔔:
-        (k, v) = 𝔔.pop∘0
+        k, v = 𝔔.pop∘0
         ℭ = v.copy
         ns = ᐦ
         ➰ ℭ:
@@ -137,9 +137,7 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
         ¡:
              ¿k≡␛◌: ↺  make a quoted ◌ work
             𝔒.append((k, ns))
-    𝔒 = 󰲡x₀
-    𝔒 = 𝔒ꟿⱽ󰲣𝑠(yᴍ󰲡x₁)
-    𝔒☾
+    𝔒 = 𝔒 󰻾 ꟿⱽ󰲣y ꟿ󰲣y󰅂 ⥉ 𝑠
     ↪ d ꟿⱽ 󰲣y(seqs=𝔒ₓ)
 
 ⊢ collect_styles(d):
@@ -204,7 +202,7 @@ p_concat = 󰆴'⁅' (󰆴W ∨ ⠶atom)* 󰆴'⁆'
 
 lookup = str ∨ ƨ(chr ∨ '|' ∨ ',')
 word   = ƨ(str ∨ chr+)
-str    = ƨ(⠶esc ∨ (󰆴'"' ((esc ∨ ~‹[^"]›)*) 󰆴'"'))
+str    = ƨ(esc ∨ (󰆴'"' ((esc ∨ ~‹[^"]›)*) 󰆴'"'))
 esc    = 󰆴‹␛␛› ~‹.?›
 
 chr = ¬bad ~‹.›
@@ -224,7 +222,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
 ⊢ process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH, gram=Parser(GRAM)):
     dat = 𝗻.join←DAT.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
     
-    root = gram(dat🟑, DEBUG=✓, ONLY_NAMED=✓🟑)  ← perf optmz herez
+    root = gram(dat)
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x) ¿xᐹᔐ¡ 𝐍(x₀,⠤x₁ᴍrep))∘root
@@ -235,18 +233,18 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     mac, lets = supermcdoublerecursivecomposeoutputstyleparsemachine(root)
     
     res = lets ꟿ 󰲣x  󰲡xᐹ𝑡∧x₀∈(‹TAG STYLE›⍭)∧x₀󰅂 ␛
-                    ⥉ 󰲡(x.pop(✗), (x ꟿⱽ󰲣 yᴍ 󰲡x₁󰅂))󰅂 ␛
+                    ⥉ 󰲡(x.pop(✗), (x ꟿⱽ󰲣y ᴍ󰲣y))󰅂 ␛
                     → +y⛶ᵀ󰅂 ␛
                 󰲡x₋₁󰅂␛
                ꟿⱽ󰲣yᴍ󰲡x﹕₋₁󰅂󰅂␛
-               ꟿⱽ󰲣ℵ(    T = "reg",
-                      out = x,
-                     seqs = yꟿ󰲣x,
-                     tags = yꟿ󰲣ℵ󰁺󰁻(y).TAG  󰅂Σ[] ⥉ 𝑠,
-                    style = yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹| ⥉ ℵ)󰅂 ␛
+               ꟿⱽ󰲣ℵ(T     = "reg",
+                    out   = x,
+                    seqs  = yꟿ󰲣x,
+                    tags  = 𝑠 ← yꟿ󰲣ℵ󰁺󰁻(y).TAG  󰅂Σ[],
+                    style = ℵ ← yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹|)󰅂 ␛
           ⥉ ℵ
     
-    get_psuedo_seqs = c↦[c⛶] ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
+    psuedo_seqs = c↦[c⛶] ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
     make_script_seq_pre = ⥌p,s,c↦[p]⋅(2-←c∈symmap)+[␛𝕊¿c≡p¡s]  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
     SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip ꟿ⁰ ζ´ ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
     already_script = 󰲣j≔SCRIPT_EXIST.get(x,ⴴ) →∧ ␛◌≠H≔j[y≡␛p] →∧ H
@@ -254,52 +252,45 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     
     force_include = 𝑠(DAT + MULTICHARS)Σᐦ
     
-    (symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res) ᴍ k↦resₖ≔ℵ(
-        T="NC",  out=k, seqs=get_psuedo_seqs(k), tags=𝑠(), style=ℵ)
-    (force_include 󰈳󰲡x∈res) ᴍ k↦resₖ≔ℵ(
-        T="reg", out=k, seqs=[[␛◌]]            , tags=𝑠(), style=ℵ)
+    (symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res) ᴍ k↦resₖ≔ℵ(T="NC",  out=k, seqs=psuedo_seqs∘k, tags=𝑠, style=ℵ)
+    (force_include 󰈳󰲡x∈res) ᴍ k↦resₖ≔ℵ(T="reg", out=k, seqs=␛◌⛶⛶         , tags=𝑠, style=ℵ)
     res.pop(𝗻, □)  lol
     ℭ, ℜ = "ℭℜ" ᴍ󰲡mac.get(x, {})ᴍ󰲡x₁﹕
-    ℭᴍ󰲡x󰈳 󰲡 x₀≡"TAG"󰅂 ␛
-        ᴍ 󰲡 x¿xᐹᔐ¡x₁󰅂 ␛
+    ℭᴍ󰲡x󰈳 󰲡 x≡"TAG"󰅂 ␛
+        ᴍ  󰲡 x¿xᐹᔐ¡x₁󰅂 ␛
         ꟿ⁰s↦𝔸ᴍ󰲡resₓ.style|=s
     
     multichars_dat = {}
     ∀m∈MULTICHARS.strip⍭:
         k = char(m, "mul")₂
-        resₖ = ℵ(T="mul", ⭡=𝑙(m), needs_gen=✓, ref=res.get(k, ℵ), out=k)
-        (k,resₖ)☾
+        resₖ = ℵ(T="mul", ⭡=𝑙∘m, needs_gen=✓, ref=res.get(k, ℵ), out=k)
         multichars_datₘ = k
     
     seen = 𝑠
     ∀_∈SCRIPT_DEPTH⭥:
-        ∀m ∈ 𝑙(res⁻):
+        ∀m ∈ res⁻:
             ¿m∈seen: ↺
             ∀moder ∈ ‹sub sup›⍭:
                 ¿m🃌>1: ↺  󰤱
                 k = char(m, moder)₂
-                resₖ = ℵ(T=moder, ⭡=[m], needs_gen=✓, ref=res.get(k, ℵ), out=k)
+                resₖ = ℵ(T=moder, ⭡=m⛶, needs_gen=✓, ref=res.get(k, ℵ), out=k)
             seen.add(m)
     
     𝐆 = []   
-    𝔔 = res⁻󰈲󰲡resₓ.get("needs_gen")
+    𝔔 = res⁻ 󰈲󰲡resₓ.get("needs_gen")
     ➰ 𝔔:
         𝑞 = 𝔔.pop∘0
-        𝑒 = res[𝑞]
+        𝑒 = res􊴜
         
-        ¿(𝑒.⭡ 󰈲 󰲡"needs_gen"∈resₓ):
+        ¿(𝑒􋅅 󰈲󰲡"needs_gen"∈resₓ):
             𝔔.append(𝑞)
             ↺
-        ⭡ = 𝑒.⭡ ᴍ󰲡resₓ
         
+        ⭡ = 𝑒􋅅 ᴍ󰲡resₓ
         𝐴 = (𝑒.out, ‹⟦𝑒ᵀ⟧_⟦𝑒.out⟧›)
         
-        outs = ⭡ᴍ󰲡x.out
-        ¿𝑒ᵀ≡"mul":
-            𝐆.append( [add_multichar, (⠤𝐴, outsΣᐦ)] )
-            style = ((h ≔ ⭡ 󰑅 󰲡"style"∈x)∧h.style) ∨ {}
-            𝑒.seqs = [outsᴍ󰲡[x, ␛𝕊]󰅂Σ[␛ᴍ]]
-        ¡:
+        outs = ⭡ ᴍ󰲡x.out
+        ¿𝑒ᵀ∈‹sup sub›⍭:
             parent = ⭡₀
             ¿already_script(parent.out, 𝑒ᵀ₋₁):  we remove previous style
                 𝐆.append( [remove_char, (𝑒.out, )] )
@@ -312,20 +303,26 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
                 𝑒.seqs = [[‹/\›[𝑒ᵀ₋₁≡␛p]]+res[parent.out].seqs₀]  bruh
             ¡:
                 𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
+        ⸘𝑒ᵀ≡‹mul›:
+            𝐆.append( [add_multichar, (⠤𝐴, outsΣᐦ)] )
+            style = ((h ≔ ⭡ 󰑅 󰲡"style"∈x) ∧ h.style) ∨ {}
+            𝑒.seqs = [outs ᴍ󰲡[x, ␛𝕊]󰅂 Σ ␛ᴍ⛶]
+        ¡:
+            ✗⨳‹Invalid type: "⟦𝑒ᵀ⟧"›
         
         ref = 𝑒.get("ref", ℵ)
         𝑒.seqs += ref.get("seqs", [])
-        𝑒.tags  =      [⠤⭡, 𝑒, ref] ᴍ󰲡x.get("tags" ,set())󰅂 ſˢᵉᵗ⁽⁾ |
-        𝑒.style = style |← [𝑒, ref] ᴍ󰲡x.get("style",   {})󰅂 ſ󰁸󰁹    |
-        󰆴 𝑒["needs_gen"] , 𝑒["ref"]
+        𝑒.tags  =      (⠤⭡, 𝑒, ref) ᴍ󰲡x.get( "tags",𝑠)󰅂 ſ􋇠􋅯 |
+        𝑒.style = style |← (𝑒, ref) ᴍ󰲡x.get("style",{})󰅂 ſ󰁸󰁹 |
+        󰆴 𝑒["needs_gen"], 𝑒["ref"]
     
     res = normalize_seqs(res)  󰤱 - multichar output sub/sup
     
     𝕩 = res⁺ 󰈲󰲡x.out🃌≡1 ∧ xᵀ∈‹sub sup›⍭
-    𝕩 = 𝕩  󰲡x.⭡₀󰅂 →.items ꟿ󰲣 y󰒽󰲡xᵀ󰅂ᴍ󰲡x.out󰅂 Σ x
+    𝕩 = 𝕩  󰲡x􋅅₀󰅂 →.items ꟿ󰲣 y 󰒽󰲡xᵀ󰅂 ᴍ󰲡x.out󰅂 Σ x
     script_map≔𝕩⍉ᴍΣ´→ᴍ🃌⥉𝑠→🃌≡1→⨳‹Unequal sup/sub/norm counts!›
     
-    cmp_seqs = res⁺ 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqsᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
+    cmp_seqs = res⁺ 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqs ᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
     
     ⊢ convert_styles(styles):
         esc = 󰲣y ſˣ 󰲣x.replace(⠤y)

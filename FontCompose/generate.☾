@@ -44,12 +44,11 @@ enabled_stages = [        NERDFONT ∧ "Nerd",
           󰲡x.write←𝗻.join←𝑟.script_map)
     ¿COPY_OUT_XCOMPOSE:
         cp(f, COPY_OUT_XCOMPOSE)
-¿CODE_STYLE_CONFIG:
+¿PATH_CODE_CONFIG:
     𝑟.set_codium(PATH_CODE_CONFIG)
 
 cp(font ≔ 𝐩(‹JuliaMono/JuliaMono-Regular.ttf›).resolve,
    font ≔ fold / name ≔ font.name)
-
 ∀s,ƒ∈stages.items:
     ¿hasattr(ƒ, "no_font"):
         ƒ
@@ -61,7 +60,9 @@ cp(font ≔ 𝐩(‹JuliaMono/JuliaMono-Regular.ttf›).resolve,
     ⸘fo.exists:
         ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
 cp(font, font ≔ fold / ‹99_⟦name⟧›)
-¿COPY_OUT_FONT: cp(font, COPY_OUT_FONT)
+
+¿COPY_OUT_FONT:
+    cp(font, COPY_OUT_FONT)
 
  ¿__name__≡"__main__":
      fold = ‹Output›⥉𝐩→.resolve
