@@ -1,4 +1,6 @@
  Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃
+ 󰈲􊽺/󰈳􊽺: filter-map
+ do ranges not stupid
  𝍱 = ½π = ¼τ
  10⭥ ᗒ⌃2+⟞   ⟶   10⭥ᴍ¹⥌⟞↦⟞⌃2+⟞
    5 ᗌ⌃2+⟞   ⟶  (5,)ᴍ⁰⥌⟞↦⟞⌃2+⟞
@@ -7,8 +9,8 @@
  x ⭜ y ⭝ z
  🡸🡺
 
-exec('from math import *')
-󰆴 factorial, e, pi, tau, sqrt, cbrt
+exec ← "from math import *"
+󰆴 factorial, e, pi, tau, sqrt, cbrt, pow
 𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = object, dict, bool, list, tuple, set, str, int, float
 ⮌ py_naming_tools ⨡ py_escape_var as PEV
 ⮌ functools ⨡ reduce
@@ -26,8 +28,13 @@ LITERAL_OPS_ = {
     "is":󰲣x≅y, "is not":󰲣x≇y,
     "in":󰲣x∈y, "not in":󰲣x∉y }
 
-CRY_SETATTR = z↦󰲣x.__setattr__(y,z) ∨ z
-CRY_SETITEM = z↦󰲣x.__setitem__(y,z) ∨ z
+STACK_ = []
+GETATTR = 󰲣getattr(x,y)
+SETATTR = 󰲥setattr(x,y,z) ∨ z
+GETITEM = 󰲣x.__getitem__(y)
+SETITEM = 󰲥x.__setitem__(y,z) ∨ z
+PUSH, POP = 󰲡STACK_.append(x)∨x, 󰲡STACK_.pop(x)
+
 OP_DUPER_ = ƒ↦󰲡ƒ(x,x,⠤𝔸,⠶𝕂) # ꜠
 OP_SWAPA_ = ƒ↦󰲣ƒ(y,x,⠤𝔸,⠶𝕂) # ᵜ
 OP_LNULL_ = ƒ↦󰲡ƒ(␀,x,⠤𝔸,⠶𝕂) # ⟥
@@ -163,8 +170,8 @@ is_iter = 󰲡hasattr(x,"__iter__")
     ƒ = 𝒮ℳ(⥌x,y,i↦_map_d(x,󰲡y(⠤(x¿is_iter(x)¡(x,))),i))
 
 Ω √´:
-    __getitem__ = ⥌𝕊,x↦⥌y↦y⌃(1/x)
-    __call__ = ⥌𝕊,x↦x􊽲
+    __getitem__ = ⥌𝕊,x↦⥌y↦y¹􋑬ˣ
+    __call__ = ⥌𝕊,x↦x⌃½
 
 √´ = √´()
 ᴍ´,ꟿ´,ſ´,Ϝ´ = ᴍ´(),ꟿ´(),ſ´(),Ϝ´()
@@ -221,6 +228,7 @@ is_iter = 󰲡hasattr(x,"__iter__")
 … = 󰲣𝑙←range(x,y)
 ! = 󰲡1…←x+1→Π1
 ⫰, ⫯ = 󰲡+abs(x), 󰲡¯abs(x)
+
 ⊢ ⬄´(x=␀,y=␀):
     ¿x≅␀: x,y=y,x
     ¿xᐹᔐ ∧← y≅␀ ∨ yᐹᔐ:

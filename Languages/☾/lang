@@ -343,13 +343,21 @@ def σ_21():
         if τ == ᐦ: return \
             mkgrp(mknex_(χ, mkgxp(Σ and ("op_call", mkexp(χ), Σ, β) or β)))
         
-        κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
-        χ = mkgxp(τ == '.' and ("str_", f'"{py_escape_var(χ.txt)}"') or χ)
         ρ = τ == '.' and "ATTR" or "ITEM"
-        γ = Σ and Node("op_call", [fcall_(mkvar("get"+ρ), þ1, þ2), Σ, þ0]) or þ0
-        return fcall_(
-            mkvar("CRY_SET"+ρ), β,
-            E=mkgxp_(κ, COMMA, χ))
+        κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
+        χ = mkgxp(("str_", f'"{py_escape_var(χ.txt)}"') if ρ=="ATTR" else χ)
+        if Σ:
+            ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
+            PS, PP = mkvar("PUSH" ), mkvar("POP"  )
+            return fcall_(ST,
+                fcall_(PS, κ),
+                fcall_(PS, χ),
+                Node("op_call", [
+                        fcall_(GT,
+                            fcall_(PP, Node("number", "-2")),
+                            fcall_(PP, Node("number", "-1"))),
+                    Σ, β]))
+        return fcall_(mkvar("SET"+ρ), κ, χ, β)
     
     @(yield replacement(
         "op_call",
