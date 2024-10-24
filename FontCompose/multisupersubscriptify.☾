@@ -34,7 +34,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
 ⊢ add_script(𝒻, c, m, scale=ⴳ):
     ¿scale:
         W = 𝒻󰂼ᵣ􊮎.width
-        ¿((W⋄w)⤈ →/← (W⋄w)⤉) > .7501: W = w
+        ¿((W⋄w)⤈ →/← (W⋄w)⤉) > ¾: W = w
         ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄.7, 𝔱⋄.15⋅w⋄¯.20⋅w], W
         ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄.7, 𝔱⋄.15⋅w⋄ .55⋅w], W
         

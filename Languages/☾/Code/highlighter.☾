@@ -16,7 +16,8 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
     ↪ termclr(s, de, bg)
 
 ⊢ __highlighter__(l, b=✗):
-    s, *e = l.split(␛ᐧ)
+    s, *e = (ᔐ∘l).split(␛ᐧ)
+    
     e = e ᙧ¹ 0⋄1
     e = e ꟿ 󰲣chr(𝑖(x,16))+y
     r = (s+←eΣᐦ) ᴍ 󰲡sty(x, "400" ¿b¡ 0)󰅂 Σᐦ
@@ -32,7 +33,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
             ¿"__file__"∈g:
                 f = g􋕨􋕞􋕞ᵢₗₑ􋕞􋕞􋕨
                 ¿f.endswith("/refresher.py"): ⇥
-                ¿f.endswith("/header.☾"): ⇥
+                 ¿f.endswith("/header.☾"): ⇥
                 ¿f∈ℭ:
                     F = ℭ
                 ⸘f≔𝐩(f) → .exists:
@@ -62,7 +63,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
         ¿f≠prevf: termclr(f, CLR1)☾
         ‹⟦asd⟧ ⟦ᔐ(s).zfill(zf)⟧𝘁⟦A⟧⟦B⟧⟦C⟧›☾
         prevf = f
-    ‹⟦termclr("Error:", CLR2)⟧ ⟦ε⟧›☾
+    ‹⟦termclr("Error:", CLR2)⟧ ⟦__highlighter__(ε)⟧›☾
 
 __exports__ = "__highlighter__", "__error_printer__"
 
