@@ -66,7 +66,7 @@ kw_neverswouce = merge_shorthands("""if ␉ elif ␉ else ␉ for ␉ yield""")
 kw_inline = merge_shorthands("""in ␉ is ␉ is not ␉ not in ␉ or ␉ and ␉ not""") | kw_neverswouce
 kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
-var_spec = set("ⴳⴴ✓✗□∅∞󷹺îℇτπ󷺍ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞")
+var_spec = set("ⴳⴴ✓✗□∅∞îℇτπ󷺍󷱪󷱫󷱬󷱭󷱮ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞")
 # ↑ force vars to be one char, will not act as object attribute getter when used as superscript
 
 register("kw", kw)
@@ -149,7 +149,10 @@ vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
 
 norm_expr_atom = (lamb ∨ ⠶gen_expr_atom) 󰆴E?
 gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ number ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
-number = ƨ(~‹\.[0-9]+|0[obOB][0-9]+|0[xX][0-9a-fA-F]+|[0-9]+e[0-9]+|[0-9]+(\.([0-9]+))?›)
+number = pos_num ∨ neg_num
+pos_num = ƨ(~‹\.[0-9]+|0[obOB][0-9]+|0[xX][0-9a-fA-F]+|[0-9]+e[+\-]?[0-9]+|[0-9]+(\.([0-9]+))?›)
+neg_num = ƨ(~‹\.[󷰽-󷱆]+|󷰽[󷱍󷱈󷱕󷱐][󷰽-󷱆]+|󷰽[󷱎󷱖][󷰽-󷱆󷱇-󷱌󷱏-󷱔]+|[󷰽-󷱆]+󷱋[+\-]?[󷰽-󷱆]+|[󷰽-󷱆]+(\.([󷰽-󷱆]+))?›)
+
 var = ƨ(¬W ¬oper ¬var_spec ¬script ¬"󰦥󰦥󰦥󰦥󰦥" ~‹[^𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰲫󰅂$"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
@@ -529,6 +532,7 @@ def make_str_cpy(n):
         else                       : r += gen(c)
     return r + '"'
 
+generator("neg_num")(lambda n: f"(-{UPSIDEDOWNSYNDROME.flip(n.txt)})")
 generator("str_cpy")(make_str_cpy)
 
 @generator("str_$")

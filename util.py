@@ -113,6 +113,11 @@ class Z:
         return Z.s[-1]
 Z=Z()
 
+class UPSIDEDOWNSYNDROME:
+    NRM = "0123456789abcdefoxABCDEFOX"
+    USD = "󷰽󷰾󷰿󷱀󷱁󷱂󷱃󷱄󷱅󷱆󷱇󷱈󷱉󷱊󷱋󷱌󷱍󷱎󷱏󷱐󷱑󷱒󷱓󷱔󷱕󷱖"
+    MAP = dict(zip(NRM, USD)) | dict(zip(USD, NRM))
+    flip = lambda s, MAP=MAP: str.join(ᐦ, (MAP.get(c, c) for c in s))
 class SCRIPT:
     SCRIPT_FILE_LOC = f"{cpy_dir}/FontCompose/.SCRIPT_MAP"
     SUP, SUB, NRM = {}, {}, {}
