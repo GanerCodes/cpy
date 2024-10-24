@@ -45,6 +45,7 @@ OPS_COMP = ᖵ(ᗜ, ({s for s in l if 'λ' in lang.ops[s]} for l in lang.op_orde
 SWAP_TABLE = mdt("""
     ⋅   * ␉ ⌃    ** ␉ ≡     == ␉ ≤ <= ␉ ≔ := ␉ ¯ -
     ⠤   * ␉ ⠶    ** ␉ ≠     != ␉ ≥ >= ␉ ÷ / ␉ ⹏ //
+    ␀CAT *␉
     ∨  or ␉ ≅    is ␉ 󰆴    del ␉ Ω class
     ¬ not ␉ ¿    if ␉ ⊢    def ␉ ➰ while
     ∧ and ␉ ⸘  elif ␉ ⮂  yield ␉ ↪ return
@@ -119,6 +120,7 @@ for k, v in lang.ops.items():
      󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ  ⴵᴾ󰀒ᴺ  ⍭ᴾ󰀒ᴺ  ␛
      󰸵ᴮᴺ   󰸷ᴮᴺ
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
+␀CATᴮᴺ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮᴺ
 ᴵᴾᴺ ᴺ󰀒
 󰻾ᴺ ℵᴺ ℶᴺ
@@ -313,7 +315,7 @@ def σ_18():
                or α.t == "group" and β.t == "var_spec": # 󰤱 RELLY weird
                 cc.append(Node('oper', [
                     Node("oper_mod_l"),
-                    Node("oper_lit", "*"),
+                    Node("oper_lit", "␀CAT"),
                     Node("oper_mod_r")]))
         cc.append(α)
         return n.copy(c=cc)

@@ -172,3 +172,5 @@ i have gone off the deep end we now have
 
 attempted to add some implicit multiplication. Most stuff with a a literal number works well, var_spec's work decently (but might be weird in the future), and we don't support strings/regular variables.
     ½󷰽󷱎󷱒󷱓󷱏󷱒󷱐󷱓󷱓󷱔󷺍²󷱀î³ = -13827051355.523182j
+    
+    (󷹇 implicit mul uses the "␀CAT" order of operations)
