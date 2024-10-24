@@ -295,6 +295,29 @@ def σ_15():
     ((yield replacement("lamb_b", rec='A'))
     (lambda n: n.copy(t="expr")))
 
+def σ_18():
+    @(yield replacement("expr", rec='B', n="Implicit Multiplication"))
+    def _(n):
+        if not n.C: return n
+        cc, s = [], peekable(n.C)
+        while True:
+            α = next(s)
+            if not s: break
+            β = s.peek()
+            cc.append(α)
+            
+            S = { "number": {"var", "group", "var_spec", "number"},
+                  "var_spec": {"number", "var_spec"} }
+            if    α.t in S and β.t in S[α.t] \
+               or β.t in S and α.t in S[β.t] \
+               or α.t == "group" and β.t == "var_spec": # 󰤱 RELLY weird
+                cc.append(Node('oper', [
+                    Node("oper_mod_l"),
+                    Node("oper_lit", "*"),
+                    Node("oper_mod_r")]))
+        cc.append(α)
+        return n.copy(c=cc)
+
 def σ_20():
     ((yield replacement("expr", rec='B', n="Parse expressions"))
     (lambda n: n.copy(c=into_expr(parse_expr(n.C)).c)))
@@ -524,8 +547,7 @@ generator("str_sub"               )(lambda n: "{" + gen(n.C[0]) + "}")
 generator("str_spec_char"         )(lambda n: "'" + py_special_mapper(n.txt) + "'")
 
 def make_str_cpy(n):
-    # issue: we don't always want space here
-    r=' f"'
+    r='""f"'
     for c in n.c:
         if   c.t == "str_escape"   : r += py_escape_string(c.txt)
         elif c.t == "str_spec_char": r += py_special_mapper(c.txt)
