@@ -309,7 +309,7 @@ def σ_18():
             cc.append(α)
             
             S = { "number": {"var", "group", "var_spec", "number"},
-                  "var_spec": {"number", "var_spec"} }
+                  "var_spec": {"number", "var", "var_spec"} }
             if    α.t in S and β.t in S[α.t] \
                or β.t in S and α.t in S[β.t] \
                or α.t == "group" and β.t == "var_spec": # 󰤱 RELLY weird

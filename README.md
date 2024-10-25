@@ -1,11 +1,18 @@
 # ☾  
-  
-Need: Python3.12+, prob a Linux Environment
-> [Note: some CPython builds have dumb limits on Py_C_RECURSION_LIMIT]  
+![☾ Logo Code Golf](./Extra/Assets/golf1.png)
 
-Need: JuliaMono Nerd Font + a few extra symbols I made  
-> [The font is in /Extra/FontCompose/Output]  
+Requires python3.12
+
+To view code you need the custom font
+> [The font is in /Extra/FontCompose/Output]
+To type glyphs the .XCompose file is in the same directory
   
 Install: `./install.sh`  
   
 Run a file: `☾ /path/to/file.☾`  
+
+### Credits
+[JuliaMono](https://juliamono.netlify.app/) (Base font)  
+[NerdFonts](https://www.nerdfonts.com/) (Extra symbols)  
+[FontForge](https://fontforge.org/en-US/) (Precedual glyph generation)  
+Additional required libraries are included in `requirements.txt`

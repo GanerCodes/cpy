@@ -114,8 +114,8 @@ class Z:
 Z=Z()
 
 class UPSIDEDOWNSYNDROME:
-    NRM = "0123456789abcdefoxABCDEFOX"
-    USD = "󷰽󷰾󷰿󷱀󷱁󷱂󷱃󷱄󷱅󷱆󷱇󷱈󷱉󷱊󷱋󷱌󷱍󷱎󷱏󷱐󷱑󷱒󷱓󷱔󷱕󷱖"
+    NRM = "0123456789abcdefoxABCDEFOXîℇτπ󷺍"
+    USD = "󷰽󷰾󷰿󷱀󷱁󷱂󷱃󷱄󷱅󷱆󷱇󷱈󷱉󷱊󷱋󷱌󷱍󷱎󷱏󷱐󷱑󷱒󷱓󷱔󷱕󷱖󷱪󷱫󷱬󷱭󷱮"
     MAP = dict(zip(NRM, USD)) | dict(zip(USD, NRM))
     flip = lambda s, MAP=MAP: str.join(ᐦ, (MAP.get(c, c) for c in s))
 class SCRIPT:
