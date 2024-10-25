@@ -195,4 +195,4 @@ added joinz
           1 ⟶ 1 seperator
           2 ⟶ 2 seperator
         by default, ⟗ ⇒ n=1, n=0 otherwise.  
-        (󷹇 sep value here = ƒ(□, □))
+        (󷹇 sep value = ƒ(□, □))
