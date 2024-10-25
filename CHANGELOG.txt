@@ -174,3 +174,25 @@ attempted to add some implicit multiplication. Most stuff with a a literal numbe
     ½󷰽󷱎󷱒󷱓󷱏󷱒󷱐󷱓󷱓󷱔󷺍²󷱀î³ = -13827051355.523182j
     
     (󷹇 implicit mul uses the "␀CAT" order of operations)
+
+added joinz
+    "⨝ 𝒜" = "⨝ 𝒜" =   ᐦ.join(𝒜ᴍᔐ)
+    "⟕ 𝒜" = "⟕ 𝒜" = 𝗻+ᐦ.join(𝒜ᴍᔐ)
+    "⟖ 𝒜" = "⟖ 𝒜" =   ᐦ.join(𝒜ᴍᔐ)+𝗻
+    "⟗ 𝒜" = "⟗ 𝒜" = 𝗻+ᐦ.join(𝒜ᴍᔐ)+𝗻
+    
+    (𝒜 ⨝ⁿ ƒ) =          𝒜₀, ƒ(𝒜₀,𝒜₁), 𝒜₁, ƒ(𝒜₁,𝒜₂), …, 𝒜􍨄
+    (𝒜 ⟕ⁿ ƒ) = ƒ(□,𝒜₀), 𝒜₀, ƒ(𝒜₀,𝒜₁), 𝒜₁, ƒ(𝒜₁,𝒜₂), …, 𝒜􍨄
+    (𝒜 ⟖ⁿ ƒ) =          𝒜₀, ƒ(𝒜₀,𝒜₁), 𝒜₁, ƒ(𝒜₁,𝒜₂), …, 𝒜􍨄, ƒ(𝒜􍨄,□)
+    (𝒜 ⟗ⁿ ƒ) = ƒ(□,𝒜₀), 𝒜₀, ƒ(𝒜₀,𝒜₁), 𝒜₁, ƒ(𝒜₁,𝒜₂), …, 𝒜􍨄, ƒ(𝒜􍨄,□)
+    
+    (if ƒ is non-callable ƒ=󰻾􊽺)
+    ᴸ modifier = don't stringify result / cast result to list
+    (󷹇 no ᴸ mod and ƒᐹᔐ ⇒ we string-sum at end)
+    
+    ⁿ = number of seperators if 𝒜 empty.
+        n=0 ⟶ no seperator
+          1 ⟶ 1 seperator
+          2 ⟶ 2 seperator
+        by default, ⟗ ⇒ n=1, n=0 otherwise.  
+        (󷹇 sep value here = ƒ(□, □))
