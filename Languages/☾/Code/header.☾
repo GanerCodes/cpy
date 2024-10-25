@@ -313,8 +313,7 @@ NULL = ␀ = 𝑜()
     ✗⨳‹Invalid arguments! ⟦ᐹx⟧ ⟦ᐹy⟧›
 ⊢ JOIN_(x=␀, y=␀, s=ᐦ, 𝕏=␀, LR_def=□, bound_mode=␀):
     x≅␀∧␀≅y →¬ ⨳‹Join missing both values!›
-    ¿x≅␀:
-        x,y = y,x
+    ¿x≅␀: x,y = y,x
     ¿sᐹ𝑡:
         ¿s₀ᐹ𝑖: bound_mode, 𝕏 = s
         ¡    : 𝕏, bound_mode = s
