@@ -1,3 +1,15 @@
+FIX FONT THIGN
+󰋺 doesn't cache things so weird instance issues
+order arasol spray deodernt antiperaroas
+
+00 01 10 11
+0* *1 *0 1*
+✓ ✗
+
+chain operator
+
+make replace operator support inserting lists in lists
+
 Cool chars: [Note: Font Manager is good at finding these]
   ⌘ℿ⩇⌢⌣⏜⏝≬𝄞⋿⦁⦂⦇⦈⦉⦊⨾⩤⩥϶⛯
    󰔟󰆍󰸇󰉉󰄷󰄶󰈝󰈔󰈕󰴜󰏢󰈋󰋋󰈸󰥓
