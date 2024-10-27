@@ -5,7 +5,7 @@
 ⮌ json ⨡ dumps as jds
 ⮌ peggle ⨡ Parser
 🌈 = 󰋺∘␛🌈
-󰋺(␛𝐍, ␛𝐍)
+󰋺(␛𝐍, *)
 󰋺("kots", *)
 󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script remove_char add_multichar›⍭)
 󰋺("organizer", ⠤‹get_codepoint save_pua›⍭)
@@ -225,7 +225,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root = gram(dat)
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
-    root = (rep≔󰲡𝐍(x) ¿xᐹᔐ¡ 𝐍(x₀,⠤x₁ᴍrep))∘root
+    root = (rep≔󰲡𝐍(x) ¿xᐹᔐ¡ 𝐍(x₀,⠤x₁ᴍrep))←root
     root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍 ← xᴍ󰲡xᵗ󰅂Σᐦ]))
     root = root.ftrp(   "style"⍭, 󰲡x.copy(    c=[𝐍 ← decor ← x]))
     root = root.ftrp("p_looper"⍭, 󰲡x.copy("looper"), ✓)

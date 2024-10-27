@@ -44,11 +44,13 @@ class Node:
             𝕊.c if c is None else c,
             𝕊.e if e is None else e)
     
+    def child_killer(𝕊, f, rec=ⴳ):
+        if not 𝕊.C: return 𝕊
+        C = [c for c in 𝕊 if not f(c)]
+        if rec: C = [c.child_killer(f, rec) for c in C]
+        return 𝕊.copy(c=C)
     def filter(𝕊, f, rec=ⴳ):
-        if not (C := 𝕊.C): return 𝕊
-        p = ρ(Т(𝕊).filter, f=f, rec=rec)
-        C = [p(c) for c in 𝕊] if rec else 𝕊.c
-        return 𝕊.copy(c=[c for c in C if f(c)])
+        return 𝕊.child_killer(lambda *𝔸, **𝕂: not f(*𝔸, **𝕂), rec=rec)
     
     generic_flatten = lambda n: n.c if ᐹ(n, Node) and n.L else [n.c]
     def flatten_kids(𝕊, f, r=ᗜ, rec=ⴳ, *, 𝑓_=ᗜ):
@@ -65,12 +67,6 @@ class Node:
             else:
                 cc.append(c)
         return 𝕊.copy(c=cc)
-    
-    def child_killer(𝕊, f, rec=ⴳ):
-        if not 𝕊.C: return 𝕊
-        C = [c for c in 𝕊 if not f(c)]
-        if rec: C = [c.child_killer(f, rec) for c in C]
-        return 𝕊.copy(c=C)
     
     def collect_kids(𝕊, f, *, L=ᗜ):
         if L is None: L = []

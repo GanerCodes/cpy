@@ -1,6 +1,6 @@
  O/E/M/R = stdout/stderr/merged/returncode
  o/e = don't redirect stdout/err to null
- B=binary output, S=shell
+ B=binary output, S=shell, P=popen
  t = disable trailing newline strip (does nothing with B)
 ⊢ SUBPROCA(cmd, 𝒶):
     ⮌ subprocess ⨡ Popen as 𝐏, DEVNULL as NULL, PIPE, STDOUT

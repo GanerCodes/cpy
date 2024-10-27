@@ -196,3 +196,7 @@ added joinz
           2 ⟶ 2 seperator
         by default, ⟗ ⇒ n=1, n=0 otherwise.  
         (󷹇 sep value = ƒ(□, □))
+
+ℐ efficently iterates non-callable iterable ℐ (returns the iterable)
+
+Bootstrapped the grammar parser, so we can use peggle2 entirely for grammar stuff
