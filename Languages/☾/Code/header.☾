@@ -354,7 +354,12 @@ NULL = ␀ = 𝑜()
        S=𝚲´(⠤𝔸,⠶𝕂).items 󰒼 ᴍ󰲡x₁,
        B=𝚲h≔{✓:[],✗:[],⠶´(⠤𝔸,⠶𝕂)}→►←[h₀,h₁])
 
- = 󰲡x(⠤𝔸,⠶𝕂)
+⊢ ´(ƒ,⠤𝔸,⠶𝕂):
+    ¿𝗙(ƒ): ↪ ƒ(⠤𝔸,⠶𝕂)
+    ¿𝗜(ƒ):
+        ∀x∈ƒ: pass
+        ↪ ƒ
+    ✗⨳‹⟦ƒ⟧ is not iterable or callable.›
 ∘ = 󰲣x(y)
 ○ = 󰲣𝚲x(y(⠤𝔸,⠶𝕂))
 Ω 𝑙𝑙(𝑙): □
@@ -457,6 +462,11 @@ NULL = ␀ = 𝑜()
     r = cpy(c, ⠤𝔸, ⠶𝕂)
     ↪ cpyⁿˢ ¿get_ns¡ r
 
+ 𝔸∋* ⟶ merge all (public) module contents with globals
+ 𝔸∋- ⟶ don't set module itself as global (automatic w/ !)
+ 𝔸∋! ⟶ store the object with module name into globals instead of module
+ g ⟶ store anything into globals
+ store_code ⟶ m.__cpy_code__ is the source code
 ⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗, just_get_code=✗):
     ¬(just_get_path ∧ just_get_code) ⨳  󰤱 return a tuple if both
     ⮌ sys ⨡ path as P, _getframe as GF
@@ -465,17 +475,22 @@ NULL = ␀ = 𝑜()
     f, drs = □, (␛., ⠤P) ᴍ󰲡𝐩←x→.resolve()󰅂 󰈲󰲡x.is_dir()
     ∀p∈drs:
         ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡z≔p/‹⟦𝔣⟧⟦x⟧›→.is_file() ∧ z󰅂: ⇥
-    f ⨳ ‹Cannot find "⟦𝔣⟧" in [⟦", ".join(drsᴍ󰲡‹"⟦x⟧"›)⟧].›
+    f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦", ".join(drsᴍ󰲡‹"⟦x⟧"›)⟧]!›
     ¿just_get_path: ↪f
     with f.open() as 𝐟: code = 𝐟.read()
     ¿just_get_code: ↪ code
-    m = ℵ´(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": ᔐ←f}, fname=ᔐ←f))
-    𝑘 = (m.keys󰈳󰲡x.startswith∘␛_) ¿*∈𝔸¡ 𝑙(𝔸)
-    G = GF(1).f_globals
-    ¿"__exports__"∈m.keys: 𝑘+=𝑙(m.__exports__)
-    ¿store_code: m[‹__cpy_code__›] = code
-    ¿g: G􋕜ₛₜₑₘ􊱬󰂢󰂗󰂨 = m
-    ∀k∈𝑘ᴍPEV: Gₖ = mₖ
+    nam = PEV(na ≔ f.stem)
+    m = ℵ(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
+    𝑘 = (m.keys󰈳󰲡x₀≡␛_) ¿*∈𝔸¡ 𝑙(𝔸 ∖ {!})
+    𝑘 += exports ≔ (𝑙(m.__exports__) ¿"__exports__"∈m.keys¡ [])
+    ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
+    ¿g:
+        G = GF(1).f_globals
+        ∀k∈𝑘ᴍPEV: Gₖ = mₖ
+        ¿-∉𝔸 ∧ !∉𝔸 ∧ na∉𝑘:
+            Gₙₐₘ = m
+    ¿!∈𝔸:
+        nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦f.stem⟧"!›
     ↪ m
 
 ℳℱ_cache = {}

@@ -1,7 +1,6 @@
-⨡ traceback
+⨡ traceback, threading, sys
 ⮌ pathlib ⨡ Path as 𝐩
 ⮌ json ⨡ loads
-⮌ sys ⨡ stdin
 ⮌ util ⨡ cpy_dir
 󰋺("kots", *)
 󰋺("🌈", *)
@@ -66,7 +65,9 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
     ‹⟦termclr("Error:", CLR2)⟧ ⟦__highlighter__(ε)⟧›☾
 
 __exports__ = "__highlighter__", "__error_printer__"
+sys.excepthook = 󰲥__error_printer__(y)
+threading.excepthook = sys.excepthook
 
 ¿ __name__≡"__main__":
-    ➰ l≔stdin.readline:
+    ➰ l≔sys.stdin.readline:
         ☾´(highlight∘l, end=ᐦ)
