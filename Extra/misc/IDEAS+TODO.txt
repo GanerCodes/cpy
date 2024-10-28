@@ -1,4 +1,4 @@
-conjugate
+conjugate?
 
 FIX FONT THIGN
 󰋺 doesn't cache things so weird instance issues
