@@ -208,3 +208,7 @@ Added ᚤ "first-unique", basically:
 Added 󰌷 "chain", basically:
     ⨳ ["abc", ␛h, 1⋄2⋄3]  󰌷       ≡ [␛a,␛b,␛c,␛h,1,2,3]
     ⨳             1⋄2⋄3 → 󰌷 "abc" ≡ [1,2,3,␛a,␛b,␛c]
+
+Added ⬒ and ⬓ (Round up/down), entirely:
+    ⨳ 2.2 ⬒ ≡ ⬒ 2.9 ≡ 3
+    ⨳ 5.2 ⬓ ≡ ⬓ 5.9 ≡ 5

@@ -28,7 +28,8 @@ stages["CustomSymbols"] = 𝕗
 
 ⊢ 𝕗(fi, fo):
     𝒻 = load_font(fi)
-    𝒻.removeGlyph("filter")  mfw duplicate names
+    𝚲𝒻.removeGlyph("filter")󰅂  ε↦‹Error removing glyph: ⟦ε⟧›☾
+             mfw duplicate names
     𝑟.add_glyphs(𝒻)
     save_font(𝒻, fo)
 stages["ProcedualChars"] = 𝕗
@@ -53,7 +54,7 @@ cp(font ≔ 𝐩(‹JuliaMono/JuliaMono-Regular.ttf›).resolve,
     ¿hasattr(ƒ, "no_font"):
         ƒ
         ↺
-    fo = fold / ‹⟦font.stem⟧_⟦s⟧⟦font.suffix⟧›
+    fo = fold / ‹⟦font.stem⟧_⟦s⟧.ttf›
     ¿s∈enabled_stages:
         ‹Running stage ⟦s⟧, "⟦font⟧" ↦ "⟦fo⟧"›☾
         ƒ(font, font≔fo)
