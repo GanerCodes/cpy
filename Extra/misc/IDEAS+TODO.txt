@@ -12,6 +12,25 @@ chain operator
 
 make replace operator support inserting lists in lists
 
+dynamic edit language grammar 👁
+activeparser.update(ℵ(
+    oldrule=updatedrule,
+    newrule=somenewrule,
+    …
+))
+
+"¿ f(blah) ⇒ bruh"
+
+¿ | expr | call | expr | var | f
+         | expr | var  | blah
+  | expr | var  | bruh
+
+if_stmt = 󰆴"¿" expr 󰆴"⇒" expr
+if_stmt(󱁕):
+    if 󱁕₀:
+        return HIGH, 󱁕₁
+    return LOW
+
 Cool chars: [Note: Font Manager is good at finding these]
   ⌘ℿ⩇⌢⌣⏜⏝≬𝄞⋿⦁⦂⦇⦈⦉⦊⨾⩤⩥϶⛯
    󰔟󰆍󰸇󰉉󰄷󰄶󰈝󰈔󰈕󰴜󰏢󰈋󰋋󰈸󰥓
