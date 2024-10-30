@@ -11,7 +11,7 @@ exec ← "from math import *"
 𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = object, dict, bool, list, tuple, set, str, int, float
 ⮌ py_naming_tools ⨡ py_escape_var as PEV
 ⮌ functools ⨡ reduce
-⮌ itertools ⨡ starmap, filterfalse, product, accumulate, zip_longest
+⮌ itertools ⨡ chain, filterfalse, product, accumulate, zip_longest
 
 LITERAL_OPS_ = {
       ␛∧:󰲣x∧y,  ␛∨:󰲣x∨y,
@@ -367,6 +367,21 @@ NULL = ␀ = 𝑜()
 ⨁ = 󰲣𝑏(x)≡𝑏(y)  xand
 ⊻ = 󰲣𝑏(x)^𝑏(y)  ∧←x∨y  xor
 ⊼ = 󰲣𝑏(x)∧𝑏(y)→¬∧←x∨y  nand
+
+⊢ ᚤ´(x=␀, y=␀):
+    ¿x≅␀: x,y = y,x
+    ¿y≅␀: y = 󰻾
+    s, r = [], []
+    ∀z∈x:
+        ¿(v≔y(z))∈s: ↺
+        s.append(v)
+        r.append(z)
+    ↪ r
+
+⊢ 󰌷´(x=␀, y=␀):
+    ¿x≅␀: x,y = y,x
+    ¿y≅␀: ↪ 𝑙(chain(⠤x))
+    ↪ 𝑙(chain(x, y))
 
 ⊢ ⓦ(⠤𝔸, 𝐀=□):
     𝐀∨=[]

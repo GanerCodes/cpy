@@ -200,3 +200,11 @@ added joinz
 ℐ efficently iterates non-callable iterable ℐ (returns the iterable)
 
 Bootstrapped the grammar parser, so we can use peggle2 entirely for grammar stuff
+
+Added ᚤ "first-unique", basically:
+    ⨳ 1⋄¯2⋄23⋄2    →ᚤ 󰲡x²󰅂 ≡ 1⋄¯2⋄23
+    ⨳ 1⋄ 2⋄23⋄¯2⋄1 →ᚤ      ≡ 1⋄2⋄23⋄¯2
+
+Added 󰌷 "chain", basically:
+    ⨳ ["abc", ␛h, 1⋄2⋄3]  󰌷       ≡ [␛a,␛b,␛c,␛h,1,2,3]
+    ⨳             1⋄2⋄3 → 󰌷 "abc" ≡ [1,2,3,␛a,␛b,␛c]
