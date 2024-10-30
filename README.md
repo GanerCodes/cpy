@@ -11,6 +11,8 @@ Install: `./install.sh`
   
 Run a file: `☾ /path/to/file.☾`  
 
+### Collaborators
+[Used1Brain](https://github.com/Used1Brain/): Initial sup/sub-script generation code
 ### Credits
 [JuliaMono](https://juliamono.netlify.app/) (Base font)  
 [NerdFonts](https://www.nerdfonts.com/) (Extra symbols)  
