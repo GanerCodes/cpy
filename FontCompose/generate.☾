@@ -54,13 +54,13 @@ cp(font ≔ 𝐩(‹JuliaMono/JuliaMono-Regular.ttf›).resolve,
     ¿hasattr(ƒ, "no_font"):
         ƒ
         ↺
-    fo = fold / ‹⟦font.stem⟧_⟦s⟧.ttf›
+    fo = fold / ‹⟦font.stem⟧_⟦s⟧.otf›
     ¿s∈enabled_stages:
         ‹Running stage ⟦s⟧, "⟦font⟧" ↦ "⟦fo⟧"›☾
         ƒ(font, font≔fo)
     ⸘fo.exists:
         ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
-cp(font, font ≔ fold / ‹99_⟦name⟧›)
+cp(font, font ≔ fold / ‹99_⟦name.stem⟧.otf›)
 
 ¿COPY_OUT_FONT:
     cp(font, COPY_OUT_FONT)
