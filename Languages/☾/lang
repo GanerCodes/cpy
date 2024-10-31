@@ -31,12 +31,10 @@ COMMA, COLON, EQCLN = (Node("oper_lit", x) for x in ⵉ(", : :=", ś))
 þþ = mkvar("þþ")
 
 OPS_BUILTIN = {
-    'S': ᐦ,
+    'S': """""",
     'N': """; ␉ : ␉ , ␉ if ␉ elif ␉ else ␉ for""",
-    'P': """+ ␉ - ␉ * ␉ ~  ␉   ** ␉  not ␉ yield""",
-    'B': """+ ␉ - ␉ * ␉ @  ␉   ** ␉   // ␉  < ␉ > ␉ % ␉ .
-            & ␉ ^ ␉ | ␉ /  ␉   != ␉   == ␉ << ␉ >>␉>= ␉ <=
-           in ␉ not in␉ is ␉is not␉   or ␉ and""" }
+    'P': """+ ␉ - ␉ * ␉ ~ ␉ ** ␉not ␉ yield""",
+    'B': """+ ␉ - ␉ * ␉ @ ␉ ** ␉ // ␉< ␉ > ␉ % ␉ . ␉ & ␉ ^ ␉ | ␉ /␉ != ␉ == ␉ << ␉ >> ␉ >= ␉ <= ␉ in ␉ not in␉ is ␉is not␉ or ␉ and""" }
 OPS_BUILTIN = {k:sst(v) for k,v in OPS_BUILTIN.items()}
 OPS_BUILTIN['A'] = set.union(*map(set,OPS_BUILTIN.values()))
 
@@ -55,20 +53,14 @@ KEYWORDS_TO_CPY=rmk(inv(SWAP_TABLE), sst("* ␉ **"))
 
 merge_shorthands = lambda z: (z:=sst(z)) | {x for x,y in SWAP_TABLE.items() if y in z}
 
-kw_pfx_colon = merge_shorthands("""
-    if ␉ elif ␉ else ␉ for ␉ while
-    try ␉ except ␉ finally ␉ class
-    match ␉ case ␉ def ␉ with""")
-kw_pfx = merge_shorthands("""
-    return ␉ continue ␉ break ␉ pass
-    import ␉ global ␉ nonlocal
-    raise ␉ assert ␉ del ␉ async""")
+kw_pfx_colon   = merge_shorthands("""if ␉ elif ␉ else ␉ for ␉ while ␉ try ␉ except ␉ finally ␉ class ␉ match ␉ case ␉ def ␉ with""")
 kw_neverswouce = merge_shorthands("""if ␉ elif ␉ else ␉ for ␉ yield""")
-kw_inline = merge_shorthands("""in ␉ is ␉ is not ␉ not in ␉ or ␉ and ␉ not""") | kw_neverswouce
+kw_inline      = merge_shorthands("""in ␉ is ␉ is not ␉ not in ␉ or ␉ and ␉ not""") | kw_neverswouce
+kw_pfx         = merge_shorthands("""return ␉ continue ␉ break ␉ pass ␉ import ␉ global ␉ nonlocal ␉ raise ␉ assert ␉ del ␉ async""")
 kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
-var_spec = set("ⴳⴴ✓✗□∅∞îℇτπ󷺍󷱪󷱫󷱬󷱭󷱮ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞")
-# ↑ force vars to be one char, will not act as object attribute getter when used as superscript
+var_spec = set("ⴳⴴ✓✗□∅∞îℇτπ󷺍󷱪󷱫󷱬󷱭󷱮ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞") # forced to be one char, will not act as object or attr-getter when superscript
+escaped_var_specs = {*ᴍ(py_escape_var, var_spec)}
 
 register("kw", kw)
 register("kw_pfx", kw_pfx)
@@ -76,17 +68,17 @@ register("kw_spec", kw_spec)
 register("kw_pfx_colon", kw_pfx_colon)
 register("var_spec", var_spec)
 
-escaped_var_specs = {*ᴍ(py_escape_var, var_spec)}
-L = {'.'}
+IG = {'.'}
 sel = [(v.t+'=', v) for v in lang.ops.values() if v.B and 'δ' not in v] \
     + [(":=", lang.ops['≔']), ('≔', lang.ops.pop('≔'))]
 new_ops = {}
 for k, v in sel:
-    new_ops[k] = OP(k, "B=", L, lang.ops["␀ASGN_MRK"].R, v.f)
+    new_ops[k] = OP(k, "B=", IG, lang.ops["␀ASGN_MRK_R"].R, v.f)
 lang.ops |= new_ops
 for k, v in lang.ops.items():
-    if k in L: continue
+    if k in IG: continue
     v.R |= set(new_ops)
+lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 
 «««««««««««««««««««««««««««««««««« OPERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
@@ -95,7 +87,7 @@ for k, v in lang.ops.items():
 =ᴺᴾ󰁔 ⮂ᴺᴾ󰁔 ↪ᴺᴾ󰁔 ⮌ᴺᴾ󰁔 ↺ᴺ󰁔 ⇥ᴺ󰁔 ➰ᴺᴾ󰁔 ∀ ␛
 ⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴮᴾᴺ󰁏󰁔
 ␀1ᴵᴮ ¿ᴺᴾ󰁔 ⸘ᴺᴾ󰁔 ¡ᴺᴾ󰁔
-␀ASGN_MRKᴮ ≔ᴮ󰁜
+␀ASGN_MRK_Lᴮ ≔ᴮ󰁜 ␀ASGN_MRK_Rᴮ ≕ᴮ󰁜
 ⨳ᴮᴾ󰀒ᴺ
 ⊻ᴮᴺ󰁖 ␉ ⨁ᴮᴺ󰁖 ␉ ∨ᴮᴺ󰁜 ␉ ⊼ᴮᴺ󰁖 ␉ ∧ᴮᴺ󰁜
 ≡ᴮᴺ󰁍󰁖 ≠ᴮᴺ󰁍󰁖 ≤ᴮᴺ󰁍󰁖  ≥ᴮᴺ󰁍󰁖  ∈ᴮᴺ󰁖  ∉ᴮᴺ󰁖 ∌ᴮᴺ󰁖 ∋ᴮᴺ󰁖 ␛
@@ -342,33 +334,37 @@ def σ_21():
         assert ⵌ(t) == 1
         return ᐦ, ᗜ, t[0]
 
-    def make_inline_asgn(α, Σ, β):
+    def make_inline_asgn(α, Σ, β): # optimization: pull out some constant nodes
         τ, κ, χ = split_target(α.C)
         
         if τ == ᐦ: return \
-            mkgrp(mknex_(χ, mkgxp(Σ and ("op_call", mkexp(χ), Σ, β) or β)))
+            mkgrp(mknex_(χ, mkgxp(isinstance(Σ, Node) and ("op_call", mkexp(χ), Σ, β) or β)))
         
         ρ = τ == '.' and "ATTR" or "ITEM"
         κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
         χ = mkgxp(("str_", f'"{py_escape_var(χ.txt)}"') if ρ=="ATTR" else χ)
-        if Σ: # optimization: pull out some constant nodes
-            ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
-            PS, PP = mkvar("þPSH" ), mkvar("þPOP" )
-            return fcall_(ST,
-                fcall_(PS, κ),
-                fcall_(PS, χ),
-                Node("op_call", [
-                        fcall_(GT,
-                            fcall_(PP, Node("number", "-2")),
-                            fcall_(PP, Node("number", "-1"))),
-                    Σ, β]))
-        return fcall_(mkvar("SET"+ρ), κ, χ, β)
+        
+        ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
+        if Σ == '≔': return fcall_(ST, κ, χ, β, Node("number", "0"))
+        if Σ == "≕": return fcall_(ST, β, κ, χ, Node("number", "1"))
+        
+        PS, PP = mkvar("þPSH" ), mkvar("þPOP" )
+        return fcall_(ST,
+            fcall_(PS, κ),
+            fcall_(PS, χ),
+            Node("op_call", [
+                    fcall_(GT,
+                        fcall_(PP, Node("number", "-2")),
+                        fcall_(PP, Node("number", "-1"))),
+                Σ, β]),
+            Node("number", "0"))
     
     @(yield replacement("op_call", rec='A', n="Refactor assignment infix opertators"))
     def _(n):
         α, Σ, β = n.C
         if Σ.c[0].txt or Σ.c[2].txt: return n
-        if Σ.txt in ('≔', ':='): return make_inline_asgn(α, None, β)
+        if Σ.txt in ('≔', ':='): return make_inline_asgn(α, '≔', β)
+        if Σ.txt ==  '≕'       : return make_inline_asgn(β, '≕', α)
         if '=' not in lang.ops[Σ.txt]: return n
         Σ = OP.TND(Σ.txt[:-1])
         return make_inline_asgn(α, Σ, β)
@@ -464,6 +460,7 @@ def σ_35():
                     case '←': return R
                     case '⥉': return mkgxp(R, L)
                     case '≔': return mkgxp(l, op_l, R)
+                    case '≕': return mkgxp(l, op_l, R)
                     case ('¬') if L or R:
                             return mkgxp(op_l, L or R)
         

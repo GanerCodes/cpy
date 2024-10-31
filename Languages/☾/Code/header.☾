@@ -18,11 +18,12 @@ LITERAL_OPS_ = {
     "in":󰲣x∈y, "not in":󰲣x∉y }
 
 þSTACK = []
-GETATTR = 󰲣getattr(x,y)
-SETATTR = 󰲥setattr(x,y,z) ∨ z
-GETITEM = 󰲣x.__getitem__(y)
-SETITEM = 󰲥x.__setitem__(y,z) ∨ z
+SETATTR = 󰲧    setattr  (x,y,z)∨z ¿w≡0¡     setattr  (y,z,x)∨x
+SETITEM = 󰲧x.__setitem__(y  ,z)∨z ¿w≡0¡ y.__setitem__(z  ,x)∨x
+GETATTR = 󰲣    getattr  (x,y)
+GETITEM = 󰲣x.__getitem__(  y)
 þPSH, þPOP = 󰲡þSTACK.append(x)∨x, 󰲡þSTACK.pop(x)
+ SETATTR = SETITEM = 𝚲print(⠤𝔸)
 
 OP_DUPER_ = ƒ↦󰲡ƒ(x,x,⠤𝔸,⠶𝕂) # ꜠
 OP_SWAPA_ = ƒ↦󰲣ƒ(y,x,⠤𝔸,⠶𝕂) # ᵜ

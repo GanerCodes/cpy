@@ -3,7 +3,7 @@ COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
 COPY_OUT_FONT     = ✓ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.otf›
 CHECK_REPOS       = ✗
 GENERATE_XCOMPOSE = ✓
-NERDFONT          = ✓
+NERDFONT          = ✗
 CUSTOM_SYMBOLS    = ✓
 PROCEDUAL_CHARS   = ✓
 
@@ -154,8 +154,8 @@ X𝕊⟶Χ ␠ _S⟶ϲ
     ⁅ =⟦/⁅=⟦𝕊/⟧⁆⟧            ⟶ ≠≡≢      ⁆
     ⁅ ~⟦<>⟧⟦⁅⟦ᐦ=⟧⟦𝕊/⟧⁆⁅~⟦𝕊n⟧⁆n⟧
       ⟶ ≺⊀≼⋠≾⋨⪱≻⊁≽⋡≿⋩⪲≁                 ⁆
-    ⁅ eq⟦adDt.q⁅i⟦𝕊/<>⟧⁆⟧
-      ⟶  ≈≔≝≜󷹀≟   ≅≇⪟⪠                  ⁆
+    ⁅ ⟦⁅eq⟦adDt.q⁅i⟦𝕊/<>⟧⁆⟧⁆⁅deq⁆⟧
+      ⟶  ≈≔≝≜󷹀≟   ≅≇⪟⪠       ≕          ⁆
     ⁅ u⟦⁅⟨d4⟩𝕊⁆⁅⟦ad⟧⟦/n⁅_𝕊⁆⁅_/⁆⟧⁆⟧
       ⟶   ∪∩⊃⊂  ⊅⊋⊇⊉ ⊄⊊  ⊆   ⊈          ⁆ ⟧
 
@@ -256,10 +256,10 @@ shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
 
 ¡ℭ ⟨BLUE⟩                  ◄►
 ¡ℭ ⟨YELLOW⟩                𝚲⥌↦␛󰅁␛󰅂
+¡ℭ ⟨DGREEN⟩                󰔶ᗜńśᐦ
 ¡ℭ ⦑c⦑f05aaa⦒            ⦒ 󰆴⨃➤⯈⯅⯆⯇◁△▽▷
 ¡ℭ ⦑c⦑bb4745⦒            ⦒ |/\⹏&@%⌃<>=+-~*⥱≪≫∖
 ¡ℭ ⦑c⦑98bf78⦒            ⦒ #$!?.,:;փ¨⋮⋯⋰⋱⠤:⠶′″‴⁗
-¡ℭ ⦑c⦑6ec0a5⦒            ⦒ ᗜńśᐦ
 ¡ℭ ⦑c⦑cff576⦒            ⦒ 󷹇⌾⎉󰂆†
 ¡ℭ ⦑c⦑9646ff⦒            ⦒ ζᐹ󰻾󱅏⬓⬒
 ¡ℭ ⦑c⦑b738da⦒            ⦒ ⴵ⭥󷸸󷸹󷸺󷸻⟷⬄ᒍ󰛔󰘬ᴙ↨ᚤ⍭⤉⤈󷹄☾🃌⛶⍉⨳▢󰑁󰑅󰑃⨝⟕⟖⟗󰸵󰸷ᣆ󰌷

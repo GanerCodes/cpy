@@ -162,6 +162,7 @@ if __name__ == "__main__":
     # cpy_test("""󰆴 factorial, e, pi, tau, sqrt, cbrt""", exit=ⴳ)
     # cpy_test("""􊬲ₐaₐ􊬲""", exit=ⴳ)
     # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧""".strip(), exit=ⴳ)
+    # debug_test_exit("""⥌𝕊,t↦𝕊ᵗ≔t""")
     # debug_test_exit("""(20.2, .1323, a+.125)""")
     # debug_test_exit("""(20.2, 1323, 0.125)""")
     # debug_test_exit("""-⟥Σb""")
