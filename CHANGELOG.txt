@@ -1,5 +1,5 @@
-⫰: abs
-⫯: ¯abs
+"x ⫰" = "⫰ x" =  abs(x)
+"x ⫯" = "⫯ x" = ¯abs(x)
 
 fold now has init modifier
     [3]ſ¹+
