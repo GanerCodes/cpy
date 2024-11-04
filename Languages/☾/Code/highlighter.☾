@@ -40,7 +40,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
                 ¡:
                     ‹Cannot find "⟦f⟧"??›☾ ; ⇥
             ¡:
-                ‹Traceback with no file? ⟦ə⟧›☾ ; ⇥
+                ‹Traceback with no file? ⟦traceback.format_exception(ε) ⟕⟧›☾ ; ⇥
             
             F = F.split(𝗻)
             pps = ⠤ə.tb_frame.f_code.co_positions,

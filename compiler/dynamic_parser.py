@@ -11,15 +11,12 @@ from op import OP\n"""
 def join_nodes_flat(t, *N):
     C = []
     for n in N:
-        if n.S:
-            C.append(n)
-        else:
-            C.extend(n.C)
+        if n.S: C.append(n)
+        else  : C.extend(n.C)
     return Node(t, C)
 
 def into_expr(C):
-    if ᐹ(C, ᒪ):
-        return join_nodes_flat("expr", *ᴍ(into_expr, C))
+    if ᐹ(C, ᒪ): return join_nodes_flat("expr", *ᴍ(into_expr, C))
     return Node('expr', C if ᐹ(C, ᔐ) else [C])
 
 def make_op_call(op, l, r, op_):
@@ -126,8 +123,9 @@ class DynamicParser:
         n = 𝕊.general_tree_manip(n)
         DEBUG and (print(f"{Z.red}{'-'*100}{Z.wh}"), n.print())
         for order in 𝕊.get_orders():
+            DEBUG and print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}")
             n = 𝕊.lang_tree_manip(n, order)
-            DEBUG and (print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}"), n.print())
+            DEBUG and n.print()
         DEBUG and print(f"{Z.red}{'-'*100}{Z.wh}")
         return n
     

@@ -14,52 +14,40 @@ class OP:
         𝕊.L, 𝕊.R, 𝕊.f = L or set(), R or set(), f
     def __contains__(𝕊, v): return v in 𝕊.F
     def __repr__(𝕊): return f"⟨{𝕊.t}│{bin(𝕊.v)[2:].zfill(ⵌ(_OP_TYPES))[::-1]}{f"│{𝕊.F}⟩" if 𝕊.F else '⟩'}"
+    def __eq__(𝕊, n):
+        O = L, base, R = 𝕊.is_op(n)
+        return O if base.txt == 𝕊.t else False
+    def __call__(𝕊, L, R, op_):
+        assert 𝕊.check_args(L, R), "Invalid args for op!"
+        return 𝕊.f(L, R, op_)
     def __getattr__(𝕊, a):
-        if a == 'M': # unary that works as prefix AND suffix
-            return 𝕊.P and 𝕊.S
-            
+        if a == 'M': return 𝕊.P and 𝕊.S
         if ⴷ(ᴍ(_OP_TYPES.__contains__, a)):
             return ⴸ(ᴍ(𝕊._and, [𝕊.v]*ⵌ(_OP_TYPES), a))
         raise AttributeError
     
-    def __eq__(𝕊, n):
-        O = L, base, R = 𝕊.is_op(n)
-        if base.txt != 𝕊.t:
-            return ⴴ
-        return O
-    
-    def __call__(𝕊, L, R, op_):
-        assert 𝕊.check_args(L, R), "Invalid args for op!"
-        return 𝕊.f(L, R, op_)
-    
-    def copy(𝕊): return Т(𝕊)(𝕊.t, 𝕊.v, 𝕊.L.copy(), 𝕊.R.copy(), 𝕊.f)
-    def mod(𝕊, v): return Т(𝕊)(𝕊.t, v, 𝕊.L, 𝕊.R, 𝕊.f)
+    copy = lambda 𝕊             : Т(𝕊)(𝕊.t, 𝕊.v, 𝕊.L.copy(), 𝕊.R.copy(), 𝕊.f)
+    mod  = lambda 𝕊, v, L=ᗜ, R=ᗜ: Т(𝕊)(𝕊.t, v, 𝕊.L if L is None else 𝕊.L,
+                                               𝕊.R if R is None else 𝕊.R, 𝕊.f)
     
     @classmethod
     def TND(ℂ, s, l=ᐦ, r=ᐦ):
-        return Ń("oper", 
-            ("oper_mod_l", l or Node(ᐦ)),
-            ("oper_lit"  , s),
-            ("oper_mod_r", r or Node(ᐦ)))
+        return Ń("oper", ("oper_mod_l", l), ("oper_lit", s), ("oper_mod_r", r))
     
     @classmethod
     def is_op(ℂ, n, ops=ᗜ):
-        if not ᐹ(n, Node) or not n.t == "oper":
-            return ⴴ
+        if not ᐹ(n,Node) or not n.t=="oper": return ⴴ
         
         L, base, R = O = n.C
         base = base.txt
         
-        if '´' in R.txt:
-            return ⴴ
+        if R.S and '´' in R.txt: return ⴴ
         return L, base, R
     
     def check_args(𝕊, L=ᗜ, R=ᗜ):
         l, r = L is not ᗜ, R is not ᗜ
-        if l and r:
-            return 𝕊.B
-        if l or r:
-            return 𝕊.P and R or L and 𝕊.S
+        if l and r: return 𝕊.B
+        if l  or r: return 𝕊.P and R or L and 𝕊.S
         return 𝕊.N
     
     def part(𝕊, nodes, d, op_man):
@@ -117,49 +105,48 @@ class OP:
         
         if 𝕊.B and lr and rl: return ll + [𝕊(lr, rl, op_)], rr # Binary
         if 𝕊.S and lr       : return ll + [𝕊(lr,  ᗜ, op_)], R  # Suffix
-        if 𝕊.P and rl       : return L  + [𝕊(ᗜ , rl, op_)], rr # Prefix
+        if 𝕊.P        and rl: return L  + [𝕊(ᗜ , rl, op_)], rr # Prefix
         if 𝕊.N              : return L  + [𝕊(ᗜ ,  ᗜ, op_)], R  # Nullary
         
         assert ⴴ, f"Unable to apply operator {𝕊}: {ll=}; {lr=}; {rl=}; {rr=}"
 
 class OP_Manager:
+    __slots__ = "table", 
+
     def __init__(𝕊, table):
         𝕊.table = table
-    
+    def __repr__(𝕊):
+        return f"{Т(𝕊).__name__}[table={𝕊.table}]"
     def __getitem__(𝕊, n):
         L, op_t, R = OP.is_op(n)
         op = 𝕊.table[op_t]
         return 𝕊.gen_op(L, op, R)
     
-    def __repr__(𝕊):
-        return f"{Т(𝕊).__name__}[table={𝕊.table}]"
-    
     def gen_op(𝕊, l, op, r):
-        l, r = l.txt, r.txt
-        for u in l:
-            match u:
-                case '⟥':
-                    assert op.B
-                    op = op.mod(op.N*'N'+"P")
-                case '≺': # 󰤱
-                    assert op.B
-                    op = op.mod(op.N*'N'+"S")
-                case _:
-                    assert ⴴ
-        for u in r:
-            match u:
-                case '꜠':
-                    assert op.B
-                    op = op.mod(op.N*'N' + ((op.P*'P' + op.S*'S') or "PS"))
-                case 'ᵜ':
-                    if ⴸ((x:=op.P, y:=op.S)):
-                        op = op.mod(op.N*'N'+y*'S'+x*'P'+op.B*'B')
-                        # 󰤱 you idot lopsided operations are busted with this system
-                case '⟤':
-                    assert op.B
-                    op = op.mod(op.N*'N'+"S")
-                case _:
-                    pass # postfix modifiers can be dynamic
+        assert l.t == "oper_mod_l"
+        for u in l.txt:
+            if   u == '⟥':
+                assert op.B
+                op = op.mod(op.N*'N'+"P")
+            elif u == '≺':
+                assert op.B
+                op = op.mod(op.N*'N'+"S")
+            else:
+                assert ⴴ
+        
+        if r.t != "oper_mod_r": return op
+        
+        for u in r.txt:
+            if   u == '꜠':
+                assert op.B
+                op = op.mod(op.N*'N' + ((op.P*'P' + op.S*'S') or "PS"))
+            elif u == 'ᵜ':
+                if ⴸ((x:=op.P, y:=op.S)):
+                    op = op.mod(op.N*'N'+y*'S'+x*'P'+op.B*'B', op.R, op.L)
+            elif u == '⟤':
+                assert op.B
+                op = op.mod(op.N*'N'+"S")
+            # 󷹇 postfix modifiers can be dynamic
         return op
     
     def parse_expr(𝕊, n):

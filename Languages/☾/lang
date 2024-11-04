@@ -12,9 +12,9 @@ from string import ascii_uppercase
 from py_naming_tools import *
 py_escape_var = lambda x, f=py_escape_var: f(x, 'NOVAR' not in CONST)
 
-mkgrp = lambda *X, b="()": Ń("group", b[0], ⵌ(X)==1 and X[0] or X, b[1])
-mkgxp = lambda *X, b="()": mkgrp(mkexp(*X), b=b)
 mkexp = lambda *X: Ń("expr", *X)
+mkgrp = lambda *X, b="()": Ń("group", b[0], X[0] if ⵌ(X)==1 else X, b[1])
+mkgxp = lambda *X, b="()": mkgrp(mkexp(*X), b=b)
 mkstr = lambda x: Ń("str", '"', x, '"')
 mkvar = lambda x: Node("var", x)
 mkexp_ = lambda *n: Node("expr_", ᒪ(n))
@@ -27,8 +27,14 @@ mdt = lambda y  : ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
 inv = lambda z  : {y:x for x,y in z.items()}
 rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
+NUM_M2, NUM_M1, NUM_P0, NUM_P1 = (Node("number", ᔐ(x)) for x in range(-2,2))
 COMMA, COLON, EQCLN = (Node("oper_lit", x) for x in ⵉ(", : :=", ś))
-þþ = mkvar("þþ")
+ARG_A = mkexp(("oper_lit", "⠤"), mkvar('𝔸'))
+ARG_K = mkexp(("oper_lit", "⠶"), mkvar('𝕂'))
+TACTACK_L, TACTACK_R = mkvar('⟞'), mkvar('⟝')
+þPSH, þPOP = mkvar("þPSH"), mkvar("þPOP")
+þPOP_M2, þPOP_M1 = fcall_(þPOP, NUM_M2), fcall_(þPOP, NUM_M1)
+þþ = mkvar("þþ") # sus
 
 OPS_BUILTIN = {
     'S': """""",
@@ -93,7 +99,7 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 ≡ᴮᴺ󰁍󰁖 ≠ᴮᴺ󰁍󰁖 ≤ᴮᴺ󰁍󰁖  ≥ᴮᴺ󰁍󰁖  ∈ᴮᴺ󰁖  ∉ᴮᴺ󰁖 ∌ᴮᴺ󰁖 ∋ᴮᴺ󰁖 ␛
       <ᴮᴺ󰁖󰁏 >ᴮᴺ󰁖󰁏 <=ᴮᴺ󰁍󰁖 >=ᴮᴺ󰁍󰁖 ∣ᴮᴺ󰁖 ∤ᴮᴺ󰁖 ␛
       ⊊ᴮᴺ󰁖  ⊄ᴮᴺ󰁖   ⊂ᴮᴺ󰁖   ⊃ᴮᴺ󰁖  ⊅ᴮᴺ󰁖 ⊋ᴮᴺ󰁖
-␀TACITᴮ
+␀TACᴮ
 ꟿᴮᴺ ᴍᴮᴺ   ſᴮᴺ   Ϝᴮᴺ  Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ ␛
     󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ ᙎᴮ󰀒ᴺ ᙡᴮ󰀒ᴺ  ᗢᴮ󰀒ᴺ  ᙧᴮ󰀒ᴺ  ᴮᴾ󰀒ᴺ
 ᐹᴮᴾ󰀒ᴺ ζᴮᴺ ᴮᴾ󰀒ᴺ󰁘 󱅏ᴮᴾ󰀒ᴺ󰁘 ᴮᴾ󰀒ᴺ󰁘
@@ -104,15 +110,16 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 ᣆᴮᴾ󰀒ᴺ ∘ᴮᴺ ○ᴮᴺ 󰀒ᴺ ᴮᴾ󰀒ᴺ 󰔶ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ
 ◄ᴮᴺ󰁏 ►ᴮᴺ󰁏
 ⋄ᴮᴺ
-󰑅ᴮᴺ󰀒 󰑁ᴮᴺ󰀒 󰑃ᴮᴺ󰀒
 ∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴾ󰀒ᴮᴺ ∖ᴮᴺ
-//ᴮᴺ ⹏ᴮᴺ   /ᴮᴺ   ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞 *ᴮᴺᴾ󰁞 ⋅ᴮᴺ  √ᴾᴺ ␛
-     !󰀒ᴺ   ⋀ᴾ󰀒ᴺ  ⋁ᴾ󰀒ᴺ  ⫰ᴾ󰀒ᴺ  ⫯ᴾ󰀒ᴺ ␛
-     ⭥ᴾ󰀒ᴺ  󷸹ᴮᴾ󰀒ᴺ 󷸸ᴮᴾ󰀒ᴺ 󷸻ᴮᴾ󰀒ᴺ 󷸺ᴮᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⤉ᴮᴾ󰀒ᴺ ␛
-     ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ  🃌ᴾ󰀒ᴺ  ▢ᴮᴾ󰀒ᴺ ⬓ᴾ󰀒ᴺ  ⬒ᴾ󰀒ᴺ  ␛
-     ⬄ᴮᴾ󰀒ᴺ 󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ  ᴙᴾ󰀒ᴺ  ⴵᴾ󰀒ᴺ  ␛
-     ⍭ᴾ󰀒ᴺ  ᚤᴮᴾ󰀒ᴺ 󰸵ᴮᴺ   󰸷ᴮᴺ   ⟕ᴮᴾ󰀒ᴺ ⟖ᴮᴾ󰀒ᴺ ⟗ᴮᴾ󰀒ᴺ ␛
-     ⨝ᴮᴾ󰀒ᴺ 󰌷ᴮᴾ󰀒ᴺ
+//ᴮᴺ ⹏ᴮᴺ   /ᴮᴺ   ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞 *ᴮᴺᴾ󰁞 √ᴾᴺ ␛
+     ⋅ᴮᴺ   !󰀒ᴺ   ⋀ᴾ󰀒ᴺ  ⋁ᴾ󰀒ᴺ  ⫰ᴾ󰀒ᴺ  ⫯ᴾ󰀒ᴺ  ␛
+     󰑁ᴮᴺ󰀒  󰑅ᴮᴺ󰀒  󰑃ᴮᴺ󰀒  ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ ␛
+     ⟕ᴮᴾ󰀒ᴺ ⨝ᴮᴾ󰀒ᴺ ⟗ᴮᴾ󰀒ᴺ ⟖ᴮᴾ󰀒ᴺ ⴵᴾ󰀒ᴺ ␛
+     󷸹ᴮᴾ󰀒ᴺ 󷸸ᴮᴾ󰀒ᴺ 󷸻ᴮᴾ󰀒ᴺ 󷸺ᴮᴾ󰀒ᴺ ⍭ᴾ󰀒ᴺ ␛
+     ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ⤉ᴮᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⭥ᴾ󰀒ᴺ ␛
+     ⬓ᴾ󰀒ᴺ  ▢ᴮᴾ󰀒ᴺ ⬒ᴾ󰀒ᴺ  󰸵ᴮᴺ   󰸷ᴮᴺ  ␛
+     ☾ᴾ󰀒ᴺ  🃌ᴾ󰀒ᴺ  ᚤᴮᴾ󰀒ᴺ 󰌷ᴮᴾ󰀒ᴺ ᴙᴾ󰀒ᴺ ␛
+     ⬄ᴮᴾ󰀒ᴺ 󰛔ᴮᴾ󰀒ᴺ 󰘬ᴮᴾ󰀒ᴺ
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
 ␀CATᴮᴺ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮᴺ
@@ -121,13 +128,13 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 .ᴮ󰁏󰁔
 ...ᴺ
 
-␀TACIT｜␀TACIT_L󰀒ᴺ󰁏󰁜｜
-      ｜␀TACIT_Rᴮ󰀒ᴺ󰁏󰁜｜␀TACIT
-      ｜␀ZACIT_Lᴾᴺ󰁏󰁜｜
-      ｜␀ZACIT_R󰀒ᴺ󰁏󰁜｜
-      ｜       ←ᴾ󰁏󰁜｜␀1
-␀1    ｜       →󰀒󰁏󰁜｜
-␀1    ｜       ⥉ᴮ󰁏󰁜｜␀1
+    ｜  ␀TACITᴺ󰀒󰁏󰁜  ｜
+␀TAC｜ ␀TACITLᴺ󰀒󰁏󰁜  ｜
+    ｜ ␀TACITRᴺᴾ󰁏󰁜  ｜␀TAC
+␀TAC｜␀TACITLRᴺᴾ󰀒ᴮ󰁏󰁜｜␀TAC
+    ｜          ←ᴾ󰁏󰁜｜␀1
+␀1  ｜          →󰀒󰁏󰁜｜
+␀1  ｜          ⥉ᴮ󰁏󰁜｜␀1
 
 
 «««««««««««««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
@@ -154,7 +161,7 @@ number = pos_num ∨ neg_num
 pos_num = ƨ(~‹0([bB][01]+|[oO][0-7]+|[xX][0-9a-fA-F]+)|([0-9]+(\.[0-9]*)?|[0-9]*\.[0-9]+)(e[+\-]?[0-9]+)?›)
 neg_num = ƨ(~‹󷰽([󷱈󷱐][󷰽󷰾]+|[󷱍󷱕][󷰽-󷱄]+|[󷱎󷱖][󷰽-󷱆󷱇-󷱌󷱏-󷱔]+)|([󷰽-󷱆]+(\.[󷰽-󷱆]*)?|[󷰽-󷱆]*\.[󷰽-󷱆]+)(󷱋[+\-]?[󷰽-󷱆]+)?›)
 
-var = ƨ(¬W ¬oper ¬var_spec ¬script ¬"󰦥󰦥󰦥󰦥󰦥" ~‹[^ᗒᗌ⟥⦚⟤ᗏᗕ𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰲫󰅂$"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
+var = ƨ(¬W ¬oper ¬var_spec ¬script ¬"󰦥󰦥󰦥󰦥󰦥" ~‹[^ᐳᑀᐒᐵᐖᐸᑅᐘᑈᐛᗒᗌ⟥⦚⟤ᗏᗕ𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰲫󰅂$"'\[\](){}⁅⁆⟦⟧⟨⟩‹ ␛␛␛›]›)+
 
 group = ~‹[\[({⁅⟨⟦]› (W? ↷ exprs) ~‹[\])}⁆⟩⟧]›
 
@@ -176,9 +183,10 @@ lamb = (
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 lamb_tacit = (
-    (                  (~‹⟥› ∨ ✓) (~‹[ᗒᗌ]› ∨ 󰆴‹⦚› ✓) 󰆴Æ?)
-    (  exprs           (          (~‹[ᗏᗕ]› ∨ 󰆴‹⦚› ✓) (~‹⟤› ∨ ✓))
-     ∨ expr_not_comma                             ✓          ✓))
+      (⠶LTL exprs (⠶LTR ∨ ✓ ✓))
+    ∨ (⠶LTL expr_not_comma ✓ ✓))
+LTL = (‹⟥›∨✓) ~‹[ᐳᑀᐒᐵᐖ]› 󰆴Æ?
+LTR = ~‹[ᐸᑅᐘᑈᐛ]› (‹⟤›∨✓)
 
 str = str_star ∨ str_cpy ∨ str_$ ∨ str_py ∨ str_escape ∨ str_spec_char
 str_$ = 󰆴('$' w?) (ƨ(supscript) ∨ ✓) 󰆴w? (⠶str_cpy_inner ∨ '›')* 󰆴(w? '󷹹')
@@ -208,42 +216,53 @@ comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))
 KEYWORD_NODE_NAMES = ("kw", "kw_pfx", "kw_pfx_colon")
 
 def σ_00():
-    @(yield reduction("lamb_tacit", n="Reform tacit exprs"))
+    @(yield replacement("lamb_tacit", n="Reform tacit exprs"))
     def _(n):
-        bl, l, ε, r, br = n
+        bl, l, λ, r, br = n
         bl, l,    r, br = bl.txt, l.txt, r.txt, br.txt
-        if ε.t in {"exprs", "expr", "expr_norm"}:
-            α, β = ε[0].c, ε[-1].c 
+        if λ.t in {"exprs", "expr", "expr_norm"}:
+            α, β = λ[0].c, λ[-1].c 
         else:
-            α = β = ε.c
-        if l: α.insert(0, mkvar('⟝'))
-        if r: β.append(   mkvar('⟞'))
-        R = []
-        R.append(OP.TND(f"␀{"TZ"[ᖲ(bl)]}ACIT_L"))
-        R.append(mkgxp(ε))
-        R.append(OP.TND(f"␀{"TZ"[ᖲ(br)]}ACIT_R"))
-        return R
+            α = β = λ.c
+        
+        l, r = l or (r and "ᐳ" or "ᑀ"), r or "ᐸ"
+        
+        args, targs = [], []
+        OP_NAME = "␀TACIT"
+        if l and l in "ᑀᐵᐒᐖ":
+            if not bl: OP_NAME += "L"
+            if l in "ᑀᐵ": α.insert(0, TACTACK_L)
+            targs.append(NUM_P1 if (l in "ᐵᐖ") else NUM_P0)
+            args.append(TACTACK_L)
+        if r and r in "ᑅᑈᐘᐛ":
+            if not br: OP_NAME += "R" 
+            if r in "ᑅᑈ": β.append(   TACTACK_R)
+            targs.append(NUM_P1 if (r in "ᑈᐛ") else NUM_P0)
+            args.append(TACTACK_R)
+        
+        args, targs = J́(args, COMMA), J́(targs, COMMA, l=ⴳ)
+        
+        return Ń("oper",
+            ("oper_mod_l", ᐦ), ("oper_lit", OP_NAME),
+            ("oper_mod_r", mkgxp(
+                ("lamb", ("lamb_h_normal", *args),
+                         ("lamb_b", ("norm_expr", λ))),
+                *targs)))
 
 def σ_03():
     @(yield replacement(*KEYWORD_NODE_NAMES, n="Lang keywords → cpy keywords"))
     def _(n):
         if n.txt in kw_inline: # keyword that are just ops
             return OP.TND(KEYWORDS_TO_CPY.get(n.txt, n.txt))
-        else:
-            return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
+        return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
     
     @(yield reduction("supscript", n="Swap Superscripts"))
     def _(n):
         t = gram(SCRIPT.nrm(n.txt), "exprs")
         T = lang(t.txt.strip())
-        if T.isidentifier() and T not in escaped_var_specs:
-            return [OP.TND('.'), t]
-        return [
-            Node("oper", [
-                Node("oper_mod_l",  ᐦ ),
-                Node("oper_lit"  , '⌃'),
-                Node("oper_mod_r",  ᐦ )]),
-            mkgxp_(Node(c=lang(t.txt)))]
+        if not T.isidentifier() or T in escaped_var_specs:
+            return [OP.TND('⌃'), mkgxp_(Node(c=lang(t.txt)))]
+        return [OP.TND('.'), t]
     
     ((yield replacement("subscript", rec='A', n="Subscripts to brackets"))
     (lambda n: mkgrp(gram(SCRIPT.nrm(n.c), "exprs"), b="[]")))
@@ -284,8 +303,6 @@ def σ_10():
     ((yield replacement("parser_main", rec='A', n="Build whitespace blocks"))
     (whitespace_parser))
 
-ARG_A = mkexp(("oper_lit", "⠤"), mkvar('𝔸'))
-ARG_K = mkexp(("oper_lit", "⠶"), mkvar('𝕂'))
 def σ_15():
     yield "Refactor lambdas"
     ((yield replacement("lamb_h_preset"))
@@ -331,13 +348,11 @@ def σ_18():
             
             S = { "number": {"var", "group", "var_spec", "number"},
                   "var_spec": {"number", "var", "var_spec"} }
+            # 󰤱 condition for 2√2
             if    α.t in S and β.t in S[α.t] \
                or β.t in S and α.t in S[β.t] \
-               or α.t == "group" and β.t == "var_spec": # 󰤱 RELLY weird
-                cc.append(Node('oper', [
-                    Node("oper_mod_l"),
-                    Node("oper_lit", "␀CAT"),
-                    Node("oper_mod_r")]))
+               or α.t == "group" and β.t == "var_spec": # 󰤱 this is weird
+                    cc.append(OP.TND("␀CAT"))
         cc.append(α)
         return n.copy(c=cc)
 
@@ -373,19 +388,15 @@ def σ_21():
         χ = mkgxp(("str_", f'"{py_escape_var(χ.txt)}"') if ρ=="ATTR" else χ)
         
         ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
-        if Σ == '≔': return fcall_(ST, κ, χ, β, Node("number", "0"))
-        if Σ == "≕": return fcall_(ST, β, κ, χ, Node("number", "1"))
+        if Σ == '≔': return fcall_(ST, κ, χ, β, NUM_P0)
+        if Σ == "≕": return fcall_(ST, β, κ, χ, NUM_P1)
         
-        PS, PP = mkvar("þPSH" ), mkvar("þPOP" )
         return fcall_(ST,
-            fcall_(PS, κ),
-            fcall_(PS, χ),
+            fcall_(þPSH, κ),
+            fcall_(þPSH, χ),
             Node("op_call", [
-                    fcall_(GT,
-                        fcall_(PP, Node("number", "-2")),
-                        fcall_(PP, Node("number", "-1"))),
-                Σ, β]),
-            Node("number", "0"))
+                fcall_(GT, þPOP_M2, þPOP_M1), Σ, β]),
+            NUM_P0)
     
     @(yield replacement("op_call", rec='A', n="Refactor assignment infix opertators"))
     def _(n):
@@ -416,8 +427,7 @@ def σ_30():
         C = ᒪ(split_at(n.C,
             lambda x: OP.is_op(x) and (k:=op_man[x]).t in layer and k.B,
             keep_separator=ⴳ))
-        if ⵌ(C) < 3:
-            return rec(n)
+        if ⵌ(C) < 3: return rec(n)
         r = ⴴ
         
         for H,T,(a,(b,),c) in mark_ends(windowed(C, 3, step=2)):
@@ -428,15 +438,13 @@ def σ_30():
                 T and c or mknex_(þþ, c)))
             r = mkexp(("op_call", r, OP.TND('∧'), v)) if r else v
         return n.copy(c=[r])
-    
     ((yield replacement("expr", rec='B', n="Generate comparison chains"))
     (make_cmp_chain))
 
-demodp = lambda o: (o.C[0].txt, o.C[1], o.C[2].txt)
+demodp = lambda o: (o.C[0].txt, o.C[1], o.C[2].txt if o.C[2].S else o.C[2])
 def mkbltnop(op_l): # format builtins if needed
-    t = op_l.txt
-    if (t := SWAP_TABLE.get(t,t)) not in OPS_BUILTIN['A']:
-        return op_l
+    t = SWAP_TABLE.get(t := op_l.txt, t)
+    if t not in OPS_BUILTIN['A']: return op_l
     return mkexp(mkvar("LITERAL_OPS_"), mkgrp(mkstr(t), b="[]"))
 def transform_oper(op_): # apply modifiers to op
     m_l, op_l, m_r = demodp(op_)
@@ -447,9 +455,10 @@ def transform_oper(op_): # apply modifiers to op
     if '≺' in m_l: op_n = mkmod(op_n, "BSTAR")
     if '⟥' in m_l: op_n = mkmod(op_n, "LNULL")
     
+    if isinstance(m_r, Node): return mkexp(op_n, mkgxp(m_r, b="[]"))
     rmods = ᐦ
     for m in m_r:
-        if m in "⟥⟤ᵜ꜠´":
+        if m in "⟤ᵜ꜠´":
             match m:
                 case '⟤': op_n = mkmod(op_n, "RNULL")
                 case 'ᵜ': op_n = mkmod(op_n, "SWAPA")
@@ -483,37 +492,27 @@ def σ_35():
             if 'σ' in op and not L and R: return mkexp(op_l, r)
             if 'ι' in op: return mkexp(hnul(l), op_l, hnul(r))
             if 'ρ' in op:
-                match t:
-                    case '→': return L
-                    case '←': return R
-                    case '⥉': return mkgxp(R, L)
-                    case '≔': return mkgxp(l, op_l, R)
-                    case '≕': return mkgxp(l, op_l, R)
-                    case ('¬') if L or R:
-                            return mkgxp(op_l, L or R)
+                if t == '→'             : return L
+                if t == '←'             : return R
+                if t == '⥉'             : return mkgxp(R, L)
+                if t == '≔'             : return mkgxp(l, op_l, R)
+                if t == '≕'             : return mkgxp(l, op_l, R)
+                if t == '¬' and (L or R): return mkgxp(op_l, L or R)
         
-        op_l = transform_oper(op_)
-        
-        A = (op_l, L, m_l, t, m_r, R)
-        if op.S and L and not op.B:
-            return try_builtin('S', *A) or mkexp(mkbltnop(op_), L)
-        if op.P and R and not op.B:
-            return try_builtin('P', *A) or mkexp(mkbltnop(op_), R)
-        if op.B and L and R:
-            return try_builtin('B', *A) or mkexp(mkbltnop(op_), mkgxp(   l, COMMA,    r))
-        if op.S and L:
-            return try_builtin('S', *A) or mkexp(mkbltnop(op_), mkgxp(   l, COMMA, NULL))
-        if op.P and R:
-            return try_builtin('P', *A) or mkexp(mkbltnop(op_), mkgxp(NULL, COMMA,    r))
-        if op.N and 'ν' in op:
-            return mkexp(mkbltnop(op_), mkgxp())
+        A = (transform_oper(op_), L, m_l, t, m_r, R)
+        tb, mblo = try_builtin, mkbltnop
+        if op.S and L       and not op.B: return tb('S', *A) or mkexp(mblo(op_), L)
+        if op.P       and R and not op.B: return tb('P', *A) or mkexp(mblo(op_), R)
+        if op.B and L and R             : return tb('B', *A) or mkexp(mblo(op_), mkgxp(   l, COMMA,    r))
+        if op.S and L                   : return tb('S', *A) or mkexp(mblo(op_), mkgxp(   l, COMMA, NULL))
+        if op.P       and R             : return tb('P', *A) or mkexp(mblo(op_), mkgxp(NULL, COMMA,    r))
+        if op.N and 'ν' in op           : return mkexp(mblo(op_), mkgxp())
         return mkbltnop(op_)
 
 def σ_40():
     @(yield replacement("oper", rec='A', n="Refactor sitting ops"))
     def _(n):
-        if n.C[1].txt in kw_neverswouce:
-            return n
+        if n.C[1].txt in kw_neverswouce: return n
         if not (n.C[2].txt or n.C[0].txt):
             n = n.copy(c=[n.C[0], n.C[1], n.C[2].copy(c="´")])
         return transform_oper(n)
@@ -545,7 +544,7 @@ def σ_48():
     ((yield replacement("for_stmt", rec='B', n="Build for stmt"))
     (lambda n: Ń(
         "kw_pfx_colon_expr",
-        Node("kw_pfx_colon", "for"),
+        ("kw_pfx_colon", "for"),
         ("expr", n.C[0], ("kw", "in"), n.C[1]),
         *n.C[2:])))
 
@@ -556,10 +555,8 @@ def σ_50():
     ((yield replacement("parser_main", rec='B', n="Insert spaces"))
     (ρ(add_spaces, ignore_nodes=("str_cpy", "str_py", "str_star", "str_$"))))
 
-# § node transpilers
-
-generator(*KEYWORD_NODE_NAMES, "oper_lit", "var", "var_spec")(
-    lambda n: py_escape_var(n.txt))
+# §§§ node transpilers §§§
+generator(*KEYWORD_NODE_NAMES, "oper_lit", "var", "var_spec")(lambda n: py_escape_var(n.txt))
 generator("NULL")(lambda n: "NULL")
 
 @generator("group")
@@ -588,5 +585,4 @@ generator("str_cpy")(make_str_cpy)
 @generator("str_$")
 def make_str_money(n):
     s, *C = n.c
-    return f'SUBPROCA({make_str_cpy(n.copy(c=C))},' \
-           f'"{py_escape_string(SCRIPT.nrm(s.txt))}")'
+    return f'SUBPROCA({make_str_cpy(n.copy(c=C))},"{py_escape_string(SCRIPT.nrm(s.txt))}")'
