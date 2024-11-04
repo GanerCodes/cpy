@@ -183,7 +183,7 @@ lamb = (
       ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
     (lamb_b = ((exprs 󰆴'󰅂') ∨ expr_not_comma)))
 lamb_tacit = (
-      (⠶LTL exprs (⠶LTR ∨ ✓ ✓))
+      (⠶LTL exprs ⠶LTR)
     ∨ (⠶LTL expr_not_comma ✓ ✓))
 LTL = (‹⟥›∨✓) ~‹[ᐳᑀᐒᐵᐖ]› 󰆴Æ?
 LTR = ~‹[ᐸᑅᐘᑈᐛ]› (‹⟤›∨✓)
