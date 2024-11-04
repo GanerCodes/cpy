@@ -385,10 +385,16 @@ NULL = ␀ = 𝑜()
         𝐀.append∘𝐚
         ↪ ⓦ(⠤𝔸, ƒ, 𝐀=𝐀)
 
-⊢ TACITM(λ, m=0):
+⊢ TACITM(λ, m):
     ↪ 󰲡xᴍλ󰅂 ¿m≡1¡ λ
-␀TACITL´ = ␀TACITR´ = 𝑐𝑑(𝚲✗⨳, 𝑔=TACITM)
- TACITLR
+⊢ TACITB(λ, m1, m2):
+    ⊢ ƒ(l=␀, r=␀):
+        □  󰤱
+    ↪ ƒ
+
+␀TACITLR´ =            𝑐𝑑(𝚲✗⨳, 𝑔=TACITB)
+␀TACITL´  = ␀TACITR´ = 𝑐𝑑(𝚲✗⨳, 𝑔=TACITM)
+␀TACIT´   =            𝑐𝑑(𝚲✗⨳, 𝑔=󰲡(TACITM ¿x🃌≤2¡ TACITB)(⠤x))
 
  all this be weird
 Ω ℵ´(𝑑):
