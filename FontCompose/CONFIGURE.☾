@@ -1,9 +1,9 @@
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
 COPY_OUT_FONT     = ✓ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.otf›
-CHECK_REPOS       = ✗
+CHECK_REPOS       = ✓
 GENERATE_XCOMPOSE = ✓
-NERDFONT          = ✗
+NERDFONT          = ✓
 CUSTOM_SYMBOLS    = ✓
 PROCEDUAL_CHARS   = ✓
 
