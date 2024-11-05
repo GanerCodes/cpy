@@ -110,7 +110,7 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 ᣆᴮᴾ󰀒ᴺ ∘ᴮᴺ ○ᴮᴺ 󰀒ᴺ ᴮᴾ󰀒ᴺ 󰔶ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ
 ◄ᴮᴺ󰁏 ►ᴮᴺ󰁏
 ⋄ᴮᴺ
-∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴾ󰀒ᴮᴺ ∖ᴮᴺ
+∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴾ󰀒ᴮᴺ ⊞ᴾ󰀒ᴮᴺ ∖ᴮᴺ
 //ᴮᴺ ⹏ᴮᴺ   /ᴮᴺ   ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞 *ᴮᴺᴾ󰁞 √ᴾᴺ ␛
      ⋅ᴮᴺ   !󰀒ᴺ   ⋀ᴾ󰀒ᴺ  ⋁ᴾ󰀒ᴺ  ⫰ᴾ󰀒ᴺ  ⫯ᴾ󰀒ᴺ  ␛
      󰑁ᴮᴺ󰀒  󰑅ᴮᴺ󰀒  󰑃ᴮᴺ󰀒  ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ ␛
@@ -172,7 +172,7 @@ oper = (
      oper_lit
     (oper_mod_r = ƨ((~‹[´꜠ᵜ𐞑⟤]+› ∨ supscript)*)))
 
-lambs = lamb ∨ lamb_tacit
+lambs = lamb_tacit ∨ lamb
 lamb = (
     (   (lamb_h_py = 󰆴"lambda" ⮞text_breaker 󰆴Æ ⠶expr_not_colon 󰆴':')
       ∨ (lamb_h_normal = (
@@ -216,7 +216,7 @@ comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))
 KEYWORD_NODE_NAMES = ("kw", "kw_pfx", "kw_pfx_colon")
 
 def σ_00():
-    @(yield replacement("lamb_tacit", n="Reform tacit exprs"))
+    @(yield replacement("lamb_tacit", rec='A', n="Reform tacit exprs"))
     def _(n):
         bl, l, λ, r, br = n
         bl, l,    r, br = bl.txt, l.txt, r.txt, br.txt
@@ -227,17 +227,17 @@ def σ_00():
         
         l, r = l or (r and "ᐳ" or "ᑀ"), r or "ᐸ"
         
-        args, targs = [], []
+        args, targs = [], [NUM_M1, NUM_M1]
         OP_NAME = "␀TACIT"
         if l and l in "ᑀᐵᐒᐖ":
             if not bl: OP_NAME += "L"
             if l in "ᑀᐵ": α.insert(0, TACTACK_L)
-            targs.append(NUM_P1 if (l in "ᐵᐖ") else NUM_P0)
+            targs[0] = NUM_P1 if (l in "ᐵᐖ") else NUM_P0
             args.append(TACTACK_L)
         if r and r in "ᑅᑈᐘᐛ":
             if not br: OP_NAME += "R" 
             if r in "ᑅᑈ": β.append(   TACTACK_R)
-            targs.append(NUM_P1 if (r in "ᑈᐛ") else NUM_P0)
+            targs[1] = NUM_P1 if (r in "ᑈᐛ") else NUM_P0
             args.append(TACTACK_R)
         
         args, targs = J́(args, COMMA), J́(targs, COMMA, l=ⴳ)

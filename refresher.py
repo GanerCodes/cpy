@@ -76,11 +76,17 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ, fname="cpy-interactive", he
     ns.setdefault("__file__", fname)
     return lambda c, **𝕁: compiler("☾", c, do_cache, **𝕂|𝕁), ns
 
+def py_reparse(x):
+    import ast
+    try:
+        return ast.unparse(ast.parse(x))
+    except Exception as e:
+        raise Exception(f'Failed to reparse code! "{e}"\nCode:\n{x}')
+
 def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ,
                                   sanity=ⴳ, interactive_defaults=ᗜ, **𝕂):
     if sanity:
-        import ast
-        𝕂["code_post_process"] = lambda x: ast.unparse(ast.parse(x))
+        𝕂["code_post_process"] = py_reparse
         𝕂["code_post_process"].ver = "basic_py_reparse"
     compiler, ns = basic_cpy_session(do_cache, **𝕂)
     def interactive(c, return_code=ⴴ, cap_stdout=ⴳ,
