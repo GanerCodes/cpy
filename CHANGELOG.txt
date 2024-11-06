@@ -230,3 +230,7 @@ Added ᐴ, the mirror of ᐹ
     ⨳ "egg"ᐹᔐ
     ⨳ intᐴ2
     ⨳ "hi"ᐹᔐᐴ"egg"
+
+○ and ∘ now have ○ⁿ ∘ⁿ version so basically
+     (+) ∘²    [1,2]  ≡ [1,2,1,2]
+    ((+) ○² 🃌)([5,2]) ≡ 4
