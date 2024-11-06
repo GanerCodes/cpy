@@ -224,3 +224,8 @@ Adddered ⊞, basically
     "abc" ⊞²      = [[[␛a,␛a],[␛a,␛b],…],   …]
 
 Added the ᐳᑀᐒᐵᐖᐸᑅᐘᑈᐛs, too tired to explain rn basically lambdas cool cousins
+
+Added the mirror of ᐹ
+    ⨳ "egg"ᐹᔐ
+    ⨳ intᐴ2
+    ⨳ "hi"ᐹᔐᐴ"egg"
