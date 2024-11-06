@@ -225,7 +225,8 @@ Adddered ⊞, basically
 
 Added the ᐳᑀᐒᐵᐖᐸᑅᐘᑈᐛs, too tired to explain rn basically lambdas cool cousins
 
-Added the mirror of ᐹ
+Added ᐴ, the mirror of ᐹ
+    Also, ᐹ/ᐴ are `isinstance` in the binary case and `type` in the unary case
     ⨳ "egg"ᐹᔐ
     ⨳ intᐴ2
     ⨳ "hi"ᐹᔐᐴ"egg"
