@@ -282,6 +282,12 @@ NULL = ␀ = 𝑜()
 󰒼 = 󰲣sorted(x,key=𝕝(y,□)₀)
 󰒽 = 󰲣sorted(x,key=𝕝(y,□)₀,reverse=✓)
 
+Ω Ticker:
+    __slots__ = ␛i,
+    __init__ = ⥌𝕊,i↦𝕊ⁱ≔i→►□
+    __call__ = 𝕊↦𝕊ⁱ-=1
+    __bool__ = 𝕊↦¬𝕊ⁱ
+
 ⊢ RANGE_(x=␀, y=␀, s=␀, 𝕏=␀):
     x≅␀≅y →¬ ⨳‹Range missing both values!›
     ¿𝔰≔s≅␀: s=1
@@ -391,6 +397,21 @@ NULL = ␀ = 𝑜()
     with 𝕒 as 𝐚:
         𝐀.append∘𝐚
         ↪ ⓦ(⠤𝔸, ƒ, 𝐀=𝐀)
+
+ 󰤱
+ ƒ ⊚    n/2: ƒ(ƒ(ƒ…)) n times
+ ƒ ⊚ˢ􋑬􋔛 𝑔  : ƒ(ƒ(ƒ…)) until 𝑔 true
+@BINWRAP_
+⊢ ⊚´(ƒ=␀, y=␀, s=∞):
+    ¿¬𝗙(ƒ): ƒ,y = y,ƒ
+    ¿yᐹ𝑖: ↪ ƒ ⊚ Ticker(s)
+    ¿y≅␀: y = 󰻾
+    ⊢ r(⠤𝔸,⠶𝕂):
+        v = ƒ(⠤𝔸,⠶𝕂)
+        ➰ ¬y(v)∧(s-=1→>0): v = ƒ(v)
+        ↪ v
+    ↪ r
+ ƒ ⊜ˢ􋑬􋔛 𝑔/󰻾: ƒ(ƒ(ƒ…)) until fixed point under 𝑔
 
 ⊢ TACITM(λ, m):
     ↪ 󰲡xᴍλ󰅂 ¿m≡1¡ λ
