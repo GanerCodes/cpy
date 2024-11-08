@@ -231,6 +231,21 @@ Added ᐴ, the mirror of ᐹ
     ⨳ intᐴ2
     ⨳ "hi"ᐹᔐᐴ"egg"
 
+󰌷 now has depth supscript modifier, basically
+    ⨳ [["l","egg"],["he","we"]] 󰌷¹ ≡ "l"⋄"egg"⋄"he"⋄"we"
+    ⨳ [["l","egg"],["he","we"]] 󰌷² ≡ ␛l⋄␛e⋄␛g⋄␛g⋄␛h⋄␛e⋄␛w⋄␛e
+
 ○ and ∘ now have ○ⁿ ∘ⁿ version so basically
      (+) ∘²    [1,2]  ≡ [1,2,1,2]
     ((+) ○² 🃌)([5,2]) ≡ 4
+
+Added ⊚, basically
+    "ƒ ⊚  n?2": ƒ(ƒ(ƒ…)) n times
+    "ƒ ⊚ˢ􊽨􋔛 𝑔": ƒ(ƒ(ƒ…)) until 𝑔 true or `s` iters
+    󷹇 's' is max loop count
+Added ⊜, just
+    "ƒ ⊜ˢ􊽨􋔛 𝑔?󰻾": ƒ(ƒ(ƒ…)) until fixed point under 𝑔
+    󷹇 's' is max loop count, returns □ on fail (change to err?)
+
+↑ note these 2nd order funcs will call ƒ with args initally, i.e.
+    ⨳ (ᑀ⋅󷰾ᐸ ⊜ ⟥ᑀ²)(100) ≡ 100  calls ƒ 2 times
