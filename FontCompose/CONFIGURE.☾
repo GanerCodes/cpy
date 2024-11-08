@@ -3,7 +3,7 @@ COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
 COPY_OUT_FONT     = ✓ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.otf›
 CHECK_REPOS       = ✓
 GENERATE_XCOMPOSE = ✓
-NERDFONT          = ✓
+NERDFONT          = ✗
 CUSTOM_SYMBOLS    = ✓
 PROCEDUAL_CHARS   = ✓
 
@@ -106,6 +106,8 @@ X𝕊⟶Χ ␠ _S⟶ϲ
      ⟶ ⋅⎊⎉⌾⊖≖⨸⊗⊕⬡    •⬤                ⁆
     ⁅O⟦𝕊⁅⟦+x⟧𝕊⁆⁅o⟦𝕊o⟧⁆⁅O𝕊⁆⟧
      ⟶ ∘  ⨁⨂      ⊙⨀    ○              ⁆
+    ⁅co⟦⁅o𝕊⁆⁅eq⁆⁅c⟦ᐦc⟧𝕊⁆⟧
+     ⟶    ⊚   ⊜    🟕🟖                  ⁆
     ⁅⟦⁅[⟦ᐦ-|⟧]⁆⁅#⟦⁅[]⁆R𝕊#\⟧⁆⟧
      ⟶   □    ⊞ ⵌ⌗⨳♯                 ⁆
     ⁅ST⟦𝕊+:⁅A⟦𝕊-d⟧⁆⟧
@@ -292,7 +294,10 @@ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789αβγδεζηθϑ
 ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙⁰¹²³⁴⁵⁶⁷⁸⁹󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋󰁱󰂂󰂁󰁲⁺⁻⁼⁽⁾󰁺󰁻󰁸󰁹˜◌◌◌◌◌ꜝ 󰦥󰦥󰦥󰦥󰦥
 SCRIPT_DEPTH = 2
 
-¿ __name__ ≡ "__main__": 󰋺("generate")
+¿ __name__ ≡ "__main__":
+    󰋺("generate")
+    ⨡ platform
+    platform.system ≡ "Linux" ∧ $ᴼᴱibus-daemon -dxrR󷹹
 
  𝼋
  ¿GENERATE_XCOMPOSE:

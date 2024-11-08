@@ -239,12 +239,13 @@ Added ᐴ, the mirror of ᐹ
      (+) ∘²    [1,2]  ≡ [1,2,1,2]
     ((+) ○² 🃌)([5,2]) ≡ 4
 
-Added ⊚, basically
-    "ƒ ⊚  n?2": ƒ(ƒ(ƒ…)) n times
-    "ƒ ⊚ˢ􊽨􋔛 𝑔": ƒ(ƒ(ƒ…)) until 𝑔 true or `s` iters
-    󷹇 's' is max loop count
-Added ⊜, just
+Added ⊚,⊜,🟕,🟖 basically
+    "ƒ ⊚    n?2": ƒ(ƒ(ƒ…)) n times
+    "ƒ ⊚ˢ􊽨􋔛 𝑔  ": ƒ(ƒ(ƒ…)) until 𝑔 true
     "ƒ ⊜ˢ􊽨􋔛 𝑔?󰻾": ƒ(ƒ(ƒ…)) until fixed point under 𝑔
+    "ƒ 🟕ˢ􊽨􋔛 𝑔?󰻾": ƒ(ƒ(ƒ…)) until cycle is found.
+    "ƒ 🟖ˢ􊽨􋔛 𝑔?󰻾": ƒ(ƒ(ƒ…)) until cycle is found. Include results before cycle.
+    
     󷹇 's' is max loop count, returns □ on fail (change to err?)
 
 ↑ note these 2nd order funcs will call ƒ with args initally, i.e.
