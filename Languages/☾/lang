@@ -245,10 +245,8 @@ def σ_00():
         args, targs = J́(args, COM), J́(targs, COM, l=ⴳ)
         
         if args: args.append(COM)
-        args.extend([
-            OP.TND("⠤"), mkvar("𝓐"),
-            COM,
-            OP.TND("⠶"), mkvar("𝓚")])
+        args.extend([OP.TND("⠤"), mkvar("𝓐"), COM,
+                     OP.TND("⠶"), mkvar("𝓚")])
         
         return Ń("oper",
             ("oper_mod_l", ᐦ), ("oper_lit", OP_NAME),

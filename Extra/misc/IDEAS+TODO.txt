@@ -2,6 +2,20 @@
  󷹄󰛔󰘬 󰤱
  Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃 ?
 
+ 󰛔 =  󰤱
+   (ᔐ,ᔐ): ᔐ.replace
+   (𝒾,𝑜):   replace ; 󰛔ʳ
+ 󰘬 =  󰤱
+   (𝒾, ): spl by falsy
+   ( ,𝒾): spl by falsy (keep sep)
+   (𝒾,ƒ): spl by ƒ
+   (ƒ,𝒾): spl by ƒ (keep sep)
+   (ᔐ, ): spl by space
+   ( ,ᔐ): spl by space (keep sep)
+   (ᔐ,ᔐ): spl by arg 2
+   (ᔐ,ƒ): spl by ƒ join inner strs
+   (ƒ,ᔐ): spl by ƒ (keep sep) join inner strs
+
 ○⌾🟕🅭⚆⍟⦾⦿✪⏣
 
  10⭥ ᐵ²⦚       ⟶   10⭥ᴍ¹󰲡x²󰅂

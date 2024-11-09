@@ -4,6 +4,7 @@ exec ← "from math import *"
 ⮌ py_naming_tools ⨡ py_escape_var as PEV
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ chain, filterfalse, product, accumulate, zip_longest
+⮌ random ⨡ shuffle, choice, uniform, randint
 ⮌ typing ⨡ Hashable
 
 LITERAL_OPS_ = {
@@ -41,6 +42,20 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 î, ∞, τ, 󷺍 = complex(0, 1), inf, 2⋅π, ½⋅π
 󷱪, 󷱫, 󷱬, 󷱭, 󷱮 = ¯î, ¯ℇ, ¯τ, ¯π, ¯󷺍
 
+⊢ 𝑏𝑔(ƒ):
+    Ω ω:
+        __slots__ = ()
+        __call__ = 𝕊↦ƒ(⠤𝔸)
+        __getitem__ = ⥌𝕊,z↦󰲣ƒ(x,y,z)
+    ↪ ω()
+⊢ OPWRAP_(ƒ):
+    Ω ω:
+        __slots__ = ()
+        ⊢ __call__(𝕊, x=␀, y=␀, ⠶𝕂):
+            ¿x≅␀: x,y = y,x
+            ↪ ƒ(x,⠶𝕂) ¿y≅␀¡ ƒ(x,y,⠶𝕂)
+        __getitem__ = ⥌𝕊,s↦𝚲𝕊(⠤𝔸, s=s, ⠶𝕂)
+    ↪ ω()
 ⊢ ERROR_TRIANGLE_(t, ƒ=␀, 𝑔=␀, 𝑇=Exception):
     v = 𝕣((ƒ, 𝑔))
     ¿v🃌≡1:
@@ -78,11 +93,113 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     ¿s≅␀: ↪ 𝕏⭥ₗ﹕₋ᵣ﹕󰃏ᴍ󰲡𝕏ₓ₋ₗ﹕ₓ + 𝕏ₓ⛶⋅𝑏(m) + 𝕏ₓ₊₁﹕ₓ₊ᵣ₊₁
     V = s⛶⋅l +𝕏+ s⛶⋅r
     ↪ 𝕏⭥﹕﹕󰃏ᴍ󰲡Vₓ﹕ₓ₊ₗ + Vₓ₊ₗ⛶⋅𝑏(m) + Vₓ₊ₗ₊₁﹕ₓ₊ₗ₊ᵣ₊₁
-
-𝕣 = 󰲡[y∀y∈x¿y≇␀]
-🃌 = len
-𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x,"__iter__"), ERROR_TRIANGLE_(␛, hash, ✗)
-
+⊢ RANGE_(𝕏, x=␀, y=␀, s=␀):
+    x≅␀≅y →¬ ⨳‹Range missing both values!›
+    ¿𝔰≔s≅␀: s=1
+    
+    v = y ¿x≅␀¡ x ¿y≅␀¡ ␀
+    ¿(v≅␀ ∧ (x≇␀∧xᐹ𝑖) ∧ (y≇␀∧yᐹ𝑖)) ∨ (v≇␀∧vᐹ𝑖):
+        ¿v≇␀: x, y = 0, v
+        ¿𝕏≡␛󷸹: ↪ [⠤range(x  ,y  ,s)]
+        ¿𝕏≡␛󷸺: ↪ [⠤range(x+1,y+1,s)]
+        ¿𝕏≡␛󷸸: ↪ [⠤range(x+1,y  ,s)]
+        ¿𝕏≡␛󷸻: ↪ [⠤range(x  ,y+1,s)]
+    ¿v≇␀:
+        𝗜(v) ⨳ ; v=𝑙←v
+        ¿𝕏≡␛󷸸: ↪ (v₀, v₁﹕􍨄﹕ₛ, v􍨄)
+        ¿𝔰: s=0
+        ¿𝕏≡␛󷸹: ↪ v₀₊ₛ
+        ¿𝕏≡␛󷸺: ↪ v􍨄₋ₛ
+        ¿𝕏≡␛󷸻: ↪ v₀₊ₛ, v􍨄₋ₛ
+    ¿𝗜∘x ∧ 𝗜∘y:
+        ↪ [xₕ∀h∈y﹕﹕ₛ]
+    ¿𝗜∘x ∧ yᐹ𝑖:
+        ¿𝕏≡␛󷸹: ↪ x[   :y  :s]
+        ¿𝕏≡␛󷸺: ↪ x[0+1:y+1:s]
+        ¿𝕏≡␛󷸸: ↪ x[0+1:y  :s]
+        ¿𝕏≡␛󷸻: ↪ x[   :y+1:s]
+    ¿xᐹ𝑖 ∧ 𝗜∘y:
+        ¿𝕏≡␛󷸹: ↪ y[slice(x  ,󷰾,s)]
+        ¿𝕏≡␛󷸺: ↪ y[slice(x+1,□,s)]
+        ¿𝕏≡␛󷸸: ↪ y[slice(x+1,󷰾,s)]
+        ¿𝕏≡␛󷸻: ↪ y[slice(x  ,□,s)]
+    ✗⨳‹Invalid arguments! ⟦ᐹx⟧ ⟦ᐹy⟧›
+⊢ JOIN_(𝕏, x=␀, y=␀, s=ᐦ, LR_def=□, bound_mode=␀):
+    x≅␀∧␀≅y →¬ ⨳‹Join missing both values!›
+    ¿x≅␀: x,y = y,x
+    ¿sᐹ𝑡:
+        ¿s₀ᐹ𝑖: bound_mode, 𝕏 = s
+        ¡    : 𝕏, bound_mode = s
+        𝕏ᐹᔐ ∧ bound_modeᐹ𝑖 ⨳ ‹Bad modifiers!›
+    ⸘sᐹ𝑖:
+        s, bound_mode = ᐦ, s
+    ¿bound_mode≅␀: bound_mode = 𝕏≡␛⟗∧1∨0
+    ¿x≅␀: x,y = y,x
+    ¿y≅␀:
+        𝗜(x) ⨳ ‹Single-arg ⟦t⟧ needs an iterable›
+        ↪ 𝗻⋅(𝕏∈␛⟕␛⟗)+ᐦ.join(xᴍᔐ)+(␛⟗␛⟖∋𝕏)⋅𝗻 → ᣆ􋂝ᴸ􋁉ˢ 𝑙
+    
+    Y = y
+    ¿¬𝗙(y): y=󰻾ʸ
+    
+    x, R = 𝑙(x), []
+    ¿x🃌≡0 ∧ (𝕏≠␛⨝ ∨ bound_mode>0):
+        v = y(LR_def, LR_def)
+        ¿𝕏∈␛⟕␛⟖ ∨ bound_mode≡1: R = [v]
+        ¡                     : R = [v,v]
+    ¡:
+        ¿𝕏∈␛⟕␛⟗: R.append(y(LR_def, x₀))
+        ∀i∈x🃌󷸸 : R.extend([xᵢ₋₁, y(xᵢ₋₁, xᵢ)])
+        ¿  x🃌  : R.append(x􍨄)
+        ¿𝕏∈␛⟖␛⟗: R.append(y(x􍨄, LR_def))
+    
+    ↪ ᐦ.join(Rᴍᔐ) ¿␛L∉s∧Yᐹᔐ¡ R
+⊢ FBALZ_(t, ƒ=␀, 𝑔=␀, s=∞):
+    ¿¬𝗙(ƒ): ƒ,𝑔 = 𝑔,ƒ
+    ¿𝑔≅␀       : 𝑔=󰻾
+    ⸘t≡␛⊚ ∧ 𝑔ᐹ𝑖: 𝑔=Ticker(𝑔)
+    ⊢ r(⠤𝔸,⠶𝕂):
+        n, g = s, 𝑔(ƒ(⠤𝔸,⠶𝕂)≕f)
+        ¿t≡␛⊚:
+            ¿g: ↪f
+            ➰0<n-=1:
+                ¿   𝑔(ƒ(f)≕f)   : ↪f
+        ⸘t≡␛⊜:
+            ➰0<n-=1:
+                ¿g≡(𝑔(ƒ(f)≕f)≕g): ↪f
+        ⸘t∈␛🟕␛🟖:
+            rf, rg = [f], [g]
+            ➰0<n-=1:
+                ¿𝑔(ƒ(f)≕f)≕g∈rg:
+                    ¿t≡␛🟖: ↪ rf
+                    ↪ (rg 󰑅ᴵ 󰲡x≡g) 󷸻 rf 
+                rf.append(f)
+                rg.append(g)
+        ↪□
+    ↪ r
+Ω RANDOM_:
+    __slots__ = ␛t,
+    __init__ = ⥌𝕊,t↦𝕊ᵗ≔t →► □
+    __getitem__ = ⥌𝕊,n↦⥌⠤𝓐,⠶𝓚↦n⭥ᴍ𝚲𝕊(⠤𝓐,⠶𝓚)
+    ⊢ __call__(𝕊, x=␀, y=␀):
+        ¿𝕊ᵗ≡␛:
+            ¿𝗜(x) ∨ 𝗜(y):
+                𝒾, n = (x,y) ¿𝗜(x)¡ (y,x)
+                ¿n≅␀: ↪shuffle(𝕩≔𝑙∘𝒾) ► 𝕩
+                ↪ n⭥ᴍ𝚲choice(𝒾)
+            ✗⨳
+        ¿␀≅x∧y≅␀: ↪uniform(⠤∓1¿𝕊ᵗ≡␛¡0⋄1)
+        ƒ = uniform ¿𝕊ᵗ≡␛¡ randint
+        ¿␀≇x∧y≇␀: ↪ƒ(x,y)
+        ¿𝗜(𝕩≔𝕣(x⋄y)₀): ↪ƒ(⠤𝕩)
+        ¡            : ↪ƒ(0,𝕩)
+        ⨳✗
+Ω Ticker:
+    __slots__ = ␛i,
+    __init__ = ⥌𝕊,i↦𝕊ⁱ≔i→►□
+    __call__ = 𝕊↦𝕊ⁱ-=1→►𝕊
+    __bool__ = 𝕊↦¬𝕊ⁱ
+    __repr__ = 𝕊↦‹Ticker[i=⟦𝕊ⁱ⟧]›
 Ω 𝑐𝑑(𝑑):
     ⊢ __init__(𝕊, ƒ, ⠤𝔸, 𝑔=□, ⠶𝕂):
         𝕊.ƒ, 𝕊.𝑔 = ƒ, 𝑔
@@ -90,20 +207,10 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     __call__ = 𝕊↦𝕊.ƒ(⠤𝔸,⠶𝕂)
     __repr__ = 𝕊↦super().__getitem__("__repr__")(𝕊) ¿"__repr__"∈𝕊¡ super().__repr__()
     __getitem__ = ⥌𝕊,x↦super().__getitem__(x) ¿𝗛(x)∧super().__contains__(x)¡ 𝕊.𝑔(x)
-⊢ 𝑏𝑔(ƒ):
-    Ω ω:
-        __slots__ = ()
-        __call__ = 𝕊↦ƒ(⠤𝔸)
-        __getitem__ = ⥌𝕊,z↦󰲣ƒ(x,y,z)
-    ↪ ω()
-⊢ OPWRAP_(ƒ):
-    Ω ω:
-        __slots__ = ()
-        ⊢ __call__(𝕊, x=␀, y=␀, ⠶𝕂):
-            ¿x≅␀: x,y = y,x
-            ↪ ƒ(x,⠶𝕂) ¿y≅␀¡ ƒ(x,y,⠶𝕂)
-        __getitem__ = ⥌𝕊,s↦𝚲𝕊(⠤𝔸, s=s, ⠶𝕂)
-    ↪ ω()
+
+𝕣 = 󰲡[y∀y∈x¿y≇␀]
+🃌 = len
+𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x,"__iter__"), ERROR_TRIANGLE_(␛, hash, ✗)
 
 ᐹ´ = ⥌x=␀,y=␀↦type(y¿x≅␀¡x) ¿␀≅x∨y≅␀¡ isinstance(x, y ¿isinstance(y,type)¡ type(y))
 ᐴ´ = ⥌y=␀,x=␀↦ᐹ´(x,y)
@@ -225,19 +332,6 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     ¿xᐹᔐ ∧← y≅␀ ∨ yᐹᔐ:
         ↪x.strip(⠤𝕣((y,)))
     ✗⨳  󰤱
- 󰛔 =  󰤱
-   (ᔐ,ᔐ): ᔐ.replace
-   (𝒾,𝑜):   replace ; 󰛔ʳ
- 󰘬 =  󰤱
-   (𝒾, ): spl by falsy
-   ( ,𝒾): spl by falsy (keep sep)
-   (𝒾,ƒ): spl by ƒ
-   (ƒ,𝒾): spl by ƒ (keep sep)
-   (ᔐ, ): spl by space
-   ( ,ᔐ): spl by space (keep sep)
-   (ᔐ,ᔐ): spl by arg 2
-   (ᔐ,ƒ): spl by ƒ join inner strs
-   (ƒ,ᔐ): spl by ƒ (keep sep) join inner strs
 
 ⊢ ⋀´(𝑋, v=✓):
     ∀v∈𝑋:
@@ -251,76 +345,6 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 ζ = 𝚲zip(⠤𝕣(𝔸))ᴍ𝑙
 Π, Σ = 󰲡ſ´(x,⋅,⠤𝕣(𝔸)), 󰲡ſ´(x,+,⠤𝕣(𝔸))
 󰒼, 󰒽 = 󰲣sorted(x,key=□¿y≅␀¡y), 󰲣sorted(x,key=□¿y≅␀¡y,reverse=✓)
-
-Ω Ticker:
-    __slots__ = ␛i,
-    __init__ = ⥌𝕊,i↦𝕊ⁱ≔i→►□
-    __call__ = 𝕊↦𝕊ⁱ-=1→►𝕊
-    __bool__ = 𝕊↦¬𝕊ⁱ
-    __repr__ = 𝕊↦‹Ticker[i=⟦𝕊ⁱ⟧]›
-
-⊢ RANGE_(𝕏, x=␀, y=␀, s=␀):
-    x≅␀≅y →¬ ⨳‹Range missing both values!›
-    ¿𝔰≔s≅␀: s=1
-    
-    v = y ¿x≅␀¡ x ¿y≅␀¡ ␀
-    ¿(v≅␀ ∧ (x≇␀∧xᐹ𝑖) ∧ (y≇␀∧yᐹ𝑖)) ∨ (v≇␀∧vᐹ𝑖):
-        ¿v≇␀: x, y = 0, v
-        ¿𝕏≡␛󷸹: ↪ [⠤range(x  ,y  ,s)]
-        ¿𝕏≡␛󷸺: ↪ [⠤range(x+1,y+1,s)]
-        ¿𝕏≡␛󷸸: ↪ [⠤range(x+1,y  ,s)]
-        ¿𝕏≡␛󷸻: ↪ [⠤range(x  ,y+1,s)]
-    ¿v≇␀:
-        𝗜(v) ⨳ ; v=𝑙←v
-        ¿𝕏≡␛󷸸: ↪ (v₀, v₁﹕􍨄﹕ₛ, v􍨄)
-        ¿𝔰: s=0
-        ¿𝕏≡␛󷸹: ↪ v₀₊ₛ
-        ¿𝕏≡␛󷸺: ↪ v􍨄₋ₛ
-        ¿𝕏≡␛󷸻: ↪ v₀₊ₛ, v􍨄₋ₛ
-    ¿𝗜∘x ∧ 𝗜∘y:
-        ↪ [xₕ∀h∈y﹕﹕ₛ]
-    ¿𝗜∘x ∧ yᐹ𝑖:
-        ¿𝕏≡␛󷸹: ↪ x[   :y  :s]
-        ¿𝕏≡␛󷸺: ↪ x[0+1:y+1:s]
-        ¿𝕏≡␛󷸸: ↪ x[0+1:y  :s]
-        ¿𝕏≡␛󷸻: ↪ x[   :y+1:s]
-    ¿xᐹ𝑖 ∧ 𝗜∘y:
-        ¿𝕏≡␛󷸹: ↪ y[slice(x  ,󷰾,s)]
-        ¿𝕏≡␛󷸺: ↪ y[slice(x+1,□,s)]
-        ¿𝕏≡␛󷸸: ↪ y[slice(x+1,󷰾,s)]
-        ¿𝕏≡␛󷸻: ↪ y[slice(x  ,□,s)]
-    ✗⨳‹Invalid arguments! ⟦ᐹx⟧ ⟦ᐹy⟧›
-⊢ JOIN_(𝕏, x=␀, y=␀, s=ᐦ, LR_def=□, bound_mode=␀):
-    x≅␀∧␀≅y →¬ ⨳‹Join missing both values!›
-    ¿x≅␀: x,y = y,x
-    ¿sᐹ𝑡:
-        ¿s₀ᐹ𝑖: bound_mode, 𝕏 = s
-        ¡    : 𝕏, bound_mode = s
-        𝕏ᐹᔐ ∧ bound_modeᐹ𝑖 ⨳ ‹Bad modifiers!›
-    ⸘sᐹ𝑖:
-        s, bound_mode = ᐦ, s
-    ¿bound_mode≅␀: bound_mode = 𝕏≡␛⟗∧1∨0
-    ¿x≅␀: x,y = y,x
-    ¿y≅␀:
-        𝗜(x) ⨳ ‹Single-arg ⟦t⟧ needs an iterable›
-        ↪ 𝗻⋅(𝕏∈␛⟕␛⟗)+ᐦ.join(xᴍᔐ)+(␛⟗␛⟖∋𝕏)⋅𝗻 → ᣆ􋂝ᴸ􋁉ˢ 𝑙
-    
-    Y = y
-    ¿¬𝗙(y): y=󰻾ʸ
-    
-    x, R = 𝑙(x), []
-    ¿x🃌≡0 ∧ (𝕏≠␛⨝ ∨ bound_mode>0):
-        v = y(LR_def, LR_def)
-        ¿𝕏∈␛⟕␛⟖ ∨ bound_mode≡1: R = [v]
-        ¡                     : R = [v,v]
-    ¡:
-        ¿𝕏∈␛⟕␛⟗: R.append(y(LR_def, x₀))
-        ∀i∈x🃌󷸸 : R.extend([xᵢ₋₁, y(xᵢ₋₁, xᵢ)])
-        ¿  x🃌  : R.append(x􍨄)
-        ¿𝕏∈␛⟖␛⟗: R.append(y(x􍨄, LR_def))
-    
-    ↪ ᐦ.join(Rᴍᔐ) ¿␛L∉s∧Yᐹᔐ¡ R
-
  = 𝑐𝑑(𝚲⥌I,ƒ=𝑏↦r≔{}→◄←Iᴍ󰲡r.setdefault(h≔ƒ(x),[]).append(x)󰅂󰅂(⠤𝕣(𝔸),⠶𝕂),
        S=𝚲´(⠤𝔸,⠶𝕂).items 󰒼 ᴍ󰲡x₁,
        B=𝚲h≔{✓:[],✗:[],⠶´(⠤𝔸,⠶𝕂)}→►←[h₀,h₁])
@@ -352,59 +376,11 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     ¿s>1: ↪ v󰌷ˢ⁻¹
     ↪ v
 
-⊢ FBALZ_(t, ƒ=␀, 𝑔=␀, s=∞):
-    ¿¬𝗙(ƒ): ƒ,𝑔 = 𝑔,ƒ
-    ¿𝑔≅␀       : 𝑔=󰻾
-    ⸘t≡␛⊚ ∧ 𝑔ᐹ𝑖: 𝑔=Ticker(𝑔)
-    ⊢ r(⠤𝔸,⠶𝕂):
-        n, g = s, 𝑔(ƒ(⠤𝔸,⠶𝕂)≕f)
-        ¿t≡␛⊚:
-            ¿g: ↪f
-            ➰0<n-=1:
-                ¿   𝑔(ƒ(f)≕f)   : ↪f
-        ⸘t≡␛⊜:
-            ➰0<n-=1:
-                ¿g≡(𝑔(ƒ(f)≕f)≕g): ↪f
-        ⸘t∈␛🟕␛🟖:
-            rf, rg = [f], [g]
-            ➰0<n-=1:
-                ¿𝑔(ƒ(f)≕f)≕g∈rg:
-                    ¿t≡␛🟖: ↪ rf
-                    ↪ (rg 󰑅ᴵ 󰲡x≡g) 󷸻 rf 
-                rf.append(f)
-                rg.append(g)
-        ↪□
-    ↪ r
-
-⮌ random ⨡ shuffle, choice, uniform, randint
-Ω RANDOM_:
-    __slots__ = ␛t,
-    __init__ = ⥌𝕊,t↦𝕊ᵗ≔t →► □
-    __getitem__ = ⥌𝕊,n↦⥌⠤𝓐,⠶𝓚↦n⭥ᴍ𝚲𝕊(⠤𝓐,⠶𝓚)
-    ⊢ __call__(𝕊, x=␀, y=␀):
-        ¿𝕊ᵗ≡␛:
-            ¿𝗜(x) ∨ 𝗜(y):
-                𝒾, n = (x,y) ¿𝗜(x)¡ (y,x)
-                ¿n≅␀: ↪shuffle(𝕩≔𝑙∘𝒾) ► 𝕩
-                ↪ n⭥ᴍ𝚲choice(𝒾)
-            ✗⨳
-        ¿␀≅x∧y≅␀: ↪uniform(⠤∓1¿𝕊ᵗ≡␛¡0⋄1)
-        ƒ = uniform ¿𝕊ᵗ≡␛¡ randint
-        ¿␀≇x∧y≇␀: ↪ƒ(x,y)
-        ¿𝗜(𝕩≔𝕣(x⋄y)₀): ↪ƒ(⠤𝕩)
-        ¡            : ↪ƒ(0,𝕩)
-        ⨳✗
-
 󷸹´,󷸺´,󷸸´,󷸻´ = ‹󷸹󷸺󷸸󷸻›ᴍ󰲡OPWRAP_(RANGE_(x))
 ⨝´,⟕´,⟖´,⟗´ = ‹⨝⟕⟖⟗›ᴍ󰲡OPWRAP_( JOIN_(x))
 ⊚´,⊜´,🟕´,🟖´ = ‹⊚⊜🟕🟖›ᴍ󰲡OPWRAP_(FBALZ_(x))
 ´,󰔶´,´    =  ‹󰔶›ᴍ󰲡𝑐𝑑(ƒ≔ERROR_TRIANGLE_(x), 𝑔=󰲡ƒ(𝑇=x))
 ´,󱅏´,´    =  ‹󱅏›ᴍRANDOM_
-
- ƒ 🟕ˢ􊽨􋔛 𝑔?󰻾: fin=d cycle under 𝑔
- ƒ 🟖ˢ􊽨􋔛 𝑔?󰻾: 🟕 but we keep prefix (i.e. "abcb")
- (󰲡1¿x>3¡x+1󰅂 🟕 󰻾)(0) ≡ [1,2,3]
- (󰲡1¿x>3¡x+1󰅂 🟖 󰻾)(0) ≡ [0,1,2,3]
 
 ⊢ TACITM(λ, m):
     ↪ 󰲡xᴍλ󰅂 ¿m≡1¡ λ
