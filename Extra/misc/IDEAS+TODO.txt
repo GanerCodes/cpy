@@ -1,8 +1,3 @@
- ƒ 🟕ˢ􊽨􋔛 𝑔?󰻾: find cycle under 𝑔
- ƒ 🟖ˢ􊽨􋔛 𝑔?󰻾: 🟕 but we keep prefix (i.e. "abcb")
- (󰲡1¿x>3¡x+1󰅂 🟕 󰻾)(0) ≡ [1,2,3]
- (󰲡1¿x>3¡x+1󰅂 🟖 󰻾)(0) ≡ [0,1,2,3]
-
  x ⭜ y ⭝ z
  󷹄󰛔󰘬 󰤱
  Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃 ?

@@ -241,7 +241,14 @@ def σ_00():
             targs[1] = NUM_P1 if (r in "ᑈᐛ") else NUM_P0
             args.append(TACTACK_R)
         
-        args, targs = J́(args, COMMA), J́(targs, COMMA, l=ⴳ)
+        COM = OP.TND(',')
+        args, targs = J́(args, COM), J́(targs, COM, l=ⴳ)
+        
+        if args: args.append(COM)
+        args.extend([
+            OP.TND("⠤"), mkvar("𝓐"),
+            COM,
+            OP.TND("⠶"), mkvar("𝓚")])
         
         return Ń("oper",
             ("oper_mod_l", ᐦ), ("oper_lit", OP_NAME),
@@ -329,6 +336,9 @@ def σ_15():
             k = o.C[1].c
             if   k in ( "*", "⠤"): has_a = ⴳ
             elif k in ("**", "⠶"): has_k = ⴳ
+            else                 : continue
+            if len(c) == 1:
+                c.C[0] = Ń("expr_", '*'+'*'*(k=="**" or k=='⠶'))
         if not has_a: C.append(ARG_A)
         if not has_k: C.append(ARG_K)
         return Ń("lamb_h", *C)
