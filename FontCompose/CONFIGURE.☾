@@ -1,7 +1,7 @@
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
 COPY_OUT_FONT     = ✓ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.otf›
-CHECK_REPOS       = ✓
+CHECK_REPOS       = ✗
 GENERATE_XCOMPOSE = ✓
 NERDFONT          = ✗
 CUSTOM_SYMBOLS    = ✓
@@ -183,7 +183,7 @@ X𝕊⟶Χ ␠ _S⟶ϲ
         ⁅ u⟦⁅w+⁆⁅s⟦.s⟧⁆⟧     ⟶ ⨄⩀⋒      ⁆
         ⁅ .⟨d4⟩              ⟶ ⋮⋯⋰⋱     ⁆
         ⁅ ⟨d8⟩𝕊              ⟶ ↑↓←→↖↗↙↘ ⁆ ⟧⁆
-    ⁅A⟦ ⁅ ⟨D8⟩𝕊              ⟶ 🡹🡻🡸🡺🡼🡽🡿🡾 ⁆
+    ⁅A⟦ ⁅ R⟨D8⟩𝕊             ⟶ 🡹🡻🡸🡺🡼🡽🡿🡾 ⁆
         ⁅ C⟦⁅W⟦AD⟧S⁆⁅H⟦AD⟧⁆⟧
          ⟶     ↶↷      ↩↪               ⁆ ⟧⁆ ⟧
 
@@ -272,7 +272,7 @@ shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
 ¡ℭ ⦑c⦑BF0D65⦒            ⦒ ζᐹᐴ󰻾󱅏
 ¡ℭ ⦑c⦑0f0⦒               ⦒ ✓ⴳ
 ¡ℭ ⦑c⦑f00⦒               ⦒ ✗ⴴ
-¡ℭ ⦑c⦑f5b⦒               ⦒ ↑↓←→⥉≺⊀≼⋠≾⋨⪱≻⊁≽⋡≿⋩⪲
+¡ℭ ⦑c⦑f5b⦒               ⦒ ⬅➡←→⭠⭢⥉≺⊀≼⋠≾⋨⪱≻⊁≽⋡≿⋩⪲
 ¡ℭ ⦑c⦑67a1ff⦒            ⦒ ΣΠ󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽
 ¡ℭ ⦑c⦑00d5ff⦒            ⦒ ↪⨡⮌↺⇥⮂➰⚇󱠨󰋺•Тᖵᖶⴷⴸᖯᒪᗯⵉᐊᐅᕦᗐᗑᓎəẞᖇᔐᖲᖱⵗⵐᐆ
 ¡ℭ ⦑c⦑f5a|0fd4⦒B⦑s|1⦒    ⦒ ‹›

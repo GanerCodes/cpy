@@ -92,8 +92,10 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 ;ᴺᴾ󰁔 ,ᴺᴾ󰁔
 =ᴺᴾ󰁔 ⮂ᴺᴾ󰁔 ↪ᴺᴾ󰁔 ⮌ᴺᴾ󰁔 ↺ᴺ󰁔 ⇥ᴺ󰁔 ➰ᴺᴾ󰁔 ∀ ␛
 ⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴮᴾᴺ󰁏󰁔
-␀1ᴵᴮ ¿ᴺᴾ󰁔 ⸘ᴺᴾ󰁔 ¡ᴺᴾ󰁔
+␀ARW_1ᴵᴮ
+␀ARW_2ᴵᴮ ¿ᴺᴾ󰁔 ⸘ᴺᴾ󰁔 ¡ᴺᴾ󰁔
 ␀ASGN_MRK_Lᴮ ≔ᴮ󰁜 ␀ASGN_MRK_Rᴮ ≕ᴮ󰁜
+␀ARW_3ᴵᴮ
 ⨳ᴮᴾ󰀒ᴺ
 ⊻ᴮᴺ󰁖 ␉ ⨁ᴮᴺ󰁖 ␉ ∨ᴮᴺ󰁜 ␉ ⊼ᴮᴺ󰁖 ␉ ∧ᴮᴺ󰁜
 ≡ᴮᴺ󰁍󰁖 ≠ᴮᴺ󰁍󰁖 ≤ᴮᴺ󰁍󰁖  ≥ᴮᴺ󰁍󰁖  ∈ᴮᴺ󰁖  ∉ᴮᴺ󰁖 ∌ᴮᴺ󰁖 ∋ᴮᴺ󰁖 ␛
@@ -129,14 +131,17 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 .ᴮ󰁏󰁔
 ...ᴺ
 
-    ｜  ␀TACITᴺ󰀒󰁏󰁜  ｜
-␀TAC｜ ␀TACITLᴺ󰀒󰁏󰁜  ｜
-    ｜ ␀TACITRᴺᴾ󰁏󰁜  ｜␀TAC
-␀TAC｜␀TACITLRᴺᴾ󰀒ᴮ󰁏󰁜｜␀TAC
-    ｜          ←ᴾ󰁏󰁜｜␀1
-␀1  ｜          →󰀒󰁏󰁜｜
-␀1  ｜          ⥉ᴮ󰁏󰁜｜␀1
-
+      ｜  ␀TACITᴺ󰀒󰁏󰁜  ｜
+␀TAC  ｜ ␀TACITLᴺ󰀒󰁏󰁜  ｜
+      ｜ ␀TACITRᴺᴾ󰁏󰁜  ｜␀TAC
+␀TAC  ｜␀TACITLRᴺᴾ󰀒ᴮ󰁏󰁜｜␀TAC
+      ｜          ⬅ᴾ󰁏󰁜｜␀ARW_1
+␀ARW_1｜          ➡󰀒󰁏󰁜｜
+      ｜          ←ᴾ󰁏󰁜｜␀ARW_2
+␀ARW_2｜          ⥉ᴮ󰁏󰁜｜␀ARW_2
+␀ARW_2｜          →󰀒󰁏󰁜｜
+      ｜          ⭠ᴾ󰁏󰁜｜␀ARW_3
+␀ARW_3｜          ⭢󰀒󰁏󰁜｜
 
 «««««««««««««««««««««««««««««««««« GRAMMAR »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
@@ -220,7 +225,7 @@ def σ_00():
     @(yield replacement("lamb_tacit", rec='A', n="Reform tacit exprs"))
     def _(n):
         bl, l, λ, r, br = n
-        bl, l,    r, br = bl.txt, l.txt, r.txt, br.txt
+        bl, l,    r, br = bl.as_txt(), l.as_txt(), r.as_txt(), br.as_txt()
         if λ.t in {"exprs", "expr", "expr_norm"}:
             α, β = λ[0].c, λ[-1].c 
         else:
@@ -258,16 +263,18 @@ def σ_00():
 def σ_03():
     @(yield replacement(*KEYWORD_NODE_NAMES, n="Lang keywords → cpy keywords"))
     def _(n):
-        if n.txt in kw_inline: # keyword that are just ops
-            return OP.TND(KEYWORDS_TO_CPY.get(n.txt, n.txt))
-        return n.copy(c=KEYWORDS_TO_CPY.get(n.txt, n.txt))
+        txt = n.as_txt()
+        # keyword that are just ops:
+        if txt in kw_inline: return OP.TND(KEYWORDS_TO_CPY.get(txt, txt))
+        return n.copy(c=KEYWORDS_TO_CPY.get(txt, txt))
     
     @(yield reduction("supscript", n="Swap Superscripts"))
     def _(n):
-        t = gram(SCRIPT.nrm(n.txt), "exprs")
-        T = lang(t.txt.strip())
+        t = gram(SCRIPT.nrm(n.as_txt()), "exprs")
+        txt = t.as_txt()
+        T = lang(txt.strip())
         if not T.isidentifier() or T in escaped_var_specs:
-            return [OP.TND('⌃'), mkgxp_(Node(c=lang(t.txt)))]
+            return [OP.TND('⌃'), mkgxp_(Node(c=lang(txt)))]
         return [OP.TND('.'), t]
     
     ((yield replacement("subscript", rec='A', n="Subscripts to brackets"))
@@ -281,7 +288,7 @@ def σ_03():
     (lambda n: n.copy(c=ń in n.c and ń+ⵉ(n.c,ń)[-1] or n.c)))
 
 def σ_05():
-    op_chk = lambda n, o: n.t == "oper" and n.txt == o
+    op_chk = lambda n, o: n.t == "oper" and n.as_txt() == o
     hs_op = lambda C, o: ⴸ(op_chk(c, o) for c in C)
 
     @(yield replacement("expr", rec='A', n="Detect for_expr"))
@@ -328,7 +335,7 @@ def σ_15():
                     lambda x: OP.is_op(x) and (k:=op_man[x]).t == ',')))
         has_a = has_k = ⴴ
         
-        C = ᖵ(lambda x: x.txt, C) # b/c ⥌↦ has empty an expr
+        C = ᖵ(lambda x: x.as_txt(), C) # b/c ⥌↦ has empty an expr
         for c in C:
             if not c.C or (o:=c.C[0]) != "oper": continue
             k = o.C[1].c
@@ -377,10 +384,10 @@ def σ_21():
             if α == '.':
                 return '.', l, t[0]
             if α.t == "op_call":
-                assert α.C[1].txt == '.'
+                assert α.C[1].as_txt() == '.'
                 l = l + [*α.C[0], '.', *α.C[2]]
                 continue
-            if α.t == "group" and (α.C[0].txt, α.C[2].txt) == ('[', ']'):
+            if α.t == "group" and (α.C[0].as_txt(), α.C[2].as_txt()) == ('[', ']'):
                 return 'l', l, α.C[1]
             t.insert(0, α)
         assert ⵌ(t) == 1
@@ -394,7 +401,7 @@ def σ_21():
         
         ρ = τ == '.' and "ATTR" or "ITEM"
         κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
-        χ = mkgxp(("str_", f'"{py_escape_var(χ.txt)}"') if ρ=="ATTR" else χ)
+        χ = mkgxp(("str_", f'"{py_escape_var(χ.as_txt())}"') if ρ=="ATTR" else χ)
         
         ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
         if Σ == '≔': return fcall_(ST, κ, χ, β, NUM_P0)
@@ -410,11 +417,12 @@ def σ_21():
     @(yield replacement("op_call", rec='A', n="Refactor assignment infix opertators"))
     def _(n):
         α, Σ, β = n.C
-        if Σ.c[0].txt or Σ.c[2].txt: return n
-        if Σ.txt in ('≔', ':='): return make_inline_asgn(α, '≔', β)
-        if Σ.txt ==  '≕'       : return make_inline_asgn(β, '≕', α)
-        if '=' not in lang.ops[Σ.txt]: return n
-        Σ = OP.TND(Σ.txt[:-1])
+        if Σ.c[0].as_txt() or Σ.c[2].as_txt(): return n
+        txt = Σ.as_txt()
+        if txt == '≔' or txt == ':=': return make_inline_asgn(α, '≔', β)
+        if txt == '≕'               : return make_inline_asgn(β, '≕', α)
+        if '=' not in lang.ops[txt] : return n
+        Σ = OP.TND(txt[:-1])
         return make_inline_asgn(α, Σ, β)
 
 def σ_25():
@@ -450,9 +458,9 @@ def σ_30():
     ((yield replacement("expr", rec='B', n="Generate comparison chains"))
     (make_cmp_chain))
 
-demodp = lambda o: (o.C[0].txt, o.C[1], o.C[2].txt if o.C[2].S else o.C[2])
+demodp = lambda o: (o.C[0].as_txt(), o.C[1], o.C[2].as_txt() if o.C[2].S else o.C[2])
 def mkbltnop(op_l): # format builtins if needed
-    t = SWAP_TABLE.get(t := op_l.txt, t)
+    t = SWAP_TABLE.get(t := op_l.as_txt(), t)
     if t not in OPS_BUILTIN['A']: return op_l
     return mkexp(mkvar("LITERAL_OPS_"), mkgrp(mkstr(t), b="[]"))
 def transform_oper(op_): # apply modifiers to op
@@ -501,8 +509,8 @@ def σ_35():
             if 'σ' in op and not L and R: return mkexp(op_l, r)
             if 'ι' in op: return mkexp(hnul(l), op_l, hnul(r))
             if 'ρ' in op:
-                if t == '→'             : return L
-                if t == '←'             : return R
+                if t in '➡→⭢'           : return L
+                if t in '⬅←⭠'           : return R
                 if t == '⥉'             : return mkgxp(R, L)
                 if t == '≔'             : return mkgxp(l, op_l, R)
                 if t == '≕'             : return mkgxp(l, op_l, R)
@@ -521,14 +529,14 @@ def σ_35():
 def σ_40():
     @(yield replacement("oper", rec='A', n="Refactor sitting ops"))
     def _(n):
-        if n.C[1].txt in kw_neverswouce: return n
-        if not (n.C[2].txt or n.C[0].txt):
+        if n.C[1].as_txt() in kw_neverswouce: return n
+        if not (n.C[2].as_txt() or n.C[0].as_txt()):
             n = n.copy(c=[n.C[0], n.C[1], n.C[2].copy(c="´")])
         return transform_oper(n)
     
     ((yield replacement(*KEYWORD_NODE_NAMES, "oper_lit",
                         n="Lang keywords ← cpy keywords"))
-    (lambda n: n.copy(c=py_escape_var(SWAP_TABLE.get(n.txt, n.txt)))))
+    (lambda n: n.copy(c=py_escape_var(SWAP_TABLE.get(txt:=n.as_txt(), txt)))))
     
     ((yield replacement("lamb", rec='B', n="Format lambda"))
     (lambda n: mkgxp(n.C[0], mkgrp(n.C[1]))))
@@ -565,33 +573,34 @@ def σ_50():
     (ρ(add_spaces, ignore_nodes=("str_cpy", "str_py", "str_star", "str_$"))))
 
 # §§§ node transpilers §§§
-generator(*KEYWORD_NODE_NAMES, "oper_lit", "var", "var_spec")(lambda n: py_escape_var(n.txt))
+generator(*KEYWORD_NODE_NAMES, "oper_lit", "var", "var_spec")(lambda n: py_escape_var(n.as_txt()))
 generator("NULL")(lambda n: "NULL")
 
 @generator("group")
 def gen_group        (n):
-    if n.C[0].txt == '⟦': # broken mostly
+    txt = n.C[0].as_txt()
+    if txt == '⟦': # broken mostly
         content = next(filter(ⵐ, ᴍ(gen, n.C[1:-1])))
         return f'''(exec("def _EXE():\\n{py_escape_string(force_indent(content))}",globals(),locals()),_EXE)[1]()'''
-    return n.C[0].txt + ᒍ(ᐦ, ᴍ(gen, n.C[1:-1])) + n.C[-1].txt
+    return txt + ᒍ(ᐦ, ᴍ(gen, n.C[1:-1])) + n.C[-1].as_txt()
 
-generator("str_guts"              )(lambda n: py_escape_string(n.txt))
-generator("str_escape", "str_star")(lambda n: "'" + py_escape_string(n.txt) + "'")
+generator("str_guts"              )(lambda n: py_escape_string(n.as_txt()))
+generator("str_escape", "str_star")(lambda n: "'" + py_escape_string(n.as_txt()) + "'")
 generator("str_sub"               )(lambda n: "{" + gen(n.C[0]) + "}")
-generator("str_spec_char"         )(lambda n: "'" + py_special_mapper(n.txt) + "'")
+generator("str_spec_char"         )(lambda n: "'" + py_special_mapper(n.as_txt()) + "'")
 
 def make_str_cpy(n):
     r='""f"'
     for c in n.c:
-        if   c.t == "str_escape"   : r += py_escape_string(c.txt)
-        elif c.t == "str_spec_char": r += py_special_mapper(c.txt)
+        if   c.t == "str_escape"   : r += py_escape_string(c.as_txt())
+        elif c.t == "str_spec_char": r += py_special_mapper(c.as_txt())
         else                       : r += gen(c)
     return r + '"'
 
-generator("neg_num")(lambda n: f"(-{UPSIDEDOWNSYNDROME.flip(n.txt)})")
+generator("neg_num")(lambda n: f"(-{UPSIDEDOWNSYNDROME.flip(n.as_txt())})")
 generator("str_cpy")(make_str_cpy)
 
 @generator("str_$")
 def make_str_money(n):
     s, *C = n.c
-    return f'SUBPROCA({make_str_cpy(n.copy(c=C))},"{py_escape_string(SCRIPT.nrm(s.txt))}")'
+    return f'SUBPROCA({make_str_cpy(n.copy(c=C))},"{py_escape_string(SCRIPT.nrm(s.as_txt()))}")'

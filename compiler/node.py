@@ -116,6 +116,7 @@ class Node:
             return f"¿ {type(𝕊.c)}]{𝕊.c}"
         return f"‼ <{Т(𝕊).__name__}> {𝕊}"
     txt = PRP(text)
+    as_txt = text
     pr = PRP(lambda 𝕊: print(𝕊))
     def print(𝕊,d=100,p=0,m=64,w=64,s=3,N=Z.lR+'∅'+Z.W,
         F=lambda x,s=Z.P+'_'+Z.W   :ᖇ(x,ń,s),
