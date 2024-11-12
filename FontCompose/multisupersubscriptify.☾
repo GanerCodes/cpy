@@ -13,7 +13,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
         ℊ.addReference(𝒻󰂼ᵣ􊭨􊵾􊬣.glyphname)
             ¿x≡𝔯¡
         ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸))
-    ) →◄← (ℊ.width ≔ w, ℊ.right_side_bearing ≔ 0, ℊ.left_side_bearing ≔ 0)
+    ) →◄← (ℊ.width ≔ w)
 
 ⊢ remove_char(𝒻, c):
     try:
