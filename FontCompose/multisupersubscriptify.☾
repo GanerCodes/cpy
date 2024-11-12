@@ -10,10 +10,10 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
 
 𝔯,𝔰,𝔱 = "𝔯𝔰𝔱"
 𝔗 = ⥌𝒻,ℊ,𝐭,w=w↦𝐭ꟿ󰲡(
-        ℊ.addReference(𝒻[ord←𝔸₀].glyphname)
+        ℊ.addReference(𝒻󰂼ᵣ􊭨􊵾􊬣.glyphname)
             ¿x≡𝔯¡
         ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸))
-    ) ◄← ℊ.width ≔ w
+    ) →◄← (ℊ.width ≔ w, ℊ.right_side_bearing ≔ 0, ℊ.left_side_bearing ≔ 0)
 
 ⊢ remove_char(𝒻, c):
     try:
