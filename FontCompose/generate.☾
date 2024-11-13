@@ -1,7 +1,13 @@
+in_font        = ‹JuliaMono/JuliaMono-Regular.ttf›
+custom_symbols = ‹customSymbols.ttf›
+EXT = "ttf"
+
 𝔦𝔪𝔭∘␛s ; ldir
 󰋺("CONFIGURE", *)
 󰋺("shut")
 󰋺("process", ⠤"process load_font save_font 𝐩 𝐫"⍭)
+
+in_font, custom_symbols = in_font⋄custom_symbols ᐖ𝐩(⟞).resolve
 
 𝐑 = ⥌x,y=□↦‹Running command: "⟦𝘀.join←x⟧"›☾ ► ( ᣆʸ 𝚲shut)∘𝚲subprocess.run←x
 cp = shutil.copy
@@ -21,9 +27,8 @@ stages = {}
 stages["Nerd"] = 𝕗
 
 ⊢ 𝕗(fi, fo):
-    f2 = fold / ‹..› / ‹customSymbols.ttf› → .resolve
      f3 = ‹/tmp/emoji/static/NotoEmoji-Regular.ttf›⥉𝐩  doesn't work w/ fontforge or fonttools 󰂁-󰂂
-    𝐑(‹fontforge ShellScripts/mergeFonts.ff ⟦fi⟧ ⟦f2⟧ ⟦fo⟧›⍭, ⴳ)
+    𝐑(‹fontforge ShellScripts/mergeFonts.ff ⟦fi⟧ ⟦custom_symbols⟧ ⟦fo⟧›⍭, ⴳ)
 stages["CustomSymbols"] = 𝕗
 
 ⊢ 𝕗(fi, fo):
@@ -48,8 +53,6 @@ enabled_stages = [        NERDFONT ∧ "Nerd",
 ¿PATH_CODE_CONFIG:
     𝑟.set_codium(PATH_CODE_CONFIG)
 
-in_font = 𝐩(‹JuliaMono/JuliaMono-Regular.ttf›).resolve
-EXT = "otf"
 cp(in_font, font ≔ fold / in_font.name)
 ∀s,ƒ∈stages.items:
     ¿hasattr(ƒ, "no_font"):

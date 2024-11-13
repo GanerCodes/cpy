@@ -7,7 +7,7 @@
 🌈 = 󰋺∘␛🌈
 󰋺(␛𝐍, *)
 󰋺("kots", *)
-󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script remove_char add_multichar›⍭)
+󰋺("multisupersubscriptify", ⠤‹load_font save_font add_script remove_char add_multichar monospace_font›⍭)
 󰋺("organizer", ⠤‹get_codepoint save_pua›⍭)
 
 jdumps = o↦(o.__json__ ¿hasattr(o, "__json__")¡ jds)(o)
@@ -345,7 +345,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     save_pua
     
     ↪ ℵ(res=res, styles=styles, xcompose=xcomp, script_map=script_map,
-        add_glyphs  = 𝒻↦𝒻◄←𝐆ꟿ󰲣x(𝒻, ⠤y),
+        add_glyphs  = 𝒻↦𝒻◄←(𝐆ꟿ󰲣x(𝒻, ⠤y), monospace_font(𝒻)),
         set_codium  = 󰲡edit_vs_settings(styles, x),
         set_compose = 󰲡(x, xcomp),
         write_multi = 󰲡(x, jdumps(multichars_dat)),

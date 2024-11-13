@@ -2,6 +2,8 @@
 󰋺("shut", "Shut")
 ⨡ psMat as 𝒫ℳ
 ⨡ fontforge as ℱℱ
+⨡ unicodedata as 𝒰𝒟
+⨡ sys
 
 w = 1200  󰤱 detect from font
 
@@ -12,8 +14,20 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
 𝔗 = ⥌𝒻,ℊ,𝐭,w=w↦𝐭ꟿ󰲡(
         ℊ.addReference(𝒻󰂼ᵣ􊭨􊵾􊬣.glyphname)
             ¿x≡𝔯¡
-        ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸))
-    ) →◄← (ℊ.width ≔ w)
+        ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸)))
+
+⊢ monospace_char(ℊ):  based on monospacifier
+    ¿ℊ.width≤0: ↪
+    ¿0≤(ℊ.unicode≕𝓾)≤sys.maxunicode ∧ 𝒰𝒟.category(chr(𝓾))∈"Mn"⋄"Mc"⋄"Me": ↪
+     Δ = w-ℊ.width
+     ℊ. left_side_bearing = 𝑖(γ ≔ ℊ.left_side_bearing+Δ/2)
+     ℊ.right_side_bearing = 𝑖(ℊ.right_side_bearing+Δ-γ)
+     ℊ.width              = 𝑖(w)
+    ℊ. left_side_bearing = 0
+    ℊ.right_side_bearing = 0
+    ℊ.width              = w
+⊢ monospace_font(𝒻):
+    𝒻.glyphs ᴍ monospace_char
 
 ⊢ remove_char(𝒻, c):
     try:
@@ -47,7 +61,6 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
     ¡:
         ¿m≡␛b: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅¯w], w
         ⸘m≡␛p: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅ w], w
- 􋕠|􋕡 􊾯ᴼO󰂡􊼍 􊼇󰂛Iᴵ􊾩 􌎒􊱃□􋄅􌎕 􍛄􍍘󰤃􍍙􍛇 􌥶􋕠􌥴|􌥷􋕡􌥵
 @char_maker
 ⊢ add_multichar(𝒻, s):
     t = [𝔯⋄s₀]
@@ -61,6 +74,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
                𝔯⋄s₂, 𝔱⋄¯w⋄⅗⋅w,
                𝔯⋄s₃, 𝔱⋄0⋄¯1.9⋅w, 𝔰⋄⅖, 𝔱⋄.7⋅w⋄⅗⋅w], w
 
+ 􋕠|􋕡 􊾯ᴼO󰂡􊼍 􊼇󰂛Iᴵ􊾩 􌎒􊱃□􋄅􌎕 􍛄􍍘󰤃􍍙􍛇 􌥶􋕠􌥴|􌥷􋕡􌥵
  󱾄󱽽󱾌 󱾁󱾌 󱽿󱾊󱾇󱾏 𐂷🌲🌳🌴🎄🎋 󱹯󱹡󱹟󱹮󱹡󱹰 󱹩󱹡󱹯󱹯󱹝󱹣󱹡 A𝔸𝓐𝐀𝐴𝔄𝕬🄐Ⓐ🄰🅐А𝗔 ; little snowman 󱼩
  ↓↓ done ∈ each function because i want to keep characters
  ∀c∈pua_s…←pua_e+1: try(𝒻.removeGlyph(𝒻ᶜ))
