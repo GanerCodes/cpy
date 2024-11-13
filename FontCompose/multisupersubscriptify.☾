@@ -14,7 +14,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
 𝔗 = ⥌𝒻,ℊ,𝐭,w=w↦𝐭ꟿ󰲡(
         ℊ.addReference(𝒻󰂼ᵣ􊭨􊵾􊬣.glyphname)
             ¿x≡𝔯¡
-        ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸)))
+        ℊ.transform((x≡𝔰∧𝒫ℳ.scale∨𝒫ℳ.translate)(⠤𝔸)))→►monospace_char(ℊ)
 
 ⊢ monospace_char(ℊ):  based on monospacifier
     ¿ℊ.width≤0: ↪
@@ -23,8 +23,8 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
      ℊ. left_side_bearing = 𝑖(γ ≔ ℊ.left_side_bearing+Δ/2)
      ℊ.right_side_bearing = 𝑖(ℊ.right_side_bearing+Δ-γ)
      ℊ.width              = 𝑖(w)
-    ℊ. left_side_bearing = 0
-    ℊ.right_side_bearing = 0
+     ℊ. left_side_bearing = 0
+     ℊ.right_side_bearing = 0
     ℊ.width              = w
 ⊢ monospace_font(𝒻):
     𝒻.glyphs ᴍ monospace_char
