@@ -154,6 +154,56 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ¿𝕏∈␛⟖␛⟗: R.append(y(x􍨄, LR_def))
     
     ↪ ᐦ.join(Rᴍᔐ) ¿␛L∉s∧Yᐹᔐ¡ R
+⊢ SPLIT_(𝕏, x=␀, y=␀, s=󷰾):
+    ¿sᐹ𝑡:
+        n, L = sᴙ ¿s₀≡𝑙¡ s
+    ¡:  n, L = 󷰾⋄✓ ¿s≡𝑙¡ s⋄✗
+    ¿x≅␀∨¬𝗜(x): x,y = y,x
+    
+    ¿¬L∧xᐹᔐ∧𝕏≡␛󷹎:
+        ¿y≅␀: ↪ x.split(maxsplit=n)
+        ¿yᐹᔐ: ↪ x.split(y,maxsplit=n)
+    
+    ¿y≅␀: y=󰻾
+    
+    YS = yᐹᔐ
+    ¿¬L∧YS:
+        x, y, Y, Δ = xᙡ0⋄(y🃌-1)→ᴍ⟥ᑀ󰈲→⨝, ᑀ≡ᑅy, y🃌, y🃌-1
+    ¡:
+        Δ = 0
+    r, b = [], []
+    x, i = 𝑙(x), 󷰾
+    ¿n≡󷰾: V, E = x, []
+    ¡   : V, E = x﹕ₙ, xₙ﹕  WRONG not ho wyou number idot
+    ➰i+=1→<V🃌:
+        v = Vᵢ
+        ¿y(v):
+            ¿b: r.append(b)
+            ¿𝕏≡␛󷹌 ∨ 𝕏≡␛󷹍∧b:
+                r.append(v)
+            b = []
+            i += Δ
+        ¡:
+            b.append(v)
+    ¿b:
+        b.extend(E)
+        r.append(b)
+    ⸘E:
+        r.append(E)
+    r☾
+    ¿YS: r = rᴍ⟥ᑀᐵ₀ᐸ⨝¿⟞ᐹ𝑙¡⟞
+    ↪ r
+    
+     󷹌/󷹍/󷹎
+       ⁿ ⇒ number of times
+       􋇙 ⇒ force list mode when strings
+       󷹎 ⇒ no seps
+       󷹍 ⇒ keep only single runs of sep
+       󷹌 ⇒ keep seps
+       ᔐ,ᔐ: spl by arg 2
+       𝒾,ƒ: spl by ƒ
+       𝒾: spl by falsy
+       ᔐ: spl by whitespace
 ⊢ FBALZ_(t, ƒ=␀, 𝑔=␀, s=∞):
     ¿¬𝗙(ƒ): ƒ,𝑔 = 𝑔,ƒ
     ¿𝑔≅␀       : 𝑔=󰻾
@@ -376,9 +426,10 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     ¿s>1: ↪ v󰌷ˢ⁻¹
     ↪ v
 
-󷸹´,󷸺´,󷸸´,󷸻´ = ‹󷸹󷸺󷸸󷸻›ᴍ󰲡OPWRAP_(RANGE_(x))
 ⨝´,⟕´,⟖´,⟗´ = ‹⨝⟕⟖⟗›ᴍ󰲡OPWRAP_( JOIN_(x))
+󷸹´,󷸺´,󷸸´,󷸻´ = ‹󷸹󷸺󷸸󷸻›ᴍ󰲡OPWRAP_(RANGE_(x))
 ⊚´,⊜´,🟕´,🟖´ = ‹⊚⊜🟕🟖›ᴍ󰲡OPWRAP_(FBALZ_(x))
+󷹌´,󷹍´,󷹎´    =  ‹󷹌󷹍󷹎›ᴍ󰲡OPWRAP_(SPLIT_(x))
 ´,󰔶´,´    =  ‹󰔶›ᴍ󰲡𝑐𝑑(ƒ≔ERROR_TRIANGLE_(x), 𝑔=󰲡ƒ(𝑇=x))
 ´,󱅏´,´    =  ‹󱅏›ᴍRANDOM_
 
