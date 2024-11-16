@@ -155,41 +155,35 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     
     ↪ ᐦ.join(Rᴍᔐ) ¿␛L∉s∧Yᐹᔐ¡ R
 ⊢ SPLIT_(𝕏, x=␀, y=␀, s=󷰾):
-    ¿sᐹ𝑡:
-        n, L = sᴙ ¿s₀≡𝑙¡ s
-    ¡:  n, L = 󷰾⋄✓ ¿s≡𝑙¡ s⋄✗
+    ¿sᐹ𝑡: n, L = sᴙ ¿s₀≡𝑙¡ s
+    ¡   : n, L = 󷰾⋄✓ ¿s≡𝑙¡ s⋄✗
     ¿x≅␀∨¬𝗜(x): x,y = y,x
     
     ¿¬L∧xᐹᔐ∧𝕏≡␛󷹎:
         ¿y≅␀: ↪ x.split(maxsplit=n)
         ¿yᐹᔐ: ↪ x.split(y,maxsplit=n)
-    
     ¿y≅␀: y=󰻾
     
-    YS = yᐹᔐ
-    ¿¬L∧YS:
-        x, y, Y, Δ = xᙡ0⋄(y🃌-1)→ᴍ⟥ᑀ󰈲→⨝, ᑀ≡ᑅy, y🃌, y🃌-1
-    ¡:
-        Δ = 0
+    ¿yᐹᔐ≕YS∧¬L: x, y, Y, Δ = xᙡ0⋄(y🃌-1)→ᴍ⟥ᑀ󰈲→⨝, ᑀ≡ᑅy, y🃌, y🃌-1
+    ¡         : x, Δ = 𝑙(x), 0
     r, b = [], []
-    x, i = 𝑙(x), 󷰾
-    ¿n≡󷰾: V, E = x, []
-    ¡   : V, E = x﹕ₙ, xₙ﹕  WRONG not ho wyou number idot
-    ➰i+=1→<V🃌:
-        v = Vᵢ
+    ι, σ = 󷰾, 0
+    ➰(ι+=1→<x🃌) ∧ σ<(∞¿n≡󷰾¡n):
+        v = x󰃬
         ¿y(v):
             ¿b: r.append(b)
             ¿𝕏≡␛󷹌 ∨ 𝕏≡␛󷹍∧b:
                 r.append(v)
             b = []
-            i += Δ
+            ι += Δ
+            σ += 1
         ¡:
             b.append(v)
     ¿b:
-        b.extend(E)
+        b.extend(x󰃬﹕)
         r.append(b)
-    ⸘E:
-        r.append(E)
+    ⸘x󰃬﹕:
+        r.append(x󰃬﹕)
     r☾
     ¿YS: r = rᴍ⟥ᑀᐵ₀ᐸ⨝¿⟞ᐹ𝑙¡⟞
     ↪ r
