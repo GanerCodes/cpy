@@ -3,6 +3,7 @@ from cpy_transpile import Compiler, CPY_DIR
 import subprocess, traceback
 
 CACHE_DIR = GRAM_CACHE_DIR = "/tmp/cpy_cache"
+HISTORY_FILE = "/tmp/cpy_cli.hist"
 
 def capture_output(𝑓, *𝔸, **𝕂):
     from contextlib import redirect_stdout
@@ -162,9 +163,6 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
         quit and exit(1)
 
 if __name__ == "__main__":
-    from sys import argv
-    import readline
-    
     # cpy_test("""󰆴 factorial, e, pi, tau, sqrt, cbrt""", exit=ⴳ)
     # cpy_test("""􊬲ₐaₐ􊬲""", exit=ⴳ)
     # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧""".strip(), exit=ⴳ)
@@ -179,8 +177,13 @@ if __name__ == "__main__":
     # debug_test_exit("""z = x+y""")
     # debug_test_exit("""⥌x,z=␀,h=𝑎↦z+x""")
     
+    
+    from sys import argv
+    import readline
+    Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
+    readline.read_history_file(HISTORY_FILE)
+    
     agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], argv.clear(), argv.extend(y))[0]
-    # agets = 󰲡sys.argv.count(y≔"--"+x) ◄← sys.argv󰈲=󰲡x≠y
     
     cpy_kwargs = { "interactive_defaults": { "global_verbose_debug": agets("verbose") } }
     if agets("no-cache"): cpy_kwargs["do_cache"] = ⴴ
@@ -242,6 +245,9 @@ if __name__ == "__main__":
             if not c:
                 print("God is good!")
                 continue
+            readline.append_history_file(1, HISTORY_FILE)
+            if c == "☾":
+                os.execv(sys.executable, (sys.executable, __file__))
             run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
         except KeyboardInterrupt:
             if not cc_count:

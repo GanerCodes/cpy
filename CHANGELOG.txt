@@ -245,8 +245,22 @@ Added ⊚,⊜,🟕,🟖 basically
     "ƒ ⊜ˢ􊽨􋔛 𝑔?󰻾": ƒ(ƒ(ƒ…)) until fixed point under 𝑔
     "ƒ 🟕ˢ􊽨􋔛 𝑔?󰻾": ƒ(ƒ(ƒ…)) until cycle is found.
     "ƒ 🟖ˢ􊽨􋔛 𝑔?󰻾": ƒ(ƒ(ƒ…)) until cycle is found. Include results before cycle.
-    
     󷹇 's' is max loop count, returns □ on fail (change to err?)
+    󷹇 these 2nd order funcs will call ƒ with args initally, i.e.
+        ⨳ (ᑀ⋅󷰾ᐸ ⊜ ⟥ᑀ²)(100) ≡ 100  calls ƒ 2 times
 
-↑ note these 2nd order funcs will call ƒ with args initally, i.e.
-    ⨳ (ᑀ⋅󷰾ᐸ ⊜ ⟥ᑀ²)(100) ≡ 100  calls ƒ 2 times
+in cli mode entering just "☾" makes it hot-reload the executable; useful for changing around header
+
+Added 󷹎,󷹍,󷹌, quintessentially
+    (󷹎,󷹍,󷹌) ᐵ(0⋄1⋄0⋄0⋄1⋄1⋄1⋄0⋄1)☾
+        [[1], [1, 1, 1], [1]]
+        [[], 0, [1], 0, [1, 1, 1], 0, [1]]
+        [[], 0, [1], 0, [], 0, [1, 1, 1], 0, [1]]
+    (󷹎,󷹍,󷹌) ᐵ("abcαβαβxyz", "αβ")☾
+        ['abc', 'xyz']
+        ['abc', 'αβ', 'xyz']
+        ['abc', 'αβ', '', 'αβ', 'xyz']
+    (󷹎,󷹍,󷹌) ᐵ("αβαβabcαβαβxyzαβαβ", "αβ")☾
+        ['abc', 'xyz']
+        ['', 'αβ', 'abc', 'αβ', 'xyz', 'αβ', '']
+        ['', 'αβ', '', 'αβ', 'abc', 'αβ', '', 'αβ', 'xyz', 'αβ', '', 'αβ', '']

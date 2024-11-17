@@ -8,14 +8,15 @@ exec ← "from math import *"
 ⮌ typing ⨡ Hashable
 
 LITERAL_OPS_ = {
-      ␛∧:󰲣x∧y,  ␛∨:󰲣x∨y,
       ␛*:󰲣x⋅y,  ␛/:󰲣x/y,   ␛<:󰲣x <y,  ␛>:󰲣x >y,
       ␛|:󰲣x|y,  ␛&:󰲣x&y,   ␛^:󰲣x ^y,  ␛%:󰲣x %y,
     ␛=␛=:󰲣x≡y,␛!␛=:󰲣x≠y, ␛<␛=:󰲣x ≤y,␛>␛=:󰲣x ≥y,
     ␛/␛/:󰲣x⹏y,␛*␛*:󰲣x⌃y, ␛<␛<:󰲣x<<y,␛>␛>:󰲣x>>y,
       ␛+:𝚲+𝔸ᵥ ¿𝔸ᵥ􊮝₀≅␀∨𝔸🃌≡1∨𝔸ᵥ􊮝₁≅␀¡ 𝔸₀+𝔸₁,
       ␛-:𝚲-𝔸ᵥ ¿𝔸ᵥ􊮝₀≅␀∨𝔸🃌≡1∨𝔸ᵥ􊮝₁≅␀¡ 𝔸₀-𝔸₁,
-    "not":󰲡¬x,
+      ␛∧:󰲣x∧y,   ␛∨:󰲣x∨y,
+   "and":󰲣x∧y, "or":󰲣x∨y,
+   "not":󰲡¬x,
     "is":󰲣x≅y, "is not":󰲣x≇y,
     "in":󰲣x∈y, "not in":󰲣x∉y }
 
@@ -39,8 +40,9 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 ↉,½,⅓,¼,⅕,⅙,⅐,⅛,⅑,⅒ = 0,1/2,1/3,1/4,1/5,1/6,1/7,1/8,1/9,1/10
 ⅔,⅖,¾,⅗,⅜,⅘,⅚,⅝,⅞ = 2/3,2/5,3/4,3/5,3/8,4/5,5/6,5/8,7/8
 π, ℇ = 3.14159265358979323, 2.71828182845904523
-î, ∞, τ, 󷺍 = complex(0, 1), inf, 2⋅π, ½⋅π
+î, ∞, τ, 󷺍 = complex(0, 1), inf, 2π, ½π
 󷱪, 󷱫, 󷱬, 󷱭, 󷱮 = ¯î, ¯ℇ, ¯τ, ¯π, ¯󷺍
+􋐳, 􋐲, 􋐴, 􋑯 = cos, sin, tan, log
 
 ⊢ 𝑏𝑔(ƒ):
     Ω ω:
@@ -86,10 +88,10 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ¿¬i: ↪y(x)
         ¿xᐹᔐ: ↪[y(z) ∀z∈x]
         ↪ [_map_pos_d(z,y,i-1) ∀z∈x] ¿𝗜(x)¡ y(x)
-    ¿n<0: ↪_map_neg_d(x,y,-n-1)
+    ¿n<0: ↪_map_neg_d(x,y,󷰾-n)
     ↪ _map_pos_d(x,y,2²⁴¿n≡∞¡n)
 ⊢ WINDOW_(𝕏, l=1, r=1, m=✓, s=□, Δ=1):  s≠␀ should mean Δ=1 
-    c ≔ (𝕏 ≔ 𝑙←𝕏)🃌
+    c = 𝑙(𝕏)≕𝕏🃌
     ¿s≅␀: ↪ 𝕏⭥ₗ﹕₋ᵣ﹕󰃏ᴍ󰲡𝕏ₓ₋ₗ﹕ₓ + 𝕏ₓ⛶⋅𝑏(m) + 𝕏ₓ₊₁﹕ₓ₊ᵣ₊₁
     V = s⛶⋅l +𝕏+ s⛶⋅r
     ↪ 𝕏⭥﹕﹕󰃏ᴍ󰲡Vₓ﹕ₓ₊ₗ + Vₓ₊ₗ⛶⋅𝑏(m) + Vₓ₊ₗ₊₁﹕ₓ₊ₗ₊ᵣ₊₁
@@ -159,41 +161,47 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     ¡   : n, L = 󷰾⋄✓ ¿s≡𝑙¡ s⋄✗
     ¿x≅␀∨¬𝗜(x): x,y = y,x
     
-    ¿¬L∧xᐹᔐ∧𝕏≡␛󷹎:
-        ¿y≅␀: ↪ x.split(maxsplit=n)
-        ¿yᐹᔐ: ↪ x.split(y,maxsplit=n)
-    ¿y≅␀: y=󰻾
+    ¿¬L∧xᐹᔐ:
+        𝓐 = () ¿y≅␀¡ (y, )
+        ¿𝕏≡␛󷹎: ↪x.split(⠤𝓐, maxsplit=n) 󰈲
+         ¿𝕏≡␛󷹍: ↪x.split(⠤𝓐, maxsplit=n) ᙡ􋄒 0⋄1󰈲⋁→ᐵ₀
+         ¿𝕏≡␛󷹌: ↪x.split(⠤𝓐, maxsplit=n)
+    
+    ¿y≅␀: y=¬
     
     ¿yᐹᔐ≕YS∧¬L: x, y, Y, Δ = xᙡ0⋄(y🃌-1)→ᴍ⟥ᑀ󰈲→⨝, ᑀ≡ᑅy, y🃌, y🃌-1
     ¡         : x, Δ = 𝑙(x), 0
     r, b = [], []
     ι, σ = 󷰾, 0
+    last_v = ✗
     ➰(ι+=1→<x🃌) ∧ σ<(∞¿n≡󷰾¡n):
-        v = x󰃬
-        ¿y(v):
-            ¿b: r.append(b)
-            ¿𝕏≡␛󷹌 ∨ 𝕏≡␛󷹍∧b:
-                r.append(v)
-            b = []
-            ι += Δ
-            σ += 1
+        𝓿 = x󰃬
+        ¿y(𝓿):
+            ¿b∨𝕏≠␛󷹎:
+                ¿𝕏≡␛󷹎: r.append(b)
+                ⸘𝕏≡␛󷹌: r.extend(b⋄𝓿)
+                ⸘¬last_v:
+                    r.extend(b⋄𝓿)
+                    last_v = ✓
+            b = [] ; ι += Δ ; σ += 1
         ¡:
-            b.append(v)
-    ¿b:
+            b.append(𝓿)
+            last_v = ✗
+    ¿b∨𝕏≠␛󷹎:
         b.extend(x󰃬﹕)
         r.append(b)
     ⸘x󰃬﹕:
         r.append(x󰃬﹕)
-    r☾
+     r☾
     ¿YS: r = rᴍ⟥ᑀᐵ₀ᐸ⨝¿⟞ᐹ𝑙¡⟞
     ↪ r
     
      󷹌/󷹍/󷹎
-       ⁿ ⇒ number of times
-       􋇙 ⇒ force list mode when strings
-       󷹎 ⇒ no seps
-       󷹍 ⇒ keep only single runs of sep
-       󷹌 ⇒ keep seps
+       "󷹎": no seps
+       "󷹍": keep only single runs of sep
+       "󷹌": keep all seps
+       ⁿ ⟶ number of times
+       􋇙 ⟶ force list mode when strings
        ᔐ,ᔐ: spl by arg 2
        𝒾,ƒ: spl by ƒ
        𝒾: spl by falsy
