@@ -196,16 +196,6 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     ¿YS: r = rᴍ⟥ᑀᐵ₀ᐸ⨝¿⟞ᐹ𝑙¡⟞
     ↪ r
     
-     󷹌/󷹍/󷹎
-       "󷹎": no seps
-       "󷹍": keep only single runs of sep
-       "󷹌": keep all seps
-       ⁿ ⟶ number of times
-       􋇙 ⟶ force list mode when strings
-       ᔐ,ᔐ: spl by arg 2
-       𝒾,ƒ: spl by ƒ
-       𝒾: spl by falsy
-       ᔐ: spl by whitespace
 ⊢ FBALZ_(t, ƒ=␀, 𝑔=␀, s=∞):
     ¿¬𝗙(ƒ): ƒ,𝑔 = 𝑔,ƒ
     ¿𝑔≅␀       : 𝑔=󰻾
