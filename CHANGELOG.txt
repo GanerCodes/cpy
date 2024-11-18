@@ -264,3 +264,12 @@ Added 󷹎,󷹍,󷹌, quintessentially
         ['abc', 'xyz']
         ['', 'αβ', 'abc', 'αβ', 'xyz', 'αβ', '']
         ['', 'αβ', '', 'αβ', 'abc', 'αβ', '', 'αβ', 'xyz', 'αβ', '', 'αβ', '']
+    "󷹎": no seps
+    "󷹍": keep only single runs of sep
+    "󷹌": keep all seps
+    ⁿ ⟶ number of times
+    􋇙 ⟶ force list mode when strings
+    "ᔐ 󷹎/󷹍/󷹌 ᔐ": spl by arg 2
+    "𝒾 󷹎/󷹍/󷹌 ƒ": spl by ƒ
+    "𝒾 󷹎/󷹍/󷹌" = "󷹎/󷹍/󷹌 𝒾": spl by falsy
+    "󷹎 ᔐ" = "ᔐ 󷹎": spl by whitespace
