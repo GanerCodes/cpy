@@ -271,5 +271,6 @@ Added 󷹎,󷹍,󷹌, quintessentially
     􋇙 ⟶ force list mode when strings
     "ᔐ 󷹎/󷹍/󷹌 ᔐ": spl by arg 2
     "𝒾 󷹎/󷹍/󷹌 ƒ": spl by ƒ
+    "𝒾 󷹎/󷹍/󷹌 𝑜": spl with ƒ = ᑀ≡𝑜
     "𝒾 󷹎/󷹍/󷹌" = "󷹎/󷹍/󷹌 𝒾": spl by falsy
     "󷹎 ᔐ" = "ᔐ 󷹎": spl by whitespace
