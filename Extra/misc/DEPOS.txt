@@ -1,14 +1,15 @@
-PYTHON_INCLUDED(required):
+PYTHON_INCLUDED:
     types, ast, collections, itertools, functools
     textwrap, re, unicodedata
     pickle, hashlib, time
     sys, os, io, pathlib, platform, tempfile
-PYTHON_INCLUDED(optional):
-    readline, subprocess
-    ☾_ENABLE_DEBUG:
-        resource, threading, cProfile, pstats, atexit
-PIP(required): more_itertools, colored, regex, colored
-PIP(optional~):
-    clipboard
-    fontforge, json5
-    numpy, scipy, pandas, statsmodels
+    OPTIONAL:
+        readline, subprocess
+        ☾_ENABLE_DEBUG:
+            resource, threading, cProfile, pstats, atexit
+PYTHON_PIP:
+    more_itertools, colored, regex
+    OPTIONAL:
+        clipboard
+        fontforge, json5
+        numpy, scipy, pandas, statsmodels
