@@ -274,3 +274,12 @@ Added 󷹎,󷹍,󷹌, quintessentially
     "𝒾 󷹎/󷹍/󷹌 𝑜": spl with ƒ = ᑀ≡𝑜
     "𝒾 󷹎/󷹍/󷹌" = "󷹎/󷹍/󷹌 𝒾": spl by falsy
     "󷹎 ᔐ" = "ᔐ 󷹎": spl by whitespace
+
+Added ⭜ and ⭝, ok like basiicaily:
+    not bad ternary operator
+    "condition ⭜ true-value ⭝ false-value"
+    󷹇 "x ⭜ y" is □ when ¬x
+    󷹇 presidence level is between ⬅/➡ and ←/→
+    "x⭜y⭝z⭜w⭝v" = "x⭜y⭝(z⭜w⭝v)"
+    "x⭜y⭜w⭝v" = "x⭜(y⭜w)⭝v"
+    "x⭜⬅y⭜w⭝v" = "x⭜(y⭜w⭝v)"

@@ -93,7 +93,9 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 =ᴺᴾ󰁔 ⮂ᴺᴾ󰁔 ↪ᴺᴾ󰁔 ⮌ᴺᴾ󰁔 ↺ᴺ󰁔 ⇥ᴺ󰁔 ➰ᴺᴾ󰁔 ∀ ␛
 ⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴮᴾᴺ󰁏󰁔
 ␀ARW_1ᴵᴮ
-␀ARW_2ᴵᴮ ¿ᴺᴾ󰁔 ⸘ᴺᴾ󰁔 ¡ᴺᴾ󰁔
+⭝ᴺᴮᴵ󰁜 ␉ ⭜ᴮᴵ󰁜
+␀ARW_2ᴵᴮ
+¿ᴺᴾ󰁔 ⸘ᴺᴾ󰁔 ¡ᴺᴾ󰁔
 ␀ASGN_MRK_Lᴮ ≔ᴮ󰁜 ␀ASGN_MRK_Rᴮ ≕ᴮ󰁜
 ␀ARW_3ᴵᴮ
 ⨳ᴮᴾ󰀒ᴺ
@@ -496,6 +498,12 @@ def σ_35():
         if SWAP_TABLE.get(t, t) not in OPS_BUILTIN[m]: return
         return mkgxp(*ε(L), op_l, *ε(R))
 
+    def make_if(l, r):
+        return Ń("⭜", l, r)
+    def make_el(l, r):
+        assert l[0].t == "⭜"
+        return mkgxp(l[0][1], OP.TND("¿"), l[0][0], OP.TND("¡"), r)
+
     @(yield replacement("op_call", rec='B', n="Refactor op calls"))
     def _(n):
         l, op_, r = n.C
@@ -509,6 +517,8 @@ def σ_35():
             if 'σ' in op and not L and R: return mkexp(op_l, r)
             if 'ι' in op: return mkexp(hnul(l), op_l, hnul(r))
             if 'ρ' in op:
+                if t == '⭜'             : return make_if(l, r)
+                if t == '⭝'             : return make_el(l, r)
                 if t in '➡→⭢'           : return L
                 if t in '⬅←⭠'           : return R
                 if t == '⥉'             : return mkgxp(R, L)
@@ -525,6 +535,11 @@ def σ_35():
         if op.P       and R             : return tb('P', *A) or mkexp(mblo(op_), mkgxp(NULL, COMMA,    r))
         if op.N and 'ν' in op           : return mkexp(mblo(op_), mkgxp())
         return mkbltnop(op_)
+
+def σ_36():
+    @(yield replacement("⭜", rec='B', n="Refactor elseless ⭜"))
+    def _(n):
+        return mkgxp(n[1], OP.TND("¿"), n[0], OP.TND("¡"), mkvar("None"))
 
 def σ_40():
     @(yield replacement("oper", rec='A', n="Refactor sitting ops"))

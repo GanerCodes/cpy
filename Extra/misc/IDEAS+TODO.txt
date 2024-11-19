@@ -1,8 +1,10 @@
- x ⭜ y ⭝ z
- 󷹄󰛔 󰤱
- Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃 ?
+ 󰤱  make x⭜y⭝z store vals?
+ 󰤱  󷹄󰛔
+ 󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃
+ 󰤱  Negations of ᐴ and ᐹ
+ 󰤱  Replace nand/nor/etc with slash versions
 
- 󰛔 =  󰤱
+ 󰛔
    (ᔐ,ᔐ): ᔐ.replace
    (𝒾,𝑜):   replace ; 󰛔ʳ
 
