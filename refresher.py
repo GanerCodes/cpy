@@ -179,9 +179,12 @@ if __name__ == "__main__":
     
     
     from sys import argv
-    import readline
-    Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
-    readline.read_history_file(HISTORY_FILE)
+    try:
+        import readline
+        Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
+        readline.read_history_file(HISTORY_FILE)
+    except Exception:
+        readline = ⴴ
     
     agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], argv.clear(), argv.extend(y))[0]
     
@@ -245,7 +248,7 @@ if __name__ == "__main__":
             if not c:
                 print("God is good!")
                 continue
-            readline.append_history_file(1, HISTORY_FILE)
+            if readline: readline.append_history_file(1, HISTORY_FILE)
             if c == "☾":
                 os.execv(sys.executable, (sys.executable, __file__))
             run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)

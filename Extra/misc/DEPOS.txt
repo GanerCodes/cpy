@@ -1,0 +1,14 @@
+types, ast, collections, itertools, functools
+textwrap, re, unicodedata
+pickle, hashlib, time
+sys, os, io
+readline, pathlib, platform, tempfile, subprocess
+
+more_itertools, colored, regex, colored
+
+ENABLE_DEBUG:
+    resource, threading, cProfile, pstats, atexit, io
+OPTIONAL(ish):
+    clipboard
+    fontforge, json5
+    numpy, scipy, pandas, statsmodels
