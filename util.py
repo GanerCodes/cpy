@@ -98,6 +98,17 @@ def map_groups(l, F, M, I=ID, O=ID):
     if t:
         yield M(t)
 
+
+# following was nabbed from 🌈.☾
+TERM_RESET = '\x1b[0m'
+def termclr(t, fg=ᗜ, bg=ᗜ, rst=ⴳ):
+    R = ᐦ
+    for c, n in zip((fg, bg), (38, 48)):
+        if c is ᗜ: continue
+        r, g, b = c
+        R += f'\x1b[{n};2;{r};{g};{b}m'
+    return R + str(t) + TERM_RESET * bool(rst)
+
 class Z:
     s = [colored.Fore.WHITE+colored.Back.BLACK]
     d_b, d_f = colored.Back.__dict__, colored.Fore.__dict__

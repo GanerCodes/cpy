@@ -162,7 +162,7 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
         cpy_get_error_printer(ns)(ε)
         quit and exit(1)
 
-if __name__ == "__main__":
+def run_moon(args, extract_interactive=ⴴ):
     # cpy_test("""󰆴 factorial, e, pi, tau, sqrt, cbrt""", exit=ⴳ)
     # cpy_test("""􊬲ₐaₐ􊬲""", exit=ⴳ)
     # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧""".strip(), exit=ⴳ)
@@ -177,8 +177,6 @@ if __name__ == "__main__":
     # debug_test_exit("""z = x+y""")
     # debug_test_exit("""⥌x,z=␀,h=𝑎↦z+x""")
     
-    
-    from sys import argv
     try:
         import readline
         Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
@@ -186,7 +184,7 @@ if __name__ == "__main__":
     except Exception:
         readline = ⴴ
     
-    agets = lambda x: (argv.count(x := "--"+x), y:=[t for t in argv if t != x], argv.clear(), argv.extend(y))[0]
+    agets = lambda x: (args.count(x := "--"+x), y:=[t for t in args if t != x], args.clear(), args.extend(y))[0]
     
     cpy_kwargs = { "interactive_defaults": { "global_verbose_debug": agets("verbose") } }
     if agets("no-cache"): cpy_kwargs["do_cache"] = ⴴ
@@ -216,15 +214,15 @@ if __name__ == "__main__":
     arg_debug = agets("debug")
     ns = {}
     
-    if len(argv) > 1:
-        ns = { "__file__": (f := os.path.abspath(argv[1])) }
+    if len(args):
+        ns = { "__file__": (f := os.path.abspath(args[0])) }
         cpy = basic_cpy_interactive_session(**ᖱ(
                 print_code   = ⴴ,
                 print_output = ⴴ,
                 do_cache     = ⴳ,
                 ns           = ns) | cpy_kwargs)
-        sys.argv.pop(0)
         
+        sys.argv[:] = args # jank?
         run_custom_errors(
             lambda: cpy(R(f), cap_stdout=ⴴ, force_exec=ⴳ),
             ns, quit=ⴳ)
@@ -236,22 +234,34 @@ if __name__ == "__main__":
           print_code   = arg_debug,
           print_output = ⴳ,
           ns           = ns) | cpy_kwargs)
-    fancy = lambda x: f"\001\x1b[38;2;255;0;135m\002{x}\001\033[0m\002"
-    swap_ln = lambda x: f"\033[1A{x}\033[K"
+    if readline:
+        s,e = "\001\002"
+        swap_ln = lambda x: f"\033[1A{x}\033[K"
+    else:
+        s = e = ᐦ
+        swap_ln = lambda x: x
+    fancy = lambda x: f"{s}\x1b[38;2;255;0;135m{e}{x}{s}\033[0m{e}"
     prompt = fancy('✝') + ś
     cc_count = 0
+    
+    def 𝑓(c):
+        print(swap_ln(prompt + cpy_get_highlighter(ns)(c)))
+        if not c:
+            print("God is good!")
+            return
+        if readline:
+            readline.append_history_file(1, HISTORY_FILE)
+            if c == "☾":
+                os.execv(sys.executable, (sys.executable, __file__))
+        run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
+    if extract_interactive:
+        return 𝑓
+    
     while ⴳ:
         try:
             c = input(prompt)
             cc_count = 0
-            print(swap_ln(prompt + cpy_get_highlighter(ns)(c)))
-            if not c:
-                print("God is good!")
-                continue
-            if readline: readline.append_history_file(1, HISTORY_FILE)
-            if c == "☾":
-                os.execv(sys.executable, (sys.executable, __file__))
-            run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
+            𝑓(c)
         except KeyboardInterrupt:
             if not cc_count:
                 print("\x1b[2K\rPress ^C again to exit.")
@@ -259,3 +269,6 @@ if __name__ == "__main__":
                 continue
             print()
             exit(0)
+
+if __name__ == "__main__":
+    run_moon(sys.argv[1:])
