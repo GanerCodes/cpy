@@ -31,11 +31,13 @@
     "𝑜 ⨳" = "⨳ 𝑜" ⟶ Asserts 𝑜 is truthy
     "𝑜₁ ⨳ 𝑜₂" ⟶ Asserts 𝑜₁ is truthy, puts 𝑜₂ in error
 
-⊻ ; xor
-⨁ ; xand
 ∨ ; or
-⊼ ; nand
+󷺥 ; nor
+󷺤 ; xor
+󷺦 ; nxor
+
 ∧ ; and
+󷺒 ; nand
 
 ≡ ; equals
 ≠ ; not equal
