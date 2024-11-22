@@ -1,0 +1,101 @@
+
+
+☾ ; Print ; "𝑜 ☾" = "☾ 𝑜"
+    Print object to output and returns 𝑜
+
+⨡ ; Python "import"
+⮂ ; Python "yield"
+↪ ; Python "return"
+⮌ ; Python "from"
+↺ ; Python "continue"
+⇥ ; Python "break"
+➰ ; Python "while"
+∀ ; Python "for"
+⠤ ; Python "*" (For vargs)
+⠶ ; Python "**" (For kargs)
+
+⭜ ; Ternary if
+    "x ⭜ y ⭝ z" ⟶ y if x else z
+    "x ⭜ y" ⟶ y if x else □
+⭝ ; Ternary else
+    %REF⭝%
+
+¿ ; Python if
+⸘ ; Python elif
+¡ ; Python else
+
+≔ ; Assign to left
+    "x ≔ 2+2"
+    "x.y[2] ≔ 2+2"
+≕ ; Assign to right
+    "2+2 ≕ x"
+    "2+2 ≕ x.y[2]"
+
+⨳ ; Assertion
+    "𝑜 ⨳" = "⨳ 𝑜" ⟶ Asserts 𝑜 is truthy
+    "𝑜₁ ⨳ 𝑜₂" ⟶ Asserts 𝑜₁ is truthy, puts 𝑜₂ in error
+
+⊻ ; xor
+⨁ ; nand
+∨ ; or
+⊼ ; nand
+∧ ; and
+
+≡ ; equals
+≠ ; not equal
+≤ ; less than or equal to
+≥ ; greater than or equal to
+< ; less than
+> ; greater than
+∈ ; Element of right
+∉ ; Not element of right
+∋ ; Element of left
+∌ ; Not element of left
+∣ ; Divides
+∤ ; Does not divide
+⊂ ; Subset of right
+⊃ ; Subset of left
+⊊ ; Subset of not equal to right
+⊋ ; Subset of not equal to left
+⊄ ; Not subset of right
+⊅ ; Not subset of left
+
+ꟿ ; starmap
+ᴍ ; map
+ſ ; fold
+Ϝ ; accumulate
+Σ ; sum
+Π ; product
+󰈲 ; filter positive
+󰈳 ; filter negative
+󰒼 ; sort ascending
+󰒽 ; sort decending
+ᙎ ; window, with sides, no middle
+ᙡ ; window, with sides, with middle
+ᗢ ; window, no sides, no middle
+ᙧ ; window, no sides, with middle
+ ; group by
+
+ᐹᴮᴾ󰀒ᴺ󰁖 ᐴᴮᴾ󰀒ᴺ󰁖 ζᴮᴺ ᴮᴾ󰀒ᴺ󰁘 󱅏ᴮᴾ󰀒ᴺ󰁘 ᴮᴾ󰀒ᴺ󰁘
+|ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
+<<ᴮᴺ >>ᴮᴺ
+∓ᴾᴮᴺ ±ᴾᴮᴺ +ᴾᴮᴺ -ᴾᴮᴺ
+≅ᴮᴺ󰁍 ≇ᴮᴺ󰁍
+∘ᴮᴺ ○ᴮᴺ   󰀒ᴺ   ᴮᴾ󰀒ᴺ 󰔶ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ ␛
+    ᣆᴮᴾ󰀒ᴺ ⊚ᴮᴾ󰀒ᴺ ⊜ᴮᴾ󰀒ᴺ 🟕ᴮᴾ󰀒ᴺ 🟖ᴮᴾ󰀒ᴺ
+◄ᴮᴺ󰁏 ►ᴮᴺ󰁏
+⋄ᴮᴺ
+∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴾ󰀒ᴮᴺ ⊞ᴾ󰀒ᴮᴺ ∖ᴮᴺ
+//ᴮᴺ ⹏ᴮᴺ   /ᴮᴺ   ÷ᴮᴺ   %ᴮᴺ   @ᴮᴾᴺ󰁞 *ᴮᴺᴾ󰁞 √ᴾᴺ ␛
+     ⋅ᴮᴺ   !󰀒ᴺ   ⋀ᴾ󰀒ᴺ  ⋁ᴾ󰀒ᴺ  ⫰ᴾ󰀒ᴺ  ⫯ᴾ󰀒ᴺ  ␛
+     ⟕ᴮᴾ󰀒ᴺ ⨝ᴮᴾ󰀒ᴺ ⟗ᴮᴾ󰀒ᴺ ⟖ᴮᴾ󰀒ᴺ ⴵᴾ󰀒ᴺ ␛
+     󰑁ᴮᴺ󰀒  󰑅ᴮᴺ󰀒  󰑃ᴮᴺ󰀒  ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ ␛
+     󷸹ᴮᴾ󰀒ᴺ 󷸸ᴮᴾ󰀒ᴺ 󷸻ᴮᴾ󰀒ᴺ 󷸺ᴮᴾ󰀒ᴺ ⍭ᴾ󰀒ᴺ ␛
+     ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ⤉ᴮᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⭥ᴾ󰀒ᴺ ␛
+     ⬓ᴾ󰀒ᴺ  ▢ᴮᴾ󰀒ᴺ ⬒ᴾ󰀒ᴺ  󰸵ᴮᴺ   󰸷ᴮᴺ  ␛
+     󷹌ᴮᴾ󰀒ᴺ 󷹍ᴮᴾ󰀒ᴺ 󷹎ᴮᴾ󰀒ᴺ ⬄ᴮᴾ󰀒ᴺ ᴙᴾ󰀒ᴺ ␛
+     󰌷ᴮᴾ󰀒ᴺ 󰛔ᴮᴾ󰀒ᴺ ᚤᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ  🃌ᴾ󰀒ᴺ
+¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
+⌃ᴵᴮᴺ
+ᴵᴾᴺ ᴺ󰀒
+󰻾ᴺ ℵᴺ ℶᴺ
