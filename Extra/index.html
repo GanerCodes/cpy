@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
         <style>
-            :root {
+            * {
                 box-sizing: border-box;
                 overflow-wrap: anywhere;
                 text-wrap: wrap;
+                font-size: 16px;
             }
             
             ::-webkit-scrollbar { width: 12px; }
@@ -45,6 +46,8 @@
                 border: none;
                 width: 100%;
                 padding: 0px;
+                padding-left: 2px;
+                padding-right: 2px;
                 margin: 0px;
             }
             textarea {
@@ -65,7 +68,7 @@
         <script type="text/javascript">
             const ets = document.getElementById("entries");
             const cli = document.getElementById("cli_in");
-            
+            ets.onclick = _ => cli.focus();
             const reformt = s => {
                 const 𝑓 = (x, ...𝔸) => {
                     const ε = document.createElement("text");
@@ -95,31 +98,37 @@
             
             var py;
             (async _ => {
-                py = await loadPyodide({
-                    stdin: prompt,
-                    stdout: log,
-                    stderr: log });
+                py = await loadPyodide({ stdin: prompt, stdout: log, stderr: log });
                 await py.loadPackage("micropip");
                 await py.loadPackage("more-itertools");
                 await py.loadPackage("regex");
                 await py.runPythonAsync(`
-                    import micropip
+                    import micropip, shutil
                     from pyodide.http import pyfetch
                     await micropip.install("colored")
                     await (await pyfetch("${window.location.origin}/wasm_stuff.zip")).unpack_archive()
-                    print("Downloaded!")
+                    shutil.move("./cpy_wasm_cache", "/tmp")
+                    print("Installed!")`);
+                await py.runPythonAsync(`
                     from refresher import run_moon
-                    𝑓 = run_moon([], extract_interactive=True)`); })();
+                    𝑓 = run_moon(["code_cache_dir=/tmp/cpy_wasm_cache/code",
+                                  "gram_cache_dir=/tmp/cpy_wasm_cache/gram"], extract_interactive=True)`); })();
             
                 cli.addEventListener("keydown", async e => {
                 if (!(e.ctrlKey && e.key === "Enter")) return;
                     e.preventDefault();
-                    const v = cli.value; cli.value = "";
+                    let v = cli.value; cli.value = "";
                     cli.style.height = "1em";
                     log(v);
-                    await py.runPythonAsync(`𝑓("${v.replaceAll("\\", "\\\\").replaceAll("\"", "\\\"").replaceAll("\n", "\\n")}")`)
+                    v = v.replaceAll("\\", "\\\\").replaceAll('"', '\\"').replaceAll("\n", "\\n");
+                    try {
+                        py.runPython(`
+                            try:
+                                𝑓("${v}")
+                            except Exception as e:
+                                print("Error:", e)`);
+                    } catch(e) { log(`Error! ${e}`); }
                 });
-            
         </script>
     </body>
 </html>

@@ -43,8 +43,8 @@ ZIL = lambda *a,**k: None
 HXO = lambda x: hex(ord(x))[2:].zfill(4)
 flat = lambda x: reduce(lambda x,y: x+y, l:=ᒪ(x), Т(l[0])() if ⵌ(l) else [])
 wrap = lambda x,w=120,q='\t': ᒍ(ń, TW.wrap(x, width=w, subsequent_indent=q))
-rgx_or = lambda x: f"({ᒍ(")|(", ᴍ(re.escape, x))})"
 spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
+rgx_or = lambda x: f"({ᒍ(")|(", ᴍ(re.escape, x))})"
 reach_first = lambda x: reach_first(x[0]) if ᐹ(x, ᒪ) and ⵌ(x)==1 else x
 collapse = lambda x: x if ᐹ(x:=reach_first(x), ᒪ) else [x]
 enlist = lambda x: [x]
@@ -181,3 +181,5 @@ def ENABLE_DEBUG():
             return bp and BP()
         (__proft := cProfile.Profile()).enable()
     DEBUG_NS["BP"], DEBUG_NS["togprof"] = BP, togprof
+
+from file_cacher import FileCacher

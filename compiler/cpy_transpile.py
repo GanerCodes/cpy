@@ -5,32 +5,26 @@ import os
 
 CPY_DIR = Path(__file__).parent.parent
 class Compiler:
-    def __init__(𝕊, cache_dir, gram_cache_dir):
-        os.makedirs(cache_dir, exist_ok=ⴳ)
-        os.makedirs(gram_cache_dir, exist_ok=ⴳ)
-        𝕊.cache_dir = cache_dir
+    def __init__(𝕊, code_cache_dir, gram_cache_dir):
+        𝕊.code_cache_dir = code_cache_dir
         𝕊.gram_cache_dir = gram_cache_dir
     
-    def __call__(𝕊, lang_name, code, do_cache=ⴳ, code_post_process=ᗜ, **𝕂): # refactor?
-        ver, code = 𝕊.extract_version(code)
-        to_hash = ver + code
+    def __call__(𝕊, lang_name, code, do_cache=ⴳ, code_post_process=ᗜ, **𝕂):
+        ver1, code, ver2 = *𝕊.extract_version(code), ᐦ
         if code_post_process is not ᗜ:
             assert hasattr(code_post_process, "ver"), "Post processor version missing!"
-            to_hash = sha256(to_hash) + ᔐ(code_post_process.ver)
-        if do_cache and os.path.isfile(cache := f"{𝕊.cache_dir}/{sha256(to_hash)}"):
-            return R(cache)
-        code = 𝕊.get_lang(lang_name, ver, do_cache)(code, **𝕂)
-        if code_post_process is not ᗜ:
-            code = code_post_process(code)
-        return do_cache and W(cache, code) or code
+            ver2 = ᔐ(code_post_process.ver)
+        lang = 𝕊.get_lang(lang_name, ver1, do_cache)
+        def load_lang(*𝔸):
+            c = lang(code, **𝕂)
+            return c if code_post_process is ᗜ else code_post_process(c)
+        ℭ = FileCacher(do_cache and 𝕊.code_cache_dir, load_lang)
+        return ℭ(code, lang_name, ver1, lang.id)
     
     def get_lang(𝕊, name, ver=ᐦ, do_cache=ⴳ, **𝕂):
-        if not os.path.isdir(folder := CPY_DIR / f"Languages/{name}{'-'*ᖲ(ver)+ver}"):
-            raise Exception(f"Unable to find language folder {folder}")
-        if not os.path.isfile(file := folder / "lang"):
-            raise Exception(f"Unable to find lang file {file}")
-        return Lang(R(file), ver, do_cache and 𝕊.gram_cache_dir or ᗜ)
-        # I think this is scuffed, if you change the lang file it doesn't detect?
+        file = CPY_DIR / f"Languages/{name}{'-'*ᖲ(ver)+ver}" / "lang"
+        assert file.exists(), f"Unable to find lang: {file}"
+        return Lang(R(file), ver, do_cache and 𝕊.gram_cache_dir)
 
     def extract_version(𝕊, code, ver=ᐦ):
         if (C := code.lstrip()).startswith("❗"):

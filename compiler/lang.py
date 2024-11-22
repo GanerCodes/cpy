@@ -1,31 +1,23 @@
 from util import *
-from dynamic_parser import DynamicParser, make_op_call, CODE_HEADER
-from peggle import Gram
+from dynamic_parser import Gram, DynamicParser, make_op_call, CODE_HEADER
 from node import Node
 from op import OP, OP_Manager
 from time import time
 
 class Lang:
-    def __init__(𝕊, lang_t, ver=ᐦ, cache_dir=ᗜ): # refactor?
+    def __init__(𝕊, lang_t, ver=ᐦ, cache_dir=ᗜ):
         𝕊.ver, 𝕊.ops, 𝕊.op_orders, gram, code_head, code_gen = ver, *𝕊.parse_lang(lang_t)
         𝕊.op_man = OP_Manager(𝕊.ops)
         𝕊.dynamic_parsers = DynamicParser(𝕊, code_head, code_gen)
-        if cache_dir is not ᗜ:
-            cache = f"{cache_dir}/{(h := 'g'+sha256(gram))}"
-            if h in os.listdir(cache_dir):
-                try:
-                    𝕊.gram = Gram.load_gram(R(cache, m='rb'))
-                    return
-                except Exception:
-                    print(f"Corrupted Cache? Deleting {cache}")
-                    os.remove(cache)
-        𝕊.gram = 𝕊.dynamic_parsers.parse_gram(gram)
-        cache_dir is ᗜ or W(cache, 𝕊.gram.dump_gram(), m='wb')
+        ℭ = FileCacher(cache_dir, lambda x, _: 𝕊.dynamic_parsers.parse_gram(x),
+                       Gram.load_gram, Gram.dump_gram)
+        𝕊.id = sha256(lang_t + ver)
+        𝕊.gram = ℭ(gram, 𝕊.id)
     
     def __call__(𝕊, content, **K):
         if "parser_comment" in 𝕊.gram:
             content = 𝕊.gram(content, "parser_comment", remove_trashes=ⴴ) \
-                .child_killer(lambda n: n.t == "comment").txt
+                       .child_killer(lambda n: n.t == "comment").txt
         return 𝕊.parse_content(content, **K)
     
     def __str__(𝕊):

@@ -3,7 +3,8 @@
 ⮌ tempfile ⨡ NamedTemporaryFile as NTF
 ⮌ json5 ⨡ load as jl
 ⮌ json ⨡ dumps as jds
-⮌ peggle ⨡ Parser
+⮌ PEGGLE2_BOOTSTRAP_AAUGH ⨡ Peggle1Bootstrap
+Parser = Peggle1Bootstrap₂
 🌈 = 󰋺∘␛🌈
 󰋺(␛𝐍, *)
 󰋺("kots", *)

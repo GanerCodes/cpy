@@ -25,8 +25,11 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
 ⊢ __error_printer__(ε):
     ℭ = traceback.linecache.CPY_CACHE
     ə = ε.__traceback__
-    TB = []
-    ➰✓:
+    TB, i = [], 0
+    ➰i+=1:
+        ¿i ≥ 25:
+            ‹Too long a traceback, stopping at ⟦i⟧ frames!›☾
+            ⇥
         g = ə.tb_frame.f_globals
         ∀_∈␛_:
             ¿"__file__"∈g:

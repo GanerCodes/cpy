@@ -1026,7 +1026,7 @@ if __name__ == '__main__':
 
 def Peggle1Bootstrap(c=ᐧ2135ᐧ()):
     if 'BOOTSTRAP_PEGGLE1' in c:
-        return (c.ForcefeedPeggle1Peggle2, c.BOOTSTRAP_PEGGLE1)
+        return (c.ForcefeedPeggle1Peggle2, c.BOOTSTRAP_PEGGLE1, c.Parser)
 
     def peggle122(rules):
 

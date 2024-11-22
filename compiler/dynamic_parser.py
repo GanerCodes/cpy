@@ -1,6 +1,7 @@
 from util import *
 from node import *
-from peggle import Parser
+from PEGGLE2_BOOTSTRAP_AAUGH import Peggle1Bootstrap
+Gram, _, Parser = Peggle1Bootstrap()
 
 GRAM_HEADER = ""
 CODE_HEADER = """\

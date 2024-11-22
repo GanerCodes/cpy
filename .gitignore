@@ -3,6 +3,8 @@ __pycache__/
 /FontCompose/FontPatcher/
 /FontCompose/JuliaMono/
 
+/Extra/wasm_stuff.zip
+/Extra/cpy_wasm_cache/*
 /FontCompose/PuaMaps/Old/*
 !/FontCompose/PuaMaps/Old/.keep
 
