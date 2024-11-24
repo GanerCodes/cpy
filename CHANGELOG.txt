@@ -303,3 +303,20 @@ Made 󰸵, 󰸷 work better w/ strings, le essentialz iz:
     ⨳  [␛a] 󰸵     3 ≡ ✗⋄✗⋄␛a
     ⨳  [␛a] 󰸷¹    3 ≡ ␛a⋄1⋄1
     ⨳  "ab" 󰸷³    4 ≡ "ab33"
+
+Added 󰛔, string replacement for strings, ok, so basically:
+    ⨳ "a" 󰛔􋕩ᵃᵇᶜ􋕩 "k"     ≡ "kbc"
+    ⨳ ("a" 󰛔 "k")("abc") ≡ "kbc"
+    ⨳ (["hi", "h"] 󰛔 ["ih", "j"])("hi") ≡ "ij"
+     (last one if multiple) right arg is repeated
+    ⨳ (["a","b","c"] 󰛔 "hi")("ab") ≡ "hihi"
+    ⨳ (["a","b","c","d"] 󰛔 [12, "k"])("abd") ≡ "12kk"
+
+󱑼 has a longest mode with fill value v as 󱑼ᵛ
+
+added 󷹄, contrain operator, oki so:
+    ⨳ 1󷹄²4 ≡ 2
+    ⨳ 1󷹄⁷4 ≡ 4
+    ⨳ 1󷹄􍨋4 ≡ 1
+    ⨳ (1󷹄4)(2) ≡ 2
+    ⨳ ␛a󷹄􋂝²␛z ≡ ␛a

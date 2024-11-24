@@ -10,7 +10,17 @@ class FileCacher:
         if not 𝕤.𝓗: return 𝕤.𝑓(*𝔸, **𝕂)
         if os.path.exists(p := 𝕤.𝓗(*𝔸, **𝕂)):
             with open(p, "rb") as f:
-                return 𝕤.𝓛(f.read())
+                R = f.read()
+            try:
+                return 𝕤.𝓛(R)
+            except Exception as ε:
+                ε = ["Failed to load cached file!", ε]
+                try:
+                    p.unlink()
+                except Exception as ε2:
+                    ε += ["Failed to remove corrupted cache file!", ε2]
+                raise ε
+        W = 𝕤.𝓢(v := 𝕤.𝑓(*𝔸, **𝕂))
         with open(p, "wb") as f:
-            f.write(𝕤.𝓢(v := 𝕤.𝑓(*𝔸, **𝕂)))
+            f.write(W)
         return v

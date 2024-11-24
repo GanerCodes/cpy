@@ -17,6 +17,13 @@ def capture_output(𝑓, *𝔸, **𝕂):
         except Exception as e:
             return (e, ⴴ), s.getvalue()+ń+traceback.format_exc()
 
+def py_reparse(x):
+    import ast
+    try:
+        return ast.unparse(ast.parse(x))
+    except Exception as e:
+        raise Exception(f'Failed to reparse code! "{e}"\nCode:\n{x}')
+
 # stupid monkeypatching garvbarebefshiskodjl
 if not hasattr(traceback.linecache, "CPY_CACHE"):
     traceback.linecache.CPY_CACHE = {}
@@ -83,13 +90,6 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
     ns.setdefault("__name__", "__main__")
     ns.setdefault("__file__", fname)
     return lambda c, **𝕁: compiler("☾", c, do_cache, **𝕂|𝕁), ns
-
-def py_reparse(x):
-    import ast
-    try:
-        return ast.unparse(ast.parse(x))
-    except Exception as e:
-        raise Exception(f'Failed to reparse code! "{e}"\nCode:\n{x}')
 
 def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ,
                                   sanity=ⴳ, interactive_defaults=ᗜ, **𝕂):
@@ -180,7 +180,6 @@ def run_moon(𝔸, extract_interactive=ⴴ):
             continue
         nargs.append(t)
     𝔸.clear() ; 𝔸.extend(nargs)
-    
     agets = lambda x: (𝔸.count(x := "--"+x), y:=[t for t in 𝔸 if t != x], 𝔸.clear(), 𝔸.extend(y))[0]
     
     cpy_kwargs = {
@@ -191,7 +190,7 @@ def run_moon(𝔸, extract_interactive=ⴴ):
     arg_debug = agets("debug")
     
     if len(𝔸):
-        ns = { "__file__": (f := os.path.abspath(𝔸[0])) }
+        ns["__file__"] = (f := os.path.abspath(𝔸[0]))
         cpy = basic_cpy_interactive_session(**ᖱ(
                 print_code   = ⴴ,
                 print_output = ⴴ,

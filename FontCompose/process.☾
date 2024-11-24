@@ -72,7 +72,7 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     ¿nᵗ≡"main":
         𝕤(n.copy(t="looper"),pre)
         ↪ mac, res
-    ¿nᵗ≡"looper": ↪ nᴍ󰲡𝕤(x,pre)󰅂Σ[]
+    ¿nᵗ≡"looper": ↪ nᴍ󰲡𝕤(x,pre)󰅂⨁[]
     ¿nᵗ≡"concat":
         seqs, L = [pre], nᴍ󰲡x
         ➰L:
@@ -103,7 +103,7 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
         ↪ val ᴍ󰲡pre+x
 
 ⊢ normalize_seqs(d):  comically slow lol
-    𝔔 = d ꟿ⥌k,v↦v.seqsᴍ󰲡(k,x)󰅂󰅂 Σ []
+    𝔔 = d ꟿ⥌k,v↦v.seqsᴍ󰲡(k,x)󰅂󰅂 ⨁ []
     𝔒 = []
     ➰ 𝔔:
         k, v = 𝔔.pop∘0
@@ -146,9 +146,9 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     ∀k,v∈d.items:
         ¿¬v.style: ↺
         stylez.setdefault(hsh(v.style), (v.style, []))₁.append(k)
-    ↪ stylez.valuesꟿ󰲣(x.pop("NO_SCALE", □)►x,yΣᐦ)
+    ↪ stylez.valuesꟿ󰲣(x.pop("NO_SCALE", □)►x,y⨁ᐦ)
 
-xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹⟦␛ᴍ+xᴍ󰲡‹<⟦symmapₓ⟧>›󰅂Σ⟧:"⟦y₀.replace(⠤‹\ \\›⍭)⟧" # ⟦𝘀.join←y₀ᴍhex○ord⟧⟦‹ ; ⟦y₁⟧›¿y🃌>1¡ᐦ⟧𝗻›󰅂 󰒼󰲡x🃌⋄x󰅂 Σ
+xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹⟦␛ᴍ+xᴍ󰲡‹<⟦symmapₓ⟧>›󰅂⨁⟧:"⟦y₀.replace(⠤‹\ \\›⍭)⟧" # ⟦𝘀.join←y₀ᴍhex○ord⟧⟦‹ ; ⟦y₁⟧›¿y🃌>1¡ᐦ⟧𝗻›󰅂 󰒼󰲡x🃌⋄x󰅂 ⨁
 
 ⊢ edit_vs_settings(dat, p):
     p = 𝐩∘p→.expanduser.resolve
@@ -162,7 +162,7 @@ xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹�
     TXT = (p.open←"r"→.read)
     inj = ‹𝗻𝘁/*DON'T REMOVE THE START/END COMMENTS IN THIS SECTION THIS IS HOW WE FIGURE OUT WHERE EVERYTHING IS*/𝗻𝘁"highlight.regexes": ⟦jds(nj, ⠶jargs)⟧›
     S, E = "BEG PLEAD"⍭ᴍ󰲡‹/*󰦥󰦥󰦥⟦x⟧󰦥󰦥󰦥*/›
-    (q≔S⋄Eᴍ󰲡x∈TXT󰅂Σ→∈0⋄2) ⨳ "Malformed indicators!"
+    (q≔S⋄Eᴍ󰲡x∈TXT󰅂⨁→∈0⋄2) ⨳ "Malformed indicators!"
     TXT = TXT﹕₋₁.rstrip.rstrip∘␛, + TXT₋₁
     ¿¬q:
         "Creating indicators!"☾
@@ -173,7 +173,7 @@ xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹�
     ¡:
         txt=TXT⥉𝑙
         txt[TXT.index∘S+S🃌:ei] = inj+␛,⋅((ei≔TXT.index∘E)+E🃌<TXT🃌-2)
-    p.open∘␛w→.write(txtΣᐦ)
+    p.open∘␛w→.write(txt⨁ᐦ)
 
 GRAM = ␛
 󰦥󰦥󰦥󰦥󰦥
@@ -227,7 +227,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x) ¿xᐹᔐ¡ 𝐍(x₀,⠤x₁ᴍrep))←root
-    root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍 ← xᴍ󰲡xᵗ󰅂Σᐦ]))
+    root = root.ftrp("str word"⍭, 󰲡x.copy(xᵗ, c=[𝐍 ← xᴍ󰲡xᵗ󰅂⨁ᐦ]))
     root = root.ftrp(   "style"⍭, 󰲡x.copy(    c=[𝐍 ← decor ← x]))
     root = root.ftrp("p_looper"⍭, 󰲡x.copy("looper"), ✓)
     root = root.ftrp("p_concat"⍭, 󰲡x.copy("concat"), ✓)
@@ -241,17 +241,18 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
                ꟿⱽ󰲣ℵ(T     = "reg",
                     out   = x,
                     seqs  = yꟿ󰲣x,
-                    tags  = 𝑠 ← yꟿ󰲣ℵ󰁺󰁻(y).TAG  󰅂Σ[],
-                    style = ℵ ← yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂Σ[] ſ󰁸󰁹|)󰅂 ␛
+                    tags  = 𝑠 ← yꟿ󰲣ℵ󰁺󰁻(y).TAG  󰅂⨁[],
+                    style = ℵ ← yꟿ󰲣ℵ󰁺󰁻(y).STYLE󰅂⨁[] ſ󰁸󰁹|)󰅂 ␛
           ⥉ ℵ
     
     psuedo_seqs = c↦[c⛶] ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
     make_script_seq_pre = ⥌p,s,c↦[p]⋅(2-←c∈symmap)+[␛𝕊¿c≡p¡s]  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
-    SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip ꟿ⁰ 󱑼´ ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
+    SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip → 󱑼 ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
     already_script = 󰲣j≔SCRIPT_EXIST.get(x,ⴴ) →∧ ␛◌≠H≔j[y≡␛p] →∧ H
     char = 󰲣(x, y, y≠"mul"∧already_script(x,y₋₁) ∨ get_codepoint(x,y)₀)
     
-    force_include = 𝑠(DAT + MULTICHARS)Σᐦ
+    force_include = 𝑠(DAT + MULTICHARS)⨁ᐦ
+    
     
     (symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res) ᴍ k↦resₖ≔ℵ(T="NC",  out=k, seqs=psuedo_seqs∘k, tags=𝑠, style=ℵ)
     (force_include 󰈳󰲡x∈res) ᴍ k↦resₖ≔ℵ(T="reg", out=k, seqs=␛◌⛶⛶         , tags=𝑠, style=ℵ)
@@ -305,9 +306,9 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
             ¡:
                 𝑒.seqs = [make_script_seq_pre(‹/\›[𝑒ᵀ₋₁≡␛p], parent.out, parent.out)]
         ⸘𝑒ᵀ≡‹mul›:
-            𝐆.append( [add_multichar, (⠤𝐴, outsΣᐦ)] )
+            𝐆.append( [add_multichar, (⠤𝐴, outs⨁ᐦ)] )
             style = ((h ≔ ⭡ 󰑅 󰲡"style"∈x) ∧ h.style) ∨ {}
-            𝑒.seqs = [outs ᴍ󰲡[x, ␛𝕊]󰅂 Σ ␛ᴍ⛶]
+            𝑒.seqs = [outs ᴍ󰲡[x, ␛𝕊]󰅂 ⨁ ␛ᴍ⛶]
         ¡:
             ✗⨳‹Invalid type: "⟦𝑒ᵀ⟧"›
         
@@ -320,14 +321,14 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     res = normalize_seqs(res)  󰤱 - multichar output sub/sup
     
     𝕩 = res⁺ 󰈲󰲡x.out🃌≡1 ∧ xᵀ∈‹sub sup›⍭
-    𝕩 = 𝕩  󰲡x􋅅₀󰅂 →.items ꟿ󰲣 y 󰒽󰲡xᵀ󰅂 ᴍ󰲡x.out󰅂 Σ x
-    script_map≔𝕩⍉ᴍΣ´→ᴍ🃌⥉𝑠→🃌≡1→⨳‹Unequal sup/sub/norm counts!›
+    𝕩 = 𝕩  󰲡x􋅅₀󰅂 →.items ꟿ󰲣y󰒽󰲡xᵀ󰅂 ᴍ󰲡x.out󰅂 ⨁ x
+    script_map≔𝕩⍉ᴍ⨁´→ᴍ🃌⥉𝑠→🃌≡1→⨳‹Unequal sup/sub/norm counts!›
     
-    cmp_seqs = res⁺ 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqs ᴍ󰲡(x, c.out)󰅂󰅂Σ[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
+    cmp_seqs = res⁺ 󰈳󰲡x.out≡␛◌ ∨ xᵀ≡"NC"󰅂 ᴍc↦c.seqs ᴍ󰲡(x, c.out)󰅂󰅂⨁[] 󰈳󰲡x₀∋␛◌󰅂 ⥉ 𝑑
     
     ⊢ convert_styles(styles):
         esc = 󰲣y ſˣ 󰲣x.replace(⠤y)
-        rgx_ranges = 󰲡x󰒼α≔ord○󷸺→ᙡ􋂝ꜝᴍ󰲡h≔xᴍα→Σ≡3h₀+3∧␛-∨x₁󰅂Σſ󰲣x+y⋅←y􍨄≠x􍨄
+        rgx_ranges = 󰲡x󰒼α≔ord○󷸺→ᙡ􋂝ꜝᴍ󰲡h≔xᴍα→⨁≡3h₀+3∧␛-∨x₁󰅂⨁ſ󰲣x+y⋅←y􍨄≠x􍨄
         r = {}
         ∀s,C∈styles:
             C = rgx_ranges(C ᴍ esc(⬤, ‹\ \\ ] \] -‍ \-›⍭))
