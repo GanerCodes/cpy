@@ -49,7 +49,7 @@ OPS_COMP = ᖵ(ᗜ, ({s for s in l if 'λ' in lang.ops[s]} for l in lang.op_orde
 SWAP_TABLE = mdt("""
     ⋅   * ␉ ⌃    ** ␉ ≡     == ␉ ≤ <= ␉ ≔ := ␉ ¯ -
     ⠤   * ␉ ⠶    ** ␉ ≠     != ␉ ≥ >= ␉ ÷ / ␉ ⹏ //
-    ␀CAT *␉
+    ␀CAT *␉ ⪡    << ␉ ⪢     >> ␉
     ∨  or ␉ ≅    is ␉ 󰆴    del ␉ Ω class ␉ 󱀘 class
     ¬ not ␉ ¿    if ␉ ⊢    def ␉ ➰ while
     ∧ and ␉ ⸘  elif ␉ ⮂  yield ␉ ↪ return
@@ -111,7 +111,7 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
     ᙧᴮ󰀒ᴺ  ᴮᴾ󰀒ᴺ
 ᐹᴮᴾ󰀒ᴺ󰁖 ᐴᴮᴾ󰀒ᴺ󰁖 󷹵ᴮᴺ󰁖 󷹴ᴮᴺ󰁖 ζᴮᴾ󰀒ᴺ 󱑼ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ󰁘 󱅏ᴮᴾ󰀒ᴺ󰁘 ᴮᴾ󰀒ᴺ󰁘
 |ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
-<<ᴮᴺ >>ᴮᴺ
+<<ᴮᴺ >>ᴮᴺ ⪡ᴮᴺ ⪢ᴮᴺ
 ∓ᴾᴮᴺ ±ᴾᴮᴺ +ᴾᴮᴺ -ᴾᴮᴺ
 ≅ᴮᴺ󰁍 ≇ᴮᴺ󰁍
 ∘ᴮᴺ ○ᴮᴺ   󰀒ᴺ   ᴮᴾ󰀒ᴺ 󰔶ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ ␛

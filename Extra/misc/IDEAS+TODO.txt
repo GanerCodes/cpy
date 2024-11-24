@@ -1,11 +1,6 @@
- 󰤱  Make x⭜y⭝z store vals?
- 󰤱  Ω is a bad symbol
- 󰤱  xor/nand/etc are bad symbols
- 󰤱  >> and << need symbolz
- 󰤱  󰸵󰸷 work better ⓦ ᔐ
  󰤱  󷹄󰛔
+ 󰤱􊽨 Make x⭜y⭝z store vals
  󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃
- 󰤱  Replace nand/nor/etc with slash versions
 
  󰛔
    (ᔐ,ᔐ): ᔐ.replace
