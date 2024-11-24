@@ -50,7 +50,7 @@ SWAP_TABLE = mdt("""
     ⋅   * ␉ ⌃    ** ␉ ≡     == ␉ ≤ <= ␉ ≔ := ␉ ¯ -
     ⠤   * ␉ ⠶    ** ␉ ≠     != ␉ ≥ >= ␉ ÷ / ␉ ⹏ //
     ␀CAT *␉
-    ∨  or ␉ ≅    is ␉ 󰆴    del ␉ Ω class
+    ∨  or ␉ ≅    is ␉ 󰆴    del ␉ Ω class ␉ 󱀘 class
     ¬ not ␉ ¿    if ␉ ⊢    def ␉ ➰ while
     ∧ and ␉ ⸘  elif ␉ ⮂  yield ␉ ↪ return
     ∀ for ␉ ¡  else ␉ ⇥  break ␉ ↺ continue
@@ -65,7 +65,7 @@ kw_inline      = merge_shorthands("""in ␉ is ␉ is not ␉ not in ␉ or ␉ 
 kw_pfx         = merge_shorthands("""return ␉ continue ␉ break ␉ pass ␉ import ␉ global ␉ nonlocal ␉ raise ␉ assert ␉ del ␉ async""")
 kw = kw_pfx_colon | kw_pfx | kw_inline
 kw_spec = { i for i in kw if all(not x.isalpha() and not x.isdigit() for x in i) }
-var_spec = set("ⴳⴴ✓✗□∅∞îℇτπ󷺍󷱪󷱫󷱬󷱭󷱮ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞") # forced to be one char, will not act as object or attr-getter when superscript
+var_spec = set("ⴳⴴ✓✗□∅∞îℇτπ󷺍󷱯󷱪󷱫󷱬󷱭󷱮ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞") # forced to be one char, will not act as object or attr-getter when superscript
 escaped_var_specs = {*ᴍ(py_escape_var, var_spec)}
 
 register("kw", kw)
@@ -106,9 +106,10 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
       ∣ᴮᴺ󰁖  ∉ᴮᴺ󰁖   ∈ᴮᴺ󰁖  ∋ᴮᴺ󰁖  ∌ᴮᴺ󰁖 ∤ᴮᴺ󰁖 ␛
       ⊊ᴮᴺ󰁖  ⊄ᴮᴺ󰁖   ⊂ᴮᴺ󰁖  ⊃ᴮᴺ󰁖  ⊅ᴮᴺ󰁖 ⊋ᴮᴺ󰁖
 ␀TACᴮ
-ꟿᴮᴺ ᴍᴮᴺ   ſᴮᴺ   Ϝᴮᴺ  Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ 󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ ␛
-    󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ ᙎᴮ󰀒ᴺ ᙡᴮ󰀒ᴺ  ᗢᴮ󰀒ᴺ  ᙧᴮ󰀒ᴺ  ᴮᴾ󰀒ᴺ
-ᐹᴮᴾ󰀒ᴺ󰁖 ᐴᴮᴾ󰀒ᴺ󰁖 󷹵ᴮᴺ󰁖 󷹴ᴮᴺ󰁖 ζᴮᴺ ᴮᴾ󰀒ᴺ󰁘 󱅏ᴮᴾ󰀒ᴺ󰁘 ᴮᴾ󰀒ᴺ󰁘
+ꟿᴮᴺ ᴍᴮᴺ   ſᴮᴺ   Ϝᴮᴺ   Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ ⨀ᴮᴾ󰀒ᴺ ⨁ᴮᴾ󰀒ᴺ ␛
+    󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ 󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ ᙎᴮ󰀒ᴺ  ᙡᴮ󰀒ᴺ  ᗢᴮ󰀒ᴺ  ␛
+    ᙧᴮ󰀒ᴺ  ᴮᴾ󰀒ᴺ
+ᐹᴮᴾ󰀒ᴺ󰁖 ᐴᴮᴾ󰀒ᴺ󰁖 󷹵ᴮᴺ󰁖 󷹴ᴮᴺ󰁖 ζᴮᴾ󰀒ᴺ 󱑼ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ󰁘 󱅏ᴮᴾ󰀒ᴺ󰁘 ᴮᴾ󰀒ᴺ󰁘
 |ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
 <<ᴮᴺ >>ᴮᴺ
 ∓ᴾᴮᴺ ±ᴾᴮᴺ +ᴾᴮᴺ -ᴾᴮᴺ

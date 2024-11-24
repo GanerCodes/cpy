@@ -61,7 +61,7 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
                 t, c = v₀ᵗ, v₁ᶜ
                 ə = c ᴍ󰲡□ ¿xᵗ≡␛✓¡ 𝘀.join(x.extract(󰲡x🃌¬,Δ=✗)ᴍ󰲡xᵗ)
                 ƒ = gensₜ
-                r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)ζə¿k≇□})
+                r |= ƒ(⠶{k:v∀k,v∈fargs(ƒ)󱑼ə¿k≇□})
         R += r⛶
     ↪ R¿multi¡R₀
 
@@ -247,7 +247,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     
     psuedo_seqs = c↦[c⛶] ¿c∈symmap¡ resˢᵉˢ ¿c∈res¡ □
     make_script_seq_pre = ⥌p,s,c↦[p]⋅(2-←c∈symmap)+[␛𝕊¿c≡p¡s]  ᵃ:\a 󰁌:\\a𝕊 􋑪:\𝕊
-    SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip ꟿ⁰ ζ´ ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
+    SCRIPT_EXIST = SCRIPT_EXIST.strip().split(𝗻) ᴍ ᔐ.strip ꟿ⁰ 󱑼´ ꟿ󰲥(x,y⋄z)󰅂 ⥉ 𝑑
     already_script = 󰲣j≔SCRIPT_EXIST.get(x,ⴴ) →∧ ␛◌≠H≔j[y≡␛p] →∧ H
     char = 󰲣(x, y, y≠"mul"∧already_script(x,y₋₁) ∨ get_codepoint(x,y)₀)
     

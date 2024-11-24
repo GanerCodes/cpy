@@ -31,7 +31,7 @@
             ¿𝒶∋v≔␛O: rᵥ=p_stream("stdout")
             ¿𝒶∋v≔␛E: rᵥ=p_stream("stderr")
         ↪ r􊴸􋕜ₚ󰂼ₚ􊲭 ¿𝒶🃌≡1¡ r
-    Ω Popen_Proxy:
+    󱀘 Popen_Proxy:
         __slots__ = ␛p,
         __init__ = ⥌𝕊,p↦𝕊ᵖ≔p →► □
         __call__ = 𝕊↦𝕊ᵖ.wait →► extract(p)

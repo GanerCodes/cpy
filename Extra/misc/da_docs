@@ -1,4 +1,4 @@
-Ω ; Python "class"
+󱀘 ; Python "class"
 ⨡ ; Python "import"
 ⮂ ; Python "yield"
 ↪ ; Python "return"
@@ -78,7 +78,7 @@
 ᐴ ; right is type of left / get class of 
 󷹵 ; left is not type of right
 󷹴 ; right is not type of left
-ζ ; zip
+󱑼 ; zip
  ; random float
 󱅏 ; random int
  ; shuffle

@@ -1,5 +1,5 @@
 ⨡ sys, os
-Ω Shut:  github.com/joblib/joblib/issues/868#issuecomment-1034684910
+󱀘 Shut:  github.com/joblib/joblib/issues/868#issuecomment-1034684910
     ⊢ __init__(𝕊):
         𝕊ᴼ = sys.__stdout__⋄sys.__stderr__ ᴍ󰲡x.fileno
     ⊢ __enter__(𝕊):
@@ -13,7 +13,7 @@
         ☾´(flush=ⴳ)
         sys.stdout, sys.stderr = 𝕊󰀒
         𝕊ᴼ ᴍ os.close
-        𝕊ᴰ ζ 𝕊ᴼ ꟿ os.dup2
+        𝕊ᴰ 󱑼 𝕊ᴼ ꟿ os.dup2
         𝕊ᴰ ᴍ os.close
 
 shut = 󰲡ⓦ(Shut,a≔𝔸⋄𝕂→►𝚲x(⠤a₀,⠶a₁))

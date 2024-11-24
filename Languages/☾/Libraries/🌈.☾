@@ -19,7 +19,7 @@ h2hl = r2hl○h2r
 TERM_RESET = "\033[0m"
 ⊢ termclr(t, fg=□, bg=□, rst=✓):
     R = ᐦ
-    ∀c,n∈fg⋄bgζ38⋄48:
+    ∀c,n∈fg⋄bg󱑼38⋄48:
         ¿c≅□: ↺
         r, g, b, _ = h2r(c)
         R += ‹⟦"\x1b"⟧[⟦n⟧;2;⟦r⟧;⟦g⟧;⟦b⟧m›

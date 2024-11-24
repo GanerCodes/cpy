@@ -283,3 +283,12 @@ Added ⭜ and ⭝, ok like basiicaily:
     "x⭜y⭝z⭜w⭝v" = "x⭜y⭝(z⭜w⭝v)"
     "x⭜y⭜w⭝v" = "x⭜(y⭜w)⭝v"
     "x⭜⬅y⭜w⭝v" = "x⭜(y⭜w⭝v)"
+
+CHANGED/ADDED SYMBOLS:
+    󷺥󷺤󷺦󷺒
+    Ω ⟶ 󱀘
+     Old version exists but deprecated for the following,
+       they will be removed in version 1.13.like in 8 hours
+    ζ ⟶ 󱑼
+    Σ ⟶ ⨁
+    Π ⟶ ⨀

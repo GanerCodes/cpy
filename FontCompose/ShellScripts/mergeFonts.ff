@@ -6,5 +6,13 @@ Copy()
 Open($1)
 Select(0uF7000, 0uF7FFF)
 Paste()
+
+Open($2)
+Select(0u10790, 0u10792)
+Copy()
+Open($1)
+Select(0u10790, 0u10792)
+Paste()
+
 Generate($3)
 Close()

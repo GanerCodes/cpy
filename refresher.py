@@ -145,8 +145,10 @@ debug_test_exit = lambda x, **𝕂: cpy_test(x, exit=ⴳ, **𝕂)
 
 def cpy_get_custom_func(t, d):
     def 𝑓(ns):
-        if t in ns["__builtins__"]:
-            return ns["__builtins__"][t]
+        if k := ns.get(t):
+            return k
+        if n := ns.get("__builtins__"):
+            return n.get(t, d)
         return d
     return 𝑓
 
@@ -181,10 +183,11 @@ def run_moon(𝔸, extract_interactive=ⴴ):
     
     agets = lambda x: (𝔸.count(x := "--"+x), y:=[t for t in 𝔸 if t != x], 𝔸.clear(), 𝔸.extend(y))[0]
     
-    cpy_kwargs = { "interactive_defaults": { "global_verbose_debug": agets("verbose") }, "ns": (ns := {}) }
-    cpy_kwargs["code_cache_dir"] = 𝕂["code_cache_dir"]
-    cpy_kwargs["gram_cache_dir"] = 𝕂["gram_cache_dir"]
-    cpy_kwargs["do_cache"] = not agets("no-cache")
+    cpy_kwargs = {
+        "ns": (ns := {}),
+        "interactive_defaults": {
+             "global_verbose_debug": agets("verbose") },
+        "do_cache": not agets("no-cache") } | 𝕂
     arg_debug = agets("debug")
     
     if len(𝔸):
@@ -200,21 +203,22 @@ def run_moon(𝔸, extract_interactive=ⴴ):
             ns, quit=ⴳ)
         exit()
     
-    cpy_kwargs.setdefault("interactive_defaults", {})
-    cpy_kwargs["interactive_defaults"] |= { "dynamic_compile": ⴳ }
-    cpy = basic_cpy_interactive_session(**ᖱ(
-          print_code   = arg_debug,
-          print_output = ⴳ) | cpy_kwargs)
     if readline:
         fancy = lambda x: f"\001\x1b[38;2;255;0;135m\002{x}\001\033[0m\002"
         swap_ln = lambda x: f"\033[1A{x}\033[K"
     else:
         fancy = lambda x: f"\x1b[38;2;255;0;135m{x}\033[0m"
         swap_ln = lambda x: x
-    prompt = fancy('✝') + ś
+    pmt, ret = fancy('✝')+ś, fancy('⮡')+ś
+    
+    cpy_kwargs.setdefault("interactive_defaults", {})
+    cpy_kwargs["interactive_defaults"] |= { "dynamic_compile": ⴳ }
+    cpy = basic_cpy_interactive_session(**ᖱ(
+          print_code   = arg_debug,
+          print_output = ⴳ) | cpy_kwargs)
     
     def 𝑓(c):
-        print(swap_ln(prompt + cpy_get_highlighter(ns)(c)))
+        print(swap_ln(pmt + cpy_get_highlighter(ns)(c)))
         if not c:
             print("God is good!")
             return
@@ -222,13 +226,13 @@ def run_moon(𝔸, extract_interactive=ⴴ):
             readline.append_history_file(1, HISTORY_FILE)
             if c == "☾":
                 os.execv(sys.executable, (sys.executable, __file__))
-        run_custom_errors(lambda: print(f"{fancy('⮡')} {cpy(c, cap_stdout=ⴴ)}"), ns)
+        run_custom_errors(lambda: print(f"{ret}{cpy(c, cap_stdout=ⴴ)}"), ns)
     if extract_interactive: return 𝑓
     
     cc_count = 0
     while ⴳ:
         try:
-            c = input(prompt)
+            c = input(pmt)
             cc_count = 0
             𝑓(c)
         except KeyboardInterrupt:

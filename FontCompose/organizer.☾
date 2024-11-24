@@ -13,7 +13,7 @@ pua_fold = 𝐩𝐝 / ‹PuaMaps›
 lm≔{} →►← pua_maps_in ≔ 𝑙∘pua_fold.glob("*.json") ␛
             →ᴍ 󰲡json.load(x.open) ␛
                 →ꟿᴷ󰲡x.split∘␛| ᴍ󰲡𝑖(x,16)󰅂 ⥉𝑡󰅂 ␛
-                →.items ꟿ󰲣x₀…x₁ζy ꟿ⥌l,c↦
+                →.items ꟿ󰲣x₀…x₁󱑼y ꟿ⥌l,c↦
                 (c≡lmₗ ⨳ ‹⟦c⟧→⟦l⟧←⟦lmₗ⟧›) ¿l∈lm¡ lmₗ≔c
 ml = lm ꟿᴰ 󰲣(y,x)
 
@@ -32,8 +32,8 @@ ml = lm ꟿᴰ 󰲣(y,x)
     𝕏 = puaΔ-1
     ➰𝕏+=1:
         ¿¬𝕏 ≔ (I ≔ 𝔡⭥ᴍ󰲡𝕏+x) 󰑅 󰲡x∈lm󰅂: ⇥
-    lm |= 𝑑←Iζ𝔡
-    ml |= 𝑑←𝔡ζI
+    lm |= 𝑑←I󱑼𝔡
+    ml |= 𝑑←𝔡󱑼I
     ↪ lm, ml
 
 to_ranges = lm↦[
@@ -51,7 +51,7 @@ to_ranges = lm↦[
     ↪ lms
 
 get_codepoint = ⥌c,p↦pua_single(n≔‹⟦p⟧_⟦c⟧›) ►← (chr←mlₙ,n,c)
-get_codepoints = ⥌C,p↦pua_conseq(N≔Cᴍ󰲡‹⟦p⟧_⟦x⟧›) ►← NζCꟿ󰲣(chr←mlₓ,x,y)󰅂
+get_codepoints = ⥌C,p↦pua_conseq(N≔Cᴍ󰲡‹⟦p⟧_⟦x⟧›) ►← N󱑼Cꟿ󰲣(chr←mlₓ,x,y)󰅂
 
 ⊢ get_new_chars(force_include, no_scale, multichars,
                 ignore_scripts, special_symkeys):
