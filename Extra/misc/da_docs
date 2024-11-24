@@ -7,8 +7,12 @@
 ⇥ ; Python "break"
 ➰ ; Python "while"
 ∀ ; Python "for"
+@ ; Python "@"
 ⠤ ; Python "*" (For vargs)
 ⠶ ; Python "**" (For kargs)
+¿ ; Python "if"
+⸘ ; Python "elif"
+¡ ; Python "else"
 
 ⭜ ; Ternary if
     "x ⭜ y ⭝ z" ; y if x else z
@@ -16,9 +20,13 @@
 ⭝ ; Ternary else
     %REF⭝%
 
-¿ ; Python "if"
-⸘ ; Python "elif"
-¡ ; Python "else"
+⬅ ; Push right into left (Strongest)
+➡ ; Push left into right (Strongest)
+← ; Push right into left (Medium)
+⥉ ; Swap right and left (Medium)
+→ ; Push left into right (Medium)
+⭠ ; Push right into left (Weakest)
+⭢ ; Push left into right (Weakest)
 
 ≔ ; Assign to left
     "x ≔ 2+2"
@@ -62,8 +70,8 @@
 ᴍ ; map
 ſ ; fold
 Ϝ ; accumulate
-Σ ; sum
-Π ; product
+⨁ ; sum
+⨀ ; product
 󰈲 ; filter positive
 󰈳 ; filter negative
 󰒼 ; sort ascending
@@ -89,8 +97,8 @@
 
 & ; bitwise and
 
-<< ; bitshift left
->> ; bitshift right 
+⪡ ; bitshift left
+⪢ ; bitshift right 
 
 ∓ ; minus plus
 ± ; plus minus
@@ -125,11 +133,10 @@
 ⨉ ; cross product
 ⊞ ; table product 
 
-//, ⹏ ; integer division
-/, ÷ ; division
+⹏ ; integer division
+÷ ; division
 % ; modulo 
-@ ; Python @
-*, ⋅ ; multiply
+⋅ ; multiply
 √ ; root
 ! ; factorial
 ⋀ ; all
@@ -152,7 +159,7 @@
 󷸺 ; range excluding start
 ⍭ ; magic string split
 ⤈ ; min
-󷹄 ; 󰤱
+󷹄 ; constrain
 ⤉ ; max
 ↨ ; enumerate (zip with index)
 ⭥ ; iterable to indices
@@ -167,7 +174,7 @@
 ⬄ ; strip
 ᴙ ; reverse
 󰌷 ; chain iterables
-󰛔 ; 󰤱
+󰛔 ; string replacement
 ᚤ ; first unique
 ☾ ; print
 🃌 ; length/cardinality
