@@ -298,7 +298,8 @@ For future ref we avoid cluttering up letters/symbols used in math (except imple
 Added ⪡, ⪢ for bitshift left/right
 
 Made 󰸵, 󰸷 work better w/ strings, le essentialz iz:
-    ⨳ "joe" 󰸵  4 ≡ " joe"
-    ⨳  [␛a] 󰸵  3 ≡ ✗⋄✗⋄␛a
-    ⨳  [␛a] 󰸷¹ 3 ≡ ␛a⋄1⋄1
-    ⨳  "ab" 󰸷³ 4 ≡ "ab33"
+    ⨳ "joe" 󰸵􋕩ˣʸ􋕩 5 ≡ "xyxyjoe"
+    ⨳ "joe" 󰸵     4 ≡ " joe"
+    ⨳  [␛a] 󰸵     3 ≡ ✗⋄✗⋄␛a
+    ⨳  [␛a] 󰸷¹    3 ≡ ␛a⋄1⋄1
+    ⨳  "ab" 󰸷³    4 ≡ "ab33"
