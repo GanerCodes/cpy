@@ -40,7 +40,7 @@ OPS_BUILTIN = {
     'S': """""",
     'N': """; ␉ : ␉ , ␉ if ␉ elif ␉ else ␉ for""",
     'P': """+ ␉ - ␉ * ␉ ~ ␉ ** ␉not ␉ yield""",
-    'B': """+ ␉ - ␉ * ␉ @ ␉ ** ␉ // ␉< ␉ > ␉ % ␉ . ␉ & ␉ ^ ␉ | ␉ /␉ != ␉ == ␉ << ␉ >> ␉ >= ␉ <= ␉ in ␉ not in␉ is ␉is not␉ or ␉ and""" }
+    'B': """+ ␉ - ␉ * ␉ @ ␉ ** ␉ // ␉< ␉ > ␉ % ␉ . ␉ & ␉ ^ ␉ | ␉ / ␉ != ␉ == ␉ << ␉ >> ␉ >= ␉ <= ␉ in ␉ not in␉ is ␉is not␉ or ␉ and""" }
 OPS_BUILTIN = {k:sst(v) for k,v in OPS_BUILTIN.items()}
 OPS_BUILTIN['A'] = set.union(*map(set,OPS_BUILTIN.values()))
 

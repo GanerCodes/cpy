@@ -53,18 +53,18 @@
 ≥ ; greater than or equal to
 < ; less than
 > ; greater than
-∈ ; Element of right
-∉ ; Not element of right
-∋ ; Element of left
-∌ ; Not element of left
-∣ ; Divides
-∤ ; Does not divide
-⊂ ; Subset of right
-⊃ ; Subset of left
-⊊ ; Subset of not equal to right
-⊋ ; Subset of not equal to left
-⊄ ; Not subset of right
-⊅ ; Not subset of left
+∈ ; element of right
+∉ ; not element of right
+∋ ; element of left
+∌ ; not element of left
+∣ ; divides
+∤ ; does not divide
+⊂ ; subset of right
+⊃ ; subset of left
+⊊ ; subset of not equal to right
+⊋ ; subset of not equal to left
+⊄ ; not subset of right
+⊅ ; not subset of left
 
 ꟿ ; starmap
 ᴍ ; map
@@ -194,6 +194,10 @@
 𝗙 ; Check if function
 𝗜 ; Check if iterable
 𝗛 ; Check if hashable, if so, return hashed value
+􋐳 ; cos
+􋐲 ; sin
+􋐴 ; tan
+􋑯 ; log
 ✓ ; True
 ✗ ; False
 ⴳ ; Truthy function that always returns True
@@ -206,3 +210,4 @@
 τ ; Tau
 π ; ½τ
 󷺍 ; ½π
+
