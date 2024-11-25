@@ -131,7 +131,7 @@
 
 ∖ ; set minus
 ⨉ ; cross product
-⊞ ; table product 
+⊞ ; table product
 
 ⹏ ; integer division
 ÷ ; division
@@ -188,8 +188,8 @@
  ; call function without args
 
 󰻾 ; identify
-ℵ ; magic namespace ; iterates by pairs
-ℶ ; magic namespace ; iterates by values
+ℵ ; magic namespace: iterates by pairs
+ℶ ; magic namespace: iterates by values
 
 𝗙 ; Check if function
 𝗜 ; Check if iterable
