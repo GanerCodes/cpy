@@ -6,7 +6,7 @@
         <style>
             @font-face {
                 font-family: 'JuliaMonoCustom';
-                src: url('/font.ttf') format('truetype');
+                src: url('font.ttf') format('truetype');
             }
             * {
                 box-sizing: border-box;
@@ -160,7 +160,7 @@
                 await py.runPythonAsync(`
                     import shutil
                     from pyodide.http import pyfetch
-                    await (await pyfetch("${window.location.origin}/wasm_stuff.zip")).unpack_archive()
+                    await (await pyfetch("wasm_stuff.zip")).unpack_archive()
                     shutil.move("./cpy_wasm_cache", "/tmp")
                     print("Installed ☾")`);
                 await py.runPythonAsync(`
