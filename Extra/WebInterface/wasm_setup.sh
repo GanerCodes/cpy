@@ -1,5 +1,10 @@
 set -e && cd "$(dirname `realpath -s $0`)"
 
+# b/c `zip` cares
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=UTF-8
+
 FILE=`realpath ./wasm_stuff.zip`
 TMPF="/tmp/cpy_wasm_cache"
 

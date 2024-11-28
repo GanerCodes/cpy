@@ -166,7 +166,8 @@
                 await py.runPythonAsync(`
                     from refresher import run_moon
                     import sys
-                    del sys.excepthook
+                    try   : del sys.excepthook
+                    except: pass
                     𝑓 = run_moon(["code_cache_dir=/tmp/cpy_wasm_cache/code",
                                   "gram_cache_dir=/tmp/cpy_wasm_cache/gram"], extract_interactive=True)
                     print("Ready!")`); })();
