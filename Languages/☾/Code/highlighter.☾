@@ -14,12 +14,12 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
         ↪ termclr(s, v􋕨󰂼ₗ󰂼ᵣ􋕨, bg)
     ↪ termclr(s, de, bg)
 
-⊢ __highlighter__(l, b=✗):
+⊢ __highlighter__(l, b=✗,clr=✓):
     s, *e = (ᔐ∘l).split(␛ᐧ)
     
     e = e ᙧ¹ 0⋄1
     e = e ꟿ 󰲣chr(𝑖(x,16))+y
-    r = (s+←eΣᐦ) ᴍ 󰲡sty(x, "400" ¿b¡ 0)󰅂 Σᐦ
+    r = (s+←eΣᐦ) ᴍ 󰲡clr⭜sty(x, "400" ¿b¡ 0)⭝x󰅂 Σᐦ
     ↪ r
 
 ⊢ __error_printer__(ε):
@@ -27,7 +27,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
     ə = ε.__traceback__
     TB, i = [], 0
     ➰i+=1:
-        ¿i ≥ 25:
+        ¿i ≥ 50:
             ‹Too long a traceback, stopping at ⟦i⟧ frames!›☾
             ⇥
         g = ə.tb_frame.f_globals
@@ -59,7 +59,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
     CLR1, CLR2 = "faf", "f55"
     
     asd = termclr(␛⮡, CLR1)
-    maxl, prevf = TB ⤉ 󰲡x₁, □
+    maxl, prevf = TB ⤉⁰􌾕􋋎 󰲡x₁, □
     zf = ᔐ(maxl₁)🃌
     ∀f,s,A,B,C∈TB:
         ¿f≠prevf: termclr(f, CLR1)☾
