@@ -1,0 +1,26 @@
+⮌ json ⨡ dumps
+⮌ http.server ⨡ HTTPServer, BaseHTTPRequestHandler
+󰋺("kots", *)
+
+ipv4 = ᑀ ᑀ⪢ 8⟝ & 0xFFᐛ (4󷸹)ᴙ → ⨝␛.
+
+ords = ("da_docs")󷹎𝗻𝗻ᐵ󷹎𝗻ᑀ⨝󰲣𝘀≠y₀⭜□⭝󰮈󰅂󷹎
+desc = ℵ(ords󰌷ᐵ₀󷹎¹␛;ᴍ⬄→ᑀ₀ ₀⋄←⟞₁⛶+ᑅ⟞₁﹕)
+
+real_files = ‹wasm_stuff.zip font.ttf›⍭
+󱀘 WebRequestHandler(BaseHTTPRequestHandler):
+    ⊢ do_GET(𝕊):
+        𝕊.send_response∘200
+        P = 𝕊.path₁﹕
+        ¿P≡"docs":
+            𝕊.send_header("Content-type", "application/json")
+            𝚋 = (dumps○𝑑∘(descꟿᴷ󰲣__highlighter__∘x)).encode("utf-8")
+        ⸘P≡"font.ttf":
+            𝕊.send_header("Content-type", "application/x-font-ttf")
+            𝚋 = ᵇ("../../FontCompose/Output/99_JuliaMono-Regular.ttf")
+        ¡:
+            𝚋 = ᵇ(P∈real_files⭜P⭝"index.html")
+        𝕊.end_headers 
+        𝕊.wfile.write∘𝚋
+server = HTTPServer((ipv4(0x000000), 8000), WebRequestHandler)
+server.serve_forever()

@@ -253,7 +253,6 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     
     force_include = 𝑠(DAT + MULTICHARS)⨁ᐦ
     
-    
     (symmap 󰈳󰲡x∈"ᴍ𝕊"∨x∈res) ᴍ k↦resₖ≔ℵ(T="NC",  out=k, seqs=psuedo_seqs∘k, tags=𝑠, style=ℵ)
     (force_include 󰈳󰲡x∈res) ᴍ k↦resₖ≔ℵ(T="reg", out=k, seqs=␛◌⛶⛶         , tags=𝑠, style=ℵ)
     res.pop(𝗻, □)  lol

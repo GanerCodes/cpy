@@ -163,6 +163,7 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
         quit and exit(1)
 
 def run_moon(𝔸, extract_interactive=ⴴ):
+    𝔸_copy = 𝔸.copy()
     try:
         import readline
         Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
@@ -224,7 +225,10 @@ def run_moon(𝔸, extract_interactive=ⴴ):
         if readline:
             readline.append_history_file(1, HISTORY_FILE)
             if c == "☾":
-                os.execv(sys.executable, (sys.executable, __file__))
+                os.execv(sys.executable, (sys.executable, __file__, *𝔸_copy))
+            elif c == "clear":
+                os.system("clear")
+                return
         run_custom_errors(lambda: print(f"{ret}{cpy(c, cap_stdout=ⴴ)}"), ns)
     if extract_interactive: return 𝑓
     
@@ -242,10 +246,12 @@ def run_moon(𝔸, extract_interactive=ⴴ):
             print()
             exit()
 
+# cpy_test("""x¿a∧b¡y""", exit=ⴳ)
+# cpy_test("""+𝔸ᵥ ¿𝔸ᵥ􊮝₀≅␀∨𝔸🃌≡1∨𝔸ᵥ􊮝₁≅␀¡ 𝔸₀+𝔸₁""", exit=ⴳ)
+
 if __name__ == "__main__":
     run_moon(sys.argv[1:])
 
-# cpy_test("""󰆴 factorial, e, pi, tau, sqrt, cbrt""", exit=ⴳ)
 # cpy_test("""􊬲ₐaₐ􊬲""", exit=ⴳ)
 # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧""".strip(), exit=ⴳ)
 # debug_test_exit("""⥌𝕊,t↦𝕊ᵗ≔t""")

@@ -1,11 +1,34 @@
+ 󰤱  ⤉⤈󰒼󰒽 work w/ 󰮈
+ 󰤱  https://ganer.xyz/s/a3bdeb03b420d515
  󰤱􊽨 Make x⭜y⭝z store vals
  󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃
+
+󰮈
 
  󰛔
    (ᔐ,ᔐ): ᔐ.replace
    (𝒾,𝑜):   replace ; 󰛔ʳ
 
+∧ ; and  ; x⭜   y   ⭝x     ; ⩓
+∨ ; or   ; x⭜   x   ⭝y     ; ⩔
+󷺤 ; xor  ; x⭜(y⭜✗⭝x)⭝y     ; ∅
+󷺦 ; nxor ; x⭜(y⭜y⭝✗)⭝y⭜✗⭝✓ ; ∅
+󷺒 ; nand ; x⭜(y⭜✗⭝x)⭝y⭜y⭝✓ ; 󷺬
+󷺥 ; nor  ; x⭜   ✗   ⭝y⭜x⭝✓ ; 󷺫
+
 ⌾✪🅭⚆⍟⦾⦿⏣
+⥾𖣂
+𝌂
+
+[1,2,3] 𝌂 𝌃
+
+[1,2,5,2,3] 𝌂ⁿ 𝑓
+
+⧟
+⧿ 󰹳 
+󱗘
+󷹥 󷹧 󷹦 󰇘 󷹟 󷹠 󷹡 󷹽 󷹾 󷹿 󷺀
+
 
  10⭥ ᐵ²⦚       ⟶   10⭥ᴍ¹󰲡x²󰅂
    5 ᑀ²⦚       ⟶  (5,)ᴍ⁰󰲡x²󰅂

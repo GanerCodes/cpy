@@ -8,7 +8,7 @@ PYTHON_INCLUDED:
         ☾_ENABLE_DEBUG:
             resource, threading, cProfile, pstats, atexit
 PYTHON_PIP:
-    more_itertools, colored, regex
+    more_itertools, regex
     OPTIONAL:
         clipboard
         fontforge, json5

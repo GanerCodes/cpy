@@ -320,3 +320,21 @@ added 󷹄, contrain operator, oki so:
     ⨳ 1󷹄􍨋4 ≡ 1
     ⨳ (1󷹄4)(2) ≡ 2
     ⨳ ␛a󷹄􋂝²␛z ≡ ␛a
+
+added ⩔ and ⩓, basically as useful as an implementation detail but quandasically:
+    literally ∨ and ∧ but doesn't short circuit
+    i now have a todo item of 󷺥 but no short circuit bruH
+
+oh also 󷺥 now short circuits
+oh and nOW i had to do 󷺒
+
+…stupid idiot ۩⩔󷺫⩓󷺬۩
+
+Added 𝌂, beesbeesentially:
+    󰤱
+
+if 󰈲/󰈳 has w/ non-ƒ RHS then it checks for equality
+
+idk how i didnt think of this but like if you're mapping and your function returns 󰮈 then its removed from the map
+
+got rid of the `colored` dependency yay

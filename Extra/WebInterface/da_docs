@@ -1,0 +1,215 @@
+󱀘 ; Python "class"
+⨡ ; Python "import"
+⮂ ; Python "yield"
+↪ ; Python "return"
+⮌ ; Python "from"
+↺ ; Python "continue"
+⇥ ; Python "break"
+➰ ; Python "while"
+∀ ; Python "for"
+@ ; Python "@"
+⠤ ; Python "*" (For vargs)
+⠶ ; Python "**" (For kargs)
+¿ ; Python "if"
+⸘ ; Python "elif"
+¡ ; Python "else"
+
+⭜ ; Ternary if
+    "x ⭜ y ⭝ z" ; y if x else z
+    "x ⭜ y" ; y if x else □
+⭝ ; Ternary else
+    %REF⭝%
+
+⬅ ; Push right into left (Strongest)
+➡ ; Push left into right (Strongest)
+← ; Push right into left (Medium)
+⥉ ; Swap right and left (Medium)
+→ ; Push left into right (Medium)
+⭠ ; Push right into left (Weakest)
+⭢ ; Push left into right (Weakest)
+
+≔ ; Assign to left
+    "x ≔ 2+2"
+    "x.y[2] ≔ 2+2"
+≕ ; Assign to right
+    "2+2 ≕ x"
+    "2+2 ≕ x.y[2]"
+
+⨳ ; Assertion
+    "𝑜 ⨳" = "⨳ 𝑜" ⟶ Asserts 𝑜 is truthy
+    "𝑜₁ ⨳ 𝑜₂" ⟶ Asserts 𝑜₁ is truthy, puts 𝑜₂ in error
+
+∨ ; OR (short circuits)
+⩔ ; OR (doesn't short circuit)
+󷺥 ; NOR (short circuits)
+󷺤 ; XOR
+󷺦 ; NXOR
+
+∧ ; AND (short circuits)
+⩓ ; AND (doesn't short circuit)
+󷺒 ; NAND (short circuits)
+󷺬 ; NAND (doesn't short circuit)
+
+≡ ; equals
+≠ ; not equal
+≤ ; less than or equal to
+≥ ; greater than or equal to
+< ; less than
+> ; greater than
+∈ ; element of right
+∉ ; not element of right
+∋ ; element of left
+∌ ; not element of left
+∣ ; divides
+∤ ; does not divide
+⊂ ; subset of right
+⊃ ; subset of left
+⊊ ; subset of not equal to right
+⊋ ; subset of not equal to left
+⊄ ; not subset of right
+⊅ ; not subset of left
+
+ꟿ ; starmap
+ᴍ ; map
+ſ ; fold
+Ϝ ; accumulate
+⨁ ; sum
+⨀ ; product
+󰈲 ; filter positive
+󰈳 ; filter negative
+󰒼 ; sort ascending
+󰒽 ; sort decending
+ᙎ ; window, with sides, no middle
+ᙡ ; window, with sides, with middle
+ᗢ ; window, no sides, no middle
+ᙧ ; window, no sides, with middle
+ ; group by
+
+ᐹ ; left is type of right / get class of
+ᐴ ; right is type of left / get class of
+󷹵 ; left is not type of right
+󷹴 ; right is not type of left
+󱑼 ; zip
+ ; random float
+󱅏 ; random int
+ ; shuffle
+
+| ; bitwise or
+
+^ ; bitwise xor
+
+& ; bitwise and
+
+⪡ ; bitshift left
+⪢ ; bitshift right 
+
+∓ ; minus plus
+± ; plus minus
++ ; add
+- ; subtract
+
+≅ ; is same object
+≇ ; is not same object
+
+∘ ; call left with right
+○ ; compose functions
+ ; curry function
+⊚ ; loop
+⊜ ; loop until fixed point
+🟕 ; find cycle
+🟖 ; find cycle, include prefix
+ ; error raiser / error or-er
+󰔶 ; return arg / retry with right
+ ; return exception / custom error handle
+ᣆ ; conditional function application
+
+◄ ; return left arg
+► ; return right arg
+
+⋄ ; join into list
+
+∪ ; union
+
+∩ ; intesection
+
+∖ ; set minus
+⨉ ; cross product
+⊞ ; table product
+
+⹏ ; integer division
+÷ ; division
+% ; modulo 
+⋅ ; multiply
+√ ; root
+! ; factorial
+⋀ ; all
+⋁ ; any
+⫰ ; absolute value
+⫯ ; negative absolute value
+⨝ ; join
+⟕ ; join include left
+⟗ ; join include left and right
+⟖ ; join include right
+ⴵ ; sign of number
+󰑁 ; before condition
+󰑅 ; at condition
+󰑃 ; after condition
+⛶ ; enlist
+⍉ ; transpose
+󷸹 ; range excluding end
+󷸸 ; range excluding start and end
+󷸻 ; range
+󷸺 ; range excluding start
+⍭ ; magic string split
+⤈ ; min
+󷹄 ; constrain
+⤉ ; max
+↨ ; enumerate (zip with index)
+⭥ ; iterable to indices
+⬓ ; round down
+▢ ; round
+⬒ ; round up
+󰸵 ; pad left
+󰸷 ; pad right
+󷹌 ; split include all seperators
+󷹍 ; split include 1-per-consecutive seperators
+󷹎 ; split disregard seperators
+⬄ ; strip
+ᴙ ; reverse
+󰌷 ; chain iterables
+󰛔 ; string replacement
+ᚤ ; first unique
+☾ ; print
+🃌 ; length/cardinality
+
+¬ ; not
+¯ ; negate
+
+⌃ ; exponential
+
+ ; splat function
+ ; call function without args
+
+󰻾 ; identify
+ℵ ; magic namespace: iterates by pairs
+ℶ ; magic namespace: iterates by values
+
+𝗙 ; Check if function
+𝗜 ; Check if iterable
+𝗛 ; Check if hashable, if so, return hashed value
+􋐳 ; cos
+􋐲 ; sin
+􋐴 ; tan
+􋑯 ; log
+✓ ; True
+✗ ; False
+ⴳ ; Truthy function that always returns True
+ⴴ ; Falsey function that always returns False
+□ ; None
+ᐦ ; Empty string
+∞ ; Infinity
+î ; Imaginary unit
+ℇ ; Euler's number
+τ ; Tau
+π ; ½τ
+󷺍 ; ½π

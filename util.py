@@ -14,7 +14,7 @@ from itertools import accumulate, pairwise, starmap, \
 from more_itertools import *
 from pickle import loads, dumps
 import textwrap as TW
-import os, re, colored
+import os, re
 exit_ = exit
 
 setrecursionlimit(1_000_000)
@@ -110,17 +110,28 @@ def termclr(t, fg=ᗜ, bg=ᗜ, rst=ⴳ):
     return R + str(t) + TERM_RESET * bool(rst)
 
 class Z:
-    s = [colored.Fore.WHITE+colored.Back.BLACK]
-    d_b, d_f = colored.Back.__dict__, colored.Fore.__dict__
+    __slots__ = ()
+    s = [termclr(ᐦ, (255,)*3, (0,)*3)]
+    clrs = { k:tuple(v.to_bytes(3)) for k,v in {
+                "w"  : 0xFFFFFF, "wh" : 0xFFFFFF,
+                "b"  : 0x0000FF, "bl" : 0x0000FF,
+                "bla": 0x000000, "gre": 0x00FF00,
+                "g"  : 0xAAAAAA, "r"  : 0xFF0000,
+                "red": 0xFF0000, "yel": 0xFFFF00,
+                "pu" : 0xFF00FF, "p"  : 0xFF8888  }.items() }
     def __getattr__(𝕊, a):
         if a == 'p':
             Z.s.pop()
         else:
-            if a[0] == 'b': m, a = Z.d_b, a[1:]
-            else: m = Z.d_f
-            if   a[0] == 'd': a =  "DARK_" + a[1:]
-            elif a[0] == 'l': a = "LIGHT_" + a[1:]
-            Z.s.append(m[min(ᖵ(lambda x: x.startswith(a), m), key=ⵌ)])
+            if a[0] == 'b':
+                m, a = 'B', a[1:]
+            else:
+                m = 'F'
+            if   a[0] == 'd': t, a = 0.5, a[1:]
+            elif a[0] == 'l': t, a = 2.0, a[1:]
+            else            : t = 1
+            c = tuple(min(int(x*t),255) for x in Z.clrs[a.lower()])
+            Z.s.append(termclr(ᐦ, c, ᗜ, rst=ⴴ) if m=='F' else termclr(ᐦ, ᗜ, c, rst=ⴴ))
         return Z.s[-1]
 Z=Z()
 

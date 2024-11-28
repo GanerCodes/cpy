@@ -26,7 +26,7 @@
     
     ⊢ P(󱁕, fs=✓):
         clc = ⥌x,c="BL"↦getattr(Z,c)+x+Zᵂ
-        ML = 󰲡x🃌-←(Zᵂ,Zᴮᴸ,Zᴿᴱ,Zᵈᴮᴸ,Zᴳᴿᴱ,Z󰀘ᴱᴸ)ᴍk↦x.count(k)⋅🃌k󰅂Σ0
+        ML = 󰲡x🃌-←(Zᵂ,Zᴮᴸ,Zᴿᴱᴰ,Zᵈᴮᴸ,Zᴳᴿᴱ,Z󰀘ᴱᴸ)ᴍk↦x.count(k)⋅🃌k󰅂Σ0
         ⊢ box(x):
             (o, c), O, C = ‹[] ⎡⎢⎣ ⎤⎥⎦›⍭ᴍ²(󰲡clc(x,"dBL"))
             x = x.split←𝗻
@@ -34,7 +34,7 @@
             ms = xᴍML→⤉
             ↪ 𝗻.join(x ᙡ ꟿ󰲥(O[n≔1-x≅□+z≅□]+y+(ms-ML(y))⋅𝘀+Cₙ))
         ¿¬←󱁕ᐹ𝐍: ↪ᔐ∘󱁕
-        ∅ = clc(␛∅, "RE")
+        ∅ = clc(␛∅, "RED")
         
         ⊢ format_e(e):
             ¿¬e: ↪ᐦ
