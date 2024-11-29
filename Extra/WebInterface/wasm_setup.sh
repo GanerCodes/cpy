@@ -14,8 +14,8 @@ mkdir -p "$TMPF" || :
 ☾ code_cache_dir="$TMPF/code" gram_cache_dir="$TMPF/gram" "force_caches.☾"
 
 cp -r "$TMPF" `realpath ./cpy_wasm_cache` || :
-zip "$FILE" -r -UN=UTF8 ./cpy_wasm_cache
+zip "$FILE" -r ./cpy_wasm_cache
 cd ../..
-zip "$FILE" -r -UN=UTF8 compiler FontCompose/.SCRIPT_MAP FontCompose/Output/*.json Languages *.py -x "*/__pycache__/*"
+zip "$FILE" -r compiler FontCompose/.SCRIPT_MAP FontCompose/Output/*.json Languages *.py -x "*/__pycache__/*"
 cd -
 ☾ gen.☾

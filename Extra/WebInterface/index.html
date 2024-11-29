@@ -160,7 +160,8 @@
                 await py.runPythonAsync(`
                     import shutil
                     from pyodide.http import pyfetch
-                    await (await pyfetch("wasm_stuff.zip")).unpack_archive(extract_dir="/tmp/cpy_wasm_cache/")
+                    await (await pyfetch("wasm_stuff.zip")).unpack_archive()
+                    shutil.move("./cpy_wasm_cache", "/tmp")
                     print("Installed ☾")`);
                 await py.runPythonAsync(`
                     from refresher import run_moon
