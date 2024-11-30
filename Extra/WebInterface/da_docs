@@ -206,6 +206,7 @@
 ⴳ ; Truthy function that always returns True
 ⴴ ; Falsey function that always returns False
 □ ; None
+󰮈 ; Delete element from iteration
 ᐦ ; Empty string
 ∞ ; Infinity
 î ; Imaginary unit
