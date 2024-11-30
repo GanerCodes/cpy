@@ -42,6 +42,7 @@
 ∨ ; OR (short circuits)
 ⩔ ; OR (doesn't short circuit)
 󷺥 ; NOR (short circuits)
+󷺫 ; NOR (doesn't short circuit)
 󷺤 ; XOR
 󷺦 ; NXOR
 
@@ -181,6 +182,7 @@
 ᚤ ; first unique
 ☾ ; print
 🃌 ; length/cardinality
+𝌂 ; partition
 
 ¬ ; not
 ¯ ; negate
