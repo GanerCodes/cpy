@@ -124,17 +124,17 @@ lang.ops["←"].R |= {"⭢"}
 ◄ᴮᴺ󰁏 ►ᴮᴺ󰁏
 ⋄ᴮᴺ
 ∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴾ󰀒ᴮᴺ ⊞ᴾ󰀒ᴮᴺ ∖ᴮᴺ
-≅ᴮᴺ󰁍 ≇ᴮᴺ󰁍  //ᴮᴺ  ⹏ᴮᴺ   /ᴮᴺ   ÷ᴮᴺ  %ᴮᴺ  ␛
-     @ᴮᴾᴺ󰁞  ⋅ᴮᴺ  *ᴮᴺᴾ󰁞 √ᴾᴺ   !󰁏󰀒ᴺ ␛
+≅ᴮᴺ󰁍 ≇ᴮᴺ󰁍  //ᴮᴺ  ⹏ᴮᴺ   /ᴮᴺ   ÷ᴮᴺ  %ᴮᴺ ␛
+     @ᴮᴾᴺ󰁞 √ᴾᴺ   *ᴮᴺᴾ󰁞 ⋅ᴮᴺ   !󰁏󰀒ᴺ ␛
      ⋀ᴾ󰀒ᴺ  ⋁ᴾ󰀒ᴺ  ⫰ᴾ󰀒ᴺ  ⫯ᴾ󰀒ᴺ  ␛
      ⟕ᴮᴾ󰀒ᴺ ⨝ᴮᴾ󰀒ᴺ ⟗ᴮᴾ󰀒ᴺ ⟖ᴮᴾ󰀒ᴺ ⴵᴾ󰀒ᴺ ␛
-     󰑁ᴮᴺ󰀒  󰑅ᴮᴺ󰀒  󰑃ᴮᴺ󰀒  ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ ␛
+     󷹓ᴮᴺ󰀒  󷹔ᴮᴺ󰀒  󰑅ᴮᴺ󰀒  󷹕ᴮᴺ󰀒  󷹖ᴮᴺ󰀒 ␛
      󷸹ᴮᴾ󰀒ᴺ 󷸸ᴮᴾ󰀒ᴺ 󷸻ᴮᴾ󰀒ᴺ 󷸺ᴮᴾ󰀒ᴺ ⍭ᴾ󰀒ᴺ ␛
      ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ ⤉ᴮᴾ󰀒ᴺ ↨ᴾ󰀒ᴺ  ⭥ᴾ󰀒ᴺ ␛
      ⬓ᴾ󰀒ᴺ  ▢ᴮᴾ󰀒ᴺ ⬒ᴾ󰀒ᴺ  󰸵ᴮᴺ   󰸷ᴮᴺ  ␛
      󷹌ᴮᴾ󰀒ᴺ 󷹍ᴮᴾ󰀒ᴺ 󷹎ᴮᴾ󰀒ᴺ 𝌂ᴮᴾ󰀒ᴺ ᴙᴾ󰀒ᴺ ␛
      ⬄ᴮᴾ󰀒ᴺ 󰌷ᴮᴾ󰀒ᴺ 󰛔ᴮᴾ󰀒ᴺ ᚤᴮᴾ󰀒ᴺ ☾ᴾ󰀒ᴺ ␛
-     🃌ᴾ󰀒ᴺ
+     🃌ᴾ󰀒ᴺ  ⛶ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
 ␀CATᴮᴺ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮᴺ
@@ -290,7 +290,7 @@ def σ_03():
         return [OP.TND('.'), t]
     
     ((yield replacement("subscript", rec='A', n="Subscripts to brackets"))
-    (lambda n: mkgrp(gram(SCRIPT.nrm(n.c), "exprs"), b="[]")))
+    (lambda n: mkgrp(tree_transform(gram(SCRIPT.nrm(n.c), "exprs"), 3+1), b="[]")))
     
     ((yield replacement("norm_expr", "expr_not_colon", "expr_not_comma", rec='B',
                         n="Normalize expression types"))

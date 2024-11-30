@@ -1,8 +1,8 @@
- 󰤱  ⤉⤈󰒼󰒽 work w/ 󰮈
- 󰤱  󰑁 󰑃 need to include and make versions that dont include the thingyasaadsadasd
  󰤱  https://ganer.xyz/s/a3bdeb03b420d515
+ 󰤱  local cache
+ 󰤱  cli for generating font pls
  󰤱􊽨 Make x⭜y⭝z store vals
- 󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽󰑅󰑁󰑃
+ 󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?
 
 󰮈
 

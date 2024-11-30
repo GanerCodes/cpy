@@ -151,12 +151,11 @@
 ⟕ ; join include left
 ⟗ ; join include left and right
 ⟖ ; join include right
-ⴵ ; sign of number
-󰑁 ; before condition
+󷹕 ; before
+󷹓 ; before and including
 󰑅 ; at condition
-󰑃 ; after condition
-⛶ ; enlist
-⍉ ; transpose
+󷹔 ; after and including
+󷹖 ; after
 󷸹 ; range excluding end
 󷸸 ; range excluding start and end
 󷸻 ; range
@@ -176,13 +175,16 @@
 󷹍 ; split include 1-per-consecutive seperators
 󷹎 ; split disregard seperators
 ⬄ ; strip
+𝌂 ; partition
 ᴙ ; reverse
 󰌷 ; chain iterables
 󰛔 ; string replacement
 ᚤ ; first unique
 ☾ ; print
+⛶ ; enlist
+⍉ ; transpose
+ⴵ ; sign of number
 🃌 ; length/cardinality
-𝌂 ; partition
 
 ¬ ; not
 ¯ ; negate

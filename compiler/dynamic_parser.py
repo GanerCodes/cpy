@@ -120,14 +120,17 @@ class DynamicParser:
     def get_orders(𝕊):
         return sorted(set.union(*(set(x.keys()) for x in 𝕊.tree_manips.values())))
     
-    def tree_transform(𝕊, n):
+    def tree_transform(𝕊, n, max_order=99999):
         n = 𝕊.general_tree_manip(n)
-        DEBUG and (print(f"{Z.red}{'-'*100}{Z.wh}"), n.print())
+        if DEBUG: (print(f"{Z.red}{'-'*100}{Z.wh}"), n.print())
         for order in 𝕊.get_orders():
-            DEBUG and print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}")
+            if order[0] >= max_order:
+                if DEBUG: print(f"{Z.pu} {order[0]} >= {max_order}, stopping.")
+                break
+            if DEBUG: print(f"{Z.bpu}+{Z.bbla} {Z.pu}{'-'*10}{Z.wh} {order}")
             n = 𝕊.lang_tree_manip(n, order)
-            DEBUG and n.print()
-        DEBUG and print(f"{Z.red}{'-'*100}{Z.wh}")
+            if DEBUG: n.print()
+        if DEBUG: print(f"{Z.red}{'-'*100}{Z.wh}")
         return n
     
     def add_generator(𝕊, f, *names):
@@ -136,8 +139,7 @@ class DynamicParser:
     def gen(𝕊, n):
         if n.t in 𝕊.generators:
             return 𝕊.generators[n.t](n)
-        else:
-            return n.c if n.S else ᒍ(ᐦ, ᴍ(𝕊.gen, n.c))
+        return n.c if n.S else ᒍ(ᐦ, ᴍ(𝕊.gen, n.c))
     
     def format_grammar_toks(𝕊, toks):
         return rgx_or(sorted(toks, key=ⵌ, reverse=ⴳ))
@@ -167,4 +169,5 @@ class DynamicParser:
              "parse_expr": 𝕊.lang.op_man.parse_expr,
               "into_expr": into_expr,
                    "gram": lambda *a,**k: 𝕊.lang.gram(*a,**k),
+         "tree_transform": 𝕊.tree_transform,
                     "gen": 𝕊.gen } | 𝕊.get_namespace_head()

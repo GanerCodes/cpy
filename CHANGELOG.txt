@@ -333,8 +333,11 @@ oh and nOW i had to do 󷺒
 Added 𝌂, beesbeesentially:
     󰤱
 
-if 󰈲/󰈳 has w/ non-ƒ RHS then it checks for equality
+if 󰈲/󰈳//󰒼/󰒽/󰤱 has w/ non-ƒ RHS then it checks for equality
 
 idk how i didnt think of this but like if you're mapping and your function returns 󰮈 then its removed from the map
 
 got rid of the `colored` dependency yay
+
+REMOVED: 󰑁 󰑃
+ADDED: 󷹓 󷹔 󷹕 󷹖
