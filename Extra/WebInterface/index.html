@@ -106,7 +106,7 @@
             const ets = document.getElementById("entries");
             const cli = document.getElementById("cli_in");
             const syt = document.getElementById("symbolTable");
-            ets.onclick = _ => cli.focus();
+            // ets.onclick = _ => cli.focus();
             const reformt = s => {
                 const 𝑓 = (x, ...𝔸) => {
                     const ε = document.createElement("text");
@@ -147,7 +147,9 @@
                 Object.entries(docs).forEach(([k,v]) => {
                     const ε = reformt(k);
                     syt.appendChild(ε);
-                    ε.onclick = _ => { cli.value += ε.querySelector("text:not(:has(> *))").innerText; }; });
+                    ε.onclick = _ => {
+                        cli.value += ε.querySelector("text:not(:has(> *))").innerText;
+                        cli.focus(); }; });
                 log("Loaded Symbol Table");
                 
                 log("Loading WASM Python…");
