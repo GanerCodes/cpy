@@ -35,6 +35,6 @@ class FileCacher:
             𝕤.ℭ[h] = v
         if 𝕤.p:
             W = 𝕤.𝓢(v)
-            with open(h, "wb") as f:
+            with open(p, "wb") as f:
                 f.write(W)
         return v

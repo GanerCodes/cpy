@@ -1,6 +1,6 @@
 in_font        = ‹JuliaMono/JuliaMono-Regular.ttf›
 custom_symbols = ‹customSymbols.ttf›
-EXT = "ttf"
+EXT = "otf"
 
 𝔦𝔪𝔭∘␛s ; ldir
 󰋺("CONFIGURE", *)
