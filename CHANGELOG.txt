@@ -341,3 +341,5 @@ got rid of the `colored` dependency yay
 
 REMOVED: 󰑁 󰑃
 ADDED: 󷹓 󷹔 󷹕 󷹖
+
+slightly less stupid caching
