@@ -1,4 +1,3 @@
- 󰤱  https://ganer.xyz/s/a3bdeb03b420d515
  󰤱  local cache
  󰤱  cli for generating font pls
  󰤱􊽨 Make x⭜y⭝z store vals
