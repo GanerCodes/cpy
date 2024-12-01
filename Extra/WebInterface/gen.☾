@@ -18,6 +18,9 @@ real_files = ‹wasm_stuff.zip font.ttf›⍭
         ⸘P≡"font.ttf":
             𝕊.send_header("Content-type", "application/x-font-ttf")
             𝚋 = ᵇ("../../FontCompose/Output/99_JuliaMono-Regular.ttf")
+        ⸘P≡"moon.svg":
+            𝕊.send_header("Content-type", "image/svg+xml")
+            𝚋 = ᵇ("../Assets/moon.svg")
         ¡:
             𝚋 = ᵇ(P∈real_files⭜P⭝"index.html")
         𝕊.end_headers 
