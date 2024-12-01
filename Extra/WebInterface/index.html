@@ -146,6 +146,7 @@
                 const docs = await (await fetch("docs")).json();
                 Object.entries(docs).forEach(([k,v]) => {
                     const ε = reformt(k);
+                    ε.title = v[0];
                     syt.appendChild(ε);
                     ε.onclick = _ => {
                         cli.value += ε.querySelector("text:not(:has(> *))").innerText;

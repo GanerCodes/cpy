@@ -14,19 +14,19 @@
 ⸘ ; Python "elif"
 ¡ ; Python "else"
 
-⭜ ; Ternary if
+⭜ ; ternary if
     "x ⭜ y ⭝ z" ; y if x else z
     "x ⭜ y" ; y if x else □
-⭝ ; Ternary else
+⭝ ; ternary else
     %REF⭝%
 
-⬅ ; Push right into left (Strongest)
-➡ ; Push left into right (Strongest)
-← ; Push right into left (Medium)
-⥉ ; Swap right and left (Medium)
-→ ; Push left into right (Medium)
-⭠ ; Push right into left (Weakest)
-⭢ ; Push left into right (Weakest)
+⬅ ; push right into left (Strongest)
+➡ ; push left into right (Strongest)
+← ; push right into left (Medium)
+⥉ ; swap right and left (Medium)
+→ ; push left into right (Medium)
+⭠ ; push right into left (Weakest)
+⭢ ; push left into right (Weakest)
 
 ≔ ; Assign to left
     "x ≔ 2+2"
@@ -198,23 +198,23 @@
 ℵ ; magic namespace: iterates by pairs
 ℶ ; magic namespace: iterates by values
 
-𝗙 ; Check if function
-𝗜 ; Check if iterable
-𝗛 ; Check if hashable, if so, return hashed value
+𝗙 ; check if function
+𝗜 ; check if iterable
+𝗛 ; check if hashable, if so, return hashed value
 􋐳 ; cos
 􋐲 ; sin
 􋐴 ; tan
 􋑯 ; log
-✓ ; True
-✗ ; False
-ⴳ ; Truthy function that always returns True
-ⴴ ; Falsey function that always returns False
-□ ; None
-󰮈 ; Delete element from iteration
-ᐦ ; Empty string
-∞ ; Infinity
-î ; Imaginary unit
-ℇ ; Euler's number
-τ ; Tau
+✓ ; true
+✗ ; false
+ⴳ ; truthy function that always returns True
+ⴴ ; falsey function that always returns False
+□ ; none
+󰮈 ; delete element from iteration
+ᐦ ; empty string
+∞ ; infinity
+î ; imaginary unit
+ℇ ; euler's number
+τ ; tau
 π ; ½τ
 󷺍 ; ½π
