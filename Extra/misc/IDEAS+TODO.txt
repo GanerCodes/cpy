@@ -1,6 +1,3 @@
- 󰤱  fix `rgx_ranges(𝑙∘‹\]-› →󰛔􊾖⁺󰀂← ‹\\ \] \-›⍭)`
- 󰤱  in lang add mod that prevents capital letter modifiers from doing stuff
- 󰤱  test thing that auto-pulls the updates website
  󰤱  cli for generating font pls
  󰤱􊽨 Make x⭜y⭝z store vals
  󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?
