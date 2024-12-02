@@ -11,9 +11,9 @@ check_for_updates() {
   cd "$REPO_DIR" || exit 1
   git fetch origin
   LOCAL=$(git rev-parse HEAD)
-  REMOTE=$(git rev-parse origin)
+  RMOTE=$(git rev-parse origin)
   cd -
-  if [ "$LOCAL" != "$REMOTE" ]; then
+  if [ "$LOCAL" != "$RMOTE" ]; then
     return 0
   else
     return 1
