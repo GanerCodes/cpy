@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e && cd "$(dirname `realpath -s $0`)"
 
-# mostly AI here
-
 REPO_DIR="../../"
 TMUX_SESSION_NAME="WASMoonHTTP"
 COMMAND="☾ gen.☾"
