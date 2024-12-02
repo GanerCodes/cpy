@@ -19,7 +19,7 @@ exit_ = exit
 
 setrecursionlimit(1_000_000)
 
-# poorman's cpy
+# poorman's ☾
 wrg = lambda F: lambda*a,**k:[*F(*a,**k)]
 print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 (ń,ś),ᐦ = '\n ', ''
@@ -73,6 +73,9 @@ class Holder:
     def s(𝕊,*a,**k):𝕊.A,𝕊.K=a,k;return 𝕊
     __iter__=lambda 𝕊:iter((𝕊.A,𝕊.K))
     __repr__=lambda 𝕊:f"Holder: {𝕊.A=} {𝕊.K=}"
+
+class Bunch(dict):
+    __getattr__ = lambda 𝕊, x: 𝕊[x]
 
 def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
     L = ᒪ(L)
@@ -156,6 +159,42 @@ class SCRIPT:
 # CHAR_NRM = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ0123456789:,<>;?!+-/*=(){}[]&$%~𐞑∞"""
 # CHAR_SUP = """ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾󰁸󰁹󰁺󰁻◌◌◌˜𐞑󰂃"""
 # CHAR_SUB = """ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎󰄕󰄖󰄗󰄘﹠﹩﹪◌◌"""
+
+def parse_sysargs(𝐴, **𝕂):
+    𝐴, alias = 𝐴.copy(), {}
+    𝕂 = ᖱ([ᖇ(y,*"-_") if ᐹ(y,ᔐ) else y for y in x] for x in 𝕂.items())
+    for k, v in ᒪ(𝕂.items()):
+        if ᐹ(v, ᔐ) and v:
+            del 𝕂[k]
+            alias[k] =v
+    while 𝐴:
+        if not (T := 𝐴[0]).startswith("-"):
+            if T == "/": 𝐴.pop(0)
+            break
+        t, *E = ⵉ(T[1:], '=', 1)
+        if not t.startswith("-"):
+            𝐴[0:1] = [f"--{x}{E and '='+E[0] or ᐦ}" for x in t]
+            continue
+        t = ᖇ(alias.get(*(ᖇ(t[1:],*"-_"),)*2),*"-_")
+        e = E and ⵉ(E[0], ',')
+        assert t in 𝕂, f'Unknown argument, "{t}"'
+        if ᐹ(v := 𝕂[t], tuple): v, _ = v
+        
+        if   ᐹ(v, ᒪ):
+            assert e, f'Need at least one value for "{t}"'
+            𝕂[t] = [*v, *e]
+        elif ᐹ(v, ᔐ):
+            assert ⵌ(e)==1, f'Exactly 1 value accepted for "{t}"'
+            assert not v, f'Duplicate entry for "{t}"'
+            𝕂[t] = e[0]
+        elif ᐹ(v, int):
+            assert ⵌ(e) <= 1, f'0 or 1 values accepted for "{t}"'
+            assert not e or ᐹ(e[0], int), f'Value 2 must be int for "{t}"'
+            𝕂[t] = v + int(e[0] if e else 1)
+        else:
+            assert ⴴ
+        𝐴.pop(0)
+    return 𝐴, Bunch({k: v[1] if ᐹ(v, tuple) else v for k,v in 𝕂.items()})
 
 DEBUG_NS = { "mk": lambda x:lambda *𝔸,**𝕂:DEBUG_NS[x](*𝔸,**𝕂),
              "BP": ZIL, "togprof": ZIL }

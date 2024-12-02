@@ -159,7 +159,6 @@ class DynamicParser:
         return {
             "register": 𝕊.register_tokset,
               "op_man": 𝕊.lang.op_man,
-               "CONST": {},
                 "lang": 𝕊.lang }
     def get_namespace_gen(𝕊):
         return {

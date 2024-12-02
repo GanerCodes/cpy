@@ -163,7 +163,6 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
         quit and exit(1)
 
 def run_moon(𝔸, extract_interactive=ⴴ):
-    𝔸_copy = 𝔸.copy()
     try:
         import readline
         Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
@@ -171,27 +170,18 @@ def run_moon(𝔸, extract_interactive=ⴴ):
     except Exception:
         readline = ⴴ
     
-    nargs = []
-    𝕂 = { "code_cache_dir": CODE_CACHE_DIR, "gram_cache_dir": GRAM_CACHE_DIR }
-    for t in 𝔸:
-        if '=' in t:
-            x, y = t.split('=', 1)
-            if x in 𝕂:
-                𝕂[x] = y
-            continue
-        nargs.append(t)
-    𝔸.clear() ; 𝔸.extend(nargs)
-    agets = lambda x: (𝔸.count(x := "--"+x), y:=[t for t in 𝔸 if t != x], 𝔸.clear(), 𝔸.extend(y))[0]
+    𝔸, 𝕂 = parse_sysargs(𝔸, verbose=0, debug=0, no_cache=0,
+                         code_cache_dir=(ᐦ, CODE_CACHE_DIR),
+                         gram_cache_dir=(ᐦ, GRAM_CACHE_DIR))
+    if 𝕂.debug: print(f"{𝔸=}\n{𝕂=}")
     
     cpy_kwargs = {
         "ns": (ns := {}),
-        "interactive_defaults": {
-             "global_verbose_debug": agets("verbose") },
-        "do_cache": not agets("no-cache") } | 𝕂
-    arg_debug = agets("debug")
+        "interactive_defaults": { "global_verbose_debug": 𝕂.verbose },
+        "do_cache": not 𝕂.no_cache } | 𝕂
     
-    if len(𝔸):
-        ns["__file__"] = (f := os.path.abspath(𝔸[0]))
+    if 𝔸:
+        ns["__file__"] = f = os.path.abspath(𝔸[0])
         cpy = basic_cpy_interactive_session(**ᖱ(
                 print_code   = ⴴ,
                 print_output = ⴴ,
@@ -203,18 +193,16 @@ def run_moon(𝔸, extract_interactive=ⴴ):
             ns, quit=ⴳ)
         exit()
     
-    if readline:
-        fancy = lambda x: f"\001\x1b[38;2;255;0;135m\002{x}\001\033[0m\002"
-        swap_ln = lambda x: f"\033[1A{x}\033[K"
-    else:
-        fancy = lambda x: f"\x1b[38;2;255;0;135m{x}\033[0m"
-        swap_ln = lambda x: x
+    fancy, swap_ln = (lambda x: f"\001\x1b[38;2;255;0;135m\002{x}\001\033[0m\002",
+                      lambda x: f"\033[1A{x}\033[K") \
+                        if readline else \
+                     (lambda x: f"\x1b[38;2;255;0;135m{x}\033[0m", ID)
     pmt, ret = fancy('✝')+ś, fancy('⮡')+ś
     
     cpy_kwargs.setdefault("interactive_defaults", {})
     cpy_kwargs["interactive_defaults"] |= { "dynamic_compile": ⴳ }
     cpy = basic_cpy_interactive_session(**ᖱ(
-          print_code   = arg_debug,
+          print_code   = 𝕂.debug,
           print_output = ⴳ) | cpy_kwargs)
     
     def 𝑓(c):
@@ -225,7 +213,7 @@ def run_moon(𝔸, extract_interactive=ⴴ):
         if readline:
             readline.append_history_file(1, HISTORY_FILE)
             if c == "☾":
-                os.execv(sys.executable, (sys.executable, __file__, *𝔸_copy))
+                os.execv(sys.executable, (sys.executable, __file__, *𝔸))
             elif c == "clear":
                 os.system("clear")
                 return
@@ -246,12 +234,12 @@ def run_moon(𝔸, extract_interactive=ⴴ):
             print()
             exit()
 
-# cpy_test("""x¿a∧b¡y""", exit=ⴳ)
-# cpy_test("""+𝔸ᵥ ¿𝔸ᵥ􊮝₀≅␀∨𝔸🃌≡1∨𝔸ᵥ􊮝₁≅␀¡ 𝔸₀+𝔸₁""", exit=ⴳ)
 
 if __name__ == "__main__":
     run_moon(sys.argv[1:])
 
+# cpy_test("""x¿a∧b¡y""", exit=ⴳ)
+# cpy_test("""+𝔸ᵥ ¿𝔸ᵥ􊮝₀≅␀∨𝔸🃌≡1∨𝔸ᵥ􊮝₁≅␀¡ 𝔸₀+𝔸₁""", exit=ⴳ)
 # cpy_test("""􊬲ₐaₐ􊬲""", exit=ⴳ)
 # cpy_test("""\nx=⟦\n    A\n    B\n⟧\ny=⟦A\n   B⟧""".strip(), exit=ⴳ)
 # debug_test_exit("""⥌𝕊,t↦𝕊ᵗ≔t""")

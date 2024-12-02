@@ -1,3 +1,4 @@
+ 󰤱  thing that auto-pulls the updates website
  󰤱  cli for generating font pls
  󰤱􊽨 Make x⭜y⭝z store vals
  󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?

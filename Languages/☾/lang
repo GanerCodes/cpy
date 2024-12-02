@@ -10,7 +10,7 @@
 from whitespace_tools import *
 from string import ascii_uppercase
 from py_naming_tools import *
-py_escape_var = lambda x, f=py_escape_var: f(x, 'NOVAR' not in CONST)
+py_escape_var = lambda x, f=py_escape_var: f(x, ⴳ)
 
 mkexp = lambda *X: Ń("expr", *X)
 mkgrp = lambda *X, b="()": Ń("group", b[0], X[0] if ⵌ(X)==1 else X, b[1])

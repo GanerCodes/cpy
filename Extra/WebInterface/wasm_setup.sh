@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e && cd "$(dirname `realpath -s $0`)"
 
 # b/c `zip` cares
