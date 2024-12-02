@@ -9,6 +9,8 @@
             @font-face {
                 font-family: 'JuliaMonoCustom';
                 src: url('font.ttf') format('truetype'); }
+            :root {
+                --rainbowDark: linear-gradient(45deg, rgba(255,0,0,0.75) 0%, rgba(255,154,0,0.75) 10%, rgba(208,222,33,0.75) 20%, rgba(79,220,74,0.75) 30%, rgba(63,218,216,0.75) 40%, rgba(47,201,226,0.75) 50%, rgba(28,127,238,0.75) 60%, rgba(95,21,242,0.75) 70%, rgba(186,12,248,0.75) 80%, rgba(251,7,217,0.75) 90%, rgba(255,0,0,0.75) 100%); }
             * {
                 box-sizing: border-box;
                 overflow-wrap: anywhere;
@@ -16,14 +18,11 @@
                 font-size: 25px;
                 font-family: 'JuliaMonoCustom' !important; }
             
-            ::-webkit-scrollbar { width: 12px; }
-            ::-webkit-scrollbar-track { background: #000; }
             ::-webkit-scrollbar-thumb {
-                background-color: #808080;
-                border-radius: 10px;
-                border: 3px solid #000; }
-            * { scrollbar-width: thin;
-                scrollbar-color: #808080 #000; }
+                background-image: var(--rainbowDark);
+                box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+                border-radius: 100px; }
+            ::-webkit-scrollbar { width: 0.4vw; }
             
             html, body {
                 background: #000; color: #fff;
@@ -113,8 +112,7 @@
                     if(𝔸.length) {
                         const γ = 𝑓(...𝔸);
                         if(!hasStyle && !x) return γ;
-                        if(γ.innerText) ε.appendChild(γ);
-                    }
+                        if(γ.innerText) ε.appendChild(γ); }
                     return ε; };
                 return 𝑓(...("[0m"+s).replace(/\x1b\[(38|48);2;([0-9]{0,3});([0-9]{0,3});([0-9]{0,3})m/gm,
                                                (_,t,r,g,b)=>"\x1b\x1c"+`${t=="38"?"color":"background-color"}:#${(256*(256*Number(r)+Number(g))+Number(b)).toString(16).padStart(6, '0')}\x1b`)
@@ -132,8 +130,8 @@
                 return x; }
             
             const auto_grow = ε => {
-                ε.style.height = "5px";
-                ε.style.height = ε.scrollHeight + "px"; };
+                ε.style.minHeight = "5px";
+                ε.style.minHeight = ε.scrollHeight + "px"; };
             
             var py;
             (async _ => {
