@@ -36,5 +36,5 @@ while :; do
   else
     echo "No update detected."
   fi
-  sleep 10
+  sleep 300
 done
