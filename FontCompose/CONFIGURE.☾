@@ -1,17 +1,17 @@
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✓ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.otf›
+COPY_OUT_FONT     = ✗ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.otf›
 CHECK_REPOS       = ✗
 GENERATE_XCOMPOSE = ✓
-NERDFONT          = ✓
-CUSTOM_SYMBOLS    = ✓
-PROCEDUAL_CHARS   = ✓
+NERDFONT          = ✗
+CUSTOM_SYMBOLS    = ✗
+PROCEDUAL_CHARS   = ✗
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
 ⦑c⦑0af⦒b⦒ 't ⟶ ✝
 
-¡PINK    ⦑c⦑ff55ff⦒⦒ ␠ ¡ORANGE ⦑c⦑f6b845⦒⦒
+¡PINK    ⦑c⦑ff55ff⦒⦒ ␠ ¡ORANGE ⦑c⦑f9a619⦒⦒
 ¡DBLUE   ⦑c⦑5a45f6⦒⦒ ␠ ¡LBLUE  ⦑c⦑67f8f1⦒⦒
 ¡YELLOW  ⦑c⦑f6d645⦒⦒ ␠ ¡RED    ⦑c⦑ff3333⦒⦒
 ¡REDPINK ⦑c⦑f64585⦒⦒ ␠ ¡GREEN  ⦑c⦑7feb2d⦒⦒
@@ -262,21 +262,21 @@ weed⟦𝕊/⟧⟶󰞦󱙮
 
 ᴍdeso⟶"\overline{}"
 shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
-
-¡ℭ ⟨BLUE⟩                  ◄►󰔶
+¡ℭ ⟨BLUE⟩                  ◄►⋄
 ¡ℭ ⟨DRED⟩                  \/|&@%⹏⌃<>⩟⊼⊻⊽󷺑󷺒󷺓󷺤󷺥󷺦=+-~*⥱≪≫∖¯⊞
-¡ℭ ⟨ORANGE⟩                ᔐ
-¡ℭ ⟨DGREEN⟩                ⟞⟝ᗜńśᐦ
+¡ℭ ⟨ORANGE⟩                ᔐ󰻾ℶℵ
+¡ℭ ⟨DGREEN⟩                󰔶ᣆ⟞⟝ᗜńśᐦ
 ¡ℭ ⟨SYBLUE⟩                ⨁⨀󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽
 ¡ℭ ⟨YELLOW⟩                ᐳᐸᑀᑅᐒᐘᐵᑈᐖᐛ𝚲⥌↦␛󰅁␛󰅂
 ¡ℭ ⟨LBLEEN⟩                󱀘↪⭝⭜⨡⮌↺⇥⮂➰󱠨󰋺⚇•ᖵᖶⴷⴸᖯᒪᗯⵉᐊᐅᕦᗐᗑᓎəẞᖇᖲᖱⵗⵐᐆ
+¡ℭ ⦑c⦑44f155⦒            ⦒ 
 ¡ℭ ⦑c⦑98bf78⦒            ⦒ #$!?.,:;փ¨⋮⋯⋰⋱⠤:⠶′″‴⁗
 ¡ℭ ⦑c⦑f05aaa⦒            ⦒ 󰆴⨃➤⯈⯅⯆⯇◁△▽▷
 ¡ℭ ⦑c⦑cff576⦒            ⦒ 󷹇⌾⎉󰂆†
 ¡ℭ ⦑c⦑24ec5d⦒            ⦒ 󰤱§🝇⎊"◌"
-¡ℭ ⦑c⦑b738da⦒            ⦒ ⴵ⭥󷸸󷸹󷸺󷸻󷹓󷹕󷹔󷹖󰑅⬄ᒍ󰛔󷹌󷹍󷹎ᴙ↨ᚤ⍭⤉⤈󷹄☾🃌⛶⍉⨳▢⨝⟕⟖⟗󰸵󰸷ᣆ󰌷⬓⬒𝌂
+¡ℭ ⦑c⦑b738da⦒            ⦒ ⴵ⭥󷸸󷸹󷸺󷸻󷹓󷹕󷹔󷹖󰑅⬄ᒍ󰛔󷹌󷹍󷹎ᴙ↨ᚤ⍭⤉⤈󷹄☾🃌⛶⍉⨳▢⨝⟕⟖⟗󰸵󰸷󰌷⬓⬒𝌂
 ¡ℭ ⦑c⦑f0f⦒               ⦒ ⟥⟤´꜠ᵜ𐞑
-¡ℭ ⦑c⦑bf0D65⦒            ⦒ 󱑼ᐹᐴ󷹵󷹴󰻾󱅏
+¡ℭ ⦑c⦑bf0D65⦒            ⦒ 󱑼ᐹᐴ󷹵󷹴󱅏
 ¡ℭ ⦑c⦑0f0⦒               ⦒ ✓ⴳ
 ¡ℭ ⦑c⦑f00⦒               ⦒ ✗ⴴ
 ¡ℭ ⦑c⦑f5b⦒               ⦒ ⬅➡←→⭠⭢⥉≺⊀≼⋠≾⋨⪱≻⊁≽⋡≿⋩⪲

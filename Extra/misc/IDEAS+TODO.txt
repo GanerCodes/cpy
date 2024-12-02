@@ -1,4 +1,5 @@
- 󰤱  thing that auto-pulls the updates website
+ 󰤱  fix `rgx_ranges(𝑙∘‹\]-› →󰛔􊾖⁺󰀂← ‹\\ \] \-›⍭)`
+ 󰤱  test thing that auto-pulls the updates website
  󰤱  cli for generating font pls
  󰤱􊽨 Make x⭜y⭝z store vals
  󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?
