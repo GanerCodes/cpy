@@ -1,11 +1,12 @@
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/Configs/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✗ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.otf›
+COPY_OUT_FONT     = ✓ ∧ ‹/Configs/Fonts/99_JuliaMono-Regular.ttf›
+OUTPUT_EXTS       = ‹otf ttf woff2›⍭
 CHECK_REPOS       = ✗
 GENERATE_XCOMPOSE = ✓
 NERDFONT          = ✗
-CUSTOM_SYMBOLS    = ✗
-PROCEDUAL_CHARS   = ✗
+CUSTOM_SYMBOLS    = ✓
+PROCEDUAL_CHARS   = ✓
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
@@ -263,13 +264,13 @@ weed⟦𝕊/⟧⟶󰞦󱙮
 ᴍdeso⟶"\overline{}"
 shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
 ¡ℭ ⟨BLUE⟩                  ◄►⋄
-¡ℭ ⟨DBLUE⟩                 ᐦ□ᗜ
-¡ℭ ⟨DRED⟩                  \/@<>⩟⊼⊻⊽󷺑󷺒󷺓󷺤󷺥󷺦=~*⥱≪≫
+¡ℭ ⟨DBLUE⟩                 ᐦ□ᗜ⟞⟝
+¡ℭ ⟨DRED⟩                  \/@<>⩟⊼⊻⊽󷺑󷺒󷺓󷺤󷺥󷺦~*⥱≪≫
 ¡ℭ ⟨ORANGE⟩                󰻾ℶℵ󰮈ᔐ󱠨󰋺
-¡ℭ ⟨DGREEN⟩                󰔶ᣆ⟞⟝ńś
+¡ℭ ⟨DGREEN⟩                󰔶ᣆńś
 ¡ℭ ⟨SYBLUE⟩                ⨁⨀󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽
 ¡ℭ ⟨YELLOW⟩                ᐳᐸᑀᑅᐒᐘᐵᑈᐖᐛ𝚲⥌↦␛󰅁␛󰅂
-¡ℭ ⟨LBLEEN⟩                =󱀘↪⭝⭜⨡⮌↺⇥⮂➰∀⚇•ᖵᖶⴷⴸᖯᒪᗯⵉᐊᐅᕦᗐᗑᓎəẞᖇᖲᖱⵗⵐᐆ
+¡ℭ ⟨LBLEEN⟩                =󱀘↪⭝⭜⨡⮌↺⇥⮂➰∀⚇•ᖵᖶⴷⴸᖯᒪᗯⵉᐊᐅᕦᗐᗑᓎəẞᖇᖲᖱⵗⵐ
 ¡ℭ ⦑c⦑bf3⦒               ⦒ ¬¯⌃
 ¡ℭ ⦑c⦑faf⦒               ⦒ ∪∩∖⨉⊞
 ¡ℭ ⦑c⦑fb6⦒               ⦒ +-|^&⪡⪢∓±
@@ -309,14 +310,4 @@ SCRIPT_DEPTH = 2
     ⨡ platform
     platform.system ≡ "Linux" ∧ $ᴼᴱibus-daemon -dxrR󷹹
 
- 𝼋
- ¿GENERATE_XCOMPOSE:
-     𝐫( ‹cp ./Output/.XCompose /Configs/X11_Configs/.XCompose› ,shell=✓)
-     𝐫( ‹ibus-daemon -dxrR›                                    ,shell=✓)
- ¿GENERATE_FONT:
-     𝐫( ‹./ShellScripts/link_font.sh›                          ,shell=✓)
- 𝐫( ‹xrdb "/Configs/X11_Configs/.Xresources"›              ,shell=✓)
- 𝐫( ‹xset r rate 250 60›                                   ,shell=✓)
- 𝐫( ‹xmodmap "/Configs/X11_Configs/.Xmodmap"›              ,shell=✓)
- 𝐫( ‹xmodmap -e "keycode 134 = Multi_key"›                 ,shell=✓)
- maybe add a thing that disallows base symmap keys from generating even if inside the compose so we can style em?
+ 󰤱􊽨 thing that disallows base symmap keys from generating even if inside the compose so we can style em?

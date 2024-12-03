@@ -1,9 +1,14 @@
+󰋺("CONFIGURE", *)
+𝔦𝔪𝔭∘␛s ; ldir
+
 in_font        = ‹JuliaMono/JuliaMono-Regular.ttf›
 custom_symbols = ‹customSymbols.ttf›
-EXT = "otf"
+¿COPY_OUT_FONT:
+    COPY_OUT_EXT = 1󷸻𝐩(COPY_OUT_FONT).suffix
+    OUTPUT_EXTS ∪= {COPY_OUT_EXT}
+OUTPUT_EXTS = 𝑠(OUTPUT_EXTSᴍᔐ.lower)
+EXT = "ttf"
 
-𝔦𝔪𝔭∘␛s ; ldir
-󰋺("CONFIGURE", *)
 󰋺("shut")
 󰋺("process", ⠤"process load_font save_font 𝐩 𝐫"⍭)
 
@@ -64,15 +69,15 @@ cp(in_font, font ≔ fold / in_font.name)
         ƒ(font, font≔fo)
     ⸘fo.exists:
         ‹Stage ⟦s⟧ disabled, but using previous result ⟦font≔fo⟧›☾
-cp(font, font ≔ fold / ‹99_⟦in_font.stem⟧.⟦EXT⟧›)
+
+⨡ fontforge as ℱℱ
+ƒ_fnam = 󰲡fold / ‹99_⟦in_font.stem⟧.⟦x⟧›
+
+𝕗 = ℱℱ.open(ᔐ←font)
+¿1󷸻font.suffix≕ε ∈ OUTPUT_EXTS:
+    cp(font, ƒ_fnam(EXT))
+    OUTPUT_EXTS ∖= {ε}
+OUTPUT_EXTSᐖ𝕗.save(⟞ ⥉ ƒ_fnam ⥉ ᔐ)
 
 ¿COPY_OUT_FONT:
-    cp(font, COPY_OUT_FONT)
-
- ¿__name__≡"__main__":
-     fold = ‹Output›⥉𝐩→.resolve
-     cfac = 󰲡config_font_and_compose(enabled_stages=x⍭, fold=fold)
-     match sys.argv🃌>1∧sys.argv₁∨(fold.glob∘"*Nerd*"⥉𝑙→∧"medium"∨"full"):
-         case "compose": cfac←‹Compose›
-         case  "medium": cfac←‹CustomSymbols Compose Multisupersubscriptified›
-         case    "full": cfac←‹Nerd CustomSymbols Compose Multisupersubscriptified›
+    cp(ƒ_fnam∘COPY_OUT_EXT, COPY_OUT_FONT)

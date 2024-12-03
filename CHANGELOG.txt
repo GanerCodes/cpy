@@ -1,3 +1,5 @@
+󷹇 This file is ordered from old to new
+
 "x ⫰" = "⫰ x" =  abs(x)
 "x ⫯" = "⫯ x" = ¯abs(x)
 
@@ -347,5 +349,5 @@ slightly less stupid caching
 NOTE ON CURRENT DEPRECATED:
     … ζ Σ Π
     Sorta deprecated (once off python these may be removed, havent decided)
-        ** * / // << >>
+        ** * / // << >> >= <= !=
         Other python specific stuff but we'll get there when we get there
