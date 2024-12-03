@@ -2,11 +2,23 @@
  󰤱􊽨 Make x⭜y⭝z store vals
  󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?
 
-󰮈
+Cool chars:
+  ⌾✪🅭⚆⍟⦾⦿⏣
+  ⥾𖣂
+  ⧿ 󰹳  ⧟ 󱗘
+  󷹾 󷺀 󷹽 󷹿 󷹥 󷹧 󰇘 󷹦 󰘣 󰝔 󰡏 󰘡 󷹠 󰘞 󷹟 󰘟 󷹡 󰘠 󰩀 󰨾 󰨿
+  ⌘ℿ⩇⌢⌣⏜⏝≬𝄞⋿⦁⦂⦇⦈⦉⦊⨾⩤⩥϶⛯
+   󰔟󰆍󰸇󰉉󰄷󰄶󰈝󰈔󰈕󰴜󰏢󰈋󰋋󰈸󰥓
+  󰩹󰩺 
+  󰣡󰣢󰣣󰣤󰣥󰣦󰣧 󰫃󰫄󰫅󰫆󰫇󰫈 󰯁󰯂󰯃
+  𝛬󰎦󰎩󰎬󰎮󰎰󰎵󰎸󰎻󰎾󰎣
+  󰅊󰱗󰆏󰆒󱉬󱉧󰅇󰅌󱓥
+  󱣬󰈴 󰨑󱓝  
+  󰅲 󰅪 󰅩 󰅴
+  󰙨 ⹔ 󱗘 󱕛   
+  ᕻᓐᓒᔥᣛ ᔇᔅᔉᔊᓪᣗᕐᔾᖮ ᣜᣝᓫᕑᣞᣟᐝ ᗮᐪ󰂅ᓑᣕᐡᐢ ᐤᐞᐠᑊᘁᣔ
 
- 󰛔
-   (ᔐ,ᔐ): ᔐ.replace
-   (𝒾,𝑜):   replace ; 󰛔ʳ
+Old stuff under here:
 
 ∧ ; and  ; x⭜   y   ⭝x     ; ⩓
 ∨ ; or   ; x⭜   x   ⭝y     ; ⩔
@@ -15,20 +27,14 @@
 󷺒 ; nand ; x⭜(y⭜✗⭝x)⭝y⭜y⭝✓ ; 󷺬
 󷺥 ; nor  ; x⭜   ✗   ⭝y⭜x⭝✓ ; 󷺫
 
-⌾✪🅭⚆⍟⦾⦿⏣
-⥾𖣂
-𝌂
+󰮈
+ 󰛔
+   (ᔐ,ᔐ): ᔐ.replace
+   (𝒾,𝑜):   replace ; 󰛔ʳ
 
 [1,2,3] 𝌂 𝌃
 
 [1,2,5,2,3] 𝌂ⁿ 𝑓
-
-⧟
-⧿ 󰹳 
-󱗘
-󷹥 󷹧 󷹦 󰇘 󷹟 󷹠 󷹡 󷹽 󷹾 󷹿 󷺀
-
-
  10⭥ ᐵ²⦚       ⟶   10⭥ᴍ¹󰲡x²󰅂
    5 ᑀ²⦚       ⟶  (5,)ᴍ⁰󰲡x²󰅂
    5 ᑀ²+ᑅ 6    ⟶ (5,6)ꟿ⁰󰲣x²+y
@@ -90,43 +96,6 @@ if_stmt(󱁕):
         return HIGH, 󱁕₁
     return LOW
 
-Cool chars: [Note: Font Manager is good at finding these]
-  ⌘ℿ⩇⌢⌣⏜⏝≬𝄞⋿⦁⦂⦇⦈⦉⦊⨾⩤⩥϶⛯
-   󰔟󰆍󰸇󰉉󰄷󰄶󰈝󰈔󰈕󰴜󰏢󰈋󰋋󰈸󰥓
-  󰩹󰩺 
-  󰣡󰣢󰣣󰣤󰣥󰣦󰣧 󰫃󰫄󰫅󰫆󰫇󰫈 󰯁󰯂󰯃
-  𝛬󰎦󰎩󰎬󰎮󰎰󰎵󰎸󰎻󰎾
-  󰎣
-  󰅊󰱗󰆏󰆒󱉬󱉧󰅇󰅌󱓥
-  󱣬󰈴 󰨑󱓝  
-  󰅲 󰅪 󰅩 󰅴
-  󰙨 ⹔ 󱗘 󱕛   
-  ᕻᓐᓒᔥᣛ ᔇᔅᔉᔊᓪᣗᕐᔾᖮ ᣜᣝᓫᕑᣞᣟᐝ ᗮᐪ󰂅ᓑᣕᐡᐢ ᐤᐞᐠᑊᘁᣔ
-  󷹾 󷹥 󷸺 󰘣
-  󷺀 󷹧 󷸸 󰝔
-  󷹽 󰇘 󷸻 󰡏
-  󷹿 󷹦 󷸹 󰘡
-  
-  󷹠 󰘞 󷹟
-  󰘟 󷹡 󰘠
-  󰩀 󰨾 󰨿
-  
-  
-  GG: "Ⴚ" : group
-  RR: "ⴽ" : ring
-  FF: "Ғ" : field
-  CC: "Ƈ" : category
-  MO: "Ɱ" : module
-  VV: "Ѵ" : vector space
-  TT: "Ƭ" : topological space
-  ME: "Ӎ" : metric space
-  LL: "Ꝉ" : lee group
-  DD: "Ɗ" : domain
-  
-   sp: "ᔲ" suppose/assume
-  aut: "🜬" automorphism
-  end: "🜧" endomorphism
-  alg: "🜳" algebraic closure
 Bad spacing:
   Gal: "㏿" galois group
   hom: "ꖾ" category hom morphisms

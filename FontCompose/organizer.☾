@@ -13,7 +13,7 @@ pua_fold = 𝐩𝐝 / ‹PuaMaps›
 lm≔{} →►← pua_maps_in ≔ 𝑙∘pua_fold.glob("*.json") ␛
             →ᴍ 󰲡json.load(x.open) ␛
                 →ꟿᴷ󰲡x.split∘␛| ᴍ󰲡𝑖(x,16)󰅂 ⥉𝑡󰅂 ␛
-                →.items ꟿ󰲣x₀…x₁󱑼y ꟿ⥌l,c↦
+                →.items ꟿ󰲣x₀󷸹x₁󱑼y ꟿ⥌l,c↦
                 (c≡lmₗ ⨳ ‹⟦c⟧→⟦l⟧←⟦lmₗ⟧›) ¿l∈lm¡ lmₗ≔c
 ml = lm ꟿᴰ 󰲣(y,x)
 
@@ -40,7 +40,7 @@ to_ranges = lm↦[
         s ≔ lm 󰒼 → ₀,
        ⠤s ᙧ 0⋄1 ꟿ󰲣x+1≠y∧(x+1,y)󰅂 󰈲⟤ Σ(),
         s₋₁+1
-    ] ᙧ¹ ꟿ󰲣((x,y), x…yᴍ󰲡lmₓ󰅂)󰅂 ⥉ 𝑑
+    ] ᙧ¹ ꟿ󰲣((x,y), x󷸹yᴍ󰲡lmₓ󰅂)󰅂 ⥉ 𝑑
 
 ⊢ save_pua():
     lms = to_ranges(lm) ꟿᴷ󰲣 ‹⟦hex(x₀)⟧|⟦hex(x₁)⟧›

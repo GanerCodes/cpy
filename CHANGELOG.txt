@@ -343,3 +343,9 @@ REMOVED: 󰑁 󰑃
 ADDED: 󷹓 󷹔 󷹕 󷹖
 
 slightly less stupid caching
+
+NOTE ON CURRENT DEPRECATED:
+    … ζ Σ Π
+    Sorta deprecated (once off python these may be removed, havent decided)
+        ** * / // << >>
+        Other python specific stuff but we'll get there when we get there

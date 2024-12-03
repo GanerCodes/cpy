@@ -109,9 +109,6 @@
 + ; add
 - ; subtract
 
-≅ ; is same object
-≇ ; is not same object
-
 ∘ ; call left with right
 ○ ; compose functions
  ; curry function
@@ -137,10 +134,12 @@
 ⨉ ; cross product
 ⊞ ; table product
 
-⹏ ; integer division
-÷ ; division
-% ; modulo 
+≅ ; is same object
+≇ ; is not same object
 ⋅ ; multiply
+÷ ; divide
+⹏ ; integer divide
+% ; modulo
 √ ; root
 ! ; factorial
 ⋀ ; all
@@ -160,7 +159,6 @@
 󷸸 ; range excluding start and end
 󷸻 ; range
 󷸺 ; range excluding start
-⍭ ; magic string split
 ⤈ ; min
 󷹄 ; constrain
 ⤉ ; max
@@ -169,6 +167,7 @@
 ⬓ ; round down
 ▢ ; round
 ⬒ ; round up
+⍭ ; magic string split
 󰸵 ; pad left
 󰸷 ; pad right
 󷹌 ; split include all seperators
@@ -198,6 +197,7 @@
 ℵ ; magic namespace: iterates by pairs
 ℶ ; magic namespace: iterates by values
 
+󰮈 ; signal delete element from iteration
 𝗙 ; check if function
 𝗜 ; check if iterable
 𝗛 ; check if hashable, if so, return hashed value
@@ -210,7 +210,6 @@
 ⴳ ; truthy function that always returns True
 ⴴ ; falsey function that always returns False
 □ ; none
-󰮈 ; delete element from iteration
 ᐦ ; empty string
 ∞ ; infinity
 î ; imaginary unit
