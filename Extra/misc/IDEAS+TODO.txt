@@ -1,3 +1,4 @@
+ 󰤱  regex but better
  󰤱  cli for generating font pls
  󰤱􊽨 Make x⭜y⭝z store vals
  󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?
