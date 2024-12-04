@@ -15,7 +15,7 @@ def p_indent_stack(S, n=0):
     return Node("BLOCK", r)
 
 def whitespace_parser(n):
-    calc_indent = lambda n: n.t == 'W' and n.c.split('\n')[-1].count(' ') // 4 or 0
+    calc_indent = lambda n: n.t == '𝗪' and n.c.split('\n')[-1].count(' ') // 4 or 0
     if n.S: return n
     N = n.copy()
     N.c = ᴍ(whitespace_parser, N.c)
@@ -26,7 +26,7 @@ def whitespace_parser(n):
         c_pre = N.C[0]
         blocks = [[indent_pre := calc_indent(c_pre)]]
         for c in N.C:
-            if c.t == 'W':
+            if c.t == '𝗪':
                 c_pre = c
                 continue
             indent = calc_indent(c_pre)
@@ -69,7 +69,7 @@ def add_spaces(n, ignore_nodes=()):
             cc.append(α)
             if not (α.c and β.c): continue
             if incompat_char(α.rchar(), β.lchar()):
-                cc.append(Node('w', ś))
+                cc.append(Node('𝘄', ś))
         cc.append(α)
     return n.copy(c=cc)
 

@@ -1,0 +1,60 @@
+󰋺("peggle2", *)
+
+GRAM = peggle2(󰦥󰦥󰦥󰦥󰦥
+
+Ʀexpr = (⠶Ʀatom ∨ Ʀop ∨ 󰆴𝗪)*
+Ʀatom = Ʀsection ∨ Ʀrange ∨ ƦESC ∨ ƦCHR
+
+Ʀrange   = 󰆴(‹⁅› 𝗪?) (Ʀcharset ∨ Ʀrchar)+ 󰆴(𝗪? ‹⁆›)
+Ʀsection = 󰆴(‹⟨› 𝗪?) Ʀmat_name (󰆴𝗪? ↷ Ʀmat_body) Ʀmat_func 󰆴(𝗪? ‹⟩›)
+
+Ʀmat_name = ƨ((󰆴𝗪 ∨ ƦESC ∨ ~‹[^⭡]+›)*) 󰆴‹⭡› ∨ ✓
+Ʀmat_body = Ʀexpr
+Ʀmat_func = 󰆴‹⭣› ƨ((󰆴𝗪 ∨ ƦESC ∨ ~‹[^⟩]+›)*) ∨ ✓
+
+Ʀcharset = ⠶Ʀrchar ↷ 󰆴(𝗪? ↷ "…")
+Ʀrchar = ⠶ƦESC ∨ ~‹[^…⁆]›
+
+Ʀop = Ʀrrepeat ∨ ~‹[→¿⌐⨁⨀∨]›
+Ʀrrepeat = (  󰆴(‹⟮› 𝗪?) (
+                ((ƦINT∨✓) ↷ 󰆴(𝗪? ↷ ‹,›))
+                ∨ ƦINT
+           ) 󰆴(𝗪? ‹⟯›) )
+
+ƦESC = 󰆴"␐" ~‹.›
+ƦINT = ~‹[0-9]+›
+ƦCHR = ~‹[^ \n\t⭣⭡⁅⁆⟨⟩⟮⟯∨→⌐¿⨁⨀]›
+𝘄 = ~‹[ \t]›+
+𝗪 = ~‹[ \t\n]›+
+󰦥󰦥󰦥󰦥󰦥)
+
+⊢ reform_arrow(󱁕):
+    ƒ = 󰲣Ń("Ʀexpr", Ń("Ʀexpr", ⠤x), ⠤y)
+    󱁕ᶜ = 󱁕󷹎⟥ᑀᵗ≡"Ʀop"∧⟞₀ᵗ≡␛→ᐸ ſ ƒ
+    ↪ 󱁕
+⊢ reform_or(󱁕):
+    ƒ = 󰲣Ń("Ʀexpr", Ń("Ʀor", x, y))
+    󱁕ᶜ = 󱁕󷹎⟥ᑀᵗ≡"Ʀop"∧⟞₀ᵗ≡␛∨ᐸᐖŃ("Ʀexpr", ⠤⟞)ᐸ ſ ƒ
+    ↪ 󱁕
+⊢ reform_ops(󱁕):
+    ƒ = 󰲣Ń("Ʀexpr", x, y)
+    s = [] ; ↑,↓ = s.append,s.pop(󷰾)
+    󱁕ᶜ = (󱁕ᐵᵗ≡"Ʀop"⭜Ń(⟞ᵗ,⠤⟞,↓)⭝⟞ ➡⥉↑) ► s
+    ↪ 󱁕
+⊢ proc(C):
+    󱁕 = GRAM(C, "Ʀsection")
+    v = ✗⭜ᑀᴾ→►←ᐦ☾ᐸ⭝󰻾
+    v⬅󱁕
+    v⬅󱁕.ftrp("Ʀexpr"⍭, reform_arrow, pre=✓)
+    v⬅󱁕.ftrp("Ʀexpr"⍭, reform_or   , pre=✓)
+    v⬅󱁕.ftrp("Ʀexpr"⍭, reform_ops  , pre=✓)
+    v⬅󱁕.ftrp("ƦINT"⍭, ᐒŃ(⟞.as_txt, e=ℵ(T=✓)))
+    ↪ 󱁕
+
+󱁕 = proc(󰦥󰦥󰦥󰦥󰦥⁅A…BC⁆ joe⌐ ⁅D…EF⁆⨁⨀ → ⟮,2⟯⟮2⟯⟮2,⟯⟮1,5⟯󰦥󰦥󰦥󰦥󰦥)
+ 󱁕 = proc(󰦥󰦥󰦥󰦥󰦥⟨the⭡a⭣weed⟩󰦥󰦥󰦥󰦥󰦥)ᴾ
+ 󱁕 = proc(󰦥󰦥󰦥󰦥󰦥⁅A…BC⁆ joe ⌐ ⟨⁅D…EF⁆⟩ ⨁⨀ →⟮,2⟯⨁󰦥󰦥󰦥󰦥󰦥)
+ 󱁕 = proc(󰦥󰦥󰦥󰦥󰦥⟮2,3⟯󰦥󰦥󰦥󰦥󰦥)ᴾ
+ 󱁕 = proc(󰦥󰦥󰦥󰦥󰦥⁅a…zk⁆ joe⌐ ⟨⁅a…zk⁆⟩ ⨁⨀ →⟮2,⟯⨁󰦥󰦥󰦥󰦥󰦥)
+ 󱁕 = proc(󰦥󰦥󰦥󰦥󰦥abc⨁⨁→⨁d󰦥󰦥󰦥󰦥󰦥)
+ 󱁕 = proc(󰦥󰦥󰦥󰦥󰦥abcd→⨁d⨀ ∨ he ∨ llo⨁󰦥󰦥󰦥󰦥󰦥)
