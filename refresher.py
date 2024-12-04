@@ -163,13 +163,7 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
         quit and exit(1)
 
 def run_moon(𝔸, extract_interactive=ⴴ):
-    try:
-        import readline
-        Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
-        readline.read_history_file(HISTORY_FILE)
-    except Exception:
-        readline = ⴴ
-    
+    𝔸_copy = 𝔸.copy()
     𝔸, 𝕂 = parse_sysargs(𝔸, verbose=0, debug=0, no_cache=0,
                          code_cache_dir=(ᐦ, CODE_CACHE_DIR),
                          gram_cache_dir=(ᐦ, GRAM_CACHE_DIR))
@@ -193,6 +187,12 @@ def run_moon(𝔸, extract_interactive=ⴴ):
             ns, quit=ⴳ)
         exit()
     
+    try:
+        import readline
+        Path.exists(Path(HISTORY_FILE)) or W(HISTORY_FILE, ᐦ)
+        readline.read_history_file(HISTORY_FILE)
+    except Exception:
+        readline = ⴴ
     fancy, swap_ln = (lambda x: f"\001\x1b[38;2;255;0;135m\002{x}\001\033[0m\002",
                       lambda x: f"\033[1A{x}\033[K") \
                         if readline else \

@@ -189,7 +189,7 @@ def parse_sysargs(𝐴, **𝕂):
             𝕂[t] = e[0]
         elif ᐹ(v, int):
             assert ⵌ(e) <= 1, f'0 or 1 values accepted for "{t}"'
-            assert not e or ᐹ(e[0], int), f'Value 2 must be int for "{t}"'
+            assert not e or e[0].isdigit(), f'Value 2 must be int for "{t}"'
             𝕂[t] = v + int(e[0] if e else 1)
         else:
             assert ⴴ
