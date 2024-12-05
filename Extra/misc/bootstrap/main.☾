@@ -121,57 +121,58 @@ comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))
         ZZZZZz_P="+ += * ζ"⍭
 ))
 𝚝.gram.print_rules
-exit
-
-py_escape_var = py_escape_var(⬤,✓)
-
-rmk = 󰲣{k:v ∀k,v∈x.items() ¿k∉y}
-
-mkexp  = 𝚲Ń("expr", ⠤𝔸)
-mkstr  = 󰲡Ń("str", ␛", x, ␛")
-mkvar  = 󰲡Node("var", x)
-mkgrp  = ⥌⠤𝔸,b="()"↦Ń("group", b₀, 𝔸🃌≡1⭜𝔸₀⭝𝔸, b₁)
-mkexp_ = 𝚲Node("expr_", 𝔸⥉𝑙)
-fcall_ = ⥌f,⠤𝔸,E=□↦mkexp_(f, mkgxp_(𝔸 ⨝ COMMA), ⠤E∨[])
-mkgxp  = mkgrp ○ mkexp
-mkgxp_ = mkgrp ○ mkexp_
-mknex_ = 󰲣mkexp_(x, EQCLN, y)
-
-NUM_M2, NUM_M1, NUM_P0, NUM_P1 = 󷰿󷸻1 ᐖNode("number", ⟞⥉ᔐ)
-COMMA, COLON, EQCLN =      ‹, : :=›⍭ ᐖNode("oper_lit", ⟞)
-ARG_A = mkexp(("oper_lit", ␛⠤), mkvar(␛𝔸))
-ARG_K = mkexp(("oper_lit", ␛⠶), mkvar(␛𝕂))
-TAC_L, TAC_R, TRUE, FALSE, þPSH, þPOP, þþ = "⟞ ⟝ True False þPSH þPOP þþ"⍭ᴍmkvar
-þPOP_M2, þPOP_M1 = NUM_M2⋄NUM_M1 ᐖfcall_(þPOP, ⟞)
-þPOPNR = "þPOPNR" ⥉ mkvar ⥉ fcall_
 
 OPS_BUILTIN = ℵ(
     S=⍭‹›,
     N=⍭‹; : , if elif else for›,
     P=⍭‹+ - * ~ ** not yield›,
     B=⍭‹+ - * @ ** // < > % . & ^ | / != == << >> >= <= in not in is is not or and›)
+SWAP_TABLE     = ⍭‹¯ - ÷ / ⋅ * ⠤ * ⹏ // ≠ != ≔ := ≡ == ≤ <= ≥ >= ⌃ ** ⪢ >> ⠶ ** ¿ if ∈ in ∨ or ≅ is ⪡ << ∀ for ¬ not ∧ and ⊢ def 󰆴 del ␀CAT * ¡ else ⸘ elif ⮌ from ➰ while ⇥ break ⮂ yield Ω class 󱀘 class ≇ is not ⨡ import ↪ return ∉ not in ↺ continue›
+kw_pfx_colon   = ⍭‹if elif else for while try except finally class match case def with›
+kw_neverswouce = ⍭‹if elif else for yield›
+kw_inline      = ⍭‹in is is not not in or and not›
+kw_pfx         = ⍭‹return continue break pass import global nonlocal raise assert del async›
+var_spec       = 𝑠∘‹ⴳⴴ✓✗□∅󰮈⬤∞îℇτπ󷺍󷱯󷱪󷱫󷱬󷱭󷱮ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞›
+
+add_swaps = ᑀ∪ ← SWAP_TABLE 󰈲 󰲣y∈⟞󰅂 ᐵ₀
+rmk = 󰲣{k:v ∀k,v∈x.items() ¿k∉y}
+
+SWAP_TABLE = ℵ(SWAP_TABLE)
+kw_pfx_colon   = add_swaps(kw_pfx_colon)
+kw_neverswouce = add_swaps(kw_neverswouce)
+kw_inline      = add_swaps(kw_inline) ∪ kw_neverswouce
+kw_pfx         = add_swaps(kw_pfx)
+KEYWORDS_TO_CPY=rmk(SWAP_TABLE ᴍᴰ ᴙ, ‹* **›⍭)
+
+exit
+
+py_escape_var = py_escape_var(⬤,✓)
+
+𝚃      = 󰲡Ń(x,e=ℵ(T=✓))
+mkexp  = 𝚲Ń("expr", ⠤𝔸)
+mkstr  = 󰲡Ń("str", 𝚃(␛"), 𝚃(x), 𝚃(␛"))
+mkvar  = 󰲡Ń("var", 𝚃(x))
+mkgrp  = ⥌⠤𝔸,b="()"↦Ń("group", 𝚃(b₀), 𝔸🃌≡1⭜𝔸₀⭝𝔸, 𝚃(b₁))
+mkexp_ = 𝚲Node("expr_", 𝔸⥉𝑙)
+fcall_ = ⥌f,⠤𝔸,E=□↦mkexp_(f, mkgxp_(𝔸 ⨝ COMMA), ⠤E∨[])
+mkgxp  = mkgrp ○ mkexp
+mkgxp_ = mkgrp ○ mkexp_
+mknex_ = 󰲣mkexp_(x, EQCLN, y)
+
+NUM_M2, NUM_M1, NUM_P0, NUM_P1 = 󷰿󷸻1 ᐖŃ("number", 𝚃(⟞⥉ᔐ))
+COMMA, COLON, EQCLN =      ‹, : :=›⍭ ᐖŃ("oper_lit", 𝚃(⟞))
+ARG_A = mkexp(("oper_lit", ␛⠤), mkvar(␛𝔸))
+ARG_K = mkexp(("oper_lit", ␛⠶), mkvar(␛𝕂))
+TAC_L, TAC_R, TRUE, FALSE, þPSH, þPOP, þþ = "⟞ ⟝ True False þPSH þPOP þþ"⍭ᴍmkvar
+þPOP_M2, þPOP_M1 = NUM_M2⋄NUM_M1 ᐖfcall_(þPOP, ⟞)
+þPOPNR = "þPOPNR" ⥉ mkvar ⥉ fcall_
+
+kw                = kw_pfx_colon ∪ kw_pfx ∪ kw_inline
+kw_spec           = kw 󰈳 󰲡x.isalpha() ∨ x.isdigit()󰅂 ⥉ 𝑠
 OPS_BUILTIN􊯛󰂓 = OPS_BUILTIN.values() ſ ∪
 OPS_COMP = lang.op_orders ꟿⱽ 󰲣y󰈲⟥ᐒ␛λ∈lang.opsₛ󰅂 󰈲
 
-SWAP_TABLE = ℵ((⍭○←𝗻󰛔␛ )(‹
-¯ - ÷ / ⋅ * ⠤ *
-⹏ // ≠ != ≔ := ≡ == ≤ <= ≥ >= ⌃ ** ⪢ >> ⠶ ** ¿ if ∈ in ∨ or ≅ is ⪡ <<
-∀ for ¬ not ∧ and ⊢ def 󰆴 del
-␀CAT * ¡ else ⸘ elif ⮌ from
-➰ while ⇥ break ⮂ yield Ω class 󱀘 class
-≇ is not ⨡ import ↪ return ∉ not in
-↺ continue›₁﹕))
-KEYWORDS_TO_CPY=rmk(SWAP_TABLE ᴍᴰ ᴙ, ‹* **›⍭)
-
-stmerge = ᑀ∪ ← SWAP_TABLE 󰈲 󰲣y∈⟞󰅂 ᐵ₀
-
-kw_pfx_colon   = stmerge(⍭‹if elif else for while try except finally class match case def with›)
-kw_neverswouce = stmerge(⍭‹if elif else for yield›)
-kw_inline      = stmerge(⍭‹in is is not not in or and not›) ∪ kw_neverswouce
-kw_pfx         = stmerge(⍭‹return continue break pass import global nonlocal raise assert del async›)
-kw                = kw_pfx_colon ∪ kw_pfx ∪ kw_inline
-kw_spec           = kw 󰈳 󰲡x.isalpha() ∨ x.isdigit()󰅂 ⥉ 𝑠
-var_spec          = ‹ⴳⴴ✓✗□∅󰮈⬤∞îℇτπ󷺍󷱯󷱪󷱫󷱬󷱭󷱮ᐦ↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞› ⥉ 𝑠 # forced to be one char, will not act as object or attr-getter when superscript
+ forced to be one char, will not act as object or attr-getter when superscript
 escaped_var_specs = var_spec ᴍ py_escape_var ⥉ 𝑠
 
 ℵ(kw=kw,
