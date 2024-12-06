@@ -47,9 +47,9 @@ OPERATORS = 󰦥󰦥󰦥󰦥󰦥
 .ᴮ󰁏󰁔
 ...ᴺ
 
-      ｜  ␀TACITᴺ󰀒󰁏󰁜  ｜
-␀TAC  ｜ ␀TACITLᴺ󰀒󰁏󰁜  ｜
-      ｜ ␀TACITRᴺᴾ󰁏󰁜  ｜␀TAC
+      ｜␀TACIT  ᴺ󰀒  󰁏󰁜｜
+␀TAC  ｜␀TACITL ᴺ󰀒  󰁏󰁜｜
+      ｜␀TACITR ᴺᴾ  󰁏󰁜｜␀TAC
 ␀TAC  ｜␀TACITLRᴺᴾ󰀒ᴮ󰁏󰁜｜␀TAC
       ｜          ⬅ᴾ󰁏󰁜｜␀ARW_1
 ␀ARW_1｜          ➡󰀒󰁏󰁜｜
@@ -71,27 +71,57 @@ ops_spec = β󷹎𝗻 ᴍ𝘀󰛔ᐦ ᐵ󷹍(ᑀ≡␛｜⭜󰮈)ᴍ⨝→ꟿ⁰
     ch = n↦nᐹ𝑙 ⭜(n≅□ ⭜NULL⭝ into_expr(n))⭝ n
     ↪ Ń("op_call", [ch(l), op_, ch(r)])
 
-⊢ compose_ops(𝑂):
-    ops = {}
-    ∀tier ∈ 𝑂ᴙ:
-        𝐶 = 𝑠←ops.keys
+⊢ create_precedences(tiers, specials, ƒ=󰻾):
+    𝐎 = {}
+    ∀tier ∈ tiersᴙ:
+        𝐶 = 𝑠←𝐎.keys
         T = 𝑠←tierᐵ₀
         ∀𝓽,𝓶 ∈ tier:
             𝐶 = 𝐶.copy
-            ¿␛I∈𝓶:
-                𝓶 ∖= ␛I
-                𝐶 ∪= tier
+            ¿␛I∈𝓶: 𝐶 ∪= tier
             
             𝐾 = {}
             ¿𝓶∩"BS": 𝐾􊯛󰂞 = 𝐶.copy()
             ¿𝓶∩"BP": 𝐾􊯛󰂤 = 𝐶.copy()
-            op = OP(𝓽, 𝓶, 𝐶=make_op_call(op), ⠶𝐾)
-            ops􋚾 = op
-    ↪ ops
+            op = OP(𝓽, 𝓶, f=make_op_call(op), ⠶𝐾)
+            𝐎􋚾 = op
+    
+    new = {}
+    ∀L,(𝓽,𝓶),R ∈ specials:
+        L_c = L ⭜𝐎󰂞ᴸ∪𝐎󰂞ᴿ⭝ {}
+        R_c = R ⭜𝐎󰂤ᴸ∪𝐎󰂤ᴿ⭝ {}
+        ∀c∈𝐎:
+            ¿c∉L_c ∧ (O≔𝐎)ᴾᴮ: Oᴿ ∪= {𝓽}
+            ¿c∉R_c ∧ (O≔𝐎)ᴾᴮ: Oᴸ ∪= {𝓽}
+        
+        𝐾 = {}
+        ¿L: 𝐾􊯛󰂞 = 𝐎.keys∖𝐎󰂞ᴸ ∪ {L}
+        ¿R: 𝐾􊯛󰂤 = 𝐎󰂤ᴿ
+        op = OP(𝓽, 𝓶, f=make_op_call(op), ⠶𝐾)
+        new􋚾 = op
+    𝐎 |= new
+    
+    ↪ ƒ∘𝐎
 
 ops☾
 ᐦ☾
 ops_spec☾
+
+⊢ ƒ(𝐎):
+    IG = {␛.}
+    𝐎.valuesᐵᴮ∧␛δ∉v⭜(vᵗ+␛=,v)⭝󰮈ᐸ →󰌷← (":=",ops􊯛􊮝)⋄(␛≔, 𝐎.pop(␛≔))
+    new_ops = {}
+    ∀k,v∈sel:
+        new_opsₖ = OP(k, "B=", IG, ops􋕨􍍜󰂓󰂥󰂙󰂠􋕞󰂟󰂤󰂝􋕞󰂤􋕨ᴿ, vᶠ)
+    𝐎 ∪= new_ops
+    ∀k,v∈𝐎.items():
+        ¿k∈IG: ↺
+        vᴿ ∪= 𝑠(new_ops)
+
+    ops􊯛􍪪 = OP(k, "B=", ops􋕨􍍜󰂓󰂥󰂙󰂠􋕞󰂟󰂤󰂝􋕞󰂞􋕨ᴸ, IG, vᶠ)
+    ops􊯛􊱼ᴿ ∪= 𝑠("→⭢")
+    ops􊯛􊭨ᴿ ∪= 𝑠("⭢")
+    ↪ 𝐎
 
 exit
 
@@ -279,21 +309,6 @@ escaped_var_specs = var_spec ᴍ py_escape_var ⥉ 𝑠
   var_spec=var_spec)
 
 🟑
-
-IG = {␛.}
-sel = [(vᵗ+␛=, v) ∀v∈lang.ops.values() ¿vᴮ ∧ ␛δ∉v] + [(":=", lang.ops􊯛􊮝), (␛≔, lang.ops.pop(␛≔))]
-new_ops = {}
-∀k,v∈sel:
-    new_opsₖ = OP(k, "B=", IG, lang.ops􋕨􍍜󰂓󰂥󰂙󰂠􋕞󰂟󰂤󰂝􋕞󰂤􋕨ᴿ, vᶠ)
-lang.ops ∪= new_ops
-∀k,v∈lang.ops.items():
-    ¿k∈IG: ↺
-    vᴿ ∪= 𝑠(new_ops)
-lang.ops[␛≕] = OP(k, "B=", lang.ops􋕨􍍜󰂓󰂥󰂙󰂠􋕞󰂟󰂤󰂝􋕞󰂞􋕨.L, IG, vᶠ)
-
-# janky? we need test cases broooo
-lang.ops[␛⬅].R ∪= 𝑠("→⭢")
-lang.ops[␛←].R ∪= 𝑠("⭢")
 
 RED, REP = reduction, replacement
 

@@ -67,7 +67,7 @@ class Lang:
             kw = {}
             if L: kw['L'] = (ops.keys()-ops[L].L)|{L}
             if R: kw['R'] = 𝕊.modchk(
-                {x[1][0] for x in op_spec},
+                {x[1][0] for x in op_spec}, # what?
                 mod, ops[R].R)
             
             op = OP(op_t, mod, **kw)
