@@ -19,7 +19,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
     
     e = e ᙧ¹ 0⋄1
     e = e ꟿ 󰲣chr(𝑖(x,16))+y
-    r = (s+←eΣᐦ) ᴍ 󰲡clr⭜sty(x, "400" ¿b¡ 0)⭝x󰅂 Σᐦ
+    r = (s+←e⨁ᐦ) ᴍ 󰲡clr⭜sty(x, b ⭜"400"⭝ 0)⭝x󰅂 ⨁ᐦ
     ↪ r
 
 ⊢ __error_printer__(ε):
@@ -54,7 +54,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
             TB += [(f, s, __highlighter__(A),
                           __highlighter__(B,✓),
                           __highlighter__(C))]
-        ¿□≅ə≔ə.tb_next: ⇥
+        ¿ə.tb_next≕ə≅□: ⇥
     
     CLR1, CLR2 = "faf", "f55"
     

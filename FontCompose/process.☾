@@ -163,7 +163,7 @@ xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹�
     inj = ‹𝗻𝘁/*DON'T REMOVE THE START/END COMMENTS IN THIS SECTION THIS IS HOW WE FIGURE OUT WHERE EVERYTHING IS*/𝗻𝘁"highlight.regexes": ⟦jds(nj, ⠶jargs)⟧›
     S, E = "BEG PLEAD"⍭ᴍ󰲡‹/*󰦥󰦥󰦥⟦x⟧󰦥󰦥󰦥*/›
     (q≔S⋄Eᴍ󰲡x∈TXT󰅂⨁→∈0⋄2) ⨳ "Malformed indicators!"
-    TXT = TXT﹕₋₁.rstrip.rstrip∘␛, + TXT₋₁
+    TXT = TXT﹕₋₁.rstrip.rstrip(␛,) + TXT₋₁
     ¿¬q:
         "Creating indicators!"☾
         ¿¬(TXT≔TXT.rstrip).lstrip: TXT = ␛{⋄␛}
@@ -172,7 +172,7 @@ xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹�
         txt₋₁﹕ = ‹,𝗻𝘁⟦S⟧⟦inj⟧⟦E⟧𝗻}›
     ¡:
         txt=TXT⥉𝑙
-        txt[TXT.index∘S+S🃌:ei] = inj+␛,⋅((ei≔TXT.index∘E)+E🃌<TXT🃌-2)
+        txt[TXT.index(S)+S🃌:ei] = inj+␛,⋅((ei≔TXT.index(E))+E🃌<TXT🃌-2)
     p.open∘␛w→.write(txt⨁ᐦ)
 
 GRAM = ␛
