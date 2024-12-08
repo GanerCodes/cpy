@@ -1,11 +1,12 @@
 § TODOs ------------------------------------
-
+    
+     󰤱 better compose
      󰤱  regex but better
          󰤱 bootstrap everything
      󰤱  ⁿ􊽨ᴺᵁᴹ󰀂ᴾᵁ, ᴍ but threaded
          󷹇 make sure we disable automatically for like wasm?
          󰤱􊽨 option to print progress?
-     make ⪡⪢ rotate lists
+     fix ∞ symbol
      ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
      󰤱  eval bar: ⁑x󰄎2󰄎3⁞, ⁑x󰄎⬤󰄎⬤⁞
          󰤱 make version of ⁑ with 4

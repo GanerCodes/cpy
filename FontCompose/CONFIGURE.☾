@@ -1,7 +1,7 @@
 CHECK_REPOS       = ✗
 NERDFONT          = ✗
-CUSTOM_SYMBOLS    = ✗
-PROCEDUAL_CHARS   = ✗
+CUSTOM_SYMBOLS    = ✓
+PROCEDUAL_CHARS   = ✓
 GENERATE_XCOMPOSE = ✓
 OUTPUT_EXTS       = ‹otf ttf woff2›⍭
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›

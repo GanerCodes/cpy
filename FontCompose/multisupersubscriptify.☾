@@ -36,11 +36,12 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
         ‹Couldn't remove "⟦c⟧": ⟦e⟧›☾
 
 ⊢ char_maker(ƒ):
-    ⊢ 𝑓(𝒻, c, n, *𝔸, ⠶𝕂):
+    ⊢ 𝑓(𝒻, c, n, *𝔸, log=1, ⠶𝕂):
         ℊ = 𝒻.createChar(l≔ord←c, n)
-        try: 
+        try:
             𝔗(𝒻, ℊ, ⠤ƒ(𝒻, *𝔸, ⠶𝕂))
-        except Exception as e:
+        except Exception as ε:
+            ¿log≤0 ∨ (log<2 ∧ ᔐ(ε)∋"No such glyph"): ↪
             ‹Gen Err: "⟦n⟧" (⟦c⟧ @ ⟦hex←l⟧), "⟦e⟧"›☾
     ↪ 𝑓
 
@@ -61,6 +62,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
     ¡:
         ¿m≡␛b: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅¯w], w
         ⸘m≡␛p: ↪ [𝔯⋄c, 𝔱⋄0⋄.35⋅ w], w
+
 @char_maker
 ⊢ add_multichar(𝒻, s):
     ¿s🃌≡2: ↪ [𝔯⋄s₀, 𝔱⋄¯⅘w⋄0,
@@ -73,13 +75,17 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
               𝔯⋄s₂, 𝔱⋄¯w⋄⅗⋅w,
               𝔯⋄s₃, 𝔱⋄0⋄¯1.9⋅w, 𝔰⋄⅖, 𝔱⋄.7⋅w⋄⅗⋅w], w
 
-⊢ merge_into_font(𝓐, 𝓑):
+⊢ merge_into_font(𝓐, 𝓑, log=✓):
     𝓐, 𝓑 = 𝓐⋄𝓑ᐵᐹ(ᔐ|𝐩)⭜load_font(⟞)⭝⟞
+    log ⭜ ‹Merging the following chars: ›☾􊾖
     ∀𝚐∈𝓐.glyphs:
-        𝚗 = 𝚐.glyphname
-        ¿𝚗∉𝓑: 𝓑.createChar(𝚐.unicode, 𝚐.glyphname)
+        𝚗,𝚞 = 𝚐.glyphname, 𝚐.unicode
+        ¿𝚞<0: ↺
+        log⭜ chr(𝚞)☾􊾖
+        ¿𝚗∉𝓑: 𝓑.createChar(𝚞, 𝚗)
         𝓐.selection.select(𝚗) ; 𝓐.copy 
         𝓑.selection.select(𝚗) ; 𝓑.paste
+    log⭜ ᐦ☾
     ↪ 𝓑
 
  ↪ t + [𝔱⋄¯⅘⋅w⋄0, 𝔯⋄s₁, 𝔱⋄¯⅘⋅w⋄0, 𝔯⋄s₂, 𝔱⋄⅖⋅w⋄¯⅗⋅w, 𝔰⋄½, 𝔱⋄.55⋅w⋄½⋅w], w
