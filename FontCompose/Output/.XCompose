@@ -118,12 +118,16 @@
 <Multi_key><N><2>:"𝅗𝅥" # 0x1d15e
 <Multi_key><N><4>:"𝅘𝅥" # 0x1d15f
 <Multi_key><N><8>:"𝅘𝅥𝅮" # 0x1d160
+<Multi_key><O><A>:"󱖚" # 0xf159a
+<Multi_key><O><D>:"󱖘" # 0xf1598
 <Multi_key><i><x>:"🝤" # 0x1f764
 <Multi_key><l><A><E>:"Æ" # 0xc6
 <Multi_key><l><a><e>:"æ" # 0xe6
 <Multi_key><n><t>:"󷹇" # 0xf7e47
 <Multi_key><o><k>:"👌" # 0x1f44c
 <Multi_key><p><2>:"󷺍" # 0xf7e8d
+<Multi_key><p><3>:"󷺎" # 0xf7e8e
+<Multi_key><p><4>:"󷺏" # 0xf7e8f
 <Multi_key><p><i><l>:"¶" # 0xb6
 <Multi_key><q><0>:"𝟘" # 0x1d7d8
 <Multi_key><q><1>:"𝟙" # 0x1d7d9
@@ -181,6 +185,7 @@
 <Multi_key><q><x>:"𝕏" # 0x1d54f
 <Multi_key><q><y>:"𝕐" # 0x1d550
 <Multi_key><s><e><c>:"§" # 0xa7
+<Multi_key><s><i>:"󷹉" # 0xf7e49
 <Multi_key><3><bar>:"┆" # 0x2506
 <Multi_key><F><bar>:"│" # 0x2502
 <Multi_key><O><slash>:"Ø" # 0xd8
@@ -520,6 +525,8 @@
 <Multi_key><N><1><6>:"𝅘𝅥𝅯" # 0x1d161
 <Multi_key><N><3><2>:"𝅘𝅥𝅰" # 0x1d162
 <Multi_key><N><I><D>:"𝄽" # 0x1d13d
+<Multi_key><O><colon>:"⍥" # 0x2365
+<Multi_key><O><less>:"󰬩" # 0xf0b29
 <Multi_key><O><space>:"∘" # 0x2218
 <Multi_key><P><I><D>:"󰫽" # 0xf0afd
 <Multi_key><R><slash>:"℟" # 0x211f
@@ -1306,6 +1313,7 @@
 <Multi_key><W><X><space>:"Ҳ" # 0x4b2
 <Multi_key><W><Z><space>:"Ζ" # 0x396
 <Multi_key><W><m><space>:"Ӎ" # 0x4cd
+<Multi_key><W><r><space>:"Ʀ" # 0x1a6
 <Multi_key><W><v><space>:"ѵ" # 0x475
 <Multi_key><a><b><a><a>:"↜" # 0x219c
 <Multi_key><a><b><a><d>:"↭" # 0x21ad
@@ -1345,6 +1353,8 @@
 <Multi_key><g><l><space>:"λ" # 0x3bb
 <Multi_key><g><r><space>:"ρ" # 0x3c1
 <Multi_key><g><u><space>:"υ" # 0x3c5
+<Multi_key><greater><A>:"ᑀ" # 0x1440
+<Multi_key><greater><D>:"ᑅ" # 0x1445
 <Multi_key><i><o><space>:"ι" # 0x3b9
 <Multi_key><l><o><o><p>:"➰" # 0x27b0
 <Multi_key><less><dollar>:"¢" # 0xa2
@@ -1375,6 +1385,7 @@
 <Multi_key><F><F><space>:"ᖵ" # 0x15b5
 <Multi_key><N><1><2><8>:"𝅘𝅥𝅲" # 0x1d164
 <Multi_key><O><O><space>:"○" # 0x25cb
+<Multi_key><O><greater>:"󰬫" # 0xf0b2b
 <Multi_key><O><o><space>:"⊙" # 0x2299
 <Multi_key><O><x><space>:"⊗" # 0x2297
 <Multi_key><S><T><space>:"" # 0xf41e
@@ -1453,7 +1464,6 @@
 <Multi_key><f><i><n><d>:"󰍉" # 0xf0349
 <Multi_key><f><i><r><e>:"󱐚" # 0xf141a
 <Multi_key><i><e><a><l>:"󱧡" # 0xf19e1
-<Multi_key><i><slash><s>:"⊯" # 0x22af
 <Multi_key><k><i><s><s>:"😚" # 0x1f61a
 <Multi_key><l><i><n><e>:"󰕞" # 0xf055e
 <Multi_key><l><o><v><e>:"🥰" # 0x1f970
@@ -1466,6 +1476,8 @@
 <Multi_key><period><slash>:"÷" # 0xf7
 <Multi_key><question><R>:"␦" # 0x2426
 <Multi_key><question><r>:"⸮" # 0x2e2e
+<Multi_key><quotedbl><A>:"ᐳ" # 0x1433
+<Multi_key><quotedbl><D>:"ᐸ" # 0x1438
 <Multi_key><r><S><exclam>:"Ъ" # 0x42a
 <Multi_key><r><i><n><g>:"󰫿" # 0xf0aff
 <Multi_key><r><o><f><l>:"🤣" # 0x1f923
@@ -1485,6 +1497,7 @@
 <Multi_key><v><w><space>:"∧" # 0x2227
 <Multi_key><w><a><v><e>:"👋" # 0x1f44b
 <Multi_key><w><h><plus>:"󱏖" # 0xf13d6
+<Multi_key><4><asterisk>:"󷺄" # 0xf7e84
 <Multi_key><S><T><colon>:"󰦥" # 0xf09a5
 <Multi_key><W><S><space>:"𝖲" # 0x1d5b2
 <Multi_key><a><period><a>:"⋰" # 0x22f0
@@ -1550,11 +1563,13 @@
 <Multi_key><exclam><exclam>:"¡" # 0xa1
 <Multi_key><i><asciicircum>:"î" # 0xee
 <Multi_key><i><d><space>:"󰻾" # 0xf0efe
+<Multi_key><i><slash><s>:"󷹈" # 0xf7e48
 <Multi_key><less><exclam>:"❣" # 0x2763
 <Multi_key><n><apostrophe>:"ń" # 0x144
 <Multi_key><q><braceleft>:"⦃" # 0x2983
 <Multi_key><q><parenleft>:"⦅" # 0x2985
 <Multi_key><s><apostrophe>:"ś" # 0x15b
+<Multi_key><s><slash><i>:"󷹊" # 0xf7e4a
 <Multi_key><slash><bar>:"􋕠" # 0x10b560
 <Multi_key><slash><colon>:"﹕" # 0xfe55
 <Multi_key><slash><equal>:"₌" # 0x208c
@@ -1573,6 +1588,7 @@
 <Multi_key><w><slash><o>:"󱂰" # 0xf10b0
 <Multi_key><A><C><W><A><S>:"↶" # 0x21b6
 <Multi_key><A><C><W><D><S>:"↷" # 0x21b7
+<Multi_key><O><underscore>:"⍜" # 0x235c
 <Multi_key><W><B><h><e><k>:"☑" # 0x2611
 <Multi_key><W><B><h><e><x>:"☒" # 0x2612
 <Multi_key><a><u><w><plus>:"⨄" # 0x2a04
@@ -1696,6 +1712,8 @@
 <Multi_key><c><f><d><space>:"󷹔" # 0xf7e54
 <Multi_key><c><o><c><space>:"🟕" # 0x1f7d5
 <Multi_key><e><y><e><space>:"👁" # 0x1f441
+<Multi_key><greater><bar><A>:"ᐒ" # 0x1412
+<Multi_key><greater><bar><D>:"ᐘ" # 0x1418
 <Multi_key><less><less><space>:"«" # 0xab
 <Multi_key><q><bracketright>:"⟧" # 0x27e7
 <Multi_key><s><e><t><space>:"󰬀" # 0xf0b00
@@ -1716,6 +1734,8 @@
 <Multi_key><backslash><equal>:"⁼" # 0x207c
 <Multi_key><backslash><less>:"󰂂" # 0xf0082
 <Multi_key><backslash><minus>:"⁻" # 0x207b
+<Multi_key><bar><greater><A>:"󷺹" # 0xf7eb9
+<Multi_key><bar><greater><D>:"󷺽" # 0xf7ebd
 <Multi_key><c><slash><space>:"🟑" # 0x1f7d1
 <Multi_key><d><a><g><g><e><r>:"†" # 0x2020
 <Multi_key><e><q><i><greater>:"⪠" # 0x2aa0
@@ -1744,8 +1764,6 @@
 <Multi_key><colon><parenleft>:"😕" # 0x1f615
 <Multi_key><d><o><m><a><i><n>:"󰫱" # 0xf0af1
 <Multi_key><f><a><m><i><l><y>:"󱘎" # 0xf160e
-<Multi_key><greater><A><space>:"ᑀ" # 0x1440
-<Multi_key><greater><D><space>:"ᑅ" # 0x1445
 <Multi_key><i><m><d><e><a><d>:"💀" # 0x1f480
 <Multi_key><m><a><t><r><i><x>:"󰘨" # 0xf0628
 <Multi_key><m><o><d><u><l><e>:"󰫺" # 0xf0afa
@@ -1780,8 +1798,6 @@
 <Multi_key><less><equal><slash>:"≰" # 0x2270
 <Multi_key><less><equal><space>:"≤" # 0x2264
 <Multi_key><p><l><bracketright>:"" # 0xe0b4
-<Multi_key><quotedbl><A><space>:"ᐳ" # 0x1433
-<Multi_key><quotedbl><D><space>:"ᐸ" # 0x1438
 <Multi_key><slash><backslash>:"􋑩" # 0x10b469
 <Multi_key><slash><braceright>:"󰄖" # 0xf0116
 <Multi_key><underscore><d><i><a>:"˚" # 0x2da
@@ -1789,7 +1805,6 @@
 <Multi_key><w><e><e><d><slash>:"󱙮" # 0xf166e
 <Multi_key><w><e><e><d><space>:"󰞦" # 0xf07a6
 <Multi_key><asciicircum><h><a><t>:"˷" # 0x2f7
-<Multi_key><asciitilde><less><n>:"⪱" # 0x2ab1
 <Multi_key><backslash><asterisk>:"" # 0xe80d
 <Multi_key><backslash><dollar>:"􊽤" # 0x10af64
 <Multi_key><backslash><greater>:"󰂁" # 0xf0081
@@ -1803,6 +1818,8 @@
 <Multi_key><e><x><a><m><p><l><e>:"" # 0xf26b
 <Multi_key><equal><equal><slash>:"≢" # 0x2262
 <Multi_key><equal><equal><space>:"≡" # 0x2261
+<Multi_key><greater><greater><A>:"ᐵ" # 0x1435
+<Multi_key><greater><greater><D>:"ᑈ" # 0x1448
 <Multi_key><greater><greater><X>:"⪢" # 0x2aa2
 <Multi_key><s><n><o><w><m><a><n>:"☃" # 0x2603
 <Multi_key><slash><apostrophe>:"􋕦" # 0x10b566
@@ -1897,6 +1914,8 @@
 <Multi_key><slash><slash><N><f>:"􋖂" # 0x10b582
 <Multi_key><slash><slash><N><n>:"􍈖" # 0x10d216
 <Multi_key><slash><slash><N><s>:"􊱊" # 0x10ac4a
+<Multi_key><slash><slash><O><A>:"􍮢" # 0x10dba2
+<Multi_key><slash><slash><O><D>:"􍮤" # 0x10dba4
 <Multi_key><slash><slash><O><X>:"􍐂" # 0x10d402
 <Multi_key><slash><slash><R><S>:"􍎒" # 0x10d392
 <Multi_key><slash><slash><S><I>:"􍍶" # 0x10d376
@@ -1927,6 +1946,8 @@
 <Multi_key><slash><slash><o><v>:"􊱿" # 0x10ac7f
 <Multi_key><slash><slash><o><x>:"􊱰" # 0x10ac70
 <Multi_key><slash><slash><p><2>:"􀱬" # 0x100c6c
+<Multi_key><slash><slash><p><3>:"􍯄" # 0x10dbc4
+<Multi_key><slash><slash><p><4>:"􍯔" # 0x10dbd4
 <Multi_key><slash><slash><q><0>:"􊹩" # 0x10ae69
 <Multi_key><slash><slash><q><1>:"􊹪" # 0x10ae6a
 <Multi_key><slash><slash><q><2>:"􊹫" # 0x10ae6b
@@ -2004,6 +2025,7 @@
 <Multi_key><slash><slash><r><o>:"􋙬" # 0x10b66c
 <Multi_key><slash><slash><r><p>:"􋝒" # 0x10b752
 <Multi_key><slash><slash><r><v>:"􋗤" # 0x10b5e4
+<Multi_key><slash><slash><s><i>:"􍯈" # 0x10dbc8
 <Multi_key><slash><slash><s><q>:"􊮏" # 0x10ab8f
 <Multi_key><slash><slash><s><r>:"􊪺" # 0x10aaba
 <Multi_key><slash><slash><s><t>:"􊱓" # 0x10ac53
@@ -2027,6 +2049,8 @@
 <Multi_key><backslash><question>:"􊽨" # 0x10af68
 <Multi_key><backslash><quotedbl>:"􋕩" # 0x10b569
 <Multi_key><backslash><semicolon>:"󰁲" # 0xf0072
+<Multi_key><bar><greater><bar><A>:"󷺻" # 0xf7ebb
+<Multi_key><bar><greater><bar><D>:"󷺿" # 0xf7ebf
 <Multi_key><braceleft><braceright>:"∅" # 0x2205
 <Multi_key><bracketright><greater>:"〕" # 0x3015
 <Multi_key><e><bracketleft><slash>:"∉" # 0x2209
@@ -2043,18 +2067,18 @@
 <Multi_key><parenleft><parenright>:"" # 0xeba6
 <Multi_key><parenleft><semicolon>:"😉" # 0x1f609
 <Multi_key><period><period><space>:"…" # 0x2026
-<Multi_key><Multi_key><w><u><8><8>:"󷱯" # 0xf7c6f
+<Multi_key><Multi_key><w><u><8><8>:"󷱩" # 0xf7c69
 <Multi_key><Multi_key><w><u><p><2>:"󷱮" # 0xf7c6e
+<Multi_key><Multi_key><w><u><p><3>:"󷱯" # 0xf7c6f
+<Multi_key><Multi_key><w><u><p><4>:"󷱰" # 0xf7c70
 <Multi_key><asciicircum><b><r><e><v>:"˙" # 0x2d9
+<Multi_key><asciitilde><R><less><n>:"⋨" # 0x22e8
 <Multi_key><asciitilde><bar><space>:"⦚" # 0x299a
-<Multi_key><asciitilde><greater><n>:"⪲" # 0x2ab2
 <Multi_key><backslash><ampersand>:"􊽦" # 0x10af66
 <Multi_key><backslash><braceright>:"󰁹" # 0xf0079
 <Multi_key><bracketleft><parenleft>:"【" # 0x3010
 <Multi_key><e><bracketright><slash>:"∌" # 0x220c
 <Multi_key><e><bracketright><space>:"∋" # 0x220b
-<Multi_key><greater><bar><A><space>:"ᐒ" # 0x1412
-<Multi_key><greater><bar><D><space>:"ᐘ" # 0x1418
 <Multi_key><m><a><n><i><f><o><l><d>:"" # 0xe673
 <Multi_key><m><o><r><p><h><i><s><m>:"" # 0xf136
 <Multi_key><numbersign><numbersign>:"⨳" # 0x2a33
@@ -2076,8 +2100,6 @@
 <Multi_key><slash><slash><l><bar>:"􋖸" # 0x10b5b8
 <Multi_key><slash><slash><q><bar>:"􋗬" # 0x10b5ec
 <Multi_key><slash><slash><r><bar>:"􋗮" # 0x10b5ee
-<Multi_key><asciitilde><less><slash>:"⊀" # 0x2280
-<Multi_key><asciitilde><less><space>:"≺" # 0x227a
 <Multi_key><backslash><apostrophe>:"􋕧" # 0x10b567
 <Multi_key><backslash><bracketleft>:"󰁺" # 0xf007a
 <Multi_key><backslash><numbersign>:"􋕥" # 0x10b565
@@ -2115,6 +2137,7 @@
 <Multi_key><slash><slash><N><A><K>:"􍎂" # 0x10d382
 <Multi_key><slash><slash><N><I><D>:"􍈘" # 0x10d218
 <Multi_key><slash><slash><N><U><L>:"􍍜" # 0x10d35c
+<Multi_key><slash><slash><O><less>:"􍮠" # 0x10dba0
 <Multi_key><slash><slash><P><I><D>:"􋒒" # 0x10b492
 <Multi_key><slash><slash><P><space>:"󰃛" # 0xf00db
 <Multi_key><slash><slash><S><O><H>:"􍍠" # 0x10d360
@@ -3080,6 +3103,8 @@
 <Multi_key><bracketleft><bracketleft>:"⟨" # 0x27e8
 <Multi_key><bracketright><parenright>:"】" # 0x3011
 <Multi_key><colon><colon><parenleft>:"😞" # 0x1f61e
+<Multi_key><greater><greater><bar><A>:"ᐖ" # 0x1416
+<Multi_key><greater><greater><bar><D>:"ᐛ" # 0x141b
 <Multi_key><m><e><t><r><i><c><space>:"󰍒" # 0xf0352
 <Multi_key><slash><slash><5><minus>:"􍍊" # 0x10d34a
 <Multi_key><slash><slash><6><minus>:"􍍌" # 0x10d34c
@@ -3088,6 +3113,7 @@
 <Multi_key><slash><slash><E><space>:"􊮃" # 0x10ab83
 <Multi_key><slash><slash><F><minus>:"􊱁" # 0x10ac41
 <Multi_key><slash><slash><L><space>:"􋕲" # 0x10b572
+<Multi_key><slash><slash><O><colon>:"􍮚" # 0x10db9a
 <Multi_key><slash><slash><O><slash>:"􋘶" # 0x10b636
 <Multi_key><slash><slash><O><space>:"􊮎" # 0x10ab8e
 <Multi_key><slash><slash><R><slash>:"􍏎" # 0x10d3ce
@@ -3173,9 +3199,11 @@
 <Multi_key><asciicircum><c><a><r><o><n>:"ˎ" # 0x2ce
 <Multi_key><asciicircum><g><r><a><v><e>:"ˆ" # 0x2c6
 <Multi_key><asciicircum><t><i><l><d><e>:"˜" # 0x2dc
+<Multi_key><asciitilde><R><greater><n>:"⋩" # 0x22e9
+<Multi_key><bar><greater><greater><A>:"󷺺" # 0xf7eba
+<Multi_key><bar><greater><greater><D>:"󷺾" # 0xf7ebe
 <Multi_key><bracketleft><bracketright>:"□" # 0x25a1
 <Multi_key><bracketleft><space><space>:"⟮" # 0x27ee
-<Multi_key><bracketright><bracketleft>:"⟯" # 0x27ef
 <Multi_key><c><o><n><n><e><c><t><e><d>:"" # 0xf20e
 <Multi_key><colon><colon><parenright>:"🙃" # 0x1f643
 <Multi_key><slash><slash><1><period>:"􍌠" # 0x10d320
@@ -3198,12 +3226,11 @@
 <Multi_key><Multi_key><w><u><p><space>:"󷱭" # 0xf7c6d
 <Multi_key><Multi_key><w><u><t><space>:"󷱬" # 0xf7c6c
 <Multi_key><asciicircum><a><r><i><n><g>:"․" # 0x2024
-<Multi_key><asciitilde><greater><slash>:"⊁" # 0x2281
-<Multi_key><asciitilde><greater><space>:"≻" # 0x227b
+<Multi_key><asciitilde><R><less><slash>:"≺" # 0x227a
+<Multi_key><asciitilde><R><less><space>:"∾" # 0x223e
 <Multi_key><bracketright><bracketright>:"⟩" # 0x27e9
+<Multi_key><bracketright><space><space>:"⟯" # 0x27ef
 <Multi_key><e><bracketleft><underscore>:"⋸" # 0x22f8
-<Multi_key><greater><greater><A><space>:"ᐵ" # 0x1435
-<Multi_key><greater><greater><D><space>:"ᑈ" # 0x1448
 <Multi_key><i><m><o><r><p><h><i><s><m>:"󰉷" # 0xf0277
 <Multi_key><p><a><r><t><i><t><i><o><n>:"󱇙" # 0xf11d9
 <Multi_key><semicolon><s><u><m>:"⎲⎳" # 0x23b2 0x23b3
@@ -3211,6 +3238,7 @@
 <Multi_key><slash><slash><A><C><H><D>:"􊭵" # 0x10ab75
 <Multi_key><slash><slash><F><i><space>:"󰃠" # 0xf00e0
 <Multi_key><slash><slash><N><1><2><8>:"􍈔" # 0x10d214
+<Multi_key><slash><slash><O><greater>:"􍮞" # 0x10db9e
 <Multi_key><slash><slash><P><s><space>:"󰃻" # 0xf00fb
 <Multi_key><slash><slash><S><T><A><d>:"􍏔" # 0x10d3d4
 <Multi_key><slash><slash><S><T><plus>:"􀰼" # 0x100c3c
@@ -3280,6 +3308,8 @@
 <Multi_key><slash><slash><g><l><space>:"󰃮" # 0xf00ee
 <Multi_key><slash><slash><g><r><space>:"󰃴" # 0xf00f4
 <Multi_key><slash><slash><g><u><space>:"󰃸" # 0xf00f8
+<Multi_key><slash><slash><greater><A>:"􍫞" # 0x10dade
+<Multi_key><slash><slash><greater><D>:"􍫠" # 0x10dae0
 <Multi_key><slash><slash><i><e><a><l>:"􋒠" # 0x10b4a0
 <Multi_key><slash><slash><i><o><space>:"󰃬" # 0xf00ec
 <Multi_key><slash><slash><k><i><s><s>:"􊺬" # 0x10aeac
@@ -3378,6 +3408,7 @@
 <Multi_key><backslash><backslash><g><z>:"󰁑" # 0xf0051
 <Multi_key><slash><slash><0><v><space>:"􊫇" # 0x10aac7
 <Multi_key><slash><slash><2><asterisk>:"􍍐" # 0x10d350
+<Multi_key><slash><slash><4><asterisk>:"􍯆" # 0x10dbc6
 <Multi_key><slash><slash><C><J><space>:"􌿐" # 0x10cfd0
 <Multi_key><slash><slash><F><F><space>:"􊫛" # 0x10aadb
 <Multi_key><slash><slash><O><O><space>:"􊱇" # 0x10ac47
@@ -3410,6 +3441,7 @@
 <Multi_key><slash><slash><W><X><space>:"􀸾" # 0x100e3e
 <Multi_key><slash><slash><W><Z><space>:"􋗨" # 0x10b5e8
 <Multi_key><slash><slash><W><m><space>:"􊫌" # 0x10aacc
+<Multi_key><slash><slash><W><r><space>:"􍮈" # 0x10db88
 <Multi_key><slash><slash><W><v><space>:"􋗂" # 0x10b5c2
 <Multi_key><slash><slash><a><A><space>:"􊲂" # 0x10ac82
 <Multi_key><slash><slash><a><D><space>:"􊲄" # 0x10ac84
@@ -3463,7 +3495,7 @@
 <Multi_key><slash><slash><f><i><space>:"􊫈" # 0x10aac8
 <Multi_key><slash><slash><g><L><space>:"􋕲" # 0x10b572
 <Multi_key><slash><slash><i><d><space>:"􋒌" # 0x10b48c
-<Multi_key><slash><slash><i><slash><s>:"􍢤" # 0x10d8a4
+<Multi_key><slash><slash><i><slash><s>:"􍯀" # 0x10dbc0
 <Multi_key><slash><slash><less><slash>:"􊮦" # 0x10aba6
 <Multi_key><slash><slash><minus><plus>:"􊮋" # 0x10ab8b
 <Multi_key><slash><slash><o><o><space>:"􊬊" # 0x10ab0a
@@ -3471,6 +3503,9 @@
 <Multi_key><slash><slash><plus><minus>:"􊪫" # 0x10aaab
 <Multi_key><slash><slash><question><R>:"􊯟" # 0x10abdf
 <Multi_key><slash><slash><question><r>:"􊲖" # 0x10ac96
+<Multi_key><slash><slash><quotedbl><A>:"􍫚" # 0x10dada
+<Multi_key><slash><slash><quotedbl><D>:"􍫜" # 0x10dadc
+<Multi_key><slash><slash><s><slash><i>:"􍯘" # 0x10dbd8
 <Multi_key><slash><slash><slash><less>:"􊽂" # 0x10af42
 <Multi_key><slash><slash><slash><plus>:"􊬭" # 0x10ab2d
 <Multi_key><slash><slash><slash><q><s>:"􋦎" # 0x10b98e
@@ -3541,6 +3576,8 @@
 <Multi_key><backslash><backslash><N><f>:"􋖃" # 0x10b583
 <Multi_key><backslash><backslash><N><n>:"􍈗" # 0x10d217
 <Multi_key><backslash><backslash><N><s>:"􋄌" # 0x10b10c
+<Multi_key><backslash><backslash><O><A>:"􍮣" # 0x10dba3
+<Multi_key><backslash><backslash><O><D>:"􍮥" # 0x10dba5
 <Multi_key><backslash><backslash><O><X>:"􍐃" # 0x10d403
 <Multi_key><backslash><backslash><R><S>:"􍎓" # 0x10d393
 <Multi_key><backslash><backslash><S><I>:"􍍷" # 0x10d377
@@ -3571,6 +3608,8 @@
 <Multi_key><backslash><backslash><o><v>:"􋅁" # 0x10b141
 <Multi_key><backslash><backslash><o><x>:"􋄲" # 0x10b132
 <Multi_key><backslash><backslash><p><2>:"􀱭" # 0x100c6d
+<Multi_key><backslash><backslash><p><3>:"􍯅" # 0x10dbc5
+<Multi_key><backslash><backslash><p><4>:"􍯕" # 0x10dbd5
 <Multi_key><backslash><backslash><q><0>:"􋌫" # 0x10b32b
 <Multi_key><backslash><backslash><q><1>:"􋌬" # 0x10b32c
 <Multi_key><backslash><backslash><q><2>:"􋌭" # 0x10b32d
@@ -3648,6 +3687,7 @@
 <Multi_key><backslash><backslash><r><o>:"􋙭" # 0x10b66d
 <Multi_key><backslash><backslash><r><p>:"􋝓" # 0x10b753
 <Multi_key><backslash><backslash><r><v>:"􋗥" # 0x10b5e5
+<Multi_key><backslash><backslash><s><i>:"􍯉" # 0x10dbc9
 <Multi_key><backslash><backslash><s><q>:"􋁑" # 0x10b051
 <Multi_key><backslash><backslash><s><r>:"􊽼" # 0x10af7c
 <Multi_key><backslash><backslash><s><t>:"􋄕" # 0x10b115
@@ -3745,10 +3785,13 @@
 <Multi_key><slash><slash><v><s><period>:"􋔊" # 0x10b50a
 <Multi_key><slash><slash><v><w><period>:"􋓼" # 0x10b4fc
 <Multi_key><Multi_key><w><u><e><u><space>:"󷱫" # 0xf7c6b
+<Multi_key><asciitilde><R><greater><slash>:"≻" # 0x227b
+<Multi_key><asciitilde><R><greater><space>:"⪱" # 0x2ab1
 <Multi_key><p><o><l><y><n><o><m><i><a><l>:"󰡱" # 0xf0871
 <Multi_key><s><u><r><j><e><c><t><i><o><n>:"󰚥" # 0xf06a5
 <Multi_key><slash><slash><A><C><W><A><S>:"􋔢" # 0x10b522
 <Multi_key><slash><slash><A><C><W><D><S>:"􋔤" # 0x10b524
+<Multi_key><slash><slash><O><underscore>:"􍮜" # 0x10db9c
 <Multi_key><slash><slash><W><B><h><e><k>:"􍢔" # 0x10d894
 <Multi_key><slash><slash><W><B><h><e><x>:"􍢖" # 0x10d896
 <Multi_key><slash><slash><a><b><b><w><s>:"􍣆" # 0x10d8c6
@@ -3833,8 +3876,6 @@
 <Multi_key><w><i><Multi_key><r><h><space>:"𝝆" # 0x1d746
 <Multi_key><w><i><Multi_key><u><p><space>:"𝝊" # 0x1d74a
 <Multi_key><w><i><Multi_key><x><i><space>:"𝜩" # 0x1d729
-<Multi_key><asciitilde><less><equal><slash>:"⋠" # 0x22e0
-<Multi_key><asciitilde><less><equal><space>:"≼" # 0x227c
 <Multi_key><backslash><backslash><3><bar>:"􍍗" # 0x10d357
 <Multi_key><backslash><backslash><F><bar>:"􋄄" # 0x10b104
 <Multi_key><backslash><backslash><g><P><h>:"󰁈" # 0xf0048
@@ -3853,6 +3894,8 @@
 <Multi_key><backslash><backslash><q><bar>:"􋗭" # 0x10b5ed
 <Multi_key><backslash><backslash><r><bar>:"􋗯" # 0x10b5ef
 <Multi_key><backslash><period><period><space>:"¨" # 0xa8
+<Multi_key><bar><greater><greater><bar><A>:"󷺼" # 0xf7ebc
+<Multi_key><bar><greater><greater><bar><D>:"󷻀" # 0xf7ec0
 <Multi_key><bracketleft><bar><bracketright>:"" # 0xeb56
 <Multi_key><period><parenleft><parenright>:"󷹮" # 0xf7e6e
 <Multi_key><slash><slash><0><minus><space>:"󰃓" # 0xf00d3
@@ -3921,7 +3964,6 @@
 <Multi_key><slash><slash><w><h><p><space>:"􍈚" # 0x10d21a
 <Multi_key><slash><slash><w><h><t><slash>:"􍈠" # 0x10d220
 <Multi_key><slash><slash><w><h><t><space>:"􍈞" # 0x10d21e
-<Multi_key><asciitilde><less><asciitilde><n>:"⋨" # 0x22e8
 <Multi_key><backslash><backslash><0><space>:"󰁓" # 0xf0053
 <Multi_key><backslash><backslash><1><1><0>:"􋀝" # 0x10b01d
 <Multi_key><backslash><backslash><3><s><q>:"􋝥" # 0x10b765
@@ -3950,6 +3992,7 @@
 <Multi_key><backslash><backslash><N><A><K>:"􍎃" # 0x10d383
 <Multi_key><backslash><backslash><N><I><D>:"􍈙" # 0x10d219
 <Multi_key><backslash><backslash><N><U><L>:"􍍝" # 0x10d35d
+<Multi_key><backslash><backslash><O><less>:"􍮡" # 0x10dba1
 <Multi_key><backslash><backslash><P><I><D>:"􋒓" # 0x10b493
 <Multi_key><backslash><backslash><P><space>:"󰁃" # 0xf0043
 <Multi_key><backslash><backslash><S><O><H>:"􍍡" # 0x10d361
@@ -4897,17 +4940,19 @@
 <Multi_key><backslash><backslash><z><space>:"󰁑" # 0xf0051
 <Multi_key><bracketleft><space><bracketleft>:"《" # 0x300a
 <Multi_key><d><e><r><a><n><g><e><m><e><n><t>:"" # 0xf074
-<Multi_key><greater><greater><bar><A><space>:"ᐖ" # 0x1416
-<Multi_key><greater><greater><bar><D><space>:"ᐛ" # 0x141b
 <Multi_key><slash><slash><a><u><s><period>:"􋗠" # 0x10b5e0
 <Multi_key><slash><slash><asterisk><space>:"􊮍" # 0x10ab8d
 <Multi_key><slash><slash><backslash><less>:"􊻼" # 0x10aefc
 <Multi_key><slash><slash><backslash><plus>:"􊬝" # 0x10ab1d
 <Multi_key><slash><slash><backslash><q><s>:"􋦐" # 0x10b990
+<Multi_key><slash><slash><bar><greater><A>:"􍯎" # 0x10dbce
+<Multi_key><slash><slash><bar><greater><D>:"􍯊" # 0x10dbca
 <Multi_key><slash><slash><c><bracketright>:"􊬒" # 0x10ab12
 <Multi_key><slash><slash><c><c><backslash>:"􊯋" # 0x10abcb
 <Multi_key><slash><slash><c><slash><slash>:"􊫎" # 0x10aace
 <Multi_key><slash><slash><c><slash><space>:"􊺹" # 0x10aeb9
+<Multi_key><slash><slash><greater><bar><A>:"􍫢" # 0x10dae2
+<Multi_key><slash><slash><greater><bar><D>:"􍫤" # 0x10dae4
 <Multi_key><slash><slash><q><bracketright>:"􊱟" # 0x10ac5f
 <Multi_key><slash><slash><slash><asterisk>:"􊲡" # 0x10aca1
 <Multi_key><slash><slash><slash><question>:"􊲰" # 0x10acb0
@@ -4921,6 +4966,7 @@
 <Multi_key><backslash><backslash><E><space>:"􋁅" # 0x10b045
 <Multi_key><backslash><backslash><F><minus>:"􋄃" # 0x10b103
 <Multi_key><backslash><backslash><L><space>:"􋕳" # 0x10b573
+<Multi_key><backslash><backslash><O><colon>:"􍮛" # 0x10db9b
 <Multi_key><backslash><backslash><O><slash>:"􋘷" # 0x10b637
 <Multi_key><backslash><backslash><O><space>:"􋁐" # 0x10b050
 <Multi_key><backslash><backslash><R><slash>:"􍏏" # 0x10d3cf
@@ -5034,8 +5080,8 @@
 <Multi_key><slash><slash><v><e><c><t><o><r>:"􋓆" # 0x10b4c6
 <Multi_key><slash><slash><v><s><underscore>:"􋔔" # 0x10b514
 <Multi_key><slash><slash><v><w><underscore>:"􋔄" # 0x10b504
-<Multi_key><asciitilde><greater><equal><slash>:"⋡" # 0x22e1
-<Multi_key><asciitilde><greater><equal><space>:"≽" # 0x227d
+<Multi_key><asciitilde><R><less><equal><slash>:"≼" # 0x227c
+<Multi_key><asciitilde><R><less><equal><space>:"⊀" # 0x2280
 <Multi_key><backslash><backslash><1><period>:"􍌡" # 0x10d321
 <Multi_key><backslash><backslash><2><period>:"􍌣" # 0x10d323
 <Multi_key><backslash><backslash><3><period>:"􍌥" # 0x10d325
@@ -5067,8 +5113,6 @@
 <Multi_key><slash><slash><c><r><bracketleft>:"􍦢" # 0x10d9a2
 <Multi_key><slash><slash><c><w><p><t><space>:"􋔾" # 0x10b53e
 <Multi_key><slash><slash><colon><parenright>:"􊺤" # 0x10aea4
-<Multi_key><slash><slash><greater><A><space>:"􍫞" # 0x10dade
-<Multi_key><slash><slash><greater><D><space>:"􍫠" # 0x10dae0
 <Multi_key><slash><slash><less><less><space>:"􌾒" # 0x10cf92
 <Multi_key><slash><slash><minus><bar><space>:"􍪴" # 0x10dab4
 <Multi_key><slash><slash><numbersign><space>:"􊯐" # 0x10abd0
@@ -5086,11 +5130,12 @@
 <Multi_key><underscore><underscore><underscore>:"ˍ" # 0x2cd
 <Multi_key><w><b><Multi_key><0><minus><space>:"𝝝" # 0x1d75d
 <Multi_key><w><i><Multi_key><0><minus><space>:"𝜣" # 0x1d723
-<Multi_key><asciitilde><greater><asciitilde><n>:"⋩" # 0x22e9
+<Multi_key><asciitilde><R><less><asciitilde><n>:"≾" # 0x227e
 <Multi_key><backslash><backslash><A><C><H><A>:"􋔧" # 0x10b527
 <Multi_key><backslash><backslash><A><C><H><D>:"􋀷" # 0x10b037
 <Multi_key><backslash><backslash><F><i><space>:"󰁈" # 0xf0048
 <Multi_key><backslash><backslash><N><1><2><8>:"􍈕" # 0x10d215
+<Multi_key><backslash><backslash><O><greater>:"􍮟" # 0x10db9f
 <Multi_key><backslash><backslash><P><s><space>:"󰁣" # 0xf0063
 <Multi_key><backslash><backslash><S><T><A><d>:"􍏕" # 0x10d3d5
 <Multi_key><backslash><backslash><S><T><plus>:"􀰽" # 0x100c3d
@@ -5160,6 +5205,8 @@
 <Multi_key><backslash><backslash><g><l><space>:"󰁖" # 0xf0056
 <Multi_key><backslash><backslash><g><r><space>:"󰁜" # 0xf005c
 <Multi_key><backslash><backslash><g><u><space>:"󰁠" # 0xf0060
+<Multi_key><backslash><backslash><greater><A>:"􍫟" # 0x10dadf
+<Multi_key><backslash><backslash><greater><D>:"􍫡" # 0x10dae1
 <Multi_key><backslash><backslash><i><e><a><l>:"􋒡" # 0x10b4a1
 <Multi_key><backslash><backslash><i><o><space>:"󰁔" # 0xf0054
 <Multi_key><backslash><backslash><k><i><s><s>:"􋍮" # 0x10b36e
@@ -5210,8 +5257,6 @@
 <Multi_key><slash><slash><less><equal><space>:"􊮤" # 0x10aba4
 <Multi_key><slash><slash><p><l><bracketright>:"􊲜" # 0x10ac9c
 <Multi_key><slash><slash><question><question>:"􊪲" # 0x10aab2
-<Multi_key><slash><slash><quotedbl><A><space>:"􍫚" # 0x10dada
-<Multi_key><slash><slash><quotedbl><D><space>:"􍫜" # 0x10dadc
 <Multi_key><slash><slash><slash><asciicircum>:"􌥸" # 0x10c978
 <Multi_key><slash><slash><slash><bracketleft>:"􊼿" # 0x10af3f
 <Multi_key><slash><slash><slash><c><m><space>:"􌠎" # 0x10c80e
@@ -5264,6 +5309,8 @@
 <Multi_key><slash><slash><slash><slash><N><f>:"􌦺" # 0x10c9ba
 <Multi_key><slash><slash><slash><slash><N><n>:"􍑀" # 0x10d440
 <Multi_key><slash><slash><slash><slash><N><s>:"􌎦" # 0x10c3a6
+<Multi_key><slash><slash><slash><slash><O><A>:"􍮶" # 0x10dbb6
+<Multi_key><slash><slash><slash><slash><O><D>:"􍮺" # 0x10dbba
 <Multi_key><slash><slash><slash><slash><O><X>:"􍠘" # 0x10d818
 <Multi_key><slash><slash><slash><slash><R><S>:"􍜸" # 0x10d738
 <Multi_key><slash><slash><slash><slash><S><I>:"􍜀" # 0x10d700
@@ -5309,6 +5356,8 @@
 <Multi_key><slash><slash><slash><slash><o><v>:"􌍮" # 0x10c36e
 <Multi_key><slash><slash><slash><slash><o><x>:"􌎂" # 0x10c382
 <Multi_key><slash><slash><slash><slash><p><2>:"􀱲" # 0x100c72
+<Multi_key><slash><slash><slash><slash><p><3>:"􍯦" # 0x10dbe6
+<Multi_key><slash><slash><slash><slash><p><4>:"􍰆" # 0x10dc06
 <Multi_key><slash><slash><slash><slash><q><0>:"􋨖" # 0x10ba16
 <Multi_key><slash><slash><slash><slash><q><1>:"􋨚" # 0x10ba1a
 <Multi_key><slash><slash><slash><slash><q><2>:"􋨞" # 0x10ba1e
@@ -5386,6 +5435,7 @@
 <Multi_key><slash><slash><slash><slash><r><o>:"􌮞" # 0x10cb9e
 <Multi_key><slash><slash><slash><slash><r><p>:"􌵺" # 0x10cd7a
 <Multi_key><slash><slash><slash><slash><r><v>:"􌪎" # 0x10ca8e
+<Multi_key><slash><slash><slash><slash><s><i>:"􍯮" # 0x10dbee
 <Multi_key><slash><slash><slash><slash><s><q>:"􌑒" # 0x10c452
 <Multi_key><slash><slash><slash><slash><s><r>:"􌐮" # 0x10c42e
 <Multi_key><slash><slash><slash><slash><s><t>:"􌐒" # 0x10c412
@@ -5395,9 +5445,9 @@
 <Multi_key><slash><slash><slash><slash><x><X>:"􌑞" # 0x10c45e
 <Multi_key><slash><slash><slash><slash><x><x>:"􌑚" # 0x10c45a
 <Multi_key><asciicircum><underscore><underscore>:"‥" # 0x2025
-<Multi_key><asciitilde><less><asciitilde><space>:"≾" # 0x227e
 <Multi_key><backslash><backslash><0><v><space>:"􊾉" # 0x10af89
 <Multi_key><backslash><backslash><2><asterisk>:"􍍑" # 0x10d351
+<Multi_key><backslash><backslash><4><asterisk>:"􍯇" # 0x10dbc7
 <Multi_key><backslash><backslash><C><J><space>:"􌿑" # 0x10cfd1
 <Multi_key><backslash><backslash><F><F><space>:"􊾝" # 0x10af9d
 <Multi_key><backslash><backslash><O><O><space>:"􋄉" # 0x10b109
@@ -5430,6 +5480,7 @@
 <Multi_key><backslash><backslash><W><X><space>:"􀸿" # 0x100e3f
 <Multi_key><backslash><backslash><W><Z><space>:"􋗩" # 0x10b5e9
 <Multi_key><backslash><backslash><W><m><space>:"􊾎" # 0x10af8e
+<Multi_key><backslash><backslash><W><r><space>:"􍮉" # 0x10db89
 <Multi_key><backslash><backslash><W><v><space>:"􋗃" # 0x10b5c3
 <Multi_key><backslash><backslash><a><A><space>:"􋅄" # 0x10b144
 <Multi_key><backslash><backslash><a><D><space>:"􋅆" # 0x10b146
@@ -5483,7 +5534,7 @@
 <Multi_key><backslash><backslash><f><i><space>:"􊾊" # 0x10af8a
 <Multi_key><backslash><backslash><g><L><space>:"􋕳" # 0x10b573
 <Multi_key><backslash><backslash><i><d><space>:"􋒍" # 0x10b48d
-<Multi_key><backslash><backslash><i><slash><s>:"􍢥" # 0x10d8a5
+<Multi_key><backslash><backslash><i><slash><s>:"􍯁" # 0x10dbc1
 <Multi_key><backslash><backslash><less><slash>:"􋁨" # 0x10b068
 <Multi_key><backslash><backslash><minus><plus>:"􋁍" # 0x10b04d
 <Multi_key><backslash><backslash><o><o><space>:"􊿌" # 0x10afcc
@@ -5491,6 +5542,9 @@
 <Multi_key><backslash><backslash><plus><minus>:"􊽭" # 0x10af6d
 <Multi_key><backslash><backslash><question><R>:"􋂡" # 0x10b0a1
 <Multi_key><backslash><backslash><question><r>:"􋅘" # 0x10b158
+<Multi_key><backslash><backslash><quotedbl><A>:"􍫛" # 0x10dadb
+<Multi_key><backslash><backslash><quotedbl><D>:"􍫝" # 0x10dadd
+<Multi_key><backslash><backslash><s><slash><i>:"􍯙" # 0x10dbd9
 <Multi_key><backslash><backslash><slash><less>:"􋐄" # 0x10b404
 <Multi_key><backslash><backslash><slash><plus>:"􊿯" # 0x10afef
 <Multi_key><backslash><backslash><slash><q><s>:"􋦏" # 0x10b98f
@@ -5515,7 +5569,6 @@
 <Multi_key><h><o><m><o><m><o><r><p><h><i><s><m>:"󰠩" # 0xf0829
 <Multi_key><n><e><i><g><h><b><o><r><h><o><o><d>:"󰷔" # 0xf0dd4
 <Multi_key><slash><slash><a><l><g><e><b><r><a>:"􋒨" # 0x10b4a8
-<Multi_key><slash><slash><asciitilde><less><n>:"􍢮" # 0x10d8ae
 <Multi_key><slash><slash><backslash><asterisk>:"􊲢" # 0x10aca2
 <Multi_key><slash><slash><backslash><question>:"􌥠" # 0x10c960
 <Multi_key><slash><slash><backslash><quotedbl>:"􌦈" # 0x10c988
@@ -5529,6 +5582,8 @@
 <Multi_key><slash><slash><equal><equal><slash>:"􊮣" # 0x10aba3
 <Multi_key><slash><slash><equal><equal><space>:"􊮢" # 0x10aba2
 <Multi_key><slash><slash><f><u><n><c><t><o><r>:"􍉌" # 0x10d24c
+<Multi_key><slash><slash><greater><greater><A>:"􍫦" # 0x10dae6
+<Multi_key><slash><slash><greater><greater><D>:"􍫨" # 0x10dae8
 <Multi_key><slash><slash><greater><greater><X>:"􍬶" # 0x10db36
 <Multi_key><slash><slash><l><a><t><t><i><c><e>:"􋒜" # 0x10b49c
 <Multi_key><slash><slash><m><e><a><s><u><r><e>:"􋒲" # 0x10b4b2
@@ -5542,6 +5597,8 @@
 <Multi_key><slash><slash><underscore><h><a><t>:"􍐠" # 0x10d420
 <Multi_key><slash><slash><underscore><s><space>:"󰃵" # 0xf00f5
 <Multi_key><slash><slash><v><e><c><t><o><r><v>:"􋓆" # 0x10b4c6
+<Multi_key><asciitilde><R><greater><equal><slash>:"≽" # 0x227d
+<Multi_key><asciitilde><R><greater><equal><space>:"⊁" # 0x2281
 <Multi_key><backslash><backslash><a><period><a>:"􋂊" # 0x10b08a
 <Multi_key><backslash><backslash><a><period><d>:"􋂋" # 0x10b08b
 <Multi_key><backslash><backslash><a><period><s>:"􋂉" # 0x10b089
@@ -5637,6 +5694,8 @@
 <Multi_key><slash><slash><backslash><braceleft>:"􊻷" # 0x10aef7
 <Multi_key><slash><slash><backslash><parenleft>:"􊬠" # 0x10ab20
 <Multi_key><slash><slash><backslash><semicolon>:"􊻶" # 0x10aef6
+<Multi_key><slash><slash><bar><greater><bar><A>:"􍮾" # 0x10dbbe
+<Multi_key><slash><slash><bar><greater><bar><D>:"􍯖" # 0x10dbd6
 <Multi_key><slash><slash><bracketright><period>:"􋔞" # 0x10b51e
 <Multi_key><slash><slash><g><e><n><space><b><y>:"􊱋" # 0x10ac4b
 <Multi_key><slash><slash><greater><less><space>:"􍎘" # 0x10d398
@@ -5648,8 +5707,10 @@
 <Multi_key><slash><slash><slash><slash><l><bar>:"􌨪" # 0x10ca2a
 <Multi_key><slash><slash><slash><slash><q><bar>:"􌪞" # 0x10ca9e
 <Multi_key><slash><slash><slash><slash><r><bar>:"􌪢" # 0x10caa2
+<Multi_key><asciitilde><R><greater><asciitilde><n>:"≿" # 0x227f
 <Multi_key><backslash><backslash><A><C><W><A><S>:"􋔣" # 0x10b523
 <Multi_key><backslash><backslash><A><C><W><D><S>:"􋔥" # 0x10b525
+<Multi_key><backslash><backslash><O><underscore>:"􍮝" # 0x10db9d
 <Multi_key><backslash><backslash><W><B><h><e><k>:"􍢕" # 0x10d895
 <Multi_key><backslash><backslash><W><B><h><e><x>:"􍢗" # 0x10d897
 <Multi_key><backslash><backslash><a><b><b><w><s>:"􍣇" # 0x10d8c7
@@ -5713,8 +5774,10 @@
 <Multi_key><slash><slash><Multi_key><p><i><n><t>:"􋛚" # 0x10b6da
 <Multi_key><slash><slash><Multi_key><q><i><n><t>:"􋕬" # 0x10b56c
 <Multi_key><slash><slash><Multi_key><w><i><n><t>:"􋖌" # 0x10b58c
-<Multi_key><slash><slash><Multi_key><w><u><8><8>:"􍬨" # 0x10db28
+<Multi_key><slash><slash><Multi_key><w><u><8><8>:"􍰒" # 0x10dc12
 <Multi_key><slash><slash><Multi_key><w><u><p><2>:"􍧴" # 0x10d9f4
+<Multi_key><slash><slash><Multi_key><w><u><p><3>:"􍬨" # 0x10db28
+<Multi_key><slash><slash><Multi_key><w><u><p><4>:"􍰔" # 0x10dc14
 <Multi_key><slash><slash><a><i><a><slash><space>:"􊭷" # 0x10ab77
 <Multi_key><slash><slash><a><i><d><slash><space>:"􊭸" # 0x10ab78
 <Multi_key><slash><slash><backslash><apostrophe>:"􌦄" # 0x10c984
@@ -5764,6 +5827,7 @@
 <Multi_key><slash><slash><slash><slash><N><A><K>:"􍜘" # 0x10d718
 <Multi_key><slash><slash><slash><slash><N><I><D>:"􍑄" # 0x10d444
 <Multi_key><slash><slash><slash><slash><N><U><L>:"􍛌" # 0x10d6cc
+<Multi_key><slash><slash><slash><slash><O><less>:"􍮲" # 0x10dbb2
 <Multi_key><slash><slash><slash><slash><P><I><D>:"􋣆" # 0x10b8c6
 <Multi_key><slash><slash><slash><slash><S><O><H>:"􍛔" # 0x10d6d4
 <Multi_key><slash><slash><slash><slash><S><T><X>:"􍛘" # 0x10d6d8
@@ -6702,7 +6766,7 @@
 <Multi_key><slash><slash><slash><slash><w><u><o>:"􍨨" # 0x10da28
 <Multi_key><slash><slash><slash><slash><w><u><x>:"􍩰" # 0x10da70
 <Multi_key><slash><slash><slash><slash><y><u><m>:"􌣺" # 0x10c8fa
-<Multi_key><asciitilde><greater><asciitilde><space>:"≿" # 0x227f
+<Multi_key><asciitilde><R><less><asciitilde><space>:"⋠" # 0x22e0
 <Multi_key><backslash><backslash><0><minus><space>:"󰀻" # 0xf003b
 <Multi_key><backslash><backslash><A><R><A><space>:"􋍼" # 0x10b37c
 <Multi_key><backslash><backslash><A><R><C><space>:"􋎂" # 0x10b382
@@ -6772,8 +6836,8 @@
 <Multi_key><g><e><n><e><r><a><t><e><d><space><b><y>:"⚙" # 0x2699
 <Multi_key><semicolon><bracketleft>:"⎡⎢⎣" # 0x23a1 0x23a2 0x23a3
 <Multi_key><slash><slash><apostrophe><apostrophe>:"􌿌" # 0x10cfcc
+<Multi_key><slash><slash><asciitilde><R><less><n>:"􍢬" # 0x10d8ac
 <Multi_key><slash><slash><asciitilde><bar><space>:"􍪶" # 0x10dab6
-<Multi_key><slash><slash><asciitilde><greater><n>:"􍢼" # 0x10d8bc
 <Multi_key><slash><slash><backslash><asciicircum>:"􌥺" # 0x10c97a
 <Multi_key><slash><slash><backslash><bracketleft>:"􊻹" # 0x10aef9
 <Multi_key><slash><slash><backslash><c><m><space>:"􌠐" # 0x10c810
@@ -6783,8 +6847,6 @@
 <Multi_key><slash><slash><e><bracketright><slash>:"􊮊" # 0x10ab8a
 <Multi_key><slash><slash><e><bracketright><space>:"􊮉" # 0x10ab89
 <Multi_key><slash><slash><f><u><n><c><t><i><o><n>:"􋒘" # 0x10b498
-<Multi_key><slash><slash><greater><bar><A><space>:"􍫢" # 0x10dae2
-<Multi_key><slash><slash><greater><bar><D><space>:"􍫤" # 0x10dae4
 <Multi_key><slash><slash><i><j><e><c><t><i><o><n>:"􋒢" # 0x10b4a2
 <Multi_key><slash><slash><m><a><n><i><f><o><l><d>:"􋓀" # 0x10b4c0
 <Multi_key><slash><slash><m><o><r><p><h><i><s><m>:"􋒊" # 0x10b48a
@@ -6800,6 +6862,7 @@
 <Multi_key><slash><slash><slash><slash><E><space>:"􌐞" # 0x10c41e
 <Multi_key><slash><slash><slash><slash><F><minus>:"􌗆" # 0x10c5c6
 <Multi_key><slash><slash><slash><slash><L><space>:"􌦚" # 0x10c99a
+<Multi_key><slash><slash><slash><slash><O><colon>:"􍮦" # 0x10dba6
 <Multi_key><slash><slash><slash><slash><O><slash>:"􌬲" # 0x10cb32
 <Multi_key><slash><slash><slash><slash><O><space>:"􌍺" # 0x10c37a
 <Multi_key><slash><slash><slash><slash><P><space>:"􊼞" # 0x10af1e
@@ -6841,10 +6904,14 @@
 <Multi_key><backslash><backslash><backslash><less>:"􋎾" # 0x10b3be
 <Multi_key><backslash><backslash><backslash><plus>:"􊿟" # 0x10afdf
 <Multi_key><backslash><backslash><backslash><q><s>:"􋦑" # 0x10b991
+<Multi_key><backslash><backslash><bar><greater><A>:"􍯏" # 0x10dbcf
+<Multi_key><backslash><backslash><bar><greater><D>:"􍯋" # 0x10dbcb
 <Multi_key><backslash><backslash><c><bracketright>:"􊿔" # 0x10afd4
 <Multi_key><backslash><backslash><c><c><backslash>:"􋂍" # 0x10b08d
 <Multi_key><backslash><backslash><c><slash><slash>:"􊾐" # 0x10af90
 <Multi_key><backslash><backslash><c><slash><space>:"􋍻" # 0x10b37b
+<Multi_key><backslash><backslash><greater><bar><A>:"􍫣" # 0x10dae3
+<Multi_key><backslash><backslash><greater><bar><D>:"􍫥" # 0x10dae5
 <Multi_key><backslash><backslash><q><bracketright>:"􋄡" # 0x10b121
 <Multi_key><backslash><backslash><slash><asterisk>:"􋅣" # 0x10b163
 <Multi_key><backslash><backslash><slash><question>:"􋅲" # 0x10b172
@@ -6852,8 +6919,6 @@
 <Multi_key><backslash><backslash><w><slash><space>:"􍏗" # 0x10d3d7
 <Multi_key><semicolon><bracketright>:"⎤⎥⎦" # 0x23a4 0x23a5 0x23a6
 <Multi_key><slash><slash><asciicircum><b><r><e><v>:"􍐎" # 0x10d40e
-<Multi_key><slash><slash><asciitilde><less><slash>:"􍢦" # 0x10d8a6
-<Multi_key><slash><slash><asciitilde><less><space>:"􊮪" # 0x10abaa
 <Multi_key><slash><slash><backslash><bracketright>:"􊻺" # 0x10aefa
 <Multi_key><slash><slash><colon><colon><parenleft>:"􊺭" # 0x10aead
 <Multi_key><slash><slash><greater><greater><space>:"􌾖" # 0x10cf96
@@ -6923,12 +6988,17 @@
 <Multi_key><slash><slash><Multi_key><w><u><g><p><i>:"􍧘" # 0x10d9d8
 <Multi_key><slash><slash><Multi_key><w><u><g><t><a>:"􍧸" # 0x10d9f8
 <Multi_key><slash><slash><bar><bar><greater><space>:"􍪺" # 0x10daba
+<Multi_key><slash><slash><bar><greater><greater><A>:"􍯒" # 0x10dbd2
+<Multi_key><slash><slash><bar><greater><greater><D>:"􍯂" # 0x10dbc2
 <Multi_key><slash><slash><bracketleft><bracketleft>:"􊱠" # 0x10ac60
 <Multi_key><slash><slash><bracketright><parenright>:"􋞮" # 0x10b7ae
 <Multi_key><slash><slash><colon><colon><parenright>:"􊺲" # 0x10aeb2
+<Multi_key><slash><slash><greater><greater><bar><A>:"􍫪" # 0x10daea
+<Multi_key><slash><slash><greater><greater><bar><D>:"􍁎" # 0x10d04e
 <Multi_key><slash><slash><slash><slash><A><C><H><A>:"􌛶" # 0x10c6f6
 <Multi_key><slash><slash><slash><slash><A><C><H><D>:"􌛺" # 0x10c6fa
 <Multi_key><slash><slash><slash><slash><N><1><2><8>:"􍐼" # 0x10d43c
+<Multi_key><slash><slash><slash><slash><O><greater>:"􍮮" # 0x10dbae
 <Multi_key><slash><slash><slash><slash><S><T><A><d>:"􍞼" # 0x10d7bc
 <Multi_key><slash><slash><slash><slash><S><T><plus>:"􀱂" # 0x100c42
 <Multi_key><slash><slash><slash><slash><W><B><v><s>:"􍗤" # 0x10d5e4
@@ -6989,6 +7059,8 @@
 <Multi_key><slash><slash><slash><slash><f><i><s><t>:"􌢒" # 0x10c892
 <Multi_key><slash><slash><slash><slash><f><o><r><m>:"􍒨" # 0x10d4a8
 <Multi_key><slash><slash><slash><slash><g><e><a><r>:"􍂀" # 0x10d080
+<Multi_key><slash><slash><slash><slash><greater><A>:"􍫴" # 0x10daf4
+<Multi_key><slash><slash><slash><slash><greater><D>:"􍫸" # 0x10daf8
 <Multi_key><slash><slash><slash><slash><i><e><a><l>:"􋣢" # 0x10b8e2
 <Multi_key><slash><slash><slash><slash><k><i><s><s>:"􌣲" # 0x10c8f2
 <Multi_key><slash><slash><slash><slash><l><i><n><e>:"􍒜" # 0x10d49c
@@ -7019,6 +7091,7 @@
 <Multi_key><slash><slash><slash><slash><w><a><v><e>:"􌢆" # 0x10c886
 <Multi_key><slash><slash><slash><slash><w><h><plus>:"􍑠" # 0x10d460
 <Multi_key><slash><slash><underscore><bracketright>:"􋝞" # 0x10b75e
+<Multi_key><asciitilde><R><greater><asciitilde><space>:"⋡" # 0x22e1
 <Multi_key><backslash><backslash><a><b><b><s><space>:"􍣅" # 0x10d8c5
 <Multi_key><backslash><backslash><a><b><b><w><space>:"􍣃" # 0x10d8c3
 <Multi_key><backslash><backslash><backslash><dollar>:"􌦁" # 0x10c981
@@ -7032,8 +7105,6 @@
 <Multi_key><backslash><backslash><c><r><bracketleft>:"􍦣" # 0x10d9a3
 <Multi_key><backslash><backslash><c><w><p><t><space>:"􋔿" # 0x10b53f
 <Multi_key><backslash><backslash><colon><parenright>:"􋍦" # 0x10b366
-<Multi_key><backslash><backslash><greater><A><space>:"􍫟" # 0x10dadf
-<Multi_key><backslash><backslash><greater><D><space>:"􍫡" # 0x10dae1
 <Multi_key><backslash><backslash><less><less><space>:"􌾓" # 0x10cf93
 <Multi_key><backslash><backslash><minus><bar><space>:"􍪵" # 0x10dab5
 <Multi_key><backslash><backslash><numbersign><space>:"􋂒" # 0x10b092
@@ -7050,14 +7121,15 @@
 <Multi_key><backslash><backslash><w><e><e><d><space>:"􍐅" # 0x10d405
 <Multi_key><slash><slash><Multi_key><w><u><p><space>:"􍧘" # 0x10d9d8
 <Multi_key><slash><slash><Multi_key><w><u><t><space>:"􍧸" # 0x10d9f8
+<Multi_key><slash><slash><asciitilde><R><greater><n>:"􍢺" # 0x10d8ba
 <Multi_key><slash><slash><bracketleft><bracketright>:"􊱃" # 0x10ac43
 <Multi_key><slash><slash><bracketleft><space><space>:"􍭶" # 0x10db76
-<Multi_key><slash><slash><bracketright><bracketleft>:"􍭸" # 0x10db78
 <Multi_key><slash><slash><c><o><n><n><e><c><t><e><d>:"􀲔" # 0x100c94
 <Multi_key><slash><slash><i><m><o><r><p><h><i><s><m>:"􋒤" # 0x10b4a4
 <Multi_key><slash><slash><p><a><r><t><i><t><i><o><n>:"􋒄" # 0x10b484
 <Multi_key><slash><slash><slash><slash><0><v><space>:"􋡞" # 0x10b85e
 <Multi_key><slash><slash><slash><slash><2><asterisk>:"􍚴" # 0x10d6b4
+<Multi_key><slash><slash><slash><slash><4><asterisk>:"􍯪" # 0x10dbea
 <Multi_key><slash><slash><slash><slash><C><J><space>:"􍅔" # 0x10d154
 <Multi_key><slash><slash><slash><slash><F><F><space>:"􌐶" # 0x10c436
 <Multi_key><slash><slash><slash><slash><F><i><space>:"􊼠" # 0x10af20
@@ -7092,6 +7164,7 @@
 <Multi_key><slash><slash><slash><slash><W><X><space>:"􀹌" # 0x100e4c
 <Multi_key><slash><slash><slash><slash><W><Z><space>:"􌪖" # 0x10ca96
 <Multi_key><slash><slash><slash><slash><W><m><space>:"􌋎" # 0x10c2ce
+<Multi_key><slash><slash><slash><slash><W><r><space>:"􍮌" # 0x10db8c
 <Multi_key><slash><slash><slash><slash><W><v><space>:"􌨾" # 0x10ca3e
 <Multi_key><slash><slash><slash><slash><a><A><space>:"􌘞" # 0x10c61e
 <Multi_key><slash><slash><slash><slash><a><D><space>:"􌘢" # 0x10c622
@@ -7154,7 +7227,7 @@
 <Multi_key><slash><slash><slash><slash><g><u><space>:"􊼶" # 0x10af36
 <Multi_key><slash><slash><slash><slash><i><d><space>:"􋢺" # 0x10b8ba
 <Multi_key><slash><slash><slash><slash><i><o><space>:"􊼫" # 0x10af2b
-<Multi_key><slash><slash><slash><slash><i><slash><s>:"􍤂" # 0x10d902
+<Multi_key><slash><slash><slash><slash><i><slash><s>:"􍯞" # 0x10dbde
 <Multi_key><slash><slash><slash><slash><less><slash>:"􌓂" # 0x10c4c2
 <Multi_key><slash><slash><slash><slash><m><u><space>:"􊼮" # 0x10af2e
 <Multi_key><slash><slash><slash><slash><minus><plus>:"􌓚" # 0x10c4da
@@ -7164,7 +7237,10 @@
 <Multi_key><slash><slash><slash><slash><plus><minus>:"􌓞" # 0x10c4de
 <Multi_key><slash><slash><slash><slash><question><R>:"􌏪" # 0x10c3ea
 <Multi_key><slash><slash><slash><slash><question><r>:"􌏦" # 0x10c3e6
+<Multi_key><slash><slash><slash><slash><quotedbl><A>:"􍫬" # 0x10daec
+<Multi_key><slash><slash><slash><slash><quotedbl><D>:"􍫰" # 0x10daf0
 <Multi_key><slash><slash><slash><slash><r><h><space>:"􊼲" # 0x10af32
+<Multi_key><slash><slash><slash><slash><s><slash><i>:"􍰎" # 0x10dc0e
 <Multi_key><slash><slash><slash><slash><t><o><space>:"􌖞" # 0x10c59e
 <Multi_key><slash><slash><slash><slash><u><a><slash>:"􌕺" # 0x10c57a
 <Multi_key><slash><slash><slash><slash><u><a><space>:"􌕲" # 0x10c572
@@ -7245,8 +7321,6 @@
 <Multi_key><backslash><backslash><less><equal><space>:"􋁦" # 0x10b066
 <Multi_key><backslash><backslash><p><l><bracketright>:"􋅞" # 0x10b15e
 <Multi_key><backslash><backslash><question><question>:"􊽴" # 0x10af74
-<Multi_key><backslash><backslash><quotedbl><A><space>:"􍫛" # 0x10dadb
-<Multi_key><backslash><backslash><quotedbl><D><space>:"􍫝" # 0x10dadd
 <Multi_key><backslash><backslash><slash><asciicircum>:"􌥹" # 0x10c979
 <Multi_key><backslash><backslash><slash><bracketleft>:"􋐁" # 0x10b401
 <Multi_key><backslash><backslash><slash><c><m><space>:"􌠏" # 0x10c80f
@@ -7299,6 +7373,8 @@
 <Multi_key><backslash><backslash><slash><slash><N><f>:"􌦻" # 0x10c9bb
 <Multi_key><backslash><backslash><slash><slash><N><n>:"􍑁" # 0x10d441
 <Multi_key><backslash><backslash><slash><slash><N><s>:"􌎧" # 0x10c3a7
+<Multi_key><backslash><backslash><slash><slash><O><A>:"􍮷" # 0x10dbb7
+<Multi_key><backslash><backslash><slash><slash><O><D>:"􍮻" # 0x10dbbb
 <Multi_key><backslash><backslash><slash><slash><O><X>:"􍠙" # 0x10d819
 <Multi_key><backslash><backslash><slash><slash><R><S>:"􍜹" # 0x10d739
 <Multi_key><backslash><backslash><slash><slash><S><I>:"􍜁" # 0x10d701
@@ -7344,6 +7420,8 @@
 <Multi_key><backslash><backslash><slash><slash><o><v>:"􌍯" # 0x10c36f
 <Multi_key><backslash><backslash><slash><slash><o><x>:"􌎃" # 0x10c383
 <Multi_key><backslash><backslash><slash><slash><p><2>:"􀱳" # 0x100c73
+<Multi_key><backslash><backslash><slash><slash><p><3>:"􍯧" # 0x10dbe7
+<Multi_key><backslash><backslash><slash><slash><p><4>:"􍰇" # 0x10dc07
 <Multi_key><backslash><backslash><slash><slash><q><0>:"􋨗" # 0x10ba17
 <Multi_key><backslash><backslash><slash><slash><q><1>:"􋨛" # 0x10ba1b
 <Multi_key><backslash><backslash><slash><slash><q><2>:"􋨟" # 0x10ba1f
@@ -7421,6 +7499,7 @@
 <Multi_key><backslash><backslash><slash><slash><r><o>:"􌮟" # 0x10cb9f
 <Multi_key><backslash><backslash><slash><slash><r><p>:"􌵻" # 0x10cd7b
 <Multi_key><backslash><backslash><slash><slash><r><v>:"􌪏" # 0x10ca8f
+<Multi_key><backslash><backslash><slash><slash><s><i>:"􍯯" # 0x10dbef
 <Multi_key><backslash><backslash><slash><slash><s><q>:"􌑓" # 0x10c453
 <Multi_key><backslash><backslash><slash><slash><s><r>:"􌐯" # 0x10c42f
 <Multi_key><backslash><backslash><slash><slash><s><t>:"􌐓" # 0x10c413
@@ -7434,8 +7513,8 @@
 <Multi_key><slash><slash><asciicircum><c><a><r><o><n>:"􍐐" # 0x10d410
 <Multi_key><slash><slash><asciicircum><g><r><a><v><e>:"􍐒" # 0x10d412
 <Multi_key><slash><slash><asciicircum><t><i><l><d><e>:"􊫁" # 0x10aac1
-<Multi_key><slash><slash><asciitilde><greater><slash>:"􍢲" # 0x10d8b2
-<Multi_key><slash><slash><asciitilde><greater><space>:"􍢰" # 0x10d8b0
+<Multi_key><slash><slash><asciitilde><R><less><slash>:"􊮪" # 0x10abaa
+<Multi_key><slash><slash><asciitilde><R><less><space>:"􍮔" # 0x10db94
 <Multi_key><slash><slash><backslash><backslash><0><3>:"􌋬" # 0x10c2ec
 <Multi_key><slash><slash><backslash><backslash><0><x>:"􍠖" # 0x10d816
 <Multi_key><slash><slash><backslash><backslash><1><2>:"􌋰" # 0x10c2f0
@@ -7484,6 +7563,8 @@
 <Multi_key><slash><slash><backslash><backslash><N><f>:"􌦼" # 0x10c9bc
 <Multi_key><slash><slash><backslash><backslash><N><n>:"􍑂" # 0x10d442
 <Multi_key><slash><slash><backslash><backslash><N><s>:"􌎨" # 0x10c3a8
+<Multi_key><slash><slash><backslash><backslash><O><A>:"􍮸" # 0x10dbb8
+<Multi_key><slash><slash><backslash><backslash><O><D>:"􍮼" # 0x10dbbc
 <Multi_key><slash><slash><backslash><backslash><O><X>:"􍠚" # 0x10d81a
 <Multi_key><slash><slash><backslash><backslash><R><S>:"􍜺" # 0x10d73a
 <Multi_key><slash><slash><backslash><backslash><S><I>:"􍜂" # 0x10d702
@@ -7529,6 +7610,8 @@
 <Multi_key><slash><slash><backslash><backslash><o><v>:"􌍰" # 0x10c370
 <Multi_key><slash><slash><backslash><backslash><o><x>:"􌎄" # 0x10c384
 <Multi_key><slash><slash><backslash><backslash><p><2>:"􀱴" # 0x100c74
+<Multi_key><slash><slash><backslash><backslash><p><3>:"􍯨" # 0x10dbe8
+<Multi_key><slash><slash><backslash><backslash><p><4>:"􍰈" # 0x10dc08
 <Multi_key><slash><slash><backslash><backslash><q><0>:"􋨘" # 0x10ba18
 <Multi_key><slash><slash><backslash><backslash><q><1>:"􋨜" # 0x10ba1c
 <Multi_key><slash><slash><backslash><backslash><q><2>:"􋨠" # 0x10ba20
@@ -7606,6 +7689,7 @@
 <Multi_key><slash><slash><backslash><backslash><r><o>:"􌮠" # 0x10cba0
 <Multi_key><slash><slash><backslash><backslash><r><p>:"􌵼" # 0x10cd7c
 <Multi_key><slash><slash><backslash><backslash><r><v>:"􌪐" # 0x10ca90
+<Multi_key><slash><slash><backslash><backslash><s><i>:"􍯰" # 0x10dbf0
 <Multi_key><slash><slash><backslash><backslash><s><q>:"􌑔" # 0x10c454
 <Multi_key><slash><slash><backslash><backslash><s><r>:"􌐰" # 0x10c430
 <Multi_key><slash><slash><backslash><backslash><s><t>:"􌐔" # 0x10c414
@@ -7615,9 +7699,8 @@
 <Multi_key><slash><slash><backslash><backslash><x><X>:"􌑠" # 0x10c460
 <Multi_key><slash><slash><backslash><backslash><x><x>:"􌑜" # 0x10c45c
 <Multi_key><slash><slash><bracketright><bracketright>:"􊱡" # 0x10ac61
+<Multi_key><slash><slash><bracketright><space><space>:"􍭸" # 0x10db78
 <Multi_key><slash><slash><e><bracketleft><underscore>:"􊯊" # 0x10abca
-<Multi_key><slash><slash><greater><greater><A><space>:"􍫦" # 0x10dae6
-<Multi_key><slash><slash><greater><greater><D><space>:"􍫨" # 0x10dae8
 <Multi_key><slash><slash><slash><slash><a><period><a>:"􌚦" # 0x10c6a6
 <Multi_key><slash><slash><slash><slash><a><period><d>:"􌚪" # 0x10c6aa
 <Multi_key><slash><slash><slash><slash><a><period><s>:"􌚢" # 0x10c6a2
@@ -7647,7 +7730,6 @@
 <Multi_key><Multi_key><w><s><s><space><w><s><t><space>:"􋐫" # 0x10b42b
 <Multi_key><Multi_key><w><s><t><space><w><s><r><space>:"􋐧" # 0x10b427
 <Multi_key><backslash><backslash><a><l><g><e><b><r><a>:"􋒩" # 0x10b4a9
-<Multi_key><backslash><backslash><asciitilde><less><n>:"􍢯" # 0x10d8af
 <Multi_key><backslash><backslash><backslash><asterisk>:"􋅤" # 0x10b164
 <Multi_key><backslash><backslash><backslash><question>:"􌥡" # 0x10c961
 <Multi_key><backslash><backslash><backslash><quotedbl>:"􌦉" # 0x10c989
@@ -7661,6 +7743,8 @@
 <Multi_key><backslash><backslash><equal><equal><slash>:"􋁥" # 0x10b065
 <Multi_key><backslash><backslash><equal><equal><space>:"􋁤" # 0x10b064
 <Multi_key><backslash><backslash><f><u><n><c><t><o><r>:"􍉍" # 0x10d24d
+<Multi_key><backslash><backslash><greater><greater><A>:"􍫧" # 0x10dae7
+<Multi_key><backslash><backslash><greater><greater><D>:"􍫩" # 0x10dae9
 <Multi_key><backslash><backslash><greater><greater><X>:"􍬷" # 0x10db37
 <Multi_key><backslash><backslash><l><a><t><t><i><c><e>:"􋒝" # 0x10b49d
 <Multi_key><backslash><backslash><m><e><a><s><u><r><e>:"􋒳" # 0x10b4b3
@@ -7679,6 +7763,7 @@
 <Multi_key><slash><slash><Multi_key><o><i><i><i><n><t>:"􋙮" # 0x10b66e
 <Multi_key><slash><slash><slash><slash><A><C><W><A><S>:"􌛮" # 0x10c6ee
 <Multi_key><slash><slash><slash><slash><A><C><W><D><S>:"􌛲" # 0x10c6f2
+<Multi_key><slash><slash><slash><slash><O><underscore>:"􍮪" # 0x10dbaa
 <Multi_key><slash><slash><slash><slash><W><B><h><e><k>:"􍣢" # 0x10d8e2
 <Multi_key><slash><slash><slash><slash><W><B><h><e><x>:"􍣦" # 0x10d8e6
 <Multi_key><slash><slash><slash><slash><a><b><b><w><s>:"􍥆" # 0x10d946
@@ -7735,6 +7820,8 @@
 <Multi_key><backslash><backslash><backslash><braceleft>:"􋎹" # 0x10b3b9
 <Multi_key><backslash><backslash><backslash><parenleft>:"􊿢" # 0x10afe2
 <Multi_key><backslash><backslash><backslash><semicolon>:"􋎸" # 0x10b3b8
+<Multi_key><backslash><backslash><bar><greater><bar><A>:"􍮿" # 0x10dbbf
+<Multi_key><backslash><backslash><bar><greater><bar><D>:"􍯗" # 0x10dbd7
 <Multi_key><backslash><backslash><bracketright><period>:"􋔟" # 0x10b51f
 <Multi_key><backslash><backslash><g><e><n><space><b><y>:"􋄍" # 0x10b10d
 <Multi_key><backslash><backslash><greater><less><space>:"􍎙" # 0x10d399
@@ -7857,8 +7944,10 @@
 <Multi_key><backslash><backslash><Multi_key><p><i><n><t>:"􋛛" # 0x10b6db
 <Multi_key><backslash><backslash><Multi_key><q><i><n><t>:"􋕭" # 0x10b56d
 <Multi_key><backslash><backslash><Multi_key><w><i><n><t>:"􋖍" # 0x10b58d
-<Multi_key><backslash><backslash><Multi_key><w><u><8><8>:"􍬩" # 0x10db29
+<Multi_key><backslash><backslash><Multi_key><w><u><8><8>:"􍰓" # 0x10dc13
 <Multi_key><backslash><backslash><Multi_key><w><u><p><2>:"􍧵" # 0x10d9f5
+<Multi_key><backslash><backslash><Multi_key><w><u><p><3>:"􍬩" # 0x10db29
+<Multi_key><backslash><backslash><Multi_key><w><u><p><4>:"􍰕" # 0x10dc15
 <Multi_key><backslash><backslash><a><i><a><slash><space>:"􋀹" # 0x10b039
 <Multi_key><backslash><backslash><a><i><d><slash><space>:"􋀺" # 0x10b03a
 <Multi_key><backslash><backslash><backslash><apostrophe>:"􌦅" # 0x10c985
@@ -7908,6 +7997,7 @@
 <Multi_key><backslash><backslash><slash><slash><N><A><K>:"􍜙" # 0x10d719
 <Multi_key><backslash><backslash><slash><slash><N><I><D>:"􍑅" # 0x10d445
 <Multi_key><backslash><backslash><slash><slash><N><U><L>:"􍛍" # 0x10d6cd
+<Multi_key><backslash><backslash><slash><slash><O><less>:"􍮳" # 0x10dbb3
 <Multi_key><backslash><backslash><slash><slash><P><I><D>:"􋣇" # 0x10b8c7
 <Multi_key><backslash><backslash><slash><slash><S><O><H>:"􍛕" # 0x10d6d5
 <Multi_key><backslash><backslash><slash><slash><S><T><X>:"􍛙" # 0x10d6d9
@@ -8847,6 +8937,8 @@
 <Multi_key><backslash><backslash><slash><slash><w><u><x>:"􍩱" # 0x10da71
 <Multi_key><backslash><backslash><slash><slash><y><u><m>:"􌣻" # 0x10c8fb
 <Multi_key><semicolon><braceright>:"⎫⎪⎬⎭" # 0x23ab 0x23aa 0x23ac 0x23ad
+<Multi_key><slash><slash><asciitilde><R><greater><slash>:"􍢰" # 0x10d8b0
+<Multi_key><slash><slash><asciitilde><R><greater><space>:"􍢮" # 0x10d8ae
 <Multi_key><slash><slash><backslash><backslash><1><1><0>:"􌌐" # 0x10c310
 <Multi_key><slash><slash><backslash><backslash><3><s><q>:"􌶠" # 0x10cda0
 <Multi_key><slash><slash><backslash><backslash><4><s><q>:"􌳌" # 0x10cccc
@@ -8874,6 +8966,7 @@
 <Multi_key><slash><slash><backslash><backslash><N><A><K>:"􍜚" # 0x10d71a
 <Multi_key><slash><slash><backslash><backslash><N><I><D>:"􍑆" # 0x10d446
 <Multi_key><slash><slash><backslash><backslash><N><U><L>:"􍛎" # 0x10d6ce
+<Multi_key><slash><slash><backslash><backslash><O><less>:"􍮴" # 0x10dbb4
 <Multi_key><slash><slash><backslash><backslash><P><I><D>:"􋣈" # 0x10b8c8
 <Multi_key><slash><slash><backslash><backslash><S><O><H>:"􍛖" # 0x10d6d6
 <Multi_key><slash><slash><backslash><backslash><S><T><X>:"􍛚" # 0x10d6da
@@ -9812,19 +9905,25 @@
 <Multi_key><slash><slash><backslash><backslash><w><u><o>:"􍨪" # 0x10da2a
 <Multi_key><slash><slash><backslash><backslash><w><u><x>:"􍩲" # 0x10da72
 <Multi_key><slash><slash><backslash><backslash><y><u><m>:"􌣼" # 0x10c8fc
+<Multi_key><slash><slash><bar><greater><greater><bar><A>:"􍯌" # 0x10dbcc
+<Multi_key><slash><slash><bar><greater><greater><bar><D>:"􍯐" # 0x10dbd0
 <Multi_key><slash><slash><period><parenleft><parenright>:"􊽠" # 0x10af60
 <Multi_key><slash><slash><slash><slash><0><minus><space>:"􊼜" # 0x10af1c
 <Multi_key><slash><slash><slash><slash><a><u><s><period>:"􌪆" # 0x10ca86
 <Multi_key><slash><slash><slash><slash><asterisk><space>:"􌑖" # 0x10c456
+<Multi_key><slash><slash><slash><slash><bar><greater><A>:"􍯺" # 0x10dbfa
+<Multi_key><slash><slash><slash><slash><bar><greater><D>:"􍯲" # 0x10dbf2
 <Multi_key><slash><slash><slash><slash><c><bracketright>:"􌟊" # 0x10c7ca
 <Multi_key><slash><slash><slash><slash><c><c><backslash>:"􌟚" # 0x10c7da
 <Multi_key><slash><slash><slash><slash><c><slash><slash>:"􌟦" # 0x10c7e6
 <Multi_key><slash><slash><slash><slash><c><slash><space>:"􌟢" # 0x10c7e2
+<Multi_key><slash><slash><slash><slash><greater><bar><A>:"􍫼" # 0x10dafc
+<Multi_key><slash><slash><slash><slash><greater><bar><D>:"􍬀" # 0x10db00
 <Multi_key><slash><slash><slash><slash><q><bracketright>:"􌗒" # 0x10c5d2
 <Multi_key><slash><slash><slash><slash><w><slash><space>:"􍟀" # 0x10d7c0
 <Multi_key><backslash><backslash><apostrophe><apostrophe>:"􌿍" # 0x10cfcd
+<Multi_key><backslash><backslash><asciitilde><R><less><n>:"􍢭" # 0x10d8ad
 <Multi_key><backslash><backslash><asciitilde><bar><space>:"􍪷" # 0x10dab7
-<Multi_key><backslash><backslash><asciitilde><greater><n>:"􍢽" # 0x10d8bd
 <Multi_key><backslash><backslash><backslash><asciicircum>:"􌥻" # 0x10c97b
 <Multi_key><backslash><backslash><backslash><bracketleft>:"􋎻" # 0x10b3bb
 <Multi_key><backslash><backslash><backslash><c><m><space>:"􌠑" # 0x10c811
@@ -9834,8 +9933,6 @@
 <Multi_key><backslash><backslash><e><bracketright><slash>:"􋁌" # 0x10b04c
 <Multi_key><backslash><backslash><e><bracketright><space>:"􋁋" # 0x10b04b
 <Multi_key><backslash><backslash><f><u><n><c><t><i><o><n>:"􋒙" # 0x10b499
-<Multi_key><backslash><backslash><greater><bar><A><space>:"􍫣" # 0x10dae3
-<Multi_key><backslash><backslash><greater><bar><D><space>:"􍫥" # 0x10dae5
 <Multi_key><backslash><backslash><i><j><e><c><t><i><o><n>:"􋒣" # 0x10b4a3
 <Multi_key><backslash><backslash><m><a><n><i><f><o><l><d>:"􋓁" # 0x10b4c1
 <Multi_key><backslash><backslash><m><o><r><p><h><i><s><m>:"􋒋" # 0x10b48b
@@ -9851,6 +9948,7 @@
 <Multi_key><backslash><backslash><slash><slash><E><space>:"􌐟" # 0x10c41f
 <Multi_key><backslash><backslash><slash><slash><F><minus>:"􌗇" # 0x10c5c7
 <Multi_key><backslash><backslash><slash><slash><L><space>:"􌦛" # 0x10c99b
+<Multi_key><backslash><backslash><slash><slash><O><colon>:"􍮧" # 0x10dba7
 <Multi_key><backslash><backslash><slash><slash><O><slash>:"􌬳" # 0x10cb33
 <Multi_key><backslash><backslash><slash><slash><O><space>:"􌍻" # 0x10c37b
 <Multi_key><backslash><backslash><slash><slash><P><space>:"􋏠" # 0x10b3e0
@@ -9884,8 +9982,6 @@
 <Multi_key><backslash><backslash><slash><slash><z><space>:"􋏪" # 0x10b3ea
 <Multi_key><backslash><backslash><t><o><p><o><l><o><g><y>:"􋒽" # 0x10b4bd
 <Multi_key><backslash><backslash><underscore><b><r><e><v>:"􌿍" # 0x10cfcd
-<Multi_key><slash><slash><asciitilde><less><equal><slash>:"􍢪" # 0x10d8aa
-<Multi_key><slash><slash><asciitilde><less><equal><space>:"􍢨" # 0x10d8a8
 <Multi_key><slash><slash><backslash><backslash><0><space>:"􊻤" # 0x10aee4
 <Multi_key><slash><slash><backslash><backslash><5><minus>:"􍚪" # 0x10d6aa
 <Multi_key><slash><slash><backslash><backslash><6><minus>:"􍚮" # 0x10d6ae
@@ -9894,6 +9990,7 @@
 <Multi_key><slash><slash><backslash><backslash><E><space>:"􌐠" # 0x10c420
 <Multi_key><slash><slash><backslash><backslash><F><minus>:"􌗈" # 0x10c5c8
 <Multi_key><slash><slash><backslash><backslash><L><space>:"􌦜" # 0x10c99c
+<Multi_key><slash><slash><backslash><backslash><O><colon>:"􍮨" # 0x10dba8
 <Multi_key><slash><slash><backslash><backslash><O><slash>:"􌬴" # 0x10cb34
 <Multi_key><slash><slash><backslash><backslash><O><space>:"􌍼" # 0x10c37c
 <Multi_key><slash><slash><backslash><backslash><P><space>:"􊻘" # 0x10aed8
@@ -9951,8 +10048,6 @@
 <Multi_key><slash><slash><slash><slash><v><s><underscore>:"􌒮" # 0x10c4ae
 <Multi_key><slash><slash><slash><slash><v><w><underscore>:"􌒆" # 0x10c486
 <Multi_key><backslash><backslash><asciicircum><b><r><e><v>:"􍐏" # 0x10d40f
-<Multi_key><backslash><backslash><asciitilde><less><slash>:"􍢧" # 0x10d8a7
-<Multi_key><backslash><backslash><asciitilde><less><space>:"􋁬" # 0x10b06c
 <Multi_key><backslash><backslash><backslash><bracketright>:"􋎼" # 0x10b3bc
 <Multi_key><backslash><backslash><colon><colon><parenleft>:"􋍯" # 0x10b36f
 <Multi_key><backslash><backslash><greater><greater><space>:"􌾗" # 0x10cf97
@@ -9980,7 +10075,6 @@
 <Multi_key><backslash><backslash><underscore><bracketleft>:"􋗗" # 0x10b5d7
 <Multi_key><backslash><backslash><v><e><c><t><o><r><space>:"􋒱" # 0x10b4b1
 <Multi_key><slash><slash><Multi_key><w><u><i><asciicircum>:"􍨌" # 0x10da0c
-<Multi_key><slash><slash><asciitilde><less><asciitilde><n>:"􍢬" # 0x10d8ac
 <Multi_key><slash><slash><backslash><backslash><1><period>:"􍙖" # 0x10d656
 <Multi_key><slash><slash><backslash><backslash><2><period>:"􍙚" # 0x10d65a
 <Multi_key><slash><slash><backslash><backslash><3><period>:"􍙞" # 0x10d65e
@@ -9999,8 +10093,6 @@
 <Multi_key><slash><slash><backslash><backslash><r><period>:"􌭨" # 0x10cb68
 <Multi_key><slash><slash><bracketleft><space><bracketleft>:"􋜬" # 0x10b72c
 <Multi_key><slash><slash><d><e><r><a><n><g><e><m><e><n><t>:"􋒀" # 0x10b480
-<Multi_key><slash><slash><greater><greater><bar><A><space>:"􍫪" # 0x10daea
-<Multi_key><slash><slash><greater><greater><bar><D><space>:"􍁎" # 0x10d04e
 <Multi_key><slash><slash><period><bracketleft><parenright>:"􊽡" # 0x10af61
 <Multi_key><slash><slash><period><parenleft><bracketright>:"􊽢" # 0x10af62
 <Multi_key><slash><slash><slash><slash><a><b><b><s><space>:"􍥂" # 0x10d942
@@ -10013,8 +10105,6 @@
 <Multi_key><slash><slash><slash><slash><c><r><bracketleft>:"􍧄" # 0x10d9c4
 <Multi_key><slash><slash><slash><slash><c><w><p><t><space>:"􌞪" # 0x10c7aa
 <Multi_key><slash><slash><slash><slash><colon><parenright>:"􌣂" # 0x10c8c2
-<Multi_key><slash><slash><slash><slash><greater><A><space>:"􍫴" # 0x10daf4
-<Multi_key><slash><slash><slash><slash><greater><D><space>:"􍫸" # 0x10daf8
 <Multi_key><slash><slash><slash><slash><less><less><space>:"􌾘" # 0x10cf98
 <Multi_key><slash><slash><slash><slash><minus><bar><space>:"􍫆" # 0x10dac6
 <Multi_key><slash><slash><slash><slash><numbersign><space>:"􌎞" # 0x10c39e
@@ -10032,12 +10122,17 @@
 <Multi_key><backslash><backslash><Multi_key><w><u><g><p><i>:"􍧙" # 0x10d9d9
 <Multi_key><backslash><backslash><Multi_key><w><u><g><t><a>:"􍧹" # 0x10d9f9
 <Multi_key><backslash><backslash><bar><bar><greater><space>:"􍪻" # 0x10dabb
+<Multi_key><backslash><backslash><bar><greater><greater><A>:"􍯓" # 0x10dbd3
+<Multi_key><backslash><backslash><bar><greater><greater><D>:"􍯃" # 0x10dbc3
 <Multi_key><backslash><backslash><bracketleft><bracketleft>:"􋄢" # 0x10b122
 <Multi_key><backslash><backslash><bracketright><parenright>:"􋞯" # 0x10b7af
 <Multi_key><backslash><backslash><colon><colon><parenright>:"􋍴" # 0x10b374
+<Multi_key><backslash><backslash><greater><greater><bar><A>:"􍫫" # 0x10daeb
+<Multi_key><backslash><backslash><greater><greater><bar><D>:"􍁏" # 0x10d04f
 <Multi_key><backslash><backslash><slash><slash><A><C><H><A>:"􌛷" # 0x10c6f7
 <Multi_key><backslash><backslash><slash><slash><A><C><H><D>:"􌛻" # 0x10c6fb
 <Multi_key><backslash><backslash><slash><slash><N><1><2><8>:"􍐽" # 0x10d43d
+<Multi_key><backslash><backslash><slash><slash><O><greater>:"􍮯" # 0x10dbaf
 <Multi_key><backslash><backslash><slash><slash><S><T><A><d>:"􍞽" # 0x10d7bd
 <Multi_key><backslash><backslash><slash><slash><S><T><plus>:"􀱃" # 0x100c43
 <Multi_key><backslash><backslash><slash><slash><W><B><v><s>:"􍗥" # 0x10d5e5
@@ -10098,6 +10193,8 @@
 <Multi_key><backslash><backslash><slash><slash><f><i><s><t>:"􌢓" # 0x10c893
 <Multi_key><backslash><backslash><slash><slash><f><o><r><m>:"􍒩" # 0x10d4a9
 <Multi_key><backslash><backslash><slash><slash><g><e><a><r>:"􍂁" # 0x10d081
+<Multi_key><backslash><backslash><slash><slash><greater><A>:"􍫵" # 0x10daf5
+<Multi_key><backslash><backslash><slash><slash><greater><D>:"􍫹" # 0x10daf9
 <Multi_key><backslash><backslash><slash><slash><i><e><a><l>:"􋣣" # 0x10b8e3
 <Multi_key><backslash><backslash><slash><slash><k><i><s><s>:"􌣳" # 0x10c8f3
 <Multi_key><backslash><backslash><slash><slash><l><i><n><e>:"􍒝" # 0x10d49d
@@ -10131,6 +10228,7 @@
 <Multi_key><slash><slash><backslash><backslash><A><C><H><A>:"􌛸" # 0x10c6f8
 <Multi_key><slash><slash><backslash><backslash><A><C><H><D>:"􌛼" # 0x10c6fc
 <Multi_key><slash><slash><backslash><backslash><N><1><2><8>:"􍐾" # 0x10d43e
+<Multi_key><slash><slash><backslash><backslash><O><greater>:"􍮰" # 0x10dbb0
 <Multi_key><slash><slash><backslash><backslash><S><T><A><d>:"􍞾" # 0x10d7be
 <Multi_key><slash><slash><backslash><backslash><S><T><plus>:"􀱄" # 0x100c44
 <Multi_key><slash><slash><backslash><backslash><W><B><v><s>:"􍗦" # 0x10d5e6
@@ -10191,6 +10289,8 @@
 <Multi_key><slash><slash><backslash><backslash><f><i><s><t>:"􌢔" # 0x10c894
 <Multi_key><slash><slash><backslash><backslash><f><o><r><m>:"􍒪" # 0x10d4aa
 <Multi_key><slash><slash><backslash><backslash><g><e><a><r>:"􍂂" # 0x10d082
+<Multi_key><slash><slash><backslash><backslash><greater><A>:"􍫶" # 0x10daf6
+<Multi_key><slash><slash><backslash><backslash><greater><D>:"􍫺" # 0x10dafa
 <Multi_key><slash><slash><backslash><backslash><i><e><a><l>:"􋣤" # 0x10b8e4
 <Multi_key><slash><slash><backslash><backslash><k><i><s><s>:"􌣴" # 0x10c8f4
 <Multi_key><slash><slash><backslash><backslash><l><i><n><e>:"􍒞" # 0x10d49e
@@ -10232,20 +10332,19 @@
 <Multi_key><slash><slash><slash><slash><less><equal><space>:"􌓆" # 0x10c4c6
 <Multi_key><slash><slash><slash><slash><p><l><bracketright>:"􌖾" # 0x10c5be
 <Multi_key><slash><slash><slash><slash><question><question>:"􌏢" # 0x10c3e2
-<Multi_key><slash><slash><slash><slash><quotedbl><A><space>:"􍫬" # 0x10daec
-<Multi_key><slash><slash><slash><slash><quotedbl><D><space>:"􍫰" # 0x10daf0
 <Multi_key><slash><slash><w><b><Multi_key><0><minus><space>:"􊸼" # 0x10ae3c
 <Multi_key><slash><slash><w><i><Multi_key><0><minus><space>:"􊸗" # 0x10ae17
 <Multi_key><backslash><backslash><Multi_key><w><u><p><space>:"􍧙" # 0x10d9d9
 <Multi_key><backslash><backslash><Multi_key><w><u><t><space>:"􍧹" # 0x10d9f9
+<Multi_key><backslash><backslash><asciitilde><R><greater><n>:"􍢻" # 0x10d8bb
 <Multi_key><backslash><backslash><bracketleft><bracketright>:"􋄅" # 0x10b105
 <Multi_key><backslash><backslash><bracketleft><space><space>:"􍭷" # 0x10db77
-<Multi_key><backslash><backslash><bracketright><bracketleft>:"􍭹" # 0x10db79
 <Multi_key><backslash><backslash><c><o><n><n><e><c><t><e><d>:"􀲕" # 0x100c95
 <Multi_key><backslash><backslash><i><m><o><r><p><h><i><s><m>:"􋒥" # 0x10b4a5
 <Multi_key><backslash><backslash><p><a><r><t><i><t><i><o><n>:"􋒅" # 0x10b485
 <Multi_key><backslash><backslash><slash><slash><0><v><space>:"􋡟" # 0x10b85f
 <Multi_key><backslash><backslash><slash><slash><2><asterisk>:"􍚵" # 0x10d6b5
+<Multi_key><backslash><backslash><slash><slash><4><asterisk>:"􍯫" # 0x10dbeb
 <Multi_key><backslash><backslash><slash><slash><C><J><space>:"􍅕" # 0x10d155
 <Multi_key><backslash><backslash><slash><slash><F><F><space>:"􌐷" # 0x10c437
 <Multi_key><backslash><backslash><slash><slash><F><i><space>:"􋏢" # 0x10b3e2
@@ -10280,6 +10379,7 @@
 <Multi_key><backslash><backslash><slash><slash><W><X><space>:"􀹍" # 0x100e4d
 <Multi_key><backslash><backslash><slash><slash><W><Z><space>:"􌪗" # 0x10ca97
 <Multi_key><backslash><backslash><slash><slash><W><m><space>:"􌋏" # 0x10c2cf
+<Multi_key><backslash><backslash><slash><slash><W><r><space>:"􍮍" # 0x10db8d
 <Multi_key><backslash><backslash><slash><slash><W><v><space>:"􌨿" # 0x10ca3f
 <Multi_key><backslash><backslash><slash><slash><a><A><space>:"􌘟" # 0x10c61f
 <Multi_key><backslash><backslash><slash><slash><a><D><space>:"􌘣" # 0x10c623
@@ -10342,7 +10442,7 @@
 <Multi_key><backslash><backslash><slash><slash><g><u><space>:"􋏸" # 0x10b3f8
 <Multi_key><backslash><backslash><slash><slash><i><d><space>:"􋢻" # 0x10b8bb
 <Multi_key><backslash><backslash><slash><slash><i><o><space>:"􋏭" # 0x10b3ed
-<Multi_key><backslash><backslash><slash><slash><i><slash><s>:"􍤃" # 0x10d903
+<Multi_key><backslash><backslash><slash><slash><i><slash><s>:"􍯟" # 0x10dbdf
 <Multi_key><backslash><backslash><slash><slash><less><slash>:"􌓃" # 0x10c4c3
 <Multi_key><backslash><backslash><slash><slash><m><u><space>:"􋏰" # 0x10b3f0
 <Multi_key><backslash><backslash><slash><slash><minus><plus>:"􌓛" # 0x10c4db
@@ -10352,7 +10452,10 @@
 <Multi_key><backslash><backslash><slash><slash><plus><minus>:"􌓟" # 0x10c4df
 <Multi_key><backslash><backslash><slash><slash><question><R>:"􌏫" # 0x10c3eb
 <Multi_key><backslash><backslash><slash><slash><question><r>:"􌏧" # 0x10c3e7
+<Multi_key><backslash><backslash><slash><slash><quotedbl><A>:"􍫭" # 0x10daed
+<Multi_key><backslash><backslash><slash><slash><quotedbl><D>:"􍫱" # 0x10daf1
 <Multi_key><backslash><backslash><slash><slash><r><h><space>:"􋏴" # 0x10b3f4
+<Multi_key><backslash><backslash><slash><slash><s><slash><i>:"􍰏" # 0x10dc0f
 <Multi_key><backslash><backslash><slash><slash><t><o><space>:"􌖟" # 0x10c59f
 <Multi_key><backslash><backslash><slash><slash><u><a><slash>:"􌕻" # 0x10c57b
 <Multi_key><backslash><backslash><slash><slash><u><a><space>:"􌕳" # 0x10c573
@@ -10420,10 +10523,11 @@
 <Multi_key><backslash><backslash><w><i><Multi_key><x><space>:"􋋶" # 0x10b2f6
 <Multi_key><backslash><backslash><w><i><Multi_key><y><space>:"􋋣" # 0x10b2e3
 <Multi_key><backslash><backslash><w><i><Multi_key><z><space>:"􋋦" # 0x10b2e6
-<Multi_key><slash><slash><asciitilde><greater><equal><slash>:"􍢶" # 0x10d8b6
-<Multi_key><slash><slash><asciitilde><greater><equal><space>:"􍢴" # 0x10d8b4
+<Multi_key><slash><slash><asciitilde><R><less><equal><slash>:"􍢨" # 0x10d8a8
+<Multi_key><slash><slash><asciitilde><R><less><equal><space>:"􍢦" # 0x10d8a6
 <Multi_key><slash><slash><backslash><backslash><0><v><space>:"􋡠" # 0x10b860
 <Multi_key><slash><slash><backslash><backslash><2><asterisk>:"􍚶" # 0x10d6b6
+<Multi_key><slash><slash><backslash><backslash><4><asterisk>:"􍯬" # 0x10dbec
 <Multi_key><slash><slash><backslash><backslash><C><J><space>:"􍅖" # 0x10d156
 <Multi_key><slash><slash><backslash><backslash><F><F><space>:"􌐸" # 0x10c438
 <Multi_key><slash><slash><backslash><backslash><F><i><space>:"􊻚" # 0x10aeda
@@ -10458,6 +10562,7 @@
 <Multi_key><slash><slash><backslash><backslash><W><X><space>:"􀹎" # 0x100e4e
 <Multi_key><slash><slash><backslash><backslash><W><Z><space>:"􌪘" # 0x10ca98
 <Multi_key><slash><slash><backslash><backslash><W><m><space>:"􌋐" # 0x10c2d0
+<Multi_key><slash><slash><backslash><backslash><W><r><space>:"􍮎" # 0x10db8e
 <Multi_key><slash><slash><backslash><backslash><W><v><space>:"􌩀" # 0x10ca40
 <Multi_key><slash><slash><backslash><backslash><a><A><space>:"􌘠" # 0x10c620
 <Multi_key><slash><slash><backslash><backslash><a><D><space>:"􌘤" # 0x10c624
@@ -10520,7 +10625,7 @@
 <Multi_key><slash><slash><backslash><backslash><g><u><space>:"􊻰" # 0x10aef0
 <Multi_key><slash><slash><backslash><backslash><i><d><space>:"􋢼" # 0x10b8bc
 <Multi_key><slash><slash><backslash><backslash><i><o><space>:"􊻥" # 0x10aee5
-<Multi_key><slash><slash><backslash><backslash><i><slash><s>:"􍤄" # 0x10d904
+<Multi_key><slash><slash><backslash><backslash><i><slash><s>:"􍯠" # 0x10dbe0
 <Multi_key><slash><slash><backslash><backslash><less><slash>:"􌓄" # 0x10c4c4
 <Multi_key><slash><slash><backslash><backslash><m><u><space>:"􊻨" # 0x10aee8
 <Multi_key><slash><slash><backslash><backslash><minus><plus>:"􌓜" # 0x10c4dc
@@ -10530,7 +10635,10 @@
 <Multi_key><slash><slash><backslash><backslash><plus><minus>:"􌓠" # 0x10c4e0
 <Multi_key><slash><slash><backslash><backslash><question><R>:"􌏬" # 0x10c3ec
 <Multi_key><slash><slash><backslash><backslash><question><r>:"􌏨" # 0x10c3e8
+<Multi_key><slash><slash><backslash><backslash><quotedbl><A>:"􍫮" # 0x10daee
+<Multi_key><slash><slash><backslash><backslash><quotedbl><D>:"􍫲" # 0x10daf2
 <Multi_key><slash><slash><backslash><backslash><r><h><space>:"􊻬" # 0x10aeec
+<Multi_key><slash><slash><backslash><backslash><s><slash><i>:"􍰐" # 0x10dc10
 <Multi_key><slash><slash><backslash><backslash><t><o><space>:"􌖠" # 0x10c5a0
 <Multi_key><slash><slash><backslash><backslash><u><a><slash>:"􌕼" # 0x10c57c
 <Multi_key><slash><slash><backslash><backslash><u><a><space>:"􌕴" # 0x10c574
@@ -10554,7 +10662,6 @@
 <Multi_key><slash><slash><bracketright><space><bracketright>:"􋟘" # 0x10b7d8
 <Multi_key><slash><slash><period><bracketleft><bracketright>:"􊽟" # 0x10af5f
 <Multi_key><slash><slash><slash><slash><a><l><g><e><b><r><a>:"􋣶" # 0x10b8f6
-<Multi_key><slash><slash><slash><slash><asciitilde><less><n>:"􍤖" # 0x10d916
 <Multi_key><slash><slash><slash><slash><bar><greater><space>:"􍫖" # 0x10dad6
 <Multi_key><slash><slash><slash><slash><bar><period><period>:"􍚼" # 0x10d6bc
 <Multi_key><slash><slash><slash><slash><bracketleft><period>:"􌗚" # 0x10c5da
@@ -10565,6 +10672,8 @@
 <Multi_key><slash><slash><slash><slash><equal><equal><slash>:"􌕆" # 0x10c546
 <Multi_key><slash><slash><slash><slash><equal><equal><space>:"􌕂" # 0x10c542
 <Multi_key><slash><slash><slash><slash><f><u><n><c><t><o><r>:"􍒬" # 0x10d4ac
+<Multi_key><slash><slash><slash><slash><greater><greater><A>:"􍬄" # 0x10db04
+<Multi_key><slash><slash><slash><slash><greater><greater><D>:"􍬈" # 0x10db08
 <Multi_key><slash><slash><slash><slash><greater><greater><X>:"􍬼" # 0x10db3c
 <Multi_key><slash><slash><slash><slash><l><a><t><t><i><c><e>:"􋣚" # 0x10b8da
 <Multi_key><slash><slash><slash><slash><m><e><a><s><u><r><e>:"􋤊" # 0x10b90a
@@ -10581,8 +10690,8 @@
 <Multi_key><backslash><backslash><asciicircum><c><a><r><o><n>:"􍐑" # 0x10d411
 <Multi_key><backslash><backslash><asciicircum><g><r><a><v><e>:"􍐓" # 0x10d413
 <Multi_key><backslash><backslash><asciicircum><t><i><l><d><e>:"􊾃" # 0x10af83
-<Multi_key><backslash><backslash><asciitilde><greater><slash>:"􍢳" # 0x10d8b3
-<Multi_key><backslash><backslash><asciitilde><greater><space>:"􍢱" # 0x10d8b1
+<Multi_key><backslash><backslash><asciitilde><R><less><slash>:"􋁬" # 0x10b06c
+<Multi_key><backslash><backslash><asciitilde><R><less><space>:"􍮕" # 0x10db95
 <Multi_key><backslash><backslash><backslash><backslash><0><3>:"􌋭" # 0x10c2ed
 <Multi_key><backslash><backslash><backslash><backslash><0><x>:"􍠗" # 0x10d817
 <Multi_key><backslash><backslash><backslash><backslash><1><2>:"􌋱" # 0x10c2f1
@@ -10631,6 +10740,8 @@
 <Multi_key><backslash><backslash><backslash><backslash><N><f>:"􌦽" # 0x10c9bd
 <Multi_key><backslash><backslash><backslash><backslash><N><n>:"􍑃" # 0x10d443
 <Multi_key><backslash><backslash><backslash><backslash><N><s>:"􌎩" # 0x10c3a9
+<Multi_key><backslash><backslash><backslash><backslash><O><A>:"􍮹" # 0x10dbb9
+<Multi_key><backslash><backslash><backslash><backslash><O><D>:"􍮽" # 0x10dbbd
 <Multi_key><backslash><backslash><backslash><backslash><O><X>:"􍠛" # 0x10d81b
 <Multi_key><backslash><backslash><backslash><backslash><R><S>:"􍜻" # 0x10d73b
 <Multi_key><backslash><backslash><backslash><backslash><S><I>:"􍜃" # 0x10d703
@@ -10676,6 +10787,8 @@
 <Multi_key><backslash><backslash><backslash><backslash><o><v>:"􌍱" # 0x10c371
 <Multi_key><backslash><backslash><backslash><backslash><o><x>:"􌎅" # 0x10c385
 <Multi_key><backslash><backslash><backslash><backslash><p><2>:"􀱵" # 0x100c75
+<Multi_key><backslash><backslash><backslash><backslash><p><3>:"􍯩" # 0x10dbe9
+<Multi_key><backslash><backslash><backslash><backslash><p><4>:"􍰉" # 0x10dc09
 <Multi_key><backslash><backslash><backslash><backslash><q><0>:"􋨙" # 0x10ba19
 <Multi_key><backslash><backslash><backslash><backslash><q><1>:"􋨝" # 0x10ba1d
 <Multi_key><backslash><backslash><backslash><backslash><q><2>:"􋨡" # 0x10ba21
@@ -10753,6 +10866,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><r><o>:"􌮡" # 0x10cba1
 <Multi_key><backslash><backslash><backslash><backslash><r><p>:"􌵽" # 0x10cd7d
 <Multi_key><backslash><backslash><backslash><backslash><r><v>:"􌪑" # 0x10ca91
+<Multi_key><backslash><backslash><backslash><backslash><s><i>:"􍯱" # 0x10dbf1
 <Multi_key><backslash><backslash><backslash><backslash><s><q>:"􌑕" # 0x10c455
 <Multi_key><backslash><backslash><backslash><backslash><s><r>:"􌐱" # 0x10c431
 <Multi_key><backslash><backslash><backslash><backslash><s><t>:"􌐕" # 0x10c415
@@ -10762,9 +10876,8 @@
 <Multi_key><backslash><backslash><backslash><backslash><x><X>:"􌑡" # 0x10c461
 <Multi_key><backslash><backslash><backslash><backslash><x><x>:"􌑝" # 0x10c45d
 <Multi_key><backslash><backslash><bracketright><bracketright>:"􋄣" # 0x10b123
+<Multi_key><backslash><backslash><bracketright><space><space>:"􍭹" # 0x10db79
 <Multi_key><backslash><backslash><e><bracketleft><underscore>:"􋂌" # 0x10b08c
-<Multi_key><backslash><backslash><greater><greater><A><space>:"􍫧" # 0x10dae7
-<Multi_key><backslash><backslash><greater><greater><D><space>:"􍫩" # 0x10dae9
 <Multi_key><backslash><backslash><slash><slash><a><period><a>:"􌚧" # 0x10c6a7
 <Multi_key><backslash><backslash><slash><slash><a><period><d>:"􌚫" # 0x10c6ab
 <Multi_key><backslash><backslash><slash><slash><a><period><s>:"􌚣" # 0x10c6a3
@@ -10786,7 +10899,7 @@
 <Multi_key><backslash><backslash><slash><slash><space><space>:"􌗧" # 0x10c5e7
 <Multi_key><backslash><backslash><slash><slash><v><s><period>:"􌒗" # 0x10c497
 <Multi_key><backslash><backslash><slash><slash><v><w><period>:"􌑳" # 0x10c473
-<Multi_key><slash><slash><asciitilde><greater><asciitilde><n>:"􍢺" # 0x10d8ba
+<Multi_key><slash><slash><asciitilde><R><less><asciitilde><n>:"􊮫" # 0x10abab
 <Multi_key><slash><slash><backslash><backslash><a><period><a>:"􌚨" # 0x10c6a8
 <Multi_key><slash><slash><backslash><backslash><a><period><d>:"􌚬" # 0x10c6ac
 <Multi_key><slash><slash><backslash><backslash><a><period><s>:"􌚤" # 0x10c6a4
@@ -10813,6 +10926,8 @@
 <Multi_key><slash><slash><slash><slash><asciicircum><d><i><a>:"􍡌" # 0x10d84c
 <Multi_key><slash><slash><slash><slash><asciicircum><d><o><t>:"􍡐" # 0x10d850
 <Multi_key><slash><slash><slash><slash><asciicircum><h><a><t>:"􍡈" # 0x10d848
+<Multi_key><slash><slash><slash><slash><bar><greater><bar><A>:"􍯚" # 0x10dbda
+<Multi_key><slash><slash><slash><slash><bar><greater><bar><D>:"􍰊" # 0x10dc0a
 <Multi_key><slash><slash><slash><slash><bracketright><period>:"􌗢" # 0x10c5e2
 <Multi_key><slash><slash><slash><slash><g><e><n><space><b><y>:"􋡺" # 0x10b87a
 <Multi_key><slash><slash><slash><slash><greater><less><space>:"􍝄" # 0x10d744
@@ -10826,6 +10941,7 @@
 <Multi_key><backslash><backslash><Multi_key><o><i><i><i><n><t>:"􋙯" # 0x10b66f
 <Multi_key><backslash><backslash><slash><slash><A><C><W><A><S>:"􌛯" # 0x10c6ef
 <Multi_key><backslash><backslash><slash><slash><A><C><W><D><S>:"􌛳" # 0x10c6f3
+<Multi_key><backslash><backslash><slash><slash><O><underscore>:"􍮫" # 0x10dbab
 <Multi_key><backslash><backslash><slash><slash><W><B><h><e><k>:"􍣣" # 0x10d8e3
 <Multi_key><backslash><backslash><slash><slash><W><B><h><e><x>:"􍣧" # 0x10d8e7
 <Multi_key><backslash><backslash><slash><slash><a><b><b><w><s>:"􍥇" # 0x10d947
@@ -10876,9 +10992,9 @@
 <Multi_key><backslash><backslash><slash><slash><w><h><e><e><l>:"􍠅" # 0x10d805
 <Multi_key><backslash><backslash><slash><slash><w><r><i><t><e>:"􌥃" # 0x10c943
 <Multi_key><slash><slash><asciicircum><underscore><underscore>:"􍐖" # 0x10d416
-<Multi_key><slash><slash><asciitilde><less><asciitilde><space>:"􊮫" # 0x10abab
 <Multi_key><slash><slash><backslash><backslash><A><C><W><A><S>:"􌛰" # 0x10c6f0
 <Multi_key><slash><slash><backslash><backslash><A><C><W><D><S>:"􌛴" # 0x10c6f4
+<Multi_key><slash><slash><backslash><backslash><O><underscore>:"􍮬" # 0x10dbac
 <Multi_key><slash><slash><backslash><backslash><W><B><h><e><k>:"􍣤" # 0x10d8e4
 <Multi_key><slash><slash><backslash><backslash><W><B><h><e><x>:"􍣨" # 0x10d8e8
 <Multi_key><slash><slash><backslash><backslash><a><b><b><w><s>:"􍥈" # 0x10d948
@@ -10935,8 +11051,10 @@
 <Multi_key><slash><slash><slash><slash><Multi_key><p><i><n><t>:"􌲆" # 0x10cc86
 <Multi_key><slash><slash><slash><slash><Multi_key><q><i><n><t>:"􌦎" # 0x10c98e
 <Multi_key><slash><slash><slash><slash><Multi_key><w><i><n><t>:"􌧒" # 0x10c9d2
-<Multi_key><slash><slash><slash><slash><Multi_key><w><u><8><8>:"􍬬" # 0x10db2c
+<Multi_key><slash><slash><slash><slash><Multi_key><w><u><8><8>:"􍰖" # 0x10dc16
 <Multi_key><slash><slash><slash><slash><Multi_key><w><u><p><2>:"􍩌" # 0x10da4c
+<Multi_key><slash><slash><slash><slash><Multi_key><w><u><p><3>:"􍬬" # 0x10db2c
+<Multi_key><slash><slash><slash><slash><Multi_key><w><u><p><4>:"􍰚" # 0x10dc1a
 <Multi_key><slash><slash><slash><slash><a><i><a><slash><space>:"􌙖" # 0x10c656
 <Multi_key><slash><slash><slash><slash><a><i><d><slash><space>:"􌙚" # 0x10c65a
 <Multi_key><slash><slash><slash><slash><backslash><asciitilde>:"􍡄" # 0x10d844
@@ -11057,6 +11175,8 @@
 <Multi_key><backslash><backslash><w><i><Multi_key><r><h><space>:"􋋰" # 0x10b2f0
 <Multi_key><backslash><backslash><w><i><Multi_key><u><p><space>:"􋋴" # 0x10b2f4
 <Multi_key><backslash><backslash><w><i><Multi_key><x><i><space>:"􋋚" # 0x10b2da
+<Multi_key><slash><slash><asciitilde><R><greater><equal><slash>:"􍢴" # 0x10d8b4
+<Multi_key><slash><slash><asciitilde><R><greater><equal><space>:"􍢲" # 0x10d8b2
 <Multi_key><slash><slash><backslash><backslash><A><R><A><space>:"􌛘" # 0x10c6d8
 <Multi_key><slash><slash><backslash><backslash><A><R><C><space>:"􌛬" # 0x10c6ec
 <Multi_key><slash><slash><backslash><backslash><A><R><D><space>:"􌛜" # 0x10c6dc
@@ -11121,15 +11241,13 @@
 <Multi_key><slash><slash><backslash><backslash><w><h><t><slash>:"􍑖" # 0x10d456
 <Multi_key><slash><slash><backslash><backslash><w><h><t><space>:"􍑒" # 0x10d452
 <Multi_key><slash><slash><slash><slash><apostrophe><apostrophe>:"􍄸" # 0x10d138
+<Multi_key><slash><slash><slash><slash><asciitilde><R><less><n>:"􍤒" # 0x10d912
 <Multi_key><slash><slash><slash><slash><asciitilde><bar><space>:"􍫊" # 0x10daca
-<Multi_key><slash><slash><slash><slash><asciitilde><greater><n>:"􍤲" # 0x10d932
 <Multi_key><slash><slash><slash><slash><bracketleft><parenleft>:"􌳶" # 0x10ccf6
 <Multi_key><slash><slash><slash><slash><c><a><t><e><g><o><r><y>:"􋢮" # 0x10b8ae
 <Multi_key><slash><slash><slash><slash><e><bracketright><slash>:"􌔢" # 0x10c522
 <Multi_key><slash><slash><slash><slash><e><bracketright><space>:"􌔞" # 0x10c51e
 <Multi_key><slash><slash><slash><slash><f><u><n><c><t><i><o><n>:"􋣒" # 0x10b8d2
-<Multi_key><slash><slash><slash><slash><greater><bar><A><space>:"􍫼" # 0x10dafc
-<Multi_key><slash><slash><slash><slash><greater><bar><D><space>:"􍬀" # 0x10db00
 <Multi_key><slash><slash><slash><slash><i><j><e><c><t><i><o><n>:"􋣦" # 0x10b8e6
 <Multi_key><slash><slash><slash><slash><m><a><n><i><f><o><l><d>:"􋤮" # 0x10b92e
 <Multi_key><slash><slash><slash><slash><m><o><r><p><h><i><s><m>:"􋢶" # 0x10b8b6
@@ -11139,6 +11257,8 @@
 <Multi_key><slash><slash><slash><slash><s><a><l><g><e><b><r><a>:"􍒰" # 0x10d4b0
 <Multi_key><slash><slash><slash><slash><t><o><p><o><l><o><g><y>:"􋤦" # 0x10b926
 <Multi_key><slash><slash><slash><slash><underscore><b><r><e><v>:"􍄸" # 0x10d138
+<Multi_key><backslash><backslash><asciitilde><R><greater><slash>:"􍢱" # 0x10d8b1
+<Multi_key><backslash><backslash><asciitilde><R><greater><space>:"􍢯" # 0x10d8af
 <Multi_key><backslash><backslash><backslash><backslash><1><1><0>:"􌌑" # 0x10c311
 <Multi_key><backslash><backslash><backslash><backslash><3><s><q>:"􌶡" # 0x10cda1
 <Multi_key><backslash><backslash><backslash><backslash><4><s><q>:"􌳍" # 0x10cccd
@@ -11166,6 +11286,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><N><A><K>:"􍜛" # 0x10d71b
 <Multi_key><backslash><backslash><backslash><backslash><N><I><D>:"􍑇" # 0x10d447
 <Multi_key><backslash><backslash><backslash><backslash><N><U><L>:"􍛏" # 0x10d6cf
+<Multi_key><backslash><backslash><backslash><backslash><O><less>:"􍮵" # 0x10dbb5
 <Multi_key><backslash><backslash><backslash><backslash><P><I><D>:"􋣉" # 0x10b8c9
 <Multi_key><backslash><backslash><backslash><backslash><S><O><H>:"􍛗" # 0x10d6d7
 <Multi_key><backslash><backslash><backslash><backslash><S><T><X>:"􍛛" # 0x10d6db
@@ -12104,29 +12225,38 @@
 <Multi_key><backslash><backslash><backslash><backslash><w><u><o>:"􍨫" # 0x10da2b
 <Multi_key><backslash><backslash><backslash><backslash><w><u><x>:"􍩳" # 0x10da73
 <Multi_key><backslash><backslash><backslash><backslash><y><u><m>:"􌣽" # 0x10c8fd
+<Multi_key><backslash><backslash><bar><greater><greater><bar><A>:"􍯍" # 0x10dbcd
+<Multi_key><backslash><backslash><bar><greater><greater><bar><D>:"􍯑" # 0x10dbd1
 <Multi_key><backslash><backslash><period><parenleft><parenright>:"􋐢" # 0x10b422
 <Multi_key><backslash><backslash><slash><slash><0><minus><space>:"􋏞" # 0x10b3de
 <Multi_key><backslash><backslash><slash><slash><a><u><s><period>:"􌪇" # 0x10ca87
 <Multi_key><backslash><backslash><slash><slash><asterisk><space>:"􌑗" # 0x10c457
+<Multi_key><backslash><backslash><slash><slash><bar><greater><A>:"􍯻" # 0x10dbfb
+<Multi_key><backslash><backslash><slash><slash><bar><greater><D>:"􍯳" # 0x10dbf3
 <Multi_key><backslash><backslash><slash><slash><c><bracketright>:"􌟋" # 0x10c7cb
 <Multi_key><backslash><backslash><slash><slash><c><c><backslash>:"􌟛" # 0x10c7db
 <Multi_key><backslash><backslash><slash><slash><c><slash><slash>:"􌟧" # 0x10c7e7
 <Multi_key><backslash><backslash><slash><slash><c><slash><space>:"􌟣" # 0x10c7e3
+<Multi_key><backslash><backslash><slash><slash><greater><bar><A>:"􍫽" # 0x10dafd
+<Multi_key><backslash><backslash><slash><slash><greater><bar><D>:"􍬁" # 0x10db01
 <Multi_key><backslash><backslash><slash><slash><q><bracketright>:"􌗓" # 0x10c5d3
 <Multi_key><backslash><backslash><slash><slash><w><slash><space>:"􍟁" # 0x10d7c1
+<Multi_key><slash><slash><asciitilde><R><greater><asciitilde><n>:"􍢸" # 0x10d8b8
 <Multi_key><slash><slash><backslash><backslash><0><minus><space>:"􊻖" # 0x10aed6
 <Multi_key><slash><slash><backslash><backslash><a><u><s><period>:"􌪈" # 0x10ca88
 <Multi_key><slash><slash><backslash><backslash><asterisk><space>:"􌑘" # 0x10c458
+<Multi_key><slash><slash><backslash><backslash><bar><greater><A>:"􍯼" # 0x10dbfc
+<Multi_key><slash><slash><backslash><backslash><bar><greater><D>:"􍯴" # 0x10dbf4
 <Multi_key><slash><slash><backslash><backslash><c><bracketright>:"􌟌" # 0x10c7cc
 <Multi_key><slash><slash><backslash><backslash><c><c><backslash>:"􌟜" # 0x10c7dc
 <Multi_key><slash><slash><backslash><backslash><c><slash><slash>:"􌟨" # 0x10c7e8
 <Multi_key><slash><slash><backslash><backslash><c><slash><space>:"􌟤" # 0x10c7e4
+<Multi_key><slash><slash><backslash><backslash><greater><bar><A>:"􍫾" # 0x10dafe
+<Multi_key><slash><slash><backslash><backslash><greater><bar><D>:"􍬂" # 0x10db02
 <Multi_key><slash><slash><backslash><backslash><q><bracketright>:"􌗔" # 0x10c5d4
 <Multi_key><slash><slash><backslash><backslash><w><slash><space>:"􍟂" # 0x10d7c2
 <Multi_key><slash><slash><numbersign><bracketleft><bracketright>:"􊮺" # 0x10abba
 <Multi_key><slash><slash><slash><slash><asciicircum><b><r><e><v>:"􍠰" # 0x10d830
-<Multi_key><slash><slash><slash><slash><asciitilde><less><slash>:"􍤆" # 0x10d906
-<Multi_key><slash><slash><slash><slash><asciitilde><less><space>:"􌔺" # 0x10c53a
 <Multi_key><slash><slash><slash><slash><colon><colon><parenleft>:"􌣒" # 0x10c8d2
 <Multi_key><slash><slash><slash><slash><greater><greater><space>:"􌾠" # 0x10cfa0
 <Multi_key><slash><slash><slash><slash><m><e><t><r><i><c><space>:"􋢊" # 0x10b88a
@@ -12139,8 +12269,6 @@
 <Multi_key><slash><slash><w><b><Multi_key><underscore><s><space>:"􊹔" # 0x10ae54
 <Multi_key><slash><slash><w><i><Multi_key><underscore><s><space>:"􊸯" # 0x10ae2f
 <Multi_key><t><o><p><o><l><o><g><i><c><a><l><space><s><p><a><c><e>:"" # 0xe628
-<Multi_key><backslash><backslash><asciitilde><less><equal><slash>:"􍢫" # 0x10d8ab
-<Multi_key><backslash><backslash><asciitilde><less><equal><space>:"􍢩" # 0x10d8a9
 <Multi_key><backslash><backslash><backslash><backslash><0><space>:"􋎦" # 0x10b3a6
 <Multi_key><backslash><backslash><backslash><backslash><5><minus>:"􍚫" # 0x10d6ab
 <Multi_key><backslash><backslash><backslash><backslash><6><minus>:"􍚯" # 0x10d6af
@@ -12149,6 +12277,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><E><space>:"􌐡" # 0x10c421
 <Multi_key><backslash><backslash><backslash><backslash><F><minus>:"􌗉" # 0x10c5c9
 <Multi_key><backslash><backslash><backslash><backslash><L><space>:"􌦝" # 0x10c99d
+<Multi_key><backslash><backslash><backslash><backslash><O><colon>:"􍮩" # 0x10dba9
 <Multi_key><backslash><backslash><backslash><backslash><O><slash>:"􌬵" # 0x10cb35
 <Multi_key><backslash><backslash><backslash><backslash><O><space>:"􌍽" # 0x10c37d
 <Multi_key><backslash><backslash><backslash><backslash><P><space>:"􋎚" # 0x10b39a
@@ -12205,7 +12334,7 @@
 <Multi_key><backslash><backslash><slash><slash><v><e><c><t><o><r>:"􋤻" # 0x10b93b
 <Multi_key><backslash><backslash><slash><slash><v><s><underscore>:"􌒯" # 0x10c4af
 <Multi_key><backslash><backslash><slash><slash><v><w><underscore>:"􌒇" # 0x10c487
-<Multi_key><slash><slash><asciitilde><greater><asciitilde><space>:"􍢸" # 0x10d8b8
+<Multi_key><slash><slash><asciitilde><R><less><asciitilde><space>:"􍢪" # 0x10d8aa
 <Multi_key><slash><slash><backslash><backslash><Multi_key><space>:"􌗰" # 0x10c5f0
 <Multi_key><slash><slash><backslash><backslash><W><B><apostrophe>:"􍗪" # 0x10d5ea
 <Multi_key><slash><slash><backslash><backslash><colon><parenleft>:"􌣐" # 0x10c8d0
@@ -12238,14 +12367,17 @@
 <Multi_key><slash><slash><slash><slash><Multi_key><w><u><g><p><i>:"􍨔" # 0x10da14
 <Multi_key><slash><slash><slash><slash><Multi_key><w><u><g><t><a>:"􍩔" # 0x10da54
 <Multi_key><slash><slash><slash><slash><bar><bar><greater><space>:"􍫒" # 0x10dad2
+<Multi_key><slash><slash><slash><slash><bar><greater><greater><A>:"􍰂" # 0x10dc02
+<Multi_key><slash><slash><slash><slash><bar><greater><greater><D>:"􍯢" # 0x10dbe2
 <Multi_key><slash><slash><slash><slash><bracketleft><bracketleft>:"􌗖" # 0x10c5d6
 <Multi_key><slash><slash><slash><slash><bracketright><parenright>:"􌸲" # 0x10ce32
 <Multi_key><slash><slash><slash><slash><colon><colon><parenright>:"􌣊" # 0x10c8ca
+<Multi_key><slash><slash><slash><slash><greater><greater><bar><A>:"􍬌" # 0x10db0c
+<Multi_key><slash><slash><slash><slash><greater><greater><bar><D>:"􍂰" # 0x10d0b0
 <Multi_key><slash><slash><slash><slash><underscore><bracketright>:"􌶒" # 0x10cd92
 <Multi_key><slash><slash><t><o><p><o><l><o><g><i><c><a><l><space>:"􋒚" # 0x10b49a
 <Multi_key><slash><slash><v><e><c><t><o><r><space><s><p><a><c><e>:"􋒰" # 0x10b4b0
 <Multi_key><backslash><backslash><Multi_key><w><u><i><asciicircum>:"􍨍" # 0x10da0d
-<Multi_key><backslash><backslash><asciitilde><less><asciitilde><n>:"􍢭" # 0x10d8ad
 <Multi_key><backslash><backslash><backslash><backslash><1><period>:"􍙗" # 0x10d657
 <Multi_key><backslash><backslash><backslash><backslash><2><period>:"􍙛" # 0x10d65b
 <Multi_key><backslash><backslash><backslash><backslash><3><period>:"􍙟" # 0x10d65f
@@ -12264,8 +12396,6 @@
 <Multi_key><backslash><backslash><backslash><backslash><r><period>:"􌭩" # 0x10cb69
 <Multi_key><backslash><backslash><bracketleft><space><bracketleft>:"􋜭" # 0x10b72d
 <Multi_key><backslash><backslash><d><e><r><a><n><g><e><m><e><n><t>:"􋒁" # 0x10b481
-<Multi_key><backslash><backslash><greater><greater><bar><A><space>:"􍫫" # 0x10daeb
-<Multi_key><backslash><backslash><greater><greater><bar><D><space>:"􍁏" # 0x10d04f
 <Multi_key><backslash><backslash><period><bracketleft><parenright>:"􋐣" # 0x10b423
 <Multi_key><backslash><backslash><period><parenleft><bracketright>:"􋐤" # 0x10b424
 <Multi_key><backslash><backslash><slash><slash><a><b><b><s><space>:"􍥃" # 0x10d943
@@ -12278,8 +12408,6 @@
 <Multi_key><backslash><backslash><slash><slash><c><r><bracketleft>:"􍧅" # 0x10d9c5
 <Multi_key><backslash><backslash><slash><slash><c><w><p><t><space>:"􌞫" # 0x10c7ab
 <Multi_key><backslash><backslash><slash><slash><colon><parenright>:"􌣃" # 0x10c8c3
-<Multi_key><backslash><backslash><slash><slash><greater><A><space>:"􍫵" # 0x10daf5
-<Multi_key><backslash><backslash><slash><slash><greater><D><space>:"􍫹" # 0x10daf9
 <Multi_key><backslash><backslash><slash><slash><less><less><space>:"􌾙" # 0x10cf99
 <Multi_key><backslash><backslash><slash><slash><minus><bar><space>:"􍫇" # 0x10dac7
 <Multi_key><backslash><backslash><slash><slash><numbersign><space>:"􌎟" # 0x10c39f
@@ -12299,8 +12427,6 @@
 <Multi_key><slash><slash><backslash><backslash><c><r><bracketleft>:"􍧆" # 0x10d9c6
 <Multi_key><slash><slash><backslash><backslash><c><w><p><t><space>:"􌞬" # 0x10c7ac
 <Multi_key><slash><slash><backslash><backslash><colon><parenright>:"􌣄" # 0x10c8c4
-<Multi_key><slash><slash><backslash><backslash><greater><A><space>:"􍫶" # 0x10daf6
-<Multi_key><slash><slash><backslash><backslash><greater><D><space>:"􍫺" # 0x10dafa
 <Multi_key><slash><slash><backslash><backslash><less><less><space>:"􌾚" # 0x10cf9a
 <Multi_key><slash><slash><backslash><backslash><minus><bar><space>:"􍫈" # 0x10dac8
 <Multi_key><slash><slash><backslash><backslash><numbersign><space>:"􌎠" # 0x10c3a0
@@ -12312,9 +12438,9 @@
 <Multi_key><slash><slash><backslash><backslash><w><e><e><d><space>:"􍠞" # 0x10d81e
 <Multi_key><slash><slash><slash><slash><Multi_key><w><u><p><space>:"􍨔" # 0x10da14
 <Multi_key><slash><slash><slash><slash><Multi_key><w><u><t><space>:"􍩔" # 0x10da54
+<Multi_key><slash><slash><slash><slash><asciitilde><R><greater><n>:"􍤮" # 0x10d92e
 <Multi_key><slash><slash><slash><slash><bracketleft><bracketright>:"􌎒" # 0x10c392
 <Multi_key><slash><slash><slash><slash><bracketleft><space><space>:"􍭺" # 0x10db7a
-<Multi_key><slash><slash><slash><slash><bracketright><bracketleft>:"􍭾" # 0x10db7e
 <Multi_key><slash><slash><slash><slash><c><o><n><n><e><c><t><e><d>:"􀲖" # 0x100c96
 <Multi_key><slash><slash><slash><slash><i><m><o><r><p><h><i><s><m>:"􋣪" # 0x10b8ea
 <Multi_key><slash><slash><slash><slash><p><a><r><t><i><t><i><o><n>:"􋢦" # 0x10b8a6
@@ -12368,6 +12494,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><A><C><H><A>:"􌛹" # 0x10c6f9
 <Multi_key><backslash><backslash><backslash><backslash><A><C><H><D>:"􌛽" # 0x10c6fd
 <Multi_key><backslash><backslash><backslash><backslash><N><1><2><8>:"􍐿" # 0x10d43f
+<Multi_key><backslash><backslash><backslash><backslash><O><greater>:"􍮱" # 0x10dbb1
 <Multi_key><backslash><backslash><backslash><backslash><S><T><A><d>:"􍞿" # 0x10d7bf
 <Multi_key><backslash><backslash><backslash><backslash><S><T><plus>:"􀱅" # 0x100c45
 <Multi_key><backslash><backslash><backslash><backslash><W><B><v><s>:"􍗧" # 0x10d5e7
@@ -12428,6 +12555,8 @@
 <Multi_key><backslash><backslash><backslash><backslash><f><i><s><t>:"􌢕" # 0x10c895
 <Multi_key><backslash><backslash><backslash><backslash><f><o><r><m>:"􍒫" # 0x10d4ab
 <Multi_key><backslash><backslash><backslash><backslash><g><e><a><r>:"􍂃" # 0x10d083
+<Multi_key><backslash><backslash><backslash><backslash><greater><A>:"􍫷" # 0x10daf7
+<Multi_key><backslash><backslash><backslash><backslash><greater><D>:"􍫻" # 0x10dafb
 <Multi_key><backslash><backslash><backslash><backslash><i><e><a><l>:"􋣥" # 0x10b8e5
 <Multi_key><backslash><backslash><backslash><backslash><k><i><s><s>:"􌣵" # 0x10c8f5
 <Multi_key><backslash><backslash><backslash><backslash><l><i><n><e>:"􍒟" # 0x10d49f
@@ -12469,8 +12598,6 @@
 <Multi_key><backslash><backslash><slash><slash><less><equal><space>:"􌓇" # 0x10c4c7
 <Multi_key><backslash><backslash><slash><slash><p><l><bracketright>:"􌖿" # 0x10c5bf
 <Multi_key><backslash><backslash><slash><slash><question><question>:"􌏣" # 0x10c3e3
-<Multi_key><backslash><backslash><slash><slash><quotedbl><A><space>:"􍫭" # 0x10daed
-<Multi_key><backslash><backslash><slash><slash><quotedbl><D><space>:"􍫱" # 0x10daf1
 <Multi_key><backslash><backslash><w><b><Multi_key><0><minus><space>:"􋋾" # 0x10b2fe
 <Multi_key><backslash><backslash><w><i><Multi_key><0><minus><space>:"􋋙" # 0x10b2d9
 <Multi_key><slash><slash><backslash><backslash><Multi_key><W><C><r>:"􍚖" # 0x10d696
@@ -12483,24 +12610,22 @@
 <Multi_key><slash><slash><backslash><backslash><less><equal><space>:"􌓈" # 0x10c4c8
 <Multi_key><slash><slash><backslash><backslash><p><l><bracketright>:"􌗀" # 0x10c5c0
 <Multi_key><slash><slash><backslash><backslash><question><question>:"􌏤" # 0x10c3e4
-<Multi_key><slash><slash><backslash><backslash><quotedbl><A><space>:"􍫮" # 0x10daee
-<Multi_key><slash><slash><backslash><backslash><quotedbl><D><space>:"􍫲" # 0x10daf2
 <Multi_key><slash><slash><slash><slash><asciicircum><a><c><u><t><e>:"􌏞" # 0x10c3de
 <Multi_key><slash><slash><slash><slash><asciicircum><a><r><i><n><g>:"􍠬" # 0x10d82c
 <Multi_key><slash><slash><slash><slash><asciicircum><c><a><r><o><n>:"􍠴" # 0x10d834
 <Multi_key><slash><slash><slash><slash><asciicircum><g><r><a><v><e>:"􍠸" # 0x10d838
 <Multi_key><slash><slash><slash><slash><asciicircum><t><i><l><d><e>:"􍡄" # 0x10d844
-<Multi_key><slash><slash><slash><slash><asciitilde><greater><slash>:"􍤞" # 0x10d91e
-<Multi_key><slash><slash><slash><slash><asciitilde><greater><space>:"􍤚" # 0x10d91a
+<Multi_key><slash><slash><slash><slash><asciitilde><R><less><slash>:"􌔺" # 0x10c53a
+<Multi_key><slash><slash><slash><slash><asciitilde><R><less><space>:"􍮖" # 0x10db96
 <Multi_key><slash><slash><slash><slash><bracketright><bracketright>:"􌗞" # 0x10c5de
+<Multi_key><slash><slash><slash><slash><bracketright><space><space>:"􍭾" # 0x10db7e
 <Multi_key><slash><slash><slash><slash><e><bracketleft><underscore>:"􌔚" # 0x10c51a
-<Multi_key><slash><slash><slash><slash><greater><greater><A><space>:"􍬄" # 0x10db04
-<Multi_key><slash><slash><slash><slash><greater><greater><D><space>:"􍬈" # 0x10db08
 <Multi_key><slash><slash><t><r><a><n><s><f><o><r><m><a><t><i><o><n>:"􋒶" # 0x10b4b6
-<Multi_key><backslash><backslash><asciitilde><greater><equal><slash>:"􍢷" # 0x10d8b7
-<Multi_key><backslash><backslash><asciitilde><greater><equal><space>:"􍢵" # 0x10d8b5
+<Multi_key><backslash><backslash><asciitilde><R><less><equal><slash>:"􍢩" # 0x10d8a9
+<Multi_key><backslash><backslash><asciitilde><R><less><equal><space>:"􍢧" # 0x10d8a7
 <Multi_key><backslash><backslash><backslash><backslash><0><v><space>:"􋡡" # 0x10b861
 <Multi_key><backslash><backslash><backslash><backslash><2><asterisk>:"􍚷" # 0x10d6b7
+<Multi_key><backslash><backslash><backslash><backslash><4><asterisk>:"􍯭" # 0x10dbed
 <Multi_key><backslash><backslash><backslash><backslash><C><J><space>:"􍅗" # 0x10d157
 <Multi_key><backslash><backslash><backslash><backslash><F><F><space>:"􌐹" # 0x10c439
 <Multi_key><backslash><backslash><backslash><backslash><F><i><space>:"􋎜" # 0x10b39c
@@ -12535,6 +12660,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><W><X><space>:"􀹏" # 0x100e4f
 <Multi_key><backslash><backslash><backslash><backslash><W><Z><space>:"􌪙" # 0x10ca99
 <Multi_key><backslash><backslash><backslash><backslash><W><m><space>:"􌋑" # 0x10c2d1
+<Multi_key><backslash><backslash><backslash><backslash><W><r><space>:"􍮏" # 0x10db8f
 <Multi_key><backslash><backslash><backslash><backslash><W><v><space>:"􌩁" # 0x10ca41
 <Multi_key><backslash><backslash><backslash><backslash><a><A><space>:"􌘡" # 0x10c621
 <Multi_key><backslash><backslash><backslash><backslash><a><D><space>:"􌘥" # 0x10c625
@@ -12597,7 +12723,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><g><u><space>:"􋎲" # 0x10b3b2
 <Multi_key><backslash><backslash><backslash><backslash><i><d><space>:"􋢽" # 0x10b8bd
 <Multi_key><backslash><backslash><backslash><backslash><i><o><space>:"􋎧" # 0x10b3a7
-<Multi_key><backslash><backslash><backslash><backslash><i><slash><s>:"􍤅" # 0x10d905
+<Multi_key><backslash><backslash><backslash><backslash><i><slash><s>:"􍯡" # 0x10dbe1
 <Multi_key><backslash><backslash><backslash><backslash><less><slash>:"􌓅" # 0x10c4c5
 <Multi_key><backslash><backslash><backslash><backslash><m><u><space>:"􋎪" # 0x10b3aa
 <Multi_key><backslash><backslash><backslash><backslash><minus><plus>:"􌓝" # 0x10c4dd
@@ -12607,7 +12733,10 @@
 <Multi_key><backslash><backslash><backslash><backslash><plus><minus>:"􌓡" # 0x10c4e1
 <Multi_key><backslash><backslash><backslash><backslash><question><R>:"􌏭" # 0x10c3ed
 <Multi_key><backslash><backslash><backslash><backslash><question><r>:"􌏩" # 0x10c3e9
+<Multi_key><backslash><backslash><backslash><backslash><quotedbl><A>:"􍫯" # 0x10daef
+<Multi_key><backslash><backslash><backslash><backslash><quotedbl><D>:"􍫳" # 0x10daf3
 <Multi_key><backslash><backslash><backslash><backslash><r><h><space>:"􋎮" # 0x10b3ae
+<Multi_key><backslash><backslash><backslash><backslash><s><slash><i>:"􍰑" # 0x10dc11
 <Multi_key><backslash><backslash><backslash><backslash><t><o><space>:"􌖡" # 0x10c5a1
 <Multi_key><backslash><backslash><backslash><backslash><u><a><slash>:"􌕽" # 0x10c57d
 <Multi_key><backslash><backslash><backslash><backslash><u><a><space>:"􌕵" # 0x10c575
@@ -12631,7 +12760,6 @@
 <Multi_key><backslash><backslash><bracketright><space><bracketright>:"􋟙" # 0x10b7d9
 <Multi_key><backslash><backslash><period><bracketleft><bracketright>:"􋐡" # 0x10b421
 <Multi_key><backslash><backslash><slash><slash><a><l><g><e><b><r><a>:"􋣷" # 0x10b8f7
-<Multi_key><backslash><backslash><slash><slash><asciitilde><less><n>:"􍤗" # 0x10d917
 <Multi_key><backslash><backslash><slash><slash><bar><greater><space>:"􍫗" # 0x10dad7
 <Multi_key><backslash><backslash><slash><slash><bar><period><period>:"􍚽" # 0x10d6bd
 <Multi_key><backslash><backslash><slash><slash><bracketleft><period>:"􌗛" # 0x10c5db
@@ -12642,6 +12770,8 @@
 <Multi_key><backslash><backslash><slash><slash><equal><equal><slash>:"􌕇" # 0x10c547
 <Multi_key><backslash><backslash><slash><slash><equal><equal><space>:"􌕃" # 0x10c543
 <Multi_key><backslash><backslash><slash><slash><f><u><n><c><t><o><r>:"􍒭" # 0x10d4ad
+<Multi_key><backslash><backslash><slash><slash><greater><greater><A>:"􍬅" # 0x10db05
+<Multi_key><backslash><backslash><slash><slash><greater><greater><D>:"􍬉" # 0x10db09
 <Multi_key><backslash><backslash><slash><slash><greater><greater><X>:"􍬽" # 0x10db3d
 <Multi_key><backslash><backslash><slash><slash><l><a><t><t><i><c><e>:"􋣛" # 0x10b8db
 <Multi_key><backslash><backslash><slash><slash><m><e><a><s><u><r><e>:"􋤋" # 0x10b90b
@@ -12660,8 +12790,8 @@
 <Multi_key><slash><slash><Multi_key><w><s><r><space><w><s><k><space>:"􋟤" # 0x10b7e4
 <Multi_key><slash><slash><Multi_key><w><s><s><space><w><s><t><space>:"􋟦" # 0x10b7e6
 <Multi_key><slash><slash><Multi_key><w><s><t><space><w><s><r><space>:"􋟞" # 0x10b7de
+<Multi_key><slash><slash><asciitilde><R><greater><asciitilde><space>:"􍢶" # 0x10d8b6
 <Multi_key><slash><slash><backslash><backslash><a><l><g><e><b><r><a>:"􋣸" # 0x10b8f8
-<Multi_key><slash><slash><backslash><backslash><asciitilde><less><n>:"􍤘" # 0x10d918
 <Multi_key><slash><slash><backslash><backslash><bar><greater><space>:"􍫘" # 0x10dad8
 <Multi_key><slash><slash><backslash><backslash><bar><period><period>:"􍚾" # 0x10d6be
 <Multi_key><slash><slash><backslash><backslash><bracketleft><period>:"􌗜" # 0x10c5dc
@@ -12672,6 +12802,8 @@
 <Multi_key><slash><slash><backslash><backslash><equal><equal><slash>:"􌕈" # 0x10c548
 <Multi_key><slash><slash><backslash><backslash><equal><equal><space>:"􌕄" # 0x10c544
 <Multi_key><slash><slash><backslash><backslash><f><u><n><c><t><o><r>:"􍒮" # 0x10d4ae
+<Multi_key><slash><slash><backslash><backslash><greater><greater><A>:"􍬆" # 0x10db06
+<Multi_key><slash><slash><backslash><backslash><greater><greater><D>:"􍬊" # 0x10db0a
 <Multi_key><slash><slash><backslash><backslash><greater><greater><X>:"􍬾" # 0x10db3e
 <Multi_key><slash><slash><backslash><backslash><l><a><t><t><i><c><e>:"􋣜" # 0x10b8dc
 <Multi_key><slash><slash><backslash><backslash><m><e><a><s><u><r><e>:"􋤌" # 0x10b90c
@@ -12686,7 +12818,7 @@
 <Multi_key><slash><slash><slash><slash><Multi_key><colon><parenleft>:"􍟬" # 0x10d7ec
 <Multi_key><slash><slash><slash><slash><Multi_key><i><i><i><i><n><t>:"􌱪" # 0x10cc6a
 <Multi_key><slash><slash><slash><slash><Multi_key><o><i><i><i><n><t>:"􌮢" # 0x10cba2
-<Multi_key><backslash><backslash><asciitilde><greater><asciitilde><n>:"􍢻" # 0x10d8bb
+<Multi_key><backslash><backslash><asciitilde><R><less><asciitilde><n>:"􋁭" # 0x10b06d
 <Multi_key><backslash><backslash><backslash><backslash><a><period><a>:"􌚩" # 0x10c6a9
 <Multi_key><backslash><backslash><backslash><backslash><a><period><d>:"􌚭" # 0x10c6ad
 <Multi_key><backslash><backslash><backslash><backslash><a><period><s>:"􌚥" # 0x10c6a5
@@ -12713,6 +12845,8 @@
 <Multi_key><backslash><backslash><slash><slash><asciicircum><d><i><a>:"􍡍" # 0x10d84d
 <Multi_key><backslash><backslash><slash><slash><asciicircum><d><o><t>:"􍡑" # 0x10d851
 <Multi_key><backslash><backslash><slash><slash><asciicircum><h><a><t>:"􍡉" # 0x10d849
+<Multi_key><backslash><backslash><slash><slash><bar><greater><bar><A>:"􍯛" # 0x10dbdb
+<Multi_key><backslash><backslash><slash><slash><bar><greater><bar><D>:"􍰋" # 0x10dc0b
 <Multi_key><backslash><backslash><slash><slash><bracketright><period>:"􌗣" # 0x10c5e3
 <Multi_key><backslash><backslash><slash><slash><g><e><n><space><b><y>:"􋡻" # 0x10b87b
 <Multi_key><backslash><backslash><slash><slash><greater><less><space>:"􍝅" # 0x10d745
@@ -12724,6 +12858,8 @@
 <Multi_key><slash><slash><backslash><backslash><asciicircum><d><i><a>:"􍡎" # 0x10d84e
 <Multi_key><slash><slash><backslash><backslash><asciicircum><d><o><t>:"􍡒" # 0x10d852
 <Multi_key><slash><slash><backslash><backslash><asciicircum><h><a><t>:"􍡊" # 0x10d84a
+<Multi_key><slash><slash><backslash><backslash><bar><greater><bar><A>:"􍯜" # 0x10dbdc
+<Multi_key><slash><slash><backslash><backslash><bar><greater><bar><D>:"􍰌" # 0x10dc0c
 <Multi_key><slash><slash><backslash><backslash><bracketright><period>:"􌗤" # 0x10c5e4
 <Multi_key><slash><slash><backslash><backslash><g><e><n><space><b><y>:"􋡼" # 0x10b87c
 <Multi_key><slash><slash><backslash><backslash><greater><less><space>:"􍝆" # 0x10d746
@@ -12809,9 +12945,9 @@
 <Multi_key><Multi_key><w><s><v><space><w><s><a><space><w><s><r><space>:"􋑑" # 0x10b451
 <Multi_key><Multi_key><w><s><w><space><w><s><r><space><w><s><t><space>:"􋑎" # 0x10b44e
 <Multi_key><backslash><backslash><asciicircum><underscore><underscore>:"􍐗" # 0x10d417
-<Multi_key><backslash><backslash><asciitilde><less><asciitilde><space>:"􋁭" # 0x10b06d
 <Multi_key><backslash><backslash><backslash><backslash><A><C><W><A><S>:"􌛱" # 0x10c6f1
 <Multi_key><backslash><backslash><backslash><backslash><A><C><W><D><S>:"􌛵" # 0x10c6f5
+<Multi_key><backslash><backslash><backslash><backslash><O><underscore>:"􍮭" # 0x10dbad
 <Multi_key><backslash><backslash><backslash><backslash><W><B><h><e><k>:"􍣥" # 0x10d8e5
 <Multi_key><backslash><backslash><backslash><backslash><W><B><h><e><x>:"􍣩" # 0x10d8e9
 <Multi_key><backslash><backslash><backslash><backslash><a><b><b><w><s>:"􍥉" # 0x10d949
@@ -12868,8 +13004,10 @@
 <Multi_key><backslash><backslash><slash><slash><Multi_key><p><i><n><t>:"􌲇" # 0x10cc87
 <Multi_key><backslash><backslash><slash><slash><Multi_key><q><i><n><t>:"􌦏" # 0x10c98f
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><i><n><t>:"􌧓" # 0x10c9d3
-<Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><8><8>:"􍬭" # 0x10db2d
+<Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><8><8>:"􍰗" # 0x10dc17
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><p><2>:"􍩍" # 0x10da4d
+<Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><p><3>:"􍬭" # 0x10db2d
+<Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><p><4>:"􍰛" # 0x10dc1b
 <Multi_key><backslash><backslash><slash><slash><a><i><a><slash><space>:"􌙗" # 0x10c657
 <Multi_key><backslash><backslash><slash><slash><a><i><d><slash><space>:"􌙛" # 0x10c65b
 <Multi_key><backslash><backslash><slash><slash><backslash><asciitilde>:"􍡅" # 0x10d845
@@ -12894,8 +13032,10 @@
 <Multi_key><slash><slash><backslash><backslash><Multi_key><p><i><n><t>:"􌲈" # 0x10cc88
 <Multi_key><slash><slash><backslash><backslash><Multi_key><q><i><n><t>:"􌦐" # 0x10c990
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><i><n><t>:"􌧔" # 0x10c9d4
-<Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><8><8>:"􍬮" # 0x10db2e
+<Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><8><8>:"􍰘" # 0x10dc18
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><p><2>:"􍩎" # 0x10da4e
+<Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><p><3>:"􍬮" # 0x10db2e
+<Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><p><4>:"􍰜" # 0x10dc1c
 <Multi_key><slash><slash><backslash><backslash><a><i><a><slash><space>:"􌙘" # 0x10c658
 <Multi_key><slash><slash><backslash><backslash><a><i><d><slash><space>:"􌙜" # 0x10c65c
 <Multi_key><slash><slash><backslash><backslash><backslash><asciitilde>:"􍡆" # 0x10d846
@@ -12913,8 +13053,14 @@
 <Multi_key><slash><slash><backslash><backslash><numbersign><backslash>:"􌎨" # 0x10c3a8
 <Multi_key><slash><slash><backslash><backslash><parenleft><parenright>:"􌖴" # 0x10c5b4
 <Multi_key><slash><slash><backslash><backslash><period><period><space>:"􌏜" # 0x10c3dc
+<Multi_key><slash><slash><slash><slash><asciitilde><R><greater><slash>:"􍤚" # 0x10d91a
+<Multi_key><slash><slash><slash><slash><asciitilde><R><greater><space>:"􍤖" # 0x10d916
+<Multi_key><slash><slash><slash><slash><bar><greater><greater><bar><A>:"􍯶" # 0x10dbf6
+<Multi_key><slash><slash><slash><slash><bar><greater><greater><bar><D>:"􍯾" # 0x10dbfe
 <Multi_key><slash><slash><slash><slash><period><parenleft><parenright>:"􌓺" # 0x10c4fa
 <Multi_key><Multi_key><w><s><W><space><w><s><T><space><asterisk><space>:"􋑐" # 0x10b450
+<Multi_key><backslash><backslash><asciitilde><R><greater><equal><slash>:"􍢵" # 0x10d8b5
+<Multi_key><backslash><backslash><asciitilde><R><greater><equal><space>:"􍢳" # 0x10d8b3
 <Multi_key><backslash><backslash><backslash><backslash><A><R><A><space>:"􌛙" # 0x10c6d9
 <Multi_key><backslash><backslash><backslash><backslash><A><R><C><space>:"􌛭" # 0x10c6ed
 <Multi_key><backslash><backslash><backslash><backslash><A><R><D><space>:"􌛝" # 0x10c6dd
@@ -12979,15 +13125,13 @@
 <Multi_key><backslash><backslash><backslash><backslash><w><h><t><slash>:"􍑗" # 0x10d457
 <Multi_key><backslash><backslash><backslash><backslash><w><h><t><space>:"􍑓" # 0x10d453
 <Multi_key><backslash><backslash><slash><slash><apostrophe><apostrophe>:"􍄹" # 0x10d139
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><less><n>:"􍤓" # 0x10d913
 <Multi_key><backslash><backslash><slash><slash><asciitilde><bar><space>:"􍫋" # 0x10dacb
-<Multi_key><backslash><backslash><slash><slash><asciitilde><greater><n>:"􍤳" # 0x10d933
 <Multi_key><backslash><backslash><slash><slash><bracketleft><parenleft>:"􌳷" # 0x10ccf7
 <Multi_key><backslash><backslash><slash><slash><c><a><t><e><g><o><r><y>:"􋢯" # 0x10b8af
 <Multi_key><backslash><backslash><slash><slash><e><bracketright><slash>:"􌔣" # 0x10c523
 <Multi_key><backslash><backslash><slash><slash><e><bracketright><space>:"􌔟" # 0x10c51f
 <Multi_key><backslash><backslash><slash><slash><f><u><n><c><t><i><o><n>:"􋣓" # 0x10b8d3
-<Multi_key><backslash><backslash><slash><slash><greater><bar><A><space>:"􍫽" # 0x10dafd
-<Multi_key><backslash><backslash><slash><slash><greater><bar><D><space>:"􍬁" # 0x10db01
 <Multi_key><backslash><backslash><slash><slash><i><j><e><c><t><i><o><n>:"􋣧" # 0x10b8e7
 <Multi_key><backslash><backslash><slash><slash><m><a><n><i><f><o><l><d>:"􋤯" # 0x10b92f
 <Multi_key><backslash><backslash><slash><slash><m><o><r><p><h><i><s><m>:"􋢷" # 0x10b8b7
@@ -12998,15 +13142,13 @@
 <Multi_key><backslash><backslash><slash><slash><t><o><p><o><l><o><g><y>:"􋤧" # 0x10b927
 <Multi_key><backslash><backslash><slash><slash><underscore><b><r><e><v>:"􍄹" # 0x10d139
 <Multi_key><slash><slash><backslash><backslash><apostrophe><apostrophe>:"􍄺" # 0x10d13a
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><less><n>:"􍤔" # 0x10d914
 <Multi_key><slash><slash><backslash><backslash><asciitilde><bar><space>:"􍫌" # 0x10dacc
-<Multi_key><slash><slash><backslash><backslash><asciitilde><greater><n>:"􍤴" # 0x10d934
 <Multi_key><slash><slash><backslash><backslash><bracketleft><parenleft>:"􌳸" # 0x10ccf8
 <Multi_key><slash><slash><backslash><backslash><c><a><t><e><g><o><r><y>:"􋢰" # 0x10b8b0
 <Multi_key><slash><slash><backslash><backslash><e><bracketright><slash>:"􌔤" # 0x10c524
 <Multi_key><slash><slash><backslash><backslash><e><bracketright><space>:"􌔠" # 0x10c520
 <Multi_key><slash><slash><backslash><backslash><f><u><n><c><t><i><o><n>:"􋣔" # 0x10b8d4
-<Multi_key><slash><slash><backslash><backslash><greater><bar><A><space>:"􍫾" # 0x10dafe
-<Multi_key><slash><slash><backslash><backslash><greater><bar><D><space>:"􍬂" # 0x10db02
 <Multi_key><slash><slash><backslash><backslash><i><j><e><c><t><i><o><n>:"􋣨" # 0x10b8e8
 <Multi_key><slash><slash><backslash><backslash><m><a><n><i><f><o><l><d>:"􋤰" # 0x10b930
 <Multi_key><slash><slash><backslash><backslash><m><o><r><p><h><i><s><m>:"􋢸" # 0x10b8b8
@@ -13016,22 +13158,23 @@
 <Multi_key><slash><slash><backslash><backslash><s><a><l><g><e><b><r><a>:"􍒲" # 0x10d4b2
 <Multi_key><slash><slash><backslash><backslash><t><o><p><o><l><o><g><y>:"􋤨" # 0x10b928
 <Multi_key><slash><slash><backslash><backslash><underscore><b><r><e><v>:"􍄺" # 0x10d13a
-<Multi_key><slash><slash><slash><slash><asciitilde><less><equal><slash>:"􍤎" # 0x10d90e
-<Multi_key><slash><slash><slash><slash><asciitilde><less><equal><space>:"􍤊" # 0x10d90a
 <Multi_key><slash><slash><slash><slash><bracketleft><bar><bracketright>:"􍚤" # 0x10d6a4
+<Multi_key><backslash><backslash><asciitilde><R><greater><asciitilde><n>:"􍢹" # 0x10d8b9
 <Multi_key><backslash><backslash><backslash><backslash><0><minus><space>:"􋎘" # 0x10b398
 <Multi_key><backslash><backslash><backslash><backslash><a><u><s><period>:"􌪉" # 0x10ca89
 <Multi_key><backslash><backslash><backslash><backslash><asterisk><space>:"􌑙" # 0x10c459
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><A>:"􍯽" # 0x10dbfd
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><D>:"􍯵" # 0x10dbf5
 <Multi_key><backslash><backslash><backslash><backslash><c><bracketright>:"􌟍" # 0x10c7cd
 <Multi_key><backslash><backslash><backslash><backslash><c><c><backslash>:"􌟝" # 0x10c7dd
 <Multi_key><backslash><backslash><backslash><backslash><c><slash><slash>:"􌟩" # 0x10c7e9
 <Multi_key><backslash><backslash><backslash><backslash><c><slash><space>:"􌟥" # 0x10c7e5
+<Multi_key><backslash><backslash><backslash><backslash><greater><bar><A>:"􍫿" # 0x10daff
+<Multi_key><backslash><backslash><backslash><backslash><greater><bar><D>:"􍬃" # 0x10db03
 <Multi_key><backslash><backslash><backslash><backslash><q><bracketright>:"􌗕" # 0x10c5d5
 <Multi_key><backslash><backslash><backslash><backslash><w><slash><space>:"􍟃" # 0x10d7c3
 <Multi_key><backslash><backslash><numbersign><bracketleft><bracketright>:"􋁼" # 0x10b07c
 <Multi_key><backslash><backslash><slash><slash><asciicircum><b><r><e><v>:"􍠱" # 0x10d831
-<Multi_key><backslash><backslash><slash><slash><asciitilde><less><slash>:"􍤇" # 0x10d907
-<Multi_key><backslash><backslash><slash><slash><asciitilde><less><space>:"􌔻" # 0x10c53b
 <Multi_key><backslash><backslash><slash><slash><colon><colon><parenleft>:"􌣓" # 0x10c8d3
 <Multi_key><backslash><backslash><slash><slash><greater><greater><space>:"􌾡" # 0x10cfa1
 <Multi_key><backslash><backslash><slash><slash><m><e><t><r><i><c><space>:"􋢋" # 0x10b88b
@@ -13044,8 +13187,6 @@
 <Multi_key><backslash><backslash><w><b><Multi_key><underscore><s><space>:"􋌖" # 0x10b316
 <Multi_key><backslash><backslash><w><i><Multi_key><underscore><s><space>:"􋋱" # 0x10b2f1
 <Multi_key><slash><slash><backslash><backslash><asciicircum><b><r><e><v>:"􍠲" # 0x10d832
-<Multi_key><slash><slash><backslash><backslash><asciitilde><less><slash>:"􍤈" # 0x10d908
-<Multi_key><slash><slash><backslash><backslash><asciitilde><less><space>:"􌔼" # 0x10c53c
 <Multi_key><slash><slash><backslash><backslash><colon><colon><parenleft>:"􌣔" # 0x10c8d4
 <Multi_key><slash><slash><backslash><backslash><greater><greater><space>:"􌾢" # 0x10cfa2
 <Multi_key><slash><slash><backslash><backslash><m><e><t><r><i><c><space>:"􋢌" # 0x10b88c
@@ -13056,14 +13197,11 @@
 <Multi_key><slash><slash><backslash><backslash><underscore><bracketleft>:"􌩰" # 0x10ca70
 <Multi_key><slash><slash><backslash><backslash><v><e><c><t><o><r><space>:"􋤈" # 0x10b908
 <Multi_key><slash><slash><slash><slash><Multi_key><w><u><i><asciicircum>:"􍩼" # 0x10da7c
-<Multi_key><slash><slash><slash><slash><asciitilde><less><asciitilde><n>:"􍤒" # 0x10d912
 <Multi_key><slash><slash><slash><slash><bracketleft><space><bracketleft>:"􌴮" # 0x10cd2e
 <Multi_key><slash><slash><slash><slash><d><e><r><a><n><g><e><m><e><n><t>:"􋢞" # 0x10b89e
-<Multi_key><slash><slash><slash><slash><greater><greater><bar><A><space>:"􍬌" # 0x10db0c
-<Multi_key><slash><slash><slash><slash><greater><greater><bar><D><space>:"􍂰" # 0x10d0b0
 <Multi_key><slash><slash><slash><slash><period><bracketleft><parenright>:"􌓲" # 0x10c4f2
 <Multi_key><slash><slash><slash><slash><period><parenleft><bracketright>:"􌓾" # 0x10c4fe
-<Multi_key><backslash><backslash><asciitilde><greater><asciitilde><space>:"􍢹" # 0x10d8b9
+<Multi_key><backslash><backslash><asciitilde><R><less><asciitilde><space>:"􍢫" # 0x10d8ab
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><space>:"􌗱" # 0x10c5f1
 <Multi_key><backslash><backslash><backslash><backslash><W><B><apostrophe>:"􍗫" # 0x10d5eb
 <Multi_key><backslash><backslash><backslash><backslash><colon><parenleft>:"􌣑" # 0x10c8d1
@@ -13096,9 +13234,13 @@
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><g><p><i>:"􍨕" # 0x10da15
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><g><t><a>:"􍩕" # 0x10da55
 <Multi_key><backslash><backslash><slash><slash><bar><bar><greater><space>:"􍫓" # 0x10dad3
+<Multi_key><backslash><backslash><slash><slash><bar><greater><greater><A>:"􍰃" # 0x10dc03
+<Multi_key><backslash><backslash><slash><slash><bar><greater><greater><D>:"􍯣" # 0x10dbe3
 <Multi_key><backslash><backslash><slash><slash><bracketleft><bracketleft>:"􌗗" # 0x10c5d7
 <Multi_key><backslash><backslash><slash><slash><bracketright><parenright>:"􌸳" # 0x10ce33
 <Multi_key><backslash><backslash><slash><slash><colon><colon><parenright>:"􌣋" # 0x10c8cb
+<Multi_key><backslash><backslash><slash><slash><greater><greater><bar><A>:"􍬍" # 0x10db0d
+<Multi_key><backslash><backslash><slash><slash><greater><greater><bar><D>:"􍂱" # 0x10d0b1
 <Multi_key><backslash><backslash><slash><slash><underscore><bracketright>:"􌶓" # 0x10cd93
 <Multi_key><backslash><backslash><t><o><p><o><l><o><g><i><c><a><l><space>:"􋒛" # 0x10b49b
 <Multi_key><backslash><backslash><v><e><c><t><o><r><space><s><p><a><c><e>:"􋒱" # 0x10b4b1
@@ -13110,9 +13252,13 @@
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><g><p><i>:"􍨖" # 0x10da16
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><g><t><a>:"􍩖" # 0x10da56
 <Multi_key><slash><slash><backslash><backslash><bar><bar><greater><space>:"􍫔" # 0x10dad4
+<Multi_key><slash><slash><backslash><backslash><bar><greater><greater><A>:"􍰄" # 0x10dc04
+<Multi_key><slash><slash><backslash><backslash><bar><greater><greater><D>:"􍯤" # 0x10dbe4
 <Multi_key><slash><slash><backslash><backslash><bracketleft><bracketleft>:"􌗘" # 0x10c5d8
 <Multi_key><slash><slash><backslash><backslash><bracketright><parenright>:"􌸴" # 0x10ce34
 <Multi_key><slash><slash><backslash><backslash><colon><colon><parenright>:"􌣌" # 0x10c8cc
+<Multi_key><slash><slash><backslash><backslash><greater><greater><bar><A>:"􍬎" # 0x10db0e
+<Multi_key><slash><slash><backslash><backslash><greater><greater><bar><D>:"􍂲" # 0x10d0b2
 <Multi_key><slash><slash><backslash><backslash><underscore><bracketright>:"􌶔" # 0x10cd94
 <Multi_key><slash><slash><slash><slash><backslash><period><period><space>:"􌏞" # 0x10c3de
 <Multi_key><slash><slash><slash><slash><bracketleft><minus><bracketright>:"􍚠" # 0x10d6a0
@@ -13128,8 +13274,6 @@
 <Multi_key><backslash><backslash><backslash><backslash><c><r><bracketleft>:"􍧇" # 0x10d9c7
 <Multi_key><backslash><backslash><backslash><backslash><c><w><p><t><space>:"􌞭" # 0x10c7ad
 <Multi_key><backslash><backslash><backslash><backslash><colon><parenright>:"􌣅" # 0x10c8c5
-<Multi_key><backslash><backslash><backslash><backslash><greater><A><space>:"􍫷" # 0x10daf7
-<Multi_key><backslash><backslash><backslash><backslash><greater><D><space>:"􍫻" # 0x10dafb
 <Multi_key><backslash><backslash><backslash><backslash><less><less><space>:"􌾛" # 0x10cf9b
 <Multi_key><backslash><backslash><backslash><backslash><minus><bar><space>:"􍫉" # 0x10dac9
 <Multi_key><backslash><backslash><backslash><backslash><numbersign><space>:"􌎡" # 0x10c3a1
@@ -13141,9 +13285,9 @@
 <Multi_key><backslash><backslash><backslash><backslash><w><e><e><d><space>:"􍠟" # 0x10d81f
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><p><space>:"􍨕" # 0x10da15
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><t><space>:"􍩕" # 0x10da55
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><greater><n>:"􍤯" # 0x10d92f
 <Multi_key><backslash><backslash><slash><slash><bracketleft><bracketright>:"􌎓" # 0x10c393
 <Multi_key><backslash><backslash><slash><slash><bracketleft><space><space>:"􍭻" # 0x10db7b
-<Multi_key><backslash><backslash><slash><slash><bracketright><bracketleft>:"􍭿" # 0x10db7f
 <Multi_key><backslash><backslash><slash><slash><c><o><n><n><e><c><t><e><d>:"􀲗" # 0x100c97
 <Multi_key><backslash><backslash><slash><slash><i><m><o><r><p><h><i><s><m>:"􋣫" # 0x10b8eb
 <Multi_key><backslash><backslash><slash><slash><p><a><r><t><i><t><i><o><n>:"􋢧" # 0x10b8a7
@@ -13196,9 +13340,9 @@
 <Multi_key><backslash><backslash><slash><slash><w><i><Multi_key><z><space>:"􋴧" # 0x10bd27
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><p><space>:"􍨖" # 0x10da16
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><t><space>:"􍩖" # 0x10da56
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><greater><n>:"􍤰" # 0x10d930
 <Multi_key><slash><slash><backslash><backslash><bracketleft><bracketright>:"􌎔" # 0x10c394
 <Multi_key><slash><slash><backslash><backslash><bracketleft><space><space>:"􍭼" # 0x10db7c
-<Multi_key><slash><slash><backslash><backslash><bracketright><bracketleft>:"􍮀" # 0x10db80
 <Multi_key><slash><slash><backslash><backslash><c><o><n><n><e><c><t><e><d>:"􀲘" # 0x100c98
 <Multi_key><slash><slash><backslash><backslash><i><m><o><r><p><h><i><s><m>:"􋣬" # 0x10b8ec
 <Multi_key><slash><slash><backslash><backslash><p><a><r><t><i><t><i><o><n>:"􋢨" # 0x10b8a8
@@ -13249,8 +13393,8 @@
 <Multi_key><slash><slash><backslash><backslash><w><i><Multi_key><x><space>:"􋴜" # 0x10bd1c
 <Multi_key><slash><slash><backslash><backslash><w><i><Multi_key><y><space>:"􋴠" # 0x10bd20
 <Multi_key><slash><slash><backslash><backslash><w><i><Multi_key><z><space>:"􋴨" # 0x10bd28
-<Multi_key><slash><slash><slash><slash><asciitilde><greater><equal><slash>:"􍤦" # 0x10d926
-<Multi_key><slash><slash><slash><slash><asciitilde><greater><equal><space>:"􍤢" # 0x10d922
+<Multi_key><slash><slash><slash><slash><asciitilde><R><less><equal><slash>:"􍤊" # 0x10d90a
+<Multi_key><slash><slash><slash><slash><asciitilde><R><less><equal><space>:"􍤆" # 0x10d906
 <Multi_key><slash><slash><slash><slash><bracketright><space><bracketright>:"􌺆" # 0x10ce86
 <Multi_key><slash><slash><slash><slash><period><bracketleft><bracketright>:"􌓶" # 0x10c4f6
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><W><C><r>:"􍚗" # 0x10d697
@@ -13263,32 +13407,28 @@
 <Multi_key><backslash><backslash><backslash><backslash><less><equal><space>:"􌓉" # 0x10c4c9
 <Multi_key><backslash><backslash><backslash><backslash><p><l><bracketright>:"􌗁" # 0x10c5c1
 <Multi_key><backslash><backslash><backslash><backslash><question><question>:"􌏥" # 0x10c3e5
-<Multi_key><backslash><backslash><backslash><backslash><quotedbl><A><space>:"􍫯" # 0x10daef
-<Multi_key><backslash><backslash><backslash><backslash><quotedbl><D><space>:"􍫳" # 0x10daf3
 <Multi_key><backslash><backslash><slash><slash><asciicircum><a><c><u><t><e>:"􌏟" # 0x10c3df
 <Multi_key><backslash><backslash><slash><slash><asciicircum><a><r><i><n><g>:"􍠭" # 0x10d82d
 <Multi_key><backslash><backslash><slash><slash><asciicircum><c><a><r><o><n>:"􍠵" # 0x10d835
 <Multi_key><backslash><backslash><slash><slash><asciicircum><g><r><a><v><e>:"􍠹" # 0x10d839
 <Multi_key><backslash><backslash><slash><slash><asciicircum><t><i><l><d><e>:"􍡅" # 0x10d845
-<Multi_key><backslash><backslash><slash><slash><asciitilde><greater><slash>:"􍤟" # 0x10d91f
-<Multi_key><backslash><backslash><slash><slash><asciitilde><greater><space>:"􍤛" # 0x10d91b
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><less><slash>:"􌔻" # 0x10c53b
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><less><space>:"􍮗" # 0x10db97
 <Multi_key><backslash><backslash><slash><slash><bracketright><bracketright>:"􌗟" # 0x10c5df
+<Multi_key><backslash><backslash><slash><slash><bracketright><space><space>:"􍭿" # 0x10db7f
 <Multi_key><backslash><backslash><slash><slash><e><bracketleft><underscore>:"􌔛" # 0x10c51b
-<Multi_key><backslash><backslash><slash><slash><greater><greater><A><space>:"􍬅" # 0x10db05
-<Multi_key><backslash><backslash><slash><slash><greater><greater><D><space>:"􍬉" # 0x10db09
 <Multi_key><backslash><backslash><t><r><a><n><s><f><o><r><m><a><t><i><o><n>:"􋒷" # 0x10b4b7
 <Multi_key><slash><slash><backslash><backslash><asciicircum><a><c><u><t><e>:"􌏠" # 0x10c3e0
 <Multi_key><slash><slash><backslash><backslash><asciicircum><a><r><i><n><g>:"􍠮" # 0x10d82e
 <Multi_key><slash><slash><backslash><backslash><asciicircum><c><a><r><o><n>:"􍠶" # 0x10d836
 <Multi_key><slash><slash><backslash><backslash><asciicircum><g><r><a><v><e>:"􍠺" # 0x10d83a
 <Multi_key><slash><slash><backslash><backslash><asciicircum><t><i><l><d><e>:"􍡆" # 0x10d846
-<Multi_key><slash><slash><backslash><backslash><asciitilde><greater><slash>:"􍤠" # 0x10d920
-<Multi_key><slash><slash><backslash><backslash><asciitilde><greater><space>:"􍤜" # 0x10d91c
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><less><slash>:"􌔼" # 0x10c53c
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><less><space>:"􍮘" # 0x10db98
 <Multi_key><slash><slash><backslash><backslash><bracketright><bracketright>:"􌗠" # 0x10c5e0
+<Multi_key><slash><slash><backslash><backslash><bracketright><space><space>:"􍮀" # 0x10db80
 <Multi_key><slash><slash><backslash><backslash><e><bracketleft><underscore>:"􌔜" # 0x10c51c
-<Multi_key><slash><slash><backslash><backslash><greater><greater><A><space>:"􍬆" # 0x10db06
-<Multi_key><slash><slash><backslash><backslash><greater><greater><D><space>:"􍬊" # 0x10db0a
-<Multi_key><slash><slash><slash><slash><asciitilde><greater><asciitilde><n>:"􍤮" # 0x10d92e
+<Multi_key><slash><slash><slash><slash><asciitilde><R><less><asciitilde><n>:"􌠆" # 0x10c806
 <Multi_key><slash><slash><slash><slash><h><o><m><o><m><o><r><p><h><i><s><m>:"􋣮" # 0x10b8ee
 <Multi_key><slash><slash><slash><slash><n><e><i><g><h><b><o><r><h><o><o><d>:"􋤪" # 0x10b92a
 <Multi_key><slash><slash><slash><slash><underscore><underscore><underscore>:"􍒈" # 0x10d488
@@ -13299,8 +13439,8 @@
 <Multi_key><backslash><backslash><Multi_key><w><s><r><space><w><s><k><space>:"􋟥" # 0x10b7e5
 <Multi_key><backslash><backslash><Multi_key><w><s><s><space><w><s><t><space>:"􋟧" # 0x10b7e7
 <Multi_key><backslash><backslash><Multi_key><w><s><t><space><w><s><r><space>:"􋟟" # 0x10b7df
+<Multi_key><backslash><backslash><asciitilde><R><greater><asciitilde><space>:"􍢷" # 0x10d8b7
 <Multi_key><backslash><backslash><backslash><backslash><a><l><g><e><b><r><a>:"􋣹" # 0x10b8f9
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><less><n>:"􍤙" # 0x10d919
 <Multi_key><backslash><backslash><backslash><backslash><bar><greater><space>:"􍫙" # 0x10dad9
 <Multi_key><backslash><backslash><backslash><backslash><bar><period><period>:"􍚿" # 0x10d6bf
 <Multi_key><backslash><backslash><backslash><backslash><bracketleft><period>:"􌗝" # 0x10c5dd
@@ -13311,6 +13451,8 @@
 <Multi_key><backslash><backslash><backslash><backslash><equal><equal><slash>:"􌕉" # 0x10c549
 <Multi_key><backslash><backslash><backslash><backslash><equal><equal><space>:"􌕅" # 0x10c545
 <Multi_key><backslash><backslash><backslash><backslash><f><u><n><c><t><o><r>:"􍒯" # 0x10d4af
+<Multi_key><backslash><backslash><backslash><backslash><greater><greater><A>:"􍬇" # 0x10db07
+<Multi_key><backslash><backslash><backslash><backslash><greater><greater><D>:"􍬋" # 0x10db0b
 <Multi_key><backslash><backslash><backslash><backslash><greater><greater><X>:"􍬿" # 0x10db3f
 <Multi_key><backslash><backslash><backslash><backslash><l><a><t><t><i><c><e>:"􋣝" # 0x10b8dd
 <Multi_key><backslash><backslash><backslash><backslash><m><e><a><s><u><r><e>:"􋤍" # 0x10b90d
@@ -13329,10 +13471,11 @@
 <Multi_key><slash><slash><backslash><backslash><Multi_key><i><i><i><i><n><t>:"􌱬" # 0x10cc6c
 <Multi_key><slash><slash><backslash><backslash><Multi_key><o><i><i><i><n><t>:"􌮤" # 0x10cba4
 <Multi_key><slash><slash><slash><slash><asciicircum><underscore><underscore>:"􍡀" # 0x10d840
-<Multi_key><slash><slash><slash><slash><asciitilde><less><asciitilde><space>:"􌠆" # 0x10c806
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><d><i><a>:"􍡏" # 0x10d84f
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><d><o><t>:"􍡓" # 0x10d853
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><h><a><t>:"􍡋" # 0x10d84b
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><bar><A>:"􍯝" # 0x10dbdd
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><bar><D>:"􍰍" # 0x10dc0d
 <Multi_key><backslash><backslash><backslash><backslash><bracketright><period>:"􌗥" # 0x10c5e5
 <Multi_key><backslash><backslash><backslash><backslash><g><e><n><space><b><y>:"􋡽" # 0x10b87d
 <Multi_key><backslash><backslash><backslash><backslash><greater><less><space>:"􍝇" # 0x10d747
@@ -13410,6 +13553,8 @@
 <Multi_key><slash><slash><backslash><backslash><w><i><Multi_key><r><h><space>:"􋳸" # 0x10bcf8
 <Multi_key><slash><slash><backslash><backslash><w><i><Multi_key><u><p><space>:"􋴈" # 0x10bd08
 <Multi_key><slash><slash><backslash><backslash><w><i><Multi_key><x><i><space>:"􋴘" # 0x10bd18
+<Multi_key><slash><slash><slash><slash><asciitilde><R><greater><equal><slash>:"􍤢" # 0x10d922
+<Multi_key><slash><slash><slash><slash><asciitilde><R><greater><equal><space>:"􍤞" # 0x10d91e
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><b><i><n><t>:"􍛋" # 0x10d6cb
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><c><i><n><t>:"􌭅" # 0x10cb45
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><i><i><n><t>:"􌲕" # 0x10cc95
@@ -13417,8 +13562,10 @@
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><p><i><n><t>:"􌲉" # 0x10cc89
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><q><i><n><t>:"􌦑" # 0x10c991
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><i><n><t>:"􌧕" # 0x10c9d5
-<Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><8><8>:"􍬯" # 0x10db2f
+<Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><8><8>:"􍰙" # 0x10dc19
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><p><2>:"􍩏" # 0x10da4f
+<Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><p><3>:"􍬯" # 0x10db2f
+<Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><p><4>:"􍰝" # 0x10dc1d
 <Multi_key><backslash><backslash><backslash><backslash><a><i><a><slash><space>:"􌙙" # 0x10c659
 <Multi_key><backslash><backslash><backslash><backslash><a><i><d><slash><space>:"􌙝" # 0x10c65d
 <Multi_key><backslash><backslash><backslash><backslash><backslash><asciitilde>:"􍡇" # 0x10d847
@@ -13436,21 +13583,28 @@
 <Multi_key><backslash><backslash><backslash><backslash><numbersign><backslash>:"􌎩" # 0x10c3a9
 <Multi_key><backslash><backslash><backslash><backslash><parenleft><parenright>:"􌖵" # 0x10c5b5
 <Multi_key><backslash><backslash><backslash><backslash><period><period><space>:"􌏝" # 0x10c3dd
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><greater><slash>:"􍤛" # 0x10d91b
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><greater><space>:"􍤗" # 0x10d917
+<Multi_key><backslash><backslash><slash><slash><bar><greater><greater><bar><A>:"􍯷" # 0x10dbf7
+<Multi_key><backslash><backslash><slash><slash><bar><greater><greater><bar><D>:"􍯿" # 0x10dbff
 <Multi_key><backslash><backslash><slash><slash><period><parenleft><parenright>:"􌓻" # 0x10c4fb
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><greater><slash>:"􍤜" # 0x10d91c
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><greater><space>:"􍤘" # 0x10d918
+<Multi_key><slash><slash><backslash><backslash><bar><greater><greater><bar><A>:"􍯸" # 0x10dbf8
+<Multi_key><slash><slash><backslash><backslash><bar><greater><greater><bar><D>:"􍰀" # 0x10dc00
 <Multi_key><slash><slash><backslash><backslash><period><parenleft><parenright>:"􌓼" # 0x10c4fc
+<Multi_key><slash><slash><slash><slash><asciitilde><R><greater><asciitilde><n>:"􍤪" # 0x10d92a
 <Multi_key><slash><slash><slash><slash><numbersign><bracketleft><bracketright>:"􌎖" # 0x10c396
 <Multi_key><slash><slash><slash><slash><w><b><Multi_key><underscore><s><space>:"􋬶" # 0x10bb36
 <Multi_key><slash><slash><slash><slash><w><i><Multi_key><underscore><s><space>:"􋲚" # 0x10bc9a
 <Multi_key><backslash><backslash><backslash><backslash><apostrophe><apostrophe>:"􍄻" # 0x10d13b
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><less><n>:"􍤕" # 0x10d915
 <Multi_key><backslash><backslash><backslash><backslash><asciitilde><bar><space>:"􍫍" # 0x10dacd
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><greater><n>:"􍤵" # 0x10d935
 <Multi_key><backslash><backslash><backslash><backslash><bracketleft><parenleft>:"􌳹" # 0x10ccf9
 <Multi_key><backslash><backslash><backslash><backslash><c><a><t><e><g><o><r><y>:"􋢱" # 0x10b8b1
 <Multi_key><backslash><backslash><backslash><backslash><e><bracketright><slash>:"􌔥" # 0x10c525
 <Multi_key><backslash><backslash><backslash><backslash><e><bracketright><space>:"􌔡" # 0x10c521
 <Multi_key><backslash><backslash><backslash><backslash><f><u><n><c><t><i><o><n>:"􋣕" # 0x10b8d5
-<Multi_key><backslash><backslash><backslash><backslash><greater><bar><A><space>:"􍫿" # 0x10daff
-<Multi_key><backslash><backslash><backslash><backslash><greater><bar><D><space>:"􍬃" # 0x10db03
 <Multi_key><backslash><backslash><backslash><backslash><i><j><e><c><t><i><o><n>:"􋣩" # 0x10b8e9
 <Multi_key><backslash><backslash><backslash><backslash><m><a><n><i><f><o><l><d>:"􋤱" # 0x10b931
 <Multi_key><backslash><backslash><backslash><backslash><m><o><r><p><h><i><s><m>:"􋢹" # 0x10b8b9
@@ -13460,19 +13614,13 @@
 <Multi_key><backslash><backslash><backslash><backslash><s><a><l><g><e><b><r><a>:"􍒳" # 0x10d4b3
 <Multi_key><backslash><backslash><backslash><backslash><t><o><p><o><l><o><g><y>:"􋤩" # 0x10b929
 <Multi_key><backslash><backslash><backslash><backslash><underscore><b><r><e><v>:"􍄻" # 0x10d13b
-<Multi_key><backslash><backslash><slash><slash><asciitilde><less><equal><slash>:"􍤏" # 0x10d90f
-<Multi_key><backslash><backslash><slash><slash><asciitilde><less><equal><space>:"􍤋" # 0x10d90b
 <Multi_key><backslash><backslash><slash><slash><bracketleft><bar><bracketright>:"􍚥" # 0x10d6a5
-<Multi_key><slash><slash><backslash><backslash><asciitilde><less><equal><slash>:"􍤐" # 0x10d910
-<Multi_key><slash><slash><backslash><backslash><asciitilde><less><equal><space>:"􍤌" # 0x10d90c
 <Multi_key><slash><slash><backslash><backslash><bracketleft><bar><bracketright>:"􍚦" # 0x10d6a6
-<Multi_key><slash><slash><slash><slash><asciitilde><greater><asciitilde><space>:"􍤪" # 0x10d92a
+<Multi_key><slash><slash><slash><slash><asciitilde><R><less><asciitilde><space>:"􍤎" # 0x10d90e
 <Multi_key><slash><slash><slash><slash><g><e><n><e><r><a><t><e><d><space><b><y>:"􋡺" # 0x10b87a
 <Multi_key><slash><slash><slash><slash><t><o><p><o><l><o><g><i><c><a><l><space>:"􋣖" # 0x10b8d6
 <Multi_key><slash><slash><slash><slash><v><e><c><t><o><r><space><s><p><a><c><e>:"􋤆" # 0x10b906
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><b><r><e><v>:"􍠳" # 0x10d833
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><less><slash>:"􍤉" # 0x10d909
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><less><space>:"􌔽" # 0x10c53d
 <Multi_key><backslash><backslash><backslash><backslash><colon><colon><parenleft>:"􌣕" # 0x10c8d5
 <Multi_key><backslash><backslash><backslash><backslash><greater><greater><space>:"􌾣" # 0x10cfa3
 <Multi_key><backslash><backslash><backslash><backslash><m><e><t><r><i><c><space>:"􋢍" # 0x10b88d
@@ -13483,19 +13631,13 @@
 <Multi_key><backslash><backslash><backslash><backslash><underscore><bracketleft>:"􌩱" # 0x10ca71
 <Multi_key><backslash><backslash><backslash><backslash><v><e><c><t><o><r><space>:"􋤉" # 0x10b909
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><u><i><asciicircum>:"􍩽" # 0x10da7d
-<Multi_key><backslash><backslash><slash><slash><asciitilde><less><asciitilde><n>:"􍤓" # 0x10d913
 <Multi_key><backslash><backslash><slash><slash><bracketleft><space><bracketleft>:"􌴯" # 0x10cd2f
 <Multi_key><backslash><backslash><slash><slash><d><e><r><a><n><g><e><m><e><n><t>:"􋢟" # 0x10b89f
-<Multi_key><backslash><backslash><slash><slash><greater><greater><bar><A><space>:"􍬍" # 0x10db0d
-<Multi_key><backslash><backslash><slash><slash><greater><greater><bar><D><space>:"􍂱" # 0x10d0b1
 <Multi_key><backslash><backslash><slash><slash><period><bracketleft><parenright>:"􌓳" # 0x10c4f3
 <Multi_key><backslash><backslash><slash><slash><period><parenleft><bracketright>:"􌓿" # 0x10c4ff
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><u><i><asciicircum>:"􍩾" # 0x10da7e
-<Multi_key><slash><slash><backslash><backslash><asciitilde><less><asciitilde><n>:"􍤔" # 0x10d914
 <Multi_key><slash><slash><backslash><backslash><bracketleft><space><bracketleft>:"􌴰" # 0x10cd30
 <Multi_key><slash><slash><backslash><backslash><d><e><r><a><n><g><e><m><e><n><t>:"􋢠" # 0x10b8a0
-<Multi_key><slash><slash><backslash><backslash><greater><greater><bar><A><space>:"􍬎" # 0x10db0e
-<Multi_key><slash><slash><backslash><backslash><greater><greater><bar><D><space>:"􍂲" # 0x10d0b2
 <Multi_key><slash><slash><backslash><backslash><period><bracketleft><parenright>:"􌓴" # 0x10c4f4
 <Multi_key><slash><slash><backslash><backslash><period><parenleft><bracketright>:"􌔀" # 0x10c500
 <Multi_key><slash><slash><t><o><p><o><l><o><g><i><c><a><l><space><s><p><a><c><e>:"􋒚" # 0x10b49a
@@ -13507,9 +13649,13 @@
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><g><p><i>:"􍨗" # 0x10da17
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><g><t><a>:"􍩗" # 0x10da57
 <Multi_key><backslash><backslash><backslash><backslash><bar><bar><greater><space>:"􍫕" # 0x10dad5
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><greater><A>:"􍰅" # 0x10dc05
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><greater><D>:"􍯥" # 0x10dbe5
 <Multi_key><backslash><backslash><backslash><backslash><bracketleft><bracketleft>:"􌗙" # 0x10c5d9
 <Multi_key><backslash><backslash><backslash><backslash><bracketright><parenright>:"􌸵" # 0x10ce35
 <Multi_key><backslash><backslash><backslash><backslash><colon><colon><parenright>:"􌣍" # 0x10c8cd
+<Multi_key><backslash><backslash><backslash><backslash><greater><greater><bar><A>:"􍬏" # 0x10db0f
+<Multi_key><backslash><backslash><backslash><backslash><greater><greater><bar><D>:"􍂳" # 0x10d0b3
 <Multi_key><backslash><backslash><backslash><backslash><underscore><bracketright>:"􌶕" # 0x10cd95
 <Multi_key><backslash><backslash><slash><slash><backslash><period><period><space>:"􌏟" # 0x10c3df
 <Multi_key><backslash><backslash><slash><slash><bracketleft><minus><bracketright>:"􍚡" # 0x10d6a1
@@ -13522,9 +13668,9 @@
 <Multi_key><slash><slash><slash><slash><t><r><a><n><s><f><o><r><m><a><t><i><o><n>:"􋤖" # 0x10b916
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><p><space>:"􍨗" # 0x10da17
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><t><space>:"􍩗" # 0x10da57
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><greater><n>:"􍤱" # 0x10d931
 <Multi_key><backslash><backslash><backslash><backslash><bracketleft><bracketright>:"􌎕" # 0x10c395
 <Multi_key><backslash><backslash><backslash><backslash><bracketleft><space><space>:"􍭽" # 0x10db7d
-<Multi_key><backslash><backslash><backslash><backslash><bracketright><bracketleft>:"􍮁" # 0x10db81
 <Multi_key><backslash><backslash><backslash><backslash><c><o><n><n><e><c><t><e><d>:"􀲙" # 0x100c99
 <Multi_key><backslash><backslash><backslash><backslash><i><m><o><r><p><h><i><s><m>:"􋣭" # 0x10b8ed
 <Multi_key><backslash><backslash><backslash><backslash><p><a><r><t><i><t><i><o><n>:"􋢩" # 0x10b8a9
@@ -13575,12 +13721,12 @@
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><x><space>:"􋴝" # 0x10bd1d
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><y><space>:"􋴡" # 0x10bd21
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><z><space>:"􋴩" # 0x10bd29
-<Multi_key><backslash><backslash><slash><slash><asciitilde><greater><equal><slash>:"􍤧" # 0x10d927
-<Multi_key><backslash><backslash><slash><slash><asciitilde><greater><equal><space>:"􍤣" # 0x10d923
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><less><equal><slash>:"􍤋" # 0x10d90b
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><less><equal><space>:"􍤇" # 0x10d907
 <Multi_key><backslash><backslash><slash><slash><bracketright><space><bracketright>:"􌺇" # 0x10ce87
 <Multi_key><backslash><backslash><slash><slash><period><bracketleft><bracketright>:"􌓷" # 0x10c4f7
-<Multi_key><slash><slash><backslash><backslash><asciitilde><greater><equal><slash>:"􍤨" # 0x10d928
-<Multi_key><slash><slash><backslash><backslash><asciitilde><greater><equal><space>:"􍤤" # 0x10d924
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><less><equal><slash>:"􍤌" # 0x10d90c
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><less><equal><space>:"􍤈" # 0x10d908
 <Multi_key><slash><slash><backslash><backslash><bracketright><space><bracketright>:"􌺈" # 0x10ce88
 <Multi_key><slash><slash><backslash><backslash><period><bracketleft><bracketright>:"􌓸" # 0x10c4f8
 <Multi_key><slash><slash><slash><slash><Multi_key><m><s><l><space><m><s><g><space>:"􌺎" # 0x10ce8e
@@ -13590,22 +13736,22 @@
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><r><space><w><s><k><space>:"􌺞" # 0x10ce9e
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><s><space><w><s><t><space>:"􌺢" # 0x10cea2
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><t><space><w><s><r><space>:"􌺒" # 0x10ce92
+<Multi_key><slash><slash><slash><slash><asciitilde><R><greater><asciitilde><space>:"􍤦" # 0x10d926
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><a><c><u><t><e>:"􌏡" # 0x10c3e1
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><a><r><i><n><g>:"􍠯" # 0x10d82f
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><c><a><r><o><n>:"􍠷" # 0x10d837
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><g><r><a><v><e>:"􍠻" # 0x10d83b
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><t><i><l><d><e>:"􍡇" # 0x10d847
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><greater><slash>:"􍤡" # 0x10d921
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><greater><space>:"􍤝" # 0x10d91d
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><less><slash>:"􌔽" # 0x10c53d
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><less><space>:"􍮙" # 0x10db99
 <Multi_key><backslash><backslash><backslash><backslash><bracketright><bracketright>:"􌗡" # 0x10c5e1
+<Multi_key><backslash><backslash><backslash><backslash><bracketright><space><space>:"􍮁" # 0x10db81
 <Multi_key><backslash><backslash><backslash><backslash><e><bracketleft><underscore>:"􌔝" # 0x10c51d
-<Multi_key><backslash><backslash><backslash><backslash><greater><greater><A><space>:"􍬇" # 0x10db07
-<Multi_key><backslash><backslash><backslash><backslash><greater><greater><D><space>:"􍬋" # 0x10db0b
-<Multi_key><backslash><backslash><slash><slash><asciitilde><greater><asciitilde><n>:"􍤯" # 0x10d92f
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><less><asciitilde><n>:"􌠇" # 0x10c807
 <Multi_key><backslash><backslash><slash><slash><h><o><m><o><m><o><r><p><h><i><s><m>:"􋣯" # 0x10b8ef
 <Multi_key><backslash><backslash><slash><slash><n><e><i><g><h><b><o><r><h><o><o><d>:"􋤫" # 0x10b92b
 <Multi_key><backslash><backslash><slash><slash><underscore><underscore><underscore>:"􍒉" # 0x10d489
-<Multi_key><slash><slash><backslash><backslash><asciitilde><greater><asciitilde><n>:"􍤰" # 0x10d930
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><less><asciitilde><n>:"􌠈" # 0x10c808
 <Multi_key><slash><slash><backslash><backslash><h><o><m><o><m><o><r><p><h><i><s><m>:"􋣰" # 0x10b8f0
 <Multi_key><slash><slash><backslash><backslash><n><e><i><g><h><b><o><r><h><o><o><d>:"􋤬" # 0x10b92c
 <Multi_key><slash><slash><backslash><backslash><underscore><underscore><underscore>:"􍒊" # 0x10d48a
@@ -13613,7 +13759,6 @@
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><i><i><i><i><n><t>:"􌱭" # 0x10cc6d
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><o><i><i><i><n><t>:"􌮥" # 0x10cba5
 <Multi_key><backslash><backslash><slash><slash><asciicircum><underscore><underscore>:"􍡁" # 0x10d841
-<Multi_key><backslash><backslash><slash><slash><asciitilde><less><asciitilde><space>:"􌠇" # 0x10c807
 <Multi_key><s><h><r><u><g>:"⎺⟍_⟨ᐛ⟩_⟋⎺" # 0x23ba 0x27cd 0x5f 0x27e8 0x141b 0x27e9 0x5f 0x27cb 0x23ba
 <Multi_key><slash><slash><Multi_key><m><s><l><space><m><s><o><space><m><s><g><space>:"􋟲" # 0x10b7f2
 <Multi_key><slash><slash><Multi_key><w><s><A><space><w><s><r><space><w><s><g><space>:"􀰙" # 0x100c19
@@ -13658,7 +13803,6 @@
 <Multi_key><slash><slash><Multi_key><w><s><v><space><w><s><a><space><w><s><r><space>:"􋠲" # 0x10b832
 <Multi_key><slash><slash><Multi_key><w><s><w><space><w><s><r><space><w><s><t><space>:"􋠬" # 0x10b82c
 <Multi_key><slash><slash><backslash><backslash><asciicircum><underscore><underscore>:"􍡂" # 0x10d842
-<Multi_key><slash><slash><backslash><backslash><asciitilde><less><asciitilde><space>:"􌠈" # 0x10c808
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><colon><parenright>:"􍟳" # 0x10d7f3
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><e><u><space>:"􍩛" # 0x10da5b
 <Multi_key><backslash><backslash><backslash><backslash><less><period><greater><space>:"􍝋" # 0x10d74b
@@ -13694,7 +13838,11 @@
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><r><h><space>:"􋳹" # 0x10bcf9
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><u><p><space>:"􋴉" # 0x10bd09
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><x><i><space>:"􋴙" # 0x10bd19
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><greater><equal><slash>:"􍤣" # 0x10d923
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><greater><equal><space>:"􍤟" # 0x10d91f
 <Multi_key><slash><slash><Multi_key><w><s><W><space><w><s><T><space><asterisk><space>:"􋠰" # 0x10b830
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><greater><equal><slash>:"􍤤" # 0x10d924
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><greater><equal><space>:"􍤠" # 0x10d920
 <Multi_key><Multi_key><w><s><C><space><w><s><H><space><w><s><A><space><w><s><R><space>:"􋑛" # 0x10b45b
 <Multi_key><Multi_key><w><s><C><space><w><s><O><space><w><s><R><space><w><s><R><space>:"􋑦" # 0x10b466
 <Multi_key><Multi_key><w><s><C><space><w><s><O><space><w><s><S><space><w><s><H><space>:"􋑖" # 0x10b456
@@ -13716,31 +13864,32 @@
 <Multi_key><Multi_key><w><s><W><space><w><s><L><space><w><s><O><space><w><s><G><space>:"􋑡" # 0x10b461
 <Multi_key><Multi_key><w><s><c><space><w><s><o><space><w><s><s><space><w><s><h><space>:"􀰔" # 0x100c14
 <Multi_key><Multi_key><w><s><s><space><w><s><i><space><w><s><n><space><w><s><h><space>:"􀰓" # 0x100c13
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><greater><slash>:"􍤝" # 0x10d91d
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><greater><space>:"􍤙" # 0x10d919
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><greater><bar><A>:"􍯹" # 0x10dbf9
+<Multi_key><backslash><backslash><backslash><backslash><bar><greater><greater><bar><D>:"􍰁" # 0x10dc01
 <Multi_key><backslash><backslash><backslash><backslash><period><parenleft><parenright>:"􌓽" # 0x10c4fd
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><greater><asciitilde><n>:"􍤫" # 0x10d92b
 <Multi_key><backslash><backslash><slash><slash><numbersign><bracketleft><bracketright>:"􌎗" # 0x10c397
 <Multi_key><backslash><backslash><slash><slash><w><b><Multi_key><underscore><s><space>:"􋬷" # 0x10bb37
 <Multi_key><backslash><backslash><slash><slash><w><i><Multi_key><underscore><s><space>:"􋲛" # 0x10bc9b
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><greater><asciitilde><n>:"􍤬" # 0x10d92c
 <Multi_key><slash><slash><backslash><backslash><numbersign><bracketleft><bracketright>:"􌎘" # 0x10c398
 <Multi_key><slash><slash><backslash><backslash><w><b><Multi_key><underscore><s><space>:"􋬸" # 0x10bb38
 <Multi_key><slash><slash><backslash><backslash><w><i><Multi_key><underscore><s><space>:"􋲜" # 0x10bc9c
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><less><equal><slash>:"􍤑" # 0x10d911
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><less><equal><space>:"􍤍" # 0x10d90d
 <Multi_key><backslash><backslash><backslash><backslash><bracketleft><bar><bracketright>:"􍚧" # 0x10d6a7
-<Multi_key><backslash><backslash><slash><slash><asciitilde><greater><asciitilde><space>:"􍤫" # 0x10d92b
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><less><asciitilde><space>:"􍤏" # 0x10d90f
 <Multi_key><backslash><backslash><slash><slash><g><e><n><e><r><a><t><e><d><space><b><y>:"􋡻" # 0x10b87b
 <Multi_key><backslash><backslash><slash><slash><t><o><p><o><l><o><g><i><c><a><l><space>:"􋣗" # 0x10b8d7
 <Multi_key><backslash><backslash><slash><slash><v><e><c><t><o><r><space><s><p><a><c><e>:"􋤇" # 0x10b907
-<Multi_key><slash><slash><backslash><backslash><asciitilde><greater><asciitilde><space>:"􍤬" # 0x10d92c
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><less><asciitilde><space>:"􍤐" # 0x10d910
 <Multi_key><slash><slash><backslash><backslash><g><e><n><e><r><a><t><e><d><space><b><y>:"􋡼" # 0x10b87c
 <Multi_key><slash><slash><backslash><backslash><t><o><p><o><l><o><g><i><c><a><l><space>:"􋣘" # 0x10b8d8
 <Multi_key><slash><slash><backslash><backslash><v><e><c><t><o><r><space><s><p><a><c><e>:"􋤈" # 0x10b908
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><W><space><backslash><5><space>:"􌺦" # 0x10cea6
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><u><i><asciicircum>:"􍩿" # 0x10da7f
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><less><asciitilde><n>:"􍤕" # 0x10d915
 <Multi_key><backslash><backslash><backslash><backslash><bracketleft><space><bracketleft>:"􌴱" # 0x10cd31
 <Multi_key><backslash><backslash><backslash><backslash><d><e><r><a><n><g><e><m><e><n><t>:"􋢡" # 0x10b8a1
-<Multi_key><backslash><backslash><backslash><backslash><greater><greater><bar><A><space>:"􍬏" # 0x10db0f
-<Multi_key><backslash><backslash><backslash><backslash><greater><greater><bar><D><space>:"􍂳" # 0x10d0b3
 <Multi_key><backslash><backslash><backslash><backslash><period><bracketleft><parenright>:"􌓵" # 0x10c4f5
 <Multi_key><backslash><backslash><backslash><backslash><period><parenleft><bracketright>:"􌔁" # 0x10c501
 <Multi_key><backslash><backslash><t><o><p><o><l><o><g><i><c><a><l><space><s><p><a><c><e>:"􋒛" # 0x10b49b
@@ -13750,8 +13899,8 @@
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><0><minus><space>:"􋲡" # 0x10bca1
 <Multi_key><backslash><backslash><slash><slash><t><r><a><n><s><f><o><r><m><a><t><i><o><n>:"􋤗" # 0x10b917
 <Multi_key><slash><slash><backslash><backslash><t><r><a><n><s><f><o><r><m><a><t><i><o><n>:"􋤘" # 0x10b918
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><greater><equal><slash>:"􍤩" # 0x10d929
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><greater><equal><space>:"􍤥" # 0x10d925
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><less><equal><slash>:"􍤍" # 0x10d90d
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><less><equal><space>:"􍤉" # 0x10d909
 <Multi_key><backslash><backslash><backslash><backslash><bracketright><space><bracketright>:"􌺉" # 0x10ce89
 <Multi_key><backslash><backslash><backslash><backslash><period><bracketleft><bracketright>:"􌓹" # 0x10c4f9
 <Multi_key><backslash><backslash><slash><slash><Multi_key><m><s><l><space><m><s><g><space>:"􌺏" # 0x10ce8f
@@ -13761,6 +13910,7 @@
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><r><space><w><s><k><space>:"􌺟" # 0x10ce9f
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><s><space><w><s><t><space>:"􌺣" # 0x10cea3
 <Multi_key><backslash><backslash><slash><slash><Multi_key><w><s><t><space><w><s><r><space>:"􌺓" # 0x10ce93
+<Multi_key><backslash><backslash><slash><slash><asciitilde><R><greater><asciitilde><space>:"􍤧" # 0x10d927
 <Multi_key><slash><slash><backslash><backslash><Multi_key><m><s><l><space><m><s><g><space>:"􌺐" # 0x10ce90
 <Multi_key><slash><slash><backslash><backslash><Multi_key><m><s><l><space><m><s><n><space>:"􌺌" # 0x10ce8c
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><G><space><w><s><L><space>:"􌺜" # 0x10ce9c
@@ -13768,8 +13918,9 @@
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><r><space><w><s><k><space>:"􌺠" # 0x10cea0
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><s><space><w><s><t><space>:"􌺤" # 0x10cea4
 <Multi_key><slash><slash><backslash><backslash><Multi_key><w><s><t><space><w><s><r><space>:"􌺔" # 0x10ce94
+<Multi_key><slash><slash><backslash><backslash><asciitilde><R><greater><asciitilde><space>:"􍤨" # 0x10d928
 <Multi_key><Multi_key><d><e><s><o>:"\\overline{}" # 0x5c 0x6f 0x76 0x65 0x72 0x6c 0x69 0x6e 0x65 0x7b 0x7d
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><greater><asciitilde><n>:"􍤱" # 0x10d931
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><less><asciitilde><n>:"􌠉" # 0x10c809
 <Multi_key><backslash><backslash><backslash><backslash><h><o><m><o><m><o><r><p><h><i><s><m>:"􋣱" # 0x10b8f1
 <Multi_key><backslash><backslash><backslash><backslash><n><e><i><g><h><b><o><r><h><o><o><d>:"􋤭" # 0x10b92d
 <Multi_key><backslash><backslash><backslash><backslash><underscore><underscore><underscore>:"􍒋" # 0x10d48b
@@ -13816,14 +13967,16 @@
 <Multi_key><backslash><backslash><Multi_key><w><s><v><space><w><s><a><space><w><s><r><space>:"􋠳" # 0x10b833
 <Multi_key><backslash><backslash><Multi_key><w><s><w><space><w><s><r><space><w><s><t><space>:"􋠭" # 0x10b82d
 <Multi_key><backslash><backslash><backslash><backslash><asciicircum><underscore><underscore>:"􍡃" # 0x10d843
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><less><asciitilde><space>:"􌠉" # 0x10c809
 <Multi_key><backslash><backslash><Multi_key><w><s><W><space><w><s><T><space><asterisk><space>:"􋠱" # 0x10b831
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><greater><equal><slash>:"􍤥" # 0x10d925
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><greater><equal><space>:"􍤡" # 0x10d921
 <Multi_key><semicolon><b><o><x>:"┌┬┐├┼┤└┴┘" # 0x250c 0x252c 0x2510 0x251c 0x253c 0x2524 0x2514 0x2534 0x2518
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><greater><asciitilde><n>:"􍤭" # 0x10d92d
 <Multi_key><backslash><backslash><backslash><backslash><numbersign><bracketleft><bracketright>:"􌎙" # 0x10c399
 <Multi_key><backslash><backslash><backslash><backslash><w><b><Multi_key><underscore><s><space>:"􋬹" # 0x10bb39
 <Multi_key><backslash><backslash><backslash><backslash><w><i><Multi_key><underscore><s><space>:"􋲝" # 0x10bc9d
 <Multi_key><slash><slash><slash><slash><t><o><p><o><l><o><g><i><c><a><l><space><s><p><a><c><e>:"􋣖" # 0x10b8d6
-<Multi_key><backslash><backslash><backslash><backslash><asciitilde><greater><asciitilde><space>:"􍤭" # 0x10d92d
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><less><asciitilde><space>:"􍤑" # 0x10d911
 <Multi_key><backslash><backslash><backslash><backslash><g><e><n><e><r><a><t><e><d><space><b><y>:"􋡽" # 0x10b87d
 <Multi_key><backslash><backslash><backslash><backslash><t><o><p><o><l><o><g><i><c><a><l><space>:"􋣙" # 0x10b8d9
 <Multi_key><backslash><backslash><backslash><backslash><v><e><c><t><o><r><space><s><p><a><c><e>:"􋤉" # 0x10b909
@@ -13837,6 +13990,7 @@
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><r><space><w><s><k><space>:"􌺡" # 0x10cea1
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><s><space><w><s><t><space>:"􌺥" # 0x10cea5
 <Multi_key><backslash><backslash><backslash><backslash><Multi_key><w><s><t><space><w><s><r><space>:"􌺕" # 0x10ce95
+<Multi_key><backslash><backslash><backslash><backslash><asciitilde><R><greater><asciitilde><space>:"􍤩" # 0x10d929
 <Multi_key><slash><slash><slash><slash><Multi_key><m><s><l><space><m><s><o><space><m><s><g><space>:"􌺺" # 0x10ceba
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><A><space><w><s><r><space><w><s><g><space>:"􀰣" # 0x100c23
 <Multi_key><slash><slash><slash><slash><Multi_key><w><s><A><space><w><s><s><space><w><s><s><space>:"􌻖" # 0x10ced6

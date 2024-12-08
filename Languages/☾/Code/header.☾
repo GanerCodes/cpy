@@ -5,7 +5,7 @@ exec ← "from math import *"
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ chain, filterfalse, product, accumulate, zip_longest
 ⮌ random ⨡ shuffle, choice, uniform, randint
-⮌ typing ⨡ Hashable
+⮌ types ⨡ UnionType
 
 LITERAL_OPS_ = {
       ␛*:󰲣x⋅y,  ␛/:󰲣x/y,  ␛<:󰲣x <y,  ␛>:󰲣x >y,
@@ -56,7 +56,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         __slots__ = ()
         ⊢ __call__(𝕊, x=␀, y=␀, ⠶𝕂):
             ¿x≅␀: x,y = y,x
-            ↪ ƒ(x,⠶𝕂) ¿y≅␀¡ ƒ(x,y,⠶𝕂)
+            ↪ y≅␀ ⭜ƒ(x,⠶𝕂)⭝ ƒ(x,y,⠶𝕂)
         __getitem__ = ⥌𝕊,s↦𝚲𝕊(⠤𝔸, s=s, ⠶𝕂)
     ↪ ω()
 ⊢ ERROR_TRIANGLE_(t, ƒ=␀, 𝑔=␀, 𝑇=Exception):
@@ -69,7 +69,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
             ↪ ƒ(⠤𝔸, ⠶𝕂)
         except 𝑇 as ε:
             ¿v🃌≡1:
-                ¿t≡␛󰔶: ↪ 𝔸₀¿𝔸¡□
+                ¿t≡␛󰔶: ↪ 𝔸⭜𝔸₀⭝□
                 ¿t≡␛: ↪ ε
             ¿t≡␛: ↪ 𝑔
             ¿t≡␛󰔶: ↪ 𝑔(⠤𝔸, ⠶𝕂)
@@ -108,8 +108,8 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ¿𝕏≡␛󷸸: ↪ [⠤range(x+1,y  ,s)]
         ¿𝕏≡␛󷸻: ↪ [⠤range(x  ,y+1,s)]
     ¿v≇␀:
-        𝗜(v)⨳
-        v=𝑙∘v
+        𝗜(v) ⨳
+        v=𝑙(v)
         ¿𝕏≡␛󷸸: ↪ (v₀, v₁﹕􍨄﹕ₛ, v􍨄)
         ¿𝔰: s=0
         ¿𝕏≡␛󷸹: ↪ v₀₊ₛ
@@ -287,12 +287,15 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 🃌´ = len
 𝕣 = 󰲡[y∀y∈x¿y≇␀]
 𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x,"__iter__"), ERROR_TRIANGLE_(␛, hash, ✗)
+TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 
-∘´ = OPWRAP_(⥌ƒ=␀,y=␀,s=1↦ ƒ   (⠤[y]⋅s))
-○´ = OPWRAP_(⥌ƒ=␀,𝔤=␀,s=1↦𝚲ƒ∘ˢ𝔤(⠤𝔸,⠶𝕂))  󰤱 fix
-ᐹ´ = ⥌x=␀,y=␀↦␀≅x∨y≅␀ ⭜ type(x≅␀⭜y⭝x) ⭝ isinstance(x, isinstance(y,type)⭜ y ⭝ ᐹy)
-ᐴ´ = ⥌y=␀,x=␀↦ᐹ´(x,y)
-󷹵´, 󷹴´ = ¬´○ᐹ´, ¬´○ᐴ´
+∘´ = OPWRAP_(⥌𝑓,y,s=1↦ 𝑓(⠤(y,)⋅s))
+○´ = OPWRAP_(⥌𝑓,𝑔,s=1↦𝚲𝑓∘ˢ𝑔(⠤𝔸,⠶𝕂))  replaced later in file lol 󰤱
+ᐹ´ = ⥌x=␀,y=␀↦x≅␀∨␀≅y ␛
+              ⭜type(x≅␀⭜y⭝x)      ␛
+              ⭝y∈TYPELIKE_⭜ y(x) ␛
+              ⭝isinstance(x, isinstance(y,type|UnionType) ⭜y⭝ type(y))
+ᐴ´,󷹵´,󷹴´ = ⥌x=␀,y=␀↦yᐹx, 󰲣xᐹy→¬, 󰲣yᐹx→¬
 󰻾´ = 𝑐𝑑(      󰲡x, __repr__=𝚲␛󰻾,
         𝑔=󰲡𝑐𝑑(𝚲x, __repr__=𝚲‹󰻾∘⟦x⟧›))
 ☾´ = ⥌⠤𝔸,flush=✓↦print(⠤𝔸,flush=flush,⠶𝕂)∨𝔸∧𝔸₀
@@ -316,6 +319,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ↪ 𝑓
     ↪ 𝒻
 ´ = 𝑐𝑑(t≔ƒ↦𝚲ƒ(⠤𝔸ᴍ𝑙⨁[], ⠶𝕂), 𝑔=t)
+∾´ = ƒ↦𝚲ƒ(⠤𝔸ᴙ,⠶𝕂)
 
 󱀘 ⴳ(𝑖): __new__,__call__,__repr__ = ℂ↦𝑖.__new__(ℂ,1), 𝚲ⴳ, 𝕊↦␛ⴳ
 󱀘 ⴴ(𝑖): __new__,__call__,__repr__ = ℂ↦𝑖.__new__(ℂ,0), 𝚲ⴴ, 𝕊↦␛ⴴ
@@ -323,13 +327,13 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 
 ſ´ = 𝑏𝑔←⥌x,y,z=␀↦reduce    (y,x,⠤(z,)⋅←z≇␀)
 Ϝ´ = 𝑏𝑔←⥌x,y,z=␀↦accumulate(x,y,⠶{}¿z≡␀¡{"initial":z})⥉𝑙
-ᙎ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣←x⋄y→₀, ⠤yᐹ𝑖∧y⋄y∨y¿h🃌≡2¡    1⋄1    , ✗, □¿z≅␀¡z, 1        )
-ᙡ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣←x⋄y→₀, ⠤yᐹ𝑖∧y⋄y∨y¿h🃌≡2¡    1⋄1    , ✓, □¿z≅␀¡z, 1        )
-ᗢ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣←x⋄y→₀, ⠤yᐹ𝑖∧y⋄y∨y¿h🃌≡2¡z≅␀∧1⋄1∨0⋄z, ✗, ␀      , z≅␀∧1∨z+1)
-ᙧ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣←x⋄y→₀, ⠤yᐹ𝑖∧y⋄y∨y¿h🃌≡2¡z≅␀∧1⋄1∨0⋄z, ✓, ␀      , z≅␀∧1∨z+1)
-󰸵´ = 𝑏𝑔←⥌x,y,z=␀↦(y-x🃌≕l>0⭜  (z≅␀⭜xᐹᔐ∧𝘀∨✗⭝z➡⛶⋅l)󰌷x⭝x) ᣆˣ􊾗􊾚 ⟥ᑀ⨝ᐦ
-󰸷´ = 𝑏𝑔←⥌x,y,z=␀↦(y-x🃌≕l>0⭜x󰌷(z≅␀⭜xᐹᔐ∧𝘀∨✗⭝z➡⛶⋅l)  ⭝x) ᣆˣ􊾗􊾚 ⟥ᑀ⨝ᐦ
-󰛔´ = 𝑏𝑔←⥌x,y,z=␀↦  R≔(ᑀ≅␀⭜ᐦ⛶⭝⟞ᐹᔐ⭜⟞⛶⭝⟞ᚤᴍᔐ) ␛
+ᙎ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣((x,y))→₀, ⠤h🃌≡2 ⭜ (yᐹ𝑖 ⭜(y,y)⭝ y) ⭝     (1,1)      , ✗, z≅␀⭜□⭝z,     1    )
+ᙡ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣((x,y))→₀, ⠤h🃌≡2 ⭜ (yᐹ𝑖 ⭜(y,y)⭝ y) ⭝     (1,1)      , ✓, z≅␀⭜□⭝z,     1    )
+ᗢ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣((x,y))→₀, ⠤h🃌≡2 ⭜ (yᐹ𝑖 ⭜(y,y)⭝ y) ⭝ z≅␀⭜(1,1)⭝(0,z), ✗,   ␀    , z≅␀⭜1⭝z+1)
+ᙧ´ = 𝑏𝑔←⥌x,y,z=␀↦WINDOW_(h≔𝕣((x,y))→₀, ⠤h🃌≡2 ⭜ (yᐹ𝑖 ⭜(y,y)⭝ y) ⭝ z≅␀⭜(1,1)⭝(0,z), ✓,   ␀    , z≅␀⭜1⭝z+1)
+󰸵´ = 𝑏𝑔←⥌x,y,z=␀↦(y-x🃌≕l>0 ⭜  (z≅␀⭜xᐹᔐ∧𝘀∨✗⭝z➡⛶⋅l)󰌷x⭝ x) ᣆˣ􊾗􊾚 ⟥ᑀ⨝ᐦ
+󰸷´ = 𝑏𝑔←⥌x,y,z=␀↦(y-x🃌≕l>0 ⭜x󰌷(z≅␀⭜xᐹᔐ∧𝘀∨✗⭝z➡⛶⋅l)  ⭝ x) ᣆˣ􊾗􊾚 ⟥ᑀ⨝ᐦ
+󰛔´ = 𝑏𝑔←⥌x,y,z=␀↦  R≔(ᑀ≅␀ ⭜ᐦ⛶⭝ ⟞ᐹᔐ ⭜⟞⛶⭝ ⟞ᚤᴍᔐ) ␛
                  →►ƒ≔(ᐒR∘xᑀ󱑼􍪹􍦡ᑅR∘y →ſ􍪵 󰲣x.replace(⠤y)) ␛
                  →►(z≅␀⭜ƒ⭝ƒ∘z)󰅂
 
@@ -501,6 +505,32 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
 ␀TACITL´  = 𝑐𝑑(𝚲✗⨳, 𝑔=󰲡TAC_(x,␛l))
 ␀TACITR´  = 𝑐𝑑(𝚲✗⨳, 𝑔=󰲡TAC_(x,␛r))
 ␀TACITLR´ = 𝑐𝑑(𝚲✗⨳, 𝑔=󰲡TACITB(⠤x))
+
+⊢ COMPOSE_(𝕏,𝑓,𝑔,s=1):
+    ⊢ ƒ(⠤𝔸,⠶𝕂):
+        ¿𝑔ᐹ𝗙:
+            n, m = 𝔸🃌≕L⹏S≔s⫰, L%S
+            n≠0 ⨳ ‹␛󰤱 generalize›
+            
+            𝙰 = (𝕏≡␛○⭜󰸷⭝󰸵)􊲀(𝔸, L+(n-m)%n)
+            v = 𝙰 ᙧⁿ⁻¹
+            ¿m≠0:
+                α,β = 𝕏≡␛○⭜(󷰾,0)⭝(0,󷰾)
+                ¿𝕏≡␛⍜ 󷺤 s<0: v󰃤 = v󰃤𝌂󷺹≅⬤ᐸᴙ󰌷
+                v󰃤 = v󰃤 ᐵ≇⬤⭜⟞⭝ᑈ v󰃥
+            ↪ 𝑓(⠤vꟿ𝑔, ⠶𝕂)
+        ¿𝑔ᐹ𝗜:
+            𝔸🃌≥(𝑔🃌⋅S≔⫰s) ⨳ ‹␛󰤱 generalize›
+            s>0          ⨳ ‹␛󰤱 generalize›
+            
+            l, r = 𝔸𝌂←𝑔🃌⋅S≔⫰s
+            𝕏≠␛⍜ ⨳ ‹␛󰤱 generalize›
+            
+            𝙰 = lᙧ󰀒⁻¹ᐵ󰌷ᑅr
+            ↪ 𝑓(⠤𝙰󱑼𝑔 ꟿ 󰲣y(⠤x), ⠶𝕂)
+        ✗ ⨳
+    ↪ ƒ
+○´,⍜´ = ‹○⍜›ᴍ󰲡OPWRAP_(COMPOSE_(x))
 
 ⊢ ⓦ(⠤𝔸, 𝐀=□):
     𝐀∨=[]

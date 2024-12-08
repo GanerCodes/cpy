@@ -351,3 +351,7 @@ NOTE ON CURRENT DEPRECATED:
     Sorta deprecated (once off python these may be removed, havent decided)
         ** * / // << >> >= <= !=
         Other python specific stuff but we'll get there when we get there
+
+Added ∾, evajvuahuehae reverses function args.
+
+We can now use ᐹ with 𝗙,𝗜,𝗛

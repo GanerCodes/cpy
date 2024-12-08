@@ -1,71 +1,6 @@
-OPERATORS = 󰦥󰦥󰦥󰦥󰦥
-⨡ᴺᴾ󰁔
-;ᴺᴾ󰁔 ,ᴺᴾ󰁔
-=ᴺᴾ󰁔 ⮂ᴺᴾ󰁔 ↪ᴺᴾ󰁔 ⮌ᴺᴾ󰁔 ↺ᴺ󰁔 ⇥ᴺ󰁔 ➰ᴺᴾ󰁔 ∀ ␛
-    ⠤ᴾ󰁔󰁞 ⠶ᴾ󰁔󰁞 :ᴮᴾᴺ󰁏󰁔
-␀ARW_1ᴵᴮ
-⭝ᴺᴮᴵ󰁜 ␉ ⭜ᴮᴵ󰁜
-␀ARW_2ᴵᴮ
-¡ᴮᴵ󰁜 ␉ ⸘ᴺᴾ󰁔 ¿ᴺᴮᴵ󰁜
-␀ASGN_MRK_Lᴮ ≔ᴮ󰁜 ␀ASGN_MRK_Rᴮ ≕ᴮ󰁜
-␀ARW_3ᴵᴮ
-⨳ᴮᴾ󰀒ᴺ
-∨ᴮᴺ ⩔ᴮᴺ 󷺥ᴮᴺ 󷺫ᴮᴺ 󷺤ᴮᴺ 󷺦ᴮᴺ
-∧ᴮᴺ ⩓ᴮᴺ 󷺒ᴮᴺ 󷺬ᴮᴺ
-≡ᴮᴺ󰁖󰁍 ==ᴮᴺ󰁖󰁍 !=ᴮᴺ󰁖󰁍 ≠ᴮᴺ󰁖󰁍 ∣ᴮᴺ󰁖  ∤ᴮᴺ󰁖 ␛
-      <=ᴮᴺ󰁖󰁍  ≤ᴮᴺ󰁖󰁍 <ᴮᴺ󰁖󰁏 >ᴮᴺ󰁖󰁏 ≥ᴮᴺ󰁖󰁍 >=ᴮᴺ󰁖󰁍 ␛
-       ⊄ᴮᴺ󰁖   ⊊ᴮᴺ󰁖  ⊂ᴮᴺ󰁖  ⊃ᴮᴺ󰁖  ⊋ᴮᴺ󰁖   ⊅ᴮᴺ󰁖 ␛
-       ∉ᴮᴺ󰁖   ∈ᴮᴺ󰁖  ∋ᴮᴺ󰁖  ∌ᴮᴺ󰁖
-␀TACᴮ
-ꟿᴮᴺ ᴍᴮᴺ   ſᴮᴺ   Ϝᴮᴺ   Σᴮᴾ󰀒ᴺ Πᴮᴾ󰀒ᴺ ⨀ᴮᴾ󰀒ᴺ ⨁ᴮᴾ󰀒ᴺ ␛
-    󰈲ᴮᴾ󰀒ᴺ 󰈳ᴮᴾ󰀒ᴺ 󰒼ᴮᴾ󰀒ᴺ 󰒽ᴮᴾ󰀒ᴺ ᙎᴮ󰀒ᴺ  ᙡᴮ󰀒ᴺ  ᗢᴮ󰀒ᴺ  ␛
-    ᙧᴮ󰀒ᴺ  ᴮᴾ󰀒ᴺ
-ᐹᴮᴾ󰀒ᴺ󰁖 ᐴᴮᴾ󰀒ᴺ󰁖 󷹵ᴮᴺ󰁖 󷹴ᴮᴺ󰁖 ζᴮᴾ󰀒ᴺ 󱑼ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ󰁘 󱅏ᴮᴾ󰀒ᴺ󰁘 ᴮᴾ󰀒ᴺ󰁘
-|ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
-<<ᴮᴺ >>ᴮᴺ ⪡ᴮᴺ ⪢ᴮᴺ
-∓ᴾᴮᴺ ±ᴾᴮᴺ +ᴾᴮᴺ -ᴾᴮᴺ
-∘ᴮᴺ ○ᴮᴺ   󰀒ᴺ   ᴮᴾ󰀒ᴺ 󰔶ᴮᴾ󰀒ᴺ ᴮᴾ󰀒ᴺ ␛
-    ᣆᴮᴾ󰀒ᴺ ⊚ᴮᴾ󰀒ᴺ ⊜ᴮᴾ󰀒ᴺ 🟕ᴮᴾ󰀒ᴺ 🟖ᴮᴾ󰀒ᴺ
-◄ᴮᴺ󰁏 ►ᴮᴺ󰁏
-⋄ᴮᴺ
-∪ᴮᴺ ␉ ∩ᴮᴺ ␉ ⨉ᴾ󰀒ᴮᴺ ⊞ᴾ󰀒ᴮᴺ ∖ᴮᴺ
-//ᴮᴺ /ᴮᴺ   *ᴮᴺᴾ󰁞 ␛
-     ≅ᴮᴺ󰁍  ≇ᴮᴺ󰁍   ⋅ᴮᴺ    ÷ᴮᴺ   ⹏ᴮᴺ   %ᴮᴺ  ␛
-     ⋀ᴾ󰀒ᴺ  ⋁ᴾ󰀒ᴺ   ⫰ᴾ󰀒ᴺ   ⫯ᴾ󰀒ᴺ  @ᴮᴾᴺ󰁞 √ᴾᴺ  ␛
-     ⟕ᴮᴾ󰀒ᴺ ⨝ᴮᴾ󰀒ᴺ  ⟗ᴮᴾ󰀒ᴺ  ⟖ᴮᴾ󰀒ᴺ !󰁏󰀒ᴺ  ☾ᴾ󰀒ᴺ ␛
-     󷸹ᴮᴾ󰀒ᴺ 󷸸ᴮᴾ󰀒ᴺ  󷸻ᴮᴾ󰀒ᴺ  󷸺ᴮᴾ󰀒ᴺ ⍭ᴾ󰀒ᴺ  ⍉ᴾ󰀒ᴺ ␛
-     󷹓ᴮᴺ󰀒  󰑅ᴮᴺ󰀒   󷹔ᴮᴺ󰀒   󷹕ᴮᴺ󰀒  󷹖ᴮᴺ󰀒  ⛶ᴾ󰀒ᴺ ␛
-     ⬓ᴾ󰀒ᴺ  ▢ᴮᴾ󰀒ᴺ  ⬒ᴾ󰀒ᴺ   󰸵ᴮᴺ   󰸷ᴮᴺ   🃌ᴾ󰀒ᴺ ␛
-     ⤈ᴮᴾ󰀒ᴺ 󷹄ᴮᴾ󰀒ᴺ󰁢 ⤉ᴮᴾ󰀒ᴺ  ↨ᴾ󰀒ᴺ  ⭥ᴾ󰀒ᴺ  ⴵᴾ󰀒ᴺ ␛
-     󷹌ᴮᴾ󰀒ᴺ 󷹍ᴮᴾ󰀒ᴺ  󷹎ᴮᴾ󰀒ᴺ  𝌂ᴮᴾ󰀒ᴺ ᴙᴾ󰀒ᴺ  ᚤᴮᴾ󰀒ᴺ␛
-     ⬄ᴮᴾ󰀒ᴺ 󰌷ᴮᴾ󰀒ᴺ  󰛔ᴮᴾ󰀒ᴺ󰁢
-¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
-␀CATᴮᴺ
-**ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮᴺ
-ᴵᴾᴺ ᴺ󰀒
-󰻾ᴺ ℵᴺ ℶᴺ
-.ᴮ󰁏󰁔
-...ᴺ
-
-      ｜␀TACIT  ᴺ󰀒  󰁏󰁜｜
-␀TAC  ｜␀TACITL ᴺ󰀒  󰁏󰁜｜
-      ｜␀TACITR ᴺᴾ  󰁏󰁜｜␀TAC
-␀TAC  ｜␀TACITLRᴺᴾ󰀒ᴮ󰁏󰁜｜␀TAC
-      ｜          ⬅ᴾ󰁏󰁜｜␀ARW_1
-␀ARW_1｜          ➡󰀒󰁏󰁜｜
-      ｜          ←ᴾ󰁏󰁜｜␀ARW_2
-␀ARW_2｜          ⥉ᴮ󰁏󰁜｜␀ARW_2
-␀ARW_2｜          →󰀒󰁏󰁜｜
-      ｜          ⭠ᴾ󰁏󰁜｜␀ARW_3
-␀ARW_3｜          ⭢󰀒󰁏󰁜｜
-󰦥󰦥󰦥󰦥󰦥
-
 ⮌ util ⨡ SCRIPT
-α,β = OPERATORS.strip 󷹎 𝗻𝗻
-𝒻 = ᑀ₀⋄SCRIPT.nrm(⟞₁)
-𝓈 = 𝒻○⟥ᑀ𝌂¹⟥ᑀ∈SCRIPT.CHAR_SUPᐸ󰸷􊾖2
-ops = α⥉(␛␛𝗻⋄␛␉→󰛔←𝘀⋄𝗻)→󷹎𝗻ᐵ󷹎𝘀ᴍ𝓈
-ops_spec = β󷹎𝗻 ᴍ𝘀󰛔ᐦ ᐵ󷹍(ᑀ≡␛｜⭜󰮈)ᴍ⨝→ꟿ⁰󰲥x⋄(𝓈∘y)⋄z
+⮌ op ⨡ OP
+󰋺("data.☾", *)
 
 ⊢ make_op_call(op, l, r, op_):
     ch = n↦nᐹ𝑙 ⭜(n≅□ ⭜NULL⭝ into_expr(n))⭝ n
@@ -74,19 +9,20 @@ ops_spec = β󷹎𝗻 ᴍ𝘀󰛔ᐦ ᐵ󷹍(ᑀ≡␛｜⭜󰮈)ᴍ⨝→ꟿ⁰
 ⊢ create_precedences(tiers, specials, ƒ=󰻾):
     𝐎 = {}
     ∀tier ∈ tiersᴙ:
-        𝐶 = 𝑠←𝐎.keys
+        𝐶 = 𝑠←𝐎.keys
         T = 𝑠←tierᐵ₀
         ∀𝓽,𝓶 ∈ tier:
+            tier☾
+            𝓽+𝓶→☾
             𝐶 = 𝐶.copy
-            ¿␛I∈𝓶: 𝐶 ∪= tier
+            ¿␛I∈𝓶: 𝐶 ∪= T
             
             𝐾 = {}
             ¿𝓶∩"BS": 𝐾􊯛󰂞 = 𝐶.copy()
             ¿𝓶∩"BP": 𝐾􊯛󰂤 = 𝐶.copy()
-            op = OP(𝓽, 𝓶, f=make_op_call(op), ⠶𝐾)
-            𝐎􋚾 = op
+            𝐎􋚾 = (OP(𝓽, 𝓶, ⠶𝐾)≕𝐨)◄(𝐨ᶠ≔make_op_call(𝐨))
     
-    new = {}
+    𝐍 = {}
     ∀L,(𝓽,𝓶),R ∈ specials:
         L_c = L ⭜𝐎󰂞ᴸ∪𝐎󰂞ᴿ⭝ {}
         R_c = R ⭜𝐎󰂤ᴸ∪𝐎󰂤ᴿ⭝ {}
@@ -97,15 +33,10 @@ ops_spec = β󷹎𝗻 ᴍ𝘀󰛔ᐦ ᐵ󷹍(ᑀ≡␛｜⭜󰮈)ᴍ⨝→ꟿ⁰
         𝐾 = {}
         ¿L: 𝐾􊯛󰂞 = 𝐎.keys∖𝐎󰂞ᴸ ∪ {L}
         ¿R: 𝐾􊯛󰂤 = 𝐎󰂤ᴿ
-        op = OP(𝓽, 𝓶, f=make_op_call(op), ⠶𝐾)
-        new􋚾 = op
-    𝐎 |= new
+        𝐍􋚾 = (OP(𝓽, 𝓶, ⠶𝐾)≕𝐨)◄(𝐨ᶠ≔make_op_call(𝐨))
+    𝐎 |= 𝐍
     
     ↪ ƒ∘𝐎
-
-ops☾
-ᐦ☾
-ops_spec☾
 
 ⊢ ƒ(𝐎):
     IG = {␛.}
@@ -123,103 +54,14 @@ ops_spec☾
     ops􊯛􊭨ᴿ ∪= 𝑠("⭢")
     ↪ 𝐎
 
+α,β = OPERATORS.strip 󷹎 𝗻𝗻
+𝒻 = ᑀ₀⋄SCRIPT.nrm(⟞₁)
+𝓈 = 𝒻○⟥ᑀ𝌂¹⟥ᑀ∈SCRIPT.CHAR_SUPᐸ󰸷􊾖2
+ops = α⥉(␛␛𝗻⋄␛␉→󰛔←𝘀⋄𝗻)→󷹎𝗻ᐵ󷹎𝘀ᴍ𝓈
+ops_spec = β󷹎𝗻 ᴍ𝘀󰛔ᐦ ᐵ󷹍(ᑀ≡␛｜⭜󰮈)ᴍ⨝→ꟿ⁰󰲥x⋄(𝓈∘y)⋄z
+create_precedences(ops, ops_spec, ƒ)
+
 exit
-
-GRAM = 󰦥󰦥󰦥󰦥󰦥
-parser_main = exprs
-parser_comment = (⠶str ∨ 󰆴comment ∨ ~‹.|\n›)*
-
-exprs = 𝗪? (⠶expr 𝗪?)*
-expr = (
-    (kw_pfx_colon_expr =  ⠶vkw_pfx_colon 󰆴Æ? (expr_not_colon? 󰆴Æ? 󰆴':') M:✓ 󰆴E? expr?)
-        ∨ (kw_pfx_expr =  ⠶vkw_pfx 󰆴E? expr?)
-          ∨ (norm_expr = (⠶norm_expr_atom)+))
-
-expr_not_colon = (¬':' ⠶norm_expr_atom)+
-expr_not_comma = (¬',' ⠶norm_expr_atom)+
-
-vkw_pfx_colon = ⮞kw_spec kw_pfx_colon ∨ kw_pfx_colon ⮞text_breaker
-vkw_pfx       = ⮞kw_spec kw_pfx       ∨ kw_pfx       ⮞text_breaker
-vkw           = ⮞kw_spec kw           ∨ kw           ⮞text_breaker
-
-norm_expr_atom = (⠶lambs ∨ ⠶gen_expr_atom) 󰆴E?
-gen_expr_atom = group ∨ ⠶str ∨ var_spec ∨ number ∨ oper ∨ ⠶vkw ∨ ⠶script ∨ var
-number = pos_num ∨ neg_num
-pos_num = ƨ(~‹0([bB][01]+|[oO][0-7]+|[xX][0-9a-fA-F]+)|([0-9]+(\.[0-9]*)?|[0-9]*\.[0-9]+)(e[+\-]?[0-9]+)?›)
-neg_num = ƨ(~‹󷰽([󷱈󷱐][󷰽󷰾]+|[󷱍󷱕][󷰽-󷱄]+|[󷱎󷱖][󷰽-󷱆󷱇-󷱌󷱏-󷱔]+)|([󷰽-󷱆]+(\.[󷰽-󷱆]*)?|[󷰽-󷱆]*\.[󷰽-󷱆]+)(󷱋[+\-]?[󷰽-󷱆]+)?›)
-
-var = ƨ(¬𝗪 ¬oper ¬var_spec ¬script ~‹󰦥{5}› ~‹[^ᐳᑀᐒᐵᐖᐸᑅᐘᑈᐛᗒᗌ⟥⦚⟤ᗏᗕ𝗮-𝘇𝚲⥌↦󰲡󰲣󰲥󰲧󰲩󰲫󰅂$"'\[\](){}⁅⁆⟦⟧⟨⟩⭡⭣‹ ␛␛␛›]›)+
-
-group = ~‹[\[({⁅⟦]› (𝗪? ↷ exprs) ~‹[\])}⁆⟧]›
-
-script = ((supscript = ƨ(SUPSCRIPT)) ∨ (subscript = ƨ(SUBSCRIPT)))
-
-oper = (
-    (oper_mod_l = ~‹[⟥≺]*›)
-     oper_lit
-    (oper_mod_r = ƨ((~‹[´꜠ᵜ𐞑⟤]+› ∨ supscript)*)))
-
-lambs = lamb_tacit ∨ lamb
-lamb = (
-    (   (lamb_h_py = 󰆴"lambda" ⮞text_breaker 󰆴Æ ⠶expr_not_colon 󰆴':')
-      ∨ (lamb_h_normal = (
-            󰆴('⥌' Æ?)
-            ((¬lamb_h_implicit lamb) ∨ ⠶gen_expr_atom 󰆴Æ?)*
-            󰆴'↦' ))
-      ∨ (lamb_h_preset = ~"[𝚲󰲡󰲣󰲥󰲧󰲩󰲫]")
-      ∨ (lamb_h_implicit = var 󰆴(Æ? '↦'))) 󰆴Æ?
-    (lamb_b = ((exprs 󰆴'󰅂') ∨ expr_not_comma)))
-lamb_tacit = (
-      (⠶LTL exprs ⠶LTR)
-    ∨ (⠶LTL expr_not_comma ✓ ✓))
-LTL = (‹⟥›∨✓) ~‹[ᐳᑀᐒᐵᐖ]› 󰆴Æ?
-LTR = ~‹[ᐸᑅᐘᑈᐛ]› (‹⟤›∨✓)
-
-str = str_star ∨ Ʀsection ∨ str_cpy ∨ str_$ ∨ str_py ∨ str_escape ∨ str_spec_char
-str_$ = 󰆴('$' 𝘄?) (ƨ(supscript) ∨ ✓) 󰆴𝘄? (⠶str_cpy_inner ∨ '›')* 󰆴(𝘄? '󷹹')
-str_star = (󰆴~‹󰦥{5}›) ~‹((?!(󰦥{5}))(.|\n))*› 󰆴(~‹󰦥{5}› ∨ ✓)
-str_cpy = 󰆴'‹' (⠶str_cpy_inner ∨ '󷹹')* 󰆴'›'
-str_cpy_inner = (str_escape ∨ str_sub ∨ str_spec_char ∨ str_guts)
-str_sub = 󰆴'⟦' exprs 󰆴'⟧'
-str_spec_char = ~‹[𝗮-𝘇]›
-str_guts = ~"[^𝗮-𝘇⟦␛␛›󷹹]+"
-str_escape = 󰆴"␛␛" ~‹.›
-str_py = ((‹"› (str_py_sub ∨ ~‹[^"\\]+›)* ‹"›)
-       ∨  (‹'› (str_py_sub ∨ ~‹[^'\\]+›)* ‹'›))
-
-str_py_sub = ~‹\\.›
-
-Ʀexpr = (⠶Ʀatom ∨ Ʀop ∨ 󰆴𝗪)*
-Ʀatom = Ʀsection ∨ Ʀrange ∨ ƦESC ∨ ƦCHR
-
-Ʀrange   = 󰆴(‹⁅› 𝗪?) (Ʀcharset ∨ Ʀrchar)+ 󰆴(𝗪? ‹⁆›)
-Ʀsection = 󰆴(‹⟨› 𝗪?) Ʀmat_name (󰆴𝗪? ↷ Ʀmat_body) Ʀmat_func 󰆴(𝗪? ‹⟩›)
-
-Ʀmat_name = ƨ((󰆴𝗪 ∨ ƦESC ∨ ƦCHR)*) 󰆴‹⭡› ∨ ✓
-Ʀmat_body = Ʀexpr
-Ʀmat_func = 󰆴‹⭣› exprs ∨ ✓
-
-Ʀcharset = ⠶Ʀrchar ↷ 󰆴(𝗪? ↷ "…")
-Ʀrchar = ⠶ƦESC ∨ ~‹[^…⁆]›
-
-Ʀop = Ʀrrepeat ∨ ~‹[→¿⌐⨁⨀∨]›
-Ʀrrepeat = (  󰆴(‹⟮› 𝗪?) (
-                ((ƦINT∨✓) ↷ 󰆴(𝗪? ↷ ‹,›))
-                ∨ ƦINT
-           ) 󰆴(𝗪? ‹⟯›) )
-
-ƦESC = 󰆴"␐" ~‹.›
-ƦINT = ~‹[0-9]+›
-ƦCHR = ~‹[^ \n\t⭣⭡⁅⁆⟨⟩⟮⟯∨→⌐¿⨁⨀]›
-
-𝘄 = ~‹([ \t]*␛␛\n[ \t]*)+|[ \t]+›
-𝗪 = ~‹[ \t\n]+›
-text_breaker = ⮞(E ∨ kw_spec ∨ var_spec ∨ ¬var)
-E = 𝘄 ∨ ~‹␛␛\n›
-Æ = 𝗪 ∨ ~‹␛␛\n›
-
-comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))›
-󰦥󰦥󰦥󰦥󰦥
 
 ⮌ whitespace_tools ⨡ whitespace_parser, whitespace_unparser, add_spaces
 ⮌ py_naming_tools ⨡ py_special_mapper, py_escape_string, py_escape_var

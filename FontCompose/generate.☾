@@ -11,6 +11,7 @@ EXT = "ttf"
 
 󰋺("shut")
 󰋺("process", ⠤"process load_font save_font 𝐩 𝐫"⍭)
+󰋺("multisupersubscriptify", "merge_into_font")
 
 in_font, custom_symbols = in_font⋄custom_symbols ᐖ𝐩(⟞).resolve
 
@@ -33,7 +34,7 @@ stages["Nerd"] = 𝕗
 
 ⊢ 𝕗(fi, fo):
      f3 = ‹/tmp/emoji/static/NotoEmoji-Regular.ttf›⥉𝐩  doesn't work w/ fontforge or fonttools 󰂁-󰂂
-    𝐑(‹fontforge ShellScripts/mergeFonts.ff ⟦fi⟧ ⟦custom_symbols⟧ ⟦fo⟧›⍭, ⴳ)
+    save_font(merge_into_font(custom_symbols, fi), fo)
 stages["CustomSymbols"] = 𝕗
 
 ⊢ 𝕗(fi, fo):
