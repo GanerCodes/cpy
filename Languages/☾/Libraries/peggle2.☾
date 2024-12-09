@@ -36,7 +36,7 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
         ¿¬󱁕ᵗ∧󱁕🃌≡1∧󱁕ᶜ₀ᵉ ᵀ∧󱁕ᶜ₀ᵗ∈‹()∧∨:=›: ↪✓
     ⊢ collapse_ao(󱁕):
         ¿󱁕ᵉ ᵀ: ↪󱁕
-        󱁕ᶜ = 󱁕ᶜ ᴍ󰲡xᶜ ¿(x≔collapse_ao(x))ᵗ≡󱁕ᵗ∈␛∧␛∨¡ [x]󰅂 Σ[]
+        󱁕ᶜ = 󱁕ᶜ ᴍ󰲡xᶜ ¿(x≔collapse_ao(x))ᵗ≡󱁕ᵗ∈␛∧␛∨¡ [x]󰅂 ⨁[]
         ↪ 󱁕
     ⊢ parse_elm(N):
         α, n, β = N₀.as_txt(), N₁, N₂.as_txt()
@@ -238,8 +238,8 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
     ℒ ; splat(󱁕) ; ℒ("Splats")
     
      ⊢ splat(󱁕):
-         ƒ = 󰲡(xᴍ󰲡xᶜ󰅂Σ[]) ¿xᵗ≡␛⠶¡ xᶜ
-         󱁕ᶜ = 󱁕 ᴍ󰲡ƒ(x) ¿xᐹŃ∧¬xᵉ ᵀ∧xᵗ∈pops¡ x⛶󰅂 Σ[]
+         ƒ = 󰲡(xᴍ󰲡xᶜ󰅂⨁[]) ¿xᵗ≡␛⠶¡ xᶜ
+         󱁕ᶜ = 󱁕 ᴍ󰲡ƒ(x) ¿xᐹŃ∧¬xᵉ ᵀ∧xᵗ∈pops¡ x⛶󰅂 ⨁[]
          ↪ 󱁕
      ℒ ; 󱁕.frp(󰲡¬xᵉ ᵀ, splat, pre=✓) ; ℒ("Splats")
     

@@ -21,7 +21,7 @@ ml = lm ꟿᴰ 󰲣(y,x)
     global puaΔ
     ¿𝔡∈ml: ↪ lm, ml
     puaΔ -= 1
-    ➰puaΔ+=1:
+    ➰puaΔ += 1:
         ¿puaΔ∉lm: ⇥
     lm[puaΔ], ml[𝔡] = 𝔡, puaΔ
     ↪ lm, ml
@@ -38,7 +38,7 @@ ml = lm ꟿᴰ 󰲣(y,x)
 
 to_ranges = lm↦[
         s ≔ lm 󰒼 → ₀,
-       ⠤s ᙧ 0⋄1 ꟿ󰲣x+1≠y∧(x+1,y)󰅂 󰈲⟤ Σ(),
+       ⠤s ᙧ 0⋄1 ꟿ󰲣x+1≠y∧(x+1,y)󰅂 󰈲⟤ ⨁(),
         s₋₁+1
     ] ᙧ¹ ꟿ󰲣((x,y), x󷸹yᴍ󰲡lmₓ󰅂)󰅂 ⥉ 𝑑
 
@@ -63,6 +63,6 @@ get_codepoints = ⥌C,p↦pua_conseq(N≔Cᴍ󰲡‹⟦p⟧_⟦x⟧›) ►← N
     supsub = (ℭ ∪ special_symkeys) ∖ ignore_scripts 󰒼
     sub = get_codepoints(    supsub, "sub") ꟿ󰲥 (x,y,z,x∈ℭ∧ℭₓ ∨←  (j≔get_seq←z) ∧ ␛/⋅(1+←z∉special_symkeys)+(z≡␛/∧␛𝕊∨j), x∉no_scale)
     sup = get_codepoints(    supsub, "sup") ꟿ󰲥 (x,y,z,x∈ℭ∧ℭₓ ∨←  (j≔get_seq←z) ∧ ␛\⋅(1+←z∉special_symkeys)+(z≡␛\∧␛𝕊∨j), x∉no_scale)
-    mul = get_codepoints(multichars, "mul") ꟿ󰲥 (x,y,z,x∈ℭ∧ℭₓ ∨← ⋀(K≔zᴍget_seq) ∧ ␛ᴍ+(Kᴍ󰲡x+␛𝕊󰅂Σᐦ))
+    mul = get_codepoints(multichars, "mul") ꟿ󰲥 (x,y,z,x∈ℭ∧ℭₓ ∨← ⋀(K≔zᴍget_seq) ∧ ␛ᴍ+(Kᴍ󰲡x+␛𝕊󰅂⨁ᐦ))
     S = sub⋄sup⋄mul
     ↪ 𝒞 | 𝑑(S ſ+ 󰈲󰲡x₃󰅂 ꟿ󰲧(w,(x,y))), ⠤S

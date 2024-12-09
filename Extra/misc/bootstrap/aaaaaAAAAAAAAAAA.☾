@@ -1,0 +1,378 @@
+RED, REP = reduction, replacement
+
+KEYWORD_NODE_NAMES = ("kw", "kw_pfx", "kw_pfx_colon")
+
+𝔗 = 󰲡x.as_txt()
+
+⊢ σ_00():
+    @(⮂ REP("lamb_tacit", rec=␛A, n="Reform tacit exprs"))
+    ⊢ _(󱁕):
+        bl, l, λ, r, br = 󱁕
+        bl, l,    r, br = 𝔗(bl), 𝔗(l), 𝔗(r), 𝔗(br)
+        ¿λᵗ∈{"exprs", "expr", "expr_norm"}:
+            α, β = λ₀ᶜ, λ􍨄ᶜ
+        ¡:  α = β = λᶜ
+        
+        l, r = l ∨ (r⭜␛ᐳ⭝␛ᑀ), r ∨ ␛ᐸ
+        
+        args, targs = [], [NUM_M1, NUM_M1]
+        OP_NAME = "␀TACIT"
+        ¿l ∧ l∈"ᑀᐵᐒᐖ":
+            ¿¬bl: OP_NAME += ␛L
+            ¿l∈"ᑀᐵ": α.insert(0, TAC_L)
+            targs₀ = l∈"ᐵᐖ" ⭜NUM_P1⭝ NUM_P0
+            args.append(TAC_L)
+        ¿r ∧ r∈"ᑅᑈᐘᐛ":
+            ¿¬br: OP_NAME += ␛R
+            ¿r∈"ᑅᑈ": β.append(   TAC_R)
+            targs₁ = r∈"ᑈᐛ" ⭜NUM_P1⭝ NUM_P0
+            args.append(TAC_R)
+        
+        COM = OP.TND(␛,)
+        args, targs = args ⨝ COM, targs ⟕ COM
+        
+        ¿args: args.append(COM)
+        args.extend([OP.TND(␛⠤), mkvar(␛𝓐), COM, OP.TND(␛⠶), mkvar(␛𝓚)])
+        
+        ↪ Ń("oper", ("oper_mod_l", ᐦ),
+                    ("oper_lit", OP_NAME),
+                    ("oper_mod_r", mkgxp(
+                        ("lamb", ("lamb_h_normal", ⠤args),
+                                 ("lamb_b", ("norm_expr", λ))),
+                        ⠤targs)))
+
+⊢ σ_03():
+    @(⮂ REP(⠤KEYWORD_NODE_NAMES, n="Lang keywords → cpy keywords"))
+    ⊢ _(󱁕):
+        txt = 𝔗(󱁕)
+         keyword that are just ops:
+        ¿txt∈kw_inline: ↪ OP.TND(KEYWORDS_TO_CPY.get(txt, txt))
+        ↪ 󱁕.copy(c=KEYWORDS_TO_CPY.get(txt, txt))
+    
+    @(⮂ RED("supscript", n="Swap Superscripts"))
+    ⊢ _(󱁕):
+        t = gram(SCRIPT.nrm(𝔗(󱁕)), "exprs")
+        T = lang(txt≕𝔗(t).strip())
+        ¿¬T.isidentifier() ∨ T∈escaped_var_specs:
+            ↪ [OP.TND(␛⌃), mkgxp_(Node(c=lang(txt)))]
+        ↪ [OP.TND(␛.), t]
+    
+    ((⮂ REP("subscript", rec=␛A, n="Subscripts to brackets"))
+    (󱁕↦mkgrp(tree_transform(gram(SCRIPT.nrm(󱁕ᶜ), "exprs"), 3+1), b="[]")))
+    
+    ((⮂ REP("norm_expr", "expr_not_colon", "expr_not_comma", rec=␛B,
+                    n="Normalize expression types"))
+    (󱁕↦󱁕.copy("expr")))
+    
+    ((⮂ REP("W", n="Trim whitespace"))
+    (󱁕↦󱁕.copy(c=ń∈󱁕ᶜ ⭜ń+ⵉ(󱁕ᶜ,ń)􍨄⭝ 󱁕ᶜ)))
+
+⊢ σ_05():
+    op_chk = ⥌󱁕,o↦󱁕ᵗ≡"oper" ∧ 𝔗(󱁕)≡o
+    hs_op  = ⥌C,o↦any(op_chk(c,o) ∀c∈C)
+
+    @(⮂ REP("expr", rec=␛A, n="Detect for_expr"))
+    ⊢ _(󱁕):
+        ¿¬hs_op(C≔󱁕󰀂, ␛∀): ↪󱁕
+        
+        α, β = C 󷹎⁰ ρ(op_chk, o=␛∀)
+        β, γ = β 󷹎⁰ ρ(op_chk, o=␛∈)
+        ¿hs_op(γ, ␛¿):
+            γ, σ = γ 󷹎⁰ ρ(op_chk, o=␛¿)
+        ¡:  σ = None
+        
+        cc = [Node("expr", α), Node("expr", β), Node("expr", γ)]
+        ¿σ: cc.append(Node("expr", σ, e="cond"))
+        ↪ 󱁕.copy("for_expr", c=cc)
+    
+    @(⮂ REP("kw_pfx_colon_expr", rec=␛A, n="Detect for_stmt"))
+    ⊢ _(󱁕):
+        ¿¬op_chk(󱁕󰀂₀, ␛∀): ↪󱁕
+        α, β = 󱁕󰀂₁󰀂 󷹎⁰ ρ(op_chk, o=␛∈)
+        ↪ 󱁕.copy("for_stmt", c=[Node("expr", α), Node("expr", β), ⠤N󰀂₂﹕])
+
+⊢ σ_10():
+    ((⮂ REP("parser_main", rec=␛A, n="Build whitespace blocks"))
+    (whitespace_parser))
+
+⊢ σ_15():
+    ((⮂ REP("lamb_h_preset"))
+    (󱁕↦Ń("lamb_h", ⠤"xyzwvutsr"[:󱁕⥉𝔗 ⥉ "𝚲󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱".index] ᴍ mkexp○mkvar),
+        ARG_A, ARG_K))
+    
+    ((⮂ REP("lamb_h_implicit"))
+    (󱁕↦Ń("lamb_h", 󱁕󰀂₀ ⥉ mkexp, ARG_A, ARG_K)))
+    
+    @(⮂ REP("lamb_h_normal", "lamb_h_py"))
+    ⊢ _(󱁕):
+        C = 󱁕󰀂󷹎󰲡OP.is_op(x)∧(k≔op_manₓ)ᵗ≡␛,󰅂 ꟿ mkexp ᴍ Node.strip
+        has_a = has_k = ✗
+        
+        C 󰈲= 𝔗  ∵ "⥌↦" has empty an expr
+        ∀c∈C:
+            ¿¬c󰀂 ∨ (o≔c󰀂₀)≠"oper": ↺
+            k = o󰀂₁ᶜ
+            ¿k ∈ {  ␛*, ␛⠤}: has_a = ✓
+            ⸘k ∈ {"**", ␛⠶}: has_k = ✓
+            ¡              : ↺
+            ¿c🃌≡1: c󰀂₀ = Ń("expr_", ␛*⋅(1+←k∈{"**", ␛⠶}))
+        ¿¬has_a: C.append(ARG_A)
+        ¿¬has_k: C.append(ARG_K)
+        ↪ Ń("lamb_h", ⠤C)
+    
+    ((⮂ REP("lamb_b", rec=␛A))
+    (󱁕↦󱁕.copy(t="expr")))
+
+⊢ σ_18():
+    @(⮂ REP("expr", rec=␛B, n="Implicit Multiplication"))
+    ⊢ _(󱁕):
+        ¿¬󱁕󰀂: ↪󱁕
+        cc, s = [], peekable(󱁕󰀂)
+        ➰✓:
+            α = next(s)
+            ¿¬s: ⇥
+            β = s.peek()
+            cc.append(α)
+            
+            S = { "number"  : {"var", "group", "var_spec", "number"},
+                  "var_spec": {"number", "var", "var_spec"} }
+             󰤱 condition for 2√2
+            ¿   αᵗ∈S ∧ βᵗ∈S󰃤􊫼 ␛
+              ∨ βᵗ∈S ∧ αᵗ∈S󰃥􊫼 ␛
+              ∨ αᵗ≡"group" ∧ βᵗ≡"var_spec":  󰤱 this is weird
+                   cc.append(OP.TND("␀CAT"))
+        cc.append(α)
+        ↪ 󱁕.copy(c=cc)
+
+⊢ σ_20():
+    ((⮂ REP("expr", rec=␛B, n="Parse expressions"))
+    (󱁕↦󱁕.copy(c=into_expr(parse_expr(󱁕󰀂))ᶜ)))
+
+⊢ σ_21():
+    ⊢ split_target(l):
+        l, t = l.copy(), []
+        ➰l:
+            α = l.pop()
+            ¿α≡␛.         : ↪ ␛., l, t₀
+            ¿α.t≡"op_call":
+                ⨳ 𝔗(α󰀂₁)≡␛.
+                l += [⠤α󰀂₀, ␛., ⠤α󰀂₂]
+                ↺
+            ¿α.t≡"group" ∧ 𝔗(α󰀂₀)≡␛[ ∧ 𝔗(α󰀂₂)≡␛]:
+                ↪ ␛l, l, α󰀂₁
+            t.insert(0, α)
+        ⨳ t🃌≡1
+        ↪ ᐦ, ᗜ, t₀
+
+    ⊢ mk_inline_asgn(α, Σ, β):  optimization: pull out some constant nodes
+        τ, κ, χ = split_target(α󰀂)
+        
+        ¿τ≡ᐦ: ↪ mkgrp(mknex_(χ, mkgxp(ΣᐹNode ⭜("op_call", mkexp(χ), Σ, β)⭝ β)))
+        
+        ρ = τ≡␛. ⭜"ATTR"⭝ "ITEM"
+        κ = mkgxp(⠤((i≡␛. ⭜Node("expr_", ␛.)⭝ i) ∀i∈κ))
+        χ = mkgxp(ρ≡"ATTR" ⭜("str_", ‹"⟦χ ⥉ 𝔗 ⥉ py_escape_var⟧"›)⭝ χ)
+        
+        ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
+        ¿Σ≡␛≔: ↪ fcall_(ST, κ, χ, β, NUM_P0)
+        ¿Σ≡␛≕: ↪ fcall_(ST, β, κ, χ, NUM_P1)
+        
+        ↪ fcall_(ST,
+            fcall_(þPSH, κ),
+            fcall_(þPSH, χ),
+            Node("op_call", [
+                fcall_(GT, þPOP_M2, þPOP_M1), Σ, β]),
+            NUM_P0)
+    
+    @(⮂ REP("op_call", rec=␛A, n="Refactor assignment infix opertators"))
+    ⊢ _(󱁕):
+        α, Σ, β = 󱁕󰀂
+        ¿𝔗(Σ󰀂₀) ∨ 𝔗(Σ󰀂₂): ↪󱁕
+        txt = 𝔗(Σ)
+        ¿txt≡␛≔ ∨ txt≡":=": ↪ mk_inline_asgn(α, ␛≔, β)
+        ¿txt≡␛≕           : ↪ mk_inline_asgn(β, ␛≕, α)
+        ¿␛=∉lang.opsₜₓₜ   : ↪ 󱁕
+        ↪ mk_inline_asgn(α, OP.TND(txt﹕􍨄), β)
+
+⊢ σ_25():
+    ((⮂ RED("op_call", rec=␛B, n="Flatten cmp ops"))(
+        󱁕↦␛λ∈op_man􋑺􊻍􊬤 ∧ 󱁕󰀂₀≠NULL≠󱁕󰀂₂ ⭜ [⠤󱁕󰀂₀󰀂, 󱁕󰀂₁, ⠤󱁕󰀂₂󰀂] ⭝ [󱁕]))
+
+⊢ σ_30():
+    ⊢ make_cmp_chain(󱁕, layers=ᗜ):
+        layers = layers ∨ OPS_COMP
+        layer, ⠤layers = layers
+        
+        rec       = 󱁕↦layers ⭜make_cmp_chain(󱁕, layers=layers)⭝ 󱁕
+        mkexp_rec = 󱁕↦rec(mkexp(⠤󱁕))
+        
+        C = 󱁕󰀂 𝌂 󰲡OP.is_op(x) ∧ (k≔op_manₓ)ᵗ∈layer ∧ kᴮ ⥉𝑏
+        ¿C🃌 < 3: ↪rec(󱁕)
+        r = ✗
+        
+        ∀H,T,(a,(b,),c) ∈ mark_ends(windowed(C, 3, step=2)):
+            c = mkexp_rec(c)
+            v = mkexp(("op_call",
+                H ∧ mkexp_rec(a) ∨ þþ,
+                b,
+                T ∧ c ∨ mknex_(þþ, c)))
+            r = r ⭜mkexp(("op_call", r, OP.TND(␛∧), v))⭝ v
+        ↪ 󱁕.copy(c=[r])
+    ((⮂ REP("expr", rec=␛B, n="Generate comparison chains"))
+    (make_cmp_chain))
+
+demodp = o↦(𝔗(o󰂕􊬣), o󰀂₁, o󰀂₂󰀒 ⭜𝔗(o󰀂₂)⭝ o󰀂₂)
+⊢ mkbltnop(op_l):  format builtins ¿ needed
+    t = SWAP_TABLE.get(t ≔ 𝔗(op_l), t)
+    ¿t∉OPS_BUILTIN􊯛󰂓: ↪ op_l
+    ↪ mkexp(mkvar("LITERAL_OPS_"), mkgrp(mkstr(t), b="[]"))
+⊢ transform_oper(op_):  apply modifiers to op
+    m_l, op_l, m_r = demodp(op_)
+     ¿op_l∈"¿¡⭜⭝":  󰤱
+    ¿m_l 󷺥 m_r: ↪ op_l
+    op_n = mkbltnop(op_l)
+    mkmod = ⥌op,x↦mkexp(mkvar(‹OP_⟦x⟧›), mkgrp(op))
+    
+    ¿␛≺∈m_l: op_n = mkmod(op_n, "BSTAR")
+    ¿␛⟥∈m_l: op_n = mkmod(op_n, "LNULL")
+    
+    ¿m_rᐹNode: ↪ mkexp(op_n, mkgxp(m_r, b="[]"))
+    rmods = ᐦ
+    ∀m∈m_r:
+        ¿m∈"⟤ᵜ꜠´":
+            ¿m≡␛⟤: op_n = mkmod(op_n, "RNULL")
+            ⸘m≡␛ᵜ: op_n = mkmod(op_n, "SWAPA")
+            ⸘m≡␛꜠: op_n = mkmod(op_n, "DUPER")
+        ¡        : rmods += m
+    ¿¬rmods: ↪op_n
+    o = ␛χ∈op_man[op_] ⭜𝑠()⭝ ascii_uppercase
+    rmods = ((FS(x)⊂o ⭜‹"⟦x⟧"›⭝ lang(x)) ∀x∈SCRIPT.nrm(rmods)󷹎␛𐞑)⨝␛,
+    ↪ mkexp(op_n, Node("expr_", ‹[⟦rmods⟧]›))
+
+⊢ σ_35():
+    hnul = 󰲡x≡"NULL"⭜x.copy("NULL_")⭝x
+    
+    ⊢ try_builtin(m, op_l, L, m_l, t, m_r, R):  see ¿ op + arg matches can make a builtin
+        ¿m_l ∨ m_r ∨ SWAP_TABLE.get(t, t) ∉ OPS_BUILTINₘ: ↪
+        ↪ mkgxp(⠤ε(L), op_l, ⠤ε(R))
+
+    ⊢ make_if(t, l, r, m_l, m_r):
+        ↪ Ń(t, l, r, m_l, m_r)
+    ⊢ make_el(t, l, r, m_l, m_r):
+        ⨳ l₀ᵗ∈␛⭜␛¿
+        ¿t≡␛⭝: ↪mkgxp(l₀ ₁, OP.TND(␛¿), l₀ ₀, OP.TND(␛¡), r)
+        ¿t≡␛¡: ↪mkgxp(l₀ ₀, OP.TND(␛¿), l₀ ₁, OP.TND(␛¡), r)
+
+    @(⮂ REP("op_call", rec=␛B, n="Refactor op calls"))
+    ⊢ _(󱁕):
+        l, op_, r = 󱁕󰀂
+        op = op_man󰂼ₚ􋕞
+        t = KEYWORDS_TO_CPY.get(op.t, op.t)
+        m_l, op_l, m_r = demodp(op_)
+        L, R = l≠NULL ∧ mkgrp(l), r≠NULL ∧ mkgrp(r)
+        
+        ¿m_l 󷺥 m_r:
+            ¿␛β∈op ∧  L∧R: ↪ mkgxp(L, op_l, R)
+            ¿␛σ∈op ∧ ¬L∧R: ↪ mkexp(op_l, r)
+            ¿␛ι∈op: ↪ mkexp(hnul(l), op_l, hnul(r))
+            ¿␛ρ∈op:
+                ¿t∈"➡→⭢"    : ↪ L
+                ¿t∈"⬅←⭠"    : ↪ R
+                ¿t≡␛⥉       : ↪ mkgxp(R, L)
+                ¿t≡␛≔       : ↪ mkgxp(l, op_l, R)
+                ¿t≡␛≕       : ↪ mkgxp(l, op_l, R)
+                ¿t≡␛¬ ∧← L∨R: ↪ mkgxp(op_l, L ∨ R)
+        ¿t∈␛⭜␛¿: ↪ make_if(t, l, r, m_l, m_r)
+        ¿t∈␛⭝␛¡: ↪ make_el(t, l, r, m_l, m_r)
+        ¿t≡␛󷺥: ↪ mkgxp(  x⭜✗⭝y⭜x⭝✓
+                    FALSE, OP.TND(␛¿), fcall_(þPSH, 𝓛), OP.TND(␛¡), mkgxp(
+                        þPOP_M1, OP.TND(␛¿), 𝓡, OP.TND(␛¡), mkgxp(
+                            þPOPNR, Ń("oper_lit", ␛∨), TRUE)))
+        ¿t≡␛󷺒: ↪ mkgxp(  x⭜(y⭜✗⭝x)⭝✓
+                    mkgxp(
+                        mkgxp(þPOPNR, Ń("oper_lit", ␛∨), FALSE),
+                            OP.TND(␛¿), 𝓡, OP.TND(␛¡), þPOP_M1),
+                    OP.TND(␛¿), fcall_(þPSH, 𝓛), OP.TND(␛¡), TRUE)
+        
+        A = (transform_oper(op_), L, m_l, t, m_r, R)
+        tb, mblo = try_builtin, mkbltnop
+        ¿op󰀒∧L  ∧¬opᴮ: ↪ tb(␛S, ⠤A) ∨ mkexp(mblo(op_), L)
+        ¿opᴾ  ∧R∧¬opᴮ: ↪ tb(␛P, ⠤A) ∨ mkexp(mblo(op_), R)
+        ¿opᴮ∧L∧R     : ↪ tb(␛B, ⠤A) ∨ mkexp(mblo(op_), mkgxp(   l, COMMA,    r))
+        ¿op󰀒∧L       : ↪ tb(␛S, ⠤A) ∨ mkexp(mblo(op_), mkgxp(   l, COMMA, NULL))
+        ¿opᴾ  ∧R     : ↪ tb(␛P, ⠤A) ∨ mkexp(mblo(op_), mkgxp(NULL, COMMA,    r))
+        ¿opᴺ∧␛ν ∈ op : ↪ mkexp(mblo(op_), mkgxp())
+        ↪ mkbltnop(op_)
+
+⊢ σ_36():
+    ((⮂ REP(␛⭜, rec=␛B, n="Refactor ⭝-less ⭜"))(
+        󱁕↦mkgxp(󱁕₁, OP.TND(␛¿), n₀, OP.TND(␛¡), mkvar("None"))))
+
+⊢ σ_40():
+    @(⮂ REP("oper", rec=␛A, n="Refactor sitting ops"))
+    ⊢ _(󱁕):
+        ¿𝔗(󱁕󰀂₁) ∈ kw_neverswouce: ↪󱁕
+        ¿𝔗(󱁕󰀂₂) 󷺥 𝔗(󱁕󰀂₀): 󱁕 = 󱁕.copy(c=[󱁕󰀂₀, 󱁕󰀂₁, 󱁕󰀂₂.copy(c=␛´)])
+        ↪transform_oper(󱁕)
+    
+    ((⮂ REP(⠤KEYWORD_NODE_NAMES, "oper_lit", n="Lang keywords ← cpy keywords"))
+    (󱁕↦󱁕.copy(c=py_escape_var(SWAP_TABLE.get(txt≔𝔗(󱁕), txt)))))
+    
+    ((⮂ REP("lamb", rec=␛B, n="Format lambda"))
+    (󱁕↦mkgxp(󱁕󰀂₀, mkgrp(󱁕󰀂₁))))
+    
+    ((⮂ REP("lamb_h", rec=␛B, n="Format lambda header"))
+    (󱁕↦Ń("lamb_h", ("kw", "lambda"), ⠤J́(󱁕󰀂, COMMA), ("oper_lit", ␛:))))
+
+⊢ σ_45():
+    ((⮂ REP("parser_main", rec=␛A, n="Unparse whitespace"))
+    (whitespace_unparser))
+    
+    ((⮂ RED("BLOCK", rec=␛B, n="Flatten blocks"))
+    (󱁕↦󱁕󰀂))
+
+⊢ σ_48():
+    ((⮂ REP("for_expr", rec=␛B, n="Build for exprs"))
+    (󱁕↦Ń("expr",
+         󱁕󰀂₀, ("kw", "for"), 󱁕󰀂₁, ("kw", "in"), 󱁕󰀂₂,
+         ⠤(󱁕􋕨󰂼ₙ􋕨 ⭜ [("kw", ␛¿), 󱁕󰀂₃] ⭝ []))))
+    
+    ((⮂ REP("for_stmt", rec=␛B, n="Build for stmt"))
+    (󱁕↦Ń("kw_pfx_colon_expr",
+            ("kw_pfx_colon", "for"),
+            ("expr", 󱁕󰀂₀, ("kw", "in"), 󱁕󰀂₁),
+            ⠤󱁕󰀂₂﹕)))
+
+⊢ σ_50():
+    ((⮂ REP("kw_pfx_colon_expr", rec=␛B, n="Add colons"))
+    (󱁕↦󱁕.insert_after_marker(␛M, COLON)))
+    
+    ((⮂ REP("parser_main", rec=␛B, n="Insert spaces"))
+    (ρ(add_spaces, ignore_nodes=("str_cpy", "str_py", "str_star", "str_$"))))
+
+ §§§ node transpilers §§§
+generator(⠤KEYWORD_NODE_NAMES, ⠤‹oper_lit var var_spec›⍭)(py_escape_var○𝔗)
+generator("NULL")(󰻾􋕩ᴺᵁᴸᴸ􋕩)
+
+generator("group")(𝔗(󱁕󰀂₀) + (󱁕󰀂₁﹕􍨄 ᴍ gen)⨝ᐦ + 𝔗(󱁕󰀂􍨄))
+
+generator("str_guts"              )(󱁕 ↦      py_escape_string (󱁕⥉𝔗)     )
+generator("str_escape", "str_star")(󱁕 ↦ ␛' + py_escape_string (󱁕⥉𝔗) + ␛')
+generator("str_sub"               )(󱁕 ↦ ␛{ + gen(󱁕󰀂₀)                + ␛})
+generator("str_spec_char"         )(󱁕 ↦ ␛' + py_special_mapper(󱁕⥉𝔗) + ␛')
+
+⊢ make_str_cpy(󱁕):
+    r=‹""f"›
+    ∀c∈󱁕ᶜ:
+        ¿cᵗ≡"str_escape"   : r += py_escape_string (c⥉𝔗)
+        ⸘cᵗ≡"str_spec_char": r += py_special_mapper(c⥉𝔗)
+        ¡                  : r += gen(c)
+    ↪ r + ␛"
+
+generator("neg_num")(󱁕↦‹(-⟦󱁕⥉𝔗 ⥉ UPSIDEDOWNSYNDROME.flip⟧)›)
+generator("str_cpy")(make_str_cpy)
+
+@generator("str_$")
+⊢ make_str_money(󱁕):
+    s, ⠤C = 󱁕ᶜ
+    ↪ ‹SUBPROCA(⟦󱁕.copy(c=C)⥉make_str_cpy⟧,"⟦s⥉𝔗 ⥉ SCRIPT.nrm ⥉ py_escape_string⟧")›

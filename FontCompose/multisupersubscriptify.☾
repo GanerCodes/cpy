@@ -28,6 +28,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
     ℊ.width              = w
 ⊢ monospace_font(𝒻):
     𝒻.glyphs ᴍ monospace_char
+    ↪ 𝒻
 
 ⊢ remove_char(𝒻, c):
     try:
@@ -53,10 +54,8 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
         W = w
         ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄.7, 𝔱⋄.15⋅w⋄¯.20⋅w], W
         ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄.7, 𝔱⋄.15⋅w⋄ .55⋅w], W
-        
          ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄½, 𝔱⋄0⋄¯¼⋅W], W⹏2
          ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄½, 𝔱⋄0⋄+¾⋅W], W⹏2
-        
          ¿m≡␛b: ↪ [𝔯⋄c, 𝔰⋄⅔, 𝔱⋄0⋄(¯⅓⋅W)], 𝑖(⅔⋅W)
          ⸘m≡␛p: ↪ [𝔯⋄c, 𝔰⋄⅔, 𝔱⋄0⋄(+⅔⋅W)], 𝑖(⅔⋅W)
     ¡:
@@ -82,9 +81,9 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
         𝚗,𝚞 = 𝚐.glyphname, 𝚐.unicode
         ¿𝚞<0: ↺
         log⭜ chr(𝚞)☾􊾖
-        ¿𝚗∉𝓑: 𝓑.createChar(𝚞, 𝚗)
-        𝓐.selection.select(𝚗) ; 𝓐.copy 
-        𝓑.selection.select(𝚗) ; 𝓑.paste
+        ¿𝚞∉𝓑: 𝓑.createChar(𝚞,𝚗)
+        𝓐.selection.select(𝚞); 𝓐.copy 
+        𝓑.selection.select(𝚞); 𝓑.paste
     log⭜ ᐦ☾
     ↪ 𝓑
 

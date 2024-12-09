@@ -356,4 +356,7 @@ Added ∾, evajvuahuehae reverses function args.
 
 We can now use ᐹ with 𝗙,𝗜,𝗛
 
-󰤱 docs/tests for ⪢⪡
+󰤱 docs/tests for ⪢⪡󷹅 new window features
+󰤱 docs/test for the ○⍜󰬩󰬫 stuffs
+
+Removed ζ/Σ/Π

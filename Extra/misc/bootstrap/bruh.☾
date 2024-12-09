@@ -1,0 +1,29 @@
+
+    x⇒⟦  just find matching
+        in_block
+    in_block
+    ⟧ out_block
+
+     Δ=𝘀⋅4 happens here:
+    ¿x: in_block
+        in_block
+        j = ‹some
+        abc
+        ›  j ≡ ‹some𝗻abc𝗻› ; trick doesn't apply to magic 󰦥
+        in_block
+       out_block
+       
+     Δ=𝘀⋅1 happens here:
+    ¿x:
+     in_block
+     in_block
+     in_block
+    out_block
+
+    𝑓 = ⁑x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞ ⟦h+=1 ; h+=2 ; h ⟧ ֎ rets h ֎
+    𝑓 = ⁑x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞ ⟦
+        h+=1 ; h+2 ⟧ ֎ rets h+2 ֎
+    𝑓 = ⁑x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞
+        h+=1
+        h+2
+    ֎ rets h+2 ֎

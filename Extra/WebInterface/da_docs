@@ -180,7 +180,7 @@
 󰛔 ; string replacement
 ᚤ ; first unique
 ☾ ; print
-⛶ ; enlist
+⛶ ; enlist arguments
 ⍉ ; transpose
 ⴵ ; sign of number
 🃌 ; length/cardinality

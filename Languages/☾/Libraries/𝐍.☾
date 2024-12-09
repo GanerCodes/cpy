@@ -26,7 +26,7 @@
     
     ⊢ P(󱁕, fs=✓):
         clc = ⥌x,c="BL"↦getattr(Z,c)+x+Zᵂ
-        ML = 󰲡x🃌-←(Zᵂ,Zᴮᴸ,Zᴿᴱᴰ,Zᵈᴮᴸ,Zᴳᴿᴱ,Z󰀘ᴱᴸ)ᴍk↦x.count(k)⋅🃌k󰅂Σ0
+        ML = 󰲡x🃌-←(Zᵂ,Zᴮᴸ,Zᴿᴱᴰ,Zᵈᴮᴸ,Zᴳᴿᴱ,Z󰀘ᴱᴸ)ᴍk↦x.count(k)⋅🃌k󰅂⨁0
         ⊢ box(x):
             (o, c), O, C = ‹[] ⎡⎢⎣ ⎤⎥⎦›⍭ᴍ²(󰲡clc(x,"dBL"))
             x = x.split←𝗻

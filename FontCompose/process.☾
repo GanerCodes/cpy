@@ -76,7 +76,7 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     ¿nᵗ≡"concat":
         seqs, L = [pre], nᴍ󰲡x
         ➰L:
-            N = L.pop∘0
+            N = L.pop(0)
             nseqs = []
             ∀p∈seqs:
                 nseqs += 𝕤(N, p)  [seq]
@@ -103,17 +103,16 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
         ↪ val ᴍ󰲡pre+x
 
 ⊢ normalize_seqs(d):  comically slow lol
-    𝔔 = d ꟿ⥌k,v↦v.seqsᴍ󰲡(k,x)󰅂󰅂 ⨁ []
+    𝔔 = (d ꟿ 󰲣y.seqsᐖ(x,⟞)) 󰌷
     𝔒 = []
     ➰ 𝔔:
-        k, v = 𝔔.pop∘0
+        k, v = 𝔔.pop(0)
         ℭ = v.copy
         ns = ᐦ
         ➰ ℭ:
-            ə = ℭ.pop∘0
-            ¿əᐹ𝑡→¬:
-                ¿ə≡␛ᐦ:
-                    ↺
+            ə = ℭ.pop(0)
+            ¿ə󷹵𝑡:
+                ¿ə≡␛ᐦ: ↺
                 ⸘ə∈symmap:
                     ns += ə
                     ↺
@@ -122,18 +121,17 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
                     ⇥
             
             op, s = ə
-            ⨳ op∈‹LIT ✓›⍭
+             ⨳ op∈‹LIT ✓›⍭
             ¿op≡␛✓:
                 ns += s
                 ↺
-            ¿¬v≔𝔒󰈲󰲡x₀≡s󰅂 →∧ v🃌≠dₖ.seqs🃌:
+            ¿¬v≔𝔒󰈲󰲡x₀≡s󰅂 →∧ v🃌≠🃌dₖ.seqs:
                 𝔔.append((k, [(␛✓, ns), ə, ⠤ℭ]))
                 ⇥
             ¿v🃌≡1:
                 ns += v₀ ₁
                 ↺
-            ∀h∈v:
-                𝔔.append((k, [(␛✓, ns + h₁), ⠤ℭ]))
+            𝔔.extend(vᐖ(k, [(␛✓, ns + ⟞₁), ⠤ℭ]))
             ⇥
         ¡:
              ¿k≡␛◌: ↺  make a quoted ◌ work
@@ -220,9 +218,16 @@ W = ~‹[ \t\n␠]+›
  󰤱 newlines/seps in ⟦⟧ become concats?
 
 head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
-⊢ process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH, gram=Parser(GRAM)):
+
+‹Parsing gram.›☾
+gram = Parser(GRAM)
+‹Gram parsed.›☾
+
+⊢ process(DAT, MULTICHARS, SCRIPT_EXIST, SCRIPT_DEPTH, gram=gram, log=✓):
     dat = 𝗻.join←DAT.split(𝗻)󰈳󰲡x.lstrip().startswith←␛󰅂
+    log ⭜ ‹Parsing config›☾
     root = gram(dat)
+    log ⭜ ‹Gram finished›☾
     root = root.child_killer(󰲡xᵗ∈𝑠←‹ℜ¡|␛⟦␛⟧⁅⁆⦑⦒⟨⟩⟶›)
     root = root.find_replace(󰲡✓, 󰲡(xᵗ∧(xᵗ,xᶜ)∨(xᶜ,[])))
     root = (rep≔󰲡𝐍(x) ¿xᐹᔐ¡ 𝐍(x₀,⠤x₁ᴍrep))←root
@@ -231,7 +236,6 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     root = root.ftrp("p_looper"⍭, 󰲡x.copy("looper"), ✓)
     root = root.ftrp("p_concat"⍭, 󰲡x.copy("concat"), ✓)
     mac, lets = supermcdoublerecursivecomposeoutputstyleparsemachine(root)
-    
     res = lets ꟿ 󰲣x  󰲡xᐹ𝑡∧x₀∈(‹TAG STYLE›⍭)∧x₀󰅂 ␛
                     ⥉ 󰲡(x.pop(✗), (x ꟿⱽ󰲣y ᴍ󰲣y))󰅂 ␛
                     → +y⛶ᵀ󰅂 ␛
@@ -279,7 +283,7 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
     𝐆 = []   
     𝔔 = res⁻ 󰈲󰲡resₓ.get("needs_gen")
     ➰ 𝔔:
-        𝑞 = 𝔔.pop∘0
+        𝑞 = 𝔔.pop(0)
         𝑒 = res􊴜
         
         ¿(𝑒􍋟 󰈲󰲡"needs_gen"∈resₓ):
@@ -316,7 +320,9 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         𝑒.style = style |← (𝑒, ref) ᴍ󰲡x.get("style",{})󰅂 ſ󰁸󰁹 |
         󰆴 𝑒["needs_gen"], 𝑒["ref"]
     
+    log ⭜ ‹Starting normalization›☾
     res = normalize_seqs(res)  󰤱 - multichar output sub/sup
+    log ⭜ ‹Finished normalization›☾
     
     𝕩 = res⁺ 󰈲󰲡x.out🃌≡1 ∧ xᵀ∈‹sub sup›⍭
     𝕩 = 𝕩  󰲡x􍋟₀󰅂 →.items ꟿ󰲣y󰒽󰲡xᵀ󰅂 ᴍ󰲡x.out󰅂 ⨁ x
@@ -341,8 +347,20 @@ head_types = ‹R_S_C R_S_0 R_C_S R_C R_S_1›⍭
         l = l¿lᐹᔐ¡l₁
         stylesₗ≔{"decorations": sᴍ󰲡x¿xᐹᔐ¡x₁}
     save_pua
+    
+    ⊢ add_glyphs(𝒻):
+        log ⭜ ‹Generating glpyhs›☾
+        𝐆ꟿ󰲣x(𝒻, ⠤y)
+        log ⭜ ‹Done generating glpyhs›☾
+        
+        log ⭜ ‹Monospacing font›☾
+        𝒻 = monospace_font(𝒻)
+        log ⭜ ‹Done monospacing font›☾
+        
+        ↪ 𝒻
+    
     ↪ ℵ(res=res, styles=styles, xcompose=xcomp, script_map=script_map,
-        add_glyphs  = 𝒻↦𝒻◄←(𝐆ꟿ󰲣x(𝒻, ⠤y), monospace_font(𝒻)),
+        add_glyphs  = add_glyphs,
         set_codium  = 󰲡edit_vs_settings(styles, x),
         set_compose = 󰲡(x, xcomp),
         write_multi = 󰲡(x, jdumps(multichars_dat)),

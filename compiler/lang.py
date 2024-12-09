@@ -5,13 +5,6 @@ from op import OP, OP_Manager
 from time import time
 
 class Lang:
-    """ ℭ = {}
-    def __new__(ℂ, lang_t, ver=ᐦ, cache_dir=ᗜ):
-        h = (sha256(lang_t), ver, cache_dir)
-        if h in Lang.ℭ:
-            return Lang.ℭ[h]
-        return super(Lang, ℂ).__new__(ℂ) """
-    
     def __init__(𝕊, lang_t, ver=ᐦ, cache_dir=ᗜ):
         𝕊.ver, 𝕊.ops, 𝕊.op_orders, gram, code_head, code_gen = ver, *𝕊.parse_lang(lang_t)
         𝕊.op_man = OP_Manager(𝕊.ops)
