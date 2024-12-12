@@ -1,23 +1,22 @@
 § TODOs ------------------------------------
     
-     󰤱 better compose
      󰤱 regex but better
          󰤱 bootstrap everything
-     󰤱  ⁿ􊽨ᴺᵁᴹ󰀂ᴾᵁ, ᴍ but threaded
-         󷹇 make sure we disable automatically for like wasm?
-         󰤱􊽨 option to print progress?
      ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
+     󰤱 add the edge cases for the new compose ops
      󰤱  eval bar: ⁑x󰄎2󰄎3⁞, ⁑x󰄎⬤󰄎⬤⁞
          󰤱 make version of ⁑ with 4
      󰤱  Webapp maker
      󰤱  Ponder shape ⥊ operator
      󰤱  Better ☾ maybe
      󰤱  proper cli for generating font pls
+     󰤱􊽨  option to print progress?
      󰤱􊽨 Make x⭜y⭝z store vals
      󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?
 
 § CoolCharBank™ ------------------------------------
 
+    󷸛󷸚󷸜 󷸟󷸝󷸞 󷸣󷸤󷸥 󷸠󷸡󷸢 ⍜󷸧⍥󷸦
     ⌾✪🅭⚆⍟⦾⦿⏣
     ⧿ 󰹳  ⧟ 󱗘
     󷹾 󷺀 󷹽 󷹿 󷹥 󷹧 󰇘 󷹦 󰘣 󰝔 󰡏 󰘡 󷹠 󰘞 󷹟 󰘟 󷹡 󰘠 󰩀 󰨾 󰨿

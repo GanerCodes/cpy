@@ -2,7 +2,7 @@
 𝔦𝔪𝔭∘␛s ; ldir
 
 in_font        = ‹JuliaMono/JuliaMono-Regular.ttf›
-custom_symbols = ‹customSymbols.ttf›
+custom_symbols = ‹MoonCustomSymbols.ttf›
 ¿COPY_OUT_FONT:
     COPY_OUT_EXT = 1󷸻𝐩(COPY_OUT_FONT).suffix
     OUTPUT_EXTS ∪= {COPY_OUT_EXT}
@@ -35,12 +35,12 @@ stages["Nerd"] = 𝕗
 ⊢ 𝕗(fi, fo):
      f3 = ‹/tmp/emoji/static/NotoEmoji-Regular.ttf›⥉𝐩  doesn't work w/ fontforge or fonttools 󰂁-󰂂
     save_font(merge_into_font(custom_symbols, fi), fo)
+    ‹Merged "⟦custom_symbols⟧" into font›☾
 stages["CustomSymbols"] = 𝕗
 
 ⊢ 𝕗(fi, fo):
     𝒻 = load_font(fi)
-    𝚲𝒻.removeGlyph("filter")󰅂  ε↦‹Error removing glyph: ⟦ε⟧›☾
-             mfw duplicate names
+    ‹filter link›⍭ ᐖ ᐳ𝒻.removeGlyph∘⟞ᐸ  ε↦‹Error removing glyph: ⟦ε⟧›☾
     𝑟.add_glyphs(𝒻)
     save_font(𝒻, fo)
 stages["ProcedualChars"] = 𝕗
@@ -49,7 +49,7 @@ enabled_stages = [        NERDFONT ∧ "Nerd",
                     CUSTOM_SYMBOLS ∧ "CustomSymbols",
                    PROCEDUAL_CHARS ∧ "ProcedualChars" ]
 ¿CHECK_REPOS:
-    ‹sh ShellScripts/cloneRepos.sh›⍭⥉𝐑
+    ‹sh ./cloneRepos.sh›⍭⥉𝐑
 ¿GENERATE_XCOMPOSE:
     𝑟.set_compose(f ≔ fold / ‹.XCompose›)
     ⓦ(open(‹.SCRIPT_MAP›, ␛w),

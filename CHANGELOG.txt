@@ -356,7 +356,11 @@ Added ∾, evajvuahuehae reverses function args.
 
 We can now use ᐹ with 𝗙,𝗜,𝗛
 
+Removed ζ/Σ/Π
+
+added , threadman, biahiuofafu
+    superscript is number of threads, default is system cpu count
+    otherwise normal map
+
 󰤱 docs/tests for ⪢⪡󷹅 new window features
 󰤱 docs/test for the ○⍜󰬩󰬫 stuffs
-
-Removed ζ/Σ/Π

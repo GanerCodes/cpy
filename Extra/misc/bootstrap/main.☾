@@ -69,9 +69,9 @@
     ⊢ __init__(𝕊, gram, charsets):
         ¿gram ᐹ ᔐ: gram = peggle2(gram)
         
-        gram |= charsetsꟿᴰ󰲣(  this is stupid
-            x ᣆˣ􍩅􋅱􋁤􋕩􋕟ᴾ􋕩 󷺹﹕􍧰, (
-                ␛~, 𝕊.to_or_rgx(y) ᣆˣ􍩅􋅱􋁤􋕩􋕟ᴾ􋕩 󰲡‹(⟦x⟧)+›󰅂 ⥉ re.compile))
+        gram |= charsetsꟿᴰ󰲣(
+            x ᣆᴿᴾ􋁟ˣ􍩅􋅱􋁤􋕩􋕟ᴾ􋕩 󷺹﹕􍧰,
+            (␛~, 𝕊.to_or_rgx(y) ᣆᴿᴾ 󰲡‹(⟦x⟧)+›󰅂 ⥉ re.compile))
          gram.print_rules
         𝕊.gram = gram
     
