@@ -351,6 +351,20 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 󱀘 ꟿ´(ᴍ´):
     ƒ = 𝒮ℳ(⥌x,y,i↦_map_d(x,󰲡y(⠤𝗜(x)⭜x⭝(x,)),i))
 
+@OPWRAP_
+⊢ ´(x=␀, y=␀, s=␀):
+    ⊢ worker():
+        ➰ tsks:
+            try : ƒ = tsks.pop
+            except IndexError: ↪
+            except Exception as ε:
+                raise ε ◄← ‹Error in thread! ⟦ε⟧›☾
+            ƒ
+    ¿s≅␀: s = PL_CPU_COUNT_
+    vals = x⭥ ; tsks = x↨ꟿ󷺻ᐳvals􍪴≔y(⟝)ᐸ󷺿
+    (𝚲PL_THREAD_∘worker,)⋅(x🃌⤈s)ᴍᴍ
+    ↪ vals
+
 󱀘 √´:
     __getitem__ = ⥌𝕊,x↦⥌y↦yˣ􍩯
     __call__ = ⥌𝕊,x↦x􊽲
@@ -704,6 +718,15 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
     ¿!∈𝔸:
         nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦f.stem⟧"!›
     ↪ m
+
+⊢ PL_THREAD_(ƒ, ⠤𝔸, ⠶𝕂):
+    ⮌ threading ⨡ Thread as T
+    atom = []
+    T(target=ᐳatom.append←ƒ(⠤𝔸, ⠶𝕂))≕t→.start
+    ↪ 𝚲t.join →► atom₀
+⊢ PL_CPU_COUNT_():
+    ⨡ multiprocessing
+    ↪ multiprocessing.cpu_count()
 
 ℳℱ_cache = {}
 ⊢ ℳℱ(load):
