@@ -91,7 +91,7 @@
         <div class="rowOfFlex">
             <div id="entries">
                 <textarea id="cli_in" class="entry" style="height:1em"
-                          spellcheck="false" oninput="auto_grow(this)"> </textarea>
+                          spellcheck="false" oninput="auto_grow(this)"></textarea>
             </div>
             <div id="symbolTable"></div>
         </div>
@@ -109,12 +109,12 @@
                     x++; }
                 return L==-1 ? [y,x] : L; };
             const rc2p = (S, [r,c]) => {
-                let y=0, x=0, L;
+                let y=0, x=0, L=-1;
                 for(const i in S) {
-                    if([x,y] == [r,c]) { L = i; break; }
+                    if(x==r && y==c) { L = i; break; }
                     if(S[i] == '\n') { y++; x=0; continue; }
                     x++; }
-                return L==-1 ? S.length : L };
+                return L==-1 ? S.length : L; };
             
             const col_expand = (lns, x) => [[x[0][0],0],[x[1][0],lns[x[1][0]].length]];
             
@@ -142,13 +142,37 @@
                 const lns = S.split('\n');
                 const sel = sel_rc(cli);
                 
+                // >1 lines ⇒ indent
+                
+                const [Rα, Rω] = [sel[0][0], sel[1][0]];
+                let rows = lns.slice(Rα, Rω+1);
+                let Δc = {};
+                
+                const wrap = 𝑓 => (x, i) => {
+                    const r = 𝑓(x);
+                    Δc[Rα+i] = r.length - x.length;
+                    return r; }
+                
                 if(num > 0) {
                     const pad = ' '.repeat(nspace*num);
-                    let rows = lns.slice(sel[0][0], sel[1][0]+1);
-                    rows = rows.map(x => pad + x);
-                    lns.splice(sel[0][0], sel[1][0]+1, rows);
-                    ε.value = lns.join('\n');
-                }
+                    rows = rows.map(wrap(x => pad + x));
+                }else if(num < 0) {
+                    const 𝔯 = new RegExp(String.raw`^ {0,${-num*nspace}}`, "g");
+                    rows = rows.map(wrap(x => x.replace(𝔯, ''))); }
+                lns.splice(Rα, Rω-Rα, ...rows);
+                
+                console.log(ε.value);
+                ε.value = lns.join('\n');
+                console.log(ε.value);
+                
+                sel[0][1] += Δc[Rα];
+                sel[1][1] += Δc[Rω];
+                
+                const [pα, pω] = sel.map(x => rc2p(ε.value, x));
+                console.log(Δc);
+                console.log(Rα, sel[0], pα);
+                console.log(Rω, sel[1], pω);
+                ε.setSelectionRange(pα, pω);
                 // const new_sel = col_expand(lns, sel);
             }
             
@@ -222,10 +246,15 @@
                 
                 cli.addEventListener("keydown", async e => {
                     if (e.key != "Enter") {
+                        if(event.ctrlKey) {
+                            if     (event.key == '[') indent(cli, -1);
+                            else if(event.key == ']') indent(cli,  1);
+                        }
+                            
                         if(event.keyCode == 9) {
                             e.preventDefault();
                             if(event.shiftKey) {
-                                
+                                indent(cli, -1);
                             }else{
                                 caret_write(cli, "    ");
                             }
