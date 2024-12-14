@@ -10,6 +10,8 @@ __pycache__/
 
 /FontCompose/Output/*
 !/FontCompose/Output/99_JuliaMono-Regular.ttf
+!/FontCompose/Output/99_JuliaMono-Regular.otf
+!/FontCompose/Output/99_JuliaMono-Regular.woff2 
 !/FontCompose/Output/.XCompose
 !/FontCompose/Output/.SCRIPT_MAP
 !/FontCompose/Output/multi.json
