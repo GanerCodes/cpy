@@ -56,10 +56,11 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         __slots__ = ()
         ⊢ __call__(𝕊, x=␀, y=␀, ⠶𝕂):
             ¿x≅␀: x,y = y,x
-            ↪ y≅␀ ⭜ƒ(x,⠶𝕂)⭝ ƒ(x,y,⠶𝕂)
+            ↪ x≅␀ ⭜ƒ(⠶𝕂)⭝ y≅␀ ⭜ƒ(x,⠶𝕂)⭝ ƒ(x,y,⠶𝕂)
         __getitem__ = ⥌𝕊,s↦𝚲𝕊(⠤𝔸, s=s, ⠶𝕂)
     ↪ ω()
-⊢ ERROR_TRIANGLE_(t, ƒ=␀, 𝑔=␀, 𝑇=Exception):
+⊢ ERRTRI_(t, ƒ=␀, 𝑔=␀, s=Exception):
+    𝑇 = s
     v = 𝕣((ƒ, 𝑔))
     ¿v🃌≡1:
         ƒ = v₀
@@ -255,23 +256,22 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     𝑅 = 𝑅󰈳⟥ᑀ≡[]
     ¿xᐹᔐ: 𝑅 = 𝑅󰈲􍫟􌿑􊾖⟥ᑀ󷹵ᔐ
     ↪ 𝑅
-󱀘 RANDOM_:
-    __slots__ = ␛t,
-    __init__ = ⥌𝕊,t↦𝕊ᵗ≔t →► □
-    __getitem__ = ⥌𝕊,n↦⥌⠤𝓐,⠶𝓚↦n⭥ᴍ𝚲𝕊(⠤𝓐,⠶𝓚)
-    ⊢ __call__(𝕊, x=␀, y=␀):
-        ¿𝕊ᵗ≡␛:
-            ¿𝗜(x) ∨ 𝗜(y):
-                𝒾, n = (x,y) ¿𝗜(x)¡ (y,x)
-                ¿n≅␀: ↪shuffle(𝕩≔𝑙∘𝒾) ► 𝕩
-                ↪ n⭥ᴍ𝚲choice(𝒾)
-            ✗⨳
-        ¿␀≅x∧y≅␀: ↪uniform(⠤𝕊ᵗ≡␛⭜∓1⭝0⋄1)
-        ƒ = uniform ¿𝕊ᵗ≡␛¡ randint
+
+⊢ RANDOM_(𝕏,x=␀,y=␀,s=␀):
+    ⊢ ƒ():
+        ¿𝕏≡␛:
+            𝗜(x)∨𝗜(y) ⨳ 
+            𝒾, n = 𝗜(x) ⭜(x,y)⭝ (y,x)
+            ¿n≅␀: ↪ shuffle(𝕩≔𝑙∘𝒾) ► 𝕩
+            ↪ n⭥ᴍ𝚲choice(𝒾)
+        ¿␀≅x∧y≅␀: ↪uniform(⠤𝕏≡␛⭜∓1⭝0⋄1)
+        ƒ = 𝕏≡␛ ⭜uniform⭝ randint
         ¿␀≇x∧y≇␀: ↪ƒ(x,y)
         ¿𝗜(𝕩≔𝕣(x⋄y)₀): ↪ƒ(⠤𝕩)
         ¡            : ↪ƒ(0,𝕩)
         ⨳✗
+    ↪ s≅␀ ⭜ƒ⭝ []⛶⋅sꟿƒ
+        
 󱀘 Ticker:
     __slots__ = ␛i,
     __init__ = ⥌𝕊,i↦𝕊ⁱ≔i→►□
@@ -288,7 +288,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 
 🃌´ = len
 𝕣 = 󰲡[y∀y∈x¿y≇␀]
-𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x,"__iter__"), ERROR_TRIANGLE_(␛, hash, ✗)
+𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x,"__iter__"), ERRTRI_(␛, hash, ✗)
 TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 
 ∘´ = OPWRAP_(⥌𝑓,y,s=1↦ 𝑓(⠤(y,)⋅s))
@@ -405,19 +405,22 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 ⴵ´ = 󰲡x>0⭜1⭝x∧¯1∨0
 ⛶´ = 𝑐𝑑(𝚲𝑙(𝔸), S=𝚲𝑠(𝔸), T=𝚲𝑡(𝔸))
 ▢´ = 𝚲round(⠤𝕣(𝔸))
-…´ = 󰲣𝑙←range(x,y)
 !´ = 󰲡󷸺x⨀1
+…´ = 󰲣𝑙←range(x,y)
 ∓´,±´ = 𝚲-´⋄+´ᐵ(⠤𝕣(𝔸)), 𝚲+´⋄-´ᐵ(⠤𝕣(𝔸))
+◄´,►´ = 󰲡x, 󰲣y
+∪´,∩´ = 󰲣𝑠(x) | 𝑠(y), 󰲣𝑠(x) & 𝑠(y)
 ⊊´,⊋´ = 󰲣(α≔𝑠←x).issubset(β≔𝑠←y)∧α≠β, 󰲣(α≔𝑠←y).issubset(β≔𝑠←x)∧α≠β
 ⊂´,⊃´ = 󰲣𝑠(x).issubset(𝑠←y), 󰲣𝑠(y).issubset(𝑠←x)
 ⊄´,⊅´ = 󰲣¬(x⊂y), 󰲣¬(x⊃y)
 ∋´,∌´ = 󰲣y∈x, 󰲣y∉x
 ∣´,∤´ = 󰲣gcd(x,y)≡x, 󰲣gcd(x,y)≠x
-∪´,∩´ = 󰲣𝑠(x) | 𝑠(y), 󰲣𝑠(x) & 𝑠(y)
 ⫰´,⫯´ = 󰲡+abs(x), 󰲡¯abs(x)
-◄´,►´ = 󰲡x, 󰲣y
 ↨´,⭥´ = 󰲡𝑙←enumerate←x, 󰲡𝑙←range(xᐹ𝑖⭜x⭝x🃌)
 ⬓´,⬒´ = floor, ceil
+󷸛´,󷸚´,󷸜´ = 󰲡x.real, 󰲡x.imag, 󰲡(x.real, x.imag)  󰤱
+󷹝´ = OPWRAP_←⥌x=␀,s=␀↦xᐹ𝑖 ⭜chr(x)⭝ xᐹᔐ∧(x🃌≡1∧s≠␛L) ⭜ord(x)⭝ (xᴍ󷹝) ᣆˣ􊿥􊾗􋇖 ⨝
+󷹜´ = OPWRAP_←⥌x=␀,y=␀,s=␀↦y≔(y≇␀⭜y⭝s≇␀⭜s⭝10) →►← (xᐹᔐ⭜𝑖(x,y)⭝(ℵ􋋖􋄓􋄷􊿑􋐎􊿒(2⋄10⋄8⋄16󱑼bin⋄(ᐳ"00"+󷺽○ᔐ)⋄oct⋄hex)(x)₂﹕))
 󷹄´ = 𝑏𝑔←⥌x,y,z=␀↦(R≔z↦x⤉z⤈y)►(z≅␀⭜R⭝R(z))
 ⍉´ = 𝑐𝑑(󰲡x󱑼, 𝑔=󰲡y↦y󱑼ˣ)
 ⪢´ = OPWRAP_(⥌x,y=1↦xᐹ𝑙|𝑡 ⭜x∧←x􍈼﹪􊹳ₓ􍪪ᵢ﹕+x﹕ᵢ⭝ x >> y)
@@ -515,15 +518,15 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     𝟝 = 𝕏∈"ᗢᙧ" ⭜(s≅␀⭜chnk⭝s+1)⭝ chnk
     ↪ WINDOW_(x,𝟙,𝟚,𝟛,𝟜,𝟝)
 
-ᙎ´,ᙡ´,ᗢ´,ᙧ´ = ‹ᙎᙡᗢᙧ›ᴍ󰲡OPWRAP_(ΩNDOW_(x))
-⨝´,⟕´,⟖´,⟗´ = ‹⨝⟕⟖⟗›ᴍ󰲡OPWRAP_( JOIN_(x))
-󷸹´,󷸺´,󷸸´,󷸻´ = ‹󷸹󷸺󷸸󷸻›ᴍ󰲡OPWRAP_(RANGE_(x))
-󷹌´,󷹍´,󷹎´    =  ‹󷹌󷹍󷹎›ᴍ󰲡OPWRAP_(SPLIT_(x))
-⤉´,⤈´       =   ‹⤉⤈›ᴍ󰲡OPWRAP_(MINMAX(x))
-⊚´,⊜´,🟕´,🟖´ = ‹⊚⊜🟕🟖›ᴍ󰲡OPWRAP_(FBALZ_(x))
-´,󰔶´,´    =  ‹󰔶›ᴍ󰲡𝑐𝑑(ƒ≔ERROR_TRIANGLE_(x), 𝑔=󰲡ƒ(𝑇=x))
-´,󱅏´,´    =  ‹󱅏›ᴍRANDOM_
-󱑼´,󷹅´       =   ‹󱑼󷹅›ᴍ󰲡OPWRAP_(ZIP_(x))
+ᙎ´,ᙡ´,ᗢ´,ᙧ´ = ‹ᙎᙡᗢᙧ›ᴍ󰲡OPWRAP_( ΩNDOW_(x))
+´,󱅏´,´    = ‹󱅏󷺗›ᴍ󰲡OPWRAP_(RANDOM_(x))
+󱑼´,󷹅´       = ‹󱑼󷹅󷺗󷺗›ᴍ󰲡OPWRAP_(   ZIP_(x))
+⊚´,⊜´,🟕´,🟖´ = ‹⊚⊜🟕🟖›ᴍ󰲡OPWRAP_( FBALZ_(x))
+´,󰔶´,´    = ‹󰔶󷺗›ᴍ󰲡OPWRAP_(ERRTRI_(x))
+⨝´,⟕´,⟖´,⟗´ = ‹⨝⟕⟖⟗›ᴍ󰲡OPWRAP_(  JOIN_(x))
+󷸹´,󷸺´,󷸸´,󷸻´ = ‹󷸹󷸺󷸸󷸻›ᴍ󰲡OPWRAP_( RANGE_(x))
+󷹌´,󷹍´,󷹎´    = ‹󷹌󷹍󷹎󷺗›ᴍ󰲡OPWRAP_( SPLIT_(x))
+⤉´,⤈´       = ‹⤉⤈󷺗󷺗›ᴍ󰲡OPWRAP_( MINMAX(x))
 
 ⊢ TACITM(λ, m):
     ↪ m≡1⭜󰲡xᴍλ󰅂⭝λ

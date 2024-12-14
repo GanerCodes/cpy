@@ -1,13 +1,13 @@
-CHECK_REPOS       = ✓
-NERDFONT          = ✓
+CHECK_REPOS       = ✗
+NERDFONT          = ✗
 CUSTOM_SYMBOLS    = ✓
 PROCEDUAL_CHARS   = ✓
 GENERATE_XCOMPOSE = ✓
 OUTPUT_EXTS       = ‹otf ttf woff2›⍭
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/c/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/JuliaMono_beta.ttf›
- COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
+ COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/JuliaMono_beta.ttf›
+COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
@@ -60,11 +60,11 @@ X𝕊⟶Χ ␠ _S⟶ϲ
 
  micheal's mathematical monikers
 ¡MMM ⟨DORANGE⟩ ⟦ ⁅algebra⟶󰫮⁆⁅graph⟶󰡷⁆⁅connected⟶⁆⁅holds⟶✓⁆⁅generated𝕊by⟶⚙⁆⁅ID⟶󰫶⁆⁅metricm⟶󰣰⁆⁅basis⟶󰨥⁆⁅topology⟶󰬁⁆⁅VS⟶󰬃⁆⁅ideal⟶󱧡⁆⁅point⟶⁆⁅vector𝕊⟶󰬃⁆⁅module⟶󰫺⁆⁅polynomial⟶󰡱⁆⁅path⟶󰉽⁆⁅vector𝕊space⟶󰬃⁆⁅ED⟶󰫲⁆⁅ieal⟶󱧡⁆⁅MS⟶󰍒⁆⁅topological𝕊space⟶⁆⁅edge⟶󰝊⁆⁅object⟶▢⁆⁅scalar⟶ᾇ⁆⁅domain⟶󰫱⁆⁅node⟶⁆⁅chain⟶󰿨⁆⁅line⟶󰕞⁆⁅surjection⟶󰚥⁆⁅vector⟶⁆⁅lattice⟶󱗿⁆⁅morphism⟶⁆⁅manifold⟶⁆⁅imorphism⟶󰉷⁆⁅fix⟶⁆⁅space⟶󱁐⁆⁅topological𝕊⟶⁆⁅DVR⟶⁆⁅homomorphism⟶󰠩⁆⁅find⟶󰍉⁆⁅ijection⟶󰎑⁆⁅form⟶␌⁆⁅gen𝕊by⟶⚙⁆⁅id𝕊⟶󰻾⁆⁅loop⟶➰⁆⁅element⟶⁆⁅functor⟶󱨹⁆⁅salgebra⟶󰊰⁆⁅tree⟶󱁕⁆⁅transformation⟶󰊄⁆⁅vectorv⟶⁆⁅UFD⟶󰬂⁆⁅relation⟶󰑇⁆⁅neighborhood⟶󰷔⁆⁅derangement⟶⁆⁅function⟶󰊕⁆⁅group⟶󰫴⁆⁅tensor⟶󰗴⁆⁅set𝕊⟶󰬀⁆⁅TS⟶⁆⁅category⟶󰫰⁆⁅partition⟶󱇙⁆⁅metric𝕊⟶󰍒⁆⁅example⟶⁆⁅family⟶󱘎⁆⁅measure⟶󰑭⁆⁅field⟶󰫳⁆⁅fix⟶⁆⁅ring⟶󰫿⁆⁅PID⟶󰫽⁆⁅matrix⟶󰘨⁆⁅proot⟶⎋⁆⁅play⟶⁆⁅pause⟶⁆⁅flower⟶✿⁆ ⟧
-
+󷺗
 ¡dstruk        q⟨@letnum⟩ ⟨REDPINK⟩    ⟶ 𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡
 ¡bold         wb⟨@lngeek⟩ ⟨TEALZ⟩      ⟶ 𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗𝞁𝝝𝝷𝞋𝝰𝝱𝝳𝝯𝞉𝝙𝝴𝝶𝞅𝝫𝞍𝝸𝝹𝝺𝝠𝝻𝝿𝞇𝝥𝝭𝞀𝞂𝝨𝞃𝞄𝝼𝞈𝝮𝝣𝞆𝝲𝝘𝝵𝝽
 ¡ital         wi⟨@lngeek⟩ ⟨ORANGE⟩     ⟶ 𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍◌◌◌◌◌◌◌◌◌◌𝝇𝜣𝜽𝝑𝜶𝜷𝜹𝜵𝝏𝜟𝜺𝜼𝝋𝜱𝝓𝜾𝜿𝝀𝜦𝝁𝝅𝝍𝜫𝜳𝝆𝝈𝜮𝝉𝝊𝝂𝝎𝜴𝜩𝝌𝜸𝜞𝜻𝝃
-¡math,bold    ws⟨@letnum⟩ ⟨DBLUE⟩      ⟶ 𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵
+¡math,bold    ws⟦⟨@letnum⟩_⟧ ⟨DBLUE⟩   ⟶ 𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵󷺗
 ¡monospace    wo⟨@letnum⟩ ⟨BLUE⟩       ⟶ 𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿
 ¡circle       wc⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒  ⟶ ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ◌󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱
 ¡para         wp⟨@letnum⟩ ⟨YELLOW⟩⦑N⦒  ⟶ ⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵🄐🄑🄒🄓🄔🄕🄖🄗🄘🄙🄚🄛🄜🄝🄞🄟🄠🄡🄢🄣🄤🄥🄦🄧🄨🄩◌⑴⑵⑶⑷⑸⑹⑺⑻⑼
@@ -89,8 +89,8 @@ X𝕊⟶Χ ␠ _S⟶ϲ
    ⟶   󷱩󷱪󷱫󷱬󷱭󷱮󷱯󷱰                   ⁆ ⟧
 
 ⟨GREEN⟩ ⟦
-    ⁅W⟨ALPHA⟩𝕊 ⟶ ѦცƇƊ⋿ҒႺ◌Ι◌◌ꝈⱮ◌◌◌◌ⴽ𝖲Ƭ◌Ѵ◌Ҳ◌Ζ⁆
-    ⁅W⟨alpha⟩𝕊 ⟶ ◌◌◌◌◌◌◌◌◌◌◌◌Ӎ◌◌◌◌Ʀ◌◌◌ѵ◌◌◌◌⁆
+    ⁅W⟨ALPHA⟩𝕊 ⟶ ѦƁƇƊᗴҒႺⴼΙɈⴿꝈⱮͶⴲƤꝖⴽ𝖲ƬŲѴϢҲⵖΖ⁆
+    ⁅W⟨alpha⟩𝕊 ⟶ ɒც𝼝𝼥⋿ꬵꬶҕї𝼚𝼐ꬷӍꬼϙƿ𝼛Ʀ𝼞ŧꭒѵꭐꭘꭚƶ⁆
     ⁅w⟦fF⟧𝕊⟶ƒ󰊕⁆ ⟧
 ⟨LBLUE⟩ wS⟦lP⟧⟶ℓ℘
 ⟨PINK⟩  wh⟦NBn⟧⟶ℵתℶ
@@ -110,6 +110,8 @@ X𝕊⟶Χ ␠ _S⟶ϲ
      ⟶ ⋅⎊⎉⌾⨀⊖≖⨸⨂⨁⬡    •⬤      ↀ        ⁆
     ⁅O⟦:_<>AD𝕊⁅⟦+x⟧𝕊⁆⁅o⟦𝕊⟧⁆⁅O𝕊⁆⟧
      ⟶ ⍥⍜󰬩󰬫󱖚󱖘∘  ⊕⊗      ⊙    ○         ⁆
+    ⁅⟦:_⟧O                             
+     ⟶󷸧󷸦                               ⁆
     ⁅co⟦⁅o𝕊⁆⁅eq⁆⁅c⟦ᐦc⟧𝕊⁆t⟧
      ⟶    ⊚   ⊜    🟕🟖   󰮈              ⁆
     ⁅⟦⁅[⟦ᐦ-|⟧]⁆⁅#⟦⁅[]⁆R𝕊#\⟧⁆⟧
@@ -124,7 +126,6 @@ X𝕊⟶Χ ␠ _S⟶ϲ
     ⁅ ?⟦?rR!⟧               ⟶ ¿⸮␦⸘     ⁆
     ⁅ !⟦!𝕊@?⟧               ⟶ ␛¡❗‼‽    ⁆
     ⁅ ⟦<b⟧$ ⟶ ¢£ ⁆⁅$R ⟶ 󷹹⁆ ⟧
- ⏶⏷⏴⏵▲▼▶◀🞁🞃🞀🞂▴▾◂▸▵▿◃▹◢◣◤◥◸◹◺◿
 
 ⟨DBLUE⟩ ⟦⁅i^⟶î⁆⁅p⟦234⟧⟶󷺍󷺎󷺏⁆⁅88⟶∞⁆⁅eu𝕊⟶ℇ⁆⟧
 
@@ -139,7 +140,7 @@ X𝕊⟶Χ ␠ _S⟶ϲ
     ⁅ FF⟦𝕊R⟧ ⟶ ᖵᖶ ⁆ ⟧
 
 ⟨DRED⟩ ⟦
-    ⁅n𝕊⟶¬⁆⁅int⟶∫⁆⁅inv⟶󷹁⁆⁅⟦24⟧* ⟶ ⁑󷺄⁆
+    ⁅n𝕊⟶¬⁆⁅int⟶∫⁆⁅inv⟶󷹁⁆⁅.4 ⟶ ⁞⁆⁅⟦24⟧* ⟶ ⁑󷺄⁆
     ⁅{3⟶🝑⁆⁅./⟶÷⁆⁅*𝕊⟶∗⁆⁅⟦ᐦ34⟧sq ⟶ √∛∜⁆
     ⁅vv⟶‖⁆⁅|..⟶⦙⁆⁅⟦3|⟧|⟶┆󰤃⁆
     ⁅ dp⟦adqc⁅p𝕊⁆⟧ ⟶ ⋉⋊⋋⋌⋈ ⁆
@@ -192,12 +193,12 @@ X𝕊⟶Χ ␠ _S⟶ϲ
          ⟶     ↶↷      ↩↪               ⁆ ⟧⁆ ⟧
 
 sec⟶§ ␠ to𝕊⟶󰤱 ␠ com⟶ 
-wre⟶≀ ␠ nCr⟶⫚ ␠ of⟶⎔ 
+wre⟶≀ ␠ nCr⟶⫚ ␠ of⟶⎔
 pil⟶¶ ␠ ref⟶ꔧ ␠ nt⟶󷹇
 lgq⟶ȹ ␠ act⟶⮎ ␠ ix⟶🝤
-mod⟶⸓ ␠ tex⟶ ␠ O/⟶Ø
-{}⟶∅ ␠ ()⟶ ␠ R/⟶℟
-
+mod⟶⸓ ␠ tex⟶ ␠ 
+ {}⟶∅ ␠  O/⟶Ø ␠ R/⟶℟
+ ()⟶ ␠ sps⟶ᔲ
 star⟦𝕊-d⟧     ⟶ ⭐✪✡
 w/⟦𝕊o⟧        ⟶ 󰇚󱂰
 he⟦kx⟧        ⟶ ✓✗
@@ -212,25 +213,26 @@ _⟦[]⟧         ⟶ ⦋⦌
 ⟦⁅𝕊⟦𝕊ᴍ⟧⁆⁅ᴍ𝕊⁆⟧ ⟶   "‍"
 
 th⟶þ ␠ fs⟶ſ ␠ FS⟶Ϝ ␠ ⟦ns'⟧' ⟶ ńś´ ␠ l⟦⁅ae⁆⁅AE⁆⟧ ⟶ æÆ
-C⟦ ⁅ ⟦BDLWS⟧    ⟶ ᖲᖱᒪⴷⴸ ⁆ 
-   ⁅ J⟦𝕊AD⁅J𝕊⁆⟧ ⟶ ⨝⟕⟖⟗  ⁆ ⟧
-c⟦ ⁅ a⟦cwslr⟧                  ⟶ 󷹄⤉⤈◄►            ⁆
-   ⁅ b⟦acd⟧                    ⟶ ⟥⟤              ⁆
-   ⁅ c⟦<>[]htflnpdscWzZ\⟧      ⟶ 🢔🢖‹›󰌷ⴳⴴ󱀘ᗜ𝌂꜠ᵜ𐞑ᗯ󱑼󷹅⌃⁆
-   ⁅ e⟦ln⟧                     ⟶ ⭝⭜               ⁆
-   ⁅ f⟦⁅⟦ad⟧⟦𝕊/⟧⁆sorw⟧         ⟶ 󷹓󷹕󷹔󷹖󰑅         ⁆
-   ⁅ i⟦cdgimr⁅s⟦nᐦ⟧⟦𝕊s⟧⁆⟧      ⟶ 󰋺⹏ᣆ󱠨⨡󱖈󷹵󷹴ᐹᐴ       ⁆
-   ⁅ m⟦at⟧                     ⟶ 󰛔               ⁆
-   ⁅ o⟦d⟧                      ⟶                 ⁆
-   ⁅ p⟦adr⁅t⟨d4⟩⁆⟧             ⟶ 󰸵󰸷☽⯟◌⯝⚸          ⁆
-   ⁅ r⟦adfiso[=-]⟧             ⟶ ⬓⬒󱅏▢󷸹󷸻󷸸󷸺       ⁆
-   ⁅ s⟦01smnpw⟧                ⟶ 󷹎󷹍󷹌ꟿⴵ⍭⥉          ⁆
-   ⁅ w⟦⁅⟦ᐦp⟧⟦ᐦt⟧𝕊⁆⁅␛!⟦𝕊+-⟧⁆⟧   ⟶ ᗢᙧᙎᙡ󰔶          ⁆
-   ⁅ ⟦sf⟧⟦+-⟧                  ⟶ 󰒼󰒽󰈲󰈳             ⁆
-   ⁅ ⟦()[]{}⟧                  ⟶ ❴❵␛⁅␛⁆␛󰅁␛󰅂       ⁆
-   ⁅ ⟨alpha⟩𝕊 ⟶ 🃌⇥↺⠤↨⮌◌≾ᒍ◌➰ᴍ◌⩫☾◌↪ᔐ⍉ᚤ◌◌◌⮂⥌        ⁆
-   ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶◌◌◌🜌🝇◌◌◌◌◌◌◌ᴙ◌󰆴◌◌◌◌𝚲        ⁆
-   ⁅ ⟦␛"^\⁅/⟦𝕊/⟧⁆⟧             ⟶ ᐦ⌃∖🟑֎            ⁆ ⟧
+C⟦ ⁅ ⟦BDIS⁅L⟦𝕊WS⟧⁆⟧ ⟶ ᖲᖱ󷹜󷹝ᒪⴷⴸ ⁆ 
+   ⁅ J⟦𝕊AD⁅J𝕊⁆⟧     ⟶ ⨝⟕⟖⟗    ⁆ ⟧
+c⟦ ⁅ c⟦\-|+<>[]htflnpdscWzZ⟧
+     ⟶ ⌃󷸛󷸚󷸜🢔🢖‹›󰌷ⴳⴴ󱀘ᗜ𝌂꜠ᵜ𐞑ᗯ󱑼󷹅                ⁆
+   ⁅ a⟦cwslr⟧                  ⟶ 󷹄⤉⤈◄►     ⁆
+   ⁅ b⟦acd⟧                    ⟶ ⟥⟤       ⁆
+   ⁅ e⟦ln⟧                     ⟶ ⭝⭜        ⁆
+   ⁅ f⟦⁅⟦ad⟧⟦𝕊/⟧⁆sorw⟧         ⟶ 󷹓󷹕󷹔󷹖󰑅  ⁆
+   ⁅ i⟦cdgimr⁅s⟦nᐦ⟧⟦𝕊s⟧⁆⟧      ⟶ 󰋺⹏ᣆ󱠨⨡󱖈󷹵󷹴ᐹᐴ⁆
+   ⁅ m⟦at⟧                     ⟶ 󰛔        ⁆
+   ⁅ o⟦d⟧                      ⟶          ⁆
+   ⁅ p⟦adr⁅t⟨d4⟩⁆⟧             ⟶ 󰸵󰸷☽⯟◌⯝⚸   ⁆
+   ⁅ r⟦adfiso[=-]⟧             ⟶ ⬓⬒󱅏▢󷸹󷸻󷸸󷸺⁆
+   ⁅ s⟦01smnpw⟧                ⟶ 󷹎󷹍󷹌ꟿⴵ⍭⥉   ⁆
+   ⁅ w⟦⁅⟦ᐦp⟧⟦ᐦt⟧𝕊⁆⁅␛!⟦𝕊+-⟧⁆⟧   ⟶ ᗢᙧᙎᙡ󰔶   ⁆
+   ⁅ ⟦sf⟧⟦+-⟧                  ⟶ 󰒼󰒽󰈲󰈳      ⁆
+   ⁅ ⟦()[]{}⟧                  ⟶ ❴❵␛⁅␛⁆␛󰅁␛󰅂⁆
+   ⁅ ⟨alpha⟩𝕊 ⟶ 🃌⇥↺⠤↨⮌◌≾ᒍ◌➰ᴍ◌⩫☾◌↪ᔐ⍉ᚤ◌◌◌⮂⥌ ⁆
+   ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶◌◌◌🜌🝇◌◌◌◌◌◌◌ᴙ◌󰆴◌◌◌◌𝚲 ⁆
+   ⁅ ⟦␛"^\⁅/⟦𝕊/⟧⁆⟧             ⟶ ᐦ⌃∖🟑֎     ⁆ ⟧
 🟑
 
 ⟨LPINK⟩;⟦ ⁅ ⟦{}⟧ ⟶ "⎧⎪⎨⎩" "⎫⎪⎬⎭" ⁆
@@ -241,7 +243,7 @@ c⟦ ⁅ a⟦cwslr⟧                  ⟶ 󷹄⤉⤈◄►            ⁆
           ⁅ box  ⟶ "┌┬┐├┼┤└┴┘"   ⁆ ⟧
 
 ⟦+-⟧1⟶👍👎 ␠ ap⟨d4⟩⟶👆👇👈👉
-<⟦345678␛!⁅cat⁆⟧ ⟶ 🩷💕💞💘"❤️‍🔥"💖"❣"😻
+<⟦345678⁅cat⁆⟧ ⟶ 🩷💕💞💘"❤️‍🔥"💖😻
 
 ᴍ:⟦()⟧⟶☹☺
 (;⟶😉 ␠ :⟦ᐦ:⟧⟦()⟧⟶😕😊😞🙃
@@ -250,10 +252,10 @@ hmm⟶🤔 ␠ kiss⟶😚 ␠ chill⟶😌 ␠ muscle⟶💪
 hot⟶🥵 ␠ love⟶🥰 ␠ heyes⟶😍 ␠ imdead⟶💀
 joy⟶😂 ␠ need⟶🤤 ␠ hkiss⟶😘 ␠ praise⟶🙌
 lol⟶😆 ␠ rofl⟶🤣 ␠ shock⟶😳 ␠ pray⟶🙏
-mad⟶😤 ␠ eye𝕊⟶👁️ ␠ cheer⟶🎉 ␠ wheel⟶✇
-yum⟶😋 ␠ eyes⟶👀 ␠ spark⟶✨  ␠ heart⟶♡
-hug⟶🫂 ␠ wave⟶👋 ␠ peace⟶✌  ␠ piece⟶☮
-lit⟶🔥 ␠ clap⟶👏 ␠ write⟶✍  ␠ spin⟶߷
+mad⟶😤 ␠ eye𝕊⟶👁️ ␠ peace⟶✌ ␠ wheel⟶✇
+yum⟶😋 ␠ eyes⟶👀 ␠ write⟶✍ ␠ heart⟶❤️
+hug⟶🫂 ␠ wave⟶👋 ␠ spark⟶✨ ␠ piece⟶☮
+lit⟶🔥 ␠ clap⟶👏 ␠ cheer⟶🎉 ␠ spin⟶߷
 sob⟶😭 ␠   ok⟶👌 ␠ gear⟶   ␠ fire⟶󱐚
 rainbow⟶🌈
 
@@ -263,15 +265,15 @@ CM⟶⚇ ␠ 0x⟶󱊧 ␠ OX⟶☠
 weed⟦𝕊/⟧⟶󰞦󱙮
 
 ᴍdeso⟶"\overline{}"
-shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
+shrug⟶"⎺⟍_⟨⍩⟩_⟋⎺"
 ¡ℭ ⟨BLUE⟩                ◄►⋄
 ¡ℭ ⟨DBLUE⟩               ᐦ□ᗜ⟞⟝
-¡ℭ ⟨DRED⟩                \/<>⩟⊼⊻⊽󷺑󷺒󷺓󷺤󷺥󷺦~*⥱≪≫
+¡ℭ ⟨DRED⟩                ~*\/<>≪≫󷺑󷺒󷺓󷺤󷺥󷺦⩟⊼⊻⊽⥱
 ¡ℭ ⟨ORANGE⟩              󰻾ℶℵ󰮈ᔐ󱠨󰋺
 ¡ℭ ⟨DGREEN⟩              󰔶ᣆńś
 ¡ℭ ⟨SYBLUE⟩              ⨁⨀󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽
 ¡ℭ ⟨YELLOW⟩              ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻𝚲⥌↦␛󰅁␛󰅂
-¡ℭ ⟨LBLEEN⟩              =󱀘↪⭝⭜⨡⮌↺⇥⮂➰∀⚇•ᖵᖶⴷⴸᖯᒪᗯⵉᐊᐅᕦᗐᗑᓎəẞᖇᖲᖱⵗⵐ
+¡ℭ ⟨LBLEEN⟩              =󱀘↪⭝⭜⨡⮌↺⇥⮂➰∀
 ¡ℭ ⦑c⦑bf3⦒             ⦒ ¬⌐¯⌃
 ¡ℭ ⦑c⦑faf⦒             ⦒ ∪∩∖⨉⊞
 ¡ℭ ⦑c⦑fb6⦒             ⦒ +-|^&⪡⪢∓±
@@ -280,7 +282,7 @@ shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
 ¡ℭ ⦑c⦑f05aaa⦒          ⦒ 󰆴⨃➤⯈⯅⯆⯇◁△▽▷
 ¡ℭ ⦑c⦑cff576⦒          ⦒ 󷹇⌾⎉󰂆†
 ¡ℭ ⦑c⦑24ec5d⦒          ⦒ 󰤱§🝇⎊"◌"
-¡ℭ ⦑c⦑b738da⦒          ⦒ ≅≇⹏÷%@⋅√!⋀⋁⫰⫯ⴵ⭥󷸸󷸹󷸺󷸻󷹓󷹕󷹔󷹖󰑅⬄ᒍ󰛔󷹌󷹍󷹎ᴙ↨ᚤ⍭⤉⤈󷹄☾🃌⛶⍉▢⨝⟕⟖⟗󰸵󰸷󰌷⬓⬒𝌂
+¡ℭ ⦑c⦑b738da⦒          ⦒ ≅≇⹏÷%@⋅√!⋀⋁⫰⫯ⴵ⭥󷸸󷸹󷸺󷸻󷹓󷹕󷹔󷹖󰑅⬄ᒍ󰛔󷹌󷹍󷹎ᴙ↨ᚤ⍭⤉⤈󷹄☾🃌⛶⍉▢⨝⟕⟖⟗󰸵󰸷󰌷⬓⬒𝌂󷸛󷸚󷸜󷹜󷹝
 ¡ℭ ⦑c⦑f0f⦒             ⦒ ⟥⟤´꜠ᵜ𐞑
 ¡ℭ ⦑c⦑bf0d65⦒          ⦒ 󱑼󷹅ᐹᐴ󷹵󷹴󱅏
 ¡ℭ ⦑c⦑0f0⦒             ⦒ ✓ⴳ
@@ -295,7 +297,7 @@ shrug⟶"⎺⟍_⟨ᐛ⟩_⟋⎺"
 ¡ℭ ⦑c⦑|fc02|ff63⦒B⦑s|1⦒⦒ " "
 ¡ℭ ⦑c⦑|0fc2|55de⦒B⦑s|1⦒⦒ " "
 
-¡ℭ ⦑⦒ 󷸚󷸛󷸜󷸝󷸞󷸟󷸠󷸡󷸢󷸣󷸤󷸥󷸦󷸧󷸨󷸩󷸪󷸫󷸬󷸭󷸮󷸯󷸰󷸱󷸲󷸳󷸴｜＋／＼＃＞＜ᔲ↋↊⅄ɹԀ˥ʞℲƎƆʎʍʌʇɹɯʞɾᴉɥƃɟǝɔɐ𝝤𝝦𝝧𝝩𝝪𝝬𝝾𝞊𝞌𝞎𝞏𝞐𝞑𝞒𝞓𝞕𝞖𝞗𝞘𝞙𝞚𝞛𝞜𝞝𝞞𝞟𝞠𝞡𝞢𝞣𝞤𝞥𝞦𝞧𝞨𝞩𝞪𝞫𝞬𝞭𝞮𝞯𝞰𝞱𝞲𝞳𝞴𝞵𝞶𝞷𝞸𝞹𝞺𝞻𝞼𝞽𝞾𝞿𝟀𝟁𝟂𝟃𝟄𝟅𝟆𝟇𝟈𝟉ХхΑΒΕΗΚΜΝΟΡΤΥ⥜⥠⥝⥡֍⫾∥Ø⨆æÆ⨲≀⁒╱ᶨ⋎⋏⩄⩅󷹥󷹧󷹦󰇘󰑁󰑃󷹟󷹠󷹡󷹽󷹾󷹿󷺀
+¡ℭ ⦑⦒ •ᖯᒪⵉᐊᐅᕦᗐᗑᓎəẞᖇⵗⵐ󷸝󷸞󷸟󷸠󷸡󷸢󷸣󷸤󷸥󷸨󷸩󷸪󷸫󷸬󷸭󷸮󷸯󷸰󷸱󷸲󷸳󷸴｜＋／＼＃＞＜↋↊⅄ɹԀ˥ʞℲƎƆʎʍʌʇɹɯʞɾᴉɥƃɟǝɔɐ𝝤𝝦𝝧𝝩𝝪𝝬𝝾𝞊𝞌𝞎𝞏𝞐𝞑𝞒𝞓𝞕𝞖𝞗𝞘𝞙𝞚𝞛𝞜𝞝𝞞𝞟𝞠𝞡𝞢𝞣𝞤𝞥𝞦𝞧𝞨𝞩𝞪𝞫𝞬𝞭𝞮𝞯𝞰𝞱𝞲𝞳𝞴𝞵𝞶𝞷𝞸𝞹𝞺𝞻𝞼𝞽𝞾𝞿𝟀𝟁𝟂𝟃𝟄𝟅𝟆𝟇𝟈𝟉ХхΑΒΕΗΚΜΝΟΡΤΥ⥜⥠⥝⥡֍⫾∥Ø⨆æÆ⨲≀⁒╱ᶨ⋎⋏⩄⩅󷹥󷹧󷹦󰇘󰑁󰑃󷹟󷹠󷹡󷹽󷹾󷹿󷺀
 󰦥󰦥󰦥󰦥󰦥
 
 MULTICHARS = 󰦥󰦥󰦥󰦥󰦥 𝓵𝓷 𝓵𝓰 𝘁𝗿 𝗦𝗟 𝗚𝗟 𝗿𝗸 𝘀𝘁 𝗪⁵ 𝗘𝗻𝗱 𝗔𝘂𝘁 𝗚𝗮𝗹 𝗸𝗲𝗿 𝓵𝓸𝓰 𝘀𝗶𝗻 𝗰𝗼𝘀 𝘀𝗶𝗻𝗵 𝗰𝗼𝘀𝗵 𝘁𝗮𝗻 𝘀𝗲𝗰 𝗰𝘀𝗰 𝗰𝗼𝘁 𝗰𝗶𝘀 𝗹𝗼𝗴 𝗟𝗼𝗴 𝗔𝘀𝘀 𝗔𝗿𝗴 𝗮𝗿𝗴 𝗺𝗶𝗻 𝗺𝗮𝘅 𝗲𝘅𝗽 𝗱𝗶𝘃 𝗱𝗲𝘁 𝗱𝗲𝗴 𝗲𝗿𝗳 𝗶𝗻𝘁 𝗴𝗰𝗱 𝗹𝗰𝗺 𝗵𝗼𝗺 𝗼𝗯𝗷 𝗹𝗶𝗺 𝗶𝗻𝗳 𝘀𝘂𝗽 𝗺𝗼𝗱 𝗣𝗚𝗟 𝗣𝗦𝗟 𝘀𝗴𝗻 𝘁𝗼𝗿 𝘄𝗿𝘁 𝗪𝗧𝗦 𝗪𝗧* 𝘃𝗮𝗿 𝘀𝘁𝗱 𝗰𝗼𝘃 𝗦𝗣𝗘𝗖 𝗦𝗜𝗡𝗛 𝗖𝗢𝗦𝗛 𝗧𝗔𝗡𝗛 𝗦𝗘𝗖𝗛 𝗖𝗦𝗖𝗛 𝗖𝗢𝗧𝗛 𝗖𝗛𝗔𝗥 𝗖𝗨𝗥𝗟 𝗙𝗥𝗢𝗕 𝗚𝗥𝗔𝗗 𝗥𝗔𝗡𝗞 𝗦𝗣𝗔𝗡 𝗪𝗟𝗢𝗚 𝗘𝗥𝗙𝗖 𝗠𝗘𝗠𝗘 𝗡𝗨𝗟𝗟 𝗩𝗢𝗜𝗗 𝗖𝗢𝗥𝗥 󰦥󰦥󰦥󰦥󰦥
@@ -312,3 +314,4 @@ SCRIPT_DEPTH = 2
     platform.system ≡ "Linux" ∧ $ᴼᴱibus-daemon -dxrR󷹹
 
  󰤱􊽨 thing that disallows base symmap keys from generating even if inside the compose so we can style em?
+ ⏶⏷⏴⏵▲▼▶◀🞁🞃🞀🞂▴▾◂▸▵▿◃▹◢◣◤◥◸◹◺◿

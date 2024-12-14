@@ -362,5 +362,10 @@ added , threadman, biahiuofafu
     superscript is number of threads, default is system cpu count
     otherwise normal map
 
+󷺗: empty style but works inside strings
+
 󰤱 docs/tests for ⪢⪡󷹅 new window features
 󰤱 docs/test for the ○⍜󰬩󰬫 stuffs
+
+󷹝: 󰤱 docs (mention ᴸ mod)
+󷹜: 󰤱 docs

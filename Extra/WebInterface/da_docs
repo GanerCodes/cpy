@@ -176,15 +176,20 @@
 󷹎 ; split disregard seperators
 ⬄ ; strip
 𝌂 ; partition
-ᴙ ; reverse
 󰌷 ; chain iterables
+ᴙ ; reverse
 󰛔 ; string replacement
 ᚤ ; first unique
 ☾ ; print
 ⛶ ; enlist arguments
 ⍉ ; transpose
 ⴵ ; sign of number
-🃌 ; length/cardinality
+🃌 ; cardinality/length
+󷸛 ; real part
+󷸚 ; imag part
+󷸜 ; tuple of real/imag parts
+󷹝 ; str⟷int involution
+󷹜 ; str to int / change base
 
 ¬ ; not
 ¯ ; negate

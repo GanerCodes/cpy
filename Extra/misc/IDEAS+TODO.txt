@@ -1,11 +1,10 @@
 § TODOs ------------------------------------
-    
+     website: breaks consantly, tabs, sup/sub, ins symbs into caret position
      󰤱 regex but better
          󰤱 bootstrap everything
      ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
      󰤱 add the edge cases for the new compose ops
-     󰤱  eval bar: ⁑x󰄎2󰄎3⁞, ⁑x󰄎⬤󰄎⬤⁞
-         󰤱 make version of ⁑ with 4
+     󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞
      󰤱  Webapp maker
      󰤱  Ponder shape ⥊ operator
      󰤱  Better ☾ maybe
@@ -16,7 +15,7 @@
 
 § CoolCharBank™ ------------------------------------
 
-    󷸛󷸚󷸜 󷸟󷸝󷸞 󷸣󷸤󷸥 󷸠󷸡󷸢 ⍜󷸧⍥󷸦
+    󷸛󷸚󷸜 󷸟󷸝󷸞 󷸣󷸤󷸥 󷸠󷸡󷸢 󷸦⍜⍥󷸧 󷺗
     ⌾✪🅭⚆⍟⦾⦿⏣
     ⧿ 󰹳  ⧟ 󱗘
     󷹾 󷺀 󷹽 󷹿 󷹥 󷹧 󰇘 󷹦 󰘣 󰝔 󰡏 󰘡 󷹠 󰘞 󷹟 󰘟 󷹡 󰘠 󰩀 󰨾 󰨿
@@ -251,10 +250,10 @@
      in_block
     out_block
 
-    𝑓 = ⁑x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞ ⟦h+=1 ; h+=2 ; h ⟧ ֎ rets h ֎
-    𝑓 = ⁑x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞ ⟦
+    𝑓 = 󷺄x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞ ⟦h+=1 ; h+=2 ; h ⟧ ֎ rets h ֎
+    𝑓 = 󷺄x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞ ⟦
         h+=1 ; h+2 ⟧ ֎ rets h+2 ֎
-    𝑓 = ⁑x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞
+    𝑓 = 󷺄x󰄎y󰄎z↦w,[h,i],v↦[w,x]⁞
         h+=1
         h+2
     ֎ rets h+2 ֎
