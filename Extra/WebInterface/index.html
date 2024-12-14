@@ -101,33 +101,55 @@
             const cli = document.getElementById("cli_in");
             const syt = document.getElementById("symbolTable");
             
-            const sel_pos = ε => [ε.selectionStart, ε.selectionEnd];
+            const p2rc = (S, p) => {
+                let y=0, x=0, L=-1;
+                for(const i in S) {
+                    if(i == p) { L = [y,x]; break; }
+                    if(S[i] == '\n') { y++; x=0; continue; }
+                    x++; }
+                return L==-1 ? [y,x] : L; };
+            const rc2p = (S, [r,c]) => {
+                let y=0, x=0, L;
+                for(const i in S) {
+                    if([x,y] == [r,c]) { L = i; break; }
+                    if(S[i] == '\n') { y++; x=0; continue; }
+                    x++; }
+                return L==-1 ? S.length : L };
+            
+            const col_expand = (lns, x) => [[x[0][0],0],[x[1][0],lns[x[1][0]].length]];
+            
+            const sel_p  = ε => [ε.selectionStart, ε.selectionEnd];
+            const sel_rc = ε => sel_p(ε).map(x => p2rc(ε.value, x));
+            
             const caret_write = (ε, t) => {
                 ε.focus();
-                const [l, r] = sel_pos(ε);
+                const [l, r] = sel_p(ε);
                 ε.setRangeText(t, l, r, 'select');
                 if(l == r) ε.setSelectionRange(l+t.length, l+t.length); }
             const replace_selection = (ε, 𝑓) => {
-                const [l, r] = sel_pos(ε);
+                const [l, r] = sel_p(ε);
                 const v = ε.value
                 const x = v.substring(l, r);
                 const X = 𝑓(x);
                 ε.value = v.substring(0, l) + X + v.substring(r);
                 ε.setSelectionRange(l, l + x.length); };
             const deselect = ε => {
-                [l, r] = sel_pos(ε);
-                ε.setSelectionRange(r, r); }
-            const sel_to_row_col = (ε, l=get_sel(ε)) => {
-                let n = 0;
-                Array.from(ε.value).forEach(x => {
-                    if(x == "\n") {
-                        n = 0;
-                        continue; }
-                    n++;
-                })
-                const vals = .map((x,i) => [x,i]);
+                [l, r] = sel_p(ε);
+                ε.setSelectionRange(r, r); };
+            
+            const indent = (ε, num=1, nspace=4) => {
+                const S = ε.value;
+                const lns = S.split('\n');
+                const sel = sel_rc(cli);
                 
-                const lines = ε.value.split('\n');
+                if(num > 0) {
+                    const pad = ' '.repeat(nspace*num);
+                    let rows = lns.slice(sel[0][0], sel[1][0]+1);
+                    rows = rows.map(x => pad + x);
+                    lns.splice(sel[0][0], sel[1][0]+1, rows);
+                    ε.value = lns.join('\n');
+                }
+                // const new_sel = col_expand(lns, sel);
             }
             
             // ets.onclick = _ => cli.focus();
@@ -215,7 +237,7 @@
                     let v = cli.value; cli.value = "";
                     cli.style.minHeight = "1.1em";
                     log(v);
-                    v = v.replaceAll("\\", "\\\\").replaceAll('"', '\\"').replaceAll("\n", "\\n");
+                    v = v.replaceAll("\\", "\\\\").replaceAll('"', '\\"').replaceAll('\n', "\\n");
                     try {
                         py.runPython(`
                             try:
