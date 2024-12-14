@@ -101,7 +101,34 @@
             const cli = document.getElementById("cli_in");
             const syt = document.getElementById("symbolTable");
             
-            const caret_write = (t, ε) => ε.setRangeText(t, ε.selectionStart, ε.selectionEnd, 'select');
+            const sel_pos = ε => [ε.selectionStart, ε.selectionEnd];
+            const caret_write = (ε, t) => {
+                ε.focus();
+                const [l, r] = sel_pos(ε);
+                ε.setRangeText(t, l, r, 'select');
+                if(l == r) ε.setSelectionRange(l+t.length, l+t.length); }
+            const replace_selection = (ε, 𝑓) => {
+                const [l, r] = sel_pos(ε);
+                const v = ε.value
+                const x = v.substring(l, r);
+                const X = 𝑓(x);
+                ε.value = v.substring(0, l) + X + v.substring(r);
+                ε.setSelectionRange(l, l + x.length); };
+            const deselect = ε => {
+                [l, r] = sel_pos(ε);
+                ε.setSelectionRange(r, r); }
+            const sel_to_row_col = (ε, l=get_sel(ε)) => {
+                let n = 0;
+                Array.from(ε.value).forEach(x => {
+                    if(x == "\n") {
+                        n = 0;
+                        continue; }
+                    n++;
+                })
+                const vals = .map((x,i) => [x,i]);
+                
+                const lines = ε.value.split('\n');
+            }
             
             // ets.onclick = _ => cli.focus();
             const reformt = s => {
@@ -145,7 +172,6 @@
                     ε.title = v[0];
                     syt.appendChild(ε);
                     ε.onclick = _ => {
-                        cli.focus();
                         caret_write(cli, ε.querySelector("text:not(:has(> *))").innerText); }; });
                 log("Loaded Symbol Table");
                 
@@ -173,7 +199,17 @@
                     print("Ready!")`); })();
                 
                 cli.addEventListener("keydown", async e => {
-                    if (e.key != "Enter") return;
+                    if (e.key != "Enter") {
+                        if(event.keyCode == 9) {
+                            e.preventDefault();
+                            if(event.shiftKey) {
+                                
+                            }else{
+                                caret_write(cli, "    ");
+                            }
+                        }
+                        return;
+                    }
                     if (e.shiftKey) return;
                     e.preventDefault();
                     let v = cli.value; cli.value = "";
