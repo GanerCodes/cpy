@@ -100,6 +100,9 @@
             const ets = document.getElementById("entries");
             const cli = document.getElementById("cli_in");
             const syt = document.getElementById("symbolTable");
+            
+            const caret_write = (t, ε) => ε.setRangeText(t, ε.selectionStart, ε.selectionEnd, 'select');
+            
             // ets.onclick = _ => cli.focus();
             const reformt = s => {
                 const 𝑓 = (x, ...𝔸) => {
@@ -142,8 +145,8 @@
                     ε.title = v[0];
                     syt.appendChild(ε);
                     ε.onclick = _ => {
-                        cli.value += ε.querySelector("text:not(:has(> *))").innerText;
-                        cli.focus(); }; });
+                        cli.focus();
+                        caret_write(cli, ε.querySelector("text:not(:has(> *))").innerText); }; });
                 log("Loaded Symbol Table");
                 
                 log("Loading WASM Python…");
