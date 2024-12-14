@@ -82,7 +82,7 @@ cp(in_font, font ≔ fold / in_font.name)
 ¿1󷸻font.suffix≕ε ∈ OUTPUT_EXTS:
     cp(font, ƒ_fnam(EXT))
     OUTPUT_EXTS ∖= {ε}
-OUTPUT_EXTSᐖ𝕗.save(⟞ ⥉ ƒ_fnam ⥉ ᔐ)
+OUTPUT_EXTS󷺼save_font(𝕗, ⟞ ⥉ ƒ_fnam)
 
 ¿COPY_OUT_FONT:
     cp(ƒ_fnam∘COPY_OUT_EXT, COPY_OUT_FONT)
