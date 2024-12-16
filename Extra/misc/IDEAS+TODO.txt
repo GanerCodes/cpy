@@ -1,5 +1,5 @@
 § TODOs ------------------------------------
-     website: breaks consantly, tabs, sup/sub
+     website: breaks consantly, sup/sub
      󰤱 regex but better
          󰤱 bootstrap everything
      ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2

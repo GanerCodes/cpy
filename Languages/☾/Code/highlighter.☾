@@ -50,7 +50,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
             s, e, a, b = pps􌿰􋕜ₜ􋕞ₗₐₛₜᵢ􊲗₂
             ¿a≅□: TB += [(f, s, ᐦ, "Missing location!", ᐦ)]
             l = 𝗻.join(Fₛ₋₁﹕ₑ).encode("utf-8")
-            A,B,C = l﹕ₐ⋄lₐ﹕⋄l﹕ ᴍ 󰲡x.decode("utf-8")
+            A,B,C = l﹕ₐ⋄lₐ﹕⋄l﹕ ᴍ 󰲡x.decode("utf-8", errors="replace")
             TB += [(f, s, __highlighter__(A),
                           __highlighter__(B,✓),
                           __highlighter__(C))]
