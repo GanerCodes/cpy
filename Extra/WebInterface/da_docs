@@ -81,11 +81,11 @@
 󰈳 ; filter negative
 󰒼 ; sort ascending
 󰒽 ; sort decending
-ᙎ ; window, with sides, no middle
-ᙡ ; window, with sides, with middle
-ᗢ ; window, no sides, no middle
-ᙧ ; window, no sides, with middle
  ; group by
+ᙡ ; window, with middle, with sides
+ᙧ ; window, with middle, no sides
+ᙎ ; window, no middle, with sides
+ᗢ ; window, no middle, no sides
 
 ᐹ ; left is type of right / get class of
 ᐴ ; right is type of left / get class of
@@ -102,8 +102,8 @@
 
 & ; bitwise and
 
-⪡ ; bitshift left
-⪢ ; bitshift right 
+⪡ ; bitshift left / circle arr left 
+⪢ ; bitshift right / circle arr right 
 
 ∓ ; minus plus
 ± ; plus minus
@@ -111,9 +111,16 @@
 - ; subtract
 
 ∘ ; call left with right
-○ ; compose functions
+○ ; compose functions with balanced args, overflow right
+⍜ ; compose functions with balanced args, overflow left
+󰬫 ; compose functions, overflow extra args to right
+󰬩 ; compose functions, overflow extra args to left
+󱖚 ; 󰤱, NotImplemented
+󱖘 ; 󰤱, NotImplemented
  ; curry function
 ⊚ ; loop
+⍟ ; loop returning all iterations except final
+⊛ ; loop returning all iterations
 ⊜ ; loop until fixed point
 🟕 ; find cycle
 🟖 ; find cycle, include prefix
@@ -185,11 +192,16 @@
 ⍉ ; transpose
 ⴵ ; sign of number
 🃌 ; cardinality/length
-󷸛 ; real part
-󷸚 ; imag part
-󷸜 ; tuple of real/imag parts
 󷹝 ; str⟷int involution
 󷹜 ; str to int / change base
+󷸚 ; real part
+󷸛 ; imag part
+󷸙 ; ĵ part
+󷸘 ; 󷺈 part
+󷸜 ; tuple of real/imag parts
+󷸗 ; tuple of real/ĵ parts
+󷸖 ; tuple of real/󷺈 parts
+󷸕 ; tuple of real/imag/ĵ/󷺈 parts
 
 ¬ ; not
 ¯ ; negate
