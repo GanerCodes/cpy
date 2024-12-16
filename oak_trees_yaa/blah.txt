@@ -1,0 +1,71 @@
+f○¹g⋄h (𝟘,𝟙;²𝟚) = f(g(𝟘,𝟙),g(𝟚))
+f○⁴g⋄h = f(g,h,g,h) or f(g,g,h,h)
+f○²[g,h] (𝟘,𝟙,𝟚,𝟛,𝟜) = f(g(𝟘,𝟙,𝟜),h(𝟚,𝟛,𝟜))
+f○²[g,h](𝟘,𝟙,𝟚,𝟛,𝟜,𝟝)=f(g(𝟘,𝟙,𝟜,𝟝),h(𝟚,𝟛,𝟜,𝟝))
+􊽴f○􍧱[g,h] (𝟘,𝟙,𝟚,𝟛,𝟜) = f(g(𝟘,𝟙,𝟚),h(𝟘,𝟛,𝟜))
+f○􋀐[g] (𝟘,𝟙) = f(g(𝟘,𝟙))
+f󰬫²[g,h] (𝟘,𝟙,𝟚,𝟛,𝟜) = f(g(𝟘,𝟙),h(𝟚,𝟛),𝟜)
+f󰬩²[g,h] (𝟘,𝟙,𝟚,𝟛,𝟜) = f(𝟘,g(𝟙,𝟚),h(𝟛,𝟜))
+󰬩󰬫⊸⟜
+
+
+󱖚/󱖘 (♺):
+         @OPWRAP_
+         ⊢ op´(x=␀, y=␀, s=1):  by ♺
+              where x⫢LHS, y⫢RHS, s=superscript
+             ↪ result
+        choices:
+            start adding arguments from outside vs inside
+            n describes num of args on all but inside vs outside
+        f󱖘ⁿg (𝟘,𝟙,𝟚,𝟛) = f(g(g(n_itms),n-1_itms),rest_itms)
+        f󱖘[g,h] (𝟘,𝟙,𝟚,𝟛) = f(g(𝟙,𝟚,𝟛),𝟘)
+        f󱖘[g,h] (𝟘,𝟙,𝟚,𝟛) = f(g(h(𝟚,𝟛),𝟙),𝟘)
+        f󱖘ⁿ[g,h  ] (𝟘,𝟙,𝟚,𝟛,𝟜,𝟝,𝟞) = f(g(h(rest_itms),n_itms),n_itms)
+        f󱖘ⁿ[g,h,i] (𝟘,𝟙,𝟚,𝟛,𝟜,𝟝,𝟞) = f(g(h(i(rest_itms), n_itms), n_itms), n_itms)
+
+
+
+☾ mafs library
+combinatorics
+  choose (int and float versions)/multinomials
+  permutations
+  derangements
+    with/without repetition
+  partitions (also by size) 4↦ [[1,1,1,1],[1,1,2],[1,2,1],…]
+  ordered partitions (also by size)
+  set of subsets with certain size
+  factorial/gamma
+polynomials
+  ring operations
+  factoring
+  evaluation
+  composition
+  find rational 0's
+  approximate 0's
+  derivatives ′ ″ ‴ ⁗
+  integral (C=0) ∫ₐᵇf
+quaternions
+  build on top of î
+  tell ganer to make characters
+geometric algebra
+matrices/vectors
+  ring operations
+  inverse
+  integer solve
+  diagonalize
+  exponentiation
+  dot product overload ⋅
+  cross product for ℂ³ or ℂ⁷ ⨯
+  projection maps 𝜋
+  involution stuff
+  affine matrices
+graphs
+  grid
+  evaluation path
+  set by n and/or v
+  adjacency matrix
+  number of paths
+  coloring
+  n-coloring without subgraph
+  connected?
+  minimum number of edges to separate
