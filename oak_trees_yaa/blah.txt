@@ -44,9 +44,6 @@ polynomials
   approximate 0's
   derivatives ′ ″ ‴ ⁗
   integral (C=0) ∫ₐᵇf
-quaternions
-  build on top of î
-  tell ganer to make characters
 geometric algebra
 matrices/vectors
   ring operations
