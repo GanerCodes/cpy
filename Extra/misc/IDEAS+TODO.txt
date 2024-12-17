@@ -1,5 +1,6 @@
 § TODOs ------------------------------------
     󰤱  website breaks constantly
+    󰤱  󷹜 right arg for zfill
     󰤱  bootstrap everything
     󰤱  ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
     󰤱  Web/phone-app maker
