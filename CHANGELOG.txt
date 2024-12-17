@@ -363,9 +363,10 @@ added , threadman, biahiuofafu
     otherwise normal map
 
 󷺗: empty style but works inside strings
-
+󰤱 docs
 󰤱 docs/tests for ⪢⪡󷹅 new window features
 󰤱 docs/test for the ○⍜󰬩󰬫 stuffs
-
 󷹝: 󰤱 docs (mention ᴸ mod)
 󷹜: 󰤱 docs
+∅: 󰤱 docs
+⍁: 󰤱 docs

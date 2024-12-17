@@ -1,21 +1,27 @@
 § TODOs ------------------------------------
-     website: breaks consantly
-     󰤱 regex but better
-         󰤱 bootstrap everything
-     ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
-     󰤱 add the edge cases for the new compose ops
-     󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞
-     󰤱  Webapp maker
-     󰤱  Ponder shape ⥊ operator
-     󰤱  Better ☾ maybe
-     󰤱  proper cli for generating font pls
-     󰤱􊽨  option to print progress?
-     󰤱􊽨 Make x⭜y⭝z store vals
-     󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽?
+    󰤱  website breaks constantly
+    󰤱  bootstrap everything
+    󰤱  ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
+    󰤱  Web/phone-app maker
+    󰤱  Way to detect imports implicitly
+    󰤱  normalize binds/stuff for edits/cross-plat
+        󰤱 SCRIPT_MAP hardcoded in moonvert rn
+    󰤱  regex but better
+    󰤱  add the edge cases for the new compose ops
+    󰤱  fix symbols ᐸᐳ󷹎󷹍󷹌
+    󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞
+    󰤱  Ponder shape ⥊ operator
+    󰤱  Better ☾
+    󰤱  proper cli for generating font
+    󰤱􊽨  option to print progress
+    󰤱􊽨 Make x⭜y⭝z store vals
+    󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽
+    󰤱􊽨 Font generator slow
+    󰤱  Documentation (lol)
 
 § CoolCharBank™ ------------------------------------
 
-    󷸛󷸚󷸜 󷸟󷸝󷸞 󷸣󷸤󷸥 󷸠󷸡󷸢 󷸦⍜⍥󷸧 󷺗
+    󷸟󷸝󷸞 󷸣󷸤󷸥 󷸠󷸡󷸢 󷸦⍜⍥󷸧
     ⌾✪🅭⚆⍟⦾⦿⏣
     ⧿ 󰹳  ⧟ 󱗘
     󷹾 󷺀 󷹽 󷹿 󷹥 󷹧 󰇘 󷹦 󰘣 󰝔 󰡏 󰘡 󷹠 󰘞 󷹟 󰘟 󷹡 󰘠 󰩀 󰨾 󰨿
