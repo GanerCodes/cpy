@@ -65,9 +65,8 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
         R += r⛶
     ↪ R¿multi¡R₀
 
-⊢ supermcdoublerecursivecomposeoutputstyleparsemachine(
-        n, pre=□, mac=□, res=□):
-    mac, pre, res = {}¿mac≅□¡mac, []¿pre≅□¡pre, []¿res≅□¡res
+⊢ supermcdoublerecursivecomposeoutputstyleparsemachine(n, pre=□, mac=□, res=□):
+    mac, pre, res = mac≅□⭜{}⭝mac, pre≅□⭜[]⭝pre, res≅□⭜[]⭝res
     𝕤 = 𝚲supermcdoublerecursivecomposeoutputstyleparsemachine(⠤𝔸,mac=mac,res=res)
     ¿nᵗ≡"main":
         𝕤(n.copy(t="looper"),pre)
@@ -86,7 +85,7 @@ gen(␛u)←⥌x=1↦ℵ(textDecoration=‹underline ⟦x⟧px›)
     ¿nᵗ≡"lookup": ↪ [pre+(("LIT", n₀ ₀ᵗ)¿n₀ᵗ≡"str"¡n₀ᵗ)⛶]  󰤱 strs (󷹇 they special!)
     ¿nᵗ≡"results":
         C, ⠤nᶜ = n
-        res.append((pre, (C₀¿C🃌¡C)ᵗ))
+        res.append((pre, (C🃌⭜C₀⭝C)ᵗ))
         ↪ [pre]
     ¿nᵗ≡"macadd":
         ⠤w, s = n

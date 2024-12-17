@@ -97,6 +97,8 @@
         </div>
         
         <script type="text/javascript">
+            var py;
+        
             const ᔐ𝑙 = x => [...x].length; // JS moment
             const ᔐs = (x,...𝔸) => [...x].slice(...𝔸).join('');
         
@@ -118,10 +120,8 @@
                     if(S[i] == '\n') { r++; c=0; continue; }
                     c++; }
                 return S.slice(0,i).join('').length; };
-            
             const sel_p  = ε => [ε.selectionStart, ε.selectionEnd];
             const sel_rc = ε => sel_p(ε).map(x => p2rc(ε.value, x));
-            
             const caret_write = (ε, t) => {
                 ε.focus();
                 const [l, r] = sel_p(ε);
@@ -134,7 +134,6 @@
                 const X = 𝑓(x);
                 ε.value = v.slice(0, l) + X + v.slice(r);
                 ε.setSelectionRange(l, l+X.length); };
-            
             const indent = (ε, num=1, nspace=4) => {
                 const L = ε.value.split('\n');
                 let [[Rα, Cα], [Rω, Cω]] = sel_rc(cli);
@@ -170,8 +169,7 @@
                 const 𝑓 = (x, ...𝔸) => {
                     const ε = document.createElement("text");
                     const hasStyle = x.length && x[0] == "\x1c";
-                    if(hasStyle) ε.style = x.slice(1);
-                    else         ε.innerText = x;
+                    hasStyle ? ε.style=x.slice(1) : ε.innerText=x;
                     if(𝔸.length) {
                         const γ = 𝑓(...𝔸);
                         if(!hasStyle && !x) return γ;
@@ -192,21 +190,9 @@
                 setTimeout(_ => { cli.scrollIntoView(); cli.focus(); }, 25);
                 return x; }
             
-            const auto_grow = ε => {
-                ε.style.minHeight = "5px";
-                ε.style.minHeight = ε.scrollHeight + "px"; };
+            const auto_grow = ε => ε.style.minHeight = `${Math.max(5, ε.scrollHeight)}px`;
             
-            var py;
-            (async _ => {
-                log("Loading Symbol Table…");
-                const docs = await (await fetch("docs")).json();
-                Object.entries(docs).forEach(([k,v]) => {
-                    const ε = reformt(k);
-                    ε.title = v[0];
-                    syt.appendChild(ε);
-                    ε.onclick = _ => caret_write(cli, ε.querySelector("text:not(:has(> *))").innerText); });
-                log("Loaded Symbol Table");
-                
+            const load_python = async _ => {
                 log("Loading WASM Python…");
                 py = await loadPyodide({ stdin: prompt, stdout: log, stderr: log });
                 log("Loaded WASM Python");
@@ -223,60 +209,68 @@
                 await py.runPythonAsync(`
                     from refresher import run_moon
                     from util import SCRIPT
-                    import sys
-                    try   : del sys.excepthook
-                    except: pass
                     𝑓 = run_moon(["--code_cache_dir=/tmp/cpy_wasm_cache/code",
                                   "--gram_cache_dir=/tmp/cpy_wasm_cache/gram"],
                                   extract_interactive=True)
+                    𝑓("⨡ sys ; 󰆴 sys.excepthook")
                     print("☾ Ready!")
                     print("alt+<w/s/x>\tSuperscript/subscript/normalizes selection")
-                    print("ctrl+enter \tRun multiline code") `); })();
+                    print("ctrl+enter \tRun multiline code") `); };
+            
+            (async _ => {
+                log("Loading Symbol Table…");
+                const docs = await (await fetch("docs")).json();
+                Object.entries(docs).forEach(([k,v]) => {
+                    const ε = reformt(k);
+                    ε.title = v[0];
+                    syt.appendChild(ε);
+                    ε.onclick = _ => caret_write(cli, ε.querySelector("text:not(:has(> *))").innerText); });
+                log("Loaded Symbol Table");
+                await load_python(); })();
                 
-                const script = (x, m) => py.globals.get("SCRIPT")[m](x);
-                
-                const ə = e => (e.preventDefault(), auto_grow(cli));
-                cli.addEventListener("keydown", async e => {
-                    const [[Rα, Cα], [Rω, Cω]] = sel_rc(cli);
-                    let val = cli.value;
-                    if(e.key != "Enter") {
-                        if(event.ctrlKey) {
-                            switch(event.key) {
-                                case '[': indent(cli, -1); break;
-                                case ']': indent(cli,  1); break;
-                                default : return; }
-                            return ə(e); }
-                        if(event.altKey) {
-                            switch(event.key) {
-                                case 'w': replace_selection(cli, x=>script(x, "sup")); break;
-                                case 's': replace_selection(cli, x=>script(x, "sub")); break;
-                                case 'x': replace_selection(cli, x=>script(x, "nrm")); break;
-                                default : return; }
-                            return ə(e); }
-                        if(event.keyCode == 9) {
-                            if     (event.shiftKey) indent(cli, -1);
-                            else if(Rα == Rω      ) caret_write(cli, "    ");
-                            else                    indent(cli,  1);
-                            return ə(e); }
-                        return; }
-                    const bksp = ε => ε.dispatchEvent(
-                        new KeyboardEvent('keydown', {
-                            key: 'Backspace',
-                            code: 'Backspace',
-                            cancelable: false }));
-                    if(!e.ctrlKey && (e.shiftKey || val.includes('\n')))
-                        return (Rα!=Rω||Cα!=Cω) && bksp(cli), enter_preserve_indent(cli), ə(e);
-                    cli.value = '', cli.style.minHeight = "1.1em";
-                    log(val);
-                    try {
-                        py.runPython(`
-                            try:
-                                𝑓("${val.replaceAll(/[\\"\n]/g, x=>({"\\":"\\\\","\n":"\\n",'\"':"\\"}[x]))}")
-                            except Exception as e:
-                                print("Error:", e)`);
-                    } catch(e) { log(`Error! ${e}`); }
-                    ə(e);
-                });
+            const script = (x, m) => py.globals.get("SCRIPT")[m](x);
+            
+            const ə = e => (e.preventDefault(), auto_grow(cli));
+            cli.addEventListener("keydown", async e => {
+                const [[Rα, Cα], [Rω, Cω]] = sel_rc(cli);
+                let val = cli.value;
+                if(e.key != "Enter") {
+                    if(event.ctrlKey) {
+                        switch(event.key) {
+                            case '[': indent(cli, -1); break;
+                            case ']': indent(cli,  1); break;
+                            default : return; }
+                        return ə(e); }
+                    if(event.altKey) {
+                        switch(event.key) {
+                            case 'w': replace_selection(cli, x=>script(x, "sup")); break;
+                            case 's': replace_selection(cli, x=>script(x, "sub")); break;
+                            case 'x': replace_selection(cli, x=>script(x, "nrm")); break;
+                            default : return; }
+                        return ə(e); }
+                    if(event.keyCode == 9) {
+                        if     (event.shiftKey) indent(cli, -1);
+                        else if(Rα == Rω      ) caret_write(cli, "    ");
+                        else                    indent(cli,  1);
+                        return ə(e); }
+                    return; }
+                const bksp = ε => ε.dispatchEvent(
+                    new KeyboardEvent('keydown', {
+                        key: 'Backspace',
+                        code: 'Backspace',
+                        cancelable: false }));
+                if(!e.ctrlKey && (e.shiftKey || val.includes('\n')))
+                    return (Rα!=Rω||Cα!=Cω) && bksp(cli), enter_preserve_indent(cli), ə(e);
+                cli.value = '', cli.style.minHeight = "1.1em";
+                log(val);
+                try {
+                    py.runPython(`
+                        try:
+                            𝑓("${val.replaceAll(/[\\"\n]/g, x=>({"\\":"\\\\","\n":"\\n",'\"':"\\"}[x]))}")
+                        except Exception as e:
+                            print("Error:", e)`);
+                } catch(e) { log(`Pyodide error! ${e}`); }
+                ə(e); });
         </script>
     </body>
 </html>
