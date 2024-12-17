@@ -14,8 +14,8 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
         ↪ termclr(s, v􋕨󰂼ₗ󰂼ᵣ􋕨, bg)
     ↪ termclr(s, de, bg)
 
-⊢ __highlighter__(l, b=✗,clr=✓):
-    s, *e = (ᔐ∘l).split(␛ᐧ)
+⊢ __highlighter__(l, b=✗, clr=✓):
+    s, ⠤e = (ᔐ∘l).split(␛ᐧ)
     
     e = e ᙧ¹ 0⋄1
     e = e ꟿ 󰲣chr(𝑖(x,16))+y

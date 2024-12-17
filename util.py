@@ -56,9 +56,6 @@ def time_test(𝑓, *𝔸, **𝕂):
     t0 = time()
     return 𝑓(*𝔸, **𝕂), time() - t0
 
-class hashDict(dict):
-    __hash__ = lambda 𝕊:hash(frozenset(𝕊.items()))
-
 def part(l, f):
     l, a = l.copy(), []
     while l:
@@ -74,8 +71,8 @@ class Holder:
     __iter__=lambda 𝕊:iter((𝕊.A,𝕊.K))
     __repr__=lambda 𝕊:f"Holder: {𝕊.A=} {𝕊.K=}"
 
-class Bunch(dict):
-    __getattr__ = lambda 𝕊, x: 𝕊[x]
+class hashDict(dict): __hash__ = lambda 𝕊:hash(frozenset(𝕊.items()))
+class Bunch(dict): __getattr__ = lambda 𝕊, x: 𝕊[x]
 
 def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
     L = ᒪ(L)
@@ -100,7 +97,6 @@ def map_groups(l, F, M, I=ID, O=ID):
         yield O(k)
     if t:
         yield M(t)
-
 
 # following was nabbed from 🌈.☾
 TERM_RESET = '\x1b[0m'
@@ -139,22 +135,20 @@ class Z:
 Z=Z()
 
 class UPSIDEDOWNSYNDROME:
-    NRM = "0123456789abcdefoxABCDEFOXîℇτπ󷺍"
-    USD = "󷰽󷰾󷰿󷱀󷱁󷱂󷱃󷱄󷱅󷱆󷱇󷱈󷱉󷱊󷱋󷱌󷱍󷱎󷱏󷱐󷱑󷱒󷱓󷱔󷱕󷱖󷱪󷱫󷱬󷱭󷱮"
+    NRM = "0123456789abcdefoxABCDEFOXîĵ󷺈ℇτπ󷺍󷺏∞"
+    USD = "󷰽󷰾󷰿󷱀󷱁󷱂󷱃󷱄󷱅󷱆󷱇󷱈󷱉󷱊󷱋󷱌󷱍󷱎󷱏󷱐󷱑󷱒󷱓󷱔󷱕󷱖󷱪󷱽󷱾󷱫󷱬󷱭󷱮󷱰󷱩"
     MAP = dict(zip(NRM, USD)) | dict(zip(USD, NRM))
     flip = lambda s, MAP=MAP: str.join(ᐦ, (MAP.get(c, c) for c in s))
 class SCRIPT:
     SCRIPT_FILE_LOC = f"{cpy_dir}/FontCompose/.SCRIPT_MAP"
-    SUP, SUB, NRM = {}, {}, {}
     with open(SCRIPT_FILE_LOC) as f:
-        CH = CHAR_NRM, CHAR_SUP, CHAR_SUB = \
-               f.read().strip().split('\n')
-    for n,p,b in zip(*CH):
+        CH = f.read().strip().split('\n')
+    CHAR_NRM,CHAR_SUP,CHAR_SUB = CH
+    MAPS = SUP,SUB,NRM = {}, {}, {}
+    for n,p,b in ζ(*CH):
         SUP[n], SUB[n] = p, b
         NRM[b] = NRM[p] = n
-    sup = lambda s, SUP=SUP: str.join(ᐦ, (SUP.get(c, c) for c in s))
-    sub = lambda s, SUB=SUB: str.join(ᐦ, (SUB.get(c, c) for c in s))
-    nrm = lambda s, NRM=NRM: str.join(ᐦ, (NRM.get(c, c) for c in s))
+    sup,sub,nrm = (lambda s: ᒍ(ᐦ, (C.get(c, c) for c in s)) for C in MAPS)
 
 # CHAR_NRM = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ0123456789:,<>;?!+-/*=(){}[]&$%~𐞑∞"""
 # CHAR_SUP = """ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾󰁸󰁹󰁺󰁻◌◌◌˜𐞑󰂃"""

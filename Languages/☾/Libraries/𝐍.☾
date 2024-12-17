@@ -34,7 +34,7 @@
             ms = xᴍML→⤉
             ↪ 𝗻.join(x ᙡ ꟿ󰲥(O[n≔1-x≅□+z≅□]+y+(ms-ML(y))⋅𝘀+Cₙ))
         ¿¬←󱁕ᐹ𝐍: ↪ᔐ∘󱁕
-        ∅ = clc(␛∅, "RED")
+        NA = clc(␛∅, "RED")
         
         ⊢ format_e(e):
             ¿¬e: ↪ᐦ
@@ -43,7 +43,7 @@
                 ¿k≡␛T: r += ⛶clc(␛T, "GRE")
                 ¡    : r += ⛶‹⟦k⟧⟦clc(␛→, "BL")⟧⟦vᵗ⟧›
             ↪ ‹⟦clc(␛󰅁,"YEL")⟧⟦␛,.join(r)⟧⟦clc(␛󰅂,"YEL")⟧›
-        nam = (󱁕ᵗ ᴾ(✗) ¿󱁕ᵗᐹ𝐍¡ (‹⟦󱁕ᵗ⟧⟦format_e(󱁕ᵉ)⟧› ¿󱁕ᐹŃ¡ ᔐ∘󱁕ᵗ)) ∨ ∅
+        nam = (󱁕ᵗ ᴾ(✗) ¿󱁕ᵗᐹ𝐍¡ (‹⟦󱁕ᵗ⟧⟦format_e(󱁕ᵉ)⟧› ¿󱁕ᐹŃ¡ ᔐ∘󱁕ᵗ)) ∨ NA
         start = box∘nam
 
         (╴,╮), m0, m1, m2 = ‹─┬ ┬─ ├╰ │ ›⍭ᴍ²clc

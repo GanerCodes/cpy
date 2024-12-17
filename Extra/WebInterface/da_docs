@@ -215,6 +215,8 @@
 󰻾 ; identify
 ℵ ; magic namespace: iterates by pairs
 ℶ ; magic namespace: iterates by values
+∅ ; empty set
+⍁ ; empty list
 
 󰮈 ; signal delete element from iteration
 𝗙 ; check if function
@@ -225,8 +227,8 @@
 􋐴 ; tan
 􋑯 ; log
 ✓ ; true
-✗ ; false
 ⴳ ; truthy function that always returns True
+✗ ; false
 ⴴ ; falsey function that always returns False
 □ ; none
 ᐦ ; empty string
@@ -236,3 +238,5 @@
 τ ; tau
 π ; ½τ
 󷺍 ; ½π
+󷺎 ; ¼π
+󷺏 ; ⅛π
