@@ -16,6 +16,7 @@
                 overflow-wrap: anywhere;
                 text-wrap: wrap;
                 font-size: 25px;
+                line-height: 1.1333333em;
                 font-family: 'JuliaMonoCustom' !important; }
             
             ::-webkit-scrollbar-thumb {
@@ -97,28 +98,32 @@
         </div>
         
         <script type="text/javascript">
-            var py;
+            var py, hist=[""], hist_p=0;
+            const script = (x, m) => py.globals.get("SCRIPT")[m](x);
         
-            const ᔐ𝑙 = x => [...x].length; // JS moment
+            // mfw JS thinks "ℚ".length ≠ "𝕊".length
             const ᔐs = (x,...𝔸) => [...x].slice(...𝔸).join('');
+            const ᔐ𝑙 = x => [...x].length;
+            const QS  = (x, ε=document) => ε.querySelector(x);
+            const QSA = (x, ε=document) => ε.querySelectorAll(x);
         
             const ets = document.getElementById("entries");
             const cli = document.getElementById("cli_in");
             const syt = document.getElementById("symbolTable");
             
-            const p2rc = (s, 𝑝) => {
+            const p2rc = (s,   𝑝  ) => {
                 let r=0, c=0, i=0, S=[...s];
-                for(g=0; i < S.length; g+=S[i].length, i++) {
-                    if(  g  ==   𝑝 ) break;
-                    if(S[i] == '\n') { r++; c=0; continue; }
-                    c++; }
+                for(g=0; i < S.length; g+=S[i++].length) {
+                    if  (  g  ==   𝑝 ) break;
+                    if  (S[i] == '\n') r++, c=0;
+                    else                    c++; }
                 return [r,c]; };
             const rc2p = (s, [𝑟,𝑐]) => {
                 let r=0, c=0, i=0, S=[...s];
-                for(; i < S.length; i++) {
-                    if(c==𝑐 && r==𝑟) break;
-                    if(S[i] == '\n') { r++; c=0; continue; }
-                    c++; }
+                for(   ; i < S.length;      i++) {
+                    if  (c==𝑐 && r==𝑟) break;
+                    if  (S[i] == '\n') r++, c=0;
+                    else                    c++; }
                 return S.slice(0,i).join('').length; };
             const sel_p  = ε => [ε.selectionStart, ε.selectionEnd];
             const sel_rc = ε => sel_p(ε).map(x => p2rc(ε.value, x));
@@ -156,7 +161,6 @@
                 ε.setSelectionRange(pα, pω); };
             const enter_preserve_indent = (ε) => {
                 const L = ε.value.split('\n');
-                console.log(sel_rc(cli));
                 let [[Rα, Cα], [_, __]] = sel_rc(cli);
                 const [α,β] = [ᔐs(L[Rα], 0, Cα), ᔐs(L[Rα], Cα)];
                 const ind = α.match(/^ */)[0];
@@ -176,7 +180,8 @@
                         if(γ.innerText) ε.appendChild(γ); }
                     return ε; };
                 return 𝑓(...("[0m"+s).replace(/\x1b\[(38|48);2;([0-9]{0,3});([0-9]{0,3});([0-9]{0,3})m/gm,
-                                               (_,t,r,g,b)=>"\x1b\x1c"+`${t=="38"?"color":"background-color"}:#${(256*(256*Number(r)+Number(g))+Number(b)).toString(16).padStart(6, '0')}\x1b`)
+                                               (_,t,r,g,b)=>"\x1b\x1c"+`${t=="38"?"color":"background-color"}:#${
+                                                    (256*(256*Number(r)+Number(g))+Number(b)).toString(16).padStart(6, '0')}\x1b`)
                                       .replace(/\033\[0m/gm,
                                                "\x1b\x1c"+"color:#fff;background-color:#000\x1b")
                                       .split("\x1b")); };
@@ -190,7 +195,9 @@
                 setTimeout(_ => { cli.scrollIntoView(); cli.focus(); }, 25);
                 return x; }
             
-            const auto_grow = ε => ε.style.minHeight = `${Math.max(5, ε.scrollHeight)}px`;
+            const auto_grow = ε => (ε.style.minHeight = "1em",
+                                    ε.style.minHeight = `${Math.max(5, ε.scrollHeight)}px`,
+                                    ε.scrollIntoViewIfNeeded());
             
             const load_python = async _ => {
                 log("Loading WASM Python…");
@@ -209,13 +216,17 @@
                 await py.runPythonAsync(`
                     from refresher import run_moon
                     from util import SCRIPT
-                    𝑓 = run_moon(["--code_cache_dir=/tmp/cpy_wasm_cache/code",
-                                  "--gram_cache_dir=/tmp/cpy_wasm_cache/gram"],
-                                  extract_interactive=True)
-                    𝑓("⨡ sys ; 󰆴 sys.excepthook")
+                    𝑓, 𝑐 = run_moon(["--code_cache_dir=/tmp/cpy_wasm_cache/code",
+                                     "--gram_cache_dir=/tmp/cpy_wasm_cache/gram"],
+                                     extract_interactive=True)
+                    𝑐("""
+                    󰆴 __header_namespace__["__error_printer__"]
+                    󰆴         __builtins__["__error_printer__"]""")
                     print("☾ Ready!")
-                    print("alt+<w/s/x>\tSuperscript/subscript/normalizes selection")
-                    print("ctrl+enter \tRun multiline code") `); };
+                    print("ctrl + <enter> 󷺄 Run multiline code")
+                    print("alt  + <↑/↓>   󷺄 Cycle history")
+                    print("alt  + <l>     󷺄 Clear screen")
+                    print("alt  + <w/s/x> 󷺄 Superscript/subscript/normalize selection")`); };
             
             (async _ => {
                 log("Loading Symbol Table…");
@@ -224,49 +235,64 @@
                     const ε = reformt(k);
                     ε.title = v[0];
                     syt.appendChild(ε);
-                    ε.onclick = _ => caret_write(cli, ε.querySelector("text:not(:has(> *))").innerText); });
+                    ε.onclick = _ => caret_write(cli, QS("text:not(:has(> *))", ε).innerText); });
                 log("Loaded Symbol Table");
                 await load_python(); })();
                 
-            const script = (x, m) => py.globals.get("SCRIPT")[m](x);
-            
             const ə = e => (e.preventDefault(), auto_grow(cli));
             cli.addEventListener("keydown", async e => {
                 const [[Rα, Cα], [Rω, Cω]] = sel_rc(cli);
                 let val = cli.value;
+                
+                𝕒:if(e.altKey || !val) {
+                    switch(e.keyCode) {
+                        case 38: hist_p=Math.max(hist_p-1,             0); break  ;
+                        case 40: hist_p=Math.min(hist_p+1, hist.length-1); break  ;
+                        default:                                           break 𝕒; }
+                    return cli.value = hist[hist_p], ə(e); }
+                hist[hist_p = hist.length-1] = cli.value;
+                
                 if(e.key != "Enter") {
-                    if(event.ctrlKey) {
-                        switch(event.key) {
+                    if(e.ctrlKey) {
+                        switch(e.key) {
                             case '[': indent(cli, -1); break;
                             case ']': indent(cli,  1); break;
                             default : return; }
                         return ə(e); }
-                    if(event.altKey) {
-                        switch(event.key) {
+                    if(e.altKey) {
+                        switch(e.key) {
+                            case 'l': QSA("div", ets).forEach(x => x.remove()); break;
                             case 'w': replace_selection(cli, x=>script(x, "sup")); break;
                             case 's': replace_selection(cli, x=>script(x, "sub")); break;
                             case 'x': replace_selection(cli, x=>script(x, "nrm")); break;
                             default : return; }
                         return ə(e); }
-                    if(event.keyCode == 9) {
-                        if     (event.shiftKey) indent(cli, -1);
-                        else if(Rα == Rω      ) caret_write(cli, "    ");
-                        else                    indent(cli,  1);
+                    if(e.keyCode == 9) {
+                        if     (e.shiftKey) indent(cli, -1);
+                        else if(Rα == Rω  ) caret_write(cli, "    ");
+                        else                indent(cli,  1);
                         return ə(e); }
                     return; }
-                const bksp = ε => ε.dispatchEvent(
-                    new KeyboardEvent('keydown', {
-                        key: 'Backspace',
-                        code: 'Backspace',
-                        cancelable: false }));
-                if(!e.ctrlKey && (e.shiftKey || val.includes('\n')))
-                    return (Rα!=Rω||Cα!=Cω) && bksp(cli), enter_preserve_indent(cli), ə(e);
-                cli.value = '', cli.style.minHeight = "1.1em";
+                
+                if(!e.ctrlKey && (e.shiftKey || val.includes('\n'))) {
+                    const bksp = ε => ε.dispatchEvent(
+                        new KeyboardEvent('keydown', {
+                            key: 'Backspace',
+                            code: 'Backspace',
+                            cancelable: false }));
+                    if(Rα!=Rω || Cα!=Cω) bksp(cli);
+                    enter_preserve_indent(cli);
+                    return ə(e); }
+                
                 log(val);
+                hist[  hist_p] = val;
+                hist[++hist_p] = "";
+                
+                cli.value = '', cli.style.minHeight = "1.1em";
                 try {
                     py.runPython(`
                         try:
-                            𝑓("${val.replaceAll(/[\\"\n]/g, x=>({"\\":"\\\\","\n":"\\n",'\"':"\\"}[x]))}")
+                            𝑓("${val.replaceAll(/[\\"\n]/g, x=>({"\\":"\\\\","\n":"\\n",'"':'\\"'}[x]))}")
                         except Exception as e:
                             print("Error:", e)`);
                 } catch(e) { log(`Pyodide error! ${e}`); }

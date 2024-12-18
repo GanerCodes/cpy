@@ -142,17 +142,11 @@ class UPSIDEDOWNSYNDROME:
 class SCRIPT:
     SCRIPT_FILE_LOC = f"{cpy_dir}/FontCompose/.SCRIPT_MAP"
     with open(SCRIPT_FILE_LOC) as f:
-        CH = f.read().strip().split('\n')
-    CHAR_NRM,CHAR_SUP,CHAR_SUB = CH
-    MAPS = SUP,SUB,NRM = {}, {}, {}
-    for n,p,b in ζ(*CH):
-        SUP[n], SUB[n] = p, b
-        NRM[b] = NRM[p] = n
-    sup,sub,nrm = (lambda s: ᒍ(ᐦ, (C.get(c, c) for c in s)) for C in MAPS)
-
-# CHAR_NRM = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZαβγδεζηθϑικλμνξπρςστυφχψω∂ϕΓΔ∇ΘΞΠΣΦΨΩ0123456789:,<>;?!+-/*=(){}[]&$%~𐞑∞"""
-# CHAR_SUP = """ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋⁰¹²³⁴⁵⁶⁷⁸⁹◌󰁱󰂂󰂁󰁲◌ꜝ⁺⁻ᐟ⁼⁽⁾󰁸󰁹󰁺󰁻◌◌◌˜𐞑󰂃"""
-# CHAR_SUB = """ₐₑₕᵢⱼₖₗₘₙ󰂼ₚᵣₛₜᵤᵥₓ󰂓󰂔󰂕󰂖󰂗󰂘󰂙󰂚󰂛󰂜󰂝󰂞󰂟󰂠󰂡󰂢󰂣󰂤󰂥󰂦󰂧󰂨󰂩󰂪󰂫󰂬󰃤󰃥󰃦󰃧󰃨󰃩󰃪󰃫◌󰃬󰃭󰃮󰃯󰃰󰃱󰃳󰃴󰃵󰃶󰃷󰃸󰃹󰃺󰃻󰃼◌◌󰃎󰃏◌󰃓󰃙󰃛󰃝󰃠󰃢󰃣₀₁₂₃₄₅₆₇₈₉﹕󰄎󰄟󰄞󰄏﹖◌₊₋⸝₌₍₎󰄕󰄖󰄗󰄘﹠﹩﹪◌◌"""
+        CHAR_NRM,CHAR_SUP,CHAR_SUB = f.read().strip().split(ń)
+    SUP = ᔐ.maketrans(CHAR_NRM, CHAR_SUP)
+    SUB = ᔐ.maketrans(CHAR_NRM, CHAR_SUB)
+    NRM = ᔐ.maketrans(CHAR_SUP+CHAR_SUB, CHAR_NRM*2)
+    sup,sub,nrm = (lambda s, T=T: s.translate(T) for T in (SUP,SUB,NRM))
 
 def parse_sysargs(𝐴, **𝕂):
     𝐴, alias = 𝐴.copy(), {}
@@ -183,7 +177,6 @@ def parse_sysargs(𝐴, **𝕂):
             𝕂[t] = e[0]
         elif ᐹ(v, int):
             assert ⵌ(e) <= 1, f'0 or 1 values accepted for "{t}"'
-            assert not e or e[0].isdigit(), f'Value 2 must be int for "{t}"'
             𝕂[t] = v + int(e[0] if e else 1)
         else:
             assert ⴴ

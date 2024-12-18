@@ -81,7 +81,9 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
     else:
         hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
         hns.setdefault("__file__", header_f)
+        hns.setdefault("__code_post_process__", 𝕂.get("code_post_process"))
         run_inj_tb(compiler("☾", R(header_f), do_cache, **𝕂), hns)
+        
         hns["__header_namespace__"] = hns
         hns["__code_cache_dir__"] = code_cache_dir
         hns["__gram_cache_dir__"] = gram_cache_dir
@@ -93,7 +95,7 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
 
 def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ,
                                   sanity=ⴳ, interactive_defaults=ᗜ, **𝕂):
-    if sanity:
+    if sanity and "code_post_process" not in 𝕂:
         𝕂["code_post_process"] = py_reparse
         𝕂["code_post_process"].ver = "basic_py_reparse"
     compiler, ns = basic_cpy_session(do_cache, **𝕂)
@@ -145,10 +147,8 @@ debug_test_exit = lambda x, **𝕂: cpy_test(x, exit=ⴳ, **𝕂)
 
 def cpy_get_custom_func(t, d):
     def 𝑓(ns):
-        if k := ns.get(t):
-            return k
-        if n := ns.get("__builtins__"):
-            return n.get(t, d)
+        if k := ns.get(t)             : return k
+        if n := ns.get("__builtins__"): return n.get(t, d)
         return d
     return 𝑓
 
@@ -164,7 +164,7 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
 
 def run_moon(𝔸, extract_interactive=ⴴ):
     𝔸_copy = 𝔸.copy()
-    𝔸, 𝕂 = parse_sysargs(𝔸, verbose=0, debug=0, no_cache=0,
+    𝔸, 𝕂 = parse_sysargs(𝔸, verbose=0, debug=0, no_cache=0, sanity=1,
                          code_cache_dir=(ᐦ, CODE_CACHE_DIR),
                          gram_cache_dir=(ᐦ, GRAM_CACHE_DIR))
     if 𝕂.debug: print(f"{𝔸=}\n{𝕂=}")
@@ -218,7 +218,7 @@ def run_moon(𝔸, extract_interactive=ⴴ):
                 os.system("clear")
                 return
         run_custom_errors(lambda: print(f"{ret}{cpy(c, cap_stdout=ⴴ)}"), ns)
-    if extract_interactive: return 𝑓
+    if extract_interactive: return 𝑓, cpy
     
     cc_count = 0
     while ⴳ:

@@ -1,6 +1,7 @@
-Check if palindrome       ; `𝕩ᑀᴙ≡⟞`
-Check if int palindrome   ; `𝕩⥉󷺹ᴙ≡⟞ᐸ○ᔐ`
-n-dim hypot               ; `𝕩ᑀᐵ²ᐸ⨁⥉√`
-val count map             ; `𝕩󰻾ꟿⱽ󷺻🃌󷺽`
-digits of base-𝕪 𝕩 to int ; `𝕩ſ⁰󷺹⋅𝕪+󷺽`
-Subgroup of Sⁿ            ; `𝕩ᑀ⥉🟕ᐳ⟞󷸻ᵜ󷺽`
+Check if palindrome       ; 𝕩ᑀᴙ≡⟞
+Check if int palindrome   ; 𝕩⥉󷺹ᴙ≡⟞ᐸ○ᔐ
+n-dim hypot               ; 𝕩ᑀᐵ²ᐸ⨁⥉√
+n-dim hypot but golf      ; 𝕩ᴍ√􊽲⨁⥉√
+val count map             ; 𝕩󰻾ꟿⱽ󷺻🃌󷺽
+digits of base-𝕪 𝕩 to int ; 𝕩ſ⁰󷺹⋅𝕪+󷺽
+Generate subgroup of Sₙ   ; 𝕩ᑀ⥉🟕ᐳ⟞󷸻ᵜ󷺽

@@ -681,11 +681,12 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
     interactive_𝕂=□, no_isolate=✗,
     no_isolate_ƒ=󰲡exec(x,globals()), ⠶𝕂):  󱠨(x, return_code=✓)
     
+    𝓘𝓚 = {"code_post_process": __code_post_process__}|(interactive_𝕂 ∨ {})
     ⮌ refresher ⨡ basic_cpy_interactive_session
     cpy = basic_cpy_interactive_session(
-        print_output=✓, ns=ns, fname="cpy_󱠨" ¿fname≅□¡ fname,
+        print_output=✓, ns=ns, fname=fname≅□ ⭜"cpy_󱠨"⭝ fname,
         code_cache_dir=__code_cache_dir__, gram_cache_dir=__gram_cache_dir__,
-        header_carry=__header_namespace__, ⠶interactive_𝕂∨{})
+        header_carry=__header_namespace__, ⠶𝓘𝓚)
     ¿no_isolate: # absolutely beaned
         ¬get_ns ∧ ns≅□ ∧ fname≅□ ⨳
         c = cpy(c, ⠤𝔸, return_code=✓, ⠶𝕂)☾
