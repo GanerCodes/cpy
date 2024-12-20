@@ -7,7 +7,6 @@
 ⇥ ; Python "break"
 ➰ ; Python "while"
 ∀ ; Python "for"
-@ ; Python "@"
 ⠤ ; Python "*" (For vargs)
 ⠶ ; Python "**" (For kargs)
 ¿ ; Python "if"

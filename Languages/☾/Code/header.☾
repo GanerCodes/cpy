@@ -421,13 +421,20 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 ↨´,⭥´ = 󰲡𝑙←enumerate←x, 󰲡𝑙←range(xᐹ𝑖⭜x⭝x🃌)
 ⬓´,⬒´ = floor, ceil
 󷸛´,󷸚´,󷸜´ = 󰲡x.real, 󰲡x.imag, 󰲡(x.real, x.imag)  󰤱
-󷹝´ = OPWRAP_←⥌x=␀,s=␀↦xᐹ𝑖 ⭜chr(x)⭝ xᐹᔐ∧(x🃌≡1∧s≠␛L) ⭜ord(x)⭝ (xᴍ󷹝) ᣆˣ􊿥􊾗􋇖 ⨝
-󷹜´ = OPWRAP_←⥌x=␀,y=␀,s=␀↦ y≔(y≇␀⭜y⭝s≇␀⭜s⭝10) ␛
-                          →► (xᐹᔐ⭜𝑖(x,y)⭝(ℵ􋋖􋄓􋄷􊿑􋐎􊿒(2⋄10⋄8⋄16󱑼bin⋄(ᐳ"00"+󷺽○ᔐ)⋄oct⋄hex)(x)₂﹕))󰅂
 󷹄´ = OPWRAP_←⥌x,y,s=␀↦(R≔s↦x⤉s⤈y)►(s≅␀⭜R⭝R(s))
 ⍉´ = 𝑐𝑑(󰲡x󱑼, 𝑔=󰲡y↦y󱑼ˣ)
 ⪢´ = OPWRAP_(⥌x,y=1↦xᐹ𝑙|𝑡 ⭜x∧←x􍈼﹪􊹳ₓ􍪪ᵢ﹕+x﹕ᵢ⭝ x >> y)
 ⪡´ = OPWRAP_(⥌x,y=1↦xᐹ𝑙|𝑡 ⭜x∧←x ⪢ ¯y       ⭝ x << y)
+
+󷹝´ = OPWRAP_←⥌x=␀,s=␀↦xᐹ𝑖 ⭜chr(x)⭝ xᐹᔐ∧(x🃌≡1∧s≠␛L) ⭜ord(x)⭝ (xᴍ󷹝) ᣆˣ􊿥􊾗􋇖 ⨝
+@OPWRAP_
+⊢ 󷹜´(x=␀,y=␀,s=␀):
+    y≅␀ ⭜ y≔1
+    s≅␀ ⭜ s≔10
+    ¿xᐹᔐ: ↪𝑖(x,y)
+    ℕ𝓑 = 󷺻 󷺹⹏🃌⟝ᐸ⍟¬∘⟞ ᐖ⟝􍪴﹪􊹳􍪸ᐸ ᴙ ⨝ 󷺿
+    ℤ𝓑 = 󷺹<0→⋅␛-→+←ℕ𝓑(⟞⫰,⟝)󰸵􍪹􊿥𝓐₀ 󷺿
+    ↪ ℤ𝓑(x, 48󷸻57󷹝+65󷸻90󷹝→󷸹s, y)
 
 ⊢ MINMAX(𝕏, x=␀, y=␀, s=␀):
     ¿x≅␀: x,y=y,x
@@ -533,18 +540,18 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 ∅´,⍁´ = (𝚲𝑠(), 𝚲[]) ᴍ ƒ↦OPWRAP_(⥌s=␀↦s≅␀ ⭜ƒ()⭝ s⭥ᴍƒ)
 
 ⊢ TACITM(λ, m):
-    ↪ m≡1⭜󰲡xᴍλ󰅂⭝λ
+    ↪ m≡1 ⭜(⥌x,⠤𝓐,⠶𝓚↦xᴍ󰲡λ(x,⠤𝓐,⠶𝓚))⭝ λ
 ⊢ TACITB(λ, m1, m2, d=□):
-    ⊢ ƒ(l=␀, r=␀):
+    ⊢ ƒ(l=␀, r=␀, ⠤𝓐, ⠶𝓚):
         ¿l≇␀∧r≇␀: □
         ⸘l≅␀∧r≅␀: ↪ ƒ
-        ⸘d≡␛r   : ↪ ƒ(⬤,l¿r≅␀¡r)
-        ¡       : ↪ ƒ(l¿r≅␀¡r,⬤)
-        
-        ¿m1≡1≡m2: ↪ l󱑼r ꟿ  λ
-        ⸘m1≡1   : ↪ l   ᴍ 󰲡λ(x,r)
-        ⸘   1≡m2: ↪   r ᴍ 󰲡λ(l,x)
-        ¡       : ↪        λ(l,r)
+        ⸘d≡␛r   : ↪ ƒ(⬤,l¿r≅␀¡r,⠤𝓐,⠶𝓚)
+        ¡       : ↪ ƒ(l¿r≅␀¡r,⬤,⠤𝓐,⠶𝓚)
+
+        ¿m1≡1≡m2: ↪ l󱑼r ᴍ 󰲡λ(⠤x ,⠤𝓐,⠶𝓚)
+        ⸘m1≡1   : ↪ l   ᴍ 󰲡λ(x,r,⠤𝓐,⠶𝓚)
+        ⸘   1≡m2: ↪   r ᴍ 󰲡λ(l,x,⠤𝓐,⠶𝓚)
+        ¡       : ↪        λ(l,r,⠤𝓐,⠶𝓚)
     ↪ ƒ
 TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄􀸨₂􀸦₁) ⭝ TACITB(⠤x,d=d)
 ␀TACIT´   = 𝑐𝑑(𝚲✗⨳, 𝑔= TAC_)
@@ -681,11 +688,12 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
     interactive_𝕂=□, no_isolate=✗,
     no_isolate_ƒ=󰲡exec(x,globals()), ⠶𝕂):  󱠨(x, return_code=✓)
     
+    𝓘𝓚 = {"code_post_process": __code_post_process__}|(interactive_𝕂 ∨ {})
     ⮌ refresher ⨡ basic_cpy_interactive_session
     cpy = basic_cpy_interactive_session(
-        print_output=✓, ns=ns, fname="cpy_󱠨" ¿fname≅□¡ fname,
+        print_output=✓, ns=ns, fname=fname≅□ ⭜"cpy_󱠨"⭝ fname,
         code_cache_dir=__code_cache_dir__, gram_cache_dir=__gram_cache_dir__,
-        header_carry=__header_namespace__, ⠶interactive_𝕂∨{})
+        header_carry=__header_namespace__, ⠶𝓘𝓚)
     ¿no_isolate: # absolutely beaned
         ¬get_ns ∧ ns≅□ ∧ fname≅□ ⨳
         c = cpy(c, ⠤𝔸, return_code=✓, ⠶𝕂)☾

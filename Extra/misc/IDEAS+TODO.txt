@@ -1,14 +1,14 @@
 § TODOs ------------------------------------
-    󰤱  website breaks constantly
+
     󰤱  bootstrap everything
     󰤱  ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
+        󰤱 ver ⓦ like [ᴙ arrow ⓦ 2x out arrows @ angles] that returns old val?
     󰤱  Web/phone-app maker
     󰤱  Way to detect imports implicitly
     󰤱  normalize binds/stuff for edits/cross-plat
         󰤱 SCRIPT_MAP hardcoded in moonvert rn
     󰤱  regex but better
     󰤱  add the edge cases for the new compose ops
-    󰤱  fix symbols ᐸᐳ󷹎󷹍󷹌
     󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞
     󰤱  Ponder shape ⥊ operator
     󰤱  Better ☾
