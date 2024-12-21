@@ -1,8 +1,6 @@
 § TODOs ------------------------------------
 
     󰤱  bootstrap everything
-    󰤱  ≔/≕ with arrow (new glyphs) to generalize <op>=, i.e. v≔→🃌, v≔→+2
-        󰤱 ver ⓦ like [ᴙ arrow ⓦ 2x out arrows @ angles] that returns old val?
     󰤱  Web/phone-app maker
     󰤱  Way to detect imports implicitly
     󰤱  normalize binds/stuff for edits/cross-plat

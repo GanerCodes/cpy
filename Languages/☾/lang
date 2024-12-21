@@ -28,14 +28,15 @@ mdt = lambda y  : ᖱ(ᴍ(ⵐ,ⵉ(x,ś,1)) for x in sst(y))
 inv = lambda z  : {y:x for x,y in z.items()}
 rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
-NUM_M2, NUM_M1, NUM_P0, NUM_P1 = (Node("number", ᔐ(x)) for x in range(-2,2))
+NUM_M3, NUM_M2, NUM_M1, NUM_P0, NUM_P1 = (Node("number", ᔐ(x)) for x in range(-3,2))
 COMMA, COLON, EQCLN = (Node("oper_lit", x) for x in ⵉ(", : :=", ś))
 ARG_A = mkexp(("oper_lit", "⠤"), mkvar('𝔸'))
 ARG_K = mkexp(("oper_lit", "⠶"), mkvar('𝕂'))
 TACTACK_L, TACTACK_R = mkvar('⟞'), mkvar('⟝')
 TRUE, FALSE = mkvar("True"), mkvar("False")
 þPSH, þPOP = mkvar("þPSH"), mkvar("þPOP")
-þPOP_M2, þPOP_M1 = fcall_(þPOP, NUM_M2), fcall_(þPOP, NUM_M1)
+þPOP_M3, þPOP_M2, þPOP_M1 = fcall_(þPOP, NUM_M3), fcall_(þPOP, NUM_M2), fcall_(þPOP, NUM_M1)
+
 þPOPNR = fcall_(mkvar("þPOPNR"))
 þþ = mkvar("þþ") # sus
 
@@ -79,7 +80,10 @@ register("var_spec", var_spec)
 
 IG = {'.'}
 sel = [(v.t+'=', v) for v in lang.ops.values() if v.B and 'δ' not in v] \
-    + [(":=", lang.ops['≔']), ('≔', lang.ops.pop('≔'))]
+    + [(":=", lang.ops['≔']), ('≔', lang.ops.pop('≔')),
+       (":=", lang.ops['󷸉']), ('󷸉', lang.ops.pop('󷸉')),
+       (":=", lang.ops['󷸊']), ('󷸊', lang.ops.pop('󷸊')),
+       (":=", lang.ops['󷸋']), ('󷸋', lang.ops.pop('󷸋'))]
 new_ops = {}
 for k, v in sel:
     new_ops[k] = OP(k, "B=", IG, lang.ops["␀ASGN_MRK_R"].R, v.f)
@@ -88,6 +92,9 @@ for k, v in lang.ops.items():
     if k in IG: continue
     v.R |= set(new_ops)
 lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
+lang.ops["󷸎"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
+lang.ops["󷸌"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
+lang.ops["󷸍"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 
 # janky? we need test cases broooo
 lang.ops["⬅"].R |= {"→", "⭢"}
@@ -103,7 +110,8 @@ lang.ops["←"].R |= {"⭢"}
 ⭝ᴺᴮᴵ󰁜 ␉ ⭜ᴮᴵ󰁜
 ␀ARW_2ᴵᴮ
 ¡ᴮᴵ󰁜 ␉ ⸘ᴺᴾ󰁔 ¿ᴺᴮᴵ󰁜
-␀ASGN_MRK_Lᴮ ≔ᴮ󰁜 ␀ASGN_MRK_Rᴮ ≕ᴮ󰁜
+␀ASGN_MRK_Lᴮ ≔ᴮ󰁜 󷸉ᴮ󰁜 󷸊ᴮ󰁜 󷸋ᴮ󰁜 ␀ASGN_MRK_Rᴮ ␛
+             ≕ᴮ󰁜 󷸎ᴮ󰁜 󷸌ᴮ󰁜 󷸍ᴮ󰁜
 ␀ARW_3ᴵᴮ
 ⨳ᴮᴾ󰀒ᴺ
 ∨ᴮᴺ ⩔ᴮᴺ 󷺥ᴮᴺ 󷺫ᴮᴺ 󷺤ᴮᴺ 󷺦ᴮᴺ
@@ -372,7 +380,7 @@ def σ_15():
     @(yield replacement("lamb_h_normal", "lamb_h_py"))
     def _(n):
         C = ᴍ(Node.strip,
-              ᴍs(mkexp,
+              ꟿ(mkexp,
                  split_at(
                     n.C,
                     lambda x: OP.is_op(x) and (k:=op_man[x]).t == ',')))
@@ -415,6 +423,23 @@ def σ_18():
         cc.append(α)
         return n.copy(c=cc)
 
+def σ_19():
+    @(yield replacement("expr", rec='B', n="Add dummy variables"))
+    def _(n):
+        c, i = n.c, 0
+        while i < len(c):
+            x = c[i]
+            if x.t == "oper":
+                txt = x.c[1].as_txt()
+                if   txt in "󷸊󷸋": c[i+1:i+1] = [mkvar("␀DUM")]
+                elif txt in "󷸌󷸍": c[i  :i  ] = [mkvar("␀DUM")]
+                else:
+                    i += 1
+                    continue
+                i += 1
+            i += 1
+        return n
+
 def σ_20():
     ((yield replacement("expr", rec='B', n="Parse expressions"))
     (lambda n: n.copy(c=into_expr(parse_expr(n.C)).c)))
@@ -428,7 +453,7 @@ def σ_21():
                 return '.', l, t[0]
             if α.t == "op_call":
                 assert α.C[1].as_txt() == '.'
-                l = l + [*α.C[0], '.', *α.C[2]]
+                l.extend([*α.C[0], '.', *α.C[2]])
                 continue
             if α.t == "group" and (α.C[0].as_txt(), α.C[2].as_txt()) == ('[', ']'):
                 return 'l', l, α.C[1]
@@ -436,36 +461,62 @@ def σ_21():
         assert ⵌ(t) == 1
         return ᐦ, ᗜ, t[0]
 
+    # x󷸊🃌 ⟶ ►(GI(x↑,y↑)↑, SI(↓􍧞,↓􍧰,🃌↓))
+    # 🃌󷸌x ⟶ ►(GI(x↑,y↑)↑, SI(↓􍧞,↓􍧰,↓🃌))
+    # x󷸋🃌 ⟶ ◄(GI(x↑,y↑)↑, SI(↓􍧞,↓􍧰,🃌↓))
+    # 🃌󷸍x ⟶ ◄(GI(x↑,y↑)↑, SI(↓􍧞,↓􍧰,↓🃌))
+    
     def make_inline_asgn(α, Σ, β): # optimization: pull out some constant nodes
-        τ, κ, χ = split_target(α.C)
+        # 󰤱􊽨 ≕ and stuff should do eval b4 var ref?
+        (τ, κ, χ), σ = split_target(α.C), Σ.as_txt()
+        if τ:
+            ρ = "ATTR" if τ == '.' else "ITEM"
+            κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
+            χ = mkgxp(("str_", f'"{py_escape_var(χ.as_txt())}"') if ρ == "ATTR" else χ)
+            ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
         
-        if τ == ᐦ: return \
-            mkgrp(mknex_(χ, mkgxp(isinstance(Σ, Node) and ("op_call", mkexp(χ), Σ, β) or β)))
+        # https://ganer.xyz/s/b92fe70c1a9eb090 https://ganer.xyz/s/584893fc23aafb70
+        if σ in "󷸊󷸋󷸌󷸍":
+            outer = mkvar("RET_"+('L' if σ in "󷸋󷸍" else 'R'))
+            find_dum = lambda n: n.t == "var" and n.as_txt() == "␀DUM"
+            if τ:
+                larg = fcall_(þPSH, fcall_(GT, fcall_(þPSH, κ), fcall_(þPSH, χ)))
+                rarg = fcall_(ST, þPOP_M3, þPOP_M2, β.find_replace(find_dum, lambda n: þPOP_M1), NUM_P0)
+                return fcall_(outer, larg, rarg)
+            v = mkgrp(mknex_(χ, mkgxp(β.find_replace(find_dum, lambda n: χ))))
+            return fcall_(outer, χ, v) if σ in "󷸋󷸍" else v
+        if σ in "󷸉󷸎": # https://ganer.xyz/s/bd0de51c7f02dac6
+            if not τ:
+                larg = fcall_(ST, þPOP_M3, þPOP_M2, β, NUM_P0)
+                rarg = fcall_(þPSH, fcall_(GT, fcall_(þPSH, κ), fcall_(þPSH, χ)))
+                return fcall_(mkvar("RET_L"), larg, rarg)
+            return fcall_(ST, κ, χ, β, NUM_P0)
         
-        ρ = τ == '.' and "ATTR" or "ITEM"
-        κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
-        χ = mkgxp(("str_", f'"{py_escape_var(χ.as_txt())}"') if ρ=="ATTR" else χ)
+        if not τ:
+            v = β if σ in {*"≔≕", ":="} else ("op_call", mkexp(χ), Σ, β)
+            return mkgrp(mknex_(χ, mkgxp(v)))
         
-        ST, GT = mkvar("SET"+ρ), mkvar("GET"+ρ)
-        if Σ == '≔': return fcall_(ST, κ, χ, β, NUM_P0)
-        if Σ == "≕": return fcall_(ST, β, κ, χ, NUM_P1)
-        
-        return fcall_(ST,
+        if σ in {*"≔≕", ":="}:
+            return fcall_(ST, κ, χ, β, NUM_P0)
+
+        return fcall_(ST, # +=, ſ=, etc…
             fcall_(þPSH, κ),
             fcall_(þPSH, χ),
             Node("op_call", [
                 fcall_(GT, þPOP_M2, þPOP_M1), Σ, β]),
             NUM_P0)
+        
     
     @(yield replacement("op_call", rec='A', n="Refactor assignment infix opertators"))
     def _(n):
         α, Σ, β = n.C
-        if Σ.c[0].as_txt() or Σ.c[2].as_txt(): return n
-        txt = Σ.as_txt()
-        if txt == '≔' or txt == ':=': return make_inline_asgn(α, '≔', β)
-        if txt == '≕'               : return make_inline_asgn(β, '≕', α)
-        if '=' not in lang.ops[txt] : return n
-        Σ = OP.TND(txt[:-1])
+        if Σ.c[0].as_txt() or Σ.c[2].as_txt(): return n # 󰤱 allow mods
+        
+        σ = Σ.as_txt()
+        if σ in {*"≔󷸊󷸋", ":="}: return make_inline_asgn(α, Σ, β)
+        if σ in {*"≕󷸌󷸍"      }: return make_inline_asgn(β, Σ, α)
+        if '=' not in lang.ops[σ]: return n
+        Σ = OP.TND(σ[:-1])
         return make_inline_asgn(α, Σ, β)
 
 def σ_25():
@@ -530,7 +581,7 @@ def transform_oper(op_): # apply modifiers to op
             rmods += m
     if rmods:
         o = set() if 'χ' in op_man[op_] else ascii_uppercase
-        rmods = ᒍ(',', (f'"{x}"' if FS(x).issubset(o) else lang(x) \
+        rmods = ᒍ(',', (f'"{x}"' if frozenset(x).issubset(o) else lang(x) \
                     for x in SCRIPT.nrm(rmods).split('𐞑')))
         op_n = mkexp(op_n, Node("expr_", f'[{rmods}]'))
     return op_n
@@ -565,9 +616,9 @@ def σ_35():
             if 'ρ' in op:
                 if t in '➡→⭢'           : return L
                 if t in '⬅←⭠'           : return R
+                if t in '≔󷸉'            : return mkgxp(l, op_l, R)
+                if t in '≕󷸎'            : return mkgxp(l, op_l, R)
                 if t == '⥉'             : return mkgxp(R, L)
-                if t == '≔'             : return mkgxp(l, op_l, R)
-                if t == '≕'             : return mkgxp(l, op_l, R)
                 if t == '¬' and (L or R): return mkgxp(op_l, L or R)
         if t in '⭜¿'            : return make_if(t, l, r, m_l, m_r)
         if t in '⭝¡'            : return make_el(t, l, r, m_l, m_r)

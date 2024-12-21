@@ -85,6 +85,7 @@ class Lang:
         return op_norm, op_spec
     
     def parse_lang(𝕊, raw):
+        spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
         sections = spl_H(raw, r"«{3,}([^»]*)»{3,}")
         
         op_norm, op_spec = 𝕊.parse_secs(sections['OPERATORS'])

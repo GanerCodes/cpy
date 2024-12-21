@@ -6,8 +6,55 @@
 ⮌ op ⨡ OP
 󰋺(␛𝐍, *) ; 󰋺("peggle2", *)
 
+ rgx_rans = 󷺹󰒼(𝜶≔󷹝○󷸺)ᙡ􋂝ꜝᐵᴍ𝜶≕h→⨁≡3h₀+3 ⭜␛-⭝ ⟞₁ᐸſ󷺹+⟝⋅←⟞􍨄≠⟝􍨄󷺿
+ terrible code that looks even worse b/c ive optimized it a bunch
+ch1, ch2 = ‹𝗻\^$.|?*+()[]{}›, ‹\]-›
+ST = 0x10FF50
+CF≔(CT≔ℵ(ch1+ch2→ᚤ→↨ꟿ∾󷺹⋄←󷹝←        ST+󷺽)) ᴍᴰ ᴙ
+IF≔(IT≔ℵ(ch1+ch2→ᚤ→↨ꟿ∾󷺹⋄←󷹝←    🃌CF+ST+󷺽)) ᴍᴰ ᴙ
+OF≔(OT≔ℵ(ch1    →ᚤ→↨ꟿ∾󷺹⋄←󷹝←🃌IF+🃌CF+ST+󷺽)) ᴍᴰ ᴙ
+CT, IT, OT = CT⋄IT⋄OT ᐵꟿᴷ󰲣x󷹝
+CF, IF, OF = CF⋄IF⋄OF ᐵꟿᴷ󰲣x󷹝
+ch2ᐖIF􍴖󰂛󰂦􍶢􍫆≔␛\+⟞
+OF = OFꟿⱽ󰲣␛\+y
+DASH = CT􍴖􊯛₋
+BL,BR = CT􍴖􊯛󰄗, CT􍴖􊯛󰄘
+PL,PR = CT􍴖􊯛₍, CT􍴖􊯛₎
+Q,BAR = CT􍴖􊯛﹖, CT􍴖􊯛􋕠
+⊢ rgx_rans(x):
+    x 󰒼= 𝜶≔󰲡ord(x₀)
+    r = []
+    ∀⟞ ∈ xᙡ􋂝ꜝ:
+        h = ⟞ᴍ𝜶
+        r.append(h₀+h₁+h₂≡3h₀+3 ⭜DASH⭝ ⟞₁)
+    r ſ= 󰲣x+y⋅←y􍨄≠x􍨄
+    ↪ r.translate(IT)
+⮌functools⨡cache
+⊢ rgx_golfatron(𝕏):
+    @cache
+    ⊢ 𝼝(x):
+        t, χ = xᴮ
+        ↪ χ󰲡x₀󰅂⥉ℵ→ꟿ󰲣x, 𝼝(H≔𝑡(yᴍ󰲡x₁﹕)), ᐦ∈H∧H⋁⭜1⭝0󰅂
+    ⊢ ϙ(x):
+        s, m = x ᴮ 󰲡len(x)≠1
+        mᴍ=󰲡ᐦ.join(x.translate(OT))
+        ¿s≔ᐦ.join(s): m.append(s🃌≡1 ⭜s.translate(OT)⭝ BL+rgx_rans(s)+BR)
+        ↪ m
+    ⊢ ŧ(x):
+        α,β,γ=x
+        r = α
+        ¿β∧β≔ϙ(βᴍŧ):
+            h = BAR.join(β)
+            ¿α∧len(β)>1: h = PL+h+PR
+            r += h
+        ↪ γ∧α ⭜r+Q⭝ r
+    𝕏 = 𝼝(𝑡(sorted(𝕏,key=󰲡¯len(x),x󰅂)))
+    ↪ ŧ((ᐦ,𝕏,✗)).translate(CF).translate(IF).translate(OF)
+
+
+
 ⊢ make_op_call(op, l, r, op_):
-    ch = n↦nᐹ𝑙 ⭜(n≅□ ⭜NULL⭝ into_expr(n))⭝ n
+    ch = n↦n≅□ ⭜NULL⭝ nᐹ𝑙 ⭜into_expr(n)⭝ n
     ↪ Ń("op_call", [ch(l), op_, ch(r)])
 
 ⊢ create_precedences(tiers, specials, ƒ=󰻾):
@@ -42,7 +89,7 @@
 
 ⊢ ƒ(𝐎):
     IG = {␛.}
-    sel = [⠤𝐎.valuesᐵᴮ∧␛δ∉⟞⭜(⟞ᵗ+␛=,⟞)⭝󰮈ᐸ, (":=", 𝐎􊯛􊮝), (␛≔, 𝐎.pop(␛≔))]
+    sel = [⠤𝐎.values ᐵᴮ∧␛δ∉⟞ ⭜(⟞ᵗ+␛=,⟞)⭝ 󰮈ᐸ, (":=", 𝐎􊯛􊮝), (␛≔, 𝐎.pop(␛≔))]
     new_ops = {}
     asn_l, asn_r = 𝐎["␀ASGN_MRK_R"]ᴸ, 𝐎["␀ASGN_MRK_R"]ᴿ
     ∀k,v∈sel:
@@ -67,20 +114,20 @@
 
 󱀘 Transpiler:
     ⊢ __init__(𝕊, gram, charsets):
-        ¿gram ᐹ ᔐ: gram = peggle2(gram)
-        
+        ¿gramᐹᔐ: gram = peggle2(gram)
         gram |= charsetsꟿᴰ󰲣(
             x ᣆᴿᴾ􋁟ˣ􍩅􋅱􋁤􋕩􋕟ᴾ􋕩 󷺹﹕􍧰,
             (␛~, 𝕊.to_or_rgx(y) ᣆᴿᴾ 󰲡‹(⟦x⟧)+›󰅂 ⥉ re.compile))
          gram.print_rules
         𝕊.gram = gram
     
-    ⊢ to_or_rgx(𝕊, s):  󰤱 fix
-        rgx_ranges = ᑀ󰒼α≔ord○󷸺→ᙡ􋂝ꜝᐵᴍα≕h→⨁≡3h₀+3⭜␛-⭝⟞₁ᐸſ󷺹+⟝⋅←⟞􍨄≠⟝􍨄ᐘ
-        𝕤,𝕞 = sᚤ→󰒼🃌→ᴮ⟥ᑀ🃌>1
-        𝕤 = ␛[+rgx_ranges(𝕤󰒼ᐖ‹\^]-›󰌷 →󰛔􍪵← ‹\\ \^ \] \-›⍭)+␛]
-        𝕞 = 𝕞 ᴍ re.escape
-        ↪ 𝕤+𝕞⟕⁰␛|
+    ⊢ to_or_rgx(𝕊, s):
+        ↪ rgx_golfatron(s)
+         rgx_ranges = ᑀ󰒼α≔ord○󷸺→ᙡ􋂝ꜝᐵᴍα≕h→⨁≡3h₀+3⭜␛-⭝⟞₁ᐸſ󷺹+⟝⋅←⟞􍨄≠⟝􍨄ᐘ
+         𝕤,𝕞 = sᚤ→󰒼🃌→ᴮ⟥ᑀ🃌>1
+         𝕤 = ␛[+rgx_ranges(𝕤󰒼ᐖ‹\^]-›󰌷 →󰛔􍪵← ‹\\ \^ \] \-›⍭)+␛]
+         𝕞 = 𝕞 ᴍ re.escape
+         ↪ 𝕤+𝕞⟕⁰␛|
     
     ⊢ __call__(𝕊, c, rule="main"):
         ↪ 𝕊.gram(c, rule)
@@ -114,28 +161,31 @@ kw_spec = 𝑠(kw 󰈳 󷺹∩lets)
 𝚝("2", "parser_main")ᴾ
  𝚝.gram.print_rules
 
+
+
+
 exit
 
 py_escape_var = py_escape_var(⬤,✓)
 
 𝚃      = 󰲡Ń(x,e=ℵ(T=✓))
-mkexp  = 𝚲Ń("expr", ⠤𝔸)
-mkstr  = 󰲡Ń("str", 𝚃(␛"), 𝚃(x), 𝚃(␛"))
-mkvar  = 󰲡Ń("var", 𝚃(x))
-mkgrp  = ⥌⠤𝔸,b="()"↦Ń("group", 𝚃(b₀), 𝔸🃌≡1⭜𝔸₀⭝𝔸, 𝚃(b₁))
-mkexp_ = 𝚲Node("expr_", 𝔸⥉𝑙)
-fcall_ = ⥌f,⠤𝔸,E=□↦mkexp_(f, mkgxp_(𝔸 ⨝ COMMA), ⠤E∨[])
-mkgxp  = mkgrp ○ mkexp
-mkgxp_ = mkgrp ○ mkexp_
-mknex_ = 󰲣mkexp_(x, EQCLN, y)
+exp  = 𝚲Ń("expr", ⠤𝔸)
+str  = 󰲡Ń("str", 𝚃(␛"), 𝚃(x), 𝚃(␛"))
+var  = 󰲡Ń("var", 𝚃(x))
+grp  = ⥌⠤𝔸,b="()"↦Ń("group", 𝚃(b₀), 𝔸🃌≡1⭜𝔸₀⭝𝔸, 𝚃(b₁))
+exp_ = 𝚲Node("expr_", 𝔸⥉𝑙)
+gxp  = grp ○ exp
+gxp_ = grp ○ exp_
+nex_ = 󰲣exp_(x, EQCLN, y)
+fcall_ = ⥌f,⠤𝔸,E=□↦exp_(f, gxp_(𝔸 ⨝ COMMA), ⠤E∨[])
 
 NUM_M2, NUM_M1, NUM_P0, NUM_P1 = 󷰿󷸻1 ᐖŃ("number", 𝚃(⟞⥉ᔐ))
 COMMA, COLON, EQCLN =      ‹, : :=›⍭ ᐖŃ("oper_lit", 𝚃(⟞))
-ARG_A = mkexp(("oper_lit", ␛⠤), mkvar(␛𝔸))
-ARG_K = mkexp(("oper_lit", ␛⠶), mkvar(␛𝕂))
-TAC_L, TAC_R, TRUE, FALSE, þPSH, þPOP, þþ = "⟞ ⟝ True False þPSH þPOP þþ"⍭ᴍmkvar
+ARG_A = exp(("oper_lit", ␛⠤), var(␛𝔸))
+ARG_K = exp(("oper_lit", ␛⠶), var(␛𝕂))
+TAC_L, TAC_R, TRUE, FALSE, þPSH, þPOP, þþ = "⟞ ⟝ True False þPSH þPOP þþ"⍭ᴍvar
 þPOP_M2, þPOP_M1 = NUM_M2⋄NUM_M1 ᐖfcall_(þPOP, ⟞)
-þPOPNR = "þPOPNR" ⥉ mkvar ⥉ fcall_
+þPOPNR = "þPOPNR" ⥉ var ⥉ fcall_
 
 kw                = kw_pfx_colon ∪ kw_pfx ∪ kw_inline
 kw_spec           = kw 󰈳 󰲡x.isalpha() ∨ x.isdigit()󰅂 ⥉ 𝑠

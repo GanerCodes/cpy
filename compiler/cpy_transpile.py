@@ -47,7 +47,7 @@ class Compiler:
         if debug_level > 0: util.ENABLE_DEBUG()
         if debug_level > 1: dynamic_parser.DEBUG = 1
         
-        lang, tΔl = 𝑤(𝕊.get_lang, lang, ⴴ, ⴴ)
+        lang, tΔl = 𝑤(𝕊.get_lang, lang, ᐦ, ᐦ)
         if test_timing: togprof()
         resl, tΔc = 𝑤(lang, code, **𝕂)
         if test_timing: togprof()

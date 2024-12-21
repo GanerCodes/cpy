@@ -9,7 +9,7 @@ from util import *
 from node import *
 from op import OP\n"""
 
-def join_nodes_flat(t, *N):
+def join_nodes_flat(t, N):
     C = []
     for n in N:
         if n.S: C.append(n)
@@ -17,11 +17,11 @@ def join_nodes_flat(t, *N):
     return Node(t, C)
 
 def into_expr(C):
-    if ᐹ(C, ᒪ): return join_nodes_flat("expr", *ᴍ(into_expr, C))
-    return Node('expr', C if ᐹ(C, ᔐ) else [C])
+    if isinstance(C, list): return join_nodes_flat("expr", map(into_expr, C))
+    return Node('expr', C if isinstance(C, str) else [C])
 
 def make_op_call(op, l, r, op_):
-    ch = lambda n: NULL if n is ᗜ else into_expr(n) if ᐹ(n, ᒪ) else n
+    ch = lambda n: NULL if n is None else into_expr(n) if isinstance(n, list) else n
     return Node("op_call", [ch(l), op_, ch(r)])
 
 class AbsoluteWrapper:
@@ -56,7 +56,7 @@ class DynamicParser:
         if m.rec and 'B' in m.rec and not N.S:
             N.c = 𝕊.lang_tree_manip(Node('∅', N.c), order).c
         N = m(N)
-        if ᐹ(N, ᒪ):
+        if isinstance(N, list):
             N = Node('∅', N)
             if m.rec and 'A' in m.rec and not N.S:
                 return 𝕊.lang_tree_manip(N, order).c

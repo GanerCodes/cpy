@@ -164,17 +164,20 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
 
 def run_moon(𝔸, extract_interactive=ⴴ):
     𝔸_copy = 𝔸.copy()
-    𝔸, 𝕂 = parse_sysargs(𝔸, verbose=0, debug=0, no_cache=0, sanity=1,
+    𝔸, 𝕂 = parse_sysargs(𝔸, c=0, verbose=0, debug=0, no_cache=0, sanity=1,
+                         gram_test=0,
                          code_cache_dir=(ᐦ, CODE_CACHE_DIR),
                          gram_cache_dir=(ᐦ, GRAM_CACHE_DIR))
     if 𝕂.debug: print(f"{𝔸=}\n{𝕂=}")
+    
+    if 𝕂.gram_test: cpy_test(' '.join(𝔸), exit=ⴳ)
     
     cpy_kwargs = {
         "ns": (ns := {}),
         "interactive_defaults": { "global_verbose_debug": 𝕂.verbose },
         "do_cache": not 𝕂.no_cache } | 𝕂
     
-    if 𝔸:
+    if 𝔸 and not 𝕂.c:
         ns["__file__"] = f = os.path.abspath(𝔸[0])
         cpy = basic_cpy_interactive_session(**ᖱ(
                 print_code   = ⴴ,
@@ -201,6 +204,15 @@ def run_moon(𝔸, extract_interactive=ⴴ):
     
     cpy_kwargs.setdefault("interactive_defaults", {})
     cpy_kwargs["interactive_defaults"] |= { "dynamic_compile": ⴳ }
+    
+    if 𝕂.c:
+        cpy = basic_cpy_interactive_session(**ᖱ(
+              print_code   = 𝕂.debug,
+              print_output = ⴳ) | cpy_kwargs)
+        r = cpy(' '.join(𝔸))
+        r and print(r)
+        exit()
+    
     cpy = basic_cpy_interactive_session(**ᖱ(
           print_code   = 𝕂.debug,
           print_output = ⴳ) | cpy_kwargs)
