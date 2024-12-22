@@ -11,6 +11,7 @@
 from whitespace_tools import *
 from string import ascii_uppercase
 from py_naming_tools import *
+from uuid import uuid4
 py_escape_var = lambda x, f=py_escape_var: f(x, ⴳ)
 
 mkexp = lambda *X: Ń("expr", *X)
@@ -30,6 +31,7 @@ rmk = lambda z,k: {x:y for x,y in z.items() if x not in k}
 
 NUM_M3, NUM_M2, NUM_M1, NUM_P0, NUM_P1 = (Node("number", ᔐ(x)) for x in range(-3,2))
 COMMA, COLON, EQCLN = (Node("oper_lit", x) for x in ⵉ(", : :=", ś))
+COMMA_TND = OP.TND(',')
 ARG_A = mkexp(("oper_lit", "⠤"), mkvar('𝔸'))
 ARG_K = mkexp(("oper_lit", "⠶"), mkvar('𝕂'))
 TACTACK_L, TACTACK_R = mkvar('⟞'), mkvar('⟝')
@@ -281,7 +283,7 @@ def σ_00():
         if l in "󷺹󷺻󷺺󷺼": bl, l = ⴳ, l.translate(TL)
         if r in "󷺽󷺿󷺾󷻀": br, r = ⴳ, r.translate(TR)
         
-        l, r = l or (r and "ᐳ" or "ᑀ"), r or "ᐸ"
+        l, r = l or r and "ᐳ" or "ᑀ", r or "ᐸ"
         
         args, targs = [], [NUM_M1, NUM_M1]
         OP_NAME = "␀TACIT"
@@ -297,11 +299,10 @@ def σ_00():
             targs[1] = NUM_P1 if (r in "ᑈᐛ") else NUM_P0
             args.append(TACTACK_R)
         
-        COM = OP.TND(',')
-        args, targs = J́(args, COM), J́(targs, COM, l=ⴳ)
+        args, targs = J́(args, COMMA_TND), J́(targs, COMMA_TND, l=ⴳ)
         
-        if args: args.append(COM)
-        args.extend([OP.TND("⠤"), mkvar("𝓐"), COM,
+        if args: args.append(COMMA_TND)
+        args.extend([OP.TND("⠤"), mkvar("𝓐"), COMMA_TND,
                      OP.TND("⠶"), mkvar("𝓚")])
         
         return Ń("oper",
@@ -315,8 +316,7 @@ def σ_03():
     @(yield replacement(*KEYWORD_NODE_NAMES, n="Lang keywords → cpy keywords"))
     def _(n):
         txt = n.as_txt()
-        # keyword that are just ops:
-        if txt in kw_inline: return OP.TND(KEYWORDS_TO_CPY.get(txt, txt))
+        if txt in kw_inline: return OP.TND(KEYWORDS_TO_CPY.get(txt, txt)) # ← keywords tha're ops
         return n.copy(c=KEYWORDS_TO_CPY.get(txt, txt))
     
     @(yield reduction("supscript", n="Swap Superscripts"))
@@ -431,8 +431,11 @@ def σ_19():
             x = c[i]
             if x.t == "oper":
                 txt = x.c[1].as_txt()
-                if   txt in "󷸊󷸋": c[i+1:i+1] = [mkvar("␀DUM")]
-                elif txt in "󷸌󷸍": c[i  :i  ] = [mkvar("␀DUM")]
+                if txt in "󷸊󷸌󷸋󷸍":
+                    v = mkvar(t := uuid4().hex[:12])
+                    x.c[2] = Node("oper_mod_r", t)
+                    if  txt in "󷸊󷸋": c.insert(i+1, v)
+                    else           : c.insert(i  , v)
                 else:
                     i += 1
                     continue
@@ -461,6 +464,8 @@ def σ_21():
         assert ⵌ(t) == 1
         return ᐦ, ᗜ, t[0]
 
+    # x≔z ⟶ SI(x,y,z)
+    # z≕x ⟶ ►(z↑, SI(x,y,↓))
     # x󷸊🃌 ⟶ ►(GI(x↑,y↑)↑, SI(↓􍧞,↓􍧰,🃌↓))
     # 🃌󷸌x ⟶ ►(GI(x↑,y↑)↑, SI(↓􍧞,↓􍧰,↓🃌))
     # x󷸋🃌 ⟶ ◄(GI(x↑,y↑)↑, SI(↓􍧞,↓􍧰,🃌↓))
@@ -468,7 +473,7 @@ def σ_21():
     
     def make_inline_asgn(α, Σ, β): # optimization: pull out some constant nodes
         # 󰤱􊽨 ≕ and stuff should do eval b4 var ref?
-        (τ, κ, χ), σ = split_target(α.C), Σ.as_txt()
+        (τ, κ, χ), σ = split_target(α.C), Σ.C[1].as_txt()
         if τ:
             ρ = "ATTR" if τ == '.' else "ITEM"
             κ = mkgxp(*(Node("expr_", '.') if i == '.' else i for i in κ))
@@ -477,8 +482,9 @@ def σ_21():
         
         # https://ganer.xyz/s/b92fe70c1a9eb090 https://ganer.xyz/s/584893fc23aafb70
         if σ in "󷸊󷸋󷸌󷸍":
+            to_find = Σ.C[2].as_txt()
             outer = mkvar("RET_"+('L' if σ in "󷸋󷸍" else 'R'))
-            find_dum = lambda n: n.t == "var" and n.as_txt() == "␀DUM"
+            find_dum = lambda n: n.t == "var" and n.as_txt() == to_find
             if τ:
                 larg = fcall_(þPSH, fcall_(GT, fcall_(þPSH, κ), fcall_(þPSH, χ)))
                 rarg = fcall_(ST, þPOP_M3, þPOP_M2, β.find_replace(find_dum, lambda n: þPOP_M1), NUM_P0)
@@ -486,16 +492,23 @@ def σ_21():
             v = mkgrp(mknex_(χ, mkgxp(β.find_replace(find_dum, lambda n: χ))))
             return fcall_(outer, χ, v) if σ in "󷸋󷸍" else v
         if σ in "󷸉󷸎": # https://ganer.xyz/s/bd0de51c7f02dac6
-            if not τ:
-                larg = fcall_(ST, þPOP_M3, þPOP_M2, β, NUM_P0)
-                rarg = fcall_(þPSH, fcall_(GT, fcall_(þPSH, κ), fcall_(þPSH, χ)))
+            if τ:
+                larg = fcall_(GT, fcall_(þPSH, κ), fcall_(þPSH, χ))
+                rarg = fcall_(ST, þPOP_M2, þPOP_M1, β, NUM_P0)
                 return fcall_(mkvar("RET_L"), larg, rarg)
-            return fcall_(ST, κ, χ, β, NUM_P0)
+            return fcall_(mkvar("RET_L"), χ, mknex_(χ, mkgxp(β)))
+        
+        if σ == '≕' and τ:
+            return fcall_(
+                mkvar("RET_R"),
+                fcall_(þPSH, β),
+                fcall_(GT, κ, χ, þPOP_M1))
+            # x≔z ⟶ SI(x,y,z)
+            # z≕x ⟶ ►(z↑, SI(x,y,↓))
         
         if not τ:
             v = β if σ in {*"≔≕", ":="} else ("op_call", mkexp(χ), Σ, β)
             return mkgrp(mknex_(χ, mkgxp(v)))
-        
         if σ in {*"≔≕", ":="}:
             return fcall_(ST, κ, χ, β, NUM_P0)
 
@@ -506,15 +519,14 @@ def σ_21():
                 fcall_(GT, þPOP_M2, þPOP_M1), Σ, β]),
             NUM_P0)
         
-    
     @(yield replacement("op_call", rec='A', n="Refactor assignment infix opertators"))
     def _(n):
         α, Σ, β = n.C
-        if Σ.c[0].as_txt() or Σ.c[2].as_txt(): return n # 󰤱 allow mods
+        # if Σ.c[0].as_txt() or Σ.c[2].as_txt(): return n # 󰤱 allow mods
         
-        σ = Σ.as_txt()
-        if σ in {*"≔󷸊󷸋", ":="}: return make_inline_asgn(α, Σ, β)
-        if σ in {*"≕󷸌󷸍"      }: return make_inline_asgn(β, Σ, α)
+        σ = Σ.C[1].as_txt()
+        if σ in {*"≔󷸉󷸊󷸋", ":="}: return make_inline_asgn(α, Σ, β)
+        if σ in {*"≕󷸎󷸌󷸍"      }: return make_inline_asgn(β, Σ, α)
         if '=' not in lang.ops[σ]: return n
         Σ = OP.TND(σ[:-1])
         return make_inline_asgn(α, Σ, β)
@@ -522,9 +534,9 @@ def σ_21():
 def σ_25():
     @(yield reduction("op_call", rec='B', n="Flatten cmp ops"))
     def _(n):
-        if 'λ' in op_man[n.C[1]] and \
-                n.C[0] != NULL and n.C[2] != NULL:
-            return [*n.C[0].C, n.C[1], *n.C[2].C]
+        a,b,c = n.C
+        if 'λ' in op_man[b] and a != NULL and c != NULL:
+            return [*a.C, b, *c.C]
         return [n]
 
 def σ_30():
