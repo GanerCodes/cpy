@@ -28,11 +28,13 @@
 ⭢ ; push left into right (Weakest)
 
 ≔ ; Assign to left
-    "x ≔ 2+2"
-    "x.y[2] ≔ 2+2"
 ≕ ; Assign to right
-    "2+2 ≕ x"
-    "2+2 ≕ x.y[2]"
+󷸉 ; Assign to left, return previous value
+󷸎 ; Assign to right, return previous value
+󷸊 ; Assign to left, foward value
+󷸌 ; Assign to right, foward value
+󷸋 ; Assign to left, foward value, return previous value
+󷸍 ; Assign to right, foward value, return previous value
 
 ⨳ ; Assertion
     "𝑜 ⨳" = "⨳ 𝑜" ⟶ Asserts 𝑜 is truthy
