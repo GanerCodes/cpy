@@ -30,6 +30,9 @@ pwd = 𝚲𝐩∘pwd_
         cdᶜ = cdᶜ﹕ᵢ
         ↪ chdir∘d →► pwd
     ⊢ __call__(𝕊, d=□):
+        ¿d≅@´:
+            ⨡ inspect
+            ↪ cd(𝐩(inspect.stack()₁.filename).parent)
         ¿d≅□:
             chdir(cdᶜ.pop(-1))
             ↪ pwd
