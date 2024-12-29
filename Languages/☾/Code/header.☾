@@ -709,10 +709,10 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
     ⮌ sys ⨡ path as P, _getframe as GF
     ⮌ os ⨡ path, listdir
     ⮌ pathlib ⨡ Path as 𝐩
-    f, drs = □, (␛., ⠤P) ᴍ󰲡𝐩←x→.resolve()󰅂 󰈲󰲡x.is_dir()
+    f, drs = □, (␛., ⠤P) ᐵ⥉𝐩→.resolve()ᐸ 󰈲󷺹.is_dir()
     ∀p∈drs:
         ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡z≔p/‹⟦𝔣⟧⟦x⟧›→.is_file() ∧ z󰅂: ⇥
-    f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦", ".join(drsᴍ󰲡‹"⟦x⟧"›)⟧]!›
+    f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦", ".join(drsᐖ‹"⟦⟞⟧"›)⟧]!›
     ¿just_get_path: ↪f
     with f.open() as 𝐟: code = 𝐟.read()
     ¿just_get_code: ↪ code
