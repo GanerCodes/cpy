@@ -16,6 +16,8 @@ except Exception:
  = suppar2(⥌f  ,o=ᐦ↦ⓦ(  􊯛ᵣ₊󰂼∘f, 󰲡x.read  ))
  = suppar2(⥌f,𝓬,o=ᐦ↦ⓦ(y≔􊯛₊󰂼∘f, 󰲡x.write∘𝓬 →► y))
 
+𝔗 = PL_THREAD_
+
 pwd = 𝚲𝐩∘pwd_
 󱀘 cd:
     s, c = [], []
@@ -30,6 +32,9 @@ pwd = 𝚲𝐩∘pwd_
         cdᶜ = cdᶜ﹕ᵢ
         ↪ chdir∘d →► pwd
     ⊢ __call__(𝕊, d=□):
+        ¿d≅@´:
+            ⨡ inspect
+            ↪ cd(𝐩(inspect.stack()₁.filename).parent)
         ¿d≅□:
             chdir(cdᶜ.pop(-1))
             ↪ pwd
