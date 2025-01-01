@@ -110,6 +110,9 @@
 ± ; plus minus
 + ; add
 - ; subtract
+󷷶 ; diamond add
+󷷻 ; diamond subtract
+
 
 ∘ ; call left with right
 ○ ; compose functions with balanced args, overflow right
@@ -118,6 +121,7 @@
 󰬩 ; compose functions, overflow extra args to left
 󱖚 ; 󰤱, NotImplemented
 󱖘 ; 󰤱, NotImplemented
+󷷹 ; diamond compose
  ; curry function
 ⊚ ; loop
 ⍟ ; loop returning all iterations except final
@@ -147,6 +151,8 @@
 ≇ ; is not same object
 ⋅ ; multiply
 ÷ ; divide
+󷷷 ; diamond multiply
+󷷸 ; diamond divide
 ⹏ ; integer divide
 % ; modulo
 √ ; root
@@ -208,10 +214,12 @@
 ¯ ; negate
 
 ⌃ ; exponential
+󷷺 ; diamond exponential
 
  ; splat function
 ∾ ; reverse function args
  ; call function without args
+󷹁 ; invert function
 
 󰻾 ; identify
 ℵ ; magic namespace: iterates by pairs

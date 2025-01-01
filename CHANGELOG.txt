@@ -371,5 +371,6 @@ added , threadman, biahiuofafu
 ∅: 󰤱 docs
 ⍁: 󰤱 docs
 󷸊󷸋󷸌󷸍󷸉󷸎: 󰤱 docs
+󷹁: 󰤱 docs
 
 in `kots.☾` we now have that cd(@) will cd into the caller's current dir
