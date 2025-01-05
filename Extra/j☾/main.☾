@@ -1,9 +1,10 @@
 GRAM=󰦥󰦥󰦥󰦥󰦥
-    main = (str ∨ script ∨ 󱀝 ∨ λ_zap_head ∨ special ∨ grp ∨ num ∨ var ∨ 𝗪)*
+    main = (str ∨ script ∨ 󱀝 ∨ λ_head ∨ special ∨ grp ∨ num ∨ var ∨ 𝗪)*
+    main_comments = (str ∨ comment ∨ ~‹.|\n›)*
     script  = (sub   = ~‹%SCRIPTD%+› ) ∨ (sup   = ~‹%SCRIPTU%+› )
     special = (opert = ~‹%CONSTANTS%›) ∨ (const = ~‹%OPERATORS%›)
 
-    λ_zap_head = 󰆴'⥌' main 󰆴'↦'
+    λ_head = 󰆴'⥌' main 󰆴'↦'
     grp = ~‹[[{(]› main ~‹[\]})]›
     num = pos_num ∨ neg_num
     pos_num = ƨ(~‹0([bB][01]+|[oO][0-7]+|[xX][0-9a-fA-F]+)|([0-9]+(\.[0-9]*)?|[0-9]*\.[0-9]+)(e[+\-]?[0-9]+)?›)
@@ -23,16 +24,17 @@ GRAM=󰦥󰦥󰦥󰦥󰦥
     ᔐ_basic_sub = ~‹\\.›
     
     󱀝_inj   = str ∨ 󱀝_code
-    󱀝_pair  = 󱀝_pairk 󰆴(CLN ∨ 𝗪) 󱀝_pairv
-    󱀝_pairk = ⠶󱀝_inj ∨ fix:(~‹[^\n\t :]+›)
-    󱀝_pairv = ⠶󱀝_inj ∨ fix:(~‹[^}⍮]+›)
-    󱀝_ə_nam = ⠶󱀝_inj ∨ (fix:~‹[^[{\n\t ]+›) ∨ ✓
+    󱀝_pairk = ⠶󱀝_inj ∨ (fix:~‹[^}\n\t :]+› )
+    󱀝_pairv = ⠶󱀝_inj ∨ (fix:~‹[^}⍮]+›      )
+    󱀝_ə_typ = ⠶󱀝_inj ∨ (fix:~‹[^[{\n\t: ]+›) ∨ ✓
+    󱀝_ə_nam = ⠶󱀝_inj ∨ (fix:~‹[^[{\n\t ]+› )
     󱀝_ə_val = ⠶󱀝_inj ∨ 󱀝_brack
-    󱀝_brack = 󰆴('[' 𝗪?) (󱀝_kid        󰆴(𝗪?))* 󰆴(𝗪? ']')
-    󱀝_curly = 󰆴('{' 𝗪?)  󱀝_pair? (󰆴⍮ 󱀝_pair)* 󰆴(𝗪? '}')
-    󱀝_code  = 󰆴'⟦' main 󰆴'⟧'
     󱀝_kid   = ⠶󱀝_inj ∨ 󱀝
-    󱀝 = 󰆴('󱀝' 𝗪?) 󱀝_ə_nam 󰆴𝗪? (󱀝_curly ∨ ✓) 󰆴𝗪? (󱀝_ə_val ∨ ✓)
+    󱀝_pair  = 󱀝_pairk 󰆴(CLN ∨ 𝗪) 󱀝_pairv
+    󱀝_brack = 󰆴('[' 𝗪?) (󱀝_kid          󰆴𝗪?)* 󰆴(𝗪? ']')
+    󱀝_attrs = 󰆴('{' 𝗪?)  󱀝_pair? (󰆴⍮ 󱀝_pair)* 󰆴(𝗪? '}')
+    󱀝_code  = 󰆴'⟦' main 󰆴'⟧'
+    󱀝 = 󰆴('󱀝' 𝗪?) (󰆴CLN 󱀝_ə_nam 󰆴𝗪? ∨ ✓) 󱀝_ə_typ (󰆴𝗪? 󱀝_attrs ∨ ✓) (󰆴𝗪? 󱀝_ə_val ∨ ✓)
 
     CLN = (𝗪?) ↷ ':'
     ⍮   = (𝗪?) ↷ '⍮'
@@ -44,27 +46,36 @@ GRAM=󰦥󰦥󰦥󰦥󰦥
 
 reps = 󰦥󰦥󰦥󰦥󰦥
     𝑖 int © const ⎉ let
-    ᐦ ""
+    ↦ => ⠤ ... ᐦ ""
+    𝚲 (...𝔸)=>
+    󰲡 (x,...𝔸)=>
+    󰲣 (x,y,...𝔸)=>
+    󰲥 (x,y,z,...𝔸)=>
     ✓ true ✗ false ␀ null
     ¿ if ⸘ else if ¡ else
     ⌾ switch ᐂ case ⊳ default
-    ⇥ break ↺ continue
-    ➰ while ∀ for ↪ return
+    ⇥ break ↺ continue 󰆴 delete
+    󱟱 async 󱫬 await ➰ while ∀ for ↪ return
     ⎔ of ∈ in ☾ print
-    ↦ => ⠤ ...
-    ¬ ! ⭜ ? ⭝ : ⋅ * ∧ && ∨ || ⪢ >> ⪡ << ≠ != ≡ == ≥ >= ≤ <=
+    ¬ ! ⭜ ? ⭝ : ⋅ * ∧ && ∨ || ⪢ >> ⪡ << ≠ != ≥ >= ≤ <=
+    ≡ == ≅ === 🆕 new 󱣩 undefined
 󰦥󰦥󰦥󰦥󰦥.strip󷺻𝗻󰛔􍪵␛ ᐸ⍭ᐵ.strip󷹎¹𝘀ᐸ⥉ℵ
+
+specials = ℵ(␛𝗻␛𝘁␛𝘀␛󷺗󱑼[␛\␛n,␛\␛t,𝘀,ᐦ])
+attr_repl = ‹󰊄 󰿨  󱇙 󰌷 ⨝ + - ∀ ᴍ 󰈲 ſ @ :›⍭ 󰛔 ⍭‹innerText children disabled classList append join .add .remove forEach map filter reduce at slice›
+CONSTANTS = ‹ⴳⴴ✓✗□ᐦ󰮈⬤îĵ󷺈ℇτπ󷺍󷺏∞󷱪󷱽󷱾󷱫󷱬󷱭󷱮󷱯󷱰󷱩↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞›
+OPERATORS = ‹=== == => // ++ -- && ?? ||›⍭󰌷‹󰆴󱟱󱫬𝚲󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱󱣩🆕⎉©⎔!%&*/+-,.:;?<=>@^|¡¬¯±¿÷ſϜᐴᐹᗢᙎᙡᙧᚤᣆᴙℵℶ↨↪↺⇥∀∅∈∉∋∌∓∖∘√∣∤∧∨∩∪∾≅≇≔≕≠≡≤≥⊂⊃⊄⊅⊊⊋⊚⊛⊜⊞⋀⋁⋄⋅⌃⍁⍉⍜⍟⍭▢►◄○☾⛶➰⟕⟖⟗⠤⠶⤈⤉⨀⨁⨉⨝⨡⨳⩓⩔⪡⪢⫯⫰⬄⬒⬓⭜⭝⭥⮂⮌ⴵ⸘⹏ꟿ𝌂🃌🟕🟖󰈲󰈳󰌷󰑅󰒼󰒽󰔶󰛔󰬩󰬫󰸵󰸷󰻾󱅏󱑼󱖘󱖚󷸉󷸊󷸋󷸌󷸍󷸎󷸕󷸖󷸗󷸘󷸙󷸚󷸛󷸜󷸸󷸹󷸺󷸻󷹄󷹅󷹌󷹍󷹎󷹓󷹔󷹕󷹖󷹜󷹝󷹴󷹵󷺒󷺤󷺥󷺦󷺫󷺬›
 
 󰋺("kots", *)
 󰋺("peggle2", ⠤‹peggle2 Ń›⍭)
 cd(@)
 󰋺("rgx_golfatron", "rgx_golfatron")
+HEADER = (‹header.j☾›)
 cd()
 ⮌ util ⨡ SCRIPT, UPSIDEDOWNSYNDROME
 ⨡ os, shutil
+flip = UPSIDEDOWNSYNDROME.flip
 
-CONSTANTS = ‹ⴳⴴ✓✗□ᐦ󰮈⬤îĵ󷺈ℇτπ󷺍󷺏∞󷱪󷱽󷱾󷱫󷱬󷱭󷱮󷱯󷱰󷱩↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞›
-OPERATORS = ‹=== == => // ++ -- && ?? ||›⍭→󰌷←𝑙∘‹©?⎔!%&*/+-,.:;<=>@^|¡¬¯±¿÷ſϜᐴᐹᗢᙎᙡᙧᚤᣆᴙℵℶ↨↪↺⇥∀∅∈∉∋∌∓∖∘√∣∤∧∨∩∪∾≅≇≔≕≠≡≤≥⊂⊃⊄⊅⊊⊋⊚⊛⊜⊞⋀⋁⋄⋅⌃⍁⍉⍜⍟⍭▢►◄○☾⛶➰⟕⟖⟗⠤⠶⤈⤉⨀⨁⨉⨝⨡⨳⩓⩔⪡⪢⫯⫰⬄⬒⬓⭜⭝⭥⮂⮌ⴵ⸘⹏ꟿ𝌂🃌🟕🟖󰈲󰈳󰌷󰑅󰒼󰒽󰔶󰛔󰬩󰬫󰸵󰸷󰻾󱅏󱑼󱖘󱖚󷸉󷸊󷸋󷸌󷸍󷸎󷸕󷸖󷸗󷸘󷸙󷸚󷸛󷸜󷸸󷸹󷸺󷸻󷹄󷹅󷹌󷹍󷹎󷹓󷹔󷹕󷹖󷹜󷹝󷹴󷹵󷺒󷺤󷺥󷺦󷺫󷺬›
 bp = SCRIPT󰀂ᴴᴬᴿ􋕟󰀒ᵁᴮ⋄SCRIPT󰀂ᴴᴬᴿ􋕟󰀒ᵁᴾ⋄CONSTANTS⋄OPERATORS ᴍ rgx_golfatron
 ll = ‹SCRIPTD SCRIPTU CONSTANTS OPERATORS›⍭ᐵ⛶⟗␛%
 GRAM = ll 󰛔ᴳᴿᴬᴹ bp
@@ -72,59 +83,63 @@ gram = peggle2(GRAM)
 
 𝚃 = ℵ(T=✓)
 𝔗 = 󷺻Ń(⟞, e=𝚃)
-mkgrp = 󰲡Ń("grp", 𝔗(x₀), ⠤𝔸, 𝔗(x₁))
+𝔗𝔗 = 󷺻𝔗(⟞.as_txt)
+𝚜 = Ń(␛𝘄, 𝔗(𝘀))
+mp = 󷺹≕h󷹝ᑀ≤128∨h.isidentifier() ⭜h⭝ ⟞󷹜¹⁶5⭢+ᵜ␛þ
+fmt_js_ᔐ = ␛\⋄␛$ →󰛔← ␛\␛\⋄␛\␛$
 
-𝚜 = 𝔗(𝘀)
-rep_t = ⥌󱁕,ƒ↦󱁕.copy(c=󱁕.as_txt⥉ƒ⥉𝔗→⛶)
-⊢ proc(x, n=∞):
+mkexp = 𝚲Ń(‹󷺗expr›, ⠤𝔸)
+mkgrp = 󰲡Ń(‹󷺗󷺗grp›, 𝔗(x₀), ⠤𝔸, 𝔗(x₁))
+mkvar,mkopt,mknum = ‹var opert number›⍭ᐖ󰲡Ń(⟞,𝔗(x))
+𝚍𝚘𝚝, 𝚌𝚘𝚖, 𝚌𝚕𝚗, 𝚖𝚗𝚜, 𝚎𝚚𝚕, 𝚊𝚖𝚛, 𝚏𝚕𝚜 = (‹.,:-=↦›󰌷⍭‹false›)ᴍmkopt
+⊢ proc(x, n=∞, comments=✓):
+    ¿comments: ↪ proc(gram(x, ‹main_comments›, remove_trashes=✗).rm(‹comment›).as_txt, n, ✗)
     󱁕 = gram(x)
-    ¿n<0:↪󱁕
+    ¿n<0: ↪󱁕
+     󱁕ᴾ
     
-    @(󱁕.ftrp("sub sup"⍭, ⬤))
+    @(󱁕.ftrp(‹sub sup›⍭, ⬤))
     ⊢ ƒ(󱁕):
         t = SCRIPT.nrm(󱁕.as_txt)
-        ¿󱁕ᵗ≡"sub": ↪ mkgrp(␛[␛], proc(t, 0))
-        ¡        : ↪ Ń("expr", Ń("opert", 𝔗(␛.)), Ń("var", 𝔗(t)))
+        ¿󱁕ᵗ≡‹sub›: ↪ mkgrp(␛[␛], proc(t, 0))
+        ¡        : ↪ mkexp(𝚍𝚘𝚝, mkvar(attr_repl(t)))
     
-    ¿n<1:↪󱁕
-    󱁕.ftrp("script"⍭, 󷺹₀, pre=✓)
-    󱁕.ftrp("λ_zap_head"⍭, 󷺻Ń("expr", mkgrp(␛(␛), ⟞), Ń("opert", 𝔗(␛↦))))
+    ¿n<1: ↪󱁕
     
-    @(󱁕.ftrp("󱀝_pairk 󱀝_pairv 󱀝_ə_nam"⍭, ⬤))
+    󱁕.ftrp("script"⍭, 󱁕↦󱁕₀, pre=✓)
+    󱁕.ftrp("λ_head"⍭, 󱁕↦mkexp(mkgrp(␛(␛), 󱁕), 𝚊𝚖𝚛), pre=✓)
+    
+    @(󱁕.ftrp(‹󱀝_pairk 󱀝_pairv 󱀝_ə_typ›⍭, ⬤, pre=✓))
     ⊢ ƒ(󱁕):
         ¿‹fix›∈󱁕ᵉ:
-            t = 󱁕.as_txt
-            󱁕 = Ń(󱁕ᵗ, 𝔗(‹`⟦␛$ 󰛔ᵗ ␛\␛$⟧`›))
-        ⸘󱁕ᵗ≡"󱀝_ə_nam"∧¬󱁕.as_txt: 󱁕ᶜ = 𝔗("false")⛶
-        ¿󱁕ᵗ≡"󱀝_pairk": 󱁕ᶜ = mkgrp(␛[␛], ⠤󱁕)⛶
+            󱁕ᶜ = ⛶←Ń(‹str›, Ń(‹ᔐ_☾›, Ń(‹ᔐ_guts›, 𝔗𝔗(󱁕))))
+        ⸘󱁕ᵗ≡‹󱀝_ə_typ› ∧ ¬󱁕.as_txt: 󱁕ᶜ = 𝚏𝚕𝚜⛶
+        ¿󱁕ᵗ≡‹󱀝_pairk›: 󱁕ᶜ = mkgrp(␛[␛], ⠤󱁕)⛶
         ↪ 󱁕
+     󱁕ᴾ
     
-    @(󱁕.ftrp("󱀝_brack"⍭, ⬤, pre=✓))
+    󱁕.ftrp(‹󱀝_brack›⍭, 󱁕↦󱁕.copy(c=[mkgrp(␛[␛], ⠤󱁕ᐖmkgrp(␛(␛), ⟞)ᐸ ⨝𝚌𝚘𝚖)]), pre=✓)
+    󱁕.ftrp(‹󱀝_pair󷺗›⍭, 󱁕↦󱁕.copy(c=󱁕⨝𝚌𝚕𝚗), pre=✓)
+    󱁕.ftrp(‹󱀝_attrs›⍭, 󱁕↦󱁕.copy(c=mkgrp(␛{␛}, ⠤󱁕⨝𝚌𝚘𝚖)), pre=✓)
+    
+    @(󱁕.ftrp(‹󱀝›⍭, ⬤, pre=✓))
     ⊢ ƒ(󱁕):
-        󱁕ᶜ = [mkgrp(␛[␛], ⠤󱁕ᐖmkgrp(␛(␛), ⟞)ᐸ⨝Ń("opert", 𝔗(␛,)))]
-        ↪ 󱁕
+        𝚛 = mkexp(mkvar(‹mkə›), mkgrp(␛(␛), ⠤󱁕₁﹕ᐵᵗ≡␛✓ ⭜𝚏𝚕𝚜⭝ ⟞ᐸ ⨝𝚌𝚘𝚖))
+        ↪ 󱁕₀ᵗ≠␛✓ ⭜mkgrp(␛(␛), mkvar(󱁕₀.as_txt), 𝚎𝚚𝚕, 𝚛)⭝ 𝚛
     
-    󱁕.ftrp("󱀝_pair" ⍭, 󱁕↦󱁕.copy(c=󱁕⨝Ń("opert", 𝔗(␛:))), pre=✓)
-    󱁕.ftrp("󱀝_curly"⍭, 󱁕↦󱁕.copy(c=mkgrp(␛{␛}, ⠤󱁕⨝Ń("opert", 𝔗(␛,)))), pre=✓)
-    󱁕.ftrp("󱀝"⍭, 󱁕↦Ń("expr",
-        Ń("var", 𝔗("mkə")),
-        mkgrp(␛(␛), ⠤󱁕ᐵᵗ≡␛✓⭜𝔗("false")⭝⟞ᐸ⨝Ń("opert", 𝔗(␛,)))), pre=✓)
+    󱁕.ftrp(‹const opert󷺗󷺗󷺗󷺗›⍭, 󱁕↦mkgrp(𝘀𝘀, 󱁕))
+    󱁕.ftrp(‹ᔐ_sub󷺗󷺗󷺗󷺗󷺗󷺗󷺗󷺗󷺗󷺗›⍭, 󱁕↦󱁕.copy(c=⛶mkgrp(‹${ }›⍭, ⠤󱁕)), pre=✓)
+    󱁕.ftrp(‹neg_num󷺗󷺗󷺗󷺗󷺗󷺗󷺗󷺗›⍭, 󱁕↦mkexp(𝚖𝚗𝚜, mknum(flip(󱁕.as_txt))))
+    󱁕.ftrp(‹const opert var›⍭, 󱁕↦󱁕.as_txt≕α∈reps ⭜󱁕.copy(c=⛶𝔗(reps󰃤))⭝ 󱁕)
+    󱁕.ftrp(‹const opert var›⍭, 󱁕↦󱁕.copy(c=[Ń(󱁕₀ᵗᴍmp→⨝ᐦ, e=𝚃)]))
     
-    󱁕.ftrp("opert const"⍭, 󷺻Ń("grp", 𝚜, ⟞, 𝚜))
-    󱁕.ftrp(      "ᔐ_sub"⍭, 󱁕↦mkgrp(‹${ }›⍭, ⠤󱁕), pre=✓)
-    󱁕.ftrp(    "neg_num"⍭, 󱁕↦Ń("expr",
-                                Ń("opert", 𝔗(␛-)),
-                                Ń("number", 𝔗(UPSIDEDOWNSYNDROME.flip(󱁕.as_txt)))))
-    󱁕.ftrp(        "ᔐ_☾"⍭, 󱁕↦mkgrp(␛`␛`, ⠤󱁕))
-    
-    @(󱁕.ftrp("var const opert"⍭, ⬤))
-    ⊢ ƒ(󱁕):
-        ¿󱁕.as_txt≕α∈reps:
-            󱁕ᶜ=Ń(reps󰃤, e=𝚃)⛶
-        ↪ 󱁕
-    
-    mp = 󷺹≕h󷹝ᑀ≤128∨h.isidentifier() ⭜h⭝ ⟞󷹜¹⁶5⭢+ᵜ␛þ
-    󱁕.ftrp("var opert const"⍭, 󱁕↦󱁕.copy(c=[Ń(󱁕₀ᵗᴍmp→⨝ᐦ, e=𝚃)]))
+    gs = 󷺹ᐖspecials.get(⟞,⟞)ᐸ→⨝ᐦ
+    󱁕.ftrp(‹ᔐ_☾󷺗󷺗󷺗󷺗󷺗󷺗󷺗󷺗›⍭, 󱁕↦󱁕.copy(c=󱁕ᐵᵗ≡‹ᔐ_spec_char›⭜𝔗(gs(⟞.as_txt))⭝⟞), pre=✓)
+    󱁕.ftrp(‹ᔐ_guts󷺗󷺗󷺗󷺗󷺗›⍭, 󱁕↦󱁕.copy(c=⛶𝔗(󱁕.as_txt⥉fmt_js_ᔐ⥉gs)))
+    󱁕.ftrp(‹ᔐ_☾󷺗󷺗󷺗󷺗󷺗󷺗󷺗󷺗›⍭, 󱁕↦mkgrp(␛`␛`, 󱁕.copy(c=󱁕ᐵᵗ≡‹ᔐ_escape› ⭜𝔗𝔗(󱁕)⭝ ⟞)), pre=✓)
+    󱁕.ftrp(‹ᔐ_spec_char›⍭, 󱁕↦mkgrp(␛`␛`, 𝔗(󱁕.as_txt⥉gs)))  
+     󱁕ᴾ
+    󱁕.ftrp(‹ᔐ_escape󷺗󷺗󷺗›⍭, 󱁕↦mkgrp(␛`␛`, 𝔗(󱁕.as_txt⥉fmt_js_ᔐ)))
     
     ↪ 󱁕
 
@@ -133,6 +148,7 @@ transpile = 󷺹⥉proc→.as_txt
     idir󷸊∘ᵜ𝐩 ; odir󷸊∘ᵜ𝐩
     odir.exists ¬ ⨳
     shutil.copytree(idir, odir)
+    (odir/‹header.js›, fhead+transpile(HEADER))
     odir.glob(‹**/*.j☾›)ᐖ(⟞.parent/‹⟦⟞.stem⟧.js›, fhead+transpile(∘⟞)) ► ⟞.unlink
 
 ⮌ sys ⨡ argv as 𝔸
@@ -143,41 +159,70 @@ transpile = 󷺹⥉proc→.as_txt
     transpile_dir(𝔸₁, 𝔸₂)
     exit
 
-transpile(‹joe𝗻⥌x,y↦x+y›☾)☾ →►← exit
+⊢ test(x):
+    x☾
+    ␛→⋅50→☾
+    transpile(x)☾
+    ␛←⋅50→☾􋋉􋋉
 
- transpile(󰦥󰦥󰦥󰦥󰦥x = 2₂ᶠ+2
- ‹TEST›⋅‹t⟦egg⟧est›
- HAM
- 5⋅5+󷱂󰦥󰦥󰦥󰦥󰦥)☾
+test(󰦥󰦥󰦥󰦥󰦥
+© ə_dev_mode_selector = ⥌ƒ↦
+    󱀝 {𝐶 vcentered margKids2}[
+        󱀝 button {onclick ⟦𝚲ƒ('B')⟧} ‹Connect via Bluetooth›
+        󱀝 button {onclick ⟦𝚲ƒ('I')⟧} ‹Connect via Internet›
+    ];
+󰦥󰦥󰦥󰦥󰦥)
 
- transpile(󰦥󰦥󰦥󰦥󰦥
- 󱀝 div{}[‹egg›]
- 󰦥󰦥󰦥󰦥󰦥)☾
+test(󰦥󰦥󰦥󰦥󰦥
+    A=␛h
+    B=𝗻
+    C=‹␛A›
+    D=‹𝗻›
+    E=‹\a›
+    F="\x"
+    G=␛\
+    H=␛𝗻
+    I=‹␛𝗻𝘁𝘀(󷺗)abc␛a␛𝗻␛›a␛␛›
+󰦥󰦥󰦥󰦥󰦥)
 
- transpile(‹∀(x ⎔ y) ☾(x)›☾)☾
+test(󰦥󰦥󰦥󰦥󰦥
+    joe=⥌x,y↦x+y
+󰦥󰦥󰦥󰦥󰦥)
 
- transpile("󱀝 div [‹egg›]")
- transpile("󱀝 div [‹AAA› ‹BBB›]")
+test(󰦥󰦥󰦥󰦥󰦥
+    ble_dev_to_str = ⥌𝐒↦𝒪(𝐒).map(⥌[𝐬,𝐂]↦‹⟦𝐬⟧⟦𝐂.map(⥌𝐜↦‹𝗻    ⟦𝐜⟧›).join(ᐦ)⟧›).join(𝗻);
+    joe
+    󱀝:ə div
 
- transpile(󰦥󰦥󰦥󰦥󰦥
- 󱀝 div [
-     󱀝 header [
-         ‹some cool txt›
-         ⟦code⟧
-     ]
-     󱀝 thing{a:b}[
-         ‹some col text›
-     ]
- ]
- 󰦥󰦥󰦥󰦥󰦥)☾
+    󱀝:ə div {𝑆 asdad} [‹hi› ⟦2+2⟧]
+            asdasdasd
+󰦥󰦥󰦥󰦥󰦥)
 
- transpile(󰦥󰦥󰦥󰦥󰦥
- const myepicelement = 󱀝 div [
-     󱀝 h4 [
-         ‹sonic i have an announcement, 2 pluz 2 is ⟦2⋅2 ⎔ 222⟧›
-         󱀝 h6{𝑆:‹color:red;›} ‹hi im red im ¬blue›
-     ]
-    
-     󱀝 video{src:https://website.gov/cool.mp4 ⍮ 𝐶:coolvideo ⍮ 𝑆:width:1000px; height:1000px;}
- ];
- 󰦥󰦥󰦥󰦥󰦥)☾
+test(󰦥󰦥󰦥󰦥󰦥
+    󱀝 ‹a›{‹b›:‹c›}‹d›
+󰦥󰦥󰦥󰦥󰦥)
+
+test(󰦥󰦥󰦥󰦥󰦥
+    const myepicelement = 󱀝 div [
+        󱀝 h4 [
+            ‹sonic i have an announcement, 2 pluz 2 is ⟦2⋅2 ⎔ 222⟧›
+            󱀝 h6{𝑆:‹color:red;›} ‹hi im red im ¬blue›
+        ]
+        
+        󱀝 video{src:https://website.gov/cool.mp4 ⍮ 𝐶:coolvideo ⍮ 𝑆:width:1000px; height:1000px;}
+        
+        󱀝:joe div
+    ];
+󰦥󰦥󰦥󰦥󰦥)
+
+test(󰦥󰦥󰦥󰦥󰦥
+    󱀝 [
+        󱀝 {𝐶 fieldEntry} [
+            󱀝:α input {𝑃𝐻 SSID}
+        ]
+        󱀝 {𝐶 fieldEntry} [
+            󱀝 input {𝑇 password⍮ 𝑃𝐻 ‹Password›}
+        ]
+        󱀝:β button {𝐶 fieldButton⍮ onclick ⟦𝚲☾("hi", α, β)⟧} 󷺗
+    ]
+󰦥󰦥󰦥󰦥󰦥)

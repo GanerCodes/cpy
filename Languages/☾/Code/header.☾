@@ -191,7 +191,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     r, b = [], []
     ι, σ = 󷰾, 0
     last_v = ✗
-    ➰(ι+=1→<x🃌) ∧ σ<(n≡󷰾 ⭜∞⭝ n):
+    ➰(ι󷸊+1→<x🃌) ∧ σ<(n≡󷰾 ⭜∞⭝ n):
         𝓿 = x󰃬
         ¿y(𝓿)≕𝕩:
             ¿b∨𝕏≠␛󷹎:
@@ -200,7 +200,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
                 ⸘𝕏≡␛󷹌 ∨ 𝕏≡␛󷹍∧¬last_v:
                     r.extend(𝕩≅󰮈⭜[b]⭝b⋄𝓿)
                     last_v = ✓
-            b = [] ; ι += Δ ; σ += 1
+            b = [] ; ι󷸊+Δ ; σ󷸊+1
         ⸘𝕩≇󰮈:
             b.append(𝓿)
             last_v = ✗
@@ -219,22 +219,22 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         n, f, g = s, 𝔸₀, 𝑔(⠤𝔸, ⠶𝕂)
         ¿𝕏≡␛⊚:
             ¿g: ↪f
-            ➰0<n-=1:
-                ¿   𝑔(ƒ(f)≕f)   : ↪f
+            ➰0<n󷸊-1:
+                ¿   𝑔(ƒ(f)≕f)    : ↪f
         ⸘𝕏≡␛⊜:
-            ➰0<n-=1:
+            ➰0<n󷸊-1:
                 ¿g≡(𝑔(ƒ(f)≕nf)≕g): ↪f
                 f = nf
         ⸘𝕏∈␛⊛␛⍟:
             rf = [f]
             ¿g: ↪ 𝕏≡␛⊛ ⭜rf⭝ []
-            ➰0<n-=1:
+            ➰0<n󷸊-1:
                 𝑔(ƒ(f)≕f)≕g
                 ¿¬g∨𝕏≡␛⊛: rf.append(f)
                 ¿g      : ↪ rf
         ⸘𝕏∈␛🟕␛🟖:
             rf, rg = [f], [g]
-            ➰0<n-=1:
+            ➰0<n󷸊-1:
                 ¿𝑔(ƒ(f)≕f)≕g∈rg:
                     ¿𝕏≡␛🟖: ↪ rf
                     ↪ (rg 󰑅ᴵ 󰲡x≡g) 󷸻 rf
@@ -263,7 +263,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ¿y(𝕧)≕r≠𝑟:
             𝑅.append(R)
             𝑟,R = r,[]
-            ¿¬s-=1:
+            ¿¬s󷸊-1:
                 𝑅.append(x[𝕚+(r≅󰮈):])
                 ⇥
         ¿r≇󰮈: R.append(𝕧)
@@ -288,7 +288,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 󱀘 Ticker:
     __slots__ = ␛i,
     __init__ = ⥌𝕊,i↦𝕊ⁱ≔i→►□
-    __call__ = 𝕊↦𝕊ⁱ-=1→►𝕊
+    __call__ = 𝕊↦𝕊ⁱ󷸊-1→►𝕊
     __bool__ = 𝕊↦¬𝕊ⁱ
     __repr__ = 𝕊↦‹Ticker[i=⟦𝕊ⁱ⟧]›
 
@@ -686,7 +686,7 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
             ⮌ time ⨡ time, sleep
             
             i=0
-            ➰i+=1:
+            ➰i󷸊+1:
                 G = sys._getframe(i).f_globals
                 ¿G["__file__"]≠__file__: ⇥
             G[␛𝐩⥉PEV] = 𝐩
@@ -734,7 +734,7 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
     nam = PEV(na ≔ f.stem)
     m = ℵ(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
     𝑘 = (m.keys󰈳󰲡x₀≡␛_) ¿*∈𝔸¡ 𝑙(𝔸 ∖ {!})
-    𝑘 += exports ≔ (𝑙(m.__exports__) ¿"__exports__"∈m.keys¡ [])
+    𝑘󷸊+exports ≔ (𝑙(m.__exports__) ¿"__exports__"∈m.keys¡ [])
     ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
     ¿g:
         G = GF(1).f_globals
