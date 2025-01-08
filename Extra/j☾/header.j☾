@@ -17,7 +17,7 @@ ASCII_CHARS_STANDARD = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123
 [𝒪, 𝒟, 𝒪k, 𝒪v] = [𝑜.entries, 𝑜.fromEntries, 𝑜.keys, 𝑜.values];
 ends = ⥌l↦l.map(⥌𝑥,i↦[i≡0,𝑥,i≡🃌(l)-1]);
 sort = ⥌A,f,r=𝔽↦ A.sort(⥌a,b↦(r ⭜1⭝ 󷰾)⋅(b>a ⭜1⭝ 󷰾))  what?
-range = ⥌a,b↦[⠤Array(b-a).keys()].map(⥌i↦i+a);
+range = ⥌a,b↦b≅󱣩⭜𝑙(Array(a).keys())⭝𝑙(Array(b-a).keys())􊾡(󰲡x+a);
 merge = ⥌ ⠤o↦𝑜.assign({}, ⠤o)
 ☾           = ⥌⠤x↦console.log  (⠤x) ∨ x₀
 print_table = ⥌⠤x↦console.table(⠤x) ∨ x₀

@@ -191,7 +191,7 @@ DAT = ␛
 
 sec⟶§ ␠ to𝕊⟶󰤱 ␠ ()⟶
 com⟶ ␠ nt𝕊⟶󷹇 ␠ {}⟶∅
-pil⟶¶ ␠ asn⟶󱟱 ␠ ee⟶ə
+pil⟶¶ ␠ asy⟶󱟱 ␠ ee⟶ə
 lgq⟶ȹ ␠ awt⟶󱫬 ␠ ix⟶🝤
 ref⟶ꔧ ␠ doc⟶󰈙 ␠ th⟶þ
 sps⟶ᔲ ␠ nCr⟶⫚ ␠ fs⟶ſ
@@ -269,7 +269,7 @@ weed⟦𝕊/⟧ ⟶ 󰞦󱙮
 ᴍdeso⟶"\overline{}"
 shrug⟶"⎺⟍_⟨⍩⟩_⟋⎺"
 ¡ℭ ⟨BLUE⟩                ◄►⋄
-¡ℭ ⟨DBLUE⟩               ᐦ□ᗜ󰈙⟞⟝
+¡ℭ ⟨DBLUE⟩               ᐦ¶□ᗜ󰈙⟞⟝
 ¡ℭ ⟨DRED⟩                ~*\/<>≪≫󷺑󷺒󷺓󷺤󷺥󷺦⩟⊼⊻⊽⥱
 ¡ℭ ⟨ORANGE⟩              󱣩∅⍁󰻾ℶℵ󰮈ᔐ󱠨󰋺
 ¡ℭ ⟨DORANGE⟩             󱀝ə
@@ -315,5 +315,3 @@ SCRIPT_DEPTH = 2
     platform.system ≡ "Linux" ∧ $ᴼᴱibus-daemon -dxrR󷹹
 
  󰤱􊽨 thing that disallows base symmap keys from generating even if inside the compose so we can style em?
- ⏶⏷⏴⏵▲▼▶◀🞁🞃🞀🞂▴▾◂▸▵▿◃▹◢◣◤◥◸◹◺◿
- ⎔≠⬡, ⬠⭔
