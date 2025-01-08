@@ -165,11 +165,11 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
 def run_moon(𝔸, extract_interactive=ⴴ):
     𝔸_copy = 𝔸.copy()
     𝔸, 𝕂 = parse_sysargs(𝔸, c=0, verbose=0, debug=0, no_cache=0, sanity=1,
-                         gram_test=0,
+                         gram_test=0, get_dir=0,
                          code_cache_dir=(ᐦ, CODE_CACHE_DIR),
                          gram_cache_dir=(ᐦ, GRAM_CACHE_DIR))
     if 𝕂.debug: print(f"{𝔸=}\n{𝕂=}")
-    
+    if 𝕂.get_dir: print(cpy_dir) and exit()
     if 𝕂.gram_test: cpy_test(' '.join(𝔸), exit=ⴳ)
     
     cpy_kwargs = {
