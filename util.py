@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 _insp = lambda x: x in sys.path or sys.path.insert(0, x)
-_insp(cpy_dir := str(Path(__file__).absolute().parent))
-_insp(cpy_dir+"/compiler")
+_insp(str(cpy_dir := Path(__file__).absolute().parent))
+_insp(str(cpy_dir / "compiler"))
 
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
 from time import time, sleep

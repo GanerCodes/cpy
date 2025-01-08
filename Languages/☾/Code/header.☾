@@ -1,11 +1,12 @@
 exec ← "from math import *"
 󰆴 factorial, e, pi, tau, sqrt, cbrt, pow
-𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓 = object, dict, bool, list, tuple, set, str, int, float
+𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓,𝑦 = object, dict, bool, list, tuple, set, str, int, float, bytes
 ⮌ py_naming_tools ⨡ py_escape_var as PEV
 ⮌ functools ⨡ reduce
 ⮌ itertools ⨡ chain, filterfalse, product, accumulate, zip_longest
 ⮌ random ⨡ shuffle, choice, uniform, randint
 ⮌ types ⨡ UnionType
+⮌ util ⨡ cpy_dir
 
 LITERAL_OPS_ = {
       ␛*:󰲣x⋅y,  ␛/:󰲣x/y,  ␛<:󰲣x <y,  ␛>:󰲣x >y,

@@ -519,7 +519,7 @@ def σ_21():
                 fcall_(GT, þPOP_M2, þPOP_M1), Σ, β]),
             NUM_P0)
         
-    @(yield replacement("op_call", rec='A', n="Refactor assignment infix opertators"))
+    @(yield replacement("op_call", rec='A', n="Refactor assignment infix operators"))
     def _(n):
         α, Σ, β = n.C
         # if Σ.c[0].as_txt() or Σ.c[2].as_txt(): return n # 󰤱 allow mods
