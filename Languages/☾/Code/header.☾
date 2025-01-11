@@ -54,15 +54,15 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
             ¿x≅␀: x,y = y,x
             ↪ x≅␀ ⭜ƒ(⠶𝕂)⭝ y≅␀ ⭜ƒ(x,⠶𝕂)⭝ ƒ(x,y,⠶𝕂)
         __getitem__ = ⥌𝕊,s↦𝚲𝕊(⠤𝔸, s=s, ⠶𝕂)
-    ω.ƒ = 𝒮ℳ(ƒ)
+    ω􊽺 = 𝒮ℳ(ƒ)
     ↪ ω()
 󱀘 𝑐𝑑(𝑑):
     ⊢ __init__(𝕊, ƒ, ⠤𝔸, 𝑔=□, ⠶𝕂):
-        𝕊.ƒ, 𝕊.𝑔 = ƒ, 𝑔
+        𝕊􊽺, 𝕊.𝑔 = ƒ, 𝑔
         super().__init__(⠤𝔸,⠶𝕂)
-    __call__ = 𝕊↦𝕊.ƒ(⠤𝔸,⠶𝕂)
+    __call__ = 𝕊↦𝕊􊽺(⠤𝔸,⠶𝕂)
     __repr__ = 𝕊↦"__repr__"∈𝕊 ⭜super().__getitem__("__repr__")(𝕊)⭝ super().__repr__()
-    __getitem__ = ⥌𝕊,x↦𝗛(x)∧super().__contains__(x) ⭜super().__getitem__(x)⭝ 𝕊.𝑔(x)
+    __getitem__ = ⥌𝕊,x↦𝗛(x)∧super().__contains__(x) ⭜super().__getitem__(x)⭝ 𝕊􋇕(x)
 ⊢ ERRTRI_(t, ƒ=␀, 𝑔=␀, s=Exception):
     𝑇 = s
     v = 𝕣((ƒ, 𝑔))
@@ -293,18 +293,18 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     __bool__ = 𝕊↦¬𝕊ⁱ
     __repr__ = 𝕊↦‹Ticker[i=⟦𝕊ⁱ⟧]›
 
-🃌´ = len
 𝕣 = 󰲡[y∀y∈x¿y≇␀]
-𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x,"__iter__"), ERRTRI_(␛, hash, ✗)
-TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
-
-∘´ = OPWRAP_(⥌𝑓,y,s=1↦ 𝑓(⠤(y,)⋅s))
-○´ = OPWRAP_(⥌𝑓,𝑔,s=1↦𝚲𝑓∘ˢ𝑔(⠤𝔸,⠶𝕂))  replaced later in file lol 󰤱
+🃌´ = len
 ᐹ´ = ⥌x=␀,y=␀↦x≅␀∨␀≅y ␛
               ⭜type(x≅␀⭜y⭝x)     ␛
               ⭝y∈TYPELIKE_⭜ y(x) ␛
               ⭝isinstance(x, isinstance(y,type|UnionType) ⭜y⭝ type(y))
 ᐴ´,󷹵´,󷹴´ = ⥌x=␀,y=␀↦yᐹx, 󰲣xᐹy→¬, 󰲣yᐹx→¬
+𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x, "__iter__"), ERRTRI_(␛, hash, ✗)
+TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
+𝑀 = ⥌x,y="utf-8"↦xᐹᔐ ⭜x.encode(y,⠤𝔸,⠶𝕂)⭝ x.decode(y,⠤𝔸,⠶𝕂)
+∘´ = OPWRAP_(⥌𝑓,y,s=1↦ 𝑓(⠤(y,)⋅s))
+○´ = OPWRAP_(⥌𝑓,𝑔,s=1↦𝚲𝑓∘ˢ𝑔(⠤𝔸,⠶𝕂))  replaced later in file lol 󰤱
 󰻾´ = 𝑐𝑑(      󰲡x, __repr__=𝚲␛󰻾,
         𝑔=󰲡𝑐𝑑(𝚲x, __repr__=𝚲‹󰻾∘⟦x⟧›))
 ☾´ = 𝑐𝑑(ƒ≔ 𝚲print(⠤𝔸, ⠶{"flush":✓   }|𝕂)∨𝔸∧𝔸₀,
@@ -352,8 +352,8 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
         ¿ƒ:
             S.discard(s)
             ↪ ƒ(S ∧ 𝕊[S.pop()] ∨ 𝕊)
-        ↪ ⥌x,y,i=i↦𝕊.ƒ(x,y,i)
-    __call__ = ⥌𝕊,x,y↦𝕊.ƒ(x,y,1)
+        ↪ ⥌x,y,i=i↦𝕊􊽺(x,y,i)
+    __call__ = ⥌𝕊,x,y↦𝕊􊽺(x,y,1)
 󱀘 ꟿ´(ᴍ´):
     ƒ = 𝒮ℳ(⥌x,y,i↦_map_d(x,󰲡y(⠤𝗜(x)⭜x⭝(x,)),i))
 
@@ -567,7 +567,10 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ⸘   1≡m2: ↪   r ᴍ 󰲡λ(l,x,⠤𝓐,⠶𝓚)
         ¡       : ↪        λ(l,r,⠤𝓐,⠶𝓚)
     ↪ ƒ
-TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄􀸨₂􀸦₁) ⭝ TACITB(⠤x,d=d)
+
+󱖔´ = OPWRAP_(⥌x=␀,y=␀,s=␀↦s≅␀ ⭜ƒ↦ƒ(⠤𝕣(x⋄y))󰅂⭝ s(⠤𝕣(x⋄y)))
+
+TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜TACITM(x₀,x₁₊􊭨ₓ􊬤􊮢􍨄)⭝ TACITB(⠤x,d=d)
 ␀TACIT´   = 𝑐𝑑(𝚲✗⨳, 𝑔= TAC_)
 ␀TACITL´  = 𝑐𝑑(𝚲✗⨳, 𝑔=󰲡TAC_(x,␛l))
 ␀TACITR´  = 𝑐𝑑(𝚲✗⨳, 𝑔=󰲡TAC_(x,␛r))
@@ -615,7 +618,7 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
             𝕏≠␛⍜         ⨳ ‹󰤱 generalize›
             l, r = 𝔸𝌂←𝑔🃌⋅S≔⫰s
             𝙰 = lᙧ󰀒⁻¹ᐵ󰌷ᑅr
-            ↪ 𝙰󱑼𝑔 ꟿ 󰲣y(⠤x)
+            ↪ 𝙰󱑼𝑔 ꟿ󰲣y(⠤x)
     ↪ 𝚲𝑓(⠤ƒ(⠤𝔸), ⠶𝕂)
 ○´,⍜´,󰬫´,󰬩´ = ‹○⍜󰬫󰬩›ᴍ󰲡OPWRAP_(COMPOSE_(x))
 
@@ -758,10 +761,8 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜ TACITM(x₀,xₓ􊬤􊮢􍨄�
 ℳℱ_cache = {}
 ⊢ ℳℱ(load):
     ⊢ ƒ(⠤𝔸,⠶𝕂):
-        ¿ℳℱ_cache∋𝓲≔id(load):
-            𝑓 = ℳℱ_cache􋜆
-        ¡:
-            𝑓 = ℳℱ_cache􋜆 = load
+        ¿ℳℱ_cache∋𝓲≔id(load): 𝑓 = ℳℱ_cache􋜆
+        ¡                   : 𝑓 = ℳℱ_cache􋜆 = load
         ↪ 𝑓(⠤𝔸,⠶𝕂)
     ↪ ƒ
 SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)

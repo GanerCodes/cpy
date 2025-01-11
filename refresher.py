@@ -209,8 +209,8 @@ def run_moon(𝔸, extract_interactive=ⴴ):
         cpy = basic_cpy_interactive_session(**ᖱ(
               print_code   = 𝕂.debug,
               print_output = ⴳ) | cpy_kwargs)
-        r = cpy(' '.join(𝔸))
-        r and print(r)
+        r = cpy(ś.join(𝔸))
+        r is not ᗜ and print(r)
         exit()
     
     cpy = basic_cpy_interactive_session(**ᖱ(
