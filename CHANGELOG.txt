@@ -374,3 +374,12 @@ added , threadman, biahiuofafu
 󷹁: 󰤱 docs
 
 in `kots.☾` we now have that cd(@) will cd into the caller's current dir
+
+󰤱betterdocs
+    󱫩􊽺(𝚲󰔛∘5→►"hi"☾, 󷰾⅕î, 5)→☾
+     󰔛􊽺(𝚲"joe"☾, 󷰾⅕, 5)→☾
+    # 5 󰔛  sleep 5s
+    # ƒ 󰔛/󱫩    ⟶ Timer  wait 1s, call ƒ
+    # ƒ 󰔛/󱫩  5 ⟶ Timer  wait 5s, call ƒ
+    # ƒ 󰔛/󱫩⁵ 5 ⟶ Timer  (wait 5s, call ƒ)⨯5
+    # ƒ 󰔛/󱫩⁵ 󷱂 ⟶ Timer  (call ƒ, wait 5s)⨯4, (call ƒ)
