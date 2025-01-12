@@ -16,8 +16,6 @@ except Exception:
  = suppar2(⥌f  ,o=ᐦ↦ⓦ(  􊯛ᵣ₊󰂼∘f, 󰲡x.read  ))
  = suppar2(⥌f,𝓬,o=ᐦ↦ⓦ(y≔􊯛₊󰂼∘f, 󰲡x.write∘𝓬 →► y))
 
-𝔗 = PL_THREAD_
-
 pwd = 𝚲𝐩∘pwd_
 󱀘 cd:
     s, c = [], []

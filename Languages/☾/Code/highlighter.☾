@@ -1,11 +1,10 @@
 ⨡ traceback, threading, sys
 ⮌ pathlib ⨡ Path as 𝐩
 ⮌ json ⨡ loads
-⮌ util ⨡ cpy_dir
 󰋺("kots", *)
 󰋺("🌈", *)
 
-styf = 𝐩(cpy_dir) / "FontCompose/Output/style.json"
+styf = cpy_dir / "FontCompose/Output/style.json"
 styd = styf ⥉  ⥉ loads ⥉ ℵ
 
 ⊢ sty(s, bg=0, de="bec"):

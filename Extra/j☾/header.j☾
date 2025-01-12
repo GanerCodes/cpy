@@ -1,4 +1,4 @@
-ASCII_CHARS_STANDARD = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+BASE_CHARSET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 𝔍 = {↑:JSON.stringify, ↓:JSON.parse};
 󰈙 = document;
@@ -15,21 +15,17 @@ ASCII_CHARS_STANDARD = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123
 𝒮 = ⥌d,k,v↦(¬(k∈d) ∨ dₖ≅␀) ⭜(dₖ=v)⭝ dₖ;
 [󱅏, 𝑖] = [Math.random, Math.floor];
 [𝒪, 𝒟, 𝒪k, 𝒪v] = [𝑜.entries, 𝑜.fromEntries, 𝑜.keys, 𝑜.values];
-ends = ⥌l↦l.map(⥌𝑥,i↦[i≡0,𝑥,i≡🃌(l)-1]);
-sort = ⥌A,f,r=𝔽↦ A.sort(⥌a,b↦(r ⭜1⭝ 󷰾)⋅(b>a ⭜1⭝ 󷰾))  what?
+☾     = ⥌⠤x↦console.log  (⠤x) ∨ x₀
+table = ⥌⠤x↦console.table(⠤x) ∨ x₀
+ends  = ⥌l↦l.map(⥌𝑥,i↦[i≡0,𝑥,i≡🃌(l)-1]);
+sort  = ⥌A,f,r=𝔽↦ A.sort(⥌a,b↦(r ⭜1⭝ 󷰾)⋅(b>a ⭜1⭝ 󷰾))  what?
 range = ⥌a,b↦b≅󱣩⭜𝑙(Array(a).keys())⭝𝑙(Array(b-a).keys())􊾡(󰲡x+a);
 merge = ⥌ ⠤o↦𝑜.assign({}, ⠤o)
-☾           = ⥌⠤x↦console.log  (⠤x) ∨ x₀
-print_table = ⥌⠤x↦console.table(⠤x) ∨ x₀
 sleep = ⥌s↦🆕Promise(⥌r↦setTimeout(r, 1000⋅s));
-strfmt = ⥌s,𝔸↦{
-    ∀(©[k,v] ⎔ 𝒪(𝔸)) s = s.replace(🆕RegExp("\\{" + k + "\\}", "gi"), v);
-    ↪ s; };
-mk_id = ⥌l,chars=ASCII_CHARS_STANDARD↦ 
-    range(l)􊾡(𝚲chars􋕛(𝑖(󱅏()⋅🃌(chars))))􋔩(󰲣x+y, ᐦ);
+mk_id = ⥌l,chars=BASE_CHARSET↦range(l)􊾡(𝚲chars􋕛(𝑖(󱅏()⋅🃌(chars))))􋔩(󰲣x+y, ᐦ);
 groups = ⥌l,𝑓↦{
     O = {};
-    l.forEach(󰲡𝒮(O, 𝑓(x), []).push(x))
+    l􋁃(󰲡𝒮(O, 𝑓(x), []).push(x));
     ↪ O; }
     
 GID = 󰲡document.getElementById(x);
@@ -39,43 +35,6 @@ QSA = ⥌x,e=document↦𝑙(e.querySelectorAll(x));
 𝔏𝔖 = { ↑: 󰲣localStorageₓ = 𝔍􋀫(y),
        ↓: 󰲣x∈localStorage⭜𝔍􋀭(localStorageₓ)⭝y,
        ⸓: 󰲥𝔏𝔖􋀫(x, y(𝔏𝔖􋀭(x, z))) }
-
-ə_clone = ⥌ə↦{
-    ¿(¬(ə instanceof Node)) ↪ ə;
-    ¿(ə.tagName ≡ ␛F) ↪ ə􋇔();
-    © 𝚎 = ə.cloneNode(false);
-    ¿(␛𝕤∈ə) 𝚎􋉥 = ə􋉥;
-    ¿(ə instanceof HTMLElement)
-        𝚎.append(⠤ᴍ(ə.childNodes, 𝚎_clone));
-    ↪ 𝚎; }
-
-𝐶 = ⥌d↦{
-    © cache_specials = ⥌𝕊↦{
-        © psu = 𝕊ᵉ.parentElement ?? 󱀝[⟦𝕊ᵉ⟧];
-        ∀(©𝚌 ⎔ QSA("[T]", psu)) {
-            ¿(␛𝕤∈𝚌) ↺;
-            𝕊[𝕊􋆵ᵢ₍₎ = 𝚌.getAttribute(␛T)] = 𝚌;
-            𝚌.removeAttribute(␛T); }
-        ∀(⎉𝚌 ⎔ QSA('*', psu)) {
-            ¿(␛𝕤∈𝚌) {
-                ¿(¬('𝑃' ∈ 𝚌􋉥)) 𝚌􋉥 􋇄 = 𝕊;
-                ↺; }
-            𝚌􋉥 = 𝕊; } }
-    © 𝑓 = 𝚲{
-        © 𝕊 = merge(d, ⠤𝔸);
-        ᴍ(𝒪(𝕊), ⥌[k,ə]↦(ə instanceof Node)∧(𝕊ₖ = ə_clone(ə)));
-        𝕊􋆵 = {};
-        𝕊􋇀 = ⥌𝕊,𝑥↦{
-            ⎉ k = 𝕊;
-            ➰(k ∧ ¬(𝑥∈k)) k = k􋇄;
-            ↪ k􊴣; };
-        (𝕊􋇆 = cache_specials.bind(␀, 𝕊))();
-        ∀(© [k,v] ⎔ 𝒪(𝕊))
-            ¿(𝗙(v)) 𝕊ₖ = v.bind(␀, vⁱˢ􋆷 ⭜{𝑃:𝕊}⭝ 𝕊);
-        𝕊.init();
-        ↪ 𝕊ᵉ; }
-    𝑓ⁱˢ􋆷 = ✓;
-    ↪ 𝑓; };
 
  󱀝✨󱀝✨󱀝 topaz notation 󱀝✨󱀝✨󱀝
 mkə = ⥌name, attrs, kids↦{

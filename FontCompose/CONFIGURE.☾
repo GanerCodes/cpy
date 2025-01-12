@@ -6,7 +6,7 @@ GENERATE_XCOMPOSE = ✓
 OUTPUT_EXTS       = ‹otf ttf woff2›⍭
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/c/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✗ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
+COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
@@ -21,7 +21,9 @@ DAT = ␛
 ¡BLUE    ⦑c⦑67f⦒⦒    ␠ ¡TEALZ  ⦑c⦑84d1c4⦒⦒
 ¡DORANGE ⦑c⦑c6b835⦒⦒ ␠ ¡LPINK  ⦑c⦑eeccee⦒⦒
 ¡LBLURP  ⦑c⦑6d60fc⦒⦒ ␠ ¡LBLEEN ⦑c⦑52ffe7⦒⦒
-¡SYBLUE  ⦑c⦑69c0ff⦒⦒
+¡SYBLUE  ⦑c⦑69c0ff⦒⦒ ␠ ¡GREEN2 ⦑c⦑59ff4f⦒⦒
+¡PURP    ⦑c⦑6700e3⦒⦒ ␠ ¡YEEN   ⦑c⦑c0ff79⦒⦒
+¡ORNG    ⦑c⦑ffa859⦒⦒ ␠ ¡FISH   ⦑c⦑ff9996⦒⦒
 
 ¡d4⟦wsad⟧ ␠ ¡c4⟦qezc⟧ ␠ ¡d8⟦wsadqezc⟧
 ¡D4⟦WSAD⟧ ␠ ¡C4⟦QEZC⟧ ␠ ¡D8⟦WSADQEZC⟧
@@ -60,6 +62,7 @@ DAT = ␛
  micheal's mathematical monikers
 ¡MMM ⟨DORANGE⟩ ⟦ ⁅algebra⟶󰫮⁆⁅graph⟶󰡷⁆⁅connected⟶⁆⁅holds⟶✓⁆⁅generated𝕊by⟶⚙⁆⁅ID⟶󰫶⁆⁅metricm⟶󰣰⁆⁅basis⟶󰨥⁆⁅topology⟶󰬁⁆⁅VS⟶󰬃⁆⁅ideal⟶󱧡⁆⁅point⟶⁆⁅vector𝕊⟶󰬃⁆⁅module⟶󰫺⁆⁅polynomial⟶󰡱⁆⁅path⟶󰉽⁆⁅vector𝕊space⟶󰬃⁆⁅ED⟶󰫲⁆⁅ieal⟶󱧡⁆⁅MS⟶󰍒⁆⁅topological𝕊space⟶⁆⁅edge⟶󰝊⁆⁅object⟶▢⁆⁅scalar⟶ᾇ⁆⁅domain⟶󰫱⁆⁅node⟶⁆⁅chain⟶󰿨⁆⁅line⟶󰕞⁆⁅surjection⟶󰚥⁆⁅vector⟶⁆⁅lattice⟶󱗿⁆⁅morphism⟶⁆⁅manifold⟶⁆⁅imorphism⟶󰉷⁆⁅fix⟶⁆⁅space⟶󱁐⁆⁅topological𝕊⟶⁆⁅DVR⟶⁆⁅homomorphism⟶󰠩⁆⁅find⟶󰍉⁆⁅ijection⟶󰎑⁆⁅form⟶␌⁆⁅gen𝕊by⟶⚙⁆⁅id𝕊⟶󰻾⁆⁅loop⟶➰⁆⁅element⟶⁆⁅functor⟶󱨹⁆⁅salgebra⟶󰊰⁆⁅tree⟶󱁕⁆⁅transformation⟶󰊄⁆⁅vectorv⟶⁆⁅UFD⟶󰬂⁆⁅relation⟶󰑇⁆⁅neighborhood⟶󰷔⁆⁅derangement⟶⁆⁅function⟶󰊕⁆⁅group⟶󰫴⁆⁅tensor⟶󰗴⁆⁅set𝕊⟶󰬀⁆⁅TS⟶⁆⁅category⟶󰫰⁆⁅partition⟶󱇙⁆⁅metric𝕊⟶󰍒⁆⁅example⟶⁆⁅family⟶󱘎⁆⁅measure⟶󰑭⁆⁅field⟶󰫳⁆⁅fix⟶⁆⁅ring⟶󰫿⁆⁅PID⟶󰫽⁆⁅matrix⟶󰘨⁆⁅proot⟶⎋⁆⁅play⟶⁆⁅pause⟶⁆⁅flower⟶✿⁆⁅prove⟶⁆⁅have⟶⏏⁆⁅⟦ᐦh⟧surface⟶ϡϠ⁆ ⟧
 
+𝟕𝟟𝟩𝟳𝟽7
 ¡dstruk        q ⟨@letnum⟩  ⟨REDPINK⟩    ⟶ 𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡
 ¡bold         wb ⟨@lngeek⟩  ⟨TEALZ⟩      ⟶ 𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗𝞁𝝝𝝷𝞋𝝰𝝱𝝳𝝯𝞉𝝙𝝴𝝶𝞅𝝫𝞍𝝸𝝹𝝺𝝠𝝻𝝿𝞇𝝥𝝭𝞀𝞂𝝨𝞃𝞄𝝼𝞈𝝮𝝣𝞆𝝲𝝘𝝵𝝽
 ¡ital         wi ⟨@lngeek⟩  ⟨ORANGE⟩     ⟶ 𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍◌◌◌◌◌◌◌◌◌◌𝝇𝜣𝜽𝝑𝜶𝜷𝜹𝜵𝝏𝜟𝜺𝜼𝝋𝜱𝝓𝜾𝜿𝝀𝜦𝝁𝝅𝝍𝜫𝜳𝝆𝝈𝜮𝝉𝝊𝝂𝝎𝜴𝜩𝝌𝜸𝜞𝜻𝝃
@@ -67,13 +70,18 @@ DAT = ␛
 ¡monospace    wo ⟨@letnum⟩  ⟨BLUE⟩       ⟶ 𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿
 ¡circle       wc ⟨@letnum⟩  ⟨YELLOW⟩⦑N⦒  ⟶ ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ◌󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱
 ¡para         wp ⟨@letnum⟩  ⟨YELLOW⟩⦑N⦒  ⟶ ⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵🄐🄑🄒🄓🄔🄕🄖🄗🄘🄙🄚🄛🄜🄝🄞🄟🄠🄡🄢🄣🄤🄥🄦🄧🄨🄩◌⑴⑵⑶⑷⑸⑹⑺⑻⑼
-¡fat          wB ⟨@letnum⟩  ⟨DORANGE⟩    ⟶ 󰫮󰫯󰫰󰫱󰫲󰫳󰫴󰫵󰫶󰫷󰫸󰫹󰫺󰫻󰫼󰫽󰫾󰫿󰬀󰬁󰬂󰬃󰬄󰬅󰬆󰬇◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌󰬹󰬺󰬻󰬼󰬽󰬾󰬿󰭀󰭁󰭂 
+¡fat          wB ⟨@letnum⟩  ⟨DORANGE⟩    ⟶ 󰫮󰫯󰫰󰫱󰫲󰫳󰫴󰫵󰫶󰫷󰫸󰫹󰫺󰫻󰫼󰫽󰫾󰫿󰬀󰬁󰬂󰬃󰬄󰬅󰬆󰬇◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌󰬹󰬺󰬻󰬼󰬽󰬾󰬿󰭀󰭁󰭂
+¡outlined     wq ⟨@letnum⟩  ⟨FISH⟩       ⟶ 𜳖𜳗𜳘𜳙𜳚𜳛𜳜𜳝𜳞𜳟𜳠𜳡𜳢𜳣𜳤𜳥𜳦𜳧𜳨𜳩𜳪𜳫𜳬𜳭𜳮𜳯◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌◌𜳰𜳱𜳲𜳳𜳴𜳵𜳶𜳷𜳸𜳹
 ¡frak         wf ⟨@letter⟩  ⟨RED⟩        ⟶ 𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ
 ¡frak,bold    wF ⟨@letter⟩  ⟨RED⟩        ⟶ 𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅
 ¡mscript      wm ⟨@letter⟩  ⟨LBLUE⟩      ⟶ 𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵
 ¡mscript,bold ms ⟨@letter⟩  ⟨LBLURP⟩     ⟶ 𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩
+              mi ⟨@letter⟩  ⟨YEEN⟩       ⟶ 𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡
+              MI ⟨@letter⟩  ⟨ORNG⟩       ⟶ 𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙅𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕
+              wt ⟨@letnum⟩  ⟨GREEN2⟩     ⟶ 𝖺𝖻𝖼𝖽𝖾𝖿𝗀𝗁𝗂𝗃𝗄𝗅𝗆𝗇𝗈𝗉𝗊𝗋𝗌𝗍𝗎𝗏𝗐𝗑𝗒𝗓𝖠𝖡𝖢𝖣𝖤𝖥𝖦𝖧𝖨𝖩𝖪𝖫𝖬𝖭𝖮𝖯𝖰𝖱𝖲𝖳𝖴𝖵𝖶𝖷𝖸𝖹𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫
+              mv ⟨@letter⟩  ⟨PURP⟩       ⟶ 𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁
 ¡CIRCLE       WC ⟨@ALPHA⟩   ⟨ORANGE⟩⦑N⦒  ⟶ 🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩
-¡box ⟨REDPINK⟩Wb ⟨@ALPHA⟩                ⟶ 🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉
+¡box          Wb ⟨@ALPHA⟩   ⟨REDPINK⟩    ⟶ 🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉
 ¡BOX ⟨REDPINK⟩WB⟦⟨@ALPHA⟩⟨d4⟩⁅v⟦ws⟧⁆'⁅he⟦kx⟧⁆⟧ ⟶ 󰬈󰬉󰬊󰬋󰬌󰬍󰬎󰬏󰬐󰬑󰬒󰬓󰬔󰬕󰬖󰬗󰬘󰬙󰬚󰬛󰬜󰬝󰬞󰬟󰬠󰬡⍐⍗⍇⍈⟎⟏⍞☑☒
 ¡para         WP⟦⁅1⟦⟨number⟩⟧⁆⁅20⁆⟧          ⟨YELLOW⟩⦑N⦒ ⟶ ⑽⑾⑿⒀⒁⒂⒃⒄⒅⒆⒇
 ¡mocircnums   WC⟦⟨@number⟩⁅1⟦⟨number⟩⟧⁆⁅20⁆⟧ ⟨YELLOW⟩⦑N⦒ ⟶ ⓪①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
@@ -88,7 +96,7 @@ DAT = ␛
    ⟶   󷱩󷱪󷱽󷱾󷱫󷱬󷱭󷱮󷱯󷱰                   ⁆ ⟧
 
 ⟨GREEN⟩ ⟦
-    ⁅W⟨ALPHA⟩𝕊 ⟶ ѦƁƇƊᗴҒႺⴼΙɈⴿꝈⱮͶⴲƤꝖⴽ𝖲ƬŲѴϢҲⵖΖ⁆
+    ⁅W⟨ALPHA⟩𝕊 ⟶ ѦƁƇƊᗴҒႺⴼΙɈⴿꝈⱮͶⴲƤꝖⴽႽƬŲѴϢҲⵖΖ⁆
     ⁅W⟨alpha⟩𝕊 ⟶ ɒც𝼝𝼥⋿ꬵꬶҕї𝼚𝼐ꬷӍꬼϙƿ𝼛Ʀ𝼞ŧꭒѵꭐꭘꭚƶ⁆
     ⁅w⟦fF⟧𝕊⟶ƒ󰊕⁆ ⟧
 ⟨LBLUE⟩ wS⟦lP⟧⟶ℓ℘
@@ -103,7 +111,7 @@ DAT = ␛
     ⁅5⟦    6 8     ⟧ ⟶     ⅚ ⅝  ⁆
     ⁅7⟦      8     ⟧ ⟶       ⅞  ⁆ ⟧
 ⟨DGREEN⟩ ⟦
-    ⁅⟦⁅ns⟦gG⟧⟦ᐦ=⟧⟦𝕊/⟧⁆⁅D⟦𝕊g⟧⁆⁅d⟦oO⟧⁆⟧
+    ⁅⟦⁅ns⟦gG⟧⟦ᐦ=⟧⟦𝕊/⟧⁆⁅D⟦𝕊g⟧⁆⁅d⟦oO⟧𝕊⁆⟧
      ⟶    ⊲⋪⊴⋬⊳⋫⊵⋭       🜂🜄     ᐄᐂ     ⁆
     ⁅o⟦𝕊=.+-/cdlpxfnv⁅⟦o⁅oo⁆⟧𝕊⁆⁅88⁆⟧
      ⟶ ⋅≖⨀⨁⊖⨸©⎊⎉⌾⨂⎔⭔⬠    •⬤      ↀ     ⁆
@@ -197,9 +205,9 @@ ref⟶ꔧ ␠ doc⟶󰈙 ␠ th⟶þ
 sps⟶ᔲ ␠ nCr⟶⫚ ␠ fs⟶ſ
 wre⟶≀ ␠ NEW⟶🆕 ␠ FS⟶Ϝ
 und⟶󱣩 ␠ act⟶⮎ ␠ ;_⟶⍮ 
-cll⟶󱇙 ␠ AA⟶∀
-
+cll⟶󱇙 ␠ dx𝕊⟶󷷳 ␠ AA⟶∀
 mod𝕊⟶⸓
+dd⟦+-⟧⟶ፓ󷷴
 t⟦⁅ex⁆⁅xt⁆⟧⟶󰊄
 ⟦OR{[⟧/ ⟶ Ø℟∅⍁
 dia⟦+-*/O^⟧⟶󷷶󷷻󷷷󷷸󷷹󷷺
@@ -234,12 +242,13 @@ c⟦ ⁅ c⟦-|/\+<>*[]htflnpdsczZ⟧
    ⁅ p⟦adr⁅t⟨d4⟩⁆⟧             ⟶ 󰸵󰸷☽⯟◌⯝⚸   ⁆
    ⁅ r⟦adfiso[=-]⟧             ⟶ ⬓⬒󱅏▢󷸹󷸻󷸸󷸺⁆
    ⁅ s⟦01smnpw⟧                ⟶ 󷹎󷹍󷹌ꟿⴵ⍭⥉   ⁆
+   ⁅ t⁅m⟦𝕊s⟧⁆                  ⟶ 󰔛󱫩        ⁆
    ⁅ w⟦⁅⟦ᐦp⟧⟦ᐦt⟧𝕊⁆⁅␛!⟦𝕊+-⟧⁆⟧   ⟶ ᗢᙧᙎᙡ󰔶   ⁆
    ⁅ ⟦sf⟧⟦+-⟧                  ⟶ 󰒼󰒽󰈲󰈳      ⁆
    ⁅ ⟦()[]{}⟧                  ⟶ ❴❵␛⁅␛⁆␛󰅁␛󰅂⁆
    ⁅ ⟦␛"^\⁅/⟦𝕊/⟧⁆⟧             ⟶ ᐦ⌃∖🟑֎     ⁆
    ⁅ ⟨alpha⟩𝕊 ⟶ 🃌⇥↺⠤↨⮌◌≾ᒍ◌➰ᴍ◌⩫☾◌↪ᔐ⍉ᚤ◌◌◌⮂⥌ ⁆
-   ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶◌◌◌🜌🝇◌◌◌◌◌◌◌ᴙ◌󰆴◌◌◌◌𝚲 ⁆ ⟧
+   ⁅ ⟨ALPHA⟩𝕊 ⟶ ◌◌◌⠶⛶󱖔◌◌🜌🝇◌◌◌◌◌◌◌ᴙ◌󰆴◌◌◌◌𝚲 ⁆ ⟧
 🟑
 
 ⟨LPINK⟩;⟦ ⁅ ⟦{}⟧ ⟶ "⎧⎪⎨⎩" "⎫⎪⎬⎭" ⁆
@@ -273,8 +282,8 @@ shrug⟶"⎺⟍_⟨⍩⟩_⟋⎺"
 ¡ℭ ⟨DRED⟩                ~*\/<>≪≫󷺑󷺒󷺓󷺤󷺥󷺦⩟⊼⊻⊽⥱
 ¡ℭ ⟨ORANGE⟩              󱣩∅⍁󰻾ℶℵ󰮈ᔐ󱠨󰋺
 ¡ℭ ⟨DORANGE⟩             󱀝ə
-¡ℭ ⟨DGREEN⟩              󷷹󰔶ᣆńś
-¡ℭ ⟨SYBLUE⟩              ⨁⨀󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽
+¡ℭ ⟨DGREEN⟩              ፓ󷷴󷷳∫󷷹󰔶ᣆńś
+¡ℭ ⟨SYBLUE⟩              ⨁⨀󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽󱖔
 ¡ℭ ⟨YELLOW⟩              ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻𝚲⥌↦␛󰅁␛󰅂
 ¡ℭ ⟨LBLEEN⟩              󱀘󱟱󱫬↪⭝⭜⨡⮌↺⇥⮂➰∀⍮=
 ¡ℭ ⦑c⦑bf3⦒             ⦒ ¬⌐¯⌃󷷺󷹁
@@ -300,7 +309,7 @@ shrug⟶"⎺⟍_⟨⍩⟩_⟋⎺"
 ¡ℭ ⦑c⦑|fc02|ff63⦒B⦑s|1⦒⦒ " "
 ¡ℭ ⦑c⦑|0fc2|55de⦒B⦑s|1⦒⦒ " "
 
-¡ℭ ⦑⦒ 󷸝󷸞󷸟󷸠󷸡󷸢󷸣󷸤󷸥󷸨󷸩󷸪󷸫󷸬󷸭󷸮󷸯󷸰󷸱󷸲󷸳󷹥󷹧󷹦󰇘󰑁󰑃󷹟󷹠󷹡󷹽󷹾󷹿󷺀󷸴｜＋／＼＃＞＜⅄ɹԀ˥ʞƆʎʍʌʇɯʞᴉɥƃɟɔɐ𝝤𝝦𝝧𝝩𝝪𝝬𝝾𝞊𝞌𝞎𝞏𝞐𝞑𝞒𝞓𝞕𝞖𝞗𝞘𝞙𝞚𝞛𝞜𝞝𝞞𝞟𝞠𝞡𝞢𝞣𝞤𝞥𝞦𝞧𝞨𝞩𝞪𝞫𝞬𝞭𝞮𝞯𝞰𝞱𝞲𝞳𝞴𝞵𝞶𝞷𝞸𝞹𝞺𝞻𝞼𝞽𝞾𝞿𝟀𝟁𝟂𝟃𝟄𝟅𝟆𝟇𝟈𝟉ХхΑΒΕΗΚΜΝΟΡΤΥ⥜⥠⥝⥡֍∥⨆⨲⋎⋏⩄⩅ᖯᐊᐅᕦᗐᗑᓎẞᖇⵗⵐ
+¡ℭ ⦑⦒ ፓ󷷴󷷳󷸝󷸞󷸟󷸠󷸡󷸢󷸣󷸤󷸥󷸨󷸩󷸪󷸫󷸬󷸭󷸮󷸯󷸰󷸱󷸲󷸳󷹥󷹧󷹦󰇘󰑁󰑃󷹟󷹠󷹡󷹽󷹾󷹿󷺀󷸴｜＋／＼＃＞＜⅄ɹԀ˥ʞƆʎʍʌʇɯʞᴉɥƃɟɔɐ𝝤𝝦𝝧𝝩𝝪𝝬𝝾𝞊𝞌𝞎𝞏𝞐𝞑𝞒𝞓𝞕𝞖𝞗𝞘𝞙𝞚𝞛𝞜𝞝𝞞𝞟𝞠𝞡𝞢𝞣𝞤𝞥𝞦𝞧𝞨𝞩𝞪𝞫𝞬𝞭𝞮𝞯𝞰𝞱𝞲𝞳𝞴𝞵𝞶𝞷𝞸𝞹𝞺𝞻𝞼𝞽𝞾𝞿𝟀𝟁𝟂𝟃𝟄𝟅𝟆𝟇𝟈𝟉ХхΑΒΕΗΚΜΝΟΡΤΥ⥜⥠⥝⥡֍∥⨆⨲⋎⋏⩄⩅ᖯᐊᐅᕦᗐᗑᓎẞᖇⵗⵐ
 󰦥󰦥󰦥󰦥󰦥
 MULTICHARS = 󰦥󰦥󰦥󰦥󰦥 𝓵𝓷 𝓵𝓰 𝗶𝗺 𝘁𝗿 𝗦𝗟 𝗚𝗟 𝗿𝗸 𝘀𝘁 𝗪⁵ 𝗘𝗻𝗱 𝗔𝘂𝘁 𝗚𝗮𝗹 𝗸𝗲𝗿 𝓵𝓸𝓰 𝘀𝗶𝗻 𝗰𝗼𝘀 𝘀𝗶𝗻𝗵 𝗰𝗼𝘀𝗵 𝘁𝗮𝗻 𝘀𝗲𝗰 𝗰𝘀𝗰 𝗰𝗼𝘁 𝗰𝗶𝘀 𝗹𝗼𝗴 𝗟𝗼𝗴 𝗔𝘀𝘀 𝗔𝗿𝗴 𝗮𝗿𝗴 𝗲𝘅𝗽 𝗱𝗶𝘃 𝗱𝗲𝘁 𝗱𝗲𝗴 𝗲𝗿𝗳 𝗶𝗻𝘁 𝗴𝗰𝗱 𝗹𝗰𝗺 𝗵𝗼𝗺 𝗼𝗯𝗷 𝗹𝗶𝗺 𝗶𝗻𝗳 𝘀𝘂𝗽 𝗺𝗼𝗱 𝗣𝗚𝗟 𝗣𝗦𝗟 𝘁𝗼𝗿 𝘄𝗿𝘁 𝗪𝗧𝗦 𝗪𝗧* 𝘃𝗮𝗿 𝘀𝘁𝗱 𝗰𝗼𝘃 𝗦𝗣𝗘𝗖 𝗦𝗜𝗡𝗛 𝗖𝗢𝗦𝗛 𝗧𝗔𝗡𝗛 𝗦𝗘𝗖𝗛 𝗖𝗦𝗖𝗛 𝗖𝗢𝗧𝗛 𝗖𝗛𝗔𝗥 𝗖𝗨𝗥𝗟 𝗙𝗥𝗢𝗕 𝗚𝗥𝗔𝗗 𝗥𝗔𝗡𝗞 𝗦𝗣𝗔𝗡 𝗪𝗟𝗢𝗚 𝗘𝗥𝗙𝗖 𝗠𝗘𝗠𝗘 𝗡𝗨𝗟𝗟 𝗩𝗢𝗜𝗗 𝗖𝗢𝗥𝗥 󰦥󰦥󰦥󰦥󰦥
 SCRIPT_EXIST = 󰦥󰦥󰦥󰦥󰦥
