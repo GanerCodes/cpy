@@ -1,6 +1,6 @@
 § TODOs ------------------------------------
 
-    󰤱  mutex
+    󰤱  __setminus__, __crossprod__, __union__, __intersection__, __subset__ ; mutex
     󰤱  bootstrap everything
     󰤱  Web/phone-app maker
     󰤱  Way to detect imports implicitly
