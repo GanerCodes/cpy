@@ -268,6 +268,44 @@
         h+2
     ֎ rets h+2 ֎
 
+§ What if ☾ was fast? ------------------------------------
+
+    Actual AST tree
+    Target llvm?
+        exec/eval would be impossible/inefficent but that's ok
+    
+    Internal types:
+        ᔐ: [graphemes: 𝑖]
+        𝑖{1,2,4,8,16,32,64,128,256,∞}
+        ℵ
+        ƒ?
+    
+    Typing is implicit, regenerate functions/code snippets  
+        ƒ = x↦x²
+        X = ƒ(5)
+          = ƒ(5 ⫢ ©,𝑖64)
+            ƒ(𝑖64) = (𝑖64)⁽􋇖⁶⁴⁾
+                   = (𝑖64).__sup__(𝑖64)
+                   = 𝑖64
+            ∴ ƒ:𝑖64→𝑖64
+            (𝑖64).__sup__(𝑖64)
+             ¯¯¯↖primitive¯¯¯↖primitive
+            ∴ llvm.powi.i64.i64
+            5,2⫢© ∴ llvm.powi.i64.i64(5,2)
+                  ∴ llvm will auto reduce this for us
+                  ∴ final expression would be like
+                        SETLOCAL(id(X), 25⫢𝑖64)
+            
+            
+            
+            (ᐹx).__sup__(2) 󷹇 2ᐹ𝑖
+        ƒ = x⫢𝑖64 ↦ resolve((𝑖64).__sup__, (𝑖64))
+                
+        󱀘 𝑖:
+            __sup__ = 󰲣POW_INT_INT 
+            
+        
+
 § Old stuff ------------------------------------------------
 
     ∧ ; and  ; x⭜   y   ⭝x     ; ⩓
