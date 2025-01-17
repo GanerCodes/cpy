@@ -1,3 +1,25 @@
+⊢ PL_SLEEP(x):
+    ⮌ time ⨡ sleep
+    sleep(x)
+⊢ PL_TIME():
+    ⮌ time ⨡ time
+    ↪ time()
+⊢ PL_CPU_COUNT_():
+    ⨡ multiprocessing
+    ↪ multiprocessing.cpu_count()
+⊢ PL_THREAD_(ƒ, ⠤𝔸, ⠶𝕂):
+    ⮌ threading ⨡ Thread as T
+    atom = []
+    T(target=ᐳatom.append←ƒ(⠤𝔸, ⠶𝕂))≕t→.start
+    ↪ 𝚲t.join →► atom₀
+⊢ PL_TEXT_COPY():
+    ⮌ clipboard ⨡ copy
+    ↪ copy
+⊢ PL_TEXT_PASTE():
+    ⮌ clipboard ⨡ paste
+    ↪ paste
+𝔗 = PL_THREAD_
+
 exec ← "from math import *"
 󰆴 factorial, e, pi, tau, sqrt, cbrt, pow
 𝑒,𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓,𝑦 = Exception, object, dict, bool, list, tuple, set, str, int, float, bytes
@@ -313,8 +335,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
             𝖲ⁿ ⭜ PL_SLEEP(𝖲ʸ⫰)
         𝖲ˢ≔✓
         ↪ 𝚜≅␀⭜𝖲ʳ₀⭝𝖲ʳ
-    𝕏≡␛󱫩 ⭜𝔗(ƒ)⭝ ƒ
-    ↪ TimerState(𝖲)
+    ↪ 𝕏≡␛󱫩 ⭜𝔗(ƒ)►TimerState(𝖲)⭝ ƒ
 
 𝕣 = 󰲡[y∀y∈x¿y≇␀]
 🃌´ = len
@@ -423,10 +444,10 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
          𝑙(x)﹕﹕􍨄󰅂,
         L=󰲡𝑙(x)﹕﹕􍨄)
 󰑅´ = 𝑐𝑑(_wherest, I=𝚲_wherest(⠤𝔸,I=✓))
-󷹓´ = OPWRAP_(⥌x,ƒ=𝑏,s=□↦x󰑅ᴵƒ≕ω≅□⭜s⭝x﹕󰃼₊₁ )
-󷹔´ = OPWRAP_(⥌x,ƒ=𝑏,s=□↦x󰑅ᴵƒ≕ω≅□⭜s⭝x 󰃼﹕  )
-󷹕´ = OPWRAP_(⥌x,ƒ=𝑏,s=□↦x󰑅ᴵƒ≕ω≅□⭜s⭝x﹕󰃼   )
-󷹖´ = OPWRAP_(⥌x,ƒ=𝑏,s=□↦x󰑅ᴵƒ≕ω≅□⭜s⭝x 󰃼₊₁﹕)
+󷹓´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x﹕󰃼₊₁ ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+󷹔´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x 󰃼﹕  ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+󷹕´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x﹕󰃼   ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+󷹖´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x 󰃼₊₁﹕⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
 ⍭´ = 󰲡␛ ∈x⭜x.split(␛ )ᴍ⍭⭝x.split(␛ )
 ⴵ´ = 󰲡x>0⭜1⭝x∧󷰾∨0
 ▢´ = 𝚲round(⠤𝕣(𝔸))
@@ -779,22 +800,6 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜TACITM(x₀,x₁₊􊭨ₓ􊬤�
     ¿!∈𝔸:
         nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦f.stem⟧"!›
     ↪ m
-
-⊢ PL_SLEEP(x):
-    ⮌ time ⨡ sleep
-    sleep(x)
-⊢ PL_TIME():
-    ⮌ time ⨡ time
-    ↪ time()
-⊢ PL_CPU_COUNT_():
-    ⨡ multiprocessing
-    ↪ multiprocessing.cpu_count()
-⊢ PL_THREAD_(ƒ, ⠤𝔸, ⠶𝕂):
-    ⮌ threading ⨡ Thread as T
-    atom = []
-    T(target=ᐳatom.append←ƒ(⠤𝔸, ⠶𝕂))≕t→.start
-    ↪ 𝚲t.join →► atom₀
-𝔗 = PL_THREAD_
 
 ℳℱ_cache = {}
 ⊢ ℳℱ(load):

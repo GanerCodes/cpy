@@ -1,5 +1,6 @@
 󰋺(␛𝐍, *)
-⨡ regex as re
+try             : ⨡ regex as re
+except Exception: ⨡ re
 ⮌ pickle ⨡ loads, dumps
 
 show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹⟦i⟧,⟦x⟧𝘁⟦𝑅ₓ⟧𝘁⟦y⟧›

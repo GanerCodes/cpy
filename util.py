@@ -11,10 +11,11 @@ from collections import namedtuple as NT
 from functools import reduce, partial as ρ
 from itertools import accumulate, pairwise, starmap, \
                       chain, filterfalse, groupby
-from more_itertools import *
 from pickle import loads, dumps
 import textwrap as TW
-import os, re
+import os
+try             : import regex as re
+except Exception: import re
 exit_ = exit
 
 setrecursionlimit(1_000_000)
@@ -42,6 +43,22 @@ rgx_or = lambda x: f"({ᒍ(")|(", ᴍ(re.escape, x))})"
 prettify_code = lambda g: ᒍ(ń, (f"{ᔐ(i+1).zfill(4)}\t{wrap(v, q='\t  ')}" for i,v in enum(ⵉ(g, ń))))
 _V,P=0,ρ(PD:=lambda n,*a,**k:exec(f"_V+={n}",globals())or print(ś*(_V-1+(n<0))+'|'+('←→'[n>0]if n else ś),*a,**k),0)
 def RAISE(ε): raise ε
+
+class peekable(ᒪ):
+    __init__ = lambda 𝕊,*𝔸,**𝕂: super().__init__(*𝔸,**𝕂)
+    __next__ = lambda 𝕊: 𝕊.pop(0)
+    peek = lambda 𝕊: 𝕊[0]
+
+def split_at(𝚇, 𝑓, 𝚔=ⴴ):
+    r,v = [],0
+    for i,x in enum(𝚇):
+        if not 𝑓(x): continue
+        r.append(𝚇[v:i])
+        v = i+1
+        if 𝚔:
+            r.append([x])
+    r.append(𝚇[v:])
+    return r
 
 def part(l, f):
     l, a = l.copy(), []

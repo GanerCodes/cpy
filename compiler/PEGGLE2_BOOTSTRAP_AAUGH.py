@@ -648,7 +648,10 @@ class Ń(ᐧ1d40dᐧ):
 __exports__ = ('𝐍', 'Ń')
 
 #################### peggle2 ####################
-import regex as re
+try:
+    import regex as re
+except Exception:
+    import re
 from pickle import loads, dumps
 show_cache_table = lambda ᐧ1d445ᐧ, ᐧ212dᐧ, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ꟿ(ᐧ21a8ᐧ(ᐧ212dᐧ), lambda i, v, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ꟿ(ᐧf04bcᐧ(ᐧ2135ᐧ(v) ** LITERAL_OPS_['*'], NULL), lambda x, y, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: ᐧ263eᐧ(f'{i},{x}\t{ᐧ1d445ᐧ[x]}\t{y}')))
 from time import time
