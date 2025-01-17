@@ -2,7 +2,6 @@ from util import *
 from dynamic_parser import Gram, DynamicParser, make_op_call, CODE_HEADER
 from node import Node
 from op import OP, OP_Manager
-from time import time
 
 class Lang:
     def __init__(𝕊, lang_t, ver=ᐦ, cache_dir=ᗜ):
@@ -85,8 +84,8 @@ class Lang:
         return op_norm, op_spec
     
     def parse_lang(𝕊, raw):
-        spl_H = lambda s,H: ᖱ(windowed(ᴍ(ⵐ,re.split(H,s)[1:]),2,step=2))
-        sections = spl_H(raw, r"«{3,}([^»]*)»{3,}")
+        h = ᴍ(ⵐ,re.split(r"«{3,}([^»]*)»{3,}", raw)[1:])
+        sections = ᖱ([[h[i],h[i+1]] for i in range(0,len(h),2)])
         
         op_norm, op_spec = 𝕊.parse_secs(sections['OPERATORS'])
         op_orders = {i: {h[0] for h in l} for i, l in enum(op_norm)}

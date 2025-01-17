@@ -4,12 +4,10 @@ PYTHON_INCLUDED:
     pickle, hashlib, time
     sys, os, io, pathlib, platform, tempfile
     OPTIONAL:
-        readline, subprocess
+        readline, subprocess…?
         ☾_ENABLE_DEBUG:
             resource, threading, cProfile, pstats, atexit
-PYTHON_PIP:
-    more_itertools, regex
-    OPTIONAL:
-        clipboard
-        fontforge, json5
-        numpy, scipy, pandas, statsmodels
+PYTHON_PIP - OPTIONAL:
+    regex, clipboard
+    fontforge, json5
+    numpy, scipy, pandas, statsmodels

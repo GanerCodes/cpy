@@ -1,17 +1,12 @@
 ⮌ os ⨡ chdir, getcwd as pwd_, environ as env, mkdir
 ⮌ pathlib ⨡ Path as 𝐩
 
-try:
-    ⮌ clipboard ⨡ copy, paste
-     = ⥌s=□↦paste¿s≅□¡(copy○ᔐ∘s →► s)
-except Exception:
-    pass
-
 󱀘 suppar2:
     __init__ = ⥌𝕊,ƒ↦𝕊􊽺≔ƒ →► □
     __call__ = ⥌𝕊,⠤𝔸,⠶𝕂↦𝕊􊽺(⠤𝔸,⠶𝕂)
     __getitem__ = __getattr__ = ⥌𝕊,x↦𝚲𝕊􊽺(⠤𝔸,x,⠶𝕂)
 
+ = ⥌s=□↦PL_TEXT_PASTE¿s≅□¡(PL_TEXT_COPY○ᔐ∘s →► s)
  = suppar2(⥌f  ,o=ᐦ↦𝐩(f).open(o))
  = suppar2(⥌f  ,o=ᐦ↦ⓦ(  􊯛ᵣ₊󰂼∘f, 󰲡x.read  ))
  = suppar2(⥌f,𝓬,o=ᐦ↦ⓦ(y≔􊯛₊󰂼∘f, 󰲡x.write∘𝓬 →► y))

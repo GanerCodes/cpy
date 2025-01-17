@@ -1,12 +1,12 @@
-# P/S/B/N: prefix/suffix/binary/nullary
-# I: Include self in group (right asoc.)
-# α: basic concat
-# δ: x <op>= y doesn't make sense
-# ν: NULL version self-calls
-# χ: <op>󰀂 with C: capital letter doesn't do anything special
-# ρ: *special*
+P/S/B/N: prefix/suffix/binary/nullary
+I: Include self in group (right asoc.)
+α: basic concat
+δ: x <op>= y doesn't make sense
+ν: NULL version self-calls
+χ: <op>󰀂 with C: capital letter doesn't do anything special
+ρ: *special*
 
-«««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
+««««««««««««««««««««««««««««««««« HEADERS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 from whitespace_tools import *
 from string import ascii_uppercase
@@ -101,7 +101,6 @@ lang.ops["󷸍"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 # janky? we need test cases broooo
 lang.ops["⬅"].R |= {"→", "⭢"}
 lang.ops["←"].R |= {"⭢"}
-
 «««««««««««««««««««««««««««««««««« OPERATORS »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
 ⨡ᴺᴾ󰁔
@@ -541,6 +540,8 @@ def σ_25():
         return [n]
 
 def σ_30():
+    # if b[1].c == '∨' and len(C) > 3: b[1].c = '⩔'
+    # H,T,(a,(b,),c) in mark_ends(windowed(C, 3, step=2)):
     def make_cmp_chain(n, layers=ᗜ):
         layers = layers or OPS_COMP
         layer, *layers = layers
@@ -548,20 +549,20 @@ def σ_30():
         rec = lambda n: layers and make_cmp_chain(n, layers=layers) or n
         mkexp_rec = lambda N: rec(mkexp(*N))
         
-        C = ᒪ(split_at(n.C,
+        C = list(split_at(n.C,
             lambda x: OP.is_op(x) and (k:=op_man[x]).t in layer and k.B,
-            keep_separator=ⴳ))
-        if ⵌ(C) < 3: return rec(n)
-        r = ⴴ
+            True))
+        if len(C) < 3: return rec(n)
+        r = False
         
-        for H,T,(a,(b,),c) in mark_ends(windowed(C, 3, step=2)):
-            # if b[1].c == '∨' and ⵌ(C) > 3:
-            #     b[1].c = '⩔'
+        for i in range(1,len(C),2):
+            H,T = i==1, i==len(C)-1
+            a,(b,),c = C[i-1], C[i], C[i+1] if i+1<len(C) else None
             c = mkexp_rec(c)
             v = mkexp(("op_call",
-                H and mkexp_rec(a) or þþ,
+                mkexp_rec(a) if H else þþ,
                 b,
-                T and c or mknex_(þþ, c)))
+                c            if T else mknex_(þþ, c)))
             r = mkexp(("op_call", r, OP.TND('∧'), v)) if r else v
         return n.copy(c=[r])
     ((yield replacement("expr", rec='B', n="Generate comparison chains"))
