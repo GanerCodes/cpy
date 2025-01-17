@@ -6,7 +6,7 @@ GENERATE_XCOMPOSE = ✓
 OUTPUT_EXTS       = ‹otf ttf woff2›⍭
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/c/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
+COPY_OUT_FONT     = ✗ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
@@ -204,9 +204,10 @@ lgq⟶ȹ ␠ awt⟶󱫬 ␠ ix⟶🝤
 ref⟶ꔧ ␠ doc⟶󰈙 ␠ th⟶þ
 sps⟶ᔲ ␠ nCr⟶⫚ ␠ fs⟶ſ
 wre⟶≀ ␠ NEW⟶🆕 ␠ FS⟶Ϝ
-und⟶󱣩 ␠ act⟶⮎ ␠ ;_⟶⍮ 
-cll⟶󱇙 ␠ dx𝕊⟶󷷳 ␠ AA⟶∀
+und⟶󱣩 ␠ act⟶⮎ ␠ AA⟶∀
+cll⟶󱇙 ␠ dx𝕊⟶󷷳 ␠ 
 mod𝕊⟶⸓
+⟦;'⁅ᴍ⟦αωι⟧⁆⟧_⟶⍮⍘⍶⍹⍸
 dd⟦+-⟧⟶ፓ󷷴
 t⟦⁅ex⁆⁅xt⁆⟧⟶󰊄
 ⟦OR{[⟧/ ⟶ Ø℟∅⍁
@@ -285,7 +286,7 @@ shrug⟶"⎺⟍_⟨⍩⟩_⟋⎺"
 ¡ℭ ⟨DGREEN⟩              ፓ󷷴󷷳∫󷷹󰔶ᣆńś
 ¡ℭ ⟨SYBLUE⟩              ⨁⨀󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽󱖔
 ¡ℭ ⟨YELLOW⟩              ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻𝚲⥌↦␛󰅁␛󰅂
-¡ℭ ⟨LBLEEN⟩              󱀘󱟱󱫬↪⭝⭜⨡⮌↺⇥⮂➰∀⍮=
+¡ℭ ⟨LBLEEN⟩              ␛¡¿⸘⍮⍘󱀘󱟱󱫬↪⭝⭜⨡⮌↺⇥⮂➰∀=
 ¡ℭ ⦑c⦑bf3⦒             ⦒ ¬⌐¯⌃󷷺󷹁
 ¡ℭ ⦑c⦑faf⦒             ⦒ ∪∩∖⨉⊞
 ¡ℭ ⦑c⦑fb6⦒             ⦒ 󷷶󷷻+-|^&⪡⪢∓±
