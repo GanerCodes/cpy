@@ -1,0 +1,21 @@
+⊢ PL_SLEEP(x):
+    ⮌ time ⨡ sleep
+    sleep(x)
+⊢ PL_TIME():
+    ⮌ time ⨡ time
+    ↪ time()
+⊢ PL_CPU_COUNT_():
+    ⨡ multiprocessing
+    ↪ multiprocessing.cpu_count()
+⊢ PL_THREAD_(ƒ, ⠤𝔸, ⠶𝕂):
+    ⮌ threading ⨡ Thread as T
+    atom = []
+    T(target=ᐳatom.append←ƒ(⠤𝔸, ⠶𝕂))≕t→.start
+    ↪ 𝚲t.join →► atom₀
+⊢ PL_TEXT_COPY(x):
+    ⮌ clipboard ⨡ copy
+    ↪ copy(x)
+⊢ PL_TEXT_PASTE():
+    ⮌ clipboard ⨡ paste
+    ↪ paste()
+𝔗 = PL_THREAD_

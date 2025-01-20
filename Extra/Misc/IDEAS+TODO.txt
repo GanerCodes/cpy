@@ -6,6 +6,7 @@
     󰤱  Way to detect imports implicitly
     󰤱  normalize binds/stuff for edits/cross-plat
         󰤱 SCRIPT_MAP hardcoded in moonvert rn
+    󰤱  rotate ⬓⬒
     󰤱  regex but better
     󰤱  add the edge cases for the new compose ops
     󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞

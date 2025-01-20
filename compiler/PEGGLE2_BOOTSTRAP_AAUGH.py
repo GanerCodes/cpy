@@ -903,11 +903,11 @@ def chop_tree(ᐧf1055ᐧ, ᐧ1d437ᐧ, remove_trashes=ᐧ2713ᐧ, remove_failed
         if remove_failed_questions and ᐧf1055ᐧ.t == '?':
             if not ᐧf1055ᐧ.c:
                 return
-            ᐧf1055ᐧ.c = list(filter(ƒ, ᐧf1055ᐧ.c))
+            ᐧf1055ᐧ.c = [*filter(ƒ, ᐧf1055ᐧ.c)]
             if not ᐧf1055ᐧ.c:
                 return
             return True
-        ᐧf1055ᐧ.c = list(filter(ƒ, ᐧf1055ᐧ.c))
+        ᐧf1055ᐧ.c = [*filter(ƒ, ᐧf1055ᐧ.c)]
         return True
     ᐧeba6ᐧ(ᐧ2112ᐧ)
     ƒ(ᐧf1055ᐧ)
@@ -1054,7 +1054,7 @@ def Peggle1Bootstrap(c=ᐧ2135ᐧ()):
             for i, v in s:
                 c[i].e = v
             return Node(ᐧf1055ᐧ.t, c)
-        return ƒ(ᐧf1055ᐧ).find_replace(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ᐧ1f0ccᐧ(x) == 1 and ᐹ(x.c[0], Node)) and (not x.c[0].t), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.copy(c=x.txt))
+        return ƒ(ᐧf1055ᐧ).find_replace(lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: (ᐧ1f0ccᐧ(x) == 1 and ᐹ(x.c[0], Node)) and (not x.c[0].t), lambda x, *ᐧ1d538ᐧ, **ᐧ1d542ᐧ: x.copy(c=x.as_txt()))
 
     class ForcefeedPeggle1Peggle2(Peggle2):
 

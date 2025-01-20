@@ -69,12 +69,12 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
     lang_pfx = os.path.abspath(f"{CPY_DIR}/Languages/☾")
     code_pfx = os.path.abspath(f"{lang_pfx}/Code")
     libr_pfx = os.path.abspath(f"{lang_pfx}/Libraries")
-    header_f = os.path.abspath(f"{code_pfx}/header.☾")
+    header_f = os.path.abspath(f"{code_pfx}/HEADER")
     for f in (code_pfx, libr_pfx):
         f in sys.path or sys.path.insert(0, f)
     
-    ns  = {} if ns  is ᗜ else ns
-    hns = {} if hns is ᗜ else hns
+    ns  = {} if ns  is None else ns
+    hns = {} if hns is None else hns
     
     if header_carry:
         hns = header_carry | hns
@@ -82,7 +82,9 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
         hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
         hns.setdefault("__file__", header_f)
         hns.setdefault("__code_post_process__", 𝕂.get("code_post_process"))
-        run_inj_tb(compiler("☾", R(header_f), do_cache, **𝕂), hns)
+        hcode = '\n'.join(compiler("☾", R(f"{code_pfx}/{x}"), do_cache, **𝕂)
+                            for x in R(header_f).split('\n') if x)
+        run_inj_tb(hcode, hns)
         
         hns["__header_namespace__"] = hns
         hns["__code_cache_dir__"] = code_cache_dir
@@ -99,9 +101,9 @@ def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ
         𝕂["code_post_process"] = py_reparse
         𝕂["code_post_process"].ver = "basic_py_reparse"
     compiler, ns = basic_cpy_session(do_cache, **𝕂)
-    def interactive(c, return_code=ⴴ, cap_stdout=ⴳ,
-                    dynamic_compile=ⴴ, global_verbose_debug=ⴴ,
-                    force_exec=ⴴ, output_printer=print, **𝕂):
+    def interactive(c, return_code=ⴴ, cap_stdout=ⴳ, dynamic_compile=ⴴ,
+                    global_verbose_debug=ⴴ, force_exec=ⴴ,
+                    output_printer=lambda *𝔸,**𝕂:print(*𝔸,**{"end":ᐦ}|𝕂), **𝕂):
         if global_verbose_debug:
             import dynamic_parser
             dynamic_parser.DEBUG = int(global_verbose_debug)
