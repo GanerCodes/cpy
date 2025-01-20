@@ -53,6 +53,7 @@
 󷺬 ; NAND (doesn't short circuit)
 
 ≡ ; equals
+󷷼 ; diamond equals
 ≠ ; not equal
 ≤ ; less than or equal to
 ≥ ; greater than or equal to
@@ -113,7 +114,6 @@
 - ; subtract
 󷷶 ; diamond add
 󷷻 ; diamond subtract
-
 
 ∘ ; call left with right
 ○ ; compose functions with balanced args, overflow right

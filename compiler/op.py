@@ -16,7 +16,7 @@ class OP:
     def __repr__(𝕊): return f"⟨{𝕊.t}│{bin(𝕊.v)[2:].zfill(ⵌ(_OP_TYPES))[::-1]}{f"│{𝕊.F}⟩" if 𝕊.F else '⟩'}"
     def __eq__(𝕊, n):
         O = L, base, R = 𝕊.is_op(n)
-        return O if base.txt == 𝕊.t else False
+        return O if base.as_txt() == 𝕊.t else False
     def __call__(𝕊, L, R, op_):
         assert 𝕊.check_args(L, R), "Invalid args for op!"
         return 𝕊.f(L, R, op_)
@@ -39,9 +39,9 @@ class OP:
         if not ᐹ(n,Node) or not n.t=="oper": return ⴴ
         
         L, base, R = O = n.C
-        base = base.txt
+        base = base.as_txt()
         
-        if R.S and '´' in R.txt: return ⴴ
+        if R.S and '´' in R.as_txt(): return ⴴ
         return L, base, R
     
     def check_args(𝕊, L=ᗜ, R=ᗜ):
@@ -64,7 +64,7 @@ class OP:
                 while stack:
                     # print(f"{n=} {op_man[n]=}")
                     pretend_op = op_t
-                    if '≺' in l.txt:
+                    if '≺' in l.as_txt():
                         pretend_op = 'ᴍ' # 󷹇 stupid
                     if pretend_op in stack[-1]:
                         stack += [op_man[n].R]
@@ -124,7 +124,7 @@ class OP_Manager:
     
     def gen_op(𝕊, l, op, r):
         assert l.t == "oper_mod_l"
-        for u in l.txt:
+        for u in l.as_txt():
             if   u == '⟥':
                 assert op.B
                 op = op.mod(op.N*'N'+"P")
@@ -136,7 +136,7 @@ class OP_Manager:
         
         if r.t != "oper_mod_r": return op
         
-        for u in r.txt:
+        for u in r.as_txt():
             if   u == '꜠':
                 assert op.B
                 op = op.mod(op.N*'N' + ((op.P*'P' + op.S*'S') or "PS"))

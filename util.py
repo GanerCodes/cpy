@@ -5,12 +5,15 @@ _insp(str(cpy_dir := Path(__file__).absolute().parent))
 _insp(str(cpy_dir / "compiler"))
 
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
+from unicodedata import is_normalized, name
 from time import time, sleep
 from sys import setrecursionlimit
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
 from itertools import accumulate, pairwise, starmap, \
                       chain, filterfalse, groupby
+from string import ascii_lowercase, ascii_uppercase, digits
+from uuid import uuid4
 from pickle import loads, dumps
 import textwrap as TW
 import os
@@ -21,7 +24,7 @@ exit_ = exit
 setrecursionlimit(1_000_000)
 
 # poorman's ☾
-wrg = lambda F: lambda*a,**k:[*F(*a,**k)]
+wrg = lambda F:lambda*a,**k:[*F(*a,**k)]
 print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 ⴳ, ⴴ, ᗜ, ᐦ, (ń,ś) = True, False, None, '', '\n '
 ᖲ, ᖱ, ᒪ = bool, dict, list
@@ -29,8 +32,6 @@ print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
 Т, ᐹ, ⵌ, ⴷ, ⴸ = type, isinstance, len, all, any
 ᴍ, ꟿ, ᴍᴍ = wrg(map), wrg(starmap), lambda n,f,l: ᴍ(f,l) if n<2 else [ᴍᴍ(n-1,f,c) for c in l]
 ᖵ, ζ = wrg(filter), wrg(zip)
-ε = lambda x, y=ᗜ: [x if y is None else y] if x else []
-δ = lambda x: [] if x is None else [x]
 SMD, CMD, PRP = staticmethod, classmethod, property
 enum = enumerate
 R = lambda p  ,m="r" :(((f:=open(p,m)). read( )   )   , f.close())[0]
@@ -79,7 +80,7 @@ class hashDict(ᖱ): __hash__ = lambda 𝕊:hash(frozenset(𝕊.items()))
 class Bunch(ᖱ): __getattr__ = lambda 𝕊, x: 𝕊[x]
 
 def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
-    L = ᒪ(L)
+    L = [*L]
     if ⵌ(L) == 0: return [s]*ᖲ(E and (l or r))
     if ⵌ(L) == 1: return [s]*ᖲ(l)+L+[s]*ᖲ(r)
     R, e = [s] if l else [], (L := L.copy()).pop()
@@ -88,9 +89,8 @@ def J́(L, s, l=ⴴ, r=ⴴ, E=ⴳ):
     if r: R.append(s)
     return R
 
-# following was nabbed from 🌈.☾
 TERM_RESET = '\x1b[0m'
-def termclr(t, fg=ᗜ, bg=ᗜ, rst=ⴳ):
+def termclr(t, fg=ᗜ, bg=ᗜ, rst=ⴳ): # 🌈.☾
     R = ᐦ
     for c, n in zip((fg, bg), (38, 48)):
         if c is ᗜ: continue
@@ -140,7 +140,7 @@ class SCRIPT:
 def parse_sysargs(𝐴, **𝕂):
     𝐴, alias = 𝐴.copy(), {}
     𝕂 = ᖱ([ᖇ(y,*"-_") if ᐹ(y,ᔐ) else y for y in x] for x in 𝕂.items())
-    for k, v in ᒪ(𝕂.items()):
+    for k, v in [*𝕂.items()]:
         if ᐹ(v, ᔐ) and v:
             del 𝕂[k]
             alias[k] =v

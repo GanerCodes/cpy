@@ -16,7 +16,7 @@ class Lang:
     def __call__(𝕊, content, **K):
         if "parser_comment" in 𝕊.gram:
             content = 𝕊.gram(content, "parser_comment", remove_trashes=ⴴ) \
-                       .child_killer(lambda n: n.t == "comment").txt
+                       .child_killer(lambda n: n.t == "comment").as_txt()
         return 𝕊.parse_content(content, **K)
     
     def __str__(𝕊):

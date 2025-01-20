@@ -1,4 +1,3 @@
-from util import *
 from node import *
 
 def p_indent_stack(S, n=0):
@@ -60,7 +59,7 @@ def add_spaces(n, ignore_nodes=()):
     if not n.C: return n
     cc, s = [], peekable(add_spaces(c, ignore_nodes) for c in n.C)
     if n.t in ignore_nodes:
-        cc = list(s)
+        cc = [*s]
     else:
         while True:
             α = next(s)

@@ -1,7 +1,6 @@
 from util import *
 from compiler.lang import Lang
 import dynamic_parser
-import os
 
 CPY_DIR = Path(__file__).parent.parent
 class Compiler:

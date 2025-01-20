@@ -1,25 +1,3 @@
-⊢ PL_SLEEP(x):
-    ⮌ time ⨡ sleep
-    sleep(x)
-⊢ PL_TIME():
-    ⮌ time ⨡ time
-    ↪ time()
-⊢ PL_CPU_COUNT_():
-    ⨡ multiprocessing
-    ↪ multiprocessing.cpu_count()
-⊢ PL_THREAD_(ƒ, ⠤𝔸, ⠶𝕂):
-    ⮌ threading ⨡ Thread as T
-    atom = []
-    T(target=ᐳatom.append←ƒ(⠤𝔸, ⠶𝕂))≕t→.start
-    ↪ 𝚲t.join →► atom₀
-⊢ PL_TEXT_COPY():
-    ⮌ clipboard ⨡ copy
-    ↪ copy
-⊢ PL_TEXT_PASTE():
-    ⮌ clipboard ⨡ paste
-    ↪ paste
-𝔗 = PL_THREAD_
-
 exec ← "from math import *"
 󰆴 factorial, e, pi, tau, sqrt, cbrt, pow
 𝑒,𝑜,𝑑,𝑏,𝑙,𝑡,𝑠,ᔐ,𝑖,𝑓,𝑦 = Exception, object, dict, bool, list, tuple, set, str, int, float, bytes
@@ -119,7 +97,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ↪ 𝗜(x) ⭜mapwd(x, 󰲡_map_pos_d(x,y,i-1))⭝ y(x)
     ↪ n<0 ⭜ _map_neg_d(x,y,󷰾-n) ⭝ _map_pos_d(x,y,n≡∞⭜ↀ⭝n)
 ⊢ WINDOW_(𝕏, l=1, r=1, m=✓, s=□, Δ=1):  s≠␀ should mean Δ=1 
-    c = 𝑙(𝕏)≕𝕏🃌
+    c = [⠤𝕏]≕𝕏🃌
     ¿s≅␀: ↪ 𝕏⭥ₗ﹕₋ᵣ﹕󰃏ᴍ󰲡𝕏ₓ₋ₗ﹕ₓ + 𝕏ₓ⛶⋅𝑏(m) + 𝕏ₓ₊₁﹕ₓ₊ᵣ₊₁
     V = s⛶⋅l +𝕏+ s⛶⋅r
     r = 𝕏⭥﹕﹕󰃏ᴍ󰲡Vₓ﹕ₓ₊ₗ + Vₓ₊ₗ⛶⋅𝑏(m) + Vₓ₊ₗ₊₁﹕ₓ₊ₗ₊ᵣ₊₁
@@ -141,7 +119,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
         ¿𝕏≡␛󷸻: ↪ [⠤range(x  ,y+1,s)]
     ¿v≇␀:
         𝗜(v) ⨳
-        v=𝑙(v)
+        v=[⠤v]
         ¿𝕏≡␛󷸸: ↪ (v₀, v₁﹕􍨄﹕ₛ, v􍨄)
         ¿𝔰: s=0
         ¿𝕏≡␛󷸹: ↪ v₀₊ₛ
@@ -185,7 +163,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
     Y = y
     ¿¬𝗙(y): y=󰻾ʸ
     
-    x, R = 𝑙(x), []
+    x, R = [⠤x], []
     ¿x🃌≡0 ∧ (𝕏≠␛⨝ ∨ bound_mode>0):
         ¿y(LR_def, LR_def)≕v≅󰮈: R = []
         ¿𝕏∈␛⟕␛⟖ ∨ bound_mode≡1: R = [v]
@@ -360,8 +338,8 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 ⊢ ´(ƒ):
     ⊢ 𝒻(⠤𝜶,⠶𝜿):
         ⊢ 𝑓(⠤𝔸,⠶𝕂):
-            𝓐, 𝔸 = 𝑙(𝜶), 𝑙(𝔸)
-            𝓚 = 𝑙(𝜿.items())
+            𝓐, 𝔸 = [⠤𝜶], [⠤𝔸]
+            𝓚 = [⠤𝜿.items()]
             a, k = [], {}
             ➰𝓐:
                 x = 𝓐.pop(0)
@@ -441,8 +419,8 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 ᴙ´ = 𝑐𝑑(󰲡xᐹ𝑖     ⭜󷹜xᴙ󷹜⭝ ␛
          xᐹᔐ|𝑙|𝑡 ⭜x﹕﹕􍨄⭝ ␛
          hasattr(x,"__reversed__") ⭜x.__reversed__()⭝ ␛
-         𝑙(x)﹕﹕􍨄󰅂,
-        L=󰲡𝑙(x)﹕﹕􍨄)
+         [⠤x]﹕﹕􍨄󰅂,
+        L=󰲡[⠤x]﹕﹕􍨄)
 󰑅´ = 𝑐𝑑(_wherest, I=𝚲_wherest(⠤𝔸,I=✓))
 󷹓´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x﹕󰃼₊₁ ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
 󷹔´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x 󰃼﹕  ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
@@ -467,8 +445,8 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 󷸛´,󷸚´,󷸜´ = 󰲡x.real, 󰲡x.imag, 󰲡(x.real, x.imag)  󰤱
 󷹄´ = OPWRAP_←⥌x,y,s=␀↦(R≔s↦x⤉s⤈y)►(s≅␀⭜R⭝R(s))
 ⍉´ = 𝑐𝑑(󰲡x󱑼, 𝑔=󰲡y↦y󱑼ˣ)
-⪢´ = OPWRAP_(⥌x,y=1↦xᐹ𝑙|𝑡 ⭜x∧←x􍈼﹪􊹳ₓ􍪪ᵢ﹕+x﹕ᵢ⭝ x >> y)
-⪡´ = OPWRAP_(⥌x,y=1↦xᐹ𝑙|𝑡 ⭜x∧←x ⪢ ¯y       ⭝ x << y)
+⪢´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x􍈼﹪􊹳ₓ􍪪ᵢ﹕+x﹕ᵢ⭝ x >> y)
+⪡´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x ⪢ ¯y       ⭝ x << y)
 
 󷹝´ = OPWRAP_←⥌x=␀,s=␀↦xᐹ𝑖 ⭜chr(x)⭝ xᐹᔐ∧(x🃌≡1∧s≠␛L) ⭜ord(x)⭝ (xᴍ󷹝) ᣆˣ􊿥􊾗􋇖 ⨝
 @OPWRAP_
@@ -556,7 +534,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
 @OPWRAP_
 ⊢ 󰌷´(x=␀, y=␀, s=1):
     ¿y≇␀: x = [x, y]
-    v = 𝑙(chain(⠤x))
+    v = [⠤chain(⠤x)]
     ¿s>1: ↪ v󰌷ˢ⁻¹
     ↪ v
 
@@ -732,83 +710,3 @@ TAC_ = ⥌x,d=□↦x₁≡󷰾∨x₂≡󷰾 ⭜TACITM(x₀,x₁₊􊭨ₓ􊬤�
 ℶ  = _hwrap(ℶ )
 
  dbg_wrap = 𝑓↦𝚲☾´(‹⟦𝑓.__name__⟧: 𝔸=⟦𝔸⟧, 𝕂=⟦𝕂⟧ ↓›) ► 𝑓(⠤𝔸,⠶𝕂)☾
-
-⊢ 𝔦𝔪𝔭(x):
-    match x:
-        case ␛s:  system stuff
-            ⨡ os, sys, shutil, subprocess
-            ⮌ pathlib ⨡ Path as 𝐩
-            ⮌ subprocess ⨡ Popen as 𝐫
-            ⮌ time ⨡ time, sleep
-            
-            i=0
-            ➰i󷸊+1:
-                G = sys._getframe(i).f_globals
-                ¿G["__file__"]≠__file__: ⇥
-            G[␛𝐩⥉PEV] = 𝐩
-            G[␛𝐫⥉PEV] = 𝐫
-            G[h≔PEV("𝐩𝐝")] = 𝚲G["__file__"] ⥉𝐩→.parent
-            G["subprocess"] = subprocess
-            G["os"], G["sys"], G["shutil"] = os, sys, shutil
-            G["time"], G["sleep"] = time, sleep
-            G["ldir"] = 𝚲os.chdir←Gₕ
-
-⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□,
-    interactive_𝕂=□, no_isolate=✗,
-    no_isolate_ƒ=󰲡exec(x,globals()), ⠶𝕂):  󱠨(x, return_code=✓)
-    
-    𝓘𝓚 = {"code_post_process": __code_post_process__}|(interactive_𝕂 ∨ {})
-    ⮌ refresher ⨡ basic_cpy_interactive_session
-    cpy = basic_cpy_interactive_session(
-        print_output=✓, ns=ns, fname=fname≅□ ⭜"cpy_󱠨"⭝ fname,
-        code_cache_dir=__code_cache_dir__, gram_cache_dir=__gram_cache_dir__,
-        header_carry=__header_namespace__, ⠶𝓘𝓚)
-    ¿no_isolate: # absolutely beaned
-        ¬get_ns ∧ ns≅□ ∧ fname≅□ ⨳
-        c = cpy(c, ⠤𝔸, return_code=✓, ⠶𝕂)☾
-        ↪ no_isolate_ƒ(c)
-    r = cpy(c, ⠤𝔸, ⠶𝕂)
-    ↪ cpyⁿˢ ¿get_ns¡ r
-
- 𝔸∋* ⟶ merge all (public) module contents with globals
- 𝔸∋- ⟶ don't set module itself as global (automatic w/ !)
- 𝔸∋! ⟶ store the object with module name into globals instead of module
- g ⟶ store anything into globals
- store_code ⟶ m.__cpy_code__ is the source code
-⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗, just_get_code=✗):
-    ¬(just_get_path ∧ just_get_code) ⨳  󰤱 return a tuple if both
-    ⮌ sys ⨡ path as P, _getframe as GF
-    ⮌ os ⨡ path, listdir
-    ⮌ pathlib ⨡ Path as 𝐩
-    f, drs = □, (␛., ⠤P) ᐵ⥉𝐩→.resolve()ᐸ 󰈲󷺹.is_dir()
-    ∀p∈drs:
-        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡z≔p/‹⟦𝔣⟧⟦x⟧›→.is_file() ∧ z󰅂: ⇥
-    f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦", ".join(drsᐖ‹"⟦⟞⟧"›)⟧]!›
-    ¿just_get_path: ↪f
-    with f.open() as 𝐟: code = 𝐟.read()
-    ¿just_get_code: ↪ code
-    nam = PEV(na ≔ f.stem)
-    m = ℵ(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
-    𝑘 = (m.keys󰈳󰲡x₀≡␛_) ¿*∈𝔸¡ 𝑙(𝔸 ∖ {!})
-    𝑘󷸊+exports ≔ (𝑙(m.__exports__) ¿"__exports__"∈m.keys¡ [])
-    ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
-    ¿g:
-        G = GF(1).f_globals
-        ∀k∈𝑘ᴍPEV: Gₖ = mₖ
-        ¿-∉𝔸 ∧ !∉𝔸 ∧ na∉𝑘:
-            Gₙₐₘ = m
-    ¿!∈𝔸:
-        nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦f.stem⟧"!›
-    ↪ m
-
-ℳℱ_cache = {}
-⊢ ℳℱ(load):
-    ⊢ ƒ(⠤𝔸,⠶𝕂):
-        ¿ℳℱ_cache∋𝓲≔id(load): 𝑓 = ℳℱ_cache􋜆
-        ¡                   : 𝑓 = ℳℱ_cache􋜆 = load
-        ↪ 𝑓(⠤𝔸,⠶𝕂)
-    ↪ ƒ
-SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)
-
-__builtins__["__error_printer__"] ≔ __error_printer__ ≔ ℳℱ(𝚲󰋺("highlighter").__error_printer__)
-__builtins__["__highlighter__"  ] ≔ __highlighter__   ≔ ℳℱ(𝚲󰋺("highlighter").__highlighter__  )
