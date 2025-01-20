@@ -70,16 +70,16 @@
  <Ń>.e.T is used as a flag to determine if it is a text node.
 󱀘 Ń(𝐍):
     __slots__ = ␛t, ␛c, ␛e
-    ⊢ __init__(󱁕, t, ⠤c, e=␀): 󱁕ᵗ, 󱁕ᶜ, 󱁕ᵉ = t, ¬c∧[]∨[⠤c], ℵ􋄅¿e≅␀¡e
+    ⊢ __init__(󱁕, t, ⠤c, e=␀): 󱁕ᵗ, 󱁕ᶜ, 󱁕ᵉ = t, ¬c∧[]∨[⠤c], e≅␀ ⭜ℵ􋄅⭝ e
     __contains__ = ⥌󱁕,x↦x∈󱁕ᵉ
     __repr__ = 󱁕↦‹Ń⟨⟦󱁕ᵗ∨␛∅⟧⟩⟨⟦󱁕ᵉ⟧⟩⟨⟦", ".join(󱁕ᴍᔐ)⟧⟩›
     __setitem__ = ⥌󱁕,x,y↦󱁕ᶜₓ≔y
     ⊢ __getitem__(󱁕,i):
-        ¿iᐹ𝑖: ↪ 󱁕ᶜᵢ
+        ¿iᐹ𝑖|slice: ↪ 󱁕ᶜᵢ
         ↪ 󱁕ᵉ ⁱ
     ⊢ __delitem__(󱁕, i): 󰆴󱁕ᶜᵢ
-    cp =copy = ⥌󱁕,t=□,c=□,e=␀↦(ᐹ󱁕)(󱁕ᵗ ¿t≅□¡ t, ⠤󱁕ᶜ ¿c≅□¡ c, e=󱁕ᵉ ¿e≅␀¡ e)
-    cpr=rcopy= ⥌󱁕,t=□        ↦(ᐹ󱁕)(󱁕ᵗ ¿t≅□¡ t, ⠤󱁕ᶜᴍ(ᐹ󱁕).rcopy, e=󱁕ᵉ.copy()) ¿󱁕ᐹ𝐍¡ 󱁕
+    cp =copy = ⥌󱁕,t=□,c=□,e=␀↦(ᐹ󱁕)(t≅□ ⭜󱁕ᵗ⭝ t, ⠤c≅□ ⭜󱁕ᶜ⭝ c, e=e≅␀ ⭜󱁕ᵉ⭝ e)
+    cpr=rcopy= ⥌󱁕,t=□        ↦󱁕ᐹ𝐍 ⭜(ᐹ󱁕)(t≅□ ⭜󱁕ᵗ⭝ t, ⠤󱁕ᶜᴍ(ᐹ󱁕).rcopy, e=󱁕ᵉ.copy())⭝ 󱁕
     
     ⊢ frp(󱁕, ƒ, r, pre=✗):
         𝓡 = 𝚲(󱁕ₓ≔y.frp(ƒ,r,pre) ∀x,y∈󱁕↨)

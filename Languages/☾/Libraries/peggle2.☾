@@ -20,7 +20,7 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
 ⊢ gram_convert(󱁕):
     name_remaps = ℵ("elm_o elm_a assign_cln group_inner group"⍭󱑼"∨∧←∧∧")
     Ə = ℵ(T=✓)
-    TT = 󱁕↦(󱁕ᵗ, ⠤((󱁕₀ᵗ,) ¿󱁕ᵗ∈␛ᔐ␛~¡ (󱁕₀ᵗ, ⠤󱁕₁﹕ᴍTT) ¿󱁕ᵗ≡␛←¡ 󱁕ᴍTT))
+    TT = 󱁕↦(󱁕ᵗ, ⠤(󱁕ᵗ∈␛ᔐ␛~ ⭜(󱁕₀ᵗ,)⭝ 󱁕ᵗ≡␛← ⭜(󱁕₀ᵗ, ⠤󱁕₁﹕ᴍTT)⭝ 󱁕ᴍTT))
     escape = ⥌x,t=␛ݺ↦x.replace(␛␛␛␛, t).replace(␛␛, '').replace(t, ␛␛)
     txt = 󰲡Ń(x, e=Ə)
     ⊢ reduce_j(󱁕):
