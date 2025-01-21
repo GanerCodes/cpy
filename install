@@ -12,7 +12,7 @@ chk_py_ver() {
 [ -z "$PYTHON" ] && chk_py_ver "python3"    || :
 [ -z "$PYTHON" ] && chk_py_ver "python3.13" || :
 [ -z "$PYTHON" ] && chk_py_ver "python3.12" || :
-PYTHON="python"
+[ -z "$PYTHON" ] && exit 1
 
 chk_py_pip() { "$PYTHON" -c "import pip" 2>/dev/null; }
 chk_py_pip || {
