@@ -1,3 +1,10 @@
+⮌ types ⨡ FunctionType as _FT
+⮌ sys ⨡ _getframe
+⊢ ´(n=0):
+    frame = _getframe(n+1)
+    ↪ _FT(frame.f_code, frame.f_globals)
+ 󰲡1 ¿x≤1¡ 𝓢()(x-1)+𝓢()(x-2)󰅂(5)☾
+
 ⊢ 𝔦𝔪𝔭(x):
     match x:
         case ␛s:  system stuff

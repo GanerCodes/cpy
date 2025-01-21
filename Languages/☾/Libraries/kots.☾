@@ -6,7 +6,7 @@
     __call__ = ⥌𝕊,⠤𝔸,⠶𝕂↦𝕊􊽺(⠤𝔸,⠶𝕂)
     __getitem__ = __getattr__ = ⥌𝕊,x↦𝚲𝕊􊽺(⠤𝔸,x,⠶𝕂)
 
- = ⥌s=□↦PL_TEXT_PASTE¿s≅□¡(PL_TEXT_COPY○ᔐ∘s →► s)
+ = ⥌x=␀↦x≅␀ ⭜PL_TEXT_PAxTE⭝ PL_TEXT_COPY○ᔐ∘x ⭢► x
  = suppar2(⥌f  ,o=ᐦ↦𝐩(f).open(o))
  = suppar2(⥌f  ,o=ᐦ↦ⓦ(  􊯛ᵣ₊󰂼∘f, 󰲡x.read  ))
  = suppar2(⥌f,𝓬,o=ᐦ↦ⓦ(y≔􊯛₊󰂼∘f, 󰲡x.write∘𝓬 →► y))
@@ -58,10 +58,3 @@ cd = cd
     ∘"joexd"
     ("/tmp/eggasdasd", )
     ("/tmp/eggasdasd")☾
-
-֎ hmmmmmmmmmmmm
-⊢ 𝓢(n=0):
-    ⨡ sys, types
-    frame = sys._getframe(n+1)
-    ↪ types.FunctionType(frame.f_code, frame.f_globals)
-󰲡1 ¿x≤1¡ 𝓢()(x-1)+𝓢()(x-2)󰅂(5)☾ ֎
