@@ -19,4 +19,5 @@ Run a file: `☾ /path/to/file.☾`
 [JuliaMono](https://juliamono.netlify.app/) (Base font)  
 [NerdFonts](https://www.nerdfonts.com/) (Extra symbols)  
 [FontForge](https://fontforge.org/en-US/) (Precedual glyph generation)  
+  
 Dependencies are included in `requirements.txt`

@@ -8,10 +8,10 @@ chk_py_ver() {
             PYTHON=$(command -v "$1")
             echo "Using $1 at \"$PYTHON\""; } } }
 
-[ -z "$PYTHON" ] && chk_py_ver "python"
-[ -z "$PYTHON" ] && chk_py_ver "python3"
-[ -z "$PYTHON" ] && chk_py_ver "python3.13"
-[ -z "$PYTHON" ] && chk_py_ver "python3.12"
+[ -z "$PYTHON" ] && chk_py_ver "python"     || :
+[ -z "$PYTHON" ] && chk_py_ver "python3"    || :
+[ -z "$PYTHON" ] && chk_py_ver "python3.13" || :
+[ -z "$PYTHON" ] && chk_py_ver "python3.12" || :
 PYTHON="python"
 
 chk_py_pip() { "$PYTHON" -c "import pip" 2>/dev/null; }
