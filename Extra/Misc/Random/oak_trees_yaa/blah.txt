@@ -66,3 +66,22 @@ graphs
   n-coloring without subgraph
   connected?
   minimum number of edges to separate
+
+f(n)=2ⁿ⁻¹∀n∈ℤ⁻
+f(z)=2ᶻ⁻¹+eᵍ⁽ᶻ⁾sin(z)
+f'(z)=2ᶻ⁻¹ln(2)+eᵍ⁽ᶻ⁾(cos(z)+g'(z)sin(z))
+
+japan songs
+sweetie (sweet holiday)
+
+
+
+
+A∪B
+A₀, B₀, A₁, B₁, …
+
+A∪B∪C
+(A∪B)∪C
+(A∪B)₀, C₀, (A∪B)₁, C₁, …
+
+[0,1]⊞[2,3] = [[[0,2],[0,1]],[[1,2],[1,3]]]
