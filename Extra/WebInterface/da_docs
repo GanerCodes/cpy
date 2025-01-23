@@ -17,7 +17,6 @@
     "x ⭜ y ⭝ z" ; y if x else z
     "x ⭜ y" ; y if x else □
 ⭝ ; ternary else
-    %REF⭝%
 
 ⬅ ; push right into left (Strongest)
 ➡ ; push left into right (Strongest)
@@ -53,51 +52,132 @@
 󷺬 ; NAND (doesn't short circuit)
 
 ≡ ; equals
+    Works similar to python, taking certain conveniences i.e. 0 as a float equals 0 as an int
 󷷼 ; diamond equals
+    󷹇 Requested by Michael for future advanced math things
 ≠ ; not equal
 ≤ ; less than or equal to
 ≥ ; greater than or equal to
 < ; less than
 > ; greater than
 ∈ ; element of right
+    𝔬 ∈ 𝗜
+    "2∈{1,2,3}" ⟶ True
+    "5∈{1}" ⟶ False
+    "␛a ∈ ‹hia›" ⟶ True
+    "5 ∈ ‹some string›" ⟶ False
 ∉ ; not element of right
 ∋ ; element of left
 ∌ ; not element of left
 ∣ ; divides
 ∤ ; does not divide
 ⊂ ; subset of right
+    𝗜 ⊂ 𝗜
+    Works on non-set objects as well
 ⊃ ; subset of left
 ⊊ ; subset of not equal to right
+    𝗜 ⊊ 𝗜
+    Works on non-set objects as well
 ⊋ ; subset of not equal to left
 ⊄ ; not subset of right
 ⊅ ; not subset of left
 
-ꟿ ; starmap
 ᴍ ; map
+    𝗜 ᴍ 𝗙
+        Maps an iterable with a function
+        "[‹hi›, ‹there›] ᴍ 🃌" ⟶ [2, 5]
+    ᴍ􋀐,ᴍ􋔛
+        n≥0: Controls degree of the map, i.e.
+            "[[␛a, ‹bc›],[‹def›, ‹bob›]]" ᴍ² 🃌 ⟶ [[1,2],[3,3]]
+        n=∞: Unbounded degree
+        n<0: Kinda weird, but generally backwards from ∞
+            ["hi", [[["egg"]]]] ᴍ􍧱 🃌 ≡ [2, [[[3]]]]
+            󷹇 󷰾 would map the characters in those strings
+    ᴍᴷ,ᴍⱽ,ᴍᴰ
+        Similar to above, but a dict:dict mapping
+        K: keys  , Modify keys only
+        V: values, Modify values only
+        D: dict  , Both keys and values
+        󷹇 the function still expects one value which will be the (key, value) tuple
+        󷹇 use ꟿ for a function with two args
+    󷹇 supports 󰮈
+ꟿ ; starmap
+    𝗜 ꟿ 𝗙
+    Map but instead of calling the function directly it unpacks the arg
+    "[[1,2],[3,4]] ꟿ +" ⟶ [3,7]
+    󷹇 supports 󰮈
  ; threadmap
+    𝗜  𝗙
+    Same as map but uses multiple threads.
+    The number of threads defaults to the number of CPU threads.
 ſ ; fold
+    𝗜 ſ 𝗙
+    The left-to-right classic fold.
+        "[1,2,3,4] ſ +" ⟶ 10
+    ſ􋉑: 𝕏 is the starting value/default
+        "[1,2,3,4] ſ⁵ +" ⟶ 15
+        "[] ſ⁵ +" ⟶ 5
 Ϝ ; accumulate
+    𝗜 Ϝ 𝗙
+    fold, except returns the intermediate values
+        "[1,2,3,4] Ϝ +" ⟶ [1,3,6,10]
 ⨁ ; sum
+    𝗜 ⨁ 𝑜􊽨
+    fold over left with +, with optional default starting value
 ⨀ ; product
+    𝗜 ⨀ 𝑜􊽨
+    fold over left with ⋅, with optional default starting value
 󰈲 ; filter positive
+    𝗜 󰈲
+        filter left for truthyness
+        "[0,1,✗,✓] 󰈲" ⟶ [1,✓]
+    𝗜 󰈲 𝗙
+        filter left for truthyness under right
+        "[0,1,2,3] 󰈲 󷺹>1ᐸ" ⟶ [2,3]
+    𝗜 󰈲􋊧 𝗙
+        conditional map, apply mod to elm if right true
+        "[0,1,2,3] 󰈲􍈽 󷺹>1ᐸ" ⟶ [0,1,󷰿,󷱀]
+    𝗜 󰈲􋊧􌥡 𝑜
+        same as previous but right func is equality check on 𝑜
+    󷹇 supports 󰮈
 󰈳 ; filter negative
+    󰈲 but condition is negated
+    󷹇 supports 󰮈
 󰒼 ; sort ascending
+    𝗜 󰒼
+        sorts data
+    𝗜 󰒼 𝗙
+        sorts data by right arg
+        󷹇 right art is function of 1 variable
+    󷹇 supports 󰮈
 󰒽 ; sort decending
+    Reversed version of 󰒼
  ; group by
+    󰤱 docs
+    
 ᙡ ; window, with middle, with sides
+    󰤱 docs
 ᙧ ; window, with middle, no sides
+    󰤱 docs
 ᙎ ; window, no middle, with sides
+    󰤱 docs
 ᗢ ; window, no middle, no sides
+    󰤱 docs
 󱖔 ; modifier as operator
+    binary/unary
+    Calls modifier with one or two vars depending on how the operator is used. Good for treating a function as an operator
+    𝑜􊽨 󱖔􋊧 𝑜􊽨
+    "2 󱖔􍯏􊽮⁺􍯋 3" ⟶ 7
+    "2 󱖔􍯏􊽮" ⟶ 4
+    "󱖔􍯏􊽮 2" ⟶ 4
 
 ᐹ ; left is type of right / get class of
+    󰤱 docs
 ᐴ ; right is type of left / get class of
 󷹵 ; left is not type of right
 󷹴 ; right is not type of left
 󱑼 ; zip
- ; random float
-󱅏 ; random int
- ; shuffle
+    󰤱 docs
 
 | ; bitwise or
 
@@ -105,137 +185,289 @@
 
 & ; bitwise and
 
-⪡ ; bitshift left / circle arr left 
-⪢ ; bitshift right / circle arr right 
+⪡ ; bitshift left / circle arr left
+    󰤱 docs
+⪢ ; bitshift right / circle arr right
+    󰤱 docs
 
 ∓ ; minus plus
+    𝑜∓𝑜􊽨
+    "∓5" ⟶ [-5,5]
+    "1∓5" ⟶ [-6,4]
 ± ; plus minus
+    𝑜±𝑜􊽨
+    "±5" ⟶ [5,-5]
+    "1±5" ⟶ [4,-6]
+    
 + ; add
 - ; subtract
 󷷶 ; diamond add
+    󷹇 Requested by Michael for future advanced math things
 󷷻 ; diamond subtract
+    󷹇 Requested by Michael for future advanced math things
 
 ∘ ; call left with right
+    󰤱 docs
 ○ ; compose functions with balanced args, overflow right
+    󰤱 docs
 ⍜ ; compose functions with balanced args, overflow left
+    󰤱 docs
 󰬫 ; compose functions, overflow extra args to right
+    󰤱 docs
 󰬩 ; compose functions, overflow extra args to left
+    󰤱 docs
 󱖚 ; 󰤱, NotImplemented
 󱖘 ; 󰤱, NotImplemented
 󷷹 ; diamond compose
+    󷹇 Requested by Michael for future advanced math things
  ; curry function
+    󰤱 docs
 ⊚ ; loop
+    󰤱 docs
 ⍟ ; loop returning all iterations except final
+    󰤱 docs
 ⊛ ; loop returning all iterations
+    Same as ⍟ but includes the iteration that failed check
 ⊜ ; loop until fixed point
+    󰤱 docs
 🟕 ; find cycle
+    󰤱 docs
 🟖 ; find cycle, include prefix
+    Same as 🟕 but does not trim out the starting part of the cycle
  ; error raiser / error or-er
+    󰤱 docs
 󰔶 ; return arg / retry with right
+    󰤱 docs
  ; return exception / custom error handle
+    󰤱 docs
 ᣆ ; conditional function application
+    󰤱 docs
 
 ◄ ; return left arg
+    "1◄2" ⟶ 1
 ► ; return right arg
-
+    "1►2" ⟶ 2
 ⋄ ; join into list
+    󰤱 docs, also 󰤱 make this less janky
 
 ∪ ; union
+    󰤱 docs
 
 ∩ ; intesection
+    󰤱 docs
 
 ∖ ; set minus
+    󰤱 docs
 ⨉ ; cross product
+    󰤱 docs
 ⊞ ; table product
+    󰤱 docs
 
-≅ ; is same object
-≇ ; is not same object
+≅ ; is exactly the same object
+    Works same as in python
+≇ ; is not exactly the same object
 ⋅ ; multiply
 ÷ ; divide
-󷷷 ; diamond multiply
-󷷸 ; diamond divide
 ⹏ ; integer divide
 % ; modulo
+󷷷 ; diamond multiply
+    󷹇 Requested by Michael for future advanced math things
+󷷸 ; diamond divide
+    󷹇 Requested by Michael for future advanced math things
 √ ; root
+    Prefix unary
+    "√5"  ⟶ 5􊽲
+    "√³5" ⟶ 5􋀞
+    "√󰁛5" ⟶ 5󰁛􍩯
 ! ; factorial
+    Suffix unary
+    "5!" ⟶ 120
+    "0!" ⟶ 1
 ⋀ ; all
+    󰤱 docs
 ⋁ ; any
+    󰤱 docs
 ⫰ ; absolute value
+    Both-sides-indistinguishable unary
+    𝕏⫰ =  abs(𝕏)
 ⫯ ; negative absolute value
+    Both-sides-indistinguishable unary
+    𝕏⫯ = ¯abs(𝕏)
 ⨝ ; join
+    󰤱 docs
 ⟕ ; join include left
+    󰤱 docs
 ⟗ ; join include left and right
+    󰤱 docs
 ⟖ ; join include right
+    󰤱 docs
 󷹕 ; before
+    󰤱 docs
 󷹓 ; before and including
+    󰤱 docs
 󰑅 ; at condition
+    󰤱 docs
 󷹔 ; after and including
+    󰤱 docs
 󷹖 ; after
+    󰤱 docs
 󷸹 ; range excluding end
+    󰤱 docs
 󷸸 ; range excluding start and end
+    󰤱 docs
 󷸻 ; range
+    󰤱 docs
 󷸺 ; range excluding start
+    󰤱 docs
 ⤈ ; min
+    󰤱 docs
 󷹄 ; constrain
+    󰤱 docs
 ⤉ ; max
+    󰤱 docs
 ↨ ; enumerate (zip with index)
-⭥ ; iterable to indices
+    Both-sides-indistinguishable unary
+    𝕏↨ is identical to (𝕏⭥)󱑼𝕏
+⭥ ; iterable/number to indices
+    Both-sides-indistinguishable unary 
+    "‹hello›⭥" ⟶ [0,1,2,3,4]
+    "5⭥"       ⟶ [0,1,2,3,4,5]
 ⬓ ; round down
+    󰤱 docs
 ▢ ; round
+    󰤱 docs
 ⬒ ; round up
+    󰤱 docs
 ⍭ ; magic string split
+    ᔐ ⍭ or ᔐ ⍭
+    if " " is in arg:
+        split by " " then by " "
+        "‹a b c›⍭" ⟶ [[␛a],[␛b,␛c]]
+        "‹x y›⍭"   ⟶ [[␛x],[␛y]]
+    otherwise:
+        split by just " "
+        "‹x y›⍭"⟶ [␛x,␛y]
+        "‹ y›⍭" ⟶ [ᐦ,␛y]
+        "‹y›⍭"  ⟶ [␛y]
 󰸵 ; pad left
+    󰤱 docs
 󰸷 ; pad right
+    󰤱 docs
 󷹌 ; split include all seperators
+    󰤱 docs
 󷹍 ; split include 1-per-consecutive seperators
+    󰤱 docs
 󷹎 ; split disregard seperators
+    󰤱 docs
 ⬄ ; strip
+    󰤱 Workings undetermined, may be removed
 𝌂 ; partition
+    󰤱 docs
 󰌷 ; chain iterables
+    󰤱 docs
 ᴙ ; reverse
+    󰤱 docs
 󰛔 ; string replacement
+    󰤱 docs
 ᚤ ; first unique
+    󰤱 docs
 ☾ ; print
+    󰤱 docs
 ⛶ ; enlist arguments
+    "2⛶" ⟶ [2]
+    "2⛶⁵" ⟶ [2,2,2,2,2]
 ⍉ ; transpose
+    󰤱 docs
 ⴵ ; sign of number
+    "󷰿ⴵ"   ⟶ 󷰾
+    "0ⴵ"   ⟶ 0
+    "9.2ⴵ" ⟶ 1
 🃌 ; cardinality/length
+    𝔦 🃌
+    Returns length of 𝔦
+    "‹egg›🃌" ⟶ 3
+    "[1,2]🃌" ⟶ 2
 󷹝 ; str⟷int involution
+    󰤱 docs
 󷹜 ; str to int / change base
+    󰤱 docs
+ ; random float
+    󰤱 docs
+󱅏 ; random int
+    󰤱 docs
+ ; shuffle
+    󰤱 docs
+󰔛 ; sleep / call/loop function after delay
+    󰤱 docs
+󱫩 ; call/loop function after delay in thread
+    󰤱 docs
 󷸚 ; real part
+    󰤱 docs
 󷸛 ; imag part
+    󰤱 docs
 󷸙 ; ĵ part
+    󰤱 docs
 󷸘 ; 󷺈 part
+    󰤱 docs
 󷸜 ; tuple of real/imag parts
+    󰤱 docs
 󷸗 ; tuple of real/ĵ parts
+    󰤱 docs
 󷸖 ; tuple of real/󷺈 parts
+    󰤱 docs
 󷸕 ; tuple of real/imag/ĵ/󷺈 parts
+    󰤱 docs
 
 ¬ ; not
+    Negates, can be from either side
 ¯ ; negate
+    Strictly prefix unary operator
+    "¯5" ⟶ 󷱂
 
 ⌃ ; exponential
+    "5⌃2" ⟶ 25
 󷷺 ; diamond exponential
+    󷹇 Requested by Michael for future advanced math things
 
  ; splat function
+    󰤱 docs
 ∾ ; reverse function args
+    󰤱 docs
+    
  ; call function without args
+    i.e. "f" is the same as "f()"
 󷹁 ; invert function
+    󰤱 docs
 
 󰻾 ; identify
+    󰻾􋇜
+        function that always returns the modifier value
+        "󰻾⁵(22)" ⟶ 5
+    "󰻾(x)" ⟶ x
+    "󰻾(x1,x2)" ⟶ x1
 ℵ ; magic namespace: iterates by pairs
+    󰤱 docs
 ℶ ; magic namespace: iterates by values
+    󰤱 docs
 ∅ ; empty set
+    "∅" ⟶ 𝑠()
+    "∅³" ⟶ [𝑠(), 𝑠(), 𝑠()]
 ⍁ ; empty list
+    "⍁" ⟶ []
+    "⍁³" ⟶ [[], [], []]
 
 󰮈 ; signal delete element from iteration
 𝗙 ; check if function
 𝗜 ; check if iterable
 𝗛 ; check if hashable, if so, return hashed value
 􋐳 ; cos
+    Not an operator (yet...?)
 􋐲 ; sin
+    Not an operator (yet...?)
 􋐴 ; tan
+    Not an operator (yet...?)
 􋑯 ; log
+    Not an operator (yet...?)
 ✓ ; true
 ⴳ ; truthy function that always returns True
 ✗ ; false
