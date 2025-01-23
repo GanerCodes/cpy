@@ -26,7 +26,7 @@ fold = ‹Output›⥉𝐩→.resolve
 
 stages = {}
 ⊢ 𝕗(fi, fo):
-    ‹python3.12 FontPatcher/font-patcher --careful --mono ›␛
+    ‹python FontPatcher/font-patcher --careful --mono ›␛
     ‹--complete --has-no-italic --out ⟦fold⟧ --name JuliaMono ›␛
     ‹⟦fi⟧›⍭⥉𝐑
     os.rename(fold / "JuliaMono-Regular.ttf", fo)

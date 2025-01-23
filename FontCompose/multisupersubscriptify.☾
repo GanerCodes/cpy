@@ -19,6 +19,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
 ⊢ monospace_char(ℊ):  based on monospacifier
     ¿ℊ.width≤0: ↪
     ¿0≤(ℊ.unicode≕𝓾)≤sys.maxunicode ∧ 𝒰𝒟.category(chr(𝓾))∈"Mn"⋄"Mc"⋄"Me": ↪
+    ¿𝓾󷹜¹⁶≡0x10FFF7: ↪
      Δ = w-ℊ.width
      ℊ. left_side_bearing = 𝑖(γ ≔ ℊ.left_side_bearing+Δ/2)
      ℊ.right_side_bearing = 𝑖(ℊ.right_side_bearing+Δ-γ)
@@ -43,7 +44,7 @@ save_font = 󰲣shut( x.generate, y.resolve ⥉ ᔐ)
             𝔗(𝒻, ℊ, ⠤ƒ(𝒻, *𝔸, ⠶𝕂))
         except Exception as ε:
             ¿log≤0 ∨ (log<2 ∧ ᔐ(ε)∋"No such glyph"): ↪
-            ‹Gen Err: "⟦n⟧" (⟦c⟧ @ ⟦hex←l⟧), "⟦e⟧"›☾
+            ‹Gen Err: "⟦n⟧" (⟦c⟧ @ ⟦hex←l⟧), "⟦ε⟧"›☾
     ↪ 𝑓
 
 @char_maker

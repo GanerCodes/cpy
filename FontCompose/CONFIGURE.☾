@@ -6,7 +6,7 @@ GENERATE_XCOMPOSE = ✓
 OUTPUT_EXTS       = ‹otf ttf woff2›⍭
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/c/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✗ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
+COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
