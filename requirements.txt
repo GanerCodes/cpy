@@ -1,4 +1,4 @@
-more_itertools
 regex
 json5
 line_profiler
+clipboard
