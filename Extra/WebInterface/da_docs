@@ -137,6 +137,7 @@
     𝗜 󰈲􋊧 𝗙
         conditional map, apply mod to elm if right true
         "[0,1,2,3] 󰈲􍈽 󷺹>1ᐸ" ⟶ [0,1,󷰿,󷱀]
+        󷹇 if modifier is not a 𝗙 it becomes a replcaement value
     𝗜 󰈲􋊧􌥡 𝑜
         same as previous but right func is equality check on 𝑜
     󷹇 supports 󰮈
