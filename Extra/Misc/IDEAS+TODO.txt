@@ -1,5 +1,7 @@
 § TODOs ------------------------------------
 
+    󰤱  Documentation (oh gosh people are finding the project now)
+    󰤱  𝑖 󰌷 𝑖 should do concat, ⛶ⁿ󰂂⁰ should have [[…n…[x]]] legvels nestinbg
     󰤱  __setminus__, __crossprod__, __union__, __intersection__, __subset__ ; mutex
     󰤱  bootstrap everything
     󰤱  Web/phone-app maker
@@ -17,7 +19,6 @@
     󰤱􊽨 Make x⭜y⭝z store vals
     󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽
     󰤱􊽨 Font generator slow
-    󰤱  Documentation (lol)
 
 § CoolCharBank™ ------------------------------------
 
@@ -37,8 +38,13 @@
     󰅊󰱗󰆏󰆒󱉬󱉧󰅇󰅌󱓥
     󰅲 󰅪 󰅩 󰅴     
     𝼋 ⥾ 𖣂 󰙨 ⹔ 󱗘 󱕛    
+    ᚢᚣᚤᚥ ᛥᛝᛞᛜ
+    ᚵᚡ ᚦᚧ ᛒᛔ ᚷᚸᛤ ᛖᛗ ᚺᚻ ᛕᚱ
+    ᛄᚼᛡᛀᚽᛂ ᚶᛙᛍ ᛌᛧᛁ
+    ᚿᛆᚾᛅᚭᚮᚬᚯ ᚴᛮᚳᚠᚨᚩᚪᚫᚰᛓ
+    ᛚᛐᛛᛑ ᛸᛣᛦ ᛉᛠᛘᛯ ᛨᛏᛎ
+    ᚹᛩᛇᛢᛈᚲᛊᛋᛪᛶᛵᛳᛟᛃᛴᛲ᛬᛫
     ᕻᓐᓒᔥᣛ ᔇᔅᔉᔊᓪᣗᕐᔾᖮ ᣜᣝᓫᕑᣞᣟᐝ ᗮᐪ󰂅ᓑᣕᐡᐢ ᐤᐞᐠᑊᘁᣔ
-
 § OverPowered STUFF [f,⬤,g,√🍊] ------------------------------------
     
     ␛a 󱖔⁺􍮡􋄎􍯏² ␛b
