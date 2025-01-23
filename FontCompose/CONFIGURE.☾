@@ -1,5 +1,5 @@
-CHECK_REPOS       = ✗
-NERDFONT          = ✗
+CHECK_REPOS       = ✓
+NERDFONT          = ✓
 CUSTOM_SYMBOLS    = ✓
 PROCEDUAL_CHARS   = ✓
 GENERATE_XCOMPOSE = ✓
