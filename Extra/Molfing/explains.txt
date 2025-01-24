@@ -1,5 +1,31 @@
+ https://codegolf.stackexchange.com/questions/273479/is-this-a-valid-pzn/277818#277818
+
+f= 󷺹ᴙ󷹝Ϝ􍨅+⨁⟞󷹝₇2∣ᵜ11
+🟑
+
+󷺹                function of 1 variable, insert here
+ ᴙ               reverse
+  󷹝              as a list of ascii values
+   Ϝ             accumulate with initial value
+    􍨅                -1
+     +           plus
+      ⨁          sum with inital value
+       ⟞         left argument
+        󷹝        as a list of ascii values
+         ₇       at index 7
+          2      implicit multiplication by 2 (Ganer saw this in a dream)
+           ∣     divides
+            ᵜ    swap arguments
+             11  11
+
+🟑
+
+
+
+ https://codegolf.stackexchange.com/questions/277750/meandering-over-ℤ/277832#277832
 
 f= 󷺹⭥ſ⁰􋄎󷺹+⛶←󷺹<1→-⟞ᐸ⊚ᐳ√⫰(⟞􍨄-⟝)%1󷺥⟞∋󷺽∘0
+🟑
 
 󷺹        function of 1 variable, inserted here
  <1      check if <1
@@ -36,3 +62,5 @@ f= 󷺹⭥ſ⁰􋄎󷺹+⛶←󷺹<1→-⟞ᐸ⊚ᐳ√⫰(⟞􍨄-⟝)%1󷺥⟞
        ⛶                            in a list
         ←                           group right for order of operations
          󷺹<1→-⟞ᐸ⊚ᐳ√⫰(⟞􍨄-⟝)%1󷺥⟞∋󷺽∘0  the first working integer
+
+🟑

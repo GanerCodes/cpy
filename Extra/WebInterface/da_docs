@@ -649,3 +649,8 @@
 
   ; magic blue separator
   ; magic yellow separator
+
+⟦ ; begin magic string sub-expr
+⟧ ; end magic string sub-expr
+‹ ; begin magic string
+› ; end magic string
