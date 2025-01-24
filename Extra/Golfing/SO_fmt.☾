@@ -1,0 +1,45 @@
+EXPR = 󰦥󰦥󰦥󰦥󰦥
+󷺹⭥⤉≡🃌ᚤ⟞
+󰦥󰦥󰦥󰦥󰦥
+
+EXPO = 󰦥󰦥󰦥󰦥󰦥
+󷺹🮦🮦🮦🮦🮦🮦  ƒ of 1 var, inserted here
+ ⭥       indices; [0,1,…,len-1]
+ 🮧⤉      max, aka len-1
+ 🮧🮧≡🮦🮦🮦  equals?
+    🃌🮦🮦  cardinality (length) of
+     ᚤ🮦  unique values of
+      ⟞  the input
+󰦥󰦥󰦥󰦥󰦥
+
+EXEC = 𝚲‹
+ƒ = ⟦EXPR⟧
+ƒ([1,2,6,2])☾
+ƒ([0,1,2])☾
+›
+
+SS1 = ‹https://ganer.xyz/s/126f4d4ad898cd95›
+SS2 = ‹https://ganer.xyz/s/0dff9f3075abc01e›
+
+ 󰤱 auto-generate screenshots somehow
+
+⨡ urllib.parse ; quote = urllib.parse.quote
+󰋺("kots",*)
+EXPR󷸊⬄𝗻𝘀 ; EXPO󷸊⬄𝗻𝘀 ; EXEC󷸊⬄𝗻𝘀
+
+‹
+[☾][1], ⟦EXPR🃌⟧ Chars (⟦𝑀(EXPR)🃌⟧ bytes)
+
+[![Solution][3]][3]
+```
+⟦EXPR⟧
+```
+Note: ☾ uses a custom font, but you can run this code in the [Web UI][2]
+
+[![Diagram][4]][4]
+
+  [1]: https://github.com/ganercodes/moon
+  [2]: https://ganer.xyz/moon?code=⟦quote∘EXEC⟧
+  [3]: ⟦SS1⟧
+  [4]: ⟦SS2⟧
+›⬄→☾⥉

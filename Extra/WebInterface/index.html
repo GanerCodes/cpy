@@ -100,8 +100,14 @@
         <script type="text/javascript">
             var py, hist=[""], hist_p=0;
             const script = (x, m) => py.globals.get("SCRIPT")[m](x);
-        
-            // mfw JS thinks "ℚ".length ≠ "𝕊".length
+            
+            const safeRunMoon = val => py.runPython(`
+                try:
+                    𝑓("${val.replaceAll(/[\\"\n]/g, x=>({"\\":"\\\\","\n":"\\n",'"':'\\"'}[x]))}")
+                except Exception as e:
+                    print("Error:", e)`);
+            
+            // mfw "ℚ".length !== "𝕊".length
             const ᔐs = (x,...𝔸) => [...x].slice(...𝔸).join('');
             const ᔐ𝑙 = x => [...x].length;
             const QS  = (x, ε=document) => ε.querySelector(x);
@@ -195,6 +201,12 @@
                 setTimeout(_ => { cli.scrollIntoView(); cli.focus(); }, 25);
                 return x; }
             
+            const log_as_user = x => {
+                log(x);
+                hist[  hist_p] = x;
+                hist[++hist_p] = "";
+            };
+            
             const auto_grow = ε => (ε.style.minHeight = "1em",
                                     ε.style.minHeight = `${Math.max(5, ε.scrollHeight)}px`,
                                     ε.scrollIntoViewIfNeeded());
@@ -209,7 +221,7 @@
                     await (await pyfetch("wasm_stuff.zip")).unpack_archive()
                     shutil.move("./cpy_wasm_cache", "/tmp")
                     print("Downloaded ☾")`);
-                for(const x of ["more-itertools", "regex"]) {
+                for(const x of ["regex"]) {
                     log(`Installing ${x}…`);
                     await py.loadPackage(x);
                     log(`Installed ${x}`); }
@@ -226,7 +238,11 @@
                     print("ctrl + <enter> 󷺄 Run multiline code")
                     print("alt  + <↑/↓>   󷺄 Cycle history")
                     print("alt  + <l>     󷺄 Clear screen")
-                    print("alt  + <w/s/x> 󷺄 Superscript/subscript/normalize selection")`); };
+                    print("alt  + <w/s/x> 󷺄 Superscript/subscript/normalize selection")`);
+                let P = new URLSearchParams(window.location.search).get("code");
+                if(P) {
+                    log_as_user(P);
+                    safeRunMoon(P); } };
             
             (async _ => {
                 log("Loading Symbol Table…");
@@ -284,18 +300,10 @@
                     enter_preserve_indent(cli);
                     return ə(e); }
                 
-                log(val);
-                hist[  hist_p] = val;
-                hist[++hist_p] = "";
-                
+                log_as_user(val);
                 cli.value = '', cli.style.minHeight = "1.1em";
-                try {
-                    py.runPython(`
-                        try:
-                            𝑓("${val.replaceAll(/[\\"\n]/g, x=>({"\\":"\\\\","\n":"\\n",'"':'\\"'}[x]))}")
-                        except Exception as e:
-                            print("Error:", e)`);
-                } catch(e) { log(`Pyodide error! ${e}`); }
+                try      { safeRunMoon(val); }
+                catch(e) { log(`Pyodide error! ${e}`); }
                 ə(e); });
         </script>
     </body>

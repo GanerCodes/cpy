@@ -428,11 +428,12 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
          hasattr(x,"__reversed__") ⭜x.__reversed__()⭝ ␛
          [⠤x]﹕﹕􍨄󰅂,
         L=󰲡[⠤x]﹕﹕􍨄)
+ 󰤱 make "last" versions of these. also strings.
 󰑅´ = 𝑐𝑑(_wherest, I=𝚲_wherest(⠤𝔸,I=✓))
-󷹓´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x﹕󰃼₊₁ ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
-󷹔´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x 󰃼﹕  ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
-󷹕´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x﹕󰃼   ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
-󷹖´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵƒ≕ω≇□ ⭜x 󰃼₊₁﹕⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+󷹓´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x﹕󰃼₊₁ ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+󷹔´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x 󰃼﹕  ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+󷹕´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x﹕󰃼   ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+󷹖´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x 󰃼₊₁﹕⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
 ⍭´ = 󰲡␛ ∈x⭜x.split(␛ )ᴍ⍭⭝x.split(␛ )
 ⴵ´ = 󰲡x>0⭜1⭝x∧󷰾∨0
 ▢´,⬓´,⬒´ = 𝚲round(⠤𝕣(𝔸)), floor○𝑓, ceil○𝑓
