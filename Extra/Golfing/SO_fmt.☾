@@ -1,6 +1,8 @@
+            │ ⟵ screenshot width ≥ that
 EXPR = 󰦥󰦥󰦥󰦥󰦥
-󷺹⭥⤉≡🃌ᚤ⟞
+    󷺹⭥⤉≡🃌ᚤ⟞
 󰦥󰦥󰦥󰦥󰦥
+SS1 = ‹https://ganer.xyz/s/a4348d57bf158e7a›
 
 EXPO = 󰦥󰦥󰦥󰦥󰦥
 󷺹🮦🮦🮦🮦🮦🮦  ƒ of 1 var, inserted here
@@ -11,15 +13,13 @@ EXPO = 󰦥󰦥󰦥󰦥󰦥
      ᚤ🮦  unique values of
       ⟞  the input
 󰦥󰦥󰦥󰦥󰦥
+SS2 = ‹https://ganer.xyz/s/0dff9f3075abc01e›
 
 EXEC = 𝚲‹
 ƒ = ⟦EXPR⟧
 ƒ([1,2,6,2])☾
 ƒ([0,1,2])☾
 ›
-
-SS1 = ‹https://ganer.xyz/s/126f4d4ad898cd95›
-SS2 = ‹https://ganer.xyz/s/0dff9f3075abc01e›
 
  󰤱 auto-generate screenshots somehow
 
@@ -28,7 +28,7 @@ SS2 = ‹https://ganer.xyz/s/0dff9f3075abc01e›
 EXPR󷸊⬄𝗻𝘀 ; EXPO󷸊⬄𝗻𝘀 ; EXEC󷸊⬄𝗻𝘀
 
 ‹
-[☾][1], ⟦EXPR🃌⟧ Chars (⟦𝑀(EXPR)🃌⟧ bytes)
+# [☾][1], ⟦EXPR🃌⟧ chars (⟦𝑀(EXPR)🃌⟧ bytes)
 
 [![Solution][3]][3]
 ```
