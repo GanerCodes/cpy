@@ -15,6 +15,7 @@
     󰤱  Ponder shape ⥊ operator
     󰤱  Better ☾
     󰤱  proper cli for generating font
+    󰤱  side-invarient unary doesn't work ⓦ implicit multiplication
     󰤱􊽨  option to print progress
     󰤱􊽨 Make x⭜y⭝z store vals
     󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽
