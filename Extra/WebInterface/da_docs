@@ -12,6 +12,7 @@
 ¿ ; Python "if"
 ⸘ ; Python "elif"
 ¡ ; Python "else"
+󰆴 ; Python "del"
 
 ⭜ ; ternary if
     "x ⭜ y ⭝ z" ; y if x else z
@@ -245,6 +246,8 @@
     󷹇 Requested by Michael for future advanced math things
 󷷻 ; diamond subtract
     󷹇 Requested by Michael for future advanced math things
+
+… ; range between ints
 
 ∘ ; call left with right
     󰤱 docs
@@ -527,5 +530,118 @@
 τ ; tau
 π ; ½τ
 󷺍 ; ½π
-󷺎 ; ¼π
-󷺏 ; ⅛π
+󷺎 ; ½󷺍
+󷺏 ; ½󷺎
+
+󷱩 ; -∞
+󷱪 ; -î
+󷱬 ; -τ
+󷱭 ; -π
+󷱮 ; -󷺍
+󷱯 ; -󷺎
+󷱰 ; -󷺏
+󷱫 ; -ℇ
+
+󰲡 ; function of x
+󰲣 ; function of x,y
+󰲥 ; function of x,y,z
+󰲧 ; function of x,y,z,w
+󰲩 ; function of x,y,z,w,v
+󰲫 ; function of x,y,z,w,v,u
+
+ᐳ ; left whisker no args
+ᐸ ; right whisker no args
+ᑀ ; left whisker apply, insert
+ᑅ ; right whisker apply, insert
+ᐵ ; left whisker apply to elt's, insert
+ᑈ ; right whisker apply to elt's, insert
+󷺹 ; left whisker function, insert
+󷺽 ; right whisker function, insert
+󷺺 ; left whisker function on elt's, insert
+󷺾 ; right whisker function on elt's, insert
+ᐒ ; left whisker apply, no insert
+ᐘ ; right whisker apply, no insert
+ᐖ ; left whisker apply to elt's, no insert
+ᐛ ; right whisker apply to elt's, no insert
+󷺻 ; left whisker function, no insert
+󷺿 ; right whisker function, no insert
+󷺼 ; left whisker function on elt's, no insert
+󷻀 ; right whisker function on elt's, no insert
+⟞ ; left-tack arg of left whisker
+⟝ ; right-tack arg of right whisker
+
+󷰽 ; negative digit 0
+󷰾 ; negative digit 1
+󷰿 ; negative digit 2
+󷱀 ; negative digit 3
+󷱁 ; negative digit 4
+󷱂 ; negative digit 5
+󷱃 ; negative digit 6
+󷱄 ; negative digit 7
+󷱅 ; negative digit 8
+󷱆 ; negative digit 9
+󷱇 ; negative digit a
+󷱈 ; negative digit b
+󷱉 ; negative digit c
+󷱊 ; negative digit d
+󷱋 ; negative digit e
+󷱌 ; negative digit f
+󷱎 ; negative hex creation
+󷱍 ; negative oct creation
+
+𝑒 ; Exception
+𝑜 ; object
+𝑑 ; dict
+𝑏 ; bool
+𝑙 ; list
+𝑡 ; tuple
+𝑠 ; set
+ᔐ ; str
+𝑖 ; int
+𝑓 ; float
+𝑦 ; bytes
+
+𝔸 ; lambda vargs
+𝕂 ; lambda kargs
+𝓐 ; whisker vargs
+𝓚 ; whisker kargs
+
+ ; curry function
+⬤ ; curry variable
+
+␛ ; escape character in string
+
+↉ ; 0/3
+½ ; 1/2
+⅓ ; 1/3
+¼ ; 1/4
+⅕ ; 1/5
+⅙ ; 1/6
+⅐ ; 1/7
+⅛ ; 1/8
+⅑ ; 1/9
+⅒ ; 1/10
+⅔ ; 2/3
+⅖ ; 2/5
+¾ ; 3/4
+⅗ ; 3/5
+⅜ ; 3/8
+⅘ ; 4/5
+⅚ ; 5/6
+⅝ ; 5/8
+⅞ ; 7/8
+
+ᵜ ; operator suffix swap
+≺ ; operator prefix binary on list elements
+
+𝗻 ; newline character
+𝘀 ; space character
+𝘁 ; tab character
+
+
+
+
+
+  ; magic blue separator
+  ; magic yellow separator
+
