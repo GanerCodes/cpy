@@ -436,10 +436,18 @@ def σ_18():
             
             S = { "number": {"var", "group", "var_spec", "number"},
                   "var_spec": {"number", "var", "var_spec"} }
-            # 󰤱 condition for 2√2
-            if    α.t in S and β.t in S[α.t] \
+            
+            c = 0
+            if α.t == "oper":
+                O = op_man[α]
+                c = O and not ('ι' in O or 'ρ' in O or O.B or O.P or β.t not in S["var_spec"])
+            if not c and β.t == "oper":
+                O = op_man[β]
+                c = O and not ('ι' in O or 'ρ' in O or O.B or O.S or α.t not in S["var_spec"])
+            if    c \
+               or α.t in S and β.t in S[α.t] \
                or β.t in S and α.t in S[β.t] \
-               or α.t == "group" and β.t == "var_spec": # 󰤱 this is weird
+               or α.t == "group" and β.t == "var_spec":
                     cc.append(OP.TND("␀CAT"))
         cc.append(α)
         return n.copy(c=cc)

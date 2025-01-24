@@ -379,9 +379,9 @@
     Both-sides-indistinguishable unary 
     "‹hello›⭥" ⟶ [0,1,2,3,4]
     "5⭥"       ⟶ [0,1,2,3,4,5]
-⬓ ; round down
-    󰤱 docs
 ▢ ; round
+    󰤱 docs
+⬓ ; round down
     󰤱 docs
 ⬒ ; round up
     󰤱 docs

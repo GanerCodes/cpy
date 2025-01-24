@@ -118,7 +118,9 @@ class OP_Manager:
     def __repr__(𝕊):
         return f"{Т(𝕊).__name__}[table={𝕊.table}]"
     def __getitem__(𝕊, n):
-        L, op_t, R = OP.is_op(n)
+        if not (n := OP.is_op(n)):
+            return
+        L, op_t, R = n
         op = 𝕊.table[op_t]
         return 𝕊.gen_op(L, op, R)
     
