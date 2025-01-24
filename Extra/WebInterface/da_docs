@@ -638,10 +638,14 @@
 𝘀 ; space character
 𝘁 ; tab character
 
-
-
-
+⟨ ; begin ugex
+⟩ ; end ugex
+⍮ ; ugex sep
+󷸴 ; ugex or
+⍈ ; ugex apply
+󷹗 ; ugex push
+󷹘 ; ugex pop
+⍖ ; ugex peek
 
   ; magic blue separator
   ; magic yellow separator
-
