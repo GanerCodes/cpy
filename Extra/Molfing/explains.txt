@@ -1,0 +1,38 @@
+
+f= 󷺹⭥ſ⁰􋄎󷺹+⛶←󷺹<1→-⟞ᐸ⊚ᐳ√⫰(⟞􍨄-⟝)%1󷺥⟞∋󷺽∘0
+
+󷺹        function of 1 variable, inserted here
+ <1      check if <1
+   →     group left for order of operations
+    -    subtract
+     ⟞   the argument from said function
+      ᐸ  end function
+
+ᐳ                begin function, no arguments here
+ √               square root
+  ⫰(             absolute value
+    ⟞            left argument (of the parent function)
+     􍨄           index -1
+      -          subtract
+       ⟝         right argument (of this function)
+        )%1      modulo 1
+           󷺥     not or
+            ⟞    left argument
+             ∋   contains as an element
+              󷺽  end function of 1 variable, inserted here
+
+󷺹<1→-⟞ᐸ                    the next element in ℤ, as 0↦1↦-1↦2↦-2↦…
+       ⊚                   loop until
+        ᐳ√⫰(⟞􍨄-⟝)%1󷺥⟞∋󷺽    the difference is a square and not already in the list
+                       ∘0  evaluate at 0 (the start of the loop)
+
+󷺹                                   function of 1 variable, inserted here
+ ⭥                                  range
+  ſ                                 fold with initial value
+   ⁰                                    0
+    􋄎                                   in a list (becomes [0])
+     󷺹                              function of 1 variable, inserted here
+      +                             plus
+       ⛶                            in a list
+        ←                           group right for order of operations
+         󷺹<1→-⟞ᐸ⊚ᐳ√⫰(⟞􍨄-⟝)%1󷺥⟞∋󷺽∘0  the first working integer
