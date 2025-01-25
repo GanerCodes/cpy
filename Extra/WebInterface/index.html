@@ -275,7 +275,7 @@
                             case ']': indent(cli,  1); break;
                             default : return; }
                         return ə(e); }
-                    if(e.altKey) {
+                    if(e.altKey || navigator.platform.indexOf('Mac') > -1 && e.metaKey) {
                         switch(e.key) {
                             case 'l': QSA("div", ets).forEach(x => x.remove()); break;
                             case 'w': replace_selection(cli, x=>script(x, "sup")); break;
