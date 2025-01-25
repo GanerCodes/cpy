@@ -1,12 +1,13 @@
 ⮌ json ⨡ dumps
 ⮌ http.server ⨡ HTTPServer, BaseHTTPRequestHandler
 󰋺("kots", *)
+ucod = ℵ←(cpy_dir / "FontCompose/UnicodeQuery/unicode.txt") ␛
+        󷹎𝗻󰈲󷺹∧⟞∌␛#∧␛.∉⟞ᐸ ᐵ󷹎¹␛;ᐵ.lower⬄𝘀ᐸꟿ⁰󷺹󷹜16󷹝→⋄󷺽→ᴙ
 
 ipv4 = ᑀ ᑀ⪢ 8⟝ & 0xFFᐛ (4󷸹)ᴙ → ⨝␛.
 
 ords = ("da_docs")󷹎𝗻𝗻ᐵ󷹎𝗻ᑀ⨝󰲣𝘀≠y₀⭜□⭝󰮈󰅂󷹎
 desc = ℵ(ords󰌷ᐵ₀󷹎¹␛;ᐵ⬄𝘀ᐸᑀ₀ ₀⋄←⟞₁⛶+ᑅ⟞₁﹕)
-
 real_files = ‹wasm_stuff.zip font.ttf›⍭
 󱀘 WebRequestHandler(BaseHTTPRequestHandler):
     ⊢ do_GET(𝕊):
@@ -21,6 +22,9 @@ real_files = ‹wasm_stuff.zip font.ttf›⍭
         ⸘P≡"moon.svg":
             𝕊.send_header("Content-type", "image/svg+xml")
             𝚋 = ᵇ("../Assets/moon.svg")
+        ⸘P﹕􊹳ₓ􊮝􋕨ᵤₙᵢ󰂼ₑ􋕨≡x:
+            syms = ucod󰈲󷺹₀∋ᑅPₓ􊹳₊₁﹕.lower→ᴍ󷸺
+            𝚋 = 𝑀(‹<head><meta charset="UTF-8"><style>html,body{display:flex;flex-wrap:wrap;background:#000;color:#fff;width:100%;height:100%}z{width:20px;height:20px;}</style></head><body>⟦symsᐖ‹<z>⟦⟞⟧</z>›ᐸ⨝⟧</body>›)
         ¡:
             𝚋 = ᵇ(P∈real_files⭜P⭝"index.html")
         𝕊.end_headers 

@@ -511,13 +511,13 @@
 𝗜 ; check if iterable
 𝗛 ; check if hashable, if so, return hashed value
 􋐳 ; cos
-    Not an operator (yet...?)
+    Function, Not an operator (yet...?)
 􋐲 ; sin
-    Not an operator (yet...?)
+    Function, Not an operator (yet...?)
 􋐴 ; tan
-    Not an operator (yet...?)
+    Function, Not an operator (yet...?)
 􋑯 ; log
-    Not an operator (yet...?)
+    Function, Not an operator (yet...?)
 ✓ ; true
 ⴳ ; truthy function that always returns True
 ✗ ; false
@@ -647,10 +647,10 @@
 󷹘 ; ugex pop
 ⍖ ; ugex peek
 
-  ; magic blue separator
-  ; magic yellow separator
-
 ⟦ ; begin magic string sub-expr
 ⟧ ; end magic string sub-expr
 ‹ ; begin magic string
 › ; end magic string
+
+  ; magic blue separator
+  ; magic yellow separator
