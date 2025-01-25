@@ -146,9 +146,9 @@ ugx_☾     = exprs_not_blank 󰆴'⍮'? (mod:ugx_mod)?
 ugx_seq   = ((ugx_or ∨ ⠶ugx_atom) 󰆴𝘞?)+ (apply:(󰆴('⍈' 𝘞?) exprs_not_blank))?
 ugx_atom  = (ugx_group ∨ ugx_☾) 󰆴𝘞?
 ugx_group = (ugx_paren ∨ ugx_brack)
-ugx_gtail = (mod:ugx_mod)? (stk:subscript)?
+ugx_gtail = (mod:(󰆴𝘞? ∧ ugx_mod))? (󰆴𝘄? ∧ stk:subscript)?
 ugx_paren = 󰆴(‹(› 𝘞?) ⠶ugx_seq 󰆴(‹)› 𝘞?) ⠶ugx_gtail
-ugx_brack = 󰆴(‹⟨› 𝘞?) ⠶ugx_seq 󰆴(‹⟩› 𝘞?) ⠶ugx_gtail
+ugx_brack = 󰆴(‹⟨› 𝘞?) ⠶ugx_seq 󰆴(‹⟩›)    ⠶ugx_gtail
 
 𝘄 = ~‹([ \t]*␛␛\n[ \t]*)+|[ \t]+›
 𝗪 = ~‹[ \t\n]+›
