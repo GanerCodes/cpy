@@ -235,10 +235,10 @@
                     󰆴 __header_namespace__["__error_printer__"]
                     󰆴         __builtins__["__error_printer__"]""")
                     print("☾ Ready!")
-                    print("ctrl + <enter> 󷺄 Run multiline code")
-                    print("alt  + <↑/↓>   󷺄 Cycle history")
-                    print("alt  + <l>     󷺄 Clear screen")
-                    print("alt  + <w/s/x> 󷺄 Superscript/subscript/normalize selection")`);
+                    print("ctrl + <enter>          󷺄 Run multiline code")
+                    print("alt  + <↑/↓>            󷺄 Cycle history")
+                    print("alt  + <l>              󷺄 Clear screen")
+                    print("alt  + <w/s/x or ,/./;> 󷺄 Superscript/subscript/normalize selection")`);
                 let P = new URLSearchParams(window.location.search).get("code");
                 if(P) {
                     log_as_user(P);
@@ -278,8 +278,11 @@
                     if(e.altKey || navigator.platform.indexOf('Mac') > -1 && e.metaKey) {
                         switch(e.key) {
                             case 'l': QSA("div", ets).forEach(x => x.remove()); break;
+                            case '.':
                             case 'w': replace_selection(cli, x=>script(x, "sup")); break;
+                            case ',':
                             case 's': replace_selection(cli, x=>script(x, "sub")); break;
+                            case ';':
                             case 'x': replace_selection(cli, x=>script(x, "nrm")); break;
                             default : return; }
                         return ə(e); }
