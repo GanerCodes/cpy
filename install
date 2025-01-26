@@ -18,7 +18,7 @@ chk_py_pip() { "$PYTHON" -c "import pip" 2>/dev/null; }
 chk_py_pip || {
     echo "pip is not installed. Running ensurepip."
     "$PYTHON" -m ensurepip; }
-chk_py_pip && "$PYTHON" -m pip install --break-system-packages -r requirements.txt \
+chk_py_pip && "$PYTHON" -m pip install --break-system-packages line_profiler regex json5 clipboard \
     || echo "Failed run pip. Please check your Python setup."
 
 DEST=$([ "$(id -u)" -eq 0 ] && echo "/bin/☾" || echo "$HOME/.local/bin/☾")

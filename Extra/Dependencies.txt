@@ -9,5 +9,6 @@ PYTHON_INCLUDED:
             resource, threading, cProfile, pstats, atexit
 PYTHON_PIP_OPTIONAL:
     regex, clipboard
-    fontforge, json5
-    numpy, scipy, pandas, statsmodels
+    json5, numpy, scipy, pandas, statsmodels
+OPTIONAL:
+    fontforge

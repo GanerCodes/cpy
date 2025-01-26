@@ -1,14 +1,14 @@
 § TODOs ------------------------------------
 
     󰤱  Documentation (oh gosh people are finding the project now)
-    󰤱  𝑖 󰌷 𝑖 should do concat, ⛶ⁿ󰂂⁰ should have [[…n…[x]]] legvels nestinbg
+    󰤱  notion of under so i can get indicies of like 󰒼/etc
+    󰤱  option for operator to ignore superscripts like →
     󰤱  __setminus__, __crossprod__, __union__, __intersection__, __subset__ ; mutex
     󰤱  bootstrap everything
     󰤱  Web/phone-app maker
     󰤱  Way to detect imports implicitly
     󰤱  normalize binds/stuff for edits/cross-plat
         󰤱 SCRIPT_MAP hardcoded in moonvert rn
-    󰤱  rotate ⬓⬒
     󰤱  regex but better
     󰤱  add the edge cases for the new compose ops
     󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞

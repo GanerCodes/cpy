@@ -406,6 +406,7 @@
         "‹x y›⍭"⟶ [␛x,␛y]
         "‹ y›⍭" ⟶ [ᐦ,␛y]
         "‹y›⍭"  ⟶ [␛y]
+    󷹇 this makes use of two alternative space characters unless spcial highlighting is applied this is confusing
 󰸵 ; pad left
     󰤱 docs
 󰸷 ; pad right

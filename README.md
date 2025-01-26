@@ -1,23 +1,25 @@
 # ☾  
 ![☾ Logo Code Golf](./Extra/Assets/golf1.png)
 
-[WASM Interactive Version](https://ganer.xyz/moon/)
+[Online Version](https://ganer.xyz/moon/)
 
-Requires ≥python3.12
+## Local install  
+Requires python3.12 or above  
+To view code you need the custom font  
+> Fonts are in /Extra/FontCompose/Output
 
-To view code you need the custom font
-> [Fonts are in /Extra/FontCompose/Output]
-To type glyphs an .XCompose file is in the same directory
-  
-Install: `./install`  
+To type code the .XCompose is in the same directory  
+> You can use WinCompose on Windows
+
+To install (linux/wsl): `git clone --depth 1 https://github.com/ganercodes/moon ; cd moon ; ./install`  
   
 Run a file: `☾ /path/to/file.☾`  
 
 ### Collaborators
-[Used1Brain](https://github.com/Used1Brain/): Initial sup/sub-script generation code
+[Used1Brain](https://github.com/Used1Brain/): Mathematical libraries and initial glyph generator
 ### Credits
 [JuliaMono](https://juliamono.netlify.app/) (Base font)  
 [NerdFonts](https://www.nerdfonts.com/) (Extra symbols)  
 [FontForge](https://fontforge.org/en-US/) (Precedual glyph generation)  
   
-Dependencies are included in `requirements.txt`
+Optional dependencies are included in `Extra/Dependencies.txt`
