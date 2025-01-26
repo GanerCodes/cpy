@@ -599,6 +599,7 @@ def σ_30():
     ((yield replacement("expr", rec='B', n="Generate comparison chains"))
     (make_cmp_chain))
 
+mod2func = { '⟤': "RNULL", 'ᵜ': "SWAPA", '꜠': "DUPER" }
 demodp = lambda o: (o.C[0].as_txt(), o.C[1], o.C[2].as_txt() if o.C[2].S else o.C[2])
 def mkbltnop(op_l): # format builtins if needed
     t = SWAP_TABLE.get(t := op_l.as_txt(), t)
@@ -619,25 +620,22 @@ def transform_oper(op_): # apply modifiers to op
     wrap, rmods = None, ''
     if 'ᔨ' in m_r:
         m_r, wrap = m_r.split('ᔨ', 1)
-        wrap = Node("expr_", lang(SCRIPT.nrm(wrap)))
+        wrap = [COMMA, Node("expr_", lang(SCRIPT.nrm(wrap)) or NULL)]
     for m in m_r:
-        if m in "⟤ᵜ꜠´":
-            match m:
-                case '⟤': op_n = mkmod(op_n, "RNULL")
-                case 'ᵜ': op_n = mkmod(op_n, "SWAPA")
-                case '꜠': op_n = mkmod(op_n, "DUPER")
+        if m == "´": continue
+        if m in "⟤ᵜ꜠":
+            op_n = mkmod(op_n, mod2func[m])
         else:
             rmods += m
     if rmods:
         o = frozenset() if 'χ' in op_man[op_] else ascii_uppercase
         mods_segs = SCRIPT.nrm(rmods).split('𐞑')
         rmods = ᒍ(',', (f'"{x}"' if frozenset(x).issubset(o) else lang(x) for x in mods_segs))
-        if wrap is None:
+        if not wrap:
             return mkexp(op_n, Node("expr_", f'[{rmods}]'))
-        else:
-            return mkmod(mkexp(op_n, Node("expr_", f',{rmods},'), wrap or NULL), "CORSP")
-    elif wrap is not None:
-        return mkmod(mkexp(op_n, COMMA, NULL, COMMA, wrap or NULL), "CORSP")
+        return mkmod(mkexp(op_n, COMMA, Node("expr_", rmods), *wrap), "CORSP")
+    elif wrap:
+        return mkmod(mkexp(op_n, COMMA, NULL, *wrap), "CORSP")
     return op_n
 
 def σ_35():

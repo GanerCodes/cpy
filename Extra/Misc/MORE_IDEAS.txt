@@ -1,9 +1,10 @@
-󷹕󷹓󰑅󷹔󷹖
-󷸹󷸺󷸸󷸻
-⤉⤈ᚤ
-
-󰒼󰒽
-󰈲󰈳 ✓
+󷹕󷹓󰑅󷹔󷹖 󷸹󷸺󷸸󷸻  󰤱
+𝌂⤉⤈ᚤ󰒼󰒽󰈲󰈳 ✓
+
+𝕏: iterable
+ꬶ: func from 𝕏 to iterable of indicies
+ƒ: operation to apply to list elms at those indicies
+𝕏 ᖘ􍳳 ƒ
 
 
 󰤱 not unique version of ᚤ 
