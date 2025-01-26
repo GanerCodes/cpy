@@ -165,7 +165,6 @@
         "[1,0,5] ᴮ 󷺹>1" ⟶ [[0,1],[5]]
         "[1,0,5] ᴮ 󷺹<0" ⟶ [[],[1,0,5]]
     󷹇 supports 󰮈
-    
 ᙡ ; window, with middle, with sides
     󰤱 docs
 ᙧ ; window, with middle, no sides
@@ -181,6 +180,8 @@
     "2 󱖔􍯏􊽮⁺􍯋 3" ⟶ 7
     "2 󱖔􍯏􊽮" ⟶ 4
     "󱖔􍯏􊽮 2" ⟶ 4
+ᖘ ; "candycane": apply to select
+    󰤱 docs
 
 ᐹ ; left is type of right / get type of
     Binary/(indistinguishable)unary
@@ -211,6 +212,8 @@
 󷹅 ; zip (left aligned)
     same as 󱑼 but elements are aligned towards the right
     "[1,2] 󷹅 [1,2,3]" ⟶ [[1,2],[2,3]]
+ᕋ ; modify section
+    󰤱 docs
 
 | ; bitwise or
 
@@ -647,8 +650,12 @@
 ⅝ ; 5/8
 ⅞ ; 7/8
 
-ᵜ ; operator suffix swap
+ᵜ ; swap operator arguments
+    󰤱 example
 ≺ ; operator prefix binary on list elements
+    󰤱 example
+ᔨ ; correspondence modifier
+    󰤱 docs
 
 𝗻 ; newline character
 𝘀 ; space character

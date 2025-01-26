@@ -2,20 +2,21 @@
 
     󰤱  Documentation (oh gosh people are finding the project now)
     󰤱  notion of under so i can get indicies of like 󰒼/etc
+    󰤱  Angle of complex number; asin/cos/tan
     󰤱  option for operator to ignore superscripts like →
     󰤱  __setminus__, __crossprod__, __union__, __intersection__, __subset__ ; mutex
     󰤱  bootstrap everything
-    󰤱  Web/phone-app maker
     󰤱  Way to detect imports implicitly
     󰤱  normalize binds/stuff for edits/cross-plat
         󰤱 SCRIPT_MAP hardcoded in moonvert rn
     󰤱  regex but better
     󰤱  add the edge cases for the new compose ops
-    󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞
     󰤱  Ponder shape ⥊ operator
     󰤱  Better ☾
     󰤱  proper cli for generating font
     󰤱  side-invarient unary doesn't work ⓦ implicit multiplication
+    󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞
+    󰤱􊽨 Web/phone-app maker
     󰤱􊽨  option to print progress
     󰤱􊽨 Make x⭜y⭝z store vals
     󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽

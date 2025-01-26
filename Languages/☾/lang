@@ -28,13 +28,13 @@ I: Include self in group (right asoc.)
        ∉ᴮᴺ󰁖   ∈ᴮᴺ󰁖  ∋ᴮᴺ󰁖  ∌ᴮᴺ󰁖
 ␀TACᴮ
 ꟿᴮᴺ ᴍᴮᴺ    ᴮᴾ󰀒ᴺ󰁢 ſᴮᴺ󰁢   Ϝᴮᴺ󰁢   ⨀ᴮᴾ󰀒ᴺ󰁢 ⨁ᴮᴾ󰀒ᴺ󰁢 ␛
-    󰈲ᴮᴾ󰀒ᴺ󰁢 󰈳ᴮᴾ󰀒ᴺ󰁢 󰒼ᴮᴾ󰀒ᴺ󰁢 󰒽ᴮᴾ󰀒ᴺ󰁢 ᴮᴾ󰀒ᴺ         ␛
+    󰈲ᴮᴾ󰀒ᴺ󰁢 󰈳ᴮᴾ󰀒ᴺ󰁢 󰒼ᴮᴾ󰀒ᴺ󰁢 󰒽ᴮᴾ󰀒ᴺ󰁢 ᴮᴾ󰀒ᴺ  ᖘᴮᴾᴺ󰁢  ␛
     ᙎᴮ󰀒ᴺ󰁢  ᙡᴮ󰀒ᴺ󰁢  ᗢᴮ󰀒ᴺ󰁢  ᙧᴮ󰀒ᴺ󰁢  󱖔ᴮᴾ󰀒ᴺ󰁢
 ፓᴾᴺ󰁢 󷷴ᴾᴺ󰁢 󷷳ᴾᴺ󰁢 ∫ᴾᴺ󰁢 ∘ᴮᴺ󰁢 ○ᴮᴺ󰁢 ⍜ᴮᴺ󰁢      ␛
      󰬫ᴮᴺ󰁢 󰬩ᴮᴺ󰁢 󱖚ᴮᴺ󰁢 󱖘ᴮᴺ󰁢 󰀒ᴺ󰁢 ᣆᴮᴾ󰀒ᴺ󰁢    ␛
      ⊚ᴮᴾ󰀒ᴺ󰁢 ⊛ᴮᴾ󰀒ᴺ󰁢 ⍟ᴮᴾ󰀒ᴺ󰁢 ⊜ᴮᴾ󰀒ᴺ󰁢 🟕ᴮᴾ󰀒ᴺ󰁢 ␛
      🟖ᴮᴾ󰀒ᴺ󰁢 ᴮᴾ󰀒ᴺ󰁢 󰔶ᴮᴾ󰀒ᴺ󰁢 ᴮᴾ󰀒ᴺ󰁢 󷷹ᴮᴾ󰀒ᴺ󰁢
-ᐹᴮᴾ󰀒ᴺ󰁖 ᐴᴮᴾ󰀒ᴺ󰁖 󷹵ᴮᴺ󰁖 󷹴ᴮᴺ󰁖 󱑼ᴮᴾ󰀒ᴺ󰁢 󷹅ᴮᴾ󰀒ᴺ󰁢
+ᐹᴮᴾ󰀒ᴺ󰁖 ᐴᴮᴾ󰀒ᴺ󰁖 󷹵ᴮᴺ󰁖 󷹴ᴮᴺ󰁖 ᕋᴮ󰀒ᴺᴵ󰁢 󱑼ᴮᴾ󰀒ᴺ󰁢 󷹅ᴮᴾ󰀒ᴺ󰁢
 |ᴮᴺ ␉ ^ᴮᴺ ␉ &ᴮᴺ
 <<ᴮᴺ >>ᴮᴺ ⪡ᴾ󰀒ᴮᴺ ⪢ᴾ󰀒ᴮᴺ
 ∓ᴾᴮᴺ ±ᴾᴮᴺ +ᴾᴮᴺ -ᴾᴮᴺ 󷷶ᴾᴮᴺ󰁢 󷷻ᴾᴮᴺ󰁢
@@ -107,7 +107,7 @@ script = ((supscript = ƨ(SUPSCRIPT)) ∨ (subscript = ƨ(SUBSCRIPT)))
 oper = (
     (oper_mod_l = ~‹[⟥≺]*›)
      oper_lit
-    (oper_mod_r = ƨ((~‹[´꜠ᵜ𐞑⟤]+› ∨ supscript)*)))
+    (oper_mod_r = ƨ((~‹[´꜠ᵜ𐞑⟤ᔨ]+› ∨ supscript)*)))
 
 lambs = lamb_tacit ∨ lamb
 lamb = (
@@ -615,7 +615,11 @@ def transform_oper(op_): # apply modifiers to op
     if '⟥' in m_l: op_n = mkmod(op_n, "LNULL")
     
     if isinstance(m_r, Node): return mkexp(op_n, mkgxp(m_r, b="[]"))
-    rmods = ᐦ
+    
+    wrap, rmods = None, ''
+    if 'ᔨ' in m_r:
+        m_r, wrap = m_r.split('ᔨ', 1)
+        wrap = Node("expr_", lang(SCRIPT.nrm(wrap)))
     for m in m_r:
         if m in "⟤ᵜ꜠´":
             match m:
@@ -625,10 +629,15 @@ def transform_oper(op_): # apply modifiers to op
         else:
             rmods += m
     if rmods:
-        o = set() if 'χ' in op_man[op_] else ascii_uppercase
-        rmods = ᒍ(',', (f'"{x}"' if frozenset(x).issubset(o) else lang(x) \
-                    for x in SCRIPT.nrm(rmods).split('𐞑')))
-        op_n = mkexp(op_n, Node("expr_", f'[{rmods}]'))
+        o = frozenset() if 'χ' in op_man[op_] else ascii_uppercase
+        mods_segs = SCRIPT.nrm(rmods).split('𐞑')
+        rmods = ᒍ(',', (f'"{x}"' if frozenset(x).issubset(o) else lang(x) for x in mods_segs))
+        if wrap is None:
+            return mkexp(op_n, Node("expr_", f'[{rmods}]'))
+        else:
+            return mkmod(mkexp(op_n, Node("expr_", f',{rmods},'), wrap or NULL), "CORSP")
+    elif wrap is not None:
+        return mkmod(mkexp(op_n, COMMA, NULL, COMMA, wrap or NULL), "CORSP")
     return op_n
 
 def σ_35():
