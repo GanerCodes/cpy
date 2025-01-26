@@ -252,7 +252,7 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂) # ≺
             ➰0<n󷸊-1:
                 ¿𝑔(ƒ(f)≕f)≕g∈rg:
                     ¿𝕏≡␛🟖: ↪ rf
-                    ↪ (rg 󰑅ᴵ 󰲡x≡g) 󷸻 rf
+                    ↪ (rg 󰑅ᔨ 󰲡x≡g) 󷸻 rf
                 rf.append(f)
                 rg.append(g)
         ↪□
@@ -417,10 +417,22 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
     assert α, β≅␀ ⭜"Assertion failed!"⭝ β
     ↪ α
 
-⊢ _wherest(𝕏, ƒ=𝑏, I=ⴴ):
+⊢ _wherest(𝕏, ƒ=𝑏, 𝘪=✗):
     ¿ƒ≅␀: ƒ=𝑏
     ∀i,x∈↨𝕏:
-        ¿ƒ(x): ↪I⭜i⭝x
+        ¿ƒ(x): ↪𝘪⭜i⭝x
+󰑅´ = 𝑐𝑑(_wherest, I=𝚲_wherest(⠤𝔸,𝘪=✓)) ; 󰑅´􊯛􍺫=󰑅´􊯛󰂛
+⊢ FROMS_(𝕏,x,ƒ=𝑏,s=␀,𝘪=✗):  󰤱 make "last" versions of these. also ᔐ?
+    ¿xᐹᔐᐴƒ: ƒ=󰲡x≠ƒ
+    𝚒 = x󰑅ᔨƒ
+    ¿𝚒≅□:
+        ¿s≇␀: ↪s
+        ↪ ¬𝘪∧xᐹᔐ ⭜ᐦ⭝ ⍁
+    ¿𝘪: x󷸊⭥
+    ¿𝕏≡␛󷹓: ↪ x   ﹕􀲪₊₁
+    ⸘𝕏≡␛󷹔: ↪ x  􀲪﹕
+    ⸘𝕏≡␛󷹕: ↪ x   ﹕􀲪
+    ⸘𝕏≡␛󷹖: ↪ x₁₊􀲪﹕
 
 ⩔´,⩓´, = ∨´,∧´
 󷺫´ = 󷺥´ = 󰲣x∨y→¬
@@ -439,12 +451,7 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
          hasattr(x,"__reversed__") ⭜x.__reversed__()⭝ ␛
          [⠤x]﹕﹕􍨄󰅂,
         L=󰲡[⠤x]﹕﹕􍨄)
- 󰤱 make "last" versions of these. also strings.
-󰑅´ = 𝑐𝑑(_wherest, I=𝚲_wherest(⠤𝔸,I=✓))
-󷹓´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x﹕󰃼₊₁ ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
-󷹔´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x 󰃼﹕  ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
-󷹕´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x﹕󰃼   ⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
-󷹖´ = OPWRAP_(⥌x,ƒ=𝑏,s=␀↦x󰑅ᴵ(xᐹᔐ∧ƒᐹᔐ⭜󰲡x≠ƒ󰅂⭝ƒ 🟑󰤱 make a ᔐ-ᔐ version bruh🟑)≕ω≇□ ⭜x 󰃼₊₁﹕⭝ s≇␀ ⭜s⭝ xᐹᔐ ⭜ᐦ⭝ ⍁)
+
 ⍭´ = 󰲡␛ ∈x⭜x.split(␛ )ᴍ⍭⭝x.split(␛ )
 ⴵ´ = 󰲡x>0⭜1⭝x∧󷰾∨0
 ▢´,⬓´,⬒´ = 𝚲round(⠤𝕣(𝔸)), floor○𝑓, ceil○𝑓
@@ -459,8 +466,7 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 ∣´,∤´ = 󰲣gcd(x,y)≡x, 󰲣gcd(x,y)≠x
 ↨´,⭥´ = 󰲡𝑙(enumerate(x)), 󰲡𝑙←range(xᐹ𝑖⭜x⭝x🃌)
 󷸛´,󷸚´,󷸜´ = 󰲡x.real, 󰲡x.imag, 󰲡(x.real, x.imag)  󰤱
-⫰´,⫯´ = 󰲡xᐹᔐ⭜x.upper()⭝+abs(x), 󰲡xᐹᔐ⭜x.lower()⭝¯abs(x)
-󷹒´ = 󰲡xᐹᔐ⭜x.swapcase()⭝¯x
+⫰´,⫯´,󷹒´ = 󰲡xᐹᔐ⭜x.upper()⭝+abs(x), 󰲡xᐹᔐ⭜x.lower()⭝¯abs(x), 󰲡xᐹᔐ⭜x.swapcase()⭝¯x
 󷹄´ = OPWRAP_←⥌x,y,s=␀↦(R≔s↦x⤉s⤈y)►(s≅␀⭜R⭝R(s))
 ⍉´ = 𝑐𝑑(󰲡x󱑼, 𝑔=󰲡y↦y󱑼ˣ)
 ⪢´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x􍈼﹪􊹳ₓ􍪪ᵢ﹕+x﹕ᵢ⭝ x >> y)
@@ -476,7 +482,7 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
     ℤ𝓑 = 󷺹<0→⋅␛-→+←ℕ𝓑(⟞⫰,⟝)󰸵􍪹􊿥𝓐₀ 󷺿
     ↪ ℤ𝓑(x, 48󷸻57󷹝+65󷸻90󷹝→󷸹s, y)
 
-⊢ MINMAX(𝕏, x=␀, y=␀, s=␀, 𝘪=✗):
+⊢ MINMAX_(𝕏, x=␀, y=␀, s=␀, 𝘪=✗):
     𝑓 = 𝕏≡␛⤉⭜<⭝>
     
     ¿y≅␀: v,ƒ = x    , 󰻾
@@ -515,20 +521,19 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
     ↪ zip(⠤𝙰)ᴍ𝑙
 
 ⨁´,⨀´ = (+,⋅) ᴍ ƒ↦OPWRAP_(⥌x,y=␀,s=␀↦ſ´.ƒ(x,ƒ,⠤𝕣((y,s))))
-⊢ SORTER_(R, 𝚡=␀, 𝚢=󰻾, s=␀, 𝘪=✗):
+⊢ SORTER_(𝕏, 𝚡=␀, 𝚢=󰻾, s=␀, 𝘪=✗):
     𝚡 = [⠤𝚡]
     𝚇 = (𝚡ᴍ𝚢)󱑼(𝚡⭥)󰈳󰲡x₀≅󰮈
-    𝚇.sort(reverse=R)
-    ↪ 𝚇ᴍ󰲡𝘪⭜x₁⭝𝚡ₓ􊬤
+    𝚇.sort(reverse=𝕏≡␛󰒽)
+    ↪ 𝚇ᴍ󰲡 𝘪⭜x₁⭝ 𝚡ₓ􊬤
 
-󰒼´,󰒽´ = (✗,✓) ᴍ 󰲡OPWRAP_(SORTER_(x))
 ´ = 𝑐𝑑(𝚲⥌I,ƒ=𝑏↦((ƒ≔(ƒᐹ𝗙⭜ƒ⭝󷺹≡ᑅƒ)) ► r≔{})→◄←Iᴍ󰲡ƒ(x)≕𝕩≇󰮈⭜r.setdefault(𝕩,[]).append(x)󰅂󰅂(⠤𝕣(𝔸),⠶𝕂),
        S=𝚲´(⠤𝔸,⠶𝕂).items 󰒼 ᴍ󰲡x₁,
        B=𝚲h≔{✓:[],✗:[],⠶´(⠤𝔸,⠶𝕂)}→►←[h₀,h₁])
 
 󱀘 𝑙𝑙(𝑙): □
 ⊢ ⋄´(x,y):
-    ¿xᐹ𝑙𝑙: ↪ y≅󰮈⭜x⭝𝑙𝑙(x+[y])
+    ¿xᐹ𝑙𝑙: ↪ y≅󰮈 ⭜x⭝ 𝑙𝑙(x+[y])
     v = 𝑙𝑙()
     ¿x≇󰮈: v.append(x)
     ¿y≇󰮈: v.append(y)
@@ -593,6 +598,7 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
 
 @OPWRAP_
 ⊢ ᖘ´(𝚡=␀,𝚢=␀,s=␀):  󰤱􊽨 allow s󷹵𝗙
+    ¿𝚢≅␀: 𝚡,𝚢 = 𝚢,𝚡
     𝚢≇␀ ⨳ ‹ᖘ needs right side›
     ⊢ ƒ(𝚡):
         𝚡 = (𝚡ᐹᔐ ≕ is_str) ⭜𝚡󰌷⭝ 𝚡.copy
@@ -612,15 +618,17 @@ TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
     𝟝 = 𝕏∈"ᗢᙧ" ⭜(s≅␀⭜chnk⭝s+1)⭝ chnk
     ↪ WINDOW_(x,𝟙,𝟚,𝟛,𝟜,𝟝)
 
+󰒼´,󰒽´             = ‹󰒼󰒽󷺗󷺗󷺗󷺗›ᴍ󰲡OPWRAP_(SORTER_(x))
 ᙎ´,ᙡ´,ᗢ´,ᙧ´       = ‹ᙎᙡᗢᙧ󷺗󷺗›ᴍ󰲡OPWRAP_( ΩNDOW_(x))
-´,󱅏´,´          = ‹󱅏󷺗󷺗󷺗›ᴍ󰲡OPWRAP_(RANDOM_(x))
 󱑼´,󷹅´             = ‹󱑼󷹅󷺗󷺗󷺗󷺗›ᴍ󰲡OPWRAP_(   ZIP_(x))
 ⊚´,⊜´,🟕´,🟖´,⊛´,⍟´ = ‹⊚⊜🟕🟖⊛⍟›ᴍ󰲡OPWRAP_( FBALZ_(x))
 ´,󰔶´,´          = ‹󰔶󷺗󷺗󷺗›ᴍ󰲡OPWRAP_(ERRTRI_(x))
+󷹓´,󷹔´,󷹕´,󷹖´       = ‹󷹓󷹔󷹕󷹖󷺗󷺗›ᴍ󰲡OPWRAP_( FROMS_(x))
 ⨝´,⟕´,⟖´,⟗´       = ‹⨝⟕⟖⟗󷺗󷺗›ᴍ󰲡OPWRAP_(  JOIN_(x))
 󷸹´,󷸺´,󷸸´,󷸻´       = ‹󷸹󷸺󷸸󷸻󷺗󷺗›ᴍ󰲡OPWRAP_( RANGE_(x))
 󷹌´,󷹍´,󷹎´          = ‹󷹌󷹍󷹎󷺗󷺗󷺗›ᴍ󰲡OPWRAP_( SPLIT_(x))
-⤉´,⤈´             = ‹⤉⤈󷺗󷺗󷺗󷺗›ᴍ󰲡OPWRAP_( MINMAX(x))
+´,󱅏´,´          = ‹󱅏󷺗󷺗󷺗›ᴍ󰲡OPWRAP_(RANDOM_(x))
+⤉´,⤈´             = ‹⤉⤈󷺗󷺗󷺗󷺗›ᴍ󰲡OPWRAP_(MINMAX_(x))
 󰔛´,󱫩´             = ‹󰔛󱫩󷺗󷺗󷺗󷺗›ᴍ󰲡OPWRAP_( TIMER_(x))
 
 ∅´,⍁´ = (𝚲𝑠(), 𝚲[]) ᴍ ƒ↦OPWRAP_(⥌s=␀↦s≅␀ ⭜ƒ()⭝ s⭥ᴍƒ)
