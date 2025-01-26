@@ -337,12 +337,19 @@
     𝗜 ⋁
     returns first truthy value or last value
     󷹇 ⋁􋇜 sets default for empty iterable (✗ if excluded)
-⫰ ; absolute value
+⫰ ; absolute value / uppercase
     Both-sides-indistinguishable unary
-    𝕏⫰ =  abs(𝕏)
-⫯ ; negative absolute value
+    󷱂⫰ ≡ 5⫰ ≡ 5
+    "ABc"⫰ = "ABC"
+⫯ ; negative absolute value / lowercase
     Both-sides-indistinguishable unary
-    𝕏⫯ = ¯abs(𝕏)
+    󷱂⫯ ≡ 5⫯ ≡ ¯5
+    "ABc"⫯ ≡ "abc"
+󷹒 ; negate / swap case
+    Both-sides-indistinguishable unary
+    󷱂󷹒 ≡ 5
+    5󷹒 ≡ 󷱂
+    "aBc"󷹒 ≡ "AbC"
 ⨝ ; join
     󰤱 docs
 ⟕ ; join include left
@@ -415,6 +422,11 @@
     󰤱 docs
 󰌷 ; chain iterables
     󰤱 docs
+    󷹇 if left and right are both integers, we do integer concatination
+       "5 󰌷 23" ⟶ 523
+       "5 󰌷 󷱁" ⟶ -54
+       "󷱁 󰌷 5" ⟶ -45
+       "󷱀 󰌷 󷱁" ⟶ 34
 ᴙ ; reverse
     󰤱 docs
 󰛔 ; string replacement
@@ -426,6 +438,9 @@
 ⛶ ; enlist arguments
     "2⛶" ⟶ [2]
     "2⛶⁵" ⟶ [2,2,2,2,2]
+    󷹇 if negative then we enlist it multiple times
+    "2⛶􍨅" ⟶ [[2]]
+    "␛x⛶􍧟" ⟶ [[[[␛x]]]]
 ⍉ ; transpose
     Exactly the same as unary version of 󱑼
 ⴵ ; sign of number
