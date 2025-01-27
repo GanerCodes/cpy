@@ -30,9 +30,12 @@
                 width: 100%; height: 100%;
                 margin: 0%; padding: 0%; }
             
-            .rowOfFlex {
+            .colOfFlex, .rowOfFlex {
                 display: flex;
-                justify-content: center;
+                justify-content: center; }
+            .colOfFlex { flex-direction: column; }
+            .colOfFlex > * { width: 100%; }
+            .rowOfFlex {
                 margin-left: auto;
                 margin-right: auto;
                 height: 100%; }
@@ -44,7 +47,7 @@
                 overflow-y: scroll;
                 flex-basis: 0;
                 height: 100%; }
-            #entries {
+            #theLeft {
                 flex-grow: 3;
                 flex-flow: column;
                 border: 1px solid #fff;
@@ -71,13 +74,10 @@
                 outline: none;
                 height: 1.1em;
                 min-height: 1.1em; }
-            #symbolTable > text:hover  * { background: #102; }
-            #symbolTable > text:active * { background: #214; }
-            #symbolTable > text:hover {
-                font-size: 110%;
-                cursor: pointer; }
-            #symbolTable > text:active {
-                font-size: 120%; }
+            #symbolTable > text:hover  *, button:hover  { background: #102; cursor: pointer; }
+            #symbolTable > text:active *, button:active { background: #214; }
+            #symbolTable > text:hover  { font-size: 110%; }
+            #symbolTable > text:active { font-size: 120%; }
             #symbolTable text {
                 display: block;
                 width: 100%;
@@ -86,13 +86,35 @@
             #symbolTable text:not(:has(> *)) {
                 border: 0.5px solid #222;
                 text-align: center; }
+            button { background:#000B;
+                     color:#fff;
+                     border: 2px solid #fff;
+                     border-radius: 5px; }
+            .spaceKids {
+                position: sticky;
+                top: 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                padding: 2px; }
+            .spaceKids > * {
+                margin-left: 2px; margin-right: 2px;
+                flex-grow: 1; width: auto; }
         </style>
     </head>
     <body>
         <div class="rowOfFlex">
-            <div id="entries">
-                <textarea id="cli_in" class="entry" style="height:1em"
-                          spellcheck="false" oninput="auto_grow(this)"></textarea>
+            <div id="theLeft" class="colOfFlex">
+                <span class="spaceKids">
+                    <button onclick="run_shortcut(cli_in,'w')">Sup</button>
+                    <button onclick="run_shortcut(cli_in,'s')">Sub</button>
+                    <button onclick="run_shortcut(cli_in,'x')">Nrm</button>
+                    <button onclick="run_shortcut(cli_in,'l')">cls</button>
+                </span>
+                <div id="entries">
+                    <textarea id="cli_in" class="entry" style="height:1em"
+                              spellcheck="false" oninput="auto_grow(this)"></textarea>
+                </div>
             </div>
             <div id="symbolTable"></div>
         </div>
@@ -207,6 +229,10 @@
                 hist[++hist_p] = "";
             };
             
+            const run_shortcut = (ε, k) => ε.dispatchEvent(
+                new KeyboardEvent('keydown', {
+                    key: k, code: "Key"+k.toUpperCase(),
+                    altKey: true, bubbles: true, cancelable: true }));
             const auto_grow = ε => (ε.style.minHeight = "1em",
                                     ε.style.minHeight = `${Math.max(5, ε.scrollHeight)}px`,
                                     ε.scrollIntoViewIfNeeded());
@@ -235,10 +261,12 @@
                     󰆴 __header_namespace__["__error_printer__"]
                     󰆴         __builtins__["__error_printer__"]""")
                     print("☾ Ready!")
-                    print("ctrl + <enter>          󷺄 Run multiline code")
-                    print("alt  + <↑/↓>            󷺄 Cycle history")
-                    print("alt  + <l>              󷺄 Clear screen")
-                    print("alt  + <w/s/x or ,/./;> 󷺄 Superscript/subscript/normalize selection")`);
+                    print("ctrl + <enter> 󷺄 Run multiline code")
+                    print("alt  + <↑/↓>   󷺄 Cycle history")
+                    print("alt  + <l>     󷺄 Clear screen")
+                    print("alt  + <w/s/x> (mac: cmd+<,/./;>)")
+                    print("     󷺄 Superscript/subscript/normalize selection")`);
+                    
                 let P = new URLSearchParams(window.location.search).get("code");
                 if(P) {
                     log_as_user(P);
@@ -275,15 +303,16 @@
                             case ']': indent(cli,  1); break;
                             default : return; }
                         return ə(e); }
-                    if(e.altKey || navigator.platform.indexOf('Mac') > -1 && e.metaKey) {
+                    
+                    const mac = navigator.platform.includes('Mac') && e.metaKey;
+                    const oth = e.altKey;
+                    if(mac || oth) {
+                        const keys = [...mac ?"l.,;": "lwsx"];
                         switch(e.key) {
-                            case 'l': QSA("div", ets).forEach(x => x.remove()); break;
-                            case '.':
-                            case 'w': replace_selection(cli, x=>script(x, "sup")); break;
-                            case ',':
-                            case 's': replace_selection(cli, x=>script(x, "sub")); break;
-                            case ';':
-                            case 'x': replace_selection(cli, x=>script(x, "nrm")); break;
+                            case keys[0]: QSA("div", ets).forEach(x => x.remove()); break;
+                            case keys[1]: replace_selection(cli, x=>script(x, "sup")); break;
+                            case keys[2]: replace_selection(cli, x=>script(x, "sub")); break;
+                            case keys[3]: replace_selection(cli, x=>script(x, "nrm")); break;
                             default : return; }
                         return ə(e); }
                     if(e.keyCode == 9) {
