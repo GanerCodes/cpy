@@ -528,6 +528,9 @@
 ⍁ ; empty list
     "⍁" ⟶ []
     "⍁³" ⟶ [[], [], []]
+® ; roots of unity
+    "®²" ⟶ ∓1
+    "®(2)" ⟶ ∓1
 
 󰮈 ; signal delete element from iteration
 𝗙 ; check if function

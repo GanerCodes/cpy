@@ -385,3 +385,5 @@ in `kots.☾` we now have that cd(@) will cd into the caller's current dir
     # ƒ 󰔛/󱫩⁵ 󷱂 ⟶ Timer  (call ƒ, wait 5s)⨯4, (call ƒ)
 
 better install script also ugex also why were dice so high
+
+DEPRECATED: 󰑅ᴵ, use 󰑅ᔨ
