@@ -141,17 +141,19 @@ class OP_Manager:
         for u in r.as_txt():
             if   u == '꜠':
                 assert op.B
-                op = op.mod(op.N*'N' + ((op.P*'P' + op.S*'S') or "PS"))
+                op = op.mod(op.N*'N' + "PS")
             elif u == 'ᵜ':
-                if ⴸ((x:=op.P, y:=op.S)):
-                    op = op.mod(op.N*'N'+y*'S'+x*'P'+op.B*'B', op.R, op.L)
+                if op.P or op.S:
+                    op = op.mod(op.N*'N' + op.P*'S' + op.S*'P' + op.B*'B', op.R, op.L)
             elif u == '⟤':
                 assert op.B
-                op = op.mod(op.N*'N'+"S")
+                op = op.mod(op.N*'N' + 'S')
             # 󷹇 postfix modifiers can be dynamic
         return op
     
     def parse_expr(𝕊, n):
+        # print("parse_expr:")
+        # for x in n: x.print()
         # PD(1, "PARSE", n)
         L, R = [], n.copy()
         while R:

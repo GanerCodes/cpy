@@ -327,6 +327,10 @@
     "√5"  ⟶ 5􊽲
     "√³5" ⟶ 5􋀞
     "√󰁛5" ⟶ 5󰁛􍩯
+؆ ; roots
+    Prefix unary
+    "؆25" ⟶ [󷱂, 5]
+    "√³1" ⟶ 3ʳᵈ roots of unity
 ! ; factorial
     Suffix unary
     "5!" ⟶ 120

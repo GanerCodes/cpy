@@ -52,7 +52,7 @@ I: Include self in group (right asoc.)
      󷹌ᴮᴾ󰀒ᴺ  󷹍ᴮᴾ󰀒ᴺ  󷹎ᴮᴾ󰀒ᴺ  𝌂ᴮᴾ󰀒ᴺ ᴙᴾ󰀒ᴺ   ᚤᴮᴾ󰀒ᴺ  ␛
      ⬄ᴮᴾ󰀒ᴺ  󰌷ᴮᴾ󰀒ᴺ  󰛔ᴮᴾ󰀒ᴺ󰁢 󷹝ᴾ󰀒ᴺ󰁢 󷹜ᴮᴾ󰀒ᴺ󰁢 󷹗ᴾ󰀒󰁢   ␛
      󷸚ᴾ󰀒ᴺ   󷸛ᴾ󰀒ᴺ   󷸙ᴾ󰀒ᴺ   󷸘ᴾ󰀒ᴺ  󷸜ᴾ󰀒ᴺ   󷸗ᴾ󰀒ᴺ 󷸖ᴾ󰀒ᴺ 󷸕ᴾ󰀒ᴺ ␛
-     √ᴾᴺ    ᴮᴾ󰀒ᴺ󰁘󰁢 󱅏ᴮᴾ󰀒ᴺ󰁘󰁢 ᴮᴾ󰀒ᴺ󰁘󰁢
+     √ᴾᴺ    ؆ᴾᴺ    ᴮᴾ󰀒ᴺ󰁘󰁢 󱅏ᴮᴾ󰀒ᴺ󰁘󰁢 ᴮᴾ󰀒ᴺ󰁘󰁢
 ¬ᴾ󰀒ᴺ󰁜 ¯ᴾᴺ
 ␀CATᴮᴺ
 **ᴵᴮᴾ󰁞 …ᴮᴺ ⌃ᴵᴮᴺ 󷷺ᴵᴮᴺ󰁢
@@ -289,7 +289,7 @@ def σ_00():
                      OP.TND("⠶"), mkvar("𝓚")])
         return Ń("oper",
             ("oper_mod_l", ᐦ), ("oper_lit", OP_NAME),
-            ("oper_mod_r", mkgxp(
+            (mkgxp(
                 ("lamb", ("lamb_h_normal", *args),
                          ("lamb_b", ("norm_expr", λ))),
                 *targs)))
@@ -599,7 +599,9 @@ def σ_30():
     ((yield replacement("expr", rec='B', n="Generate comparison chains"))
     (make_cmp_chain))
 
-mod2func = { '⟤': "RNULL", 'ᵜ': "SWAPA", '꜠': "DUPER" }
+lmod2func = { '⟥': "LNULL", '≺': "BSTAR" }
+rmod2func = { '⟤': "RNULL", 'ᵜ': "SWAPA", '꜠': "DUPER" }
+
 demodp = lambda o: (o.C[0].as_txt(), o.C[1], o.C[2].as_txt() if o.C[2].S else o.C[2])
 def mkbltnop(op_l): # format builtins if needed
     t = SWAP_TABLE.get(t := op_l.as_txt(), t)
@@ -612,30 +614,33 @@ def transform_oper(op_): # apply modifiers to op
     op_n = mkbltnop(op_l)
     mkmod = lambda op, x: mkexp(mkvar(f"OP_{x}_"), mkgrp(op))
     
-    if '≺' in m_l: op_n = mkmod(op_n, "BSTAR")
-    if '⟥' in m_l: op_n = mkmod(op_n, "LNULL")
+    if not isinstance(m_r, Node):
+        wrap, rmods = None, ''
+        if 'ᔨ' in m_r:
+            m_r, wrap = m_r.split('ᔨ', 1)
+            wrap = [COMMA, Node("expr_", lang(SCRIPT.nrm(wrap)) or NULL)]
+        for m in m_r:
+            if m == "´": continue
+            if m in "⟤ᵜ꜠":
+                op_n = mkmod(op_n, rmod2func[m])
+            else:
+                rmods += m
+        if rmods:
+            o = frozenset() if 'χ' in op_man[op_] else ascii_uppercase
+            mods_segs = SCRIPT.nrm(rmods).split('𐞑')
+            rmods = ᒍ(',', (f'"{x}"' if frozenset(x).issubset(o) else lang(x) for x in mods_segs))
+            if not wrap:
+                op_n = mkexp(op_n, Node("expr_", f'[{rmods}]'))
+            else:
+                op_n = mkmod(mkexp(op_n, COMMA, Node("expr_", rmods), *wrap), "CORSP")
+        elif wrap:
+            op_n = mkmod(mkexp(op_n, COMMA, NULL, *wrap), "CORSP")
+    else:
+        op_n = mkexp(op_n, mkgxp(m_r, b="[]"))
     
-    if isinstance(m_r, Node): return mkexp(op_n, mkgxp(m_r, b="[]"))
+    for m in m_l:
+        op_n = mkmod(op_n, lmod2func[m])
     
-    wrap, rmods = None, ''
-    if 'ᔨ' in m_r:
-        m_r, wrap = m_r.split('ᔨ', 1)
-        wrap = [COMMA, Node("expr_", lang(SCRIPT.nrm(wrap)) or NULL)]
-    for m in m_r:
-        if m == "´": continue
-        if m in "⟤ᵜ꜠":
-            op_n = mkmod(op_n, mod2func[m])
-        else:
-            rmods += m
-    if rmods:
-        o = frozenset() if 'χ' in op_man[op_] else ascii_uppercase
-        mods_segs = SCRIPT.nrm(rmods).split('𐞑')
-        rmods = ᒍ(',', (f'"{x}"' if frozenset(x).issubset(o) else lang(x) for x in mods_segs))
-        if not wrap:
-            return mkexp(op_n, Node("expr_", f'[{rmods}]'))
-        return mkmod(mkexp(op_n, COMMA, Node("expr_", rmods), *wrap), "CORSP")
-    elif wrap:
-        return mkmod(mkexp(op_n, COMMA, NULL, *wrap), "CORSP")
     return op_n
 
 def σ_35():
