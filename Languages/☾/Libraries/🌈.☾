@@ -24,3 +24,5 @@ TERM_RESET = "\033[0m"
         r, g, b, _ = h2r(c)
         R󷸊+‹⟦"\x1b"⟧[⟦n⟧;2;⟦r⟧;⟦g⟧;⟦b⟧m›
     ↪ R + ᔐ(t) + TERM_RESET⋅𝑏(rst)
+
+__exports__ = ‹h2r r2hl h2hl TERM_RESET termclr›⍭

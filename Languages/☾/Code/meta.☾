@@ -5,25 +5,27 @@
     ↪ _FT(frame.f_code, frame.f_globals)
  󰲡1 ¿x≤1¡ 𝓢()(x-1)+𝓢()(x-2)󰅂(5)☾
 
-⊢ 𝔦𝔪𝔭(x):
-    match x:
-        case ␛s:  system stuff
-            ⨡ os, sys, shutil, subprocess
-            ⮌ pathlib ⨡ Path as 𝐩
-            ⮌ subprocess ⨡ Popen as 𝐫
-            ⮌ time ⨡ time, sleep
-            
-            i=0
-            ➰i󷸊+1:
-                G = sys._getframe(i).f_globals
-                ¿G["__file__"]≠__file__: ⇥
-            G[␛𝐩⥉PEV] = 𝐩
-            G[␛𝐫⥉PEV] = 𝐫
-            G[h≔PEV("𝐩𝐝")] = 𝚲G["__file__"] ⥉𝐩→.parent
-            G["subprocess"] = subprocess
-            G["os"], G["sys"], G["shutil"] = os, sys, shutil
-            G["time"], G["sleep"] = time, sleep
-            G["ldir"] = 𝚲os.chdir←Gₕ
+⊢ outer_globals(i=0):
+    ➰i󷸊+1:
+        G = _getframe(i).f_globals
+        ¿G["__file__"]≠__file__: ⇥
+    ↪ G
+
+⊢ 𝔦𝔪𝔭(x):  deprecated
+    ¿x≡␛s:  system stuff
+        ⨡ os, sys, shutil, subprocess
+        ⮌ pathlib ⨡ Path as 𝐩
+        ⮌ subprocess ⨡ Popen as 𝐫
+        ⮌ time ⨡ time, sleep
+        
+        G = outer_globals()
+        G[␛𝐩⥉PEV] = 𝐩
+        G[␛𝐫⥉PEV] = 𝐫
+        G[h≔PEV("𝐩𝐝")] = 𝚲G["__file__"] ⥉𝐩→.parent
+        G["subprocess"] = subprocess
+        G["os"], G["sys"], G["shutil"] = os, sys, shutil
+        G["time"], G["sleep"] = time, sleep
+        G["ldir"] = 𝚲os.chdir←Gₕ
 
 ⊢ 󱠨(c, ⠤𝔸, get_ns=✗, ns=□, fname=□,
     interactive_𝕂=□, no_isolate=✗,
@@ -35,7 +37,7 @@
         print_output=✓, ns=ns, fname=fname≅□ ⭜"cpy_󱠨"⭝ fname,
         code_cache_dir=__code_cache_dir__, gram_cache_dir=__gram_cache_dir__,
         header_carry=__header_namespace__, ⠶𝓘𝓚)
-    ¿no_isolate: # absolutely beaned
+    ¿no_isolate:  absolutely beaned
         ¬get_ns ∧ ns≅□ ∧ fname≅□ ⨳
         c = cpy(c, ⠤𝔸, return_code=✓, ⠶𝕂)☾
         ↪ no_isolate_ƒ(c)
@@ -47,6 +49,7 @@
  𝔸∋! ⟶ store the object with module name into globals instead of module
  g ⟶ store anything into globals
  store_code ⟶ m.__cpy_code__ is the source code
+ 󷹇 var name __exports__ determines the default stuff to dump into namespace
 ⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗, just_get_code=✗):
     ¬(just_get_path ∧ just_get_code) ⨳  󰤱 return a tuple if both
     ⮌ sys ⨡ path as P, _getframe as GF
@@ -62,11 +65,13 @@
     nam = PEV(na ≔ f.stem)
     m = ℵ(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
     𝑘 = (m.keys󰈳󰲡x₀≡␛_) ¿*∈𝔸¡ [⠤𝔸 ∖ {!}]
-    𝑘󷸊+exports ≔ (𝑙(m.__exports__) ¿"__exports__"∈m.keys¡ [])
+    𝑘󷸊󰌷("__exports__"∈m.keys ⭜[⠤m􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟]⭝ ⍁)
     ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
     ¿g:
-        G = GF(1).f_globals
-        ∀k∈𝑘ᴍPEV: Gₖ = mₖ
+        G = outer_globals()
+        ∀k∈𝑘ᴍPEV:
+             ‹adding ⟦k⟧ from ⟦𝔣⟧ to ⟦G["__file__"]⟧›☾
+            Gₖ = mₖ
         ¿-∉𝔸 ∧ !∉𝔸 ∧ na∉𝑘:
             Gₙₐₘ = m
     ¿!∈𝔸:
@@ -82,5 +87,6 @@
     ↪ ƒ
 SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)
 
+ 󰋺(‹highlighter›, !)
 __builtins__["__error_printer__"] ≔ __error_printer__ ≔ ℳℱ(𝚲󰋺("highlighter").__error_printer__)
-__builtins__["__highlighter__"  ] ≔ __highlighter__   ≔ ℳℱ(𝚲󰋺("highlighter").__highlighter__  )
+__builtins__["__highlighter__"  ] ≔ __highlighter__   ≔ ℳℱ(𝚲󰋺("highlighter").__highlighter__)

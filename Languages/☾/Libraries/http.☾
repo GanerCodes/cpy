@@ -1,5 +1,7 @@
 ⮌ socketserver ⨡  TCPServer, StreamRequestHandler ; TCPServer.allow_reuse_address = ✓
 ⮌ json ⨡ dumps, loads
+󰋺(‹kots›)
+cd(cpy_dir/‹Extra/j☾›); 󰋺(‹main›); cd()
 
 ipv4 = ᑀ ᑀ⪢ 8⟝ & 0xFFᐛ (4󷸹)ᴙ → ⨝␛.
 
@@ -31,6 +33,8 @@ ipv4 = ᑀ ᑀ⪢ 8⟝ & 0xFFᐛ (4󷸹)ᴙ → ⨝␛.
             𝕊.wfile.write(𝑀(‹HTTP/1.1 ⟦𝚌⟧ ⟦𝚌msgs.get(𝚌,"?")⟧›+(𝙷ᐵ⨝␛:ᐸ⟗𝗿𝗻)+𝗿𝗻)+𝚋)
             𝕊.wfile.flush
     ↪ ⥌ip=ipv4(0x000000),port=8080↦ⓦ(TCPServer((ip,port), 𝔖), 󷺹.serve_forever)
+
+__exports__ = ‹𝔍 ipv4 HTTP_Server transpile transpile_dir joon_header›⍭
 
  ⊢ server(𝚖,𝚙,𝙷,𝚎):
      ‹⟦𝚎ⁱᵖ⟧ ⟦𝚖⟧ ⟦𝚙⟧›☾

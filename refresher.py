@@ -82,13 +82,13 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
         hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
         hns.setdefault("__file__", header_f)
         hns.setdefault("__code_post_process__", 𝕂.get("code_post_process"))
+        hns.setdefault("__code_cache_dir__", code_cache_dir)
+        hns.setdefault("__gram_cache_dir__", gram_cache_dir)
+        hns["__header_namespace__"] = hns
         hcode = '\n'.join(compiler("☾", R(f"{code_pfx}/{x}"), do_cache, **𝕂)
                             for x in R(header_f).split('\n') if x)
         run_inj_tb(hcode, hns)
         
-        hns["__header_namespace__"] = hns
-        hns["__code_cache_dir__"] = code_cache_dir
-        hns["__gram_cache_dir__"] = gram_cache_dir
     
     ns["__builtins__"] = { **ns.get("__builtins__", {}), **hns["__builtins__"], **hns }
     ns.setdefault("__name__", "__main__")

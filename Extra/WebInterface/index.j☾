@@ -1,0 +1,209 @@
+var py, hist=[ᐦ], hist_p=0;
+© [ets, cli, syt] = ["entries", "cli_in", "symbolTable"]􊾡(GID)
+© script = ⥌x,m↦py.globals.get("SCRIPT")ₘ(x);
+
+© safeRunMoon = ⥌val↦py.runPython(‹
+    try:
+        𝑓(⟦val.replaceAll(⦋/[\\"\n]/g⦌, 󰲡({'\\':‹\\›,'\n':‹␛\𝗻›,'"':‹\"›})ₓ)⟧)
+    except Exception as e:
+        print("Error:", e)›);
+
+ mfw "ℚ".length ¬≡ "𝕊".length
+© ᔐs = 󰲡[⠤x].slice(⠤𝔸).join(ᐦ);
+© ᔐ𝑙 = 󰲡[⠤x].length;
+
+© p2rc = ⥌s,   𝑝  ↦{
+    ⎉ r=0, c=0, i=0, S=[⠤s];
+    ∀(g=0; i < 🃌(S); g+=🃌(Sᵢ₊₊)) {
+        ¿( g ≡ 𝑝) ⇥;
+        ¿(Sᵢ ≡ 𝗻) r++, c=0;
+        ¡         c++; }
+    ↪ [r,c]; };
+© rc2p = ⥌s, [𝑟,𝑐]↦{
+    ⎉ r=0, c=0, i=0, S=[⠤s];
+    ∀(; i < 🃌(S); i++) {
+        ¿(c≡𝑐 ∧ r≡𝑟) ⇥;
+        ¿(   Sᵢ ≡ 𝗻) r++, c=0;
+        ¡            c++; }
+    ↪ 🃌(S.slice(0,i)􌿑(ᐦ)); };
+© sel_p  = ⥌ε↦[ε.selectionStart, ε.selectionEnd];
+© sel_rc = ⥌ε↦sel_p(ε).map(󰲡p2rc(ε.value, x));
+© caret_write = ⥌ε,t↦{
+    ε.focus();
+    © [l,r] = sel_p(ε);
+    ε.setRangeText(t, l, r, "select");
+    ¿(l ≡ r) ε.setSelectionRange(l+🃌(t), l+🃌(t)); }
+© replace_selection = ⥌ε,𝑓↦{
+    © [l,r] = sel_p(ε);
+    © v = ε.value
+    © x = v.slice(l, r);
+    © X = 𝑓(x);
+    ε.value = v.slice(0, l) + X + v.slice(r);
+    ε.setSelectionRange(l, l+🃌(X)); };
+© indent = ⥌ε,num=1,nspace=4↦{
+    © L = ε.value.split(𝗻);
+    ⎉ [[Rα, Cα], [Rω, Cω]] = sel_rc(cli);
+    ⎉ rows = L.slice(Rα, Rω+1);
+    ⎉ Δc = {};
+    
+    © wrap = ⥌𝑓↦⥌x,i↦(Δc[Rα+i] = ᔐ𝑙(r=𝑓(x))-ᔐ𝑙(x), r);
+    ¿(num > 0) {
+        © pad = 𝘀.repeat(nspace*num);
+        rows = rows.map(wrap(󰲡pad + x));
+    }⸘(num < 0) {
+         © 𝔯 = new RegExp(String.raw‹^ ⟦0,⟦-num*nspace⟧⟧›, ␛g);
+        rows = rows.map(wrap(󰲡x.replace(𝔯, ᐦ))); }
+    
+    L.splice(Rα, Rω-Rα+1, ⠤rows);
+    ε.value = L􌿑(𝗻);
+    Cα += Δc󰂤󰃤;
+    Cω += Δc󰂤󰃼;
+    © [pα, pω] = [[Rα, Cα], [Rω, Cω]]􊾡(󰲡rc2p(ε.value, x));
+    ε.setSelectionRange(pα, pω); };
+© enter_preserve_indent = (ε) => {
+    © L = ε.value.split(𝗻);
+    ⎉ [[Rα, Cα], [_, __]] = sel_rc(cli);
+    © [α,β] = [ᔐs(L[Rα], 0, Cα), ᔐs(L[Rα], Cα)];
+    © ind = α.match(⦋/^ */⦌)₀;
+    L.splice(Rα, 1, α, ind+β);
+    ε.value = L.join(𝗻);
+    © p = rc2p(ε.value, [Rα+1, 🃌(ind)]);
+    ε.setSelectionRange(p, p); };
+
+© reformt = s => {
+    © 𝑓 = (x, ⠤𝔸) => {
+        © ε = 󱀝 text
+        © hasStyle = 🃌(x) ∧ x₀ ≡ "\x1c";
+        hasStyle ⭜ε􋛟=x.slice(1)⭝ ε􋒷=x;
+        ¿(🃌(𝔸)) {
+            © γ = 𝑓(⠤𝔸);
+            ¿(¬hasStyle ∧ ¬x) ↪ γ;
+            ¿(γ􋒷) ε􍪙(γ); }
+        ↪ ε; };
+    ↪ 𝑓(⠤("[0m"+s).replace(⦋/\x1b\[(38|48);2;([0-9]{0,3});([0-9]{0,3});([0-9]{0,3})m/gm⦌,
+                                   ⥌_,t,r,g,b↦"\x1b\x1c"+‹⟦t≡"38"?"color":"background-color"⟧:#⟦
+                                        (256*(256*𝑖(r)+𝑖(g))+𝑖(b)).toString(16).padStart(6, ␛0)⟧⟦"\x1b"⟧›)
+                          .replace(⦋/\033\[0m/gm⦌,
+                                   "\x1b\x1c"+"color:#fff;background-color:#000\x1b")
+                          .split("\x1b")); };
+
+© log = 󰲡{
+    ☾(‹Logging: "⟦x⟧"›);
+    © ε = document.createElement("div");
+    ε.className = "entry";
+    ε􍪙(reformt(x));
+    ets.insertBefore(ε, cli);
+    setTimeout(𝚲{ cli.scrollIntoView(); cli.focus(); }, 25);
+    ↪ x; }
+
+© log_as_user = x => {
+    log(x);
+    hist􋘲􋘲ₕᵢₛₜ􋕞ₚ = x;
+    hist₊₊ₕᵢₛₜ􋕞ₚ = ᐦ; };
+
+© run_shortcut = (ε, k) => ε.dispatchEvent(
+    new KeyboardEvent("keydown", {
+        key: k, code: "Key"+k.toUpperᐂ(),
+        altKey: ✓, bubbles: ✓, cancelable: ✓ }));
+© auto_grow = ⥌ε↦(ε􋛟.minHeight = "1em",
+                  ε􋛟.minHeight = ‹⟦⤉(5, ε.scrollHeight)⟧px›,
+                  ε.scrollIntoViewIfNeeded());
+
+© load_python = async 𝚲{
+    log(‹Loading WASM Python…›);
+    © { loadPyodide } = 󱫬 import(‹https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.mjs›);
+    py = 󱫬 loadPyodide({ stdin: prompt, stdout: log, stderr: log  });
+    log(‹Loaded WASM Python›);
+    󱫬 py.runPythonAsync(‹
+        import shutil
+        from pyodide.http import pyfetch
+        await (await pyfetch("wasm_stuff.zip")).unpack_archive()
+        shutil.move("./cpy_wasm_cache", "/tmp")
+        print("Downloaded ☾")›);
+        log(‹Installing regex…›);
+        󱫬 py.loadPackage(x);
+        log(‹Installed regex›);
+    󱫬 py.runPythonAsync(‹
+        from refresher import run_moon
+        from util import SCRIPT
+        𝑓, 𝑐 = run_moon(["--code_cache_dir=/tmp/cpy_wasm_cache/code",
+                         "--gram_cache_dir=/tmp/cpy_wasm_cache/gram"],
+                         extract_interactive=True)
+        𝑐("""
+        󰆴 __header_namespace__["__error_printer__"]
+        󰆴         __builtins__["__error_printer__"]""")
+        print("☾ Ready¬")
+        print("ctrl + <enter> 󷺄 Run multiline code")
+        print("alt  + <↑/↓>   󷺄 Cycle history")
+        print("alt  + <l>     󷺄 Clear screen")
+        print("alt  + <w/s/x> (mac: cmd+<,/./;>)")
+        print("     󷺄 Superscript/subscript/normalize selection")›);
+        
+    ⎉ P = new URLSearchParams(window.location.search).get("code");
+    ¿(P) { log_as_user(P);
+           safeRunMoon(P); } };
+
+(async _ => {
+    log(‹Loading Symbol Table…›);
+    © docs = 󱫬 (󱫬 fetch("docs")).json();
+    Object.entries(docs)􋁃(([k,v]) => {
+        © ε = reformt(k);
+        ε.title = v₀;
+        syt􍪙(ε);
+        ε.onclick = 𝚲caret_write(cli, QS("text:not(:has(> *))", ε)􋒷); });
+    log(‹Loaded Symbol Table›);
+    󱫬 load_python(); })();
+    
+© ə = ⥌e↦(e.preventDefault(), auto_grow(cli));
+cli.addEventListener("keydown", 󱟱 e => {
+    © [[Rα, Cα], [Rω, Cω]] = sel_rc(cli);
+    ⎉ val = cli.value;
+    
+    𝕒:¿(e.altKey ∨ ¬val) {
+        ⌾(e.keyCode) {
+            ᐂ 38: hist_p=⤉(hist_p-1,         0); ⇥  ;
+            ᐂ 40: hist_p=⤈(hist_p+1, 🃌(hist)-1); ⇥  ;
+            ⊳   :                                ⇥ 𝕒; }
+        ↪ cli.value = hist[hist_p], ə(e); }
+    hist[hist_p = 🃌(hist)-1] = cli.value;
+    
+    ¿(e.key ≠ "Enter") {
+        ¿(e.ctrlKey) {
+            ⌾(e.key) {
+                ᐂ ␛[: indent(cli, -1); ⇥;
+                ᐂ ␛]: indent(cli,  1); ⇥;
+                ⊳   : ↪; }
+            ↪ ə(e); }
+        
+        © mac = navigator.platform.includes('Mac') ∧ e.metaKey;
+        © oth = e.altKey;
+        ¿(mac ∨ oth) {
+            © keys = [⠤mac ?"l.,;": "lwsx"];
+            ⌾(e.key) {
+                ᐂ keys₀: QSA("div", ets)􋁃(󰲡x.remove()); ⇥;
+                ᐂ keys₁: replace_selection(cli, 󰲡script(x, "sup")); ⇥;
+                ᐂ keys₂: replace_selection(cli, 󰲡script(x, "sub")); ⇥;
+                ᐂ keys₃: replace_selection(cli, 󰲡script(x, "nrm")); ⇥;
+                ⊳      : ↪; }
+            ↪ ə(e); }
+        ¿(e.keyCode ≡ 9) {
+            ¿(e.shiftKey) indent(cli, -1);
+            ⸘(Rα ≡ Rω)    caret_write(cli, "    ");
+            ¡             indent(cli,  1);
+            ↪ ə(e); }
+        ↪; }
+    
+    ¿(¬e.ctrlKey ∧ (e.shiftKey ∨ val.includes(𝗻))) {
+        © bksp = ⥌ε↦ε.dispatchEvent(
+            🆕 KeyboardEvent("keydown", {
+                key: "Backspace", code: "Backspace",
+                cancelable: ✗ }));
+        ¿(Rα≠Rω ∨ Cα≠Cω) bksp(cli);
+        enter_preserve_indent(cli);
+        ↪ ə(e); }
+    
+    log_as_user(val);
+    cli.value = ᐦ, cli􋛟.minHeight = "1.1em";
+    try      { safeRunMoon(val); }
+    catch(e) { log(‹Pyodide error! ⟦e⟧›); }
+    ə(e); });

@@ -1,7 +1,6 @@
 ⨡ traceback, threading, sys
 ⮌ json ⨡ loads
-󰋺("kots", *)
-󰋺("🌈", *)
+‹kots 🌈›⍭ᴍ󰋺
 
 styf = cpy_dir / "FontCompose/Output/style.json"
 styd = styf ⥉  ⥉ loads ⥉ ℵ
@@ -65,7 +64,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
         prevf = f
     ‹⟦termclr("Error:", CLR2)⟧ ⟦__highlighter__(ε)⟧›☾
 
-__exports__ = "__highlighter__", "__error_printer__"
+__exports__ = ‹__highlighter__ __error_printer__›⍭
 sys.excepthook = 󰲥__error_printer__(y)
 threading.excepthook = sys.excepthook
 
