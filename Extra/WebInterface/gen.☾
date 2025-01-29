@@ -7,10 +7,7 @@ ords = ("da_docs")󷹎𝗻𝗻ᐵ󷹎𝗻ᑀ⨝󰲣𝘀≠y₀⭜□⭝󰮈�
 desc = ℵ(ords󰌷ᐵ₀󷹎¹␛;ᐵ⬄𝘀ᐸᑀ₀ ₀⋄←⟞₁⛶+ᑅ⟞₁﹕)
 real_files = ‹wasm_stuff.zip font.ttf index.j☾›⍭
 
- JS = ‹⟦joon_header⟧𝗻⟦transpile(("index.j☾"))⟧›
- JS = ‹⟦joon_header⟧𝗻›
-JS=ᐦ
-JS☾
+JS = ‹⟦joon_header⟧𝗻⟦transpile(("index.j☾"))⟧›
 
 @HTTP_Server
 ⊢ server(𝚖,𝚙,𝙷,𝚎):

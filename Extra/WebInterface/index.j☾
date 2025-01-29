@@ -4,7 +4,7 @@ var py, hist=[ᐦ], hist_p=0;
 
 © safeRunMoon = ⥌val↦py.runPython(‹
     try:
-        𝑓(⟦val.replaceAll(⦋/[\\"\n]/g⦌, 󰲡({'\\':‹\\›,'\n':‹␛\𝗻›,'"':‹\"›})ₓ)⟧)
+        𝑓("⟦val.replaceAll(⦋/[\\"\n]/g⦌, 󰲡({'\\':‹\\›,'\n':‹␛\𝗻›,'"':‹\"›})ₓ)⟧")
     except Exception as e:
         print("Error:", e)›);
 
@@ -51,7 +51,7 @@ var py, hist=[ᐦ], hist_p=0;
         © pad = 𝘀.repeat(nspace*num);
         rows = rows.map(wrap(󰲡pad + x));
     }⸘(num < 0) {
-         © 𝔯 = new RegExp(String.raw‹^ ⟦0,⟦-num*nspace⟧⟧›, ␛g);
+        © 𝔯 = new RegExp(⦋String.raw`^ {0,${-num*nspace}}`⦌, ␛g);
         rows = rows.map(wrap(󰲡x.replace(𝔯, ᐦ))); }
     
     L.splice(Rα, Rω-Rα+1, ⠤rows);
@@ -119,10 +119,9 @@ var py, hist=[ᐦ], hist_p=0;
         from pyodide.http import pyfetch
         await (await pyfetch("wasm_stuff.zip")).unpack_archive()
         shutil.move("./cpy_wasm_cache", "/tmp")
-        print("Downloaded ☾")›);
-        log(‹Installing regex…›);
-        󱫬 py.loadPackage(x);
-        log(‹Installed regex›);
+        print("Downloaded ☾")
+        # 󱫬 py.loadPackage("regex")
+        # print("Installed regex")›);
     󱫬 py.runPythonAsync(‹
         from refresher import run_moon
         from util import SCRIPT
@@ -132,7 +131,7 @@ var py, hist=[ᐦ], hist_p=0;
         𝑐("""
         󰆴 __header_namespace__["__error_printer__"]
         󰆴         __builtins__["__error_printer__"]""")
-        print("☾ Ready¬")
+        print("☾ Ready!")
         print("ctrl + <enter> 󷺄 Run multiline code")
         print("alt  + <↑/↓>   󷺄 Cycle history")
         print("alt  + <l>     󷺄 Clear screen")
