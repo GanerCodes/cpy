@@ -1,0 +1,7 @@
+FROM python:3.13-slim
+WORKDIR /moon
+COPY . .
+RUN ./install
+EXPOSE 8000
+WORKDIR ./Extra/WebInterface
+CMD ["sh", "-c", "☾ gen.☾"]

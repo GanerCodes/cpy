@@ -105,10 +105,16 @@
         <div class="rowOfFlex">
             <div id="theLeft" class="colOfFlex">
                 <span class="spaceKids">
-                    <button onclick="run_shortcut(cli_in,'w')">Sup</button>
-                    <button onclick="run_shortcut(cli_in,'s')">Sub</button>
-                    <button onclick="run_shortcut(cli_in,'x')">Nrm</button>
-                    <button onclick="run_shortcut(cli_in,'l')">cls</button>
+                    <button title="Superscript"
+                        onclick="run_shortcut(cli_in,'w')">Sup </button>
+                    <button title="Subscript"
+                        onclick="run_shortcut(cli_in,'s')">Sub </button>
+                    <button title="Sub/supscript to normal"
+                        onclick="run_shortcut(cli_in,'x')">Nrm </button>
+                    <button title="Clear screen"
+                        onclick="run_shortcut(cli_in,'l')">cls </button>
+                    <button title="To fraction (&#34;12&#34; ⟶ ½, &#34;45&#34; ⟶ ⅘)"
+                        onclick="run_shortcut(cli_in,'/')">frac</button>
                 </span>
                 <div id="entries">
                     <textarea id="cli_in" class="entry" style="height:1em"

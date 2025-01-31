@@ -123,13 +123,18 @@ class Z:
         return Z.s[-1]
 Z=Z()
 
+# 󰤱 make these work under sub/sup
+
+FRAC_CONV = ᖱ(zip("12 13 14 15 16 17 18 19 110 23 25 27 29 34 35 37 38 310 45 47 49 56 57 58 59 67 78 79 710 89 910 03 1100".split(' '),"½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖󷶲󷶷¾⅗󷶳⅜󷷆⅘󷶴󷷂⅚󷶵⅝󷶹󷶶⅞󷶺󷷇󷶻󷷈↉󷷉"))
+def TOFRAC(x): # 󰤱 allow seperation by /÷ w/ whitespaces? and finding in middle?
+    return FRAC_CONV.get(x, x)
 class UPSIDEDOWNSYNDROME:
     NRM = "0123456789abcdefoxABCDEFOXîĵ󷺈ℇτπ󷺍󷺏∞"
     USD = "󷰽󷰾󷰿󷱀󷱁󷱂󷱃󷱄󷱅󷱆󷱇󷱈󷱉󷱊󷱋󷱌󷱍󷱎󷱏󷱐󷱑󷱒󷱓󷱔󷱕󷱖󷱪󷱽󷱾󷱫󷱬󷱭󷱮󷱰󷱩"
     MAP = dict(zip(NRM, USD)) | dict(zip(USD, NRM))
     flip = lambda s, MAP=MAP: str.join(ᐦ, (MAP.get(c, c) for c in s))
 class SCRIPT:
-    SCRIPT_FILE_LOC = f"{cpy_dir}/FontCompose/.SCRIPT_MAP"
+    SCRIPT_FILE_LOC = cpy_dir / "FontCompose/.SCRIPT_MAP"
     with open(SCRIPT_FILE_LOC) as f:
         CHAR_NRM,CHAR_SUP,CHAR_SUB = f.read().strip().split(ń)
     SUP = ᔐ.maketrans(CHAR_NRM, CHAR_SUP)

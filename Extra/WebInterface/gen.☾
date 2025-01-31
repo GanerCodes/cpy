@@ -1,6 +1,5 @@
 ⮌ json ⨡ dumps
-‹http kots›⍭ᴍ󰋺
-
+‹http kots›⍭ᴍ󰋺 ; cd(@)
 ucod = ℵ←(cpy_dir / "FontCompose/UnicodeQuery/unicode.txt") ␛
         󷹎𝗻󰈲󷺹∧⟞∌␛#∧␛.∉⟞ᐸ ᐵ󷹎¹␛;ᐵ.lower⬄𝘀ᐸꟿ⁰󷺹󷹜16󷹝→⋄󷺽→ᴙ
 ords = ("da_docs")󷹎𝗻𝗻ᐵ󷹎𝗻ᑀ⨝󰲣𝘀≠y₀⭜□⭝󰮈󰅂󷹎
@@ -11,6 +10,7 @@ JS = ‹⟦joon_header⟧𝗻⟦transpile(("index.j☾"))⟧›
 
 @HTTP_Server
 ⊢ server(𝚖,𝚙,𝙷,𝚎):
+    ‹⟦𝚖⟧:⟦𝚙⟧›☾
     ¿𝚖≠"GET": ↪
     P = 𝚙₁﹕
     ¿P≡"docs":
@@ -27,4 +27,4 @@ JS = ‹⟦joon_header⟧𝗻⟦transpile(("index.j☾"))⟧›
     ¡:
         ↪ ᵇ(P∈real_files ⭜P⭝ "index.html")
 
-‹Running server›☾ ► server(port=8000)
+‹Running server›☾ ► server(port=3000)

@@ -1,6 +1,7 @@
 var py, hist=[ᐦ], hist_p=0;
 © [ets, cli, syt] = ["entries", "cli_in", "symbolTable"]􊾡(GID)
-© script = ⥌x,m↦py.globals.get("SCRIPT")ₘ(x);
+© script = 󰲣py.globals.get("SCRIPT")(x);
+© tofrac = 󰲡py.globals.get("TOFRAC") (x);
 
 © safeRunMoon = ⥌val↦py.runPython(‹
     try:
@@ -103,7 +104,7 @@ var py, hist=[ᐦ], hist_p=0;
 
 © run_shortcut = (ε, k) => ε.dispatchEvent(
     new KeyboardEvent("keydown", {
-        key: k, code: "Key"+k.toUpperᐂ(),
+        key: k, code: "Key"+k.toUpperCase(),
         altKey: ✓, bubbles: ✓, cancelable: ✓ }));
 © auto_grow = ⥌ε↦(ε􋛟.minHeight = "1em",
                   ε􋛟.minHeight = ‹⟦⤉(5, ε.scrollHeight)⟧px›,
@@ -124,7 +125,7 @@ var py, hist=[ᐦ], hist_p=0;
         # print("Installed regex")›);
     󱫬 py.runPythonAsync(‹
         from refresher import run_moon
-        from util import SCRIPT
+        from util import SCRIPT, UPSIDEDOWNSYNDROME, TOFRAC
         𝑓, 𝑐 = run_moon(["--code_cache_dir=/tmp/cpy_wasm_cache/code",
                          "--gram_cache_dir=/tmp/cpy_wasm_cache/gram"],
                          extract_interactive=True)
@@ -135,6 +136,7 @@ var py, hist=[ᐦ], hist_p=0;
         print("ctrl + <enter> 󷺄 Run multiline code")
         print("alt  + <↑/↓>   󷺄 Cycle history")
         print("alt  + <l>     󷺄 Clear screen")
+        print("alt  + </>     󷺄 Selection to fraction")
         print("alt  + <w/s/x> (mac: cmd+<,/./;>)")
         print("     󷺄 Superscript/subscript/normalize selection")›);
         
@@ -177,12 +179,13 @@ cli.addEventListener("keydown", 󱟱 e => {
         © mac = navigator.platform.includes('Mac') ∧ e.metaKey;
         © oth = e.altKey;
         ¿(mac ∨ oth) {
-            © keys = [⠤mac ?"l.,;": "lwsx"];
+            © keys = [⠤mac ?"l.,;/": "lwsx/"];
             ⌾(e.key) {
                 ᐂ keys₀: QSA("div", ets)􋁃(󰲡x.remove()); ⇥;
                 ᐂ keys₁: replace_selection(cli, 󰲡script(x, "sup")); ⇥;
                 ᐂ keys₂: replace_selection(cli, 󰲡script(x, "sub")); ⇥;
                 ᐂ keys₃: replace_selection(cli, 󰲡script(x, "nrm")); ⇥;
+                ᐂ keys₄: replace_selection(cli, 󰲡tofrac(x       )); ⇥;
                 ⊳      : ↪; }
             ↪ ə(e); }
         ¿(e.keyCode ≡ 9) {
