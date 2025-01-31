@@ -101,12 +101,12 @@
         D: dict  , Both keys and values
         󷹇 the function still expects one value which will be the [key, value] list
         󷹇 use ꟿ for a function with two args
-    󷹇 supports 󰮈
+    󷹇 Supports 󰮈
 ꟿ ; starmap
     𝗜 ꟿ 𝗙
     Map but instead of calling the function directly it unpacks the arg
     "[[1,2],[3,4]] ꟿ +" ⟶ [3,7]
-    󷹇 supports 󰮈
+    󷹇 Supports 󰮈
  ; threadmap
     𝗜  𝗙
     Same as map but uses multiple threads.
@@ -141,19 +141,20 @@
         󷹇 if modifier is not a 𝗙 it becomes a replcaement value
     𝗜 󰈲􋊧􌥡 𝑜
         same as previous but right func is equality check on 𝑜
-    󷹇 supports 󰮈
+    󷹇 Supports ᔨ and 󰮈
 󰈳 ; filter negative
     󰈲 but condition is negated
-    󷹇 supports 󰮈
+    󷹇 Supports ᔨ and 󰮈
 󰒼 ; sort ascending
     𝗜 󰒼
         sorts data
     𝗜 󰒼 𝗙
         sorts data by right arg
         󷹇 right art is function of 1 variable
-    󷹇 supports 󰮈
+    󷹇 Supports ᔨ and 󰮈
 󰒽 ; sort decending
     Reversed version of 󰒼
+    󷹇 Supports ᔨ and 󰮈
  ; group by
     𝗜 
         group into dictionary with keys by truthyness
@@ -164,7 +165,7 @@
         "[1,0,5] ᴮ" ⟶ [[0],[1,5]]
         "[1,0,5] ᴮ 󷺹>1" ⟶ [[0,1],[5]]
         "[1,0,5] ᴮ 󷺹<0" ⟶ [[],[1,0,5]]
-    󷹇 supports 󰮈
+    󷹇 Supports 󰮈
 ᙡ ; window, with middle, with sides
     󰤱 docs
 ᙧ ; window, with middle, no sides
@@ -181,7 +182,11 @@
     "2 󱖔􍯏􊽮" ⟶ 4
     "󱖔􍯏􊽮 2" ⟶ 4
 ᖘ ; "candycane": apply to select
-    󰤱 docs
+    𝗜≕𝕏 ᖘ􊽺 ꬶ
+    calls ƒ(𝕏) to get list of indicies
+    ꬶ(ƒ(𝕏)) manipulates the index list
+    ᖘ will then place ꬶ(ƒ(𝕏)) into the idxs found via ƒ(𝕏)
+    󰤱˜ docs
 
 ᐹ ; left is type of right / get type of
     Binary/(indistinguishable)unary
@@ -213,7 +218,11 @@
     same as 󱑼 but elements are aligned towards the right
     "[1,2] 󷹅 [1,2,3]" ⟶ [[1,2],[2,3]]
 ᕋ ; modify section
-    󰤱 docs
+    "[1,2,3] ᕋ¹ 9" ⟶ [1,9,3]
+    "[1,2,3] ᕋ¹" ⟶ [1,3]
+    "[1,2,3] ᕋ¹􊽧" ⟶ [1]
+    "[1,2,3] ᕋ􊽧¹ [5,2,7]" ⟶ [5,2,7,2,3]
+    󰤱˜ docs
 
 | ; bitwise or
 
@@ -253,9 +262,13 @@
 … ; range between ints
 
 ∘ ; call left with right
-    󰤱 docs
+    ƒ∘x = ƒ(x)
+    ƒ∘³x = ƒ(x,x,x)
+    󰤱˜ docs
 ○ ; compose functions with balanced args, overflow right
-    󰤱 docs
+    ƒ○ ꬶ ≈ 󰲡ƒ(ꬶ(x))
+    ƒ○²ꬶ ≈ 󰲣ƒ(ꬶ(x), ꬶ(y))
+    󰤱ꜝ docs
 ⍜ ; compose functions with balanced args, overflow left
     󰤱 docs
 󰬫 ; compose functions, overflow extra args to right
@@ -267,7 +280,9 @@
 󷷹 ; diamond compose
     󷹇 Requested by Michael for future advanced math things
  ; curry function
-    󰤱 docs
+    ꬶ = ƒ(1,⬤,3,y=⬤,z=2)
+    ꬶ(3,9) ≡ ƒ(1,3,3,y=9,z=2)
+    󰤱˜ docs
 ⊚ ; loop
     󰤱 docs
 ⍟ ; loop returning all iterations except final
@@ -299,17 +314,27 @@
     󰤱 make this less janky
 
 ∪ ; union
-    󰤱 docs
+    𝑠 ∪ 𝗜 = x|𝑠(right)
+    𝑙 ∪ 𝗜 = [⠤x,right∖x]
+    󰤱˜ docs
 
 ∩ ; intesection
-    󰤱 docs
+    𝑠 ∩ 𝗜 = x∩𝑠(right)
+    𝗜 ∩ 𝗜 = left󰈲󷺹∈right
+    󰤱˜ docs
 
 ∖ ; set minus
-    󰤱 docs
+    𝑠 ∖ 𝗜 = x-𝑠(right)
+    𝗜 ∖ 𝗜 = left󰈳󷺹∈right
+    󰤱˜ docs
 ⨉ ; cross product
-    󰤱 docs
+    "‹ab›⨉‹de›" ≡ "[‹ab›,‹de›]⨉" ⟶ [['a', 'd'], ['a', 'e'], ['b', 'd'], ['b', 'e']]
+    "‹ab›⨉²" ⟶ [['a', 'a'], ['a', 'b'], ['b', 'a'], ['b', 'b']]
+    󰤱˜ docs
 ⊞ ; table product
-    󰤱 docs
+    "‹ab›⊞‹de›" ⟶ [[['a', 'd'], ['a', 'e']], [['b', 'd'], ['b', 'e']]]
+    "‹ab›⊞²" ⟶ [[['a', 'a'], ['a', 'b']], [['b', 'a'], ['b', 'b']]]
+    󰤱˜ docs
 
 ≅ ; is exactly the same object
     Works same as in python
@@ -358,6 +383,10 @@
     5󷹒 ≡ 󷱂
     "aBc"󷹒 ≡ "AbC"
 ⨝ ; join
+    turns into string if right arg is string
+    "[1,2,3] ⨝ 𝘀" ⟶ "1 2 3"
+    "[1,2,3] ⨝ 0" ⟶ [1,0,2,0,3]
+    "[1,2,3] ⨝ ⋅´" ⟶ [1,2,2,6,3]
     󰤱 docs
 ⟕ ; join include left
     󰤱 docs
@@ -384,11 +413,22 @@
 󷸺 ; range excluding start
     󰤱 docs
 ⤈ ; min
-    󰤱 docs
+    𝗜 ⤈ 𝗙?󰻾
+    min under right
+    󷹇 Supports ᔨ and 󰮈
+    󰤱˜ docs
 ⤉ ; max
-    󰤱 docs
+    𝗜 ⤉ 𝗙?󰻾
+    max under right
+    󷹇 Supports ᔨ and 󰮈
+    󰤱˜ docs
 󷹄 ; constrain
-    󰤱 docs
+    "low 󷹄ˣ high" or (low 󷹄 high)(x)
+    Limits x to between low and high (inclusive)
+    "0 󷹄³ 1" ⟶ 1
+    "0 󷹄􍧟 1" ⟶ 0
+    "0 󷹄􊽲 1" ⟶ ½
+    󰤱˜ docs
 ↨ ; enumerate (zip with index)
     Both-sides-indistinguishable unary
     𝕏↨ is identical to (𝕏⭥)󱑼𝕏
@@ -397,11 +437,17 @@
     "‹hello›⭥" ⟶ [0,1,2,3,4]
     "5⭥"       ⟶ [0,1,2,3,4,5]
 ▢ ; round
-    󰤱 docs
+    2.2▢ ≡ 2
+    2.9▢ ≡ 3
+    󰤱˜ docs [precision is extra arg]
 ⬓ ; round down
-    󰤱 docs
+    2.2⬓ ≡ 2
+    2.9⬓ ≡ 2
+    󰤱˜ docs [precision is extra arg]
 ⬒ ; round up
-    󰤱 docs
+    2.2⬒ ≡ 3
+    2.9⬒ ≡ 3
+    󰤱˜ docs [precision is extra arg]
 ⍭ ; magic string split
     ᔐ ⍭ or ᔐ ⍭
     if " " is in arg:
@@ -415,9 +461,12 @@
         "‹y›⍭"  ⟶ [␛y]
     󷹇 this makes use of two alternative space characters unless spcial highlighting is applied this is confusing
 󰸵 ; pad left
-    󰤱 docs
+    𝗜 󰸵ᵖᵃᵈ n
+    "[1,2]󰸵3" ⟶ [False,1,2]
+    "[1,2]󰸵⁹3" ⟶ [9,1,2]
+    󰤱˜ docs
 󰸷 ; pad right
-    󰤱 docs
+    Like 󰸵 but pad on right
 󷹌 ; split include all seperators
     󰤱 docs
 󷹍 ; split include 1-per-consecutive seperators
@@ -427,7 +476,11 @@
 ⬄ ; strip
     󰤱 Workings undetermined, may be removed
 𝌂 ; partition
-    󰤱 docs
+    Group consecutive by func
+        "[1,󷰾,2,2,9,9]𝌂󰻾" ⟶ [[1],[-1],[2,2],[9,9]]
+        "[1,󷰾,2,2,9,9]𝌂󷺹²" ⟶ [[1,-1],[2,2],[9,9]]
+    󷹇 Supports ᔨ and 󰮈
+    󰤱˜ docs
 󰌷 ; chain iterables
     󰤱 docs
     󷹇 if left and right are both integers, we do integer concatination
@@ -436,11 +489,19 @@
        "󷱁 󰌷 5" ⟶ -45
        "󷱀 󰌷 󷱁" ⟶ 34
 ᴙ ; reverse
-    󰤱 docs
+    𝗜 ᴙ = x﹕﹕􍨄
+    󷹇 ᴙᴸ forces string as list
+    󰤱˜ docs
 󰛔 ; string replacement
+    "find 󰛔ᵗᵃʳᵍᵉᵗ replace" or "(find 󰛔 replace)(target)"
     󰤱 docs
 ᚤ ; first unique
-    󰤱 docs
+    Keep only first found under right arg (default 󰻾)
+        "[1,2,3,2,3,1,1,2,9]ᚤ" ⟶ [1,2,3,9]
+        "[2,5,0,󷰿,0,󷱂,󷰾,1,7]ᚤ󷺹²" ⟶ [2,5,0,-1,7]
+        "[1,2,3,2,3,1,1,2,9]ᚤ󷺹>2" ⟶ [1,3]
+    󷹇 Supports ᔨ and 󰮈
+    󰤱˜ docs
 ☾ ; print
     󰤱 docs
 ⛶ ; enlist arguments
@@ -461,12 +522,15 @@
     "‹egg›🃌" ⟶ 3
     "[1,2]🃌" ⟶ 2
 󷹝 ; str⟷int involution
+    Gets ascii/unicode value(s) of string and vise versa
     󰤱 docs
 󷹜 ; str to int / change base
     󰤱 docs
  ; random float
+    low ⁿ high
     󰤱 docs
 󱅏 ; random int
+    low 󱅏ⁿ high
     󰤱 docs
  ; shuffle
     󰤱 docs
@@ -503,14 +567,18 @@
     󷹇 Requested by Michael for future advanced math things
 
  ; splat function
-    󰤱 docs
+    ƒ ≈ 𝚲ƒ(⠤𝔸󰌷, ⠶𝕂)
+    󰤱˜ docs
 ∾ ; reverse function args
-    󰤱 docs
+    ∾ƒ ≈ 𝚲ƒ(⠤𝔸ᴙ, ⠶𝕂)
+    󰤱˜ docs
     
  ; call function without args
     i.e. "f" is the same as "f()"
 󷹁 ; invert function
-    󰤱 docs
+    If object has __inverse__ property will call it w/ modifier as args
+    ƒ󷹁􊽹: returns inverse multimap by computing ƒ(x)∀x∈Ɗ
+    󰤱˜ docs
 
 󰻾 ; identify
     󰻾􋇜
@@ -519,7 +587,10 @@
     "󰻾(x)" ⟶ x
     "󰻾(x1,x2)" ⟶ x1
 ℵ ; magic namespace: iterates by pairs
-    󰤱 docs
+    "ℵ(hi=22, joe=10)ʰⁱ" ⟶ 22
+    "ℵ²(x=22)ʰ" ⟶ 2
+    "ℵ([1⋄4,2⋄6,6⋄󷰿])ᴍ󰻾" ⟶ [(1, 4), (2, 6), (6, -2)]
+    󰤱˜ docs
 ℶ ; magic namespace: iterates by values
     󰤱 docs
 ∅ ; empty set
@@ -533,6 +604,10 @@
     "®(2)" ⟶ ∓1
 
 󰮈 ; signal delete element from iteration
+    Many iteration operators disgard values if their operand function returns this.
+    "[1,2,3,4,5]ᐵ>2⭜⟞⭝󰮈ᐸ" ⟶ [3,4,5]
+    "[0,1,2,3,4,5,6]󰈲􍯏􊽮󷺹<4⭜✓⭝⟞>4⭜󰮈" ⟶ [0,1,4,9,4]
+    󰤱˜ docs
 𝗙 ; check if function
 𝗜 ; check if iterable
 𝗛 ; check if hashable, if so, return hashed value
@@ -559,12 +634,20 @@
 󷺎 ; ½󷺍
 󷺏 ; ½󷺎
 
-󰲡 ; function of x
-󰲣 ; function of x,y
-󰲥 ; function of x,y,z
-󰲧 ; function of x,y,z,w
-󰲩 ; function of x,y,z,w,v
-󰲫 ; function of x,y,z,w,v,u
+𝔸 ; λ vargs
+𝕂 ; λ kargs
+𝓐 ; whisker vargs
+𝓚 ; whisker kargs
+⬤ ; dummy variable for currying
+    See 
+
+󰲡 ; λ function of x
+󰲣 ; λ function of x,y
+󰲥 ; λ function of x,y,z
+󰲧 ; λ function of x,y,z,w
+󰲩 ; λ function of x,y,z,w,v
+󰲫 ; λ function of x,y,z,w,v,u
+󰅂 ; close λ function
 
 ᐳ ; left whisker no args
 ᐸ ; right whisker no args
@@ -599,40 +682,52 @@
 𝑓 ; float
 𝑦 ; bytes
 
-𝔸 ; lambda vargs
-𝕂 ; lambda kargs
-𝓐 ; whisker vargs
-𝓚 ; whisker kargs
-
- ; curry function
-⬤ ; curry variable
-
-␛ ; escape character in string
-
+´ ; neutralize operator
+    Forces operator to act as regular variable
+    i.e. "[1,2,3] ⨝ ⋅´" can parse fine but "[1,2,3] ⨝ ⋅" fails
+꜠ ; duplicate operator arguments
+    Forces binary operator to be unary, duplicating operands.
+    "5+꜠" ⟶ 10
+    "5+꜠+2" ⟶ 12
 ᵜ ; swap operator arguments
-    󰤱 example
+    "2-ᵜ5" ⟶ 3
 ≺ ; operator prefix binary on list elements
-    󰤱 example
+    Forces binary operator to be unary, splats out operand.
+    "[1,5]≺+" ⟶ 6
 ᔨ ; correspondence modifier
+    Indicates operator should indicate "where" it happens, sometimes called "select".
+    "[5,2,3,0,0,1]󰈲ᔨ󷺹>1" ⟶ [0, 1, 2]
+    "[5,2,4,6,1,1]𝌂ᔨ󷺹%2" ⟶ [[0], [1, 2, 3], [4, 5]]
+    󰤱˜ docs
+
+⟨ ; begin ugex
+⟩ ; close ugex
+⍮ ; ugex sep
     󰤱 docs
+󷸴 ; ugex or
+    󰤱 docs
+⍈ ; ugex apply
+    󰤱 docs
+󷹗 ; ugex push
+    𝑜 󷹗: Pushes 𝑜 onto ugex stack
+    𝑜 󷹗ⁿ: Pushes n copies of 𝑜 onto ugex stack
+    𝗜 󷹗􋔛: Extends ugex stack by 𝗜
+󷹘 ; ugex pop
+    󷹘: Pops off last element from ugex stack
+    󷹘ⁿ􋁉􋀉􋁗󰁸􋔛󰁹: Pops off last n elements from ugex stack
+⍖ ; ugex peek
+    Same as 󷹘 but does not remove from ugex stack
+
+‹ ; begin magic string
+› ; close magic string
+⟦ ; begin magic string sub-expr
+⟧ ; close magic string sub-expr
 
 𝗻 ; newline character
+𝗿 ; carriage return character
 𝘀 ; space character
 𝘁 ; tab character
 
-⟨ ; begin ugex
-⟩ ; end ugex
-⍮ ; ugex sep
-󷸴 ; ugex or
-⍈ ; ugex apply
-󷹗 ; ugex push
-󷹘 ; ugex pop
-⍖ ; ugex peek
-
-⟦ ; begin magic string sub-expr
-⟧ ; end magic string sub-expr
-‹ ; begin magic string
-› ; end magic string
-
+␛ ; escape character in string
   ; magic blue separator
   ; magic yellow separator
