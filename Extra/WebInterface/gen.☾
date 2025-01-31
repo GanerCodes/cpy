@@ -27,4 +27,4 @@ JS = ‹⟦joon_header⟧𝗻⟦transpile(("index.j☾"))⟧›
     ¡:
         ↪ ᵇ(P∈real_files ⭜P⭝ "index.html")
 
-‹Running server›☾ ► server(port=3000)
+‹Running server›☾ ► server(port=8000)

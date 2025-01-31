@@ -121,8 +121,7 @@ var py, hist=[ᐦ], hist_p=0;
         await (await pyfetch("wasm_stuff.zip")).unpack_archive()
         shutil.move("./cpy_wasm_cache", "/tmp")
         print("Downloaded ☾")
-        # 󱫬 py.loadPackage("regex")
-        # print("Installed regex")›);
+        # 󱫬 py.loadPackage("regex")›);
     󱫬 py.runPythonAsync(‹
         from refresher import run_moon
         from util import SCRIPT, UPSIDEDOWNSYNDROME, TOFRAC
