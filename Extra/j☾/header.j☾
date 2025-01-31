@@ -31,6 +31,7 @@ groups = ⥌l,𝑓↦{
 GID = 󰲡document.getElementById(x);
 VAL = 󰲡GID(x).value;
 SAT = 󰲥x.setAttribute(y,z);
+QS  = ⥌x,e=document↦e.querySelector(x);
 QSA = ⥌x,e=document↦𝑙(e.querySelectorAll(x));
 𝔏𝔖 = { ↑: 󰲣localStorageₓ = 𝔍􋀫(y),
        ↓: 󰲣x∈localStorage⭜𝔍􋀭(localStorageₓ)⭝y,
