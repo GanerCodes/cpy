@@ -596,25 +596,6 @@
 ⟞ ; left-tack arg of left whisker
 ⟝ ; right-tack arg of right whisker
 
-󷰽 ; negative digit 0
-󷰾 ; negative digit 1
-󷰿 ; negative digit 2
-󷱀 ; negative digit 3
-󷱁 ; negative digit 4
-󷱂 ; negative digit 5
-󷱃 ; negative digit 6
-󷱄 ; negative digit 7
-󷱅 ; negative digit 8
-󷱆 ; negative digit 9
-󷱇 ; negative digit a
-󷱈 ; negative digit b
-󷱉 ; negative digit c
-󷱊 ; negative digit d
-󷱋 ; negative digit e
-󷱌 ; negative digit f
-󷱎 ; negative hex creation
-󷱍 ; negative oct creation
-
 𝑒 ; Exception
 𝑜 ; object
 𝑑 ; dict
