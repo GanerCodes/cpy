@@ -63,8 +63,9 @@
     with f.open() as 𝐟: code = 𝐟.read()
     ¿just_get_code: ↪ code
     nam = PEV(na ≔ f.stem)
-    m = ℵ(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
-    𝑘 = (m.keys󰈳󰲡x₀≡␛_) ¿*∈𝔸¡ [⠤𝔸 ∖ {!}]
+    Ω Module(ℵ´ 􋇑): __repr__ = 𝚲‹Module "⟦na⟧"›
+    m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
+    𝑘 = *∈𝔸 ⭜m.keys󰈳󰲡x₀≡␛_󰅂⭝ [⠤𝔸 ∖ {!}]
     𝑘󷸊󰌷("__exports__"∈m.keys ⭜[⠤m􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟]⭝ ⍁)
     ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
     ¿g:
@@ -75,7 +76,7 @@
         ¿-∉𝔸 ∧ !∉𝔸 ∧ na∉𝑘:
             Gₙₐₘ = m
     ¿!∈𝔸:
-        nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦f.stem⟧"!›
+        nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦na⟧"!›
     ↪ m
 
 ℳℱ_cache = {}

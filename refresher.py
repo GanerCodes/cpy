@@ -207,17 +207,14 @@ def run_moon(𝔸, extract_interactive=ⴴ):
     cpy_kwargs.setdefault("interactive_defaults", {})
     cpy_kwargs["interactive_defaults"] |= { "dynamic_compile": ⴳ }
     
-    if 𝕂.c:
-        cpy = basic_cpy_interactive_session(**ᖱ(
-              print_code   = 𝕂.debug,
-              print_output = ⴳ) | cpy_kwargs)
-        r = cpy(ś.join(𝔸))
-        r is not ᗜ and print(r)
-        exit()
-    
     cpy = basic_cpy_interactive_session(**ᖱ(
           print_code   = 𝕂.debug,
           print_output = ⴳ) | cpy_kwargs)
+    
+    if 𝕂.c:
+        r = cpy(ś.join(𝔸))
+        r is not ᗜ and print(r)
+        exit()
     
     def 𝑓(c):
         print(swap_ln(pmt + cpy_get_highlighter(ns)(c)))
