@@ -1,5 +1,6 @@
 from util import *
 from node import *
+import pyximport; pyximport.install()
 from PEGGLE2_BOOTSTRAP_AAUGH import Peggle1Bootstrap
 Gram, _, Parser = Peggle1Bootstrap()
 

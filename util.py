@@ -3,20 +3,18 @@ from pathlib import Path
 _insp = lambda x: x in sys.path or sys.path.insert(0, x)
 _insp(str(cpy_dir := Path(__file__).absolute().parent))
 _insp(str(cpy_dir / "compiler"))
-
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
 from unicodedata import is_normalized, name
 from time import time, sleep
 from sys import setrecursionlimit
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
-from itertools import accumulate, pairwise, starmap, \
-                      chain, filterfalse, groupby
+from itertools import accumulate, pairwise, starmap, chain, filterfalse, groupby
 from string import ascii_lowercase, ascii_uppercase, digits
 from uuid import uuid4
 from pickle import loads, dumps
 import textwrap as TW
-import os
+import os, traceback
 try             : import regex as re
 except Exception: import re
 exit_ = exit
@@ -26,6 +24,7 @@ setrecursionlimit(1_000_000)
 # poorman's ☾
 wrg = lambda F:lambda*a,**k:[*F(*a,**k)]
 print = lambda *a,__print=print,**k:__print(*a,**k) or a and a[0]
+print_ex = lambda e: print(''.join(traceback.format_exception(type(e), e, e.__traceback__)), end='')
 ⴳ, ⴴ, ᗜ, ᐦ, (ń,ś) = True, False, None, '', '\n '
 ᖲ, ᖱ, ᒪ = bool, dict, list
 ᔐ, ᒍ, ᖇ, ⵉ, ⵐ = str, str.join, str.replace, str.split, str.strip

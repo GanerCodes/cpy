@@ -11,7 +11,7 @@ exec("from math import *")
 LITERAL_OPS_ = {
       ␛*:󰲣x⋅y,  ␛/:󰲣x/y,  ␛<:󰲣x <y,  ␛>:󰲣x >y,
       ␛|:󰲣x|y,  ␛&:󰲣x&y,  ␛^:󰲣x ^y,  ␛%:󰲣x %y,
-      ␛∧:󰲣x∧y,  ␛∨:󰲣x∨y,  ␛@:󰲣x @y,
+      ␛∧:󰲣x∧y,  ␛∨:󰲣x∨y,  ␛@:󰲣x @y,  ␛~:󰲡  ~x,
     ␛/␛/:󰲣x⹏y,␛*␛*:󰲣x⌃y,␛<␛<:󰲣x<<y,␛>␛>:󰲣x>>y,
     ␛=␛=:󰲣x≡y,␛!␛=:󰲣x≠y,␛<␛=:󰲣x ≤y,␛>␛=:󰲣x ≥y,
       ␛+:𝚲𝔸ᵥ􊮝₀≅␀∨𝔸🃌≡1∨𝔸ᵥ􊮝₁≅␀ ⭜ +𝔸ᵥ ⭝ 𝔸₀+𝔸₁,
@@ -28,7 +28,7 @@ GETATTR = 󰲣    getattr  (x,y)
 GETITEM = 󰲣x.__getitem__(  y)
 þSTACK = []
 þPSH, þPOP = 󰲡þSTACK.append(x)∨x, 󰲡þSTACK.pop(x)
-def þPOPNR(): 󰆴 þSTACK[-1]
+⊢ þPOPNR(): 󰆴 þSTACK[-1]
 
 ␀,⬤,󰮈 = NULL≔𝑜(), 𝑜(), 𝑜()
 ✓,✗,□,ᐦ = True, False, None, ''
@@ -37,7 +37,6 @@ def þPOPNR(): 󰆴 þSTACK[-1]
 π, ℇ = 3.14159265358979323, 2.71828182845904523
 ∞, î, τ,    󷺍, 󷺎, 󷺏 = inf, complex(0, 1), 2π, ½π, ¼π, ⅛π
 󷱩, 󷱪, 󷱬, 󷱭, 󷱮, 󷱯, 󷱰, 󷱫 = ¯∞, ¯î, ¯τ, ¯π, ¯󷺍, ¯󷺎, ¯󷺏, ¯ℇ
-􋐳, 􋐲, 􋐴, 􋑯 = cos, sin, tan, log
 ↀ = 2³􊿙
 
 𝕣 = 󰲡[y∀y∈x¿y≇␀]

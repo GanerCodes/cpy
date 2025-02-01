@@ -57,7 +57,7 @@ def compile_py(code, ns, file=ᗜ, mode="exec"):
 def run_inj_tb(code, ns, file=ᗜ, mode="exec"):
     file, compiled, mode = compile_py(code, ns, file, mode)
     remember_code_for_tracebacks(file, code)
-    return (mode == "exec" and exec or eval)(compiled, ns)
+    return (exec if mode=="exec" else eval)(compiled, ns)
 
 def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
                       fname="cpy-interactive", header_carry=ᗜ,
@@ -89,7 +89,6 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
                             for x in R(header_f).split('\n') if x)
         run_inj_tb(hcode, hns)
         
-    
     ns["__builtins__"] = { **ns.get("__builtins__", {}), **hns["__builtins__"], **hns }
     ns.setdefault("__name__", "__main__")
     ns.setdefault("__file__", fname)
@@ -125,18 +124,21 @@ def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ
         
         mode = force_exec and "exec" or dynamic_compile and "dynamic" or "eval"
         𝑓 = lambda: run_inj_tb(code, ns, mode=mode)
-        if cap_stdout:
-            (r, ə), o = capture_output(𝑓)
-        else:
-            r, o = 𝑓(), ᗜ
+        if cap_stdout: (r, ə), o = capture_output(𝑓)
+        else         :  r,     o = 𝑓(), ᗜ
         
         if print_output and o is not ᗜ: output_printer(o)
         return r
-    interactive.ns = ns
-    if interactive_defaults:
-        return lambda *𝔸,**𝕂:interactive(*𝔸, **interactive_defaults|𝕂)
-    else:
-        return interactive
+    
+    def run_w_impimp(c, *𝔸, **𝕂): # we love layering hacks
+        NS = 𝕂.get("ns", ns)
+        if imps := NS["__builtins__"]["get_implict_imports"](c):
+            interactive(imps, *𝔸, **𝕂)
+        return interactive(c, *𝔸, **𝕂)
+    run_w_impimp.ns = ns
+    
+    if interactive_defaults: return lambda *𝔸,**𝕂:run_w_impimp(*𝔸, **interactive_defaults|𝕂)
+    else                   : return run_w_impimp
 
 def cpy_test(c, level=2, timing_test=ⴴ, exit=ⴴ, **𝕂):
     if timing_test: ENABLE_DEBUG()
@@ -154,7 +156,7 @@ def cpy_get_custom_func(t, d):
         return d
     return 𝑓
 
-cpy_get_error_printer = cpy_get_custom_func("__error_printer__", RAISE)
+cpy_get_error_printer = cpy_get_custom_func("__error_printer__", print_ex)
 cpy_get_highlighter = cpy_get_custom_func("__highlighter__", ID)
 
 def run_custom_errors(𝑓, ns={}, quit=ⴴ):
@@ -162,7 +164,7 @@ def run_custom_errors(𝑓, ns={}, quit=ⴴ):
         return 𝑓()
     except Exception as ε:
         cpy_get_error_printer(ns)(ε)
-        quit and exit(1)
+        if quit: exit(1)
 
 def run_moon(𝔸, extract_interactive=ⴴ):
     𝔸_copy = 𝔸.copy()
@@ -170,8 +172,8 @@ def run_moon(𝔸, extract_interactive=ⴴ):
                          gram_test=0, get_dir=0,
                          code_cache_dir=(ᐦ, CODE_CACHE_DIR),
                          gram_cache_dir=(ᐦ, GRAM_CACHE_DIR))
-    if 𝕂.debug: print(f"{𝔸=}\n{𝕂=}")
-    if 𝕂.get_dir: print(cpy_dir) and exit()
+    if 𝕂.debug    : print(f"{𝔸=}\n{𝕂=}")
+    if 𝕂.get_dir  : print(cpy_dir) and exit()
     if 𝕂.gram_test: cpy_test(' '.join(𝔸), exit=ⴳ)
     
     cpy_kwargs = {
@@ -244,7 +246,6 @@ def run_moon(𝔸, extract_interactive=ⴴ):
                 continue
             print()
             exit()
-
 
 if __name__ == "__main__":
     run_moon(sys.argv[1:])

@@ -1,3 +1,7 @@
+IMPSIMPS = ((␛ℍ, ‹ℍℝ󷸙󷸘󷸛󷸚󷸗󷸖󷸜󷸕ĵ󷺈󷱽󷱾›),)
+DISABLE_AUTOIMP = ‹kots ℍ HEADER›⍭
+IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
+
 ⮌ types ⨡ FunctionType as _FT
 ⮌ sys ⨡ _getframe
 ⊢ ´(n=0):
@@ -42,7 +46,12 @@
         c = cpy(c, ⠤𝔸, return_code=✓, ⠶𝕂)☾
         ↪ no_isolate_ƒ(c)
     r = cpy(c, ⠤𝔸, ⠶𝕂)
-    ↪ cpyⁿˢ ¿get_ns¡ r
+    ↪ get_ns ⭜cpyⁿˢ⭝ r
+
+CUR_IMPS = {}
+⊢ get_implict_imports(code):  so what if you import stuff by accident this wont need fixing in a month
+    ¿𝑠(IMPIMPMAP.itemsᐵ₀∈code∧CUR_IMPS∌⟞₁⭜⟞₁⭝󰮈) ≕ auto_imports:
+        ↪ ‹(‹⟦auto_imports⨝␛ ⟧␛›⍭ᴍ󰋺)›
 
  𝔸∋* ⟶ merge all (public) module contents with globals
  𝔸∋- ⟶ don't set module itself as global (automatic w/ !)
@@ -50,33 +59,35 @@
  g ⟶ store anything into globals
  store_code ⟶ m.__cpy_code__ is the source code
  󷹇 var name __exports__ determines the default stuff to dump into namespace
-⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗, just_get_code=✗):
-    ¬(just_get_path ∧ just_get_code) ⨳  󰤱 return a tuple if both
+ 󰤱 bug that store_code doesn't work if found in cache
+⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗):
     ⮌ sys ⨡ path as P, _getframe as GF
     ⮌ os ⨡ path, listdir
     ⮌ pathlib ⨡ Path as 𝐩
     f, drs = □, (␛., ⠤P) ᐵ⥉𝐩→.resolve()ᐸ 󰈲󷺹.is_dir()
     ∀p∈drs:
         ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡z≔p/‹⟦𝔣⟧⟦x⟧›→.is_file() ∧ z󰅂: ⇥
-    f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦", ".join(drsᐖ‹"⟦⟞⟧"›)⟧]!›
+    f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦drsᐖ‹"⟦⟞⟧"›ᐸ⨝␛,𝘀⟧]!›
     ¿just_get_path: ↪f
-    with f.open() as 𝐟: code = 𝐟.read()
-    ¿just_get_code: ↪ code
-    nam = PEV(na ≔ f.stem)
-    Ω Module(ℵ´ 􋇑): __repr__ = 𝚲‹Module "⟦na⟧"›
-    m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
-    𝑘 = *∈𝔸 ⭜m.keys󰈳󰲡x₀≡␛_󰅂⭝ [⠤𝔸 ∖ {!}]
-    𝑘󷸊󰌷("__exports__"∈m.keys ⭜[⠤m􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟]⭝ ⍁)
-    ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
+    nam = PEV(f.stem ≕ na)
+    G = outer_globals()
+    ¿f∈CUR_IMPS:
+        ¿CUR_IMPS≕m≅□: ↪
+    ¡:
+        code = ⓦ(f.open(), 󷺹.read)
+        Ω Module(ℵ´ 􋇑): __repr__ = 𝚲‹Module "⟦na⟧"›
+        CUR_IMPS = □
+        CUR_IMPS = m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
+        ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
+    𝑘 = *∈𝔸 ⭜m⁻󰈳󰲡x₀≡␛_󰅂⭝ [⠤𝔸 ∖ {!}]
+    𝑘󷸊󰌷("__exports__"∈m⁻ ⭜[⠤m􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟]⭝ ⍁)
     ¿g:
-        G = outer_globals()
         ∀k∈𝑘ᴍPEV:
              ‹adding ⟦k⟧ from ⟦𝔣⟧ to ⟦G["__file__"]⟧›☾
             Gₖ = mₖ
-        ¿-∉𝔸 ∧ !∉𝔸 ∧ na∉𝑘:
+        ¿-∉𝔸∌! ∧ na∉𝑘:
             Gₙₐₘ = m
-    ¿!∈𝔸:
-        nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦na⟧"!›
+    ¿!∈𝔸: nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦na⟧"!›
     ↪ m
 
 ℳℱ_cache = {}
@@ -88,6 +99,8 @@
     ↪ ƒ
 SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)
 
- 󰋺(‹highlighter›, !)
-__builtins__["__error_printer__"] ≔ __error_printer__ ≔ ℳℱ(𝚲󰋺("highlighter").__error_printer__)
-__builtins__["__highlighter__"  ] ≔ __highlighter__   ≔ ℳℱ(𝚲󰋺("highlighter").__highlighter__)
+kots, highlighter = 󰋺("kots"), 󰋺("highlighter")
+𝐩,env,,,,,pwd,cd = kots􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟ᐖkots[PEV(⟞)]
+
+__builtins__["__error_printer__"] ≔ __error_printer__ ≔ highlighter.__error_printer__
+__builtins__["__highlighter__"  ] ≔ __highlighter__   ≔ highlighter.__highlighter__

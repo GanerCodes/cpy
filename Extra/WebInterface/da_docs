@@ -339,6 +339,7 @@
 ≅ ; is exactly the same object
     Works same as in python
 ≇ ; is not exactly the same object
+~ ; bitwise invert
 ⋅ ; multiply
 ÷ ; divide
 ⹏ ; integer divide
@@ -538,22 +539,14 @@
     󰤱 docs
 󱫩 ; call/loop function after delay in thread
     󰤱 docs
-󷸚 ; real part
-    󰤱 docs
-󷸛 ; imag part
-    󰤱 docs
-󷸙 ; ĵ part
-    󰤱 docs
-󷸘 ; 󷺈 part
-    󰤱 docs
-󷸜 ; tuple of real/imag parts
-    󰤱 docs
-󷸗 ; tuple of real/ĵ parts
-    󰤱 docs
-󷸖 ; tuple of real/󷺈 parts
-    󰤱 docs
-󷸕 ; tuple of real/imag/ĵ/󷺈 parts
-    󰤱 docs
+󷸚 ; ℝ part of number
+󷸛 ; î part of number
+󷸙 ; ĵ part of number
+󷸘 ; 󷺈 part of quaternion
+󷸜 ; tuple of ℝ/î parts of number
+󷸗 ; tuple of ℝ/ĵ parts of quaternion
+󷸖 ; tuple of ℝ/󷺈 parts of quaternion
+󷸕 ; tuple of ℝ/î/ĵ/󷺈 parts of quaternion
 
 ¬ ; not
     Negates, can be from either side
