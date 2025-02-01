@@ -24,7 +24,6 @@ chk_py_pip && "$PYTHON" -m pip install --break-system-packages line_profiler reg
 DEST=$([ "$(id -u)" -eq 0       ] && echo "/bin/☾"             || (\
        [ "$(uname)" == "Darwin" ] && echo "/usr/local/bin/☾"   || (\
                 				     echo "$HOME/.local/bin/☾"    )))
-
 echo "Installing to \"$DEST\""
 
 (mkdir ./bin || :) >/dev/null 2>&1

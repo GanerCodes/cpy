@@ -434,8 +434,9 @@ def σ_18():
             β = s.peek()
             cc.append(α)
             
-            S = { "number": {"var", "group", "var_spec", "number"},
-                  "var_spec": {"number", "var", "var_spec"} }
+            S = { "number": { "var", "group", "var_spec", "number",
+                              "str_escape", "str_cpy", "str_py", "str_spec_char" },
+                  "var_spec": { "number", "var", "var_spec" } }
             
             c = 0
             if α.t == "oper":

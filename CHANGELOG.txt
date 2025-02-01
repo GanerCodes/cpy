@@ -389,3 +389,5 @@ better install script also ugex also why were dice so high
 DEPRECATED: 󰑅ᴵ, use 󰑅ᔨ
 
 Added implicit imports, only works for ℍ atm (also kots autoimports)
+
+Implicit multiplication between numbers and strs now is a thing
