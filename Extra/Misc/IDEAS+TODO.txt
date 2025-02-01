@@ -2,9 +2,9 @@
 
     󰤱  Documentation (oh gosh people are finding the project now)
     󰤱  Angle of complex number
+    󰤱  bootstrap everything
     󰤱  option for operator to ignore superscripts like →
     󰤱  __setminus__, __crossprod__, __union__, __intersection__, __subset__ ; mutex
-    󰤱  bootstrap everything
     󰤱  normalize binds/stuff for edits/cross-plat
         󰤱 SCRIPT_MAP hardcoded in moonvert rn
     󰤱  regex but better

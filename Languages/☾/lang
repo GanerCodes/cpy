@@ -586,14 +586,15 @@ def σ_30():
         if len(C) < 3: return rec(n)
         r = False
         
-        for i in range(1,len(C),2):
-            H,T = i==1, i==len(C)-1
-            a,(b,),c = C[i-1], C[i], C[i+1] if i+1<len(C) else None
+        cl = len(C)
+        for i in range(1,cl,2):
+            H,T = i==1, i==cl-1
+            a,(b,),c = C[i-1], C[i], C[i+1] if i+1<cl else None
             c = mkexp_rec(c)
             v = mkexp(("op_call",
                 mkexp_rec(a) if H else þþ,
                 b,
-                c            if T else mknex_(þþ, c)))
+                c            if T or cl==3 else mknex_(þþ, c)))
             r = mkexp(("op_call", r, OP.TND('∧'), v)) if r else v
         return n.copy(c=[r])
     ((yield replacement("expr", rec='B', n="Generate comparison chains"))
