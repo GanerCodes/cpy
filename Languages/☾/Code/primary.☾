@@ -7,6 +7,7 @@ exec("from math import *")
 ⮌ random ⨡ shuffle, choice, uniform, randint
 ⮌ types ⨡ UnionType
 ⮌ util ⨡ cpy_dir
+⮌ sys ⨡ stdout, stderr
 
 LITERAL_OPS_ = {
       ␛*:󰲣x⋅y,  ␛/:󰲣x/y,  ␛<:󰲣x <y,  ␛>:󰲣x >y,
@@ -29,6 +30,7 @@ GETITEM = 󰲣x.__getitem__(  y)
 þSTACK = []
 þPSH, þPOP = 󰲡þSTACK.append(x)∨x, 󰲡þSTACK.pop(x)
 ⊢ þPOPNR(): 󰆴 þSTACK[-1]
+IMPORTED_, imports = {}, {}
 
 ␀,⬤,󰮈 = NULL≔𝑜(), 𝑜(), 𝑜()
 ✓,✗,□,ᐦ = True, False, None, ''
@@ -44,6 +46,11 @@ GETITEM = 󰲣x.__getitem__(  y)
 󱀘 ⴳ(𝑖): __new__,__call__,__repr__ = ℂ↦𝑖.__new__(ℂ,1), 𝚲ⴳ, 𝕊↦␛ⴳ
 󱀘 ⴴ(𝑖): __new__,__call__,__repr__ = ℂ↦𝑖.__new__(ℂ,0), 𝚲ⴴ, 𝕊↦␛ⴴ
 ⴳ, ⴴ = ⴳ(), ⴴ()
+
+󱀘 ℕ: □
+ℤ = 𝑖
+ℝ = 𝑓|ℤ
+ℂ = complex|ℝ
 
 OP_DUPER_ = ƒ↦󰲡ƒ(x,x,⠤𝔸,⠶𝕂)  ꜠
 OP_SWAPA_ = ƒ↦𝚲ƒ(⠤𝔸﹕﹕􍨄 ,⠶𝕂)  ᵜ
@@ -93,14 +100,14 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂)  ≺
 󱀘 Ticker:
     __slots__ = ␛i,
     __init__ = ⥌𝕊,i↦𝕊ⁱ≔i→►□
-    __call__ = 𝕊↦𝕊ⁱ󷸊-1→►𝕊
-    __bool__ = 𝕊↦¬𝕊ⁱ
-    __repr__ = 𝕊↦‹Ticker[i=⟦𝕊ⁱ⟧]›
+    __call__ = ⥌𝕊↦𝕊ⁱ󷸊-1→►𝕊
+    __bool__ = ⥌𝕊↦¬𝕊ⁱ
+    __repr__ = ⥌𝕊↦‹Ticker[i=⟦𝕊ⁱ⟧]›
 󱀘 TimerState:
     __init__ = ⥌𝕊,𝖲↦𝕊􋊡≔𝖲→►□
-    __bool__ = 𝕊↦𝕊􋊡 ˢ
-    __call__ = 𝕊↦𝕊 ⭜𝕊􋊡 ʳ⭝ 𝕊􋊡 ʳ.copy
-    __repr__ = 𝕊↦‹Timer[⟦"ID"􊶊􌋄􋘲􊫀􊮥₀⟧; ⟦𝕊􋊡 ʸ⫰⟧s; ⟦‹Running Completed›⍭→􊴎􊮎􊶊⟧; ⟦𝕊􋊡 ⁿ⟧ Remaining loops]=⟦𝕊􋊡 ʳ⟧›
+    __bool__ = ⥌𝕊↦𝕊􋊡 ˢ
+    __call__ = ⥌𝕊↦𝕊 ⭜𝕊􋊡 ʳ⭝ 𝕊􋊡 ʳ.copy
+    __repr__ = ⥌𝕊↦‹Timer[⟦"ID"􊶊􌋄􋘲􊫀􊮥₀⟧; ⟦𝕊􋊡 ʸ⫰⟧s; ⟦‹Running Completed›⍭→􊴎􊮎􊶊⟧; ⟦𝕊􋊡 ⁿ⟧ Remaining loops]=⟦𝕊􋊡 ʳ⟧›
 
 󱀘 𝑐𝑑(𝑑):
     ⊢ __init__(𝕊, ƒ, ⠤𝔸, 𝑔=□, ⠶𝕂):

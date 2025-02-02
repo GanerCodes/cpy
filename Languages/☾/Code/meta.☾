@@ -1,4 +1,4 @@
-IMPSIMPS = ((␛ℍ, ‹ℍℝ󷸙󷸘󷸛󷸚󷸗󷸖󷸜󷸕ĵ󷺈󷱽󷱾›),)
+IMPSIMPS = ((␛ℍ, ‹ℍ󷸙󷸘󷸛󷸚󷸗󷸖󷸜󷸕ĵ󷺈󷱽󷱾›),)
 DISABLE_AUTOIMP = ‹kots ℍ HEADER›⍭
 IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
 
@@ -48,9 +48,8 @@ IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
     r = cpy(c, ⠤𝔸, ⠶𝕂)
     ↪ get_ns ⭜cpyⁿˢ⭝ r
 
-CUR_IMPS = {}
 ⊢ get_implict_imports(code):  so what if you import stuff by accident this wont need fixing in a month
-    ¿𝑠(IMPIMPMAP.itemsᐵ₀∈code∧CUR_IMPS∌⟞₁⭜⟞₁⭝󰮈) ≕ auto_imports:
+    ¿𝑠(IMPIMPMAP.itemsᐵ₀∈code∧IMPORTED_∌⟞₁⭜⟞₁⭝󰮈) ≕ auto_imports:
         ↪ ‹(‹⟦auto_imports⨝␛ ⟧␛›⍭ᴍ󰋺)›
 
  𝔸∋* ⟶ merge all (public) module contents with globals
@@ -71,20 +70,23 @@ CUR_IMPS = {}
     ¿just_get_path: ↪f
     nam = PEV(f.stem ≕ na)
     G = outer_globals()
-    ¿f∈CUR_IMPS:
-        ¿CUR_IMPS≕m≅□: ↪
+    ¿f∈IMPORTED_:
+        ¿IMPORTED_≕m≅□: ↪
     ¡:
-        code = ⓦ(f.open(), 󷺹.read)
+        code = f.open().read()
         Ω Module(ℵ´ 􋇑): __repr__ = 𝚲‹Module "⟦na⟧"›
-        CUR_IMPS = □
-        CUR_IMPS = m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
+        IMPORTED_ = □
+        IMPORTED_ = m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
+        importsₙₐ = m
         ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
     𝑘 = *∈𝔸 ⭜m⁻󰈳󰲡x₀≡␛_󰅂⭝ [⠤𝔸 ∖ {!}]
     𝑘󷸊󰌷("__exports__"∈m⁻ ⭜[⠤m􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟]⭝ ⍁)
     ¿g:
-        ∀k∈𝑘ᴍPEV:
-             ‹adding ⟦k⟧ from ⟦𝔣⟧ to ⟦G["__file__"]⟧›☾
-            Gₖ = mₖ
+        ∀k∈𝑘:
+            K = PEV(k)
+             ‹⟦‹✗✓›󰂝􊮇ₘ⟧: Adding "⟦k⟧"(⟦K⟧) from ⟦𝔣⟧ to ⟦G["__file__"]⟧›☾
+            ¿K∈m: G󰂝 = m󰂝
+            ¡   : ‹Warning, ⟦k⟧∉⟦m⟧›
         ¿-∉𝔸∌! ∧ na∉𝑘:
             Gₙₐₘ = m
     ¿!∈𝔸: nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦na⟧"!›

@@ -262,23 +262,35 @@
     ↪ 𝕏≡␛󱫩 ⭜𝔗(ƒ)►TimerState(𝖲)⭝ ƒ
 
 🃌´ = len
-ᐹ´ = ⥌x=␀,y=␀↦x≅␀∨␀≅y⭜type(x≅␀⭜y⭝x) ␛
-              ⭝y∈TYPELIKE_⭜ y(x) ␛
-              ⭝isinstance(x, isinstance(y,type|UnionType) ␛
-                             ⭜y⭝ type(y))
-ᐴ´,󷹵´,󷹴´ = ⥌x=␀,y=␀↦yᐹx, 󰲣xᐹy→¬, 󰲣yᐹx→¬
-𝗙, 𝗜, 𝗛 = callable, 󰲡hasattr(x, "__iter__"), hash  ✗
-TYPELIKE_ = { 𝗙, 𝗜, 𝗛 }
+𝗙,𝗛,𝗜 = callable, hash  ✗, 󰲡hasattr(x, "__iter__")
+
+@OPWRAP_
+⊢ ᐹ´(x=␀,y=␀,s=␀,TYPELIKE_={𝗙,𝗛,𝗜}):
+    ¿x≅␀∨␀≅y    : ↪type(x≅␀⭜y⭝x)
+    ⸘y∈TYPELIKE_: ↪y(x)
+    ¿s≅␀:
+        ¿y≅ℕ        : ↪xᐹ𝑏|𝑖 ∧ x≥0
+        ⸘y≅ℤ        : ↪xᐹℕ|𝑖
+        ⸘y≅ℝ        : ↪xᐹℤ|ℝ
+        ⸘y≅ℂ        : ↪xᐹℝ|ℂ
+        ⸘␛ℍ∈imports ∧ y≅imports[␛ℍ]􋀃:
+                      ↪xᐹℂ|ℍ
+    ↪ isinstance(x, isinstance(y,type|UnionType) ⭜y⭝ type(y))
+OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬←xᐹˢy, 󰲣¬←yᐹˢx)[𝕏≡␛󷹵 ∨ 2⋅←𝕏≡␛󷹴](x,y))
 ∘´ = OPWRAP_(⥌𝑓,y,s=1↦ 𝑓(⠤(y,)⋅s))
 󰻾´ = 𝑐𝑑(      𝚲𝔸⭜𝔸₀⭝□, __repr__=𝚲␛󰻾,
         𝑔=󰲡𝑐𝑑(𝚲x     , __repr__=𝚲‹󰻾∘⟦x⟧›))
-☾´ = 𝑐𝑑(ƒ≔ 𝚲print(⠤𝔸, ⠶{"flush":✓   }|𝕂)∨𝔸∧𝔸₀,
-        𝑔=󰲡𝚲   ☾´(⠤𝔸, ⠶{"end"  :ᔐ(x)}|𝕂))
 √´ = OPWRAP_(⥌x=␀,s=2↦xˢ􍩯)
-®´ = 𝑐𝑑(ƒ≔󰲡x⭥ᐖ􋐳(τ⟞/x)+î􋐲(τ⟞/x), 𝑔=ƒ)
+®´ = 𝑐𝑑(ƒ≔󰲡x⭥ᐖ􋐳(τ⟞÷x)+î􋐲(τ⟞÷x), 𝑔=ƒ)
 ؆´ = OPWRAP_(⥌x,s=2↦®ˢᐵ⋅xˢ􍩯)
-´ = 𝑐𝑑(t≔ƒ↦𝚲ƒ(⠤𝔸ᴍ𝑙⨁[], ⠶𝕂), 𝑔=t)
+´ = 𝑐𝑑(t≔ƒ↦𝚲ƒ(⠤𝔸󰌷, ⠶𝕂), 𝑔=t)
 ∾´ = ƒ↦𝚲ƒ(⠤𝔸ᴙ,⠶𝕂)
+
+@OPWRAP_
+⊢ ☾´(⠤𝔸,s=𝗻,sep=𝘀,❗=✗,⠶𝕂):
+    (❗ ⭜stderr⭝ stdout).write(𝔸⨝ᔐ(sep) + ᔐ(s))
+    ¿𝔸: ↪𝔸₀
+     print(x, flush=✓, end=ᐦ, sep=ᐦ)
 
 ſ´ = OPWRAP_(⥌x,y,s=␀↦reduce    (y,x,⠤s≅␀⭜()⭝(s,)         )  )
 Ϝ´ = OPWRAP_(⥌x,y,s=␀↦accumulate(x,y,⠶s≅␀⭜{}⭝{"initial":s})⥉𝑙)

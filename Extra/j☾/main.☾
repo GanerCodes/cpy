@@ -78,7 +78,6 @@ cd()
 ⮌ util ⨡ SCRIPT, UPSIDEDOWNSYNDROME
 ⨡ os, shutil
 flip = UPSIDEDOWNSYNDROME.flip
-
 bp = SCRIPT󰀂ᴴᴬᴿ􋕟󰀒ᵁᴮ⋄SCRIPT󰀂ᴴᴬᴿ􋕟󰀒ᵁᴾ⋄CONSTANTS⋄OPERATORS ᴍ rgx_golfatron
 ll = ‹SCRIPTD SCRIPTU CONSTANTS OPERATORS›⍭ᐵ⛶⟗␛%
 GRAM = ll 󰛔ᴳᴿᴬᴹ bp
