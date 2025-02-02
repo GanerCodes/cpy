@@ -66,7 +66,7 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
                       **𝕂):
     compiler = Compiler(code_cache_dir, gram_cache_dir)
     
-    lang_pfx = os.path.abspath(f"{CPY_DIR}/Languages/☾")
+    lang_pfx = os.path.abspath(f"{CPY_DIR}/☾")
     code_pfx = os.path.abspath(f"{lang_pfx}/Code")
     libr_pfx = os.path.abspath(f"{lang_pfx}/Libraries")
     header_f = os.path.abspath(f"{code_pfx}/HEADER")

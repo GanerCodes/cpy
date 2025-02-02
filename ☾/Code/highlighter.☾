@@ -1,0 +1,73 @@
+⨡ traceback, threading, sys
+⮌ json ⨡ loads
+‹kots 🌈›⍭ᴍ󰋺
+
+styf = cpy_dir / "FontCompose/Output/style.json"
+styd = styf ⥉  ⥉ loads ⥉ ℵ
+
+⊢ sty(s, bg=0, de="bec"):
+    ∀k,v∈styd:
+        ¿s∉k ∨ "color"∉v: ↺
+        ↪ termclr(s, v􋕨󰂼ₗ󰂼ᵣ􋕨, bg)
+    ↪ termclr(s, de, bg)
+
+⊢ __highlighter__(l, b=✗, clr=✓):
+    s, ⠤e = (ᔐ∘l).split(␛ᐧ)
+    
+    e = e ᙧ¹ 0⋄1
+    e = e ꟿ 󰲣chr(𝑖(x,16))+y
+    r = (s+←e⨁ᐦ) ᴍ 󰲡clr⭜sty(x, b ⭜"400"⭝ 0)⭝x󰅂 ⨁ᐦ
+    ↪ r
+
+⊢ __error_printer__(ε):
+    ℭ = traceback.linecache.CPY_CACHE
+    ə = ε.__traceback__
+    TB, i = [], 0
+    ➰i+=1:
+        ¿i ≥ 50:
+            ‹Too long a traceback, stopping at ⟦i⟧ frames!›☾
+            ⇥
+        g = ə.tb_frame.f_globals
+        ∀_∈␛_:
+            ¿"__file__"∈g:
+                f = g􋕨􋕞􋕞ᵢₗₑ􋕞􋕞􋕨
+                ¿f.endswith("/refresher.py"): ⇥
+                 ¿f.endswith("/header.☾"): ⇥
+                ¿f∈ℭ:
+                    F = ℭ
+                ⸘f≔𝐩(f) → .exists:
+                    F = (f)
+                ¡:
+                    ‹Cannot find "⟦f⟧"??›☾ ; ⇥
+            ¡:
+                ‹Traceback with no file? ⟦traceback.format_exception(ε) ⟕⟧›☾ ; ⇥
+            
+            F = F.split(𝗻)
+            pps = ⠤ə.tb_frame.f_code.co_positions,
+            s, e, a, b = pps􌿰􋕜ₜ􋕞ₗₐₛₜᵢ􊲗₂
+            ¿a≅□: TB += [(f, s, ᐦ, "Missing location!", ᐦ)]
+            l = 𝗻.join(Fₛ₋₁﹕ₑ).encode("utf-8")
+            A,B,C = l﹕ₐ⋄lₐ﹕⋄l﹕ ᴍ 󰲡x.decode("utf-8", errors="replace")
+            TB += [(f, s, __highlighter__(A),
+                          __highlighter__(B,✓),
+                          __highlighter__(C))]
+        ¿ə.tb_next≕ə≅□: ⇥
+    
+    CLR1, CLR2 = "faf", "f55"
+    
+    asd = termclr(␛⮡, CLR1)
+    maxl, prevf = TB ⤉⁰􌾕􋋎 󰲡x₁, □
+    zf = ᔐ(maxl₁)🃌
+    ∀f,s,A,B,C∈TB:
+        ¿f≠prevf: termclr(f, CLR1)☾
+        ‹⟦asd⟧ ⟦ᔐ(s).zfill(zf)⟧𝘁⟦A⟧⟦B⟧⟦C⟧›☾
+        prevf = f
+    ‹⟦termclr("Error:", CLR2)⟧ ⟦__highlighter__(ε)⟧›☾
+
+__exports__ = ‹__highlighter__ __error_printer__›⍭
+sys.excepthook = 󰲥__error_printer__(y)
+threading.excepthook = sys.excepthook
+
+¿ __name__≡"__main__":
+    ➰ l≔sys.stdin.readline:
+        ☾´(highlight∘l, end=ᐦ)

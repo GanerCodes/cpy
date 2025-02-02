@@ -440,15 +440,15 @@
 ▢ ; round
     2.2▢ ≡ 2
     2.9▢ ≡ 3
-    󰤱˜ docs [precision is extra arg]
+    󰤱˜ docs [precision is superscript]
 ⬓ ; round down
     2.2⬓ ≡ 2
     2.9⬓ ≡ 2
-    󰤱˜ docs [precision is extra arg]
+    󰤱˜ docs
 ⬒ ; round up
     2.2⬒ ≡ 3
     2.9⬒ ≡ 3
-    󰤱˜ docs [precision is extra arg]
+    󰤱˜ docs
 ⍭ ; magic string split
     ᔐ ⍭ or ᔐ ⍭
     if " " is in arg:

@@ -27,7 +27,7 @@ class Compiler:
     def get_lang(𝕊, lang_n, ver, l): # lang-cache
         v = Compiler.𝔐ℭ.get(h := (l, lang_n, ver))
         if v: return v
-        file = CPY_DIR / f"Languages/{lang_n}{'-'*ᖲ(ver)+ver}" / "lang"
+        file = CPY_DIR / f"{lang_n}{'-'*ᖲ(ver)+ver}" / "lang"
         assert file.exists(), f"Unable to find lang: {file}"
         return Compiler.𝔐ℭ.setdefault(h, Lang(R(file), ver, l))
 

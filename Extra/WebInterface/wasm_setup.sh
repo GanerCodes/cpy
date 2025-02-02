@@ -16,6 +16,6 @@ mkdir -p "$TMPF" || :
 cp -r "$TMPF" `realpath ./cpy_wasm_cache` || :
 zip "$FILE" -r ./cpy_wasm_cache
 cd ../..
-zip "$FILE" -r compiler FontCompose/.SCRIPT_MAP FontCompose/Output/*.json Languages *.py -x "*/__pycache__/*"
+zip "$FILE" -r compiler FontCompose/.SCRIPT_MAP FontCompose/Output/*.json ☾ *.py -x "*/__pycache__/*"
 cd -
 [ $# -ge 1 ] && ☾ gen.☾

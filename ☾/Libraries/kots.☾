@@ -1,0 +1,62 @@
+⮌ os ⨡ chdir, getcwd as pwd_, environ as env, mkdir
+⮌ pathlib ⨡ Path as 𝐩
+
+󱀘 suppar2:
+    __init__ = ⥌𝕊,ƒ↦𝕊􊽺≔ƒ →► □
+    __call__ = ⥌𝕊,⠤𝔸,⠶𝕂↦𝕊􊽺(⠤𝔸,⠶𝕂)
+    __getitem__ = __getattr__ = ⥌𝕊,x↦𝚲𝕊􊽺(⠤𝔸,x,⠶𝕂)
+
+ = ⥌x=␀↦x≅␀ ⭜PL_TEXT_PASTE⭝ PL_TEXT_COPY○ᔐ∘x ⭢► x
+ = suppar2(⥌f  ,o=ᐦ↦𝐩(f).open(o))
+ = suppar2(⥌f  ,o=ᐦ↦ⓦ(  􊯛ᵣ₊󰂼∘f, 󰲡x.read  ))
+ = suppar2(⥌f,𝓬,o=ᐦ↦ⓦ(y≔􊯛₊󰂼∘f, 󰲡x.write∘𝓬 →► y))
+
+pwd = 𝚲𝐩∘pwd_
+󱀘 cd:
+    s, c = [], []
+    ⊢ __init__(𝕊, d=□):
+        𝕊ᵈ = d
+    ⊢ __enter__(𝕊):
+        x = 𝕊ᵈ
+        cdˢ.append(cdᶜ🃌→⋄←x≔pwd)
+        ↪ x≇□ ∧ chdir(𝐩∘x) →► pwd
+    ⊢ __exit__(𝕊, ⠤𝔸):
+        i,d = cdˢ.pop(-1)
+        cdᶜ = cdᶜ﹕ᵢ
+        ↪ chdir∘d →► pwd
+    ⊢ __call__(𝕊, d=□):
+        ¿d≅@´:
+            ⨡ inspect
+            ↪ cd(𝐩(inspect.stack()₁.filename).parent)
+        ¿d≅□:
+            chdir(cdᶜ.pop(-1))
+            ↪ pwd
+        cdᶜ.append(pwd)
+        ↪ chdir∘d →► pwd
+    ⊢ __getitem__(𝕊, d):
+        ↪ 𝕊􋕟􋕟ᶜˡᵃˢˢ􋕟􋕟∘d
+cd = cd
+
+__exports__ = ‹𝐩 env     pwd cd›⍭
+
+¿ __name__≡"__main__":
+    𝐩("/tmp/eggs").mkdir(parents=✓, exist_ok=✓)
+    pwd☾
+    cd∘"/tmp"
+    pwd☾
+    cd∘"eggs"
+    pwd☾
+    with cd:  
+        pwd☾
+        cd
+        pwd☾
+        with cd["cpy_temp"]:
+            pwd
+        pwd
+        cd
+        pwd☾
+    pwd☾
+    
+    ∘"joexd"
+    ("/tmp/eggasdasd", )
+    ("/tmp/eggasdasd")☾

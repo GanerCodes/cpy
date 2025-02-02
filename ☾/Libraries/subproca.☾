@@ -1,0 +1,43 @@
+ O/E/M/R = stdout/stderr/merged/returncode
+ o/e = don't redirect stdout/err to null
+ B=binary output, S=shell, P=popen
+ t = disable trailing newline strip (does nothing with B)
+⊢ SUBPROCA(cmd, 𝒶):
+    ⮌ subprocess ⨡ Popen as 𝐏, DEVNULL as NULL, PIPE, STDOUT
+    ¬(␛M∈𝒶 ∧ 𝒶∩"OEoe") ⨳ ‹Cannot use stdout/err and MERGE at once›
+    ¬(␛o∈𝒶∋␛O ∨ ␛e∈𝒶∋␛E) ⨳ ‹Cannot suppress and ignore stdout/err›
+    K = ℵ
+    𝓽,𝓸,𝓮,𝓑,𝓟,𝓢 = (vs≔"toeBPS") ᴍ󰲡x∈𝒶
+    𝒶 = 𝒶∖vs ∨ {␛R}
+    
+    ¿𝓢: Kˢʰᵉˡˡ = ✓
+    ¿␛M∈𝒶:
+        Kˢᵗᵈᵒᵘᵗ, Kˢᵗᵈᵉʳʳ = PIPE, STDOUT
+    ¡:
+        ¿¬𝓸: Kˢᵗᵈᵒᵘᵗ = PIPE ¿␛O∈𝒶¡ NULL
+        ¿¬𝓮: Kˢᵗᵈᵉʳʳ = PIPE ¿␛E∈𝒶¡ NULL
+    Kᵇᵘᶠˢⁱᶻᵉ = 16⋅1024  󰤱 this is stupid
+    
+    ⊢ p_stream(x):
+        t = getattr(p,x).read
+        ¿𝓑: ↪t
+        t = t.decode("UTF8")
+        ↪ t ¿𝓽¡ t.removesuffix(𝗻)
+    ⊢ extract(p):
+        r = ℶ
+        ¿    𝒶∋v≔␛R: rᵥ=pʳᵉᵗᵘʳⁿᶜᵒᵈᵉ
+        ¿    𝒶∋v≔␛M: rᵥ=p_stream("stdout")
+        ¡:
+            ¿𝒶∋v≔␛O: rᵥ=p_stream("stdout")
+            ¿𝒶∋v≔␛E: rᵥ=p_stream("stderr")
+        ↪ r􊴸􋕜ₚ󰂼ₚ􊲭 ¿𝒶🃌≡1¡ r
+    󱀘 Popen_Proxy:
+        __slots__ = ␛p,
+        __init__ = ⥌𝕊,p↦𝕊ᵖ≔p →► □
+        __call__ = 𝕊↦𝕊ᵖ.wait →► extract(p)
+        __getitem__ = 𝕊↦𝕊→.__getitem__(⠤𝔸)
+        __getattr__ = 𝕊↦𝕊→.__getattr__(⠤𝔸)
+        __iter__    = 𝕊↦𝕊→.__iter__   (⠤𝔸)
+    
+    p = 𝐏(cmd⍭, ⠶K)  run = 𝐏(cmd⍭, ⠶K)
+    ↪ Popen_Proxy∘p ᣆ􊽬􋘥 
