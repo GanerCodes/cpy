@@ -6,7 +6,7 @@
 ## Local install  
 Requires python3.12 or above  
 Most code needs the custom font  
-> Fonts are in /Extra/FontCompose/Output
+> Fonts are in /FontCompose/Output
 
 To type code the .XCompose is in the same directory  
 > You can use WinCompose on Windows
