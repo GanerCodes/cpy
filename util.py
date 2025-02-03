@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 _insp = lambda x: x in sys.path or sys.path.insert(0, x)
-_insp(str(cpy_dir := Path(__file__).absolute().parent))
-_insp(str(cpy_dir / "compiler"))
+_insp(str(moon_dir := Path(__file__).absolute().parent))
+_insp(str(moon_dir / "compiler"))
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
 from unicodedata import is_normalized, name
 from time import time, sleep
@@ -133,7 +133,7 @@ class UPSIDEDOWNSYNDROME:
     MAP = dict(zip(NRM, USD)) | dict(zip(USD, NRM))
     flip = lambda s, MAP=MAP: str.join(ᐦ, (MAP.get(c, c) for c in s))
 class SCRIPT:
-    SCRIPT_FILE_LOC = cpy_dir / "FontCompose/.SCRIPT_MAP"
+    SCRIPT_FILE_LOC = moon_dir / "FontCompose/.SCRIPT_MAP"
     with open(SCRIPT_FILE_LOC) as f:
         CHAR_NRM,CHAR_SUP,CHAR_SUB = f.read().strip().split(ń)
     SUP = ᔐ.maketrans(CHAR_NRM, CHAR_SUP)

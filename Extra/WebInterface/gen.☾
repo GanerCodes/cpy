@@ -1,6 +1,6 @@
 ⮌ json ⨡ dumps
 ‹http kots›⍭ᴍ󰋺 ; cd(@)
-ucod = ℵ←(cpy_dir / "FontCompose/UnicodeQuery/unicode.txt") ␛
+ucod = ℵ←(moon_dir / "FontCompose/UnicodeQuery/unicode.txt") ␛
         󷹎𝗻󰈲󷺹∧⟞∌␛#∧␛.∉⟞ᐸ ᐵ󷹎¹␛;ᐵ.lower⬄𝘀ᐸꟿ⁰󷺹󷹜16󷹝→⋄󷺽→ᴙ
 ords = ("da_docs")󷹎𝗻𝗻ᐵ󷹎𝗻ᑀ⨝󰲣𝘀≠y₀⭜□⭝󰮈󰅂󷹎
 desc = ℵ(ords󰌷ᐵ₀󷹎¹␛;ᐵ⬄𝘀ᐸᑀ₀ ₀⋄←⟞₁⛶+ᑅ⟞₁﹕)

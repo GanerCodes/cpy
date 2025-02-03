@@ -1,7 +1,7 @@
 ⮌ socketserver ⨡  TCPServer, StreamRequestHandler ; TCPServer.allow_reuse_address = ✓
 ⮌ json ⨡ dumps, loads
 󰋺(‹kots›)
-cd(cpy_dir/‹Extra/j☾›); 󰋺(‹main›); cd()
+cd(moon_dir/‹Extra/j☾›); 󰋺(‹main›); cd()
 
 ipv4 = ᑀ ᑀ⪢ 8⟝ & 0xFFᐛ (4󷸹)ᴙ → ⨝␛.
 

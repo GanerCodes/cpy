@@ -1,5 +1,5 @@
 from util import *
-from cpy_transpile import Compiler, CPY_DIR
+from cpy_transpile import Compiler, MOON_DIR
 import subprocess, traceback
 
 BASE_CACHE_DIR = "/tmp/cpy_cache"
@@ -66,7 +66,7 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
                       **𝕂):
     compiler = Compiler(code_cache_dir, gram_cache_dir)
     
-    lang_pfx = os.path.abspath(f"{CPY_DIR}/☾")
+    lang_pfx = os.path.abspath(f"{MOON_DIR}/☾")
     code_pfx = os.path.abspath(f"{lang_pfx}/Code")
     libr_pfx = os.path.abspath(f"{lang_pfx}/Libraries")
     header_f = os.path.abspath(f"{code_pfx}/HEADER")
@@ -173,7 +173,7 @@ def run_moon(𝔸, extract_interactive=ⴴ):
                          code_cache_dir=(ᐦ, CODE_CACHE_DIR),
                          gram_cache_dir=(ᐦ, GRAM_CACHE_DIR))
     if 𝕂.debug    : print(f"{𝔸=}\n{𝕂=}")
-    if 𝕂.get_dir  : print(cpy_dir) and exit()
+    if 𝕂.get_dir  : print(moon_dir) and exit()
     if 𝕂.gram_test: cpy_test(' '.join(𝔸), exit=ⴳ)
     
     cpy_kwargs = {

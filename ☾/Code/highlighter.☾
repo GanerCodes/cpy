@@ -2,7 +2,7 @@
 ⮌ json ⨡ loads
 ‹kots 🌈›⍭ᴍ󰋺
 
-styf = cpy_dir / "FontCompose/Output/style.json"
+styf = moon_dir / "FontCompose/Output/style.json"
 styd = styf ⥉  ⥉ loads ⥉ ℵ
 
 ⊢ sty(s, bg=0, de="bec"):

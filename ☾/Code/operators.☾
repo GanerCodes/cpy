@@ -14,6 +14,22 @@
         ↪ 𝑓
     ↪ 𝒻
 
+@OPWRAP_
+⊢ _(x=␀,y=␀,s=␀):
+    ¿s≇␀ ∧ (ℤᐴs∨sᐹ𝗜):
+        ¿sᐹ𝗜: s󷸊🃌
+        ↪y≅␀ ⭜(+x)%s⭝ (x+y)%s
+    ↪ y≅␀ ⭜+x⭝ x+y
+LITERAL_OPS_􊯛₊ = _
+
+@OPWRAP_
+⊢ _(x=␀,y=␀,s=␀):
+    ¿s≇␀ ∧ sᐹℤ:
+        ¿sᐹ𝗜: s󷸊🃌
+        ↪y≅␀ ⭜(-x)%s⭝ (x-y)%s
+    ↪ y≅␀ ⭜-x⭝ x-y
+LITERAL_OPS_􊯛₋ = _
+
 @OPWRAP_(⠤‹󰔶›)
 ⊢ _(t, ƒ=␀, 𝑔=␀, s=𝑒):
     𝑇 = s
@@ -510,6 +526,14 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
         d = sᴍx→󱑼s→󰲡x₀󰅂ꟿⱽ󰲣yᴍ󰲡x₁
         ↪ 𝚲𝔸🃌≡0⭜d⭝d.get(𝔸₀,[])
     ✗⨳‹No __inverse__ for ⟦x⟧ nor valid domain provided.›
+
+@OPWRAP_
+⊢ ᓕ´(𝚡,s=␀):
+    𝚡ᐹ𝗜 ⨳ ‹⟦𝚡⟧󷹵𝗜›
+    ⊢ ƒ(s):
+        ¿s󷹵𝗜: s󷸊⛶
+        ↪ s ſ􀳉 󷺹􍪸󷺿
+    ↪ s≅␀ ⭜ƒ⭝ ƒ(s)
 
 @OPWRAP_
 ⊢ ᕋ´(𝚡,𝚢=␀,s=␀):  󰤱 strings, chaining multiple

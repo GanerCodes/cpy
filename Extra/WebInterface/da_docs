@@ -217,6 +217,10 @@
 󷹅 ; zip (left aligned)
     same as 󱑼 but elements are aligned towards the right
     "[1,2] 󷹅 [1,2,3]" ⟶ [[1,2],[2,3]]
+ᓕ ; at indicies
+    "[5,‹joe›,‹zek›]ᓕ²󰁱¹" ⟶ "e"
+    󷹇 auto curries
+    󰤱˜ docs
 ᕋ ; modify section
     "[1,2,3] ᕋ¹ 9" ⟶ [1,9,3]
     "[1,2,3] ᕋ¹" ⟶ [1,3]

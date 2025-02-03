@@ -2,7 +2,7 @@ from util import *
 from compiler.lang import Lang
 import dynamic_parser
 
-CPY_DIR = Path(__file__).parent.parent
+MOON_DIR = Path(__file__).parent.parent
 class Compiler:
     __slots__ = "code_cache_dir", "gram_cache_dir"
     
@@ -27,7 +27,7 @@ class Compiler:
     def get_lang(𝕊, lang_n, ver, l): # lang-cache
         v = Compiler.𝔐ℭ.get(h := (l, lang_n, ver))
         if v: return v
-        file = CPY_DIR / f"{lang_n}{'-'*ᖲ(ver)+ver}" / "lang"
+        file = MOON_DIR / f"{lang_n}{'-'*ᖲ(ver)+ver}" / "lang"
         assert file.exists(), f"Unable to find lang: {file}"
         return Compiler.𝔐ℭ.setdefault(h, Lang(R(file), ver, l))
 
