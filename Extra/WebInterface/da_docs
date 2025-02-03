@@ -430,13 +430,22 @@
     "0 󷹄􍧟 1" ⟶ 0
     "0 󷹄􊽲 1" ⟶ ½
     󰤱˜ docs
-↨ ; enumerate (zip with index)
-    Both-sides-indistinguishable unary
-    𝕏↨ is identical to (𝕏⭥)󱑼𝕏
 ⭥ ; iterable/number to indices
     Both-sides-indistinguishable unary 
     "‹hello›⭥" ⟶ [0,1,2,3,4]
     "5⭥"       ⟶ [0,1,2,3,4,5]
+    [‹ab›, ‹cde›]⭥² ⟶ [(0,0),(0,1),(1,0),(1,1),(1,2)]
+    "2⭥³" ⟶ [(0,0,0),(0,0,1),(0,1,0),(0,1,1),(1,0,0),(1,0,1),(1,1,0),(1,1,1)]
+    󷹇 Negative modifier keeps original structure
+    [‹ab›, ‹cde›]⭥􍧱 ⟶ [[(0,0),(0,1)], [(1,0),(1,1),(1,2)]]
+    󰤱˜ docs
+↨ ; enumerate (zip with index)
+    Both-sides-indistinguishable unary
+    𝕏↨ is identical to (𝕏⭥)󱑼𝕏
+    ↨ⁿ􋁉􋀐 works just like ⭥ except the indicies are tupled with the values
+    "[‹ab›,‹cd›]↨²" ⟶ [((0,0),'a'),((0,1),'b'),((1,0),'c'),((1,1),'d')]
+    "[‹ab›,‹cd›]↨􍧱" ⟶ [[((0,0),'a'),((0,1),'b')],[((1,0),'c'),((1,1),'d')]]
+    󰤱˜ docs
 ▢ ; round
     2.2▢ ≡ 2
     2.9▢ ≡ 3

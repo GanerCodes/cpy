@@ -1,6 +1,7 @@
 § TODOs ------------------------------------
 
     󰤱  Documentation (oh gosh people are finding the project now)
+    󰤱  ∅􍧱 ⍁􍧱
     󰤱  Angle of complex number
     󰤱  bootstrap everything
     󰤱  option for operator to ignore superscripts like →
@@ -10,6 +11,14 @@
     󰤱  regex but better
     󰤱  add the edge cases for the new compose ops
     󰤱  Ponder shape ⥊ operator
+        󷹇 1st number is outer layer
+        default: hypercube w/ max dim?
+        100 items: shape² = ⬤⋄⬤ = 10⨯10
+        100 items: shape³ = ⬤⋄⬤⋄⬤ = fail
+        100 items: shape 25⋄4 = 25⨯4
+                   deshape is just 󰌷?
+        100 items: shape 10⋄5 = 10⨯5⨯2…?
+        100 items: shape ⬤⋄5 = 20⨯5
     󰤱  Better ☾
     󰤱  proper cli for generating font
     󰤱  side-invarient unary doesn't work ⓦ implicit multiplication
