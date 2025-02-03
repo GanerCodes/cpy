@@ -433,7 +433,7 @@
 ⭥ ; iterable/number to indices
     Both-sides-indistinguishable unary 
     "‹hello›⭥" ⟶ [0,1,2,3,4]
-    "5⭥"       ⟶ [0,1,2,3,4,5]
+    "5⭥"       ⟶ [0,1,2,3,4]
     [‹ab›, ‹cde›]⭥² ⟶ [(0,0),(0,1),(1,0),(1,1),(1,2)]
     "2⭥³" ⟶ [(0,0,0),(0,0,1),(0,1,0),(0,1,1),(1,0,0),(1,0,1),(1,1,0),(1,1,1)]
     󷹇 Negative modifier keeps original structure
