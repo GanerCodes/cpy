@@ -63,12 +63,18 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂)  ≺
         ↪ I
     ↪ ƒ
 
+ 󰤱
+      0,       1,      2,                   3
+ niladic, monadic, dyadic, Ambivalent/variadic
+ nullary,   unary, binary,        unary+binary
+ 󷰾/󷱀: not unary_invariant
+ 󷰿: don't auto-curry binary
 ⊢ OPWRAP_(ƒ, ⠤𝔸):
     ¿𝔸:
-        ⊢ f(ꬶ):
+        ⊢ ⴼ(ꬶ):
             ∀x∈(ƒ,⠤𝔸):
                 globals()󰂢󰂗󰂨₍ₓ₎ = OPWRAP_(ꬶ(x))
-        ↪ f
+        ↪ ⴼ
     󱀘 ω:
         __slots__ = ()
         ⊢ __call__(𝕊, x=␀, y=␀, ⠤𝔸, ⠶𝕂):
