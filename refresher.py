@@ -22,7 +22,7 @@ def py_reparse(x):
     try:
         return ast.unparse(ast.parse(x))
     except Exception as e:
-        raise Exception(f'Failed to reparse code! "{e}"\nCode:\n{x}')
+        raise Exception(f'Failed to reparse code! "{e}"\nCode:\n{prettify_code(x)}')
 
 # stupid monkeypatching garvbarebefshiskodjl
 if not hasattr(traceback.linecache, "CPY_CACHE"):

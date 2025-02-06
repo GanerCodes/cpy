@@ -68,7 +68,59 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂)  ≺
  niladic, monadic, dyadic, Ambivalent/variadic
  nullary,   unary, binary,        unary+binary
  󷰾/󷱀: not unary_invariant
- 󷰿: don't auto-curry binary
+ has_mod
+ 0 󷹚  ⴲ􋉊   ≡ ƒ(𝕄)
+ 1 󷹚 𝕏ⴲ􋉊􌥡  ≡ ƒ(𝕏, 𝚜=𝕄)
+      ⴲ􋉊􌥡𝕏 ≡ ƒ(𝕏, 𝚜=𝕄)
+ 󷰾 󷹚 𝕏ⴲ􋉊􌥡  ≡ ƒ(𝕏, ␀, 𝚜􊽨=𝕄)
+      ⴲ􋉊􌥡𝕐 ≡ ƒ(␀, 𝕐, 𝚜􊽨=𝕄)
+ 2 󷹚 𝕏ⴲ􋉊􌥡𝕐 ≡ ƒ(𝕏, 𝕐, 𝚜􊽨=𝕄)
+ 𝟐
+ 3 󷹚 𝕏ⴲ􋉊􌥡𝕐 ≡ ƒ(𝕏, 𝕐, 𝚜􊽨=𝕄)
+   󷹚 𝕏ⴲ􋉊􌥡  ≡ ƒ(𝕏, ␀, 𝚜􊽨=𝕄)
+   󷹚  ⴲ􋉊􌥡𝕐 ≡ ƒ(𝕐, ␀, 𝚜􊽨=𝕄)
+ 󷱀 󷹚 𝕏ⴲ􋉊􌥡𝕐 ≡ ƒ(𝕏, 𝕐, 𝚜􊽨=𝕄)
+   󷹚 𝕏ⴲ􋉊􌥡  ≡ ƒ(𝕏, ␀, 𝚜􊽨=𝕄)
+   󷹚  ⴲ􋉊􌥡𝕐 ≡ ƒ(␀, 𝕐, 𝚜􊽨=𝕄)
+
+ 󷹇 we curry operators in order ⟞, ⟝, 𝕄
+ 󷹇 don't curry optional ops
+   ⌽     nilary; requires modifier
+ ⬤ ⌽􊽨    unary; suffix only; modifier optional
+ ⬤ ⌽􋅂    unary; suffix only
+   ⌽􋅂 ⬤  unary; prefix only
+   󷸟􋅂    unary; sided
+   ⌽􋅂    unary; sideless
+ ⬤ ⴲ􋅂 ⬤  binary; unary curries to mod
+ ⬤ ⴲ􊽨 ⬤  binary; unary curries corresponding side
+ ⬤ ⌽􊽨 ⬤  binary; unary curries to left
+ ⬤ ϙ􋅂 ⬤  variadic
+ ⬤ 󷸟􋅂 ⬤  variadic; sideless
+
+  󷺗􋅂     nilary ; requires modifier
+ 𝒙←􊽨      unary ; suffix only; modifier optional
+ 𝒙←􋅂      unary ; suffix only
+  →􋅂𝒙     unary ; prefix only
+ 𝒙󷺤􋅂𝒚     unary ; sided
+ 𝒙󷺤􋅂𝒙     unary ; sideless
+ 𝒙∧􋅂𝒚    binary ; unary curries to mod
+ 𝒙∧􊽨𝒚    binary ; unary curries corresponding side
+ 𝒙⩚􋅂𝒚    binary ; unary curries corresponding side
+ 𝒙⩚􊽨𝒚    binary ; unary curries to left side
+ 𝒚⩚􊽨𝒙    binary ; unary curries to right side
+ 𝒙∨􋅂𝒚  variadic 
+ 𝒙⩛􋅂𝒚  variadic ; sideless
+
+ 𝕏ⴲ􋉊𝕐 󷹚 need 𝕏 𝕐 𝕄
+ 𝕩ⴲ􋉊𝕪 󷹚 need 𝕩 or 𝕪 and 𝕄
+ 𝕩ⴲ􋉊􌥡𝕪 󷹚 need 𝕩 or 𝕪 and 𝕄
+ binary   curry-mod? x󰛔ᶻy = (󰛔ᶻ)(x,y) = (x󰛔y)(z)
+ unary    curry-mod? xᓕʸ  = (ᓕʸ)(x  ) = (xᓕ )(y)
+ variadic curry-mod? 
+ 
+
+ ⊢ OPER(type, , )
+
 ⊢ OPWRAP_(ƒ, ⠤𝔸):
     ¿𝔸:
         ⊢ ⴼ(ꬶ):
