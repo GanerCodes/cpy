@@ -29,7 +29,9 @@ print_ex = lambda e: print(''.join(traceback.format_exception(type(e), e, e.__tr
 ᖲ, ᖱ, ᒪ = bool, dict, list
 ᔐ, ᒍ, ᖇ, ⵉ, ⵐ = str, str.join, str.replace, str.split, str.strip
 Т, ᐹ, ⵌ, ⴷ, ⴸ = type, isinstance, len, all, any
-ᴍ, ꟿ, ᴍᴍ = wrg(map), wrg(starmap), lambda n,f,l: ᴍ(f,l) if n<2 else [ᴍᴍ(n-1,f,c) for c in l]
+def ᴍ(*𝔸,**𝕂):return[*map(*𝔸,**𝕂)]
+def ꟿ(*𝔸,**𝕂):return[*starmap(*𝔸,**𝕂)]
+ᴍᴍ = lambda n,f,l: ᴍ(f,l) if n<2 else [ᴍᴍ(n-1,f,c) for c in l]
 ᖵ, ζ = wrg(filter), wrg(zip)
 SMD, CMD, PRP = staticmethod, classmethod, property
 enum = enumerate
