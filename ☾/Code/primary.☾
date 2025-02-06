@@ -83,20 +83,6 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂)  ≺
    󷹚 𝕏ⴲ􋉊􌥡  ≡ ƒ(𝕏, ␀, 𝚜􊽨=𝕄)
    󷹚  ⴲ􋉊􌥡𝕐 ≡ ƒ(␀, 𝕐, 𝚜􊽨=𝕄)
 
- 󷹇 we curry operators in order ⟞, ⟝, 𝕄
- 󷹇 don't curry optional ops
-   ⌽     nilary; requires modifier
- ⬤ ⌽􊽨    unary; suffix only; modifier optional
- ⬤ ⌽􋅂    unary; suffix only
-   ⌽􋅂 ⬤  unary; prefix only
-   󷸟􋅂    unary; sided
-   ⌽􋅂    unary; sideless
- ⬤ ⴲ􋅂 ⬤  binary; unary curries to mod
- ⬤ ⴲ􊽨 ⬤  binary; unary curries corresponding side
- ⬤ ⌽􊽨 ⬤  binary; unary curries to left
- ⬤ ϙ􋅂 ⬤  variadic
- ⬤ 󷸟􋅂 ⬤  variadic; sideless
-
   󷺗􋅂     nilary ; requires modifier
  𝒙←􊽨      unary ; suffix only; modifier optional
  𝒙←􋅂      unary ; suffix only
@@ -117,9 +103,6 @@ OP_BSTAR_ = ƒ↦󰲡ƒ(⠤x ,⠤𝔸,⠶𝕂)  ≺
  binary   curry-mod? x󰛔ᶻy = (󰛔ᶻ)(x,y) = (x󰛔y)(z)
  unary    curry-mod? xᓕʸ  = (ᓕʸ)(x  ) = (xᓕ )(y)
  variadic curry-mod? 
- 
-
- ⊢ OPER(type, , )
 
 ⊢ OPWRAP_(ƒ, ⠤𝔸):
     ¿𝔸:
