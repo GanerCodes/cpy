@@ -1,17 +1,17 @@
-CHECK_REPOS       = ✗
-NERDFONT          = ✗
-CUSTOM_SYMBOLS    = ✗
-PROCEDUAL_CHARS   = ✗
+CHECK_REPOS       = ✓
+NERDFONT          = ✓
+CUSTOM_SYMBOLS    = ✓
+PROCEDUAL_CHARS   = ✓
 GENERATE_XCOMPOSE = ✓
 OUTPUT_EXTS       = ‹otf ttf woff2›⍭
 PATH_CODE_CONFIG  = ‹~/.config/VSCodium/User/settings.json›
 COPY_OUT_XCOMPOSE = ‹/c/X11_Configs/.XCompose›
-COPY_OUT_FONT     = ✗ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
+COPY_OUT_FONT     = ✓ ∧ ‹/c/Fonts/99_JuliaMono-Regular.ttf›
 
 DAT = ␛
 󰦥󰦥󰦥󰦥󰦥
 ⦑c⦑0af⦒b⦒ 't ⟶ ✝
-¡PINK    ⦑c⦑ff55ff⦒⦒ ␠ ¡ORANGE ⦑c⦑f9a619⦒⦒
+¡PINK    ⦑c⦑ff55ff⦒⦒ ␠ ¡ORANGE ⦑c⦑fa2⦒⦒
 ¡DBLUE   ⦑c⦑5a45f6⦒⦒ ␠ ¡LBLUE  ⦑c⦑67f8f1⦒⦒
 ¡YELLOW  ⦑c⦑f6d645⦒⦒ ␠ ¡RED    ⦑c⦑ff3333⦒⦒
 ¡REDPINK ⦑c⦑f64585⦒⦒ ␠ ¡GREEN  ⦑c⦑7feb2d⦒⦒
@@ -246,9 +246,10 @@ c⟦ ⁅ c⟦-|/\+<>*[]htflnpdsczZ⟧
    ⁅ o⟦dr⟧                     ⟶ ᔨ         ⁆
    ⁅ p⟦adr⁅t⟨d4⟩⁆⟧             ⟶ 󰸵󰸷☽⯟◌⯝⚸    ⁆
    ⁅ r⟦adfiso[=-]p⟧            ⟶ ⬓⬒󱅏▢󷸹󷸻󷸸󷸺ᕋ⁆
-   ⁅ s⟦01smnpw⟧                ⟶ 󷹎󷹍󷹌ꟿⴵ⍭⥉    ⁆
+   ⁅ s⟦01stmnpw⟧               ⟶ 󷹎󷹍󷹌⬄ꟿⴵ⍭⥉   ⁆
    ⁅ t⁅m⟦𝕊s⟧⁆                  ⟶ 󰔛󱫩         ⁆
-   ⁅ w⟦⁅⟦ᐦp⟧⟦ᐦt⟧𝕊⁆⁅␛!⟦𝕊+-⟧⁆⟧   ⟶ ᗢᙧᙎᙡ󰔶    ⁆
+   ⁅ w⟦ᐦp⟧⟦ᐦt⟧𝕊                ⟶ ᗢᙧᙎᙡ       ⁆
+   ⁅ 1⟦𝕊=-⟧                    ⟶ 󰔶        ⁆
    ⁅ ⟦sf⟧⟦+-⟧                  ⟶ 󰒼󰒽󰈲󰈳       ⁆
    ⁅ ⟦()[]{}⟧                  ⟶ ❴❵␛⁅␛⁆␛󰅁␛󰅂 ⁆
    ⁅ ⟦␛"^\⁅/⟦𝕊/⟧⁆⟧             ⟶ ᐦ⌃∖🟑֎      ⁆
@@ -282,15 +283,15 @@ weed⟦𝕊/⟧ ⟶ 󰞦󱙮
 ᴍdeso⟶"\overline{}"
 shrug⟶"⎺⟍_⟨⍩⟩_⟋⎺"
 ¡ℭ ⟨DBLUE⟩               󷰻ᐦ¶□ᗜ󰈙⟞⟝ńś
-¡ℭ ⟨DORANGE⟩             󷰺󱀝ə
 ¡ℭ ⟨YELLOW⟩              󷰹ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻𝚲⥌↦␛󰅁␛󰅂
+¡ℭ ⟨DORANGE⟩             󷰺󱀝ə
 ¡ℭ ⟨LBLEEN⟩              󷰙󱀘󱟱󱫬↪⭝⭜⨡⮌↺⇥⮂➰∀=⍮⍘󷹆󷸴⍈⸘¿␛¡
 ¡ℭ ⦑c⦑f6b⦒             ⦒ 󷰚⬅➡←→⭠⭢⥉
 ¡ℭ ⦑c⦑f3b⦒             ⦒ 󷰛≔≕󷸉󷸎󷸊󷸌󷸋󷸍⨳
 ¡ℭ ⦑c⦑e3b⦒             ⦒ 󷰜⨳
 ¡ℭ ⦑c⦑f77⦒             ⦒ 󷰝∨⩔󷺥󷺫󷺤󷺦󷸏󷸐
 ¡ℭ ⦑c⦑c66⦒             ⦒ 󷰞∧⩓󷺒󷺬󷺑󷺓⩚
-¡ℭ ⟨DRED⟩                󷰟*\/<>≪≫⩟⊼⊻⊽⥱󷷼
+¡ℭ ⦑c⦑b56⦒             ⦒ 󷰟*\/<>≪≫⩟⊼⊻⊽⥱󷷼
 ¡ℭ ⦑c⦑6cf⦒             ⦒ 󷰠ᖘ⨁⨀󰈳󰈲ꟿᴍſϜᙎᙡᗢᙧ󰒼󰒽󱖔
 ¡ℭ ⦑c⦑b9d⦒             ⦒ 󷰡ፓ󷷴󷷳∫󷷹󰔶ᣆ∘○⍜󰬫󰬩󱖚󱖘⊚⊛⍟⊜🟕🟖
 ¡ℭ ⦑c⦑c08⦒             ⦒ 󷰢ᓕᕋ󱑼󷹅ᐹᐴ󷹵󷹴
@@ -308,7 +309,7 @@ shrug⟶"⎺⟍_⟨⍩⟩_⟋⎺"
 ¡ℭ ⦑c⦑ff5⦒             ⦒ 󷰮¬⌐¯
 ¡ℭ ⦑c⦑ce3⦒             ⦒ 󷰯…⌃󷷺
 ¡ℭ ⦑c⦑ad1⦒             ⦒ 󷰰󷹁∾
-¡ℭ ⟨ORANGE⟩              󷰱®󱣩∅⍁󷹘⍖󰻾ℶℵ󰮈ᔐ󱠨󰋺
+¡ℭ ⦑c⦑fa2⦒             ⦒ 󷰱®󱣩∅⍁󷹘⍖󰻾ℶℵ󰮈ᔐ󱠨󰋺
 ¡ℭ ⦑c⦑f01⦒             ⦒ 󷰲≺≻⊀⊁≼≽⋠⋡≾≿⋨⋩⪱⪲⟥⟤´꜠ᵜ𐞑ᔨ
 ¡ℭ ⦑c⦑9b7⦒             ⦒ 󷰳#$?.,:;¨⋮⋯⋰⋱⠤:⠶′″‴⁗
 ¡ℭ ⦑c⦑f0a⦒             ⦒ 󷰴󰆴⨃➤⯈⯅⯆⯇◁△▽▷

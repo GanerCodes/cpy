@@ -6,7 +6,7 @@ _insp(str(moon_dir / "compiler"))
 from hashlib import sha256 as _sha256 ; sha256 = lambda s: _sha256(s.encode("utf-8")).hexdigest()
 from unicodedata import is_normalized, name
 from time import time, sleep
-from sys import setrecursionlimit
+from sys import setrecursionlimit, exit
 from collections import namedtuple as NT
 from functools import reduce, partial as ρ
 from itertools import accumulate, pairwise, starmap, chain, filterfalse, groupby

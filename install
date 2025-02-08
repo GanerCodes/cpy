@@ -12,14 +12,14 @@ chk_py_ver() {
 [ -z "$PYTHON" ] && chk_py_ver "python3"    || :
 [ -z "$PYTHON" ] && chk_py_ver "python3.13" || :
 [ -z "$PYTHON" ] && chk_py_ver "python3.12" || :
-[ -z "$PYTHON" ] && exit 1
+[ -z "$PYTHON" ] && echo "Unable to find a valid python install!"
 
 chk_py_pip() { "$PYTHON" -c "import pip" 2>/dev/null; }
 chk_py_pip || {
     echo "pip is not installed. Running ensurepip."
     "$PYTHON" -m ensurepip; }
 chk_py_pip && "$PYTHON" -m pip install --break-system-packages line_profiler regex json5 clipboard \
-    || echo "Failed run pip. Please check your Python setup."
+    || echo "Failed to run pip ⎺⟍_⟨⍩⟩_⟋⎺"
 
 DEST=$([ "$(id -u)" -eq 0       ] && echo "/bin/☾"             || (\
        [ "$(uname)" == "Darwin" ] && echo "/usr/local/bin/☾"   || (\
@@ -28,7 +28,7 @@ echo "Installing to \"$DEST\""
 
 (mkdir ./bin || :) >/dev/null 2>&1
 echo '#/bin/sh' > ./bin/☾
-echo 'exec' \"$PYTHON\" '-u' \""$(realpath refresher.py)"\" '"$@"' >> ./bin/☾
+echo 'exec' \"$PYTHON\" '-S' '-u' \""$(realpath refresher.py)"\" '"$@"' >> ./bin/☾
 chmod a+x ./bin/☾
 
 (rm "$DEST" || :) >/dev/null 2>&1

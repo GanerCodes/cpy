@@ -33,12 +33,12 @@ UGX_CREATE = ⥌x,d=✗↦󷺻UGX_RUN(winder(𝑙(⟞)), x)≕y≅␀ ⭜d⭝ y�
 ⊢ UGX_SCAN(𝚚, ƒ, 𝗆):
     ¿¬𝚚: ↪ 𝗆≡␛⭜⍁⭝␀
     𝑥 = ƒ(𝚚.peek)
-    ¿𝗆≡ᐦ    : ↪ 𝑥 ⭜(𝚚.next≕p≅󰮈 ⭜⍁⭝ p⛶)⭝ ␀
+    V = 𝚚.next≕p≅󰮈 ∨ 𝑥≅󰮈 ⭜⍁⭝ p⛶
+    ¿𝗆≡ᐦ    : ↪ 𝑥⭜V⭝␀
     ¿𝗆≡␛􊽬   : ↪ 𝑥⭜␀⭝⍁
     ¿𝗆≡␛􋅋   : ↪ 𝑥⭜⍁⭝␀
     ¿𝗆≡␛⁺∧¬𝑥: ↪ ␀
     ¿𝗆≡␛∧¬𝑥: ↪ ⍁
-    V = 𝚚.next≕p≅󰮈 ⭜⍁⭝ p⛶
     ➰𝚚:
         ¿¬ƒ(𝚚.peek): ⇥
         ¿𝚚.next≕p≇󰮈: V.append(p)
@@ -67,7 +67,6 @@ UGX_CREATE = ⥌x,d=✗↦󷺻UGX_RUN(winder(𝑙(⟞)), x)≕y≅␀ ⭜d⭝ y�
         ¿𝗋≅󰮈: V = ⍁
         ¿V≇␀ ∧ 𝗋≇□: V󷸊∘ᵜ𝗋  󰤱 more ⍈ types?
         ARROW_TARG.pop(󷰾)
-        
         ¿V≅␀: ↪V
         ↪ V ᣆ􍾒􋁤􋂝ᴮ ⛶
     ⸘𝗍∈␛∧␛∨:

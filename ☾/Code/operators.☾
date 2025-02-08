@@ -76,11 +76,15 @@ LITERAL_OPS_􊯛₋ = _
         ¿𝕏≡␛󷸹: ↪ v₀₊ₛ
         ¿𝕏≡␛󷸺: ↪ v􍨄₋ₛ
         ¿𝕏≡␛󷸻: ↪ v₀₊ₛ, v􍨄₋ₛ
+    ¿xᐹslice:
+        x = [⠤range(x.start, x.stop, x.step)]
     ¿𝘪:
         ¿xᐹ𝗜: x󷸊⭥
         ⸘yᐹ𝗜: y󷸊⭥
-    ¿𝗜∘x ∧ 𝗜∘y:
+    ¿𝗜∘x ∧ 𝗜∘y:  󰤱 this ignores mode atm
         ↪ [xₕ﹪􊹳ₓ∀h∈y﹕﹕ₛ]
+    ¿𝗜∘x ∧ yᐹslice:  󰤱 this ignores mode atm
+        ↪ x
     ¿𝗜∘x ∧ yᐹ𝑖:
         ¿𝕏≡␛󷸹: ↪ x􋘲﹕􋘲􋘲﹕ₛ
         ⸘𝕏≡␛󷸺: ↪ x₁﹕₊₁﹕ₛ
@@ -556,14 +560,15 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
     ↪ is_str⭜𝚡⨝ᐦ⭝𝚡
 
 @OPWRAP_
-⊢ ᖘ´(𝚡=␀,𝚢=␀,s=␀):
+⊢ ᖘ´(𝚡=␀,𝚢=␀,s=␀):  󰤱 dicts and such
     ¿𝚢≅␀: 𝚡,𝚢 = 𝚢,𝚡
     𝚢≇␀ ⨳ ‹ᖘ needs right side›
     ⊢ ƒ(𝚡):
         𝚡 = (𝚡ᐹᔐ ≕ is_str) ⭜𝚡󰌷⭝ 𝚡ᐹ𝑑 ⭜𝚡.copy⭝ [⠤𝚡]
-        ids = sᣆ􋊧󷺹(𝚡)
-        ¿idsᐹ𝗜∧ᔐ󷹴ids: idsᐖ⟝≇󰮈⭜𝚡􍪴≔ᑈ𝚢(𝚡󷸻ids)
-        ¡           : idsᐒ⟝≇󰮈⭜𝚡􍪴≔ᑅ𝚢(𝚡 ᵢₛ)
+        ids, TD = sᣆ􋊧󷺹(𝚡), ⍁
+        ¿idsᐹ𝗜∧ᔐ󷹴ids: idsᐖ⟝≅󰮈⭜TD.append(⟞)⭝𝚡􍪴≔ᑈV≔𝚢(𝚡󷸻ids)
+        ¡           : idsᐒ⟝≅󰮈⭜TD.append(⟞)⭝𝚡􍪴≔ᑈV≔𝚢(𝚡 ᵢₛ)⛶
+        ∀x∈TD󰒽: 󰆴𝚡ₓ
         ↪ is_str ⭜𝚡⨝ᐦ⭝ 𝚡
     ↪ 𝚡≅␀ ⭜ƒ⭝ ƒ(𝚡)
 
