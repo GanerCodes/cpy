@@ -242,8 +242,6 @@ lang.ops["≕"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 lang.ops["󷸎"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 lang.ops["󷸌"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
 lang.ops["󷸍"] = OP(k, "B=", lang.ops["␀ASGN_MRK_L"].L, IG, v.f)
-
-# janky? we need test cases broooo
 lang.ops["⬅"].R |= {"→", "⭢"}
 lang.ops["←"].R |= {"⭢"}
 
@@ -772,11 +770,8 @@ generator(*KEYWORD_NODE_NAMES, "oper_lit", "var", "var_spec")(lambda n: py_escap
 generator("NULL")(lambda n: "NULL")
 
 @generator("group")
-def gen_group        (n):
+def gen_group(n):
     txt = n.C[0].as_txt()
-    if txt == '⟦': # broken
-        content = next(filter(ⵐ, ᴍ(gen, n.C[1:-1])))
-        return f'''(exec("def _EXE():\\n{py_escape_string(force_indent(content))}",globals(),locals()),_EXE)[1]()'''
     return txt + ᒍ(ᐦ, ᴍ(gen, n.C[1:-1])) + n.C[-1].as_txt()
 
 generator("str_guts"              )(lambda n: py_escape_string(n.as_txt()))
@@ -787,7 +782,7 @@ generator("str_spec_char"         )(lambda n: "'" + py_special_mapper(n.as_txt()
 def make_str_cpy(n):
     r='""f"'
     for c in n.c:
-        if   c.t == "str_escape"   : r += py_escape_string(c.as_txt())
+        if   c.t == "str_escape"   : r += py_escape_string (c.as_txt())
         elif c.t == "str_spec_char": r += py_special_mapper(c.as_txt())
         else                       : r += gen(c)
     return r + '"'

@@ -1,15 +1,15 @@
 § TODOs ------------------------------------
 
     󰤱  Documentation (oh gosh people are finding the project now)
-    󰤱  ∅􍧱 ⍁􍧱
     󰤱  Angle of complex number
     󰤱  bootstrap everything
     󰤱  option for operator to ignore superscripts like →
     󰤱  __setminus__, __crossprod__, __union__, __intersection__, __subset__ ; mutex
     󰤱  normalize binds/stuff for edits/cross-plat
-        󰤱 SCRIPT_MAP hardcoded in moonvert rn
+        󰤱 SCRIPT_MAP hardcoded in moonvert rn, also rewrite moonvert lol
     󰤱  regex but better
     󰤱  add the edge cases for the new compose ops
+        󰤱 rlly combinators need overhaul like where is good under
     󰤱  Ponder shape ⥊ operator
         󷹇 1st number is outer layer
         default: hypercube w/ max dim?
