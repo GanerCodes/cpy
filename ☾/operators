@@ -186,6 +186,7 @@
         `[1,2] 󷹅 [1,2,3] ≡ [[1,2],[2,3]]`
 󷰢 ᓕ 𝚡󷺤􋅂𝚡 ᴍcat𝕊 at indicies
     `[5,‹joe›,‹zek›]ᓕ²󰁱¹ ≡ "e"`
+    `[1,2,[5,2,2,9]] ᓕ²󰁱³ ≡ 9`
     󰤱˜ docs
 󷰢 ᕋ󰁌 𝚡󷸐􋅂𝚡 ᴍcrp modify section
     `[1,2,3] ᕋ¹ 9 ≡ [1,9,3]`
@@ -337,7 +338,7 @@
     Returns length of 𝔦
     `‹egg›🃌 ≡ 3`
     `[1,2]🃌 ≡ 2`
-󷰭 ⤈⤉ 𝚡∨􊽨𝚡 ᴍca⟦ws⟧ {min,max}
+󷰭 ⤈⤉ 𝚡∨􊽨𝚡 ᴍca⟦sw⟧ {min,max}
     𝗜 ⤈/⤉ 𝗙?󰻾
     min/max under right
     󷹇 Supports ᔨ and 󰮈
@@ -357,7 +358,7 @@
     󷹇 Negative modifier keeps original structure
     `[‹ab›, ‹cde›]⭥􍧱 ≡ [[(0,0),(0,1)], [(1,0),(1,1),(1,2)]]`
     󰤱˜ docs
-󷰭 ↨ 𝚡󷺤􊽨𝚡 ᴍe𝕊 enumerate (zip with index)
+󷰭 ↨ 𝚡󷺤􊽨𝚡 ᴍce𝕊 enumerate (zip with index)
     Both-sides-indistinguishable unary
     𝕏↨ is identical to (𝕏⭥)󱑼𝕏
     ↨ⁿ􋁉􋀐 works just like ⭥ except the indicies are tupled with the values

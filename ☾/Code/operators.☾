@@ -143,14 +143,12 @@ LITERAL_OPS_􊯛₋ = _
 
 @OPWRAP_(⠤‹󷹌󷹍󷹎›)
 ⊢ _(𝕏, x=␀, y=␀, s=󷰾):  󰤱 ᔨ
-    ¿sᐹ𝑡: n, L = s₀≡𝑙 ⭜ sᴙ  ⭝ s
-    ¡   : n, L = s ≡𝑙 ⭜ 󷰾⋄✓ ⭝ s⋄✗
-    ¿x≅␀∨¬𝗜(x): x,y = y,x
+    ¿sᐹ𝑡: n, L = s₀≡𝑙 ⭜sᴙ ⭝ s
+    ¡   : n, L = s ≡𝑙 ⭜󷰾⋄✓⭝ s⋄✗
     
-    ¿¬L∧xᐹᔐ∧(y≅␀∨yᐹᔐ):
-        𝓐 = y≅␀ ⭜ () ⭝ (y,)
+    ¿¬L ∧ xᐹᔐ ∧ (y≅␀∨yᐹᔐ):
+        𝓐 = y≅␀ ⭜()⭝ (y,)
         ¿𝕏≡␛󷹎: ↪x.split(⠤𝓐, maxsplit=n) 󰈲
-    
     ¿y≅␀: y=¬
     
     ¿yᐹᔐ≕YS∧¬L: x, y, Y, Δ = xᙡ0⋄(y🃌-1)ᴍ󷺹󰈲→⨝,yᑀ≡ᑅ, y🃌, y🃌-1
@@ -176,7 +174,7 @@ LITERAL_OPS_􊯛₋ = _
         r.append(b)
     ⸘x󰃬﹕:
         r.append(x󰃬﹕)
-    ↪ YS ⭜ (rᐵᐹ𝑙⭜⟞ᐵ₀ᐸ⨝⭝⟞) ⭝ r
+    ↪ YS ⭜(rᐵᐹ𝑙 ⭜⟞ᐵ₀ᐸ⨝⭝ ⟞)⭝ r  rᖘ􍯏􋐉􎔞􍯏􊾗􋇙⨝○󷺺₀ ?
 
 @OPWRAP_(⠤‹⊚⊜🟕🟖⊛⍟›)
 ⊢ _(𝕏, ƒ=␀, 𝑔=␀, s=∞):  󰤱 inconsistant as heck, fix b4 js moment
@@ -546,10 +544,10 @@ CUSTOM_CORSP.extend([⫰,⫯,󷹒])
             ✗⨳‹whom›
         ↪ x.__inverse__()
     ¿hasattr(x, "__inverse__"):
-        ↪ s≅␀⭜ƒ()⭝ƒ(s)
+        ↪ s≅␀ ⭜ƒ()⭝ ƒ(s)
     ¿𝗜(s):
         d = sᴍx→󱑼s→󰲡x₀󰅂ꟿⱽ󰲣yᴍ󰲡x₁
-        ↪ 𝚲𝔸🃌≡0⭜d⭝d.get(𝔸₀,[])
+        ↪ 𝚲𝔸 ⭜d.get(𝔸₀,[])⭝ d
     ✗⨳‹No __inverse__ for ⟦x⟧ nor valid domain provided.›
 
 @OPWRAP_
@@ -557,9 +555,8 @@ CUSTOM_CORSP.extend([⫰,⫯,󷹒])
     𝚡ᐹ𝗜 ⨳ ‹⟦𝚡⟧󷹵𝗜›
     ⊢ ƒ(s):
         ¿s󷹵𝗜 ∨ ᔐᐴs: s󷸊⛶
-
-        ꬶ = 󷺹ᐹℤ ⭜⟞%🃌𝚡⭝ ⟞
-        ↪ s ſ􀳉 󷺹􍳲₍􍪸₎󷺿
+        𝗀 = 󷺹􍪸􊫕􊭎􋘲􀸨􍪸﹪􊹳􍪴􀸦􋘲􍪸󷺿
+        ↪ s ſ􀳉 𝗀
     ↪ s≅␀ ⭜ƒ⭝ ƒ(s)
 
 @OPWRAP_

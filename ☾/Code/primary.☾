@@ -7,7 +7,7 @@ exec("from math import *")
 ⮌ random ⨡ shuffle, choice, uniform, randint
 ⮌ types ⨡ UnionType
 ⮌ util ⨡ moon_dir ; cpy_dir = moon_dir
-⮌ sys ⨡ stdout, stderr, path
+⮌ sys ⨡ stdout, stderr, path, exit
 ⮌ site ⨡ getsitepackages ; path.extend(getsitepackages())
 
 LITERAL_OPS_ = {
