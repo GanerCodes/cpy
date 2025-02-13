@@ -77,7 +77,7 @@
     𝗜 Ϝ 𝗙
     fold, except returns the intermediate values
         `[1,2,3,4] Ϝ + ≡ [1,3,6,10]`
-󷰠 ⨀⨁ 𝚡∨􊽨𝚡 ᴍo⟦+.⟧ {sum,product}
+󷰠 ⨁⨀ 𝚡∨􊽨𝚡 ᴍo⟦+.⟧ {sum,product}
     𝗜 ⨁/⨀
     fold over left with + or ⋅, with modifier as starting value
 󷰠 󰈲󰈳 𝚡∨􊽨𝚡 ᴍcf⟦+-⟧ filter {positive,negative}
