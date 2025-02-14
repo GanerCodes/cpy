@@ -478,3 +478,147 @@
     󷹘: Pops off last element from ugex stack
     󷹘ⁿ􋁉􋀉􋁗󰁸􋔛󰁹: Pops off last n elements from ugex stack
     ⍖: Same as 󷹘 but doesn't remove from ugex stack
+
+
+
+0 󱀘   ᴍccl Python "class"
+0 ⨡   ᴍcim Python "import"
+0 ⮂   ᴍcy𝕊 Python "yield"
+0 ↪   ᴍcr𝕊 Python "return"
+0 ⮌   ᴍcf𝕊 Python "from"
+0 ↺   ᴍcc𝕊 Python "continue"
+0 ⇥   ᴍcb𝕊 Python "break"
+0 ➰   ᴍcl𝕊 Python "while"
+0 ∀   ᴍAA Python "for"
+0 ⠤⠶   ᴍc⟦dD⟧𝕊 Python {*,**} for {vargs,kargs}
+0 ¿⸘¡   ᴍ⟦⁅?⟦?!⟧⁆⁅!!⁆⟧ Python {if,elif,else}
+0 󰆴   ᴍcT𝕊 Python "del"
+0 ⭜⭝   ᴍce⟦nl⟧ ternary {if,else}
+    "x ⭜ y ⭝ z" ⟶ y if x else z
+    "x ⭜ y" ⟶ y if x else □
+>¡ℭ ⟨LBLEEN⟩ 󱀘⨡⮂↪⮌↺⇥➰∀¿⸘␛¡⭜⭝⠤⠶󰆴
+
+0 ⬅➡   ᴍa⟦⁅AA⁆⁅DD⁆⟧ push right into {left,right} (Strongest)
+0 ←→   ᴍa⟦ad⟧𝕊 push {right,left} into {left,right} (Medium)
+0  ⥉   ᴍcsw swap right and left (Medium)
+0 ⭠⭢   ᴍa⟦AD⟧𝕊 push {right,left} into {left,right} (Weakest)
+0 ≔≕   ᴍ⟦⁅eqd⁆⁅deq⁆⟧ Assign to {left,right}
+0 󷸉󷸎   ᴍ⟦⁅eqd⁆⁅deq⁆⟧ Assign to {left,right}, return previous value
+0 󷸊󷸌   ᴍ⟦⁅eqm⁆⁅meq⁆⟧ Assign to {left,right}, foward value
+0 󷸋󷸍   ᴍ⟦⁅eqM⁆⁅Meq⁆⟧ Assign to {left,right}, foward value, return previous value
+>¡ℭ ⦑c⦑f6b⦒⦒ 󷰚⬅➡←→⭠⭢⥉
+
+󷰾 𝔸𝕂   ᴍq⟦ak⟧ λ {vargs,kargs}
+󷰾 𝓐𝓚   ᴍMS⟦AK⟧ whisker {vargs,kargs}
+󷰾 󰮈   ᴍcot signal delete element from iteration
+>   ¡ℭ ⦑c⦑fa2⦒⦒ 󰮈
+    Many iteration operators disgard values if their operand function returns this.
+    `[1,2,3,4,5]ᐵ>2⭜⟞⭝󰮈ᐸ ≡ [3,4,5]`
+    `[0,1,2,3,4,5,6]󰈲􍯏􊽮󷺹<4⭜✓⭝⟞>4⭜󰮈ᐸ ≡ [0,1,4,9,4]`
+    󰤱˜ docs
+󷰾 ⬤   ᴍooo𝕊 dummy variable for currying
+>   ¡ℭ ⟨DGREEN⟩ ⬤
+    See 
+
+󷰾 ✓✗   ᴍhe⟦kx⟧ {true,false}
+󷰾 ⴳⴴ   ᴍcc⟦tf⟧ {truthy,falsey} function that always returns {true,false}
+>¡ℭ ⦑c⦑f00⦒⦒ ✗ⴴ ␠ ¡ℭ ⦑c⦑0f0⦒⦒ ✓ⴳ
+󷰾 □   ᴍ[] none
+󷰾 ᐦ   ᴍc" empty string
+󷰾 ∞   ᴍ88 infinity
+󷰾 îĵ󷺈   ᴍ⟦ijk⟧^ {imaginary,j,k} unit
+󷰾 ℇ   ᴍeu𝕊 euler's number
+󷰾 τπ󷺍󷺎󷺏   ᴍ⟦⁅⟦tp⟧𝕊⁆⁅p234⁆⟧ {tau,½τ,½π,½󷺍,½󷺎}
+󷰾 􋐳􋐲􋐴􋑯   ᴍ,⟦⁅cos⁆⁅sin⁆⁅tan⁆⁅log⁆⟧ {cos,sin,tan,log} Function (maybe operator in future?)
+󷰾 𝗙   ᴍwsF check if function
+󷰾 𝗜   ᴍwsI check if iterable
+󷰾 𝗛   ᴍwsH check if hashable, if so, return hashed value
+>¡ℭ ⟨DBLUE⟩ □ᐦ∞îĵ󷺈ℇ󷺍󷺎󷺏
+
+󷰾 𝚲󰲡󰲣󰲥󰲧󰲩󰲫   ᴍ⟦⁅cZ𝕊⁆⁅wc⟦123456⟧⁆⟧ λ function of form ⥌{,x,xy,xyz,xyzw,xyzwv,xyzwvu}↦
+󷰾 ⥌↦󰅂   ᴍ⟦⁅cz𝕊⁆⁅amd⁆⁅c}⁆⟧ {declare,start,close} λ function
+󷰾 ᐳᐸ   ᴍ"   ⟦AD⟧ {left,right} whisker no args
+󷰾 ᑀᑅ   ᴍ >  ⟦AD⟧ {left,right} whisker apply, insert
+󷰾 ᐵᑈ   ᴍ >> ⟦AD⟧ {left,right} whisker apply to elt's, insert
+󷰾 󷺹󷺽   ᴍ| > ⟦AD⟧ {left,right} whisker function, insert
+󷰾 󷺺󷺾   ᴍ|>> ⟦AD⟧ {left,right} whisker function on elt's, insert
+󷰾 ᐒᐘ   ᴍ  >|⟦AD⟧ {left,right} whisker apply, no insert
+󷰾 ᐖᐛ   ᴍ >>|⟦AD⟧ {left,right} whisker apply to elt's, no insert
+󷰾 󷺻󷺿   ᴍ| >|⟦AD⟧ {left,right} whisker function, no insert
+󷰾 󷺼󷻀   ᴍ|>>|⟦AD⟧ {left,right} whisker function on elt's, no insert
+>   ¡ℭ ⟨YELLOW⟩ ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻𝚲⥌↦␛󰅁␛󰅂
+󷰾 ⟞⟝   ᴍ⟦⁅-|⁆⁅|-⁆⟧𝕊 {left,right}-tack arg for {left,right} whisker
+>   ¡ℭ ⟨DBLUE⟩ ⟞⟝
+
+󷰾 𝑏   ᴍwib bool
+󷰾 𝑑   ᴍwid dict
+󷰾 𝑒   ᴍwie Exception
+󷰾 𝑓   ᴍwif float
+󷰾 𝑖   ᴍwii int
+󷰾 𝑙   ᴍwil list
+󷰾 𝑜   ᴍwio object
+󷰾 𝑠   ᴍwis set
+󷰾 𝑡   ᴍwit tuple
+󷰾 𝑦   ᴍwiy bytes
+󷰾 ᔐ   ᴍcs𝕊 str
+>¡ℭ ⦑c⦑fa2⦒⦒ 󱣩ᔐ󱠨󰋺
+
+󷰾 ´   ᴍ'' neutralize operator
+    Forces operator to act as regular variable
+    i.e. "[1,2,3] ⨝ ⋅´" can parse fine but "[1,2,3] ⨝ ⋅" fails
+󷰾 ꜠   ᴍccd duplicate operator arguments
+    Forces binary operator to be unary, duplicating operands.
+    `5+꜠ ≡ 10`
+    `5+꜠+2 ≡ 12`
+󷰾 ᵜ   ᴍccs swap operator arguments
+    `2-ᵜ5 ≡ 3`
+󷰾 ≺   ᴍ~<𝕊 operator prefix binary on list elements
+    Forces binary operator to be unary, splats out operand.
+    `[1,5]≺+ ≡ 6`
+󷰾 ᔨ   ᴍcor correspondence modifier
+    Indicates operator should indicate "where" it happens, sometimes called "select".
+    `[5,2,3,0,0,1]󰈲ᔨ󷺹>1ᐸ ≡ [0, 1, 2]`
+    `[5,2,4,6,1,1]𝌂ᔨ󷺹%2ᐸ ≡ [[0], [1, 2, 3], [4, 5]]`
+    󰤱˜ docs
+>¡ℭ ⦑c⦑f01⦒⦒ 󷰲≺≻⊀⊁≼≽⋠⋡≾≿⋨⋩⪱⪲⟥⟤´꜠ᵜ𐞑ᔨ
+
+󷰾 ⟨⟩   ᴍ⟦⁅[[⁆⁅]]⁆⟧ {begin,close} ugex
+󷰾 ⍮   ᴍ;_ ugex sep
+    󰤱 docs
+󷰾 󷸴   ᴍCD: ugex or
+    󰤱 docs
+󷰾 ⍈   ᴍWBd ugex apply
+    󰤱 docs
+>¡ℭ ⟨LBLEEN⟩ ⍮󷸴⍈
+
+󷰾 𝗻𝗿𝘀𝘁   ᴍws⟦nrst⟧ {newline,carriage return,space,tab} character
+󷰾 ‹›   ᴍcc⟦[]⟧ {›begin,close} magic string
+>   ¡ℭ ⦑c⦑f5a|0fd4⦒B⦑s|1⦒⦒ ‹›
+󷰾 ⟦⟧   ᴍq⟦[]⟧ {begin,close} magic string sub-expr
+󷰾 󰦥   ᴍST: hyperliteral star string
+>   ¡ℭ ⟨DGREEN⟩ 󰦥
+>   ¡ℜ ⦑c⦑7feb2d⦒⦒ "(󰦥{5})"
+    `󰦥󰦥󰦥󰦥󰦥s𝗻␛a\bc s\{/.}tring\󰦥󰦥󰦥󰦥󰦥 ≡ "s𝗻␛a\\bc s\\{/.}tring\\"`
+    Matches everything including all whitespaces until it sees another five stars.
+
+󷰾    ᴍcom Comment
+>   ¡ℭ ⦑c⦑24f115|4f02⦒⦒ ""
+󷰾 🟑֎ JOE ᴍc⟦⁅/𝕊⁆⁅//⁆⟧ Multiline comment{,}
+
+>¡upsidedown ⟨LBLUE⟩ ⟦
+>  ⁅ wu⟦0123456789abcdefoxABCDEFOX⟧ 
+>   ⟶   󷰽󷰾󷰿󷱀󷱁󷱂󷱃󷱄󷱅󷱆󷱇󷱈󷱉󷱊󷱋󷱌󷱍󷱎󷱏󷱐󷱑󷱒󷱓󷱔󷱕󷱖 ⁆
+>  ⁅ᴍwu⟦∞îĵ󷺈ℇτπ󷺍󷺎󷺏⟧
+>   ⟶   󷱩󷱪󷱽󷱾󷱫󷱬󷱭󷱮󷱯󷱰                   ⁆ ⟧
+
+>⟨DBLEEN⟩ ⟦
+>    ⁅ ⟦   ⁅03⁆⁅100⁆⟧ ⟶ ↉󷷉       ⁆
+>    ⁅1⟦23456789⁅10⁆⟧ ⟶ ½⅓¼⅕⅙⅐⅛⅑⅒⁆
+>    ⁅2⟦23456789⁅10⁆⟧ ⟶ ◌⅔◌⅖◌󷶲◌󷶷◌⁆
+>    ⁅3⟦23456789⁅10⁆⟧ ⟶ ◌◌¾⅗◌󷶳⅜◌󷷆⁆
+>    ⁅4⟦23456789⁅10⁆⟧ ⟶ ◌◌◌⅘◌󷶴◌󷷂◌⁆
+>    ⁅5⟦23456789⁅10⁆⟧ ⟶ ◌◌◌◌⅚󷶵⅝󷶹◌⁆
+>    ⁅6⟦23456789⁅10⁆⟧ ⟶ ◌◌◌◌◌󷶶◌◌◌⁆
+>    ⁅7⟦23456789⁅10⁆⟧ ⟶ ◌◌◌◌◌◌⅞󷶺󷷇⁆
+>    ⁅8⟦23456789⁅10⁆⟧ ⟶ ◌◌◌◌◌◌◌󷶻◌⁆
+>    ⁅9⟦23456789⁅10⁆⟧ ⟶ ◌◌◌◌◌◌◌◌󷷈⁆ ⟧

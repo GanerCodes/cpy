@@ -4,11 +4,11 @@ var py, hist=[ᐦ], hist_p=0;
 © tofrac = 󰲡py.globals.get("TOFRAC") (x);
 © flippy = 󰲡py.globals.get("UPSIDEDOWNSYNDROME")ᶠˡⁱᵖ(x);
 
-© safeRunMoon = ⥌val↦py.runPython(‹
+© safeRunMoon = ⥌val↦py.runPython(☾(‹
     try:
-        𝑓("⟦val.replaceAll(⦋/[\\"\n]/g⦌, 󰲡({'\\':‹\\›,'\n':‹␛\𝗻›,'"':‹\"›})ₓ)⟧")
+        𝑓("⟦val.replaceAll(⦋/[\\"\n]/g⦌, 󰲡({"\\":"\\\\","\n":"\\n",'"':'\\"'})ₓ)⟧")
     except Exception as e:
-        print("Error:", e)›);
+        print("Error:", e)›));
 
  mfw "ℚ".length ¬≡ "𝕊".length
 © ᔐs = 󰲡[⠤x].slice(⠤𝔸).join(ᐦ);
