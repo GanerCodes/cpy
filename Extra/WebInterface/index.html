@@ -14,7 +14,6 @@
                 box-sizing: border-box;
                 overflow-wrap: anywhere;
                 text-wrap: wrap;
-                font-size: 25px;
                 line-height: 1.1333333em;
                 font-family: 'JuliaMonoCustom' !important; }
             
@@ -51,13 +50,7 @@
                 flex-flow: column;
                 border: 1px solid #fff;
                 border-radius: 2px; }
-            #symbolTable {
-                flex-grow: 1;
-                display: grid;
-                grid-template-columns: repeat(auto-fill, 27px);
-                justify-items: center;
-                justify-content: center;
-                user-select: none; }
+            #theLeft * { font-size: 25px; }
             .entry, textarea {
                 border: none;
                 width: 100%;
@@ -73,18 +66,40 @@
                 outline: none;
                 height: 1.1em;
                 min-height: 1.1em; }
-            #symbolTable > text:hover  *, button:hover  { background: #102; cursor: pointer; }
-            #symbolTable > text:active *, button:active { background: #214; }
-            #symbolTable > text:hover  { font-size: 110%; }
-            #symbolTable > text:active { font-size: 120%; }
-            #symbolTable text {
+            #symbolTable {
+                flex-grow: 1;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 38px);
+                justify-items: center;
+                justify-content: center;
+                user-select: none; }
+            #symbolTable > * { font-size: 35px; }
+            #symbolTable text:not(:has(> *)):hover , button:hover  { background: #102; cursor: pointer; }
+            #symbolTable text:not(:has(> *)):active, button:active { background: #214; }
+            #symbolTable text:not(:has(> *)):hover  { transform:scale(1.1); }
+            #symbolTable text:not(:has(> *)):active { transform:scale(1.2); }
+            #symbolTable > * { aspect-ratio: 1; }
+            #symbolTable * { text-align: center; }
+            .symbolGroup {
+                display: inline-grid;
+                width: 100%; height: 100%;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+            }
+            #symbolTable > text text:not(:has(> *)), .symbolGroup text {
+                display: block; }
+            
+            .symbolGroup text:not(:has(> *)) {
+                font-size: 50%; }
+            .symbolGroup:not(:has(> :nth-child(3))) text:not(:has(> *)) {
+                font-size: 78%; }
+            #symbolTable > text {
                 display: block;
                 width: 100%;
-                aspect-ratio: 1;
                 align-content: center; }
-            #symbolTable text:not(:has(> *)) {
-                border: 0.5px solid #222;
-                text-align: center; }
+            #symbolTable > text text:not(:has(> *)), .symbolGroup {
+                border: 0.5px solid #222; }
+            
             button { background:#000B;
                      color:#fff;
                      border: 2px solid #fff;

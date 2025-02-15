@@ -160,16 +160,28 @@ except Exception as e:
     󱫬 load_python();
     © styles = 󱫬 (󱫬 fetch("style")).json();
     © docs   = 󱫬 (󱫬 fetch("info" )).json();
-    docs􋁃(⥌[x,y,z]↦󱑼(x,y)􋁃(⥌[x,y]↦{
-        © ε = reformt(highlight(x));
-        ε.title = y;
-        syt􍪙(ε);
-        ε.onclick = 𝚲caret_write(cli, ε􋒷 ∨ QS(‹*:not(text:has(> *))›, ε)􋒷); }));
+     docs􋁃(⥌[x,y,z]↦󱑼(x,y)􋁃(⥌[x,y]↦{
+         © ε = reformt(highlight(x));
+         ε.title = y;
+         syt􍪙(ε);
+         ε.onclick = 𝚲caret_write(cli, ε􋒷 ∨ QS(‹*:not(text:has(> *))›, ε)􋒷); }));
+     syt􍪙(ε);
+    
+    docs􋁃(⥌[x,y,z]↦ {
+        © symbs = 󱑼(x,y)􊾡(⥌[x,y]↦{
+            © ε = reformt(highlight(x));
+            ε.title = y;
+            ε.onclick = 𝚲caret_write(cli, ε􋒷 ∨ QS(‹*:not(text:has(> *))›, ε)􋒷);
+            ↪ ε; });
+        
+        syt􍪙(🃌(symbs)≡1⭜symbs₀
+                       ⭝󱀝 div {𝐶 symbolGroup} ⟦symbs⟧);
+    });
     
     log(‹Loaded Symbol Table›); })();
     
 © ə = ⥌e↦(e.preventDefault(), auto_grow(cli));
-cli.addEventListener("keydown", 󱟱 e => {
+cli.addEventListener("keydown", 󱟱 ⥌e↦{
     © [[Rα, Cα], [Rω, Cω]] = sel_rc(cli);
     ⎉ val = cli.value;
     
