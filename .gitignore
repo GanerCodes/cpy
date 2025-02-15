@@ -16,3 +16,4 @@ __pycache__/
 !/FontCompose/Output/.SCRIPT_MAP
 !/FontCompose/Output/multi.json
 !/FontCompose/Output/style.json
+!/FontCompose/Output/style_regex.json
