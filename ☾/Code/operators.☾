@@ -401,10 +401,10 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
 ⪡´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x ⪢ ¯y       ⭝ x << y)
 ◄´,►´ = RET_L, RET_R
 ⊂´,⊃´ = 󰲣𝑠(x).issubset(𝑠←y), 󰲣𝑠(y).issubset(𝑠←x)
- 󰤱 maybe generalize above to multiset subset for left being list, with 􋇠 disabling that?
+ 󰤱 maybe generalize above to multiset subset for left being list, with 􋇠 disabling that? same for ∖ ∩ ∪
 ⊄´,⊅´ = 󰲣¬(x⊂y), 󰲣¬(x⊃y)
 ⊊´,⊋´ = 󰲣(α≔𝑠←x).issubset(β≔𝑠←y)∧α≠β, 󰲣(α≔𝑠←y).issubset(β≔𝑠←x)∧α≠β
- 󰤱 ?´,?´ = 󰲣¬(x⊊y), 󰲣¬(x⊋y)
+󷹲´,󷹳´ = 󰲣¬(x⊊y), 󰲣¬(x⊋y)
 ∋´,∌´ = 󰲣y∈x, 󰲣y∉x
 ∣´,∤´ = 󰲣gcd(x,y)≡x, 󰲣gcd(x,y)≠x
 󷸛´,󷸚´ = 󰲡x.real, 󰲡x.imag
