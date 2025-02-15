@@ -609,8 +609,8 @@
 >   ¡ℭ ⟨YELLOW⟩ 𝚲⥌↦␛󰅁␛󰅂ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻
 
 󷰾 𝑏𝑖𝑓𝑑   ᴍwi⟦bifd⟧ {bool,int,float,dict} type
-󷰾 𝑠𝑡𝑙    ᴍwi⟦stl⟧ {set,tuple,list} type
 󷰾 ᔐ𝑦𝑒𝑜   ᴍ⟦⁅cs⁆⁅wi⟦yeo⟧⁆⟧ {str,bytes,Exception,object} type
+󷰾 𝑠𝑡𝑙    ᴍwi⟦stl⟧ {set,tuple,list} type
 󷰾    ᴍcf⟦orw⟧ file {open,read,write}
 󷰾    ᴍcbc clipboard
     "()" ⟶ contents of clipboard
