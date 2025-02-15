@@ -306,7 +306,8 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
 
 @OPWRAP_
 ⊢ ☾´(⠤𝔸,s=𝗻,sep=𝘀,❗=✗,⠶𝕂):
-    (❗ ⭜stderr⭝ stdout).write(𝔸⨝ᔐ(sep) + ᔐ(s))
+    ❗ ⭜stderr⭝ stdout ➡≕ƒ → .write(𝔸⨝ᔐ(sep) + ᔐ(s))
+    ƒ.flush
     ¿𝔸: ↪𝔸₀
      print(x, flush=✓, end=ᐦ, sep=ᐦ)
 
@@ -376,7 +377,7 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
 󷺫´ = 󷺥´ = 󰲣x∨y→¬
 󷺬´ = 󷺒´ = 󰲣x⭜(y⭜✗⭝x)⭝y⭜y⭝✓
 󷺤´ = 󰲣x⭜(y⭜✗⭝x)⭝y
-󷺦´ = 󰲣x⭜(y⭜y⭝✗)⭝y⭜✗⭝✓
+󷺦´ = 󰲣x⭜(y⭜y⭝✗)⭝y⭜x⭝✓
 ∖´ = 󰲣xᐹ𝑠 ⭜x-𝑠(y)⭝ [z∀z∈x¿z∉y]
 ∪´ = 󰲣xᐹ𝑠 ⭜𝑠(x)|𝑠(y)⭝ [⠤x,⠤(z∀z∈y¿z∉x)]
 ∩´ = 󰲣xᐹ𝑠 ⭜𝑠(x)&𝑠(y)⭝ [z∀z∈x¿z∈y]
@@ -391,20 +392,23 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
         L=󰲡[⠤x]﹕﹕􍨄)
 
 ⍭´ = 󰲡␛ ∈x ⭜x.split(␛ )ᴍ⍭⭝ x.split(␛ )
-▢´ = OPWRAP_(⥌x,s=0↦xᐹ􋁜ℂ ⭜x󷸜ᴍ▢ˢ⭢󷸜⭝ round(x,s))
-⬓´,⬒´ = floor, ceil
+▢´ = OPWRAP_(⥌x,s=0↦xᐹ􋁜ℂ ⭜x󷸜ᴍ▢ˢ⭢󷸜⭝ round(x,s))  󰤱 support quaternions
+⬓´,⬒´ = floor, ceil  󰤱 make this support mod
 !´ = 󰲡󷸺x⨀¹
 …´ = 󰲣𝑙←range(x,y)
 ∓´,±´ = 𝚲-´⋄+´ᐵ(⠤𝕣(𝔸)), 𝚲+´⋄-´ᐵ(⠤𝕣(𝔸))
 ⪢´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x􍈼﹪􊹳ₓ􍪪ᵢ﹕+x﹕ᵢ⭝ x >> y)
 ⪡´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x ⪢ ¯y       ⭝ x << y)
 ◄´,►´ = RET_L, RET_R
-⊊´,⊋´ = 󰲣(α≔𝑠←x).issubset(β≔𝑠←y)∧α≠β, 󰲣(α≔𝑠←y).issubset(β≔𝑠←x)∧α≠β
 ⊂´,⊃´ = 󰲣𝑠(x).issubset(𝑠←y), 󰲣𝑠(y).issubset(𝑠←x)
+ 󰤱 maybe generalize above to multiset subset for left being list, with 􋇠 disabling that?
 ⊄´,⊅´ = 󰲣¬(x⊂y), 󰲣¬(x⊃y)
+⊊´,⊋´ = 󰲣(α≔𝑠←x).issubset(β≔𝑠←y)∧α≠β, 󰲣(α≔𝑠←y).issubset(β≔𝑠←x)∧α≠β
+ 󰤱 ?´,?´ = 󰲣¬(x⊊y), 󰲣¬(x⊋y)
 ∋´,∌´ = 󰲣y∈x, 󰲣y∉x
 ∣´,∤´ = 󰲣gcd(x,y)≡x, 󰲣gcd(x,y)≠x
-󷸛´,󷸚´,󷸜´ = 󰲡x.real, 󰲡x.imag, 󰲡xᐹ𝑙|𝑡 ⭜ℂ(⠤x)⭝ (x󷸛,x󷸚)
+󷸛´,󷸚´ = 󰲡x.real, 󰲡x.imag
+󷸜´ = 󰲡xᐹ𝑙|𝑡 ⭜ℂ(⠤x)⭝ (x󷸛,x󷸚)  󰤱 weird globals thing w/ ℍ
 󷹄´ = OPWRAP_←⥌x,y,s=␀↦(R≔s↦x⤉s⤈y)►(s≅␀⭜R⭝R(s))
 ⍉´ = 𝑐𝑑(󰲡x󱑼, 𝑔=󰲡y↦y󱑼ˣ)
 󷹝´ = OPWRAP_←⥌x=␀,s=␀↦xᐹ𝑖 ⭜chr(x)⭝ xᐹᔐ∧(x🃌≡1∧s≠␛L) ⭜ord(x)⭝ (xᴍ󷹝) ᣆˣ􊿥􊾗􋇖 ⨝

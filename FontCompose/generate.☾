@@ -5,8 +5,8 @@ in_font        = ‹JuliaMono/JuliaMono-Regular.ttf›
 custom_symbols = ‹MoonCustomSymbols.ttf›
 ¿COPY_OUT_FONT:
     COPY_OUT_EXT = 1󷸻𝐩(COPY_OUT_FONT).suffix
-    OUTPUT_EXTS ∪= {COPY_OUT_EXT}
-OUTPUT_EXTS = 𝑠(OUTPUT_EXTSᴍᔐ.lower)
+    OUTPUT_EXTS 󷸊∪ {COPY_OUT_EXT}
+OUTPUT_EXTS = 𝑠(OUTPUT_EXTSᴍ⫯)
 EXT = "ttf"
 
 󰋺("shut")
@@ -41,7 +41,7 @@ stages["CustomSymbols"] = 𝕗
 ⊢ 𝕗(fi, fo):
     𝒻 = load_font(fi)
      🗨⛱❄☃☄⌨✉✏✒✂⛏⚔⚖⛓⚗⚰⚱⛰✈⛴⏱⏲☀☁⛈☂☢☣⚒⛸
-    chars = 󰦥󰦥󰦥󰦥󰦥☺☹✋☝✊⛹☕⛲⛺⛵⌛⏳⌚⏰⛅☔💬⚡⛄⚽⚾⛳♿⛔👍👎👆👇👈👉❤️❣🩷💖💕💞💘😻😉😕😊😞🙃😏😎🤭🥹🤔😚😌💪🥵🥰😍💀😂🤤😘🙌😆🤣😳🙏😤👁️🎉😋👀✨🫂👋✌🔥👏✍😭👌🌈󰦥󰦥󰦥󰦥󰦥
+    chars = 󰦥󰦥󰦥󰦥󰦥👍👎👆👇👈👉☝✌✋👋👏✊👌💪🙌🙏✍❤️❣🩷💖💕💞💘😻😉😊🙃😏😎🤭🤔😚😌🥵🥰😍😂🤤😘😋😆🤣😳😤😕☹😞🥹😭💀🫂👁️🎉👀✨🔥🌈⛹☕⛲⛺⛵⌛⏳⌚⏰⛅☔💬⚡⛄⚽⚾⛳♿⛔󰦥󰦥󰦥󰦥󰦥
     
     ‹filter link›⍭󰌷(charsᴍord) ᐖᐳ𝒻.removeGlyph∘⟞ᐸ  ε↦‹Error removing "⟦⟞ᐹᔐ⭜⟞⭝chr∘⟞⟧": ⟦ε⟧›☾ᐸ ᴍ 
     𝑟.add_glyphs(𝒻)

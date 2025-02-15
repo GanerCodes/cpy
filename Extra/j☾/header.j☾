@@ -15,8 +15,8 @@ BASE_CHARSET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 𝒮 = ⥌d,k,v↦(¬(k∈d) ∨ dₖ≅␀) ⭜(dₖ=v)⭝ dₖ;
 [󱅏, ⬓] = [Math.random, Math.floor];
 [𝒪, 𝒟, 𝒪k, 𝒪v] = [𝑜.entries, 𝑜.fromEntries, 𝑜.keys, 𝑜.values];
-☾     = ⥌⠤x↦console.log  (⠤x) ∨ x₀;
-table = ⥌⠤x↦console.table(⠤x) ∨ x₀;
+☾     = ⥌⠤x↦(console.log  (⠤x),x₀);
+table = ⥌⠤x↦(console.table(⠤x),x₀);
 ends  = ⥌l↦l.map(⥌𝑥,i↦[i≡0,𝑥,i≡🃌(l)-1]);
 sort  = ⥌A,f,r=𝔽↦ A.sort(⥌a,b↦(r ⭜1⭝ 󷰾)⋅(b>a ⭜1⭝ 󷰾));  what?
 range = ⥌a,b↦b≅󱣩⭜𝑙(Array(a).keys())⭝𝑙(Array(b-a).keys())􊾡(󰲡x+a);
@@ -43,8 +43,8 @@ mkə = ⥌name, attrs, kids↦{
     ¿(name≅✗) name = "div";
     ⎉ ə = document.createElement(name);
     ¿(attrs) ∀(⎉ [k,v] ⎔ 𝒪(attrs)) əᵣₑₘₐₚₛ􊬶﹖﹖ₖ = v;
-    ¿(typeof kids ≅ "string") ə.innerText = kids;
-    ⸘(kids instanceof Array ) kids.forEach(⥌𝚎↦{
+    ¿(typeof kids ≅ "string") ə.innerText = kids; 
+    ⸘(kids instanceof Array) kids.forEach(⥌𝚎↦{
         ¿(typeof 𝚎 ≅ "string") 𝚎 = document.createTextNode(𝚎);
         ə.appendChild(𝚎);
     });

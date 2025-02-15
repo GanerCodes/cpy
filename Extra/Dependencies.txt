@@ -7,8 +7,8 @@ PYTHON_INCLUDED:
         readline, subprocess…?
         ☾_ENABLE_DEBUG:
             resource, threading, cProfile, pstats, atexit
-PYTHON_PIP_OPTIONAL:
-    regex, clipboard
-    json5, numpy, scipy, pandas, statsmodels
+        PIP:
+            regex, clipboard
+            json5, numpy, scipy, pandas, statsmodels
 OPTIONAL:
     fontforge

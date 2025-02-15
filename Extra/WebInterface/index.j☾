@@ -1,18 +1,36 @@
 var py, hist=[ᐦ], hist_p=0;
 © [ets, cli, syt] = ["entries", "cli_in", "symbolTable"]􊾡(GID)
-© script = 󰲣py.globals.get("SCRIPT")(x);
-© tofrac = 󰲡py.globals.get("TOFRAC") (x);
-© flippy = 󰲡py.globals.get("UPSIDEDOWNSYNDROME")ᶠˡⁱᵖ(x);
+© script    = 󰲣py.globals.get("SCRIPT")(x);
+© tofrac    = 󰲡py.globals.get("TOFRAC") (x);
+© flippy    = 󰲡py.globals.get("UPSIDEDOWNSYNDROME")ᶠˡⁱᵖ(x);
+© highlight = 󰲡py.globals.get("highlight")(x);
 
 © safeRunMoon = ⥌val↦py.runPython(☾(‹
-    try:
-        𝑓("⟦val.replaceAll(⦋/[\\"\n]/g⦌, 󰲡({"\\":"\\\\","\n":"\\n",'"':'\\"'})ₓ)⟧")
-    except Exception as e:
-        print("Error:", e)›));
+try:
+    𝑓("⟦val.replaceAll(⦋/[\\"\n]/g⦌, 󰲡({"\\":"\\\\","\n":"\\n",'"':'\\"'})ₓ)⟧")
+except Exception as e:
+    print("Error:", e)›));
 
  mfw "ℚ".length ¬≡ "𝕊".length
 © ᔐs = 󰲡[⠤x].slice(⠤𝔸).join(ᐦ);
 © ᔐ𝑙 = 󰲡[⠤x].length;
+
+⦋esc2clr = s => {
+    const TERM_RESET = "\x1b[0m";
+    if(s.includes(TERM_RESET))
+        return s.split(TERM_RESET).map(esc2clr).reduce((x,y)=>[...x,...y],[]);
+    s = s.replaceAll(/\x1b\[38;2;([0-9]+);([0-9]+);([0-9]+)m/g, (...𝔸)=>`\x01${𝔸.slice(1,4).map(x=>x.padStart(3,'0')).join('')}`);
+    s = s.replaceAll(/\x1b\[48;2;([0-9]+);([0-9]+);([0-9]+)m/g, (...𝔸)=>`\x02${𝔸.slice(1,4).map(x=>x.padStart(3,'0')).join('')}`);
+    s = [...s];
+    𝚂 = [[255,255,255],[0,0,0]];
+    𝚁 = [];
+    while(s.length) {
+        const c = s.splice(0,1)[0];
+        if(c == '\x01' || c=='\x02')
+            𝚂[c=='\x02'?1:0] = [0,0,0].map(_=>Number(s.splice(0,3).join('')));
+        else
+            𝚁.push([c,...𝚂]); }
+    return 𝚁; }⦌
 
 © p2rc = ⥌s,   𝑝  ↦{
     ⎉ r=0, c=0, i=0, S=[⠤s];
@@ -72,22 +90,11 @@ var py, hist=[ᐦ], hist_p=0;
     © p = rc2p(ε.value, [Rα+1, 🃌(ind)]);
     ε.setSelectionRange(p, p); };
 
-© reformt = s => {
-    © 𝑓 = (x, ⠤𝔸) => {
-        © ε = 󱀝 text
-        © hasStyle = 🃌(x) ∧ x₀ ≡ "\x1c";
-        hasStyle ⭜ε􋛟=x.slice(1)⭝ ε􋒷=x;
-        ¿(🃌(𝔸)) {
-            © γ = 𝑓(⠤𝔸);
-            ¿(¬hasStyle ∧ ¬x) ↪ γ;
-            ¿(γ􋒷) ε􍪙(γ); }
-        ↪ ε; };
-    ↪ 𝑓(⠤("[0m"+s).replace(⦋/\x1b\[(38|48);2;([0-9]{0,3});([0-9]{0,3});([0-9]{0,3})m/gm⦌,
-                                   ⥌_,t,r,g,b↦"\x1b\x1c"+‹⟦t≡"38"?"color":"background-color"⟧:#⟦
-                                        (256*(256*𝑖(r)+𝑖(g))+𝑖(b)).toString(16).padStart(6, ␛0)⟧⟦"\x1b"⟧›)
-                          .replace(⦋/\033\[0m/gm⦌,
-                                   "\x1b\x1c"+"color:#fff;background-color:#000\x1b")
-                          .split("\x1b")); };
+© reformt = ⥌s↦{
+    © hex =  󰲡␛#+x􊾡(󰲡x.toString(16).padStart(2,␛0)).join(ᐦ);
+    © 𝙲 = esc2clr(s)􊾡(󰲡󱀝 text {𝑆 ‹color:⟦hex(x₁)⟧;background-color:⟦hex(x₂)⟧;›} ⟦x₀⟧);
+    ↪ 󱀝 text ⟦𝙲⟧; };
+     ↪ 🃌(𝙲)≡1 ⭜𝙲₀⭝ (󱀝 text ⟦𝙲⟧); };
 
 © log = 󰲡{
     ☾(‹Logging: "⟦x⟧"›);
@@ -98,12 +105,12 @@ var py, hist=[ᐦ], hist_p=0;
     setTimeout(𝚲{ cli.scrollIntoView(); cli.focus(); }, 25);
     ↪ x; }
 
-© log_as_user = x => {
+© log_as_user = 󰲡{
     log(x);
     hist􋘲􋘲ₕᵢₛₜ􋕞ₚ = x;
     hist₊₊ₕᵢₛₜ􋕞ₚ = ᐦ; };
 
-© run_shortcut = (ε, k) => ε.dispatchEvent(
+© run_shortcut = ⥌ε, k↦ε.dispatchEvent(
     new KeyboardEvent("keydown", {
         key: k, code: "Key"+k.toUpperCase(),
         altKey: ✓, bubbles: ✓, cancelable: ✓ }));
@@ -111,7 +118,7 @@ var py, hist=[ᐦ], hist_p=0;
                   ε􋛟.minHeight = ‹⟦⤉(5, ε.scrollHeight)⟧px›,
                   ε.scrollIntoViewIfNeeded());
 
-© load_python = async 𝚲{
+© load_python = 󱟱 𝚲{
     log(‹Loading WASM Python…›);
     © { loadPyodide } = 󱫬 import(‹https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.mjs›);
     py = 󱫬 loadPyodide({ stdin: prompt, stdout: log, stderr: log  });
@@ -124,22 +131,24 @@ var py, hist=[ᐦ], hist_p=0;
         print("Downloaded ☾")
         # 󱫬 py.loadPackage("regex")›);
     󱫬 py.runPythonAsync(‹
-        from refresher import run_moon
+        from refresher import run_moon, cpy_get_highlighter
         from util import SCRIPT, UPSIDEDOWNSYNDROME, TOFRAC
         𝑓, 𝑐 = run_moon(["--code_cache_dir=/tmp/cpy_wasm_cache/code",
                          "--gram_cache_dir=/tmp/cpy_wasm_cache/gram"],
                          extract_interactive=True)
+        highlight = cpy_get_highlighter(𝑐.ns)
         𝑐("""
-        󰆴 __header_namespace__["__error_printer__"]
-        󰆴         __builtins__["__error_printer__"]""")
-        print("☾ Ready!")
-        print("ctrl + <enter> 󷺄 Run multiline code")
-        print("alt  + <↑/↓>   󷺄 Cycle history")
-        print("alt  + <l>     󷺄 Clear screen")
-        print("alt  + <=>     󷺄 Flip number")
-        print("alt  + </>     󷺄 Selection to fraction")
-        print("alt  + <w/s/x> (mac: cmd+<,/./;>)")
-        print("     󷺄 Superscript/subscript/normalize selection")›);
+         󰆴 __header_namespace__["__error_printer__"]
+         󰆴         __builtins__["__error_printer__"]
+        "☾ Ready!"                                         ☾
+        "ctrl + <enter> 󷺄 Run multiline code"              ☾
+        "alt  + <↑/↓>   󷺄 Cycle history"                   ☾
+        "alt  + <l>     󷺄 Clear screen"                    ☾
+        "alt  + <=>     󷺄 Flip number"                     ☾
+        "alt  + </>     󷺄 Selection to fraction"           ☾
+        "alt  + <w/s/x> (mac: cmd+<,/./;>)"                ☾
+        "     󷺄 Superscript/subscript/normalize selection" ☾
+        """)›);
         
     ⎉ P = new URLSearchParams(window.location.search).get("code");
     ¿(P) { log_as_user(P);
@@ -147,14 +156,17 @@ var py, hist=[ᐦ], hist_p=0;
 
 (async _ => {
     log(‹Loading Symbol Table…›);
-    © docs = 󱫬 (󱫬 fetch("docs")).json();
-    Object.entries(docs)􋁃(([k,v]) => {
-        © ε = reformt(k);
-        ε.title = v₀;
+    
+    󱫬 load_python();
+    © styles = 󱫬 (󱫬 fetch("style")).json();
+    © docs   = 󱫬 (󱫬 fetch("info" )).json();
+    docs􋁃(⥌[x,y,z]↦󱑼(x,y)􋁃(⥌[x,y]↦{
+        © ε = reformt(highlight(x));
+        ε.title = y;
         syt􍪙(ε);
-        ε.onclick = 𝚲caret_write(cli, QS("text:not(:has(> *))", ε)􋒷); });
-    log(‹Loaded Symbol Table›);
-    󱫬 load_python(); })();
+        ε.onclick = 𝚲caret_write(cli, ε􋒷 ∨ QS(‹*:not(text:has(> *))›, ε)􋒷); }));
+    
+    log(‹Loaded Symbol Table›); })();
     
 © ə = ⥌e↦(e.preventDefault(), auto_grow(cli));
 cli.addEventListener("keydown", 󱟱 e => {

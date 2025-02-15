@@ -1,11 +1,10 @@
 ⮌ socketserver ⨡  TCPServer, StreamRequestHandler ; TCPServer.allow_reuse_address = ✓
 ⮌ json ⨡ dumps, loads
-󰋺(‹kots›)
 cd(moon_dir/‹Extra/j☾›); 󰋺(‹main›); cd()
 
 ipv4 = ᑀ ᑀ⪢ 8⟝ & 0xFFᐛ (4󷸹)ᴙ → ⨝␛.
 
-𝔍 = {>:dumps, <:loads}
+𝔍 = {>:dumps(⬤, ensure_ascii=✗, indent=□, separators=",:"), <:loads}
 
 ⊢ HTTP_Server(ƒ):
     ⮌ http.client ⨡ responses as 𝚌msgs

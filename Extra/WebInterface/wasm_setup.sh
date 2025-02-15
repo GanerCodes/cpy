@@ -18,4 +18,4 @@ zip "$FILE" -r ./cpy_wasm_cache
 cd ../..
 zip "$FILE" -r compiler FontCompose/.SCRIPT_MAP FontCompose/Output/*.json ☾ *.py -x "*/__pycache__/*"
 cd -
-[ $# -ge 1 ] && ☾ gen.☾
+[ $# -ge 1 ] && ☾ server.☾

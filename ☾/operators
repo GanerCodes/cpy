@@ -2,29 +2,62 @@
     "𝑜 ⨳" ⟶ Asserts 𝑜 is truthy
     "𝑜₁ ⨳ 𝑜₂" ⟶ Asserts 𝑜₁ is truthy, puts 𝑜₂ in error
 󷰝 ∨󷺥  𝚡∧𝚡 ᴍvs ⟦𝕊/⟧ {OR,NOR} (short circuits)
+    `✓∨✓ →≡ ✓ ≡← ✗󷺥✗`
+    `✗󷺥✓ →≡ ✗ ≡← 0∨✗`
+    `1∨2 →≡ 1 ≡← 1∨0`
+    `0󷺥0 →≡ ✓`
 󷰝 ⩔󷺫  𝚡∧𝚡 ᴍVVS⟦𝕊/⟧ {OR,NOR} (doesn't short circuit)
+    󰤱 docs
 󷰝 󷺤󷺦  𝚡∧𝚡 ᴍvsx⟦𝕊/⟧ {XOR,NXOR}
+    `✓󷺤✗ →≡ ✓ ≡← ✗󷺤✓`
+    `✗󷺤✗ →≡ ✗ ≡← ✓󷺤✓`
+    `✓󷺦✓ →≡ ✓ ≡← ✗󷺦✗` 󷹇 󷺦 is boolean equals under truthy
+    `2󷺤✗ →≡ 2 ≡← 1󷺦2`
+    `0󷺦2 →≡ 0`
+    `0󷺦0 →≡ ✓`
 󷰞 ∧󷺒  𝚡∧𝚡 ᴍvw ⟦𝕊/⟧ {AND,NAND} (short circuits)
+    `✓∧✓ →≡ ✓`
+    `✓󷺒✗ →≡ ✓`
+    `1∧2 →≡ 2`
+    `1∧0 →≡ 0`
 󷰞 ⩓󷺬  𝚡∧𝚡 ᴍVVW⟦𝕊/⟧ {AND,NAND} (doesn't short circuit)
+    󰤱 docs
 󷰟 ≡≠  𝚡∧𝚡 ᴍ=⟦⁅=𝕊⁆/⟧ {,un}equal
-    Works similar to python, taking certain conveniences i.e. 0 as a float equals 0 as an int
+    Works similar to python, taking certain conveniences.
+    `2≡2`
+    `2≠3`
+    `2.0≡2`
+    `"hi" ≡ "ih"ᴙ`
 󷰟  󷷼󰁖 𝚡∧𝚢 ᴍdia= diamond equals
     󷹇 Requested by Michael for future advanced math things
 󷰟 ∣∤󰁖 𝚡∧𝚢 ᴍ|⟦𝕊/⟧  does{,'t} divide
+    `4∣8 →≡ ✓`
+    `4∣8∣16 →≡ ✓`
+    `4∤8∣16 →≡ ✗`
+    `7∤4∤7∣14 →≡ ✓`
 󷰟 <>󰁖 𝚡∧𝚢   ⟦<>⟧  {less,greater} than
+    `7>6>5`
+    `5>4<9`
+    `¬(5>4<3)`
 󷰟 ≤≥󰁖 𝚡∧𝚢 ᴍ ⟦<>⟧_ {less,greater} than or equal to
+    `5≥5≥5`
+    `5≤5≤5`
 󷰟 ∈∋󰁖 𝚡∧𝚢 ᴍe⟦[]⟧𝕊 element of {right,left}
     𝑜∈𝗜
-    `2∈{1,2,3} →≡ True`
-    `5∈{1} →≡ False`
-    `␛a ∈ ‹hia› →≡ True`
-    `5 ∈ [2,3,2] →≡ False`
+    `5∈{1} →≡ ✗`
+    `2∈{1,2,3} →≡ ✓`
+    `␛a ∈ ‹hia› →≡ ✓`
+    `5 ∈ [2,3,2] →≡ ✗`
 󷰟 ∉∌󰁖 𝚡∧𝚢 ᴍe⟦[]⟧/ not element of {right,left}
 󷰟 ⊂⊃󰁖 𝚡∧𝚢 ᴍu⟦da⟧𝕊 subset of or equal to {right,left}
     𝗜 ⊂ 𝗜
+    `[4,2] ⊂ 10⭥ →≡ ✓`
+    `[1,2] ⊂ [1,2] →≡ ✓`
     Works on non-set objects as well
-󷰟 ⊊⊋󰁖 𝚡∧𝚢 ᴍu⟦da⟧n subset of but not equal to {right,left}
 󷰟 ⊄⊅󰁖 𝚡∧𝚢 ᴍu⟦da⟧/ not subset of {right,left}
+󷰟 ⊊⊋󰁖 𝚡∧𝚢 ᴍu⟦da⟧n subset of but not equal to {right,left}
+    `[1] ⊊ [1,2] →≡ ✓`
+    `[1,2] ⊊ [1,2] →≡ ✗`
 󷰠 ᴍ󰁢 𝚡∧􊽨𝚢 ᴍcm𝕊 map
     𝗜 ᴍ 𝗙
         Maps an iterable with a function
@@ -57,6 +90,7 @@
 󷰠 󰁢 𝚡∨􊽨𝚡 ᴍcg𝕊 group-by
     𝗜 
         group into dictionary with keys by truthyness
+        `[1,5,3,2]  󷺹%3ᐸ ≡ {0:[3],1:[1],2:[5,2]}`
     𝗜  𝗙
         group into dictionary with keys defined by right arg
     󰀒: return list of values, dropping keys
@@ -76,7 +110,7 @@
 󷰠 Ϝ 𝚡∨􊽨𝚡 ᴍFS accumulate
     𝗜 Ϝ 𝗙
     fold, except returns the intermediate values
-        `[1,2,3,4] Ϝ + ≡ [1,3,6,10]`
+    `[1,2,3,4] Ϝ + ≡ [1,3,6,10]`
 󷰠 ⨁⨀ 𝚡∨􊽨𝚡 ᴍo⟦+.⟧ {sum,product}
     𝗜 ⨁/⨀
     fold over left with + or ⋅, with modifier as starting value
@@ -100,6 +134,7 @@
     𝗜 󰒼 𝗙
         sorts data by right arg
         󷹇 right arg is function of 1 variable
+    󰤱 examples
     󷹇 Supports ᔨ and 󰮈
 󷰠 ᗢᙧᙎᙡ 𝚡󷸐􊽨𝚡 ᴍcw⟦ᐦp⟧⟦ᐦt⟧𝕊 window sides {✗ ; ✗,✗ ; ✓,✓ ; ✗,✓ ; ✓} middle
     ᗢ: no sides, no middle
@@ -130,6 +165,8 @@
 󷰡 ○⍜ 𝚡∧􊽨𝚡 ᴍO⟦⁅O𝕊⁆_⟧ compose functions with balanced args, overflow {right,left}
     ƒ○ ꬶ ≈ 󰲡ƒ(ꬶ(x))
     ƒ○²ꬶ ≈ 󰲣ƒ(ꬶ(x), ꬶ(y))
+    `(󰌷○ᴙ)([3⭥,2⭥]) ≡ [0,1,0,1,2]`
+    `(ᴙ○󰌷)([3⭥,2⭥]) ≡ [1,0,2,1,0]`
     󰤱ꜝ docs
 󷰡 󰬩󰬫 𝚡∧􊽨𝚡 ᴍO⟦<>⟧ compose functions, overflow extra args to {left,right}
     󰤱 docs
@@ -156,6 +193,8 @@
     "(ƒ(1,⬤,3,y=⬤,z=2))(3,9)" ⟶ ƒ(1,3,3,y=9,z=2)
     󰤱˜ docs
 󷰡 ᣆ 𝚡∨􊽨𝚢 ᴍcig conditional function application
+    `1ᣆ􋄒󷹒 ≡ 󷰾 ≡ 1ᣆ􍯏󰂁⁰󷹒`
+    `1ᣆ􋄓󷹒 ≡ 1 ≡ 1ᣆ􍯏󰂁¹󷹒`
     󰤱 docs
 󷰡 󷷹 𝚡∨􊽨𝚢 ᴍdiaO diamond compose
     󷹇 Requested by Michael for future advanced math things
@@ -167,10 +206,10 @@
         Check if left is instance of right
         󷹇 if right is not a type, we get the type of it first
         󷹇 𝗙 𝗜 𝗛 acts like types
-        `2 ᐹ 𝑖 ≡ True`
-        `2 ᐹ 5 ≡ True`
-        `2 ᐹ ᔐ ≡ False`
-        `‹h› ᐹ 𝗜 ≡ True`
+        `2 ᐹ 𝑖 ≡ ✓`
+        `2 ᐹ 5 ≡ ✓`
+        `2 ᐹ ᔐ ≡ ✗`
+        `‹h› ᐹ 𝗜 ≡ ✓`
 󷰢 󷹵󷹴󰁖 𝚡∧􊽨𝚡 ᴍcisn⟦𝕊s⟧ not instance of {right,left}
 󷰢 󱑼󷹅  𝚡∨􊽨𝚡 ᴍcc⟦zZ⟧ zip {left,right} aligned
     𝗜 󱑼 𝗜
@@ -222,6 +261,7 @@
 󷰧 󷷻 𝚡∨􊽨𝚢 ᴍdia- diamond subtract
     󷹇 Requested by Michael for future advanced math things
 󷰨 ◄► 𝚡∧𝚢 ᴍca⟦lr⟧ {left,right} value
+    `1►5 ≡ 5 ≡ 5◄1`
 󷰨 ⋄ 𝚡∧𝚢 ᴍ<>𝕊 join into list
     `1⋄2 ≡ [1,2]`
     `1⋄2⋄9 ≡ [1,2,9]`
@@ -276,10 +316,12 @@
     𝗜 ⋀
     returns first falsy value or last value
     󷹇 ⋀􋇜 sets default for empty iterable (✓ if excluded)
+    󰤱 examples
 󷰭 ⋁ 𝚡󷺤􊽨𝚡 ᴍVS any
     𝗜 ⋁
     returns first truthy value or last value
     󷹇 ⋁􋇜 sets default for empty iterable (✗ if excluded)
+    󰤱 examples
 󷰭 ⫰⫯ 𝚡󷺤􊽨𝚡 ᴍa⟦+-⟧ absolute value {positive / upper,negative / lower}case
     `󷱂⫰ ≡ 5⫰ ≡ 5`
     `󷱂⫯ ≡ 5⫯ ≡ ¯5`
@@ -305,6 +347,7 @@
     `0! ≡ 1`
     󰤱 generalize to gamma function
 󷰭 ☾ 𝚡󷺤􊽨𝚡 ᴍcp𝕊 print
+    "‹hello›☾" ⟶ prints "hello" to stdout
     󰤱 docs
 󷰭 󷸹󷸸󷸻󷸺 𝚡∨􊽨𝚡 ᴍcr⟦[-=]⟧ range excluding {right,both,none,left}
 󷰭 ⍭ 𝚡󷺤􊽨𝚡 ᴍcsp magic string split
@@ -323,13 +366,22 @@
     Exactly the same as unary version of 󱑼
 󷰭 󰑅 𝚡∧􊽨𝚢 ᴍcfs first
     󷹇 Supports ᔨ
+    `"abc"󰑅ᔨ␛b ≡ 1`
+    `"abc"󰑅ᔨ󷺹≡␛bᐸ ≡ 1`
+    `[1,2,3,4]󰑅󷺹>2ᐸ ≡ 3`
+    `[1,2,3,4]󰑅ᔨ󷺹>2ᐸ ≡ 2` 󷹇 index
     󰤱 docs
-󷰭 󷹓󷹔󷹕󷹖 𝚡∧􊽨𝚢 ᴍcf⟦ad⟧⟦𝕊/⟧ {left of and in,right of and in,left of and ex,right of and ex}luding start
-    󰤱 docs
+󷰭 󷹓󷹕󷹖󷹔 𝚡∧􊽨𝚢 ᴍcf⟦ad⟧⟦𝕊/⟧ {left of and in,right of and in,left of and ex,right of and ex}luding start
+    `"abcdcba"󷹓󷺹≡␛cᐸ ≡ "abc"`
+    `"abcdcba"󷹕󷺹≡␛cᐸ ≡ "ab"`
+    `"abcdcba"󷹖󷺹≡␛cᐸ ≡ "dcba"`
+    `"abcdcba"󷹔󷺹≡␛cᐸ ≡ "cdcba"`
+    󰤱˜ docs
 󷰭 ⬓▢⬒ 𝚡󷺤􊽨𝚡 ᴍcr⟦aod⟧ round{ low,, high}
     `2 ≡ 2.2▢ ≡ 2.2⬓ ≡ 2.9⬓`
     `3 ≡ 2.9▢ ≡ 2.2⬒ ≡ 2.9⬒`
-    󰤱˜ docs [precision is superscript]
+    `2.91▢¹ ≡ 2.9`
+    `133▢􍧱 ≡ 100`
 󷰭 󰸵󰸷 𝚡∧􊽨𝚢 ᴍcp⟦ad⟧ pad {left,right}
     𝗜 󰸵ᵖᵃᵈ n
     `[1,2]󰸵3  ≡ [✗,1,2]`
@@ -343,6 +395,9 @@
 󷰭 ⤈⤉ 𝚡∨􊽨𝚡 ᴍca⟦sw⟧ {min,max}
     𝗜 ⤈/⤉ 𝗙?󰻾
     min/max under right
+    `[1,5,2]⤉ ≡ 5 ≡ ⤈[9,6,5]`
+    `[󷱂,4]⤉󷺹²ᐸ ≡ 󷱂`
+    `[]⤉² ≡ 2 ≡ [2]⤉⁹`
     󷹇 Supports ᔨ and 󰮈
     󰤱˜ docs
 󷰭 󷹄 𝚡⩚􋅂𝚢 ᴍcac constrain
@@ -374,6 +429,7 @@
     `␛aⴵ  ≡ 󷰾`
     `␛Aⴵ ≡ ␛𝔸ⴵ ≡ ␛􋉀ⴵ ≡ 1`
 󷰭 󷹎󷹍󷹌 𝚡∨􊽨𝚡 ᴍcs⟦01s⟧ split keeping {0,1,∞} consecutive seperators
+    󰤱 docs
 󷰭 𝌂 𝚡∨􊽨𝚡 ᴍccp partition
     Group consecutive by func
         `[1,󷰾,2,2,9,9]𝌂󰻾   ≡ [[1],[-1],[2,2],[9,9]]`
@@ -382,14 +438,18 @@
     󰤱˜ docs
 󷰭 ᚤ 𝚡∨􊽨𝚡 ᴍcu𝕊 first unique
     Keep only first found under right arg (default 󰻾)
-        `[1,2,3,2,3,1,1,2,9]ᚤ ≡ [1,2,3,9]`
-        `[2,5,0,󷰿,0,󷱂,󷰾,1,7]ᚤ󷺹² ≡ [2,5,0,-1,7]`
-        `[1,2,3,2,3,1,1,2,9]ᚤ󷺹>2 ≡ [1,3]`
+    `[1,2,3,2,3,1,1,2,9]ᚤ ≡ [1,2,3,9]`
+    `[2,5,0,󷰿,0,󷱂,󷰾,1,7]ᚤ󷺹²ᐸ ≡ [2,5,0,-1,7]`
+    `[1,2,3,2,3,1,1,2,9]ᚤ󷺹>2ᐸ ≡ [1,3]`
+    `[1,2,3,2,3,1,1,2,9]ᚤᔨ󷺹>2ᐸ ≡ [0,2]` 󷹇 these are indicies
+    `[1,2,3,2,3,1,1,2,9]ᚤ󷺹<3⭜󰮈⭝⟞ᐸ ≡ [3,9]`
     󷹇 Supports ᔨ and 󰮈
     󰤱˜ docs
 󷰭 ᴙ 𝚡󷺤􊽨𝚡 ᴍcR𝕊 reverse
     𝗜 ᴙ = x﹕﹕􍨄
     󷹇 ᴙᴸ forces string as list
+    `"hello"ᴙ ≡ "olleh"`
+    `3⭥ᴙ ≡ [2,1,0]`
     󰤱˜ docs
 󷰭 ⬄ 𝚡∨􊽨𝚡 ᴍcst strip
     󰤱 Workings undetermined, may be removed
@@ -413,8 +473,11 @@
     𝑜 󷹗ⁿ: Pushes n copies of 𝑜 onto ugex stack
     𝗜 󷹗􋔛: Extends ugex stack by 𝗜
 󷰭 󷸚󷸛󷸙󷸘 𝚡󷺤 𝚡 ᴍcc⟦|-/\⟧ {ℝ,î,ĵ,󷺈} part of number
+    `(󷸚,󷸛,󷸙,󷸘)ᐵ∘ᑅℍ(1,1,1,1)→ᚤ ≡ [1]`
 󷰭 󷸜󷸗󷸖󷸕 𝚡󷺤 𝚡 ᴍcc⟦+<>*⟧ tuple of {ℝ/î,ℝ/ĵ,ℝ/󷺈,ℝ/î/ĵ/󷺈} parts of number
+    `(󷸜,󷸗,󷸖,󷸕)ᐵ∘ᑅℍ(1,1,1,1)→ᚤ ≡ [(1,1),(1,1,1,1)]`
 󷰭 ~ .𝚡 ~ bitwise not
+    `~6 ≡ ¯7 ≡ 󷱄`
 󷰭 √ .􊽨𝚡 ᴍsq root
     Prefix unary
     `√5  ≡ 5􊽲`
@@ -446,6 +509,7 @@
     󰤱˜ docs
 󷰰  𝚡. ᴍ() call func without args
     i.e. "f" is the same as "f()"
+    `ᐳ5ᐸ ≡ ᐳ5ᐸ() ≡ 5`
 󷰰 󷹁 𝚡.􊽨 ᴍinv invert func
     If object has __inverse__ property will call it w/ modifier as args
     ƒ󷹁􊽹: returns inverse multimap by computing ƒ(x)∀x∈Ɗ
@@ -490,26 +554,40 @@
 0 ⇥   ᴍcb𝕊 Python "break"
 0 ➰   ᴍcl𝕊 Python "while"
 0 ∀   ᴍAA Python "for"
+0 =   = Python assignment
 0 ⠤⠶   ᴍc⟦dD⟧𝕊 Python {*,**} for {vargs,kargs}
 0 ¿⸘¡   ᴍ⟦⁅?⟦?!⟧⁆⁅!!⁆⟧ Python {if,elif,else}
 0 󰆴   ᴍcT𝕊 Python "del"
 0 ⭜⭝   ᴍce⟦nl⟧ ternary {if,else}
     "x ⭜ y ⭝ z" ⟶ y if x else z
     "x ⭜ y" ⟶ y if x else □
->¡ℭ ⟨LBLEEN⟩ 󱀘⨡⮂↪⮌↺⇥➰∀¿⸘␛¡⭜⭝⠤⠶󰆴
+    `✓ ⭜5⭝ 0 ➡≡ 5`
+    `✗ ⭜5⭝ 1 ➡≡ 1`
+    `✗⭜5 ➡≡ □`
+    `✓⭜5 ➡≡ 5`
+    `✗ ⭜5⭝ ✓ ⭜9⭝ 0 ➡≡ 9`
+>¡ℭ ⟨LBLEEN⟩ 󱀘⨡⮂↪⮌↺⇥➰∀=¿⸘␛¡⭜⭝⠤⠶󰆴
 
 0 ⬅➡   ᴍa⟦⁅AA⁆⁅DD⁆⟧ push right into {left,right} (Strongest)
 0 ←→   ᴍa⟦ad⟧𝕊 push {right,left} into {left,right} (Medium)
 0  ⥉   ᴍcsw swap right and left (Medium)
 0 ⭠⭢   ᴍa⟦AD⟧𝕊 push {right,left} into {left,right} (Weakest)
 0 ≔≕   ᴍ⟦⁅eqd⁆⁅deq⁆⟧ Assign to {left,right}
-0 󷸉󷸎   ᴍ⟦⁅eqd⁆⁅deq⁆⟧ Assign to {left,right}, return previous value
+    `x≔22→+2 ≡ 24 ∧ x≡22`
+    `22≕x+2 ≡ 24 ∧ x≡22`
+0 󷸉󷸎   ᴍ⟦⁅eqD⁆⁅Deq⁆⟧ Assign to {left,right}, return previous value
+    `(␛a≕x)►(x󷸉␛b→+x) ≡ "ab"`
 0 󷸊󷸌   ᴍ⟦⁅eqm⁆⁅meq⁆⟧ Assign to {left,right}, foward value
+    `(␛a≕x)►(x󷸊⋅5) ≡ "aaaaa"`
 0 󷸋󷸍   ᴍ⟦⁅eqM⁆⁅Meq⁆⟧ Assign to {left,right}, foward value, return previous value
->¡ℭ ⦑c⦑f6b⦒⦒ 󷰚⬅➡←→⭠⭢⥉
+    `(␛a≕x)►(x󷸋+␛b→+x) ≡ "aab"`
+>¡ℭ ⦑c⦑e6b⦒⦒ 󷰚⬅➡←→⭠⭢⥉
+>¡ℭ ⦑c⦑f0a⦒⦒ 󷰴≔≕󷸉󷸎󷸊󷸌󷸋󷸍
 
 󷰾 𝔸𝕂   ᴍq⟦ak⟧ λ {vargs,kargs}
+    `󰲣[x,y,⠤𝔸,𝕂􊯛ⱼ]󰅂(5,2,9,1,j=22) ≡ [5,2,9,1,22]`
 󷰾 𝓐𝓚   ᴍMS⟦AK⟧ whisker {vargs,kargs}
+    `󷺻[⠤𝓐,⟞,𝓚􊯛ⱼ]ᐸ(5,2,j=15) ≡ [2,5,15]`
 󷰾 󰮈   ᴍcot signal delete element from iteration
 >   ¡ℭ ⦑c⦑fa2⦒⦒ 󰮈
     Many iteration operators disgard values if their operand function returns this.
@@ -520,18 +598,25 @@
 >   ¡ℭ ⟨DGREEN⟩ ⬤
     See 
 
-󷰾 ✓✗   ᴍhe⟦kx⟧ {true,false}
-󷰾 ⴳⴴ   ᴍcc⟦tf⟧ {truthy,falsey} function that always returns {true,false}
+󷰾 ✗✓   ᴍhe⟦xk⟧ {false,true}
+    `✗≡0`
+    `✓≡1`
+󷰾 ⴴⴳ   ᴍcc⟦ft⟧ {falsey,truthy} function that always returns {false,true}
 >¡ℭ ⦑c⦑f00⦒⦒ ✗ⴴ ␠ ¡ℭ ⦑c⦑0f0⦒⦒ ✓ⴳ
 󷰾 □   ᴍ[] none
 󷰾 ᐦ   ᴍc" empty string
 󷰾 ∞   ᴍ88 infinity
 󷰾 îĵ󷺈   ᴍ⟦ijk⟧^ {imaginary,j,k} unit
+    `ĵ+2î ≡ ℍ(0,2,1,0)`
 󷰾 ℇ   ᴍeu𝕊 euler's number
 󷰾 τπ󷺍󷺎󷺏   ᴍ⟦⁅⟦tp⟧𝕊⁆⁅p234⁆⟧ {tau,½τ,½π,½󷺍,½󷺎}
 󷰾 􋐳􋐲􋐴􋑯   ᴍ,⟦⁅cos⁆⁅sin⁆⁅tan⁆⁅log⁆⟧ {cos,sin,tan,log} Function (maybe operator in future?)
 󷰾 𝗙   ᴍwsF check if function
+    `󷺹²ᐸᐹ𝗙 ∧ 𝗙(󷺹²) ≡ ✓`
+    `[1,2,3]ᐹ𝗙 ∨ 𝗙(22) ≡ ✗`
 󷰾 𝗜   ᴍwsI check if iterable
+    `[1,2,3]ᐹ𝗜 ∧ 𝗜([1,2,3]) ≡ ✓`
+    `2ᐹ𝗜 ∨ 𝗜(□) ≡ ✗`
 󷰾 𝗛   ᴍwsH check if hashable, if so, return hashed value
 >¡ℭ ⟨DBLUE⟩ □ᐦ∞îĵ󷺈ℇ󷺍󷺎󷺏
 
@@ -546,7 +631,7 @@
 󷰾 ᐖᐛ   ᴍ >>|⟦AD⟧ {left,right} whisker apply to elt's, no insert
 󷰾 󷺻󷺿   ᴍ| >|⟦AD⟧ {left,right} whisker function, no insert
 󷰾 󷺼󷻀   ᴍ|>>|⟦AD⟧ {left,right} whisker function on elt's, no insert
->   ¡ℭ ⟨YELLOW⟩ ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻𝚲⥌↦␛󰅁␛󰅂
+>   ¡ℭ ⟨YELLOW⟩ 𝚲⥌↦␛󰅁␛󰅂ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻
 󷰾 ⟞⟝   ᴍ⟦⁅-|⁆⁅|-⁆⟧𝕊 {left,right}-tack arg for {left,right} whisker
 >   ¡ℭ ⟨DBLUE⟩ ⟞⟝
 
@@ -561,7 +646,18 @@
 󷰾 𝑡   ᴍwit tuple
 󷰾 𝑦   ᴍwiy bytes
 󷰾 ᔐ   ᴍcs𝕊 str
->¡ℭ ⦑c⦑fa2⦒⦒ 󱣩ᔐ󱠨󰋺
+
+󷰾 󰋺   ᴍcic runtime include ☾ code
+    "󰋺(‹my_file.☾›, ‹usefull_thing_1›, ‹other_usefull_stuff›)"
+󷰾 󱠨   ᴍcex runtime exec ☾ code
+󷰾    ᴍcfo file open
+󷰾    ᴍcfr file read
+󷰾    ᴍcfw file write
+󷰾    ᴍcfw file write
+󷰾    ᴍcbc clipboard
+    "()" ⟶ contents of clipboard
+    "(‹stuff›)" ⟶ copies "stuff" to clipboard
+>¡ℭ ⦑c⦑fa2⦒⦒ 󱣩ᔐ󱠨󰋺
 
 󷰾 ´   ᴍ'' neutralize operator
     Forces operator to act as regular variable
@@ -591,10 +687,19 @@
     󰤱 docs
 >¡ℭ ⟨LBLEEN⟩ ⍮󷸴⍈
 
+󷰾 ␛   ᴍESC escape character in string/1 char str
+>   ¡ℜ ⦑⦒⦑c⦑f|0fa7⦒⦒ "(␛␛)(.)"
+    `‹␛›␛⟦› ≡ "›⟦"`
+    `␛a ≡ "a"`
+    `␛␛ ≡ "␛"`
 󷰾 𝗻𝗿𝘀𝘁   ᴍws⟦nrst⟧ {newline,carriage return,space,tab} character
+    `𝗻 ≡ "\n"`
+    `𝗻𝘀𝘁␛h ≡ "\n \th"`
 󷰾 ‹›   ᴍcc⟦[]⟧ {›begin,close} magic string
 >   ¡ℭ ⦑c⦑f5a|0fd4⦒B⦑s|1⦒⦒ ‹›
+    `‹hi \_:>_/!𝗻𝗻› ≡ "hi \\_:>_/!\n\n"`
 󷰾 ⟦⟧   ᴍq⟦[]⟧ {begin,close} magic string sub-expr
+    `‹beastboy: ⟦2²⟧› ≡ "beastboy: 4"`
 󷰾 󰦥   ᴍST: hyperliteral star string
 >   ¡ℭ ⟨DGREEN⟩ 󰦥
 >   ¡ℜ ⦑c⦑7feb2d⦒⦒ "(󰦥{5})"
@@ -603,7 +708,10 @@
 
 󷰾    ᴍcom Comment
 >   ¡ℭ ⦑c⦑24f115|4f02⦒⦒ ""
-󷰾 🟑֎ JOE ᴍc⟦⁅/𝕊⁆⁅//⁆⟧ Multiline comment{,}
+    Ignores everything after it
+󷰾 🟑֎ JOE ᴍc⟦⁅/𝕊⁆⁅//⁆⟧ Multiline/inline comment{,}
+    `2+🟑wee🟑2 ≡ 4`
+    󷹇 these autoclose at end of file
 
 >¡upsidedown ⟨LBLUE⟩ ⟦
 >  ⁅ wu⟦0123456789abcdefoxABCDEFOX⟧ 

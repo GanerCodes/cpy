@@ -151,13 +151,14 @@ xcompose_from_seqs = 󰲡x.itemsꟿ󰲣y≔←y¿yᐹ𝑡¡y⛶ᵀ→►‹�
     p = 𝐩∘p→.expanduser.resolve
     shutil.copy(p, x≔𝐩←NTF(delete=ⴴ).name)
     ☾‹Backing up old settings to temp file: ⟦x⟧›,
-    
     jargs = ℵ(ensure_ascii=✗, indent=□, separators=",:")
+    (cpy_dir / ‹FontCompose/Output/style_regex.json›, jds(dat, ⠶jargs))
     j = jl(p.open←"rb")
     
     nj = dat | j.get("☾.highlight_extra", {})
     TXT = (p.open←"r"→.read)
-    inj = ‹𝗻𝘁/*DON'T REMOVE THE START/END COMMENTS IN THIS SECTION THIS IS HOW WE FIGURE OUT WHERE EVERYTHING IS*/𝗻𝘁"highlight.regexes": ⟦jds(nj, ⠶jargs)⟧›
+    inj = ‹𝗻𝘁/*DON'T REMOVE THE START/END COMMENTS IN THIS SECTION THIS IS HOW WE FIGURE OUT WHERE EVERYTHING IS*/›␛
+          ‹𝗻𝘁"highlight.regexes": ⟦jds(nj, ⠶jargs)⟧›
     S, E = "BEG PLEAD"⍭ᴍ󰲡‹/*󰦥󰦥󰦥⟦x⟧󰦥󰦥󰦥*/›
     (q≔S⋄Eᴍ󰲡x∈TXT󰅂⨁→∈0⋄2) ⨳ "Malformed indicators!"
     TXT = TXT﹕₋₁.rstrip.rstrip(␛,) + TXT₋₁

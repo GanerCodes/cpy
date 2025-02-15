@@ -212,6 +212,7 @@ def run_moon(𝔸, extract_interactive=ⴴ):
     cpy = basic_cpy_interactive_session(**ᖱ(
           print_code   = 𝕂.debug,
           print_output = ⴳ) | cpy_kwargs)
+    cpy.ns = ns;
     
     if 𝕂.c:
         r = cpy(ś.join(𝔸))
