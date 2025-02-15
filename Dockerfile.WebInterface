@@ -4,4 +4,4 @@ COPY . .
 RUN ./install
 EXPOSE 8000
 WORKDIR ./Extra/WebInterface
-CMD ["sh", "-c", "☾ gen.☾"]
+CMD ["sh", "-c", "☾ server.☾"]
