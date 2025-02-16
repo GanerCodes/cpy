@@ -1,34 +1,35 @@
-󰋺(‹http›) ; cd(@)
+󰋺(‹http›)
+󰋺(cpy_dir / ‹☾/generate_operators›, ⠤‹ops to_docs›⍭)
 
 ucod = ℵ←(moon_dir / "FontCompose/UnicodeQuery/unicode.txt") ␛
         󷹎𝗻󰈲󷺹∧⟞∌␛#∧␛.∉⟞ᐸ ᐵ󷹎¹␛;ᐵ.lower⬄𝘀ᐸꟿ⁰󷺹󷹜16󷹝→⋄󷺽→ᴙ
-ords = ("da_docs")󷹎𝗻𝗻ᐵ󷹎𝗻ᑀ⨝󰲣𝘀≠y₀⭜□⭝󰮈󰅂󷹎
-desc = ℵ(ords󰌷ᐵ₀󷹎¹␛;ᐵ⬄𝘀ᐸᑀ₀ ₀⋄←⟞₁⛶+ᑅ⟞₁﹕)
+ desc = ℵ((("da_docs")󷹎𝗻𝗻ᐵ󷹎𝗻ᑀ⨝󰲣𝘀≠y₀⭜□⭝󰮈󰅂󷹎)󰌷ᐵ₀󷹎¹␛;ᐵ⬄𝘀ᐸᑀ₀ ₀⋄←⟞₁⛶+ᑅ⟞₁﹕)
 real_files = ‹wasm_stuff.zip font.ttf index.j☾›⍭
-󰋺(cpy_dir / ‹☾/generate_operators›, ⠤‹ops to_docs›⍭)
 
-JS = ‹⟦joon_header⟧𝗻⟦transpile(("index.j☾"))⟧›
-
-ops = to_docs(ops)
-DOCS  = ops󱖔􋈗􋐃
-DOCS_ = descꟿᴷ󰲣__highlighter__(x)󰅂󱖔􋈗􋐃
+JS    = ‹⟦joon_header⟧𝗻⟦transpile(("index.j☾"))⟧›
+DOCS  = to_docs(ops)󱖔􋈗􋐃
 STYLE = ᵇ(cpy_dir / ‹FontCompose/Output/style_regex.json›)
+FONTT = ᵇ("../../FontCompose/Output/99_JuliaMono-Regular.ttf")
+FONTW = ᵇ("../../FontCompose/Output/99_JuliaMono-Regular.woff2")
+LOGO  = ᵇ("../Assets/moon.svg")
+
+cors = ℵ({"access-control-allow-origin": ␛*})
 
 @HTTP_Server
 ⊢ server(𝚖,𝚙,𝙷,𝚎):
     ‹⟦𝚖⟧:⟦𝚙⟧›☾
     ¿𝚖≠"GET": ↪
     P = 𝚙₁﹕
-    ¿P≡"docs"    : ↪ DOCS_, ℵ(𝙲𝚃=".json")
-    ¿P≡"info"    : ↪ DOCS , ℵ(𝙲𝚃=".json")  rename once old removed?
-    ¿P≡"style"   : ↪ STYLE, ℵ(𝙲𝚃=".json")
-    ⸘P≡"font.ttf": ↪ ᵇ("../../FontCompose/Output/99_JuliaMono-Regular.ttf"), ℵ(𝙲𝚃=".ttf")
-    ⸘P≡"moon.svg": ↪ ᵇ("../Assets/moon.svg"), ℵ(𝙲𝚃=".svg")
-    ⸘P≡"index.js": ↪ JS, ℵ(𝙲𝚃=".js")
+    ¿P≡"info"      : ↪ DOCS , ℵ(𝙲𝚃=".json" , ⠶cors)
+    ⸘P≡"style"     : ↪ STYLE, ℵ(𝙲𝚃=".json" , ⠶cors)
+    ⸘P≡"index.js"  : ↪ JS   , ℵ(𝙲𝚃=".js"   , ⠶cors)
+    ⸘P≡"font.ttf"  : ↪ FONTT, ℵ(𝙲𝚃=".ttf"  , ⠶cors)
+    ⸘P≡"font.woff2": ↪ FONTW, ℵ(𝙲𝚃=".woff2", ⠶cors)
+    ⸘P≡"moon.svg"  : ↪ LOGO , ℵ(𝙲𝚃=".svg"  , ⠶cors)
     ⸘P﹕􊹳ₓ􊮝􋕨ᵤₙᵢ󰂼ₑ􋕨≡x:
         syms = ucod󰈲󷺹₀∋ᑅPₓ􊹳₊₁﹕.lower→ᴍ󷸺
-        ↪ ‹<head><meta charset="UTF-8"><style>html,body{display:flex;flex-wrap:wrap;background:#000;color:#fff;width:100%;height:100%}body{height:min-content;}z{width:20px;height:20px;}</style></head><body>⟦symsᐖ‹<z>⟦⟞⟧</z>›ᐸ⨝⟧</body>›
+        ↪ ‹<head><meta charset="UTF-8"><style>html,body{display:flex;flex-wrap:wrap;background:#000;color:#fff;width:100%;height:100%}body{height:min-content;}z{width:20px;height:20px;}</style></head><body>⟦symsᐖ‹<z>⟦⟞⟧</z>›ᐸ⨝⟧</body>›, cors
     ¡:
-        ↪ ᵇ(P∈real_files ⭜P⭝ "index.html")
+        ↪ ᵇ(P∈real_files ⭜P⭝ "index.html"), cors
 
 ‹Running server›☾ ► server(port=8000)

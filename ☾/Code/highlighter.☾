@@ -30,7 +30,7 @@ styd = styf ⥉  ⥉ loads ⥉ ℵ
         g = ə.tb_frame.f_globals
         ∀_∈␛_:
             ¿"__file__"∈g:
-                f = g􋕨􋕞􋕞ᵢₗₑ􋕞􋕞􋕨
+                f = ᔐ(g􋕨􋕞􋕞ᵢₗₑ􋕞􋕞􋕨)
                 ¿f.endswith("/refresher.py"): ⇥
                  ¿f.endswith("/header.☾"): ⇥
                 ¿f∈ℭ:
