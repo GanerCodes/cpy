@@ -2,6 +2,7 @@
 
     󰤱  Documentation (oh gosh people are finding the project now)
     󰤱  Angle of complex number
+    󰤱  Better window, multidimentional
     󰤱  bootstrap everything
     󰤱  option for operator to ignore superscripts like →
     󰤱  __setminus__, __crossprod__, __union__, __intersection__, __subset__ ; mutex
@@ -24,11 +25,11 @@
     󰤱  side-invarient unary doesn't work ⓦ implicit multiplication
     󰤱  eval bar: 󷺄x󰄎2󰄎3⁞, 󷺄x󰄎⬤󰄎⬤⁞
     󰤱  implicit imports are jank
+    󰤱  Font generator slow
     󰤱􊽨 Web/phone-app maker
     󰤱􊽨  option to print progress
     󰤱􊽨 Make x⭜y⭝z store vals
     󰤱􊽨 Star versions of: 󰈲󰈳󰒼󰒽
-    󰤱􊽨 Font generator slow
 
 § CoolCharBank™ ------------------------------------
 

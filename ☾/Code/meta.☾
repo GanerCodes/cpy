@@ -63,20 +63,23 @@ IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
     ⮌ sys ⨡ path as P, _getframe as GF
     ⮌ os ⨡ path, listdir
     ⮌ pathlib ⨡ Path as 𝐩
-    f, drs = □, (␛., ⠤P) ᐵ⥉𝐩→.resolve()ᐸ 󰈲󷺹.is_dir()
+    G = outer_globals()
+    drs = [␛., ⠤P]
+    ¿G.get("__file__")≕fp: drs.append(𝐩(fp) / ‹..›)
+    f, drs = □, drsᐵ⥉𝐩→.resolve()ᐸ 󰈲󷺹.is_dir()
     ∀p∈drs:
         ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡z≔p/‹⟦𝔣⟧⟦x⟧›→.is_file() ∧ z󰅂: ⇥
     f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦drsᐖ‹"⟦⟞⟧"›ᐸ⨝␛,𝘀⟧]!›
     ¿just_get_path: ↪f
     nam = PEV(f.stem ≕ na)
-    G = outer_globals()
     ¿f∈IMPORTED_:
         ¿IMPORTED_≕m≅□: ↪
     ¡:
         code = f.open().read()
         Ω Module(ℵ´ 􋇑): __repr__ = 𝚲‹Module "⟦na⟧"›
         IMPORTED_ = □
-        IMPORTED_ = m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns={"__name__": nam}, fname=ᔐ←f))
+        ns = {"__name__": nam, "__file__": f}
+        IMPORTED_ = m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns=ns, fname=ᔐ←f))
         importsₙₐ = m
         ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
     𝑘 = *∈𝔸 ⭜m⁻󰈳󰲡x₀≡␛_󰅂⭝ [⠤𝔸 ∖ {!}]

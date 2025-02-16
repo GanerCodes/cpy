@@ -142,7 +142,7 @@ DAT = ␛
 
 ⦑c⦑3f4|3f412|3f4⦒B⦑s⦒⦒⟦⁅NL⁆⁅SP⁆⁅HT⁆⁅DEL⁆⁅ESC⁆⁅NUL⁆⁅ENQ⁆⁅SOH⁆⁅STX⁆⁅ETX⁆⁅EOT⁆⁅ACK⁆⁅BEL⁆⁅BS⁆⁅LF⁆⁅VT⁆⁅FF⁆⁅CR⁆⁅SO⁆⁅SI⁆⁅DLE⁆⁅DC1⁆⁅DC2⁆⁅DC3⁆⁅DC4⁆⁅NAK⁆⁅SYN⁆⁅ETB⁆⁅CAN⁆⁅EM⁆⁅SUB⁆⁅FS⁆⁅GS⁆⁅RS⁆⁅US⁆⁅ATM⁆⟧ ⟶ ␤ "␠" ␉ ␡ "␛␛" ␀ ␅ ␁ ␂ ␃ ␄ ␆ ␇ ␈ ␊ ␋ ␌ ␍ ␎ ␏ ␐ ␑ ␒ ␓ ␔ ␕ ␖ ␗ ␘ ␙ ␚ ␜ ␝ ␞ ␟ 󰵇
 ⟨BLUE⟩⟦
-    ⁅a⟦ ⁅ ⟦⁅ad⁆⁅qc⁆⁅ez⁆⟧     ⟶ ⟷⤡⤢      ⁆
+    ⁅a⟦ ⁅ ⟦⁅qc⁆⁅ez⁆⟧         ⟶ ⤡⤢       ⁆
         ⁅ ⟨D4⟩𝕊              ⟶ ⭡⭣⭠⭢     ⁆
         ⁅ ⟦⁅WW⁆⁅SS⁆⁅AA⁆⁅DD⁆⟧ ⟶ ⬆⬇⬅➡     ⁆
         ⁅ ⟦lxyw⟧⟦ad⟧         ⟶ ⟵"⟶"⇜⇝↢↣⬿⤳ ⁆
@@ -249,10 +249,14 @@ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789αβγδεζηθϑ
 ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻᴬᴮ󰀂ᴰᴱ󰀅ᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾ󰀐ᴿ󰀒ᵀᵁⱽᵂ󰀗󰀘󰀙⁰¹²³⁴⁵⁶⁷⁸⁹󰁌󰁍󰁎󰁏󰁐󰁑󰁒󰁓◌󰁔󰁕󰁖󰁗󰁘󰁙󰁛󰁜󰁝󰁞󰁟󰁠󰁡󰁢󰁣󰁤◌◌󰀶󰀷◌󰀻󰁁󰁃󰁅󰁈󰁊󰁋󰁱󰂂󰂁󰁲⁺⁻⁼⁽⁾󰁺󰁻󰁸󰁹˜◌◌◌◌◌ꜝ 󰦥󰦥󰦥󰦥󰦥
 SCRIPT_DEPTH = 2
 
-󰋺(moon_dir / ‹☾/generate_operators›, ⠤‹ops generate_fontcompose_conf›⍭)
+op_gen = 󰋺(moon_dir / ‹☾/generate_operators›, ⠤‹ops generate_fontcompose_conf›⍭)
 DAT󷸊+𝗻+generate_fontcompose_conf(ops)
 
 ¿ __name__ ≡ "__main__":
+    op_gen.main
+    ‹Running tests:›☾
+    󰋺(moon_dir / ‹☾/Tests/tests.☾›)
+    
     DAT☾
     󰋺("generate")
     ⨡ platform

@@ -95,7 +95,7 @@
         `[1,0,5] ᴮ 󷺹<0ᐸ ≡ [[1,0,5],[]]`
     󷹇 Supports 󰮈
     󰤱 make it work with ᔨ
-󷰠 ſϜ 𝚡∨􊽨𝚡 ᴍfs {fold,accumulate}
+󷰠 ſϜ 𝚡∨􊽨𝚡 ᴍ⟦⁅fs⁆⁅FS⁆⟧ {fold,accumulate}
     𝗜 ſ/Ϝ 𝗙
     Left-to-right fold.
         `[1,2,3,4] ſ + ≡ 10`
@@ -107,6 +107,10 @@
 󷰠 ⨁⨀ 𝚡∨􊽨𝚡 ᴍo⟦+.⟧ {sum,product}
     𝗜 ⨁/⨀
     fold over left with + or ⋅, with modifier as starting value
+    In the case of empty iterable and no default value:
+        `[] ⨁ ≡ 0`
+        `[] ⨀ ≡ 1`
+        `"" ⨁ ≡ ᐦ`
 󷰠 󰈲󰈳 𝚡∨􊽨𝚡 ᴍcf⟦+-⟧ filter {positive,negative}
     𝗜 󰈲
         filter left for truthyness
@@ -213,7 +217,14 @@
         `[[1,2,3],[5,2],[0,󷰾]] 󱑼 ≡ [[1,5,0],[2,2,󷰾]]`
     󱑼􋇜 fill with default value
         `[1,2] 󷹅⁹ [1,2,3] ≡ [[9,1],[1,2],[2,3]]`
-    
+        󷹇 if ⬤ is passed then it copies last val
+            `[1,2,3]󱑼􋅂[4,5] ≡ [[1,4],[2,5],[3,5]]`
+            `[1,2,3]󷹅􋅂[4,5] ≡ [[1,4],[2,4],[3,5]]`
+        
+    󷹇 if an arg isn't iterable, it's duplicated into
+        a list with length of longest iterable arg
+        `[5,3]󱑼2 ≡ [[5,2],[3,2]]`
+   
     󷹅: same as 󱑼 but elements are aligned towards the right
         `[1,2] 󷹅 [1,2,3] ≡ [[1,2],[2,3]]`
 󷰢 ᓕ 𝚡󷺤􋅂𝚡 ᴍcat𝕊 at indicies
@@ -380,6 +391,10 @@
     `[]⤉² ≡ 2 ≡ [2]⤉⁹`
     󷹇 Supports ᔨ and 󰮈
     󰤱˜ docs
+󷰭 ⟷ 𝚡∨􊽨𝚡 ᴍaad min and max tuple
+    performs ⤈ ⤉ and returns tuple of them
+    `[5,2,0,5,3]⟷ ≡ (0,5)`
+    󷹇 Supports ᔨ and 󰮈
 󷰭 󷹄 𝚡⩚􋅂𝚢 ᴍcac constrain
     "low 󷹄ˣ high" or (low 󷹄 high)(x) or (x󷹄)(low, high)
     Limits x to between low and high (inclusive)
@@ -525,6 +540,7 @@
 
 
 0 =   = Python assignment
+0 ⊢   ᴍatd Python "def"
 0 󱀘   ᴍccl Python "class"
 0 ⨡   ᴍcim Python "import"
 0 ↪   ᴍcr𝕊 Python "return"
@@ -542,7 +558,7 @@
     `✗⭜5 ➡≡ □`
     `✓⭜5 ➡≡ 5`
     `✗ ⭜5⭝ ✓ ⭜9⭝ 0 ➡≡ 9`
->¡ℭ ⟨LBLEEN⟩ 󱀘⨡⮂↪⮌↺⇥➰∀=¿⸘␛¡⭜⭝⠤⠶󰆴
+>¡ℭ ⟨LBLEEN⟩ =⊢󱀘⨡↪󰆴⮂⮌↺⇥∀➰⠤⠶¿⸘␛¡⭜⭝
 
 0 ⬅➡   ᴍa⟦⁅AA⁆⁅DD⁆⟧ push right into {left,right} (Strongest)
 0 ←→   ᴍa⟦ad⟧𝕊 push {right,left} into {left,right} (Medium)
