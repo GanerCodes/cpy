@@ -10,7 +10,7 @@
         sys.stdout, sys.stderr = sys.__stdout__⋄sys.__stderr__
         ↪ 𝕊
     ⊢ __exit__(𝕊, ⠤𝔸):
-        ☾´(flush=ⴳ)
+        ᐦ☾
         sys.stdout, sys.stderr = 𝕊󰀒
         𝕊ᴼ ᴍ os.close
         𝕊ᴰ 󱑼 𝕊ᴼ ꟿ os.dup2

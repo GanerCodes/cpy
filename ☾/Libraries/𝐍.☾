@@ -3,15 +3,15 @@
 󱀘 𝐍:
     __slots__ = ␛t, ␛c
 
-    ⊢ __init__(󱁕, t, ⠤c): 󱁕.t, 󱁕.c = t, c∨[]
+    ⊢ __init__(󱁕, t, ⠤c): 󱁕ᵗ, 󱁕ᶜ = t, c∨[]
     __iter__ = 󱁕↦iter(󱁕ᶜ)
     __repr__ = 󱁕↦‹𝐍⟨⟦󱁕ᵗ∨␛∅⟧⟩⟨⟦", ".join(󱁕ᴍᔐ)⟧⟩›
     __getitem__ = ⥌󱁕,i↦󱁕ᶜᵢ
     __len__  = 󱁕↦󱁕ᶜ🃌
     ft = 𝒮ℳ←󰲡𝐍(x₀,⠤(x₁ᴍ𝐍ᶠᵗ) ¿x₁ᐹ𝑙|𝑡∧x₁🃌≡2¡ (x₁⛶))  from (name, ((…), …))
     tt = 󱁕↦(󱁕ᵗ,󱁕ᶜᴍ󰲡xᵗᵗ ¿xᐹ𝐍¡ x)  to (name, ((…), …))
-    copy  = ⥌󱁕,t=□,c=□↦(ᐹ󱁕)(󱁕ᵗ ¿t≅□¡ t, ⠤󱁕ᶜ ¿c≅□¡ c)
-    rcopy = ⥌󱁕,t=□    ↦(ᐹ󱁕)(󱁕ᵗ ¿t≅□¡ t, ⠤󱁕ᶜᴍ(ᐹ󱁕).rcopy) ¿󱁕ᐹ𝐍¡ 󱁕
+    copy  = ⥌󱁕,t=□,c=□↦(ᐹ󱁕)(t≅□ ⭜󱁕ᵗ⭝ t, ⠤c≅□ ⭜󱁕ᶜ⭝ c)
+    rcopy = ⥌󱁕,t=□    ↦(ᐹ󱁕)(t≅□ ⭜󱁕ᵗ⭝ t, ⠤󱁕ᐹ𝐍 ⭜󱁕ᶜᴍ(ᐹ󱁕).rcopy⭝ 󱁕)
     ⊢ frp(󱁕, ƒ, r, pre=✗):
         𝓡 = 󰲡x.copy(c=xᴍ󰲡x.frp(ƒ,r,pre))
         󱁕 = 󱁕 ᣆᵖʳᵉ  𝓡
@@ -23,7 +23,7 @@
         𝝀 = (ℂ≔ᐹ󱁕).extract(⬤,𝑓,E,pre=pre)
         󱁕ᴍ󰲡L􊴎􊭨􊴒􊭨ₓ􊮝ₓ􋔲􊫻􊪾􊫶􊸩.append(x)
         n = 󱁕.copy(c=r ¿pre¡ rᴍ𝝀)
-        ↪ ((n, E) ¿Δ¡ E) ¿β∧γ¡ n
+        ↪ β∧γ ⭜(Δ ⭜(n,E)⭝ E)⭝ n
     filter = ⥌󱁕,ƒ↦󱁕.extract(¬○f,⠤𝔸,⠶𝕂,β=✗,Δ=✗)
     
     ⊢ P(󱁕, fs=✓):
@@ -57,7 +57,7 @@
         ∀i,z∈↨󱁕:
             l = (zᴾ(✗)¿zᐹ𝐍¡ᔐ∘z).split←𝗻
             e = i≡󱁕🃌-1
-            l₀  = (m1¿i¡m0)ₑ+l₀
+            l₀  = (i ⭜m1⭝ m0)ₑ+l₀
             l₁﹕ =   l₁﹕ᴍ󰲡m2ₑ+x
             l = lᴍ󰲡ml⋅𝘀+x
             ¿¬i:
@@ -144,4 +144,8 @@
     
     rm = child_killer = kill_children
     filter = ⥌󱁕,ƒ,⠤𝔸,⠶𝕂↦󱁕.kill_children(¬○ƒ, ⠤𝔸, ⠶𝕂)
+
+⮌ sys ⨡ modules
+󱀘 _: 𝐍,Ń = 𝐍,Ń
+modules󰂢󰂗󰂨₍􊯛􊳌₎ = _
 __exports__ = ␛𝐍, ␛Ń

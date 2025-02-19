@@ -1,5 +1,12 @@
 ⮌ os ⨡ chdir, getcwd as pwd_, environ as env, mkdir
 ⮌ pathlib ⨡ Path as 𝐩
+⮌ tempfile ⨡ gettempdir
+
+TMPDIR = 𝐩(gettempdir)
+mkd  = ⥌f,e=✓,p=✓↦    𝐩(f)≕p         →.mkdir(exist_ok=e,parents=p) ► p
+mkf  = ⥌f,e=✓    ↦mkd(𝐩(f)≕p→.parent)→.touch(exist_ok=e          ) ► p
+tmpf = ⥌b=ᐦ,f=␀,n=14↦mkf(TMPDIR/b/(f≅␀ ⭜abcABC123¹n󰌷⭢⨝⭝ f))
+tmpd = ⥌b=ᐦ,f=␀,n=14↦mkd(TMPDIR/b/(f≅␀ ⭜abcABC123¹n󰌷⭢⨝⭝ f))
 
 󱀘 suppar2:
     __init__ = ⥌𝕊,ƒ↦𝕊􊽺≔ƒ →► □
@@ -37,10 +44,15 @@ pwd = 𝚲𝐩∘pwd_
         ↪ 𝕊􋕟􋕟ᶜˡᵃˢˢ􋕟􋕟∘d
 cd = cd
 
-__exports__ = ‹𝐩 env     pwd cd›⍭
+⊢ sha(⠤𝔸,⠶𝕂):
+    ⮌ hashlib ⨡ sha256 as _sha256
+    ⮌ base64 ⨡ urlsafe_b64encode, urlsafe_b64decode
+    ↪ 𝑀(urlsafe_b64encode(_sha256(𝑀(ᔐ(𝔸)+ᔐ(𝕂))).digest())).rstrip(␛=)
+
+__exports__ = ‹𝐩 env TMPDIR mkf mkd tmpf tmpd     pwd cd sha›⍭
 
 ¿ __name__≡"__main__":
-    𝐩("/tmp/eggs").mkdir(parents=✓, exist_ok=✓)
+    mkd("/tmp/eggs")
     pwd☾
     cd∘"/tmp"
     pwd☾

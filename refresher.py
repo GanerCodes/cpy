@@ -28,6 +28,7 @@ def py_reparse(x):
 if not hasattr(traceback.linecache, "CPY_CACHE"):
     traceback.linecache.CPY_CACHE = {}
 def remember_code_for_tracebacks(path, code, *, funky_monkey={"monkeys": set()}, monkemonEeamnoNEKEEE={}):
+    path = ᔐ(path)
     traceback.linecache.CPY_CACHE[path] = code
     monkemonEeamnoNEKEEE[path] = code.split(ń)
     if "monke" not in funky_monkey:
@@ -80,7 +81,8 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
         hns = header_carry | hns
     else:
         hns.setdefault("__builtins__", __builtins__ if ᐹ(__builtins__, ᖱ) else __builtins__.__dict__)
-        hns.setdefault("__file__", header_f)
+        hns.setdefault("__file__", fhp:=Path(header_f))
+        hns.setdefault("__dir__" , fhp.parent)
         hns.setdefault("__code_post_process__", 𝕂.get("code_post_process"))
         hns.setdefault("__code_cache_dir__", code_cache_dir)
         hns.setdefault("__gram_cache_dir__", gram_cache_dir)
@@ -88,10 +90,14 @@ def basic_cpy_session(do_cache=ⴳ, ns=ᗜ, hns=ᗜ,
         hcode = '\n'.join(compiler("☾", R(f"{code_pfx}/{x}"), do_cache, **𝕂)
                             for x in R(header_f).split('\n') if x)
         run_inj_tb(hcode, hns)
-        
     ns["__builtins__"] = { **ns.get("__builtins__", {}), **hns["__builtins__"], **hns }
     ns.setdefault("__name__", "__main__")
-    ns.setdefault("__file__", fname)
+    if (fnp:=Path(fname)).is_file():
+        ns.setdefault("__file__", fnp)
+        ns.setdefault("__dir__", fnp.parent)
+    else:
+        ns.setdefault("__file__", fname)
+        ns.setdefault("__dir__", None)
     return lambda c, **𝕁: compiler("☾", c, do_cache, **𝕂|𝕁), ns
 
 def basic_cpy_interactive_session(print_code=ⴴ, print_output=ⴴ, do_cache=ⴳ,
@@ -182,7 +188,8 @@ def run_moon(𝔸, extract_interactive=ⴴ):
         "do_cache": not 𝕂.no_cache } | 𝕂
     
     if 𝔸 and not 𝕂.c:
-        ns["__file__"] = f = os.path.abspath(𝔸[0])
+        ns["__file__"] = f = Path(os.path.abspath(𝔸[0]))
+        ns["__dir__" ] = f.parent
         cpy = basic_cpy_interactive_session(**ᖱ(
                 print_code   = ⴴ,
                 print_output = ⴴ,
@@ -190,7 +197,7 @@ def run_moon(𝔸, extract_interactive=ⴴ):
         
         sys.argv[:] = 𝔸 # jank?
         run_custom_errors(
-            lambda: cpy(R(f), cap_stdout=ⴴ, force_exec=ⴳ),
+            lambda: cpy(R(f), fname=f, cap_stdout=ⴴ, force_exec=ⴳ),
             ns, quit=ⴳ)
         exit()
     

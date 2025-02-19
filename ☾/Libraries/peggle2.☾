@@ -1,11 +1,12 @@
-󰋺(␛𝐍, *)
+󰋺(␛𝐍); 󰋺(‹cache›)
+
 try             : ⨡ regex as re
 except Exception: ⨡ re
 ⮌ pickle ⨡ loads, dumps
+⮌ time ⨡ time
 
 show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹⟦i⟧,⟦x⟧𝘁⟦𝑅ₓ⟧𝘁⟦y⟧›
 
-⮌ time ⨡ time
 𝓽_ = □
 ⊢ 𝓣(s=ᐦ):
      ↪  󰤱
@@ -17,6 +18,7 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
     ‹⟦s⟧ took ⟦time-𝓽_⟧s›☾
     𝓽_ = □
 
+@fcache
 ⊢ gram_convert(󱁕):
     name_remaps = ℵ("elm_o elm_a assign_cln group_inner group"⍭󱑼"∨∧←∧∧")
     Ə = ℵ(T=✓)
@@ -34,10 +36,10 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
         ✗⨳
     ⊢ bad(󱁕):
         ¿󱁕ᵗ∈"comment w W"⍭: ↪✓
-        ¿¬󱁕ᵗ∧󱁕🃌≡1∧󱁕ᶜ₀ᵉ ᵀ∧󱁕ᶜ₀ᵗ∈‹()∧∨:=›: ↪✓
+        ¿¬󱁕ᵗ ∧ 󱁕🃌≡1 ∧ 󱁕ᶜ₀ᵉ ᵀ ∧ 󱁕ᶜ₀ᵗ∈‹()∧∨:=›: ↪✓
     ⊢ collapse_ao(󱁕):
         ¿󱁕ᵉ ᵀ: ↪󱁕
-        󱁕ᶜ = 󱁕ᶜ ᴍ󰲡xᶜ ¿(x≔collapse_ao(x))ᵗ≡󱁕ᵗ∈␛∧␛∨¡ [x]󰅂 ⨁[]
+        󱁕ᶜ 󷸊 ᴍ󰲡(x≔collapse_ao(x))ᵗ≡󱁕ᵗ∈␛∧␛∨ ⭜xᶜ⭝ [x]󰅂 ⨁[]
         ↪ 󱁕
     ⊢ parse_elm(N):
         α, n, β = N₀.as_txt(), N₁, N₂.as_txt()
@@ -65,13 +67,13 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
             .ftrp("rname"⍭, 󰲡Ń(␛_⋅(x₀ᵗ∉␛✓␛✗)+x₀ᵗ, e=Ə))
         ¿󱁕ᵗ∈␛∧␛∨ ∧ 󱁕🃌≡1: 󱁕=󱁕₀
         rulesₖ = TT(󱁕)
-        
+    
     ↪ rules
 
  Hard to read ∵ very optimized
 ⊢ parse(𝐷, 𝑅, start_rule=□):
     ℭ, χ = 𝐷🃌󷸻ᴍ󰲡{}, 0
-    𝓢 = [(None, start_rule≅□ ⭜𝑅🃌-1⭝ start_rule)]
+    𝓢 = [(None, start_rule≅None ⭜𝑅🃌-1⭝ start_rule)]
     χ = 0
     ➰𝓢:
         Χ, ι = 𝓢.pop(󷰾)
@@ -159,9 +161,10 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
         ⸘r₀  ∈␛✓␛✗: r = (r₀, 𝔦)
         ⸘r₀  ∉␛ᔐ␛~: r = (r₀, ⠤r₁﹕ ᴍ 𝕊)
         ↪ 𝐑􊳁􊬁􊮝􊵬≔r →► 𝔦
-    𝕊(("T_root", ⠤nmp⁺󱑼r⁺ ᴍ 𝑡))
+    𝕊((‹T_root›, ⠤nmp⁺󱑼r⁺ ᴍ 𝑡))
     𝐑 = 𝐑 ᴍ 󰲡(x₀, ⠤x₁﹕ ᴍ󰲡 (r⁻󰑅ᴵ(≡(x₀)))¿xᐹ𝑡¡x)
     ↪ ℵ􋆒|nmp
+
 ⊢ parse_to_tree(𝑅, ℭ, χ, ι, show_table=✗, raise_failed=✓):
     rec = 𝚲parse_to_tree(𝑅, ℭ, ⠤𝔸, raise_failed=raise_failed)
     γ, ⠤C = 𝑅󰃬
@@ -191,7 +194,7 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
              remove_failed_questions=✓,
              remove_lookaheads=✓,
              DEBUG=✗):
-    ℒ = 𝓣 ¿DEBUG¡ ⴴ
+    ℒ = DEBUG ⭜𝓣⭝ ⴴ
     
     pops = ‹∧∨*+❗⠶?›
     removes = 𝑠(␛󰆴⋅remove_trashes+␛⮞␛¬⋅remove_lookaheads)
@@ -262,7 +265,7 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
     
     ⊢ set_arrows(󱁕):
         ¿󱁕ᵉ ᵀ: ↪
-        ∀i,c ∈ 󱁕↨:
+        ∀i,c ∈ enumerate(󱁕):
             ¿cᵉ ᵀ: ↺
             ¿cᵗ≡␛←:
                 󱁕ᵉ􊬣􊫼 = 󱁕ᵢ = c₁
@@ -270,72 +273,58 @@ show_cache_table = ⥌𝑅,ℭ↦↨ℭꟿ⥌i,v↦ℵ(v)󰒼→ꟿ󰲣☾‹
     ℒ ; set_arrows(󱁕) ; ℒ("Set arrows")
     ↪ 󱁕
 
- parse_to_node = 󱁕↦(ƒ ≔ 󰲡Ń(x, ⠤𝔸ᴍ󰲡ƒ(⠤x¿xᐹ𝑡¡x⛶ᵀ)))(⠤󱁕)
+ parse_to_node = 󱁕↦(ƒ ≔ 󰲡Ń(x, ⠤𝔸ᴍ󰲡ƒ(⠤xᐹ𝑡 ⭜x⭝ x⛶ᵀ)))(⠤󱁕)
 ⊢ parse_to_node(󱁕):
     ⊢ ƒ(x, ⠤𝔸):
-        ↪ Ń(x, ⠤(ƒ(⠤x ¿isinstance(x,tuple)¡ (x,)) ∀x∈𝔸))
+        ↪ Ń(x, ⠤(ƒ(⠤isinstance(x,tuple) ⭜x⭝ (x,)) ∀x∈𝔸))
     ↪ ƒ(⠤󱁕)
+
+@fcache
+⊢ peggle2_call(R, content, rule=‹main›, DEBUG=✗, chop=✓, ⠶𝓚):
+    c, r = content, rule
+    root, rule = Rᵀ􋕟ʳᵒᵒᵗ, Rᵣ
+    
+    ℒ = DEBUG ⭜𝓣⭝ ⴴ
+    ℒ ; ℭ = parse(c, root, rule)            ; ℒ(‹Parse󷺗󷺗›)
+    ℒ ; 󱁕 = parse_to_tree(root, ℭ, 0, rule) ; ℒ(‹Convert›)
+    ℒ ; 󱁕 = parse_to_node(󱁕)                ; ℒ(‹Nodeing›)
+    
+    𝒸 = 𝚲chop_tree(󱁕, c, DEBUG=DEBUG, ⠶𝓚|𝕂)
+    ↪ chop ⭜𝒸⭝ ℵ(table=ℭ, tree=󱁕, chop=𝒸)
 
 󱀘 peggle2:
     __slots__ = ‹rules R›⍭
     ⊢ __init__(𝕊, g):
         ¿gᐹᔐ: g = FROM_GRAM(g)
-        𝕊ʳᵘˡᵉˢ, 𝕊ᴿ = gʳᵘˡᵉˢ⋄gᴿ ¿gᐹpeggle2¡ g⋄make_rules(g)
+        𝕊ʳᵘˡᵉˢ, 𝕊ᴿ = gᐹpeggle2 ⭜gʳᵘˡᵉˢ⋄gᴿ⭝ g⋄make_rules(g)
     ⊢ __repr__(𝕊): ↪ ‹⟦ᐹ𝕊→.__name__⟧[⟦𝕊ʳᵘˡᵉˢ🃌⟧ Rules, ⟦𝕊ᴿ ᵀ􋕟ʳᵒᵒᵗ🃌⟧ Normalized]›
     ⊢ __contains__(𝕊, x): ↪ x∈𝕊ʳᵘˡᵉˢ
     ⊢ __or__(𝕊, h, allow_conflict=✗):
         ¿hᐹ𝕊: h = hʳᵘˡᵉˢ
         conflict = (𝕊ʳᵘˡᵉˢ.keys)∩(h.keys)
-        ¬(allow_conflict ∧ conflict)⨳‹Conflicting rules! ⟦conflict⟧›
+        ¬(allow_conflict ∧ conflict) ⨳ ‹Conflicting rules! ⟦conflict⟧›
         ↪ (ᐹ𝕊)(peggle2(𝕊ʳᵘˡᵉˢ | h))
-    ⊢ __call__(𝕊, content, rule="main", DEBUG=✗, chop=✓, ⠶𝓚):
-        c, r = content, rule
-        root, rule = 𝕊ᴿ ᵀ􋕟ʳᵒᵒᵗ, 𝕊ᴿᵣ
-        
-        ℒ = 𝓣 ¿DEBUG¡ ⴴ
-        ℒ ; ℭ = parse(c, root, rule)            ; ℒ("Parse")
-        ℒ ; 󱁕 = parse_to_tree(root, ℭ, 0, rule) ; ℒ("Convert")
-        ℒ ; 󱁕 = parse_to_node(󱁕)                ; ℒ("Nodeing")
-        
-        𝒸 = 𝚲chop_tree(󱁕, c, DEBUG=DEBUG, ⠶𝓚|𝕂)
-        ↪ 𝒸 ¿chop¡ ℵ(table=ℭ, tree=󱁕, chop=𝒸)
+    
+    ⊢ __call__(𝕊,⠤𝔸,⠶𝕂): ↪peggle2_call(𝕊ᴿ,⠤𝔸,⠶𝕂)
     ⊢ print_rules(𝕊):
         𝕊ʳᵘˡᵉˢ.itemsꟿ󰲣(‹⟦x⟧:›☾, y☾)
     ⊢ print_normalized(𝕊):
         𝕊ᴿ ᵀ􋕟ʳᵒᵒᵗ↨ ꟿ󰲣 ☾‹⟦x⟧𝘁⟦𝘀.join(yᴍᔐ)⟧›
 
+🟑⊢ dump_peg(𝕊): ↪dumps((𝑑∘𝕊ʳᵘˡᵉˢ, 𝑑∘𝕊ᴿ, 𝕊ᴿ.getdef))
+⊢ load_peg(𝚢):
+    𝕊 = peggle2.__new__(peggle2)
+    rules, R, d = loads(𝚢)
+    𝕊ʳᵘˡᵉˢ, 𝕊ᴿ = ℵ(rules), ℵᵈ(R)
+    ↪𝕊
+pcache = fcache(𝘦=dump_peg, 𝘥=load_peg)🟑
+
+__exports__ = ‹peggle2›⍭
+__OUT__["peggle2"] = peggle2
+
 GRANDMA_RULES = ŕ≔(⠤map(re.compile, (('[\ueb26#][^\\n]*'), ('[⯅⯆△▽↷]'), ('"(␛.|[^"])*"'), ("'(␛.|[^'])*'"), ('‹(␛.|[^›])*›'), ('[^⯅⯆△▽↷󰆴()?❗⮞.:⠶ƨ✗+*=¬∨∧~‹#\'" \\t\\n]+|✗'), ('[󰆴❗⮞⠶ƨ~¬]'), ('[*+?]'), ('([ \\t]|␛\\n)+'), ('([ \\t\\n]|␛\\n)+'))),) →►← ℵ∘{'statements':('∧',('?',('_W',)),('*',('∧',('∨',('_comment',),('_elm_o',)),('?',('_W',))))),'comment':('~',ŕ[0]),'elm_o':('∧',('_elm_a',),('*',('∧',('?',('_W',)),('ᔐ','∨'),('?',('_W',)),('_elm_a',)))),'elm_a':('∧',('_elm_j',),('*',('∧',('∨',('∧',('?',('_W',)),('ᔐ','∧'),('?',('_W',))),('?',('_w',))),('_elm_j',)))),'elm_j':('∨',('__elm_j',),('_elm',)),'_elm_j':('∧',('_elm',),('?',('_W',)),('~',ŕ[1]),('?',('_W',)),('∨',('__elm_j',),('_elm',))),'elm':('∧',('_prefix',),('∨',('_assign_eql',),('_assign_cln',),('_group',),('_str',),('_rname',)),('_suffix',)),'assign_eql':('∧',('_rname',),('?',('_W',)),('ᔐ','='),('?',('_W',)),('_elm_o',)),'assign_cln':('∧',('_rname',),('?',('_W',)),('ᔐ',':'),('?',('_W',)),('_elm_j',)),'group':('∧',('ᔐ','('),('?',('_W',)),('_group_inner',),('ᔐ',')')),'group_inner':('*',('∧',('_elm_o',),('?',('_W',)))),'str1':('~',ŕ[2]),'str2':('~',ŕ[3]),'str3':('~',ŕ[4]),'str':('∨',('_str1',),('_str2',),('_str3',)),'rname':('~',ŕ[5]),'prefix':('∨',('∧',('?',('_w',)),('+',('∧',('~',ŕ[6]),('?',('_W',))))),('?',('_w',))),'suffix':('∨',('∧',('+',('∧',('?',('_W',)),('~',ŕ[7]))),('?',('_w',))),('?',('_w',))),'w':('~',ŕ[8]),'W':('~',ŕ[9])}
 BOOTSTRAP = peggle2(GRANDMA_RULES)
 FROM_GRAM = 󰲡peggle2(gram_convert(BOOTSTRAP(x, "statements")))
-
-__exports__ = "peggle2",
-
-¿ __name__≡"__main__":
-    GRAM = 󰦥󰦥󰦥󰦥󰦥
-    main    = 󰆴W? (entry 󰆴W?)*
-    entry   = (
-        ƨ(section=󰆴'[' wrd 󰆴']') 󰆴W?
-        (pair = (
-            (bruh:key = ⠶wrd) 󰆴(w? ↷ '=')
-            (value = (wrd ∨ str)+) 󰆴W? ) )* )
-    str     = ~‹"[^"]+"›
-    wrd     = ~‹[-\w]+›
-    w       = ~‹[ \t]+›
-    W       = ~‹[ \t\n]+›
-    󰦥󰦥󰦥󰦥󰦥
-    CONTENT = 󰦥󰦥󰦥󰦥󰦥
-    [section1]
-    somekey = somevalue
-    someotherkey=someothervalue
-    [duawhdiawi]
-    somekey =                 somevalue
-    someotherkey=✓□awhdapi
-    󰦥󰦥󰦥󰦥󰦥
-    RULE = "main"
-
-    gram = peggle2(GRAM)☾
-    󱁕 = gram(CONTENT, RULE)
-    󱁕ᴾ
 
 ⊢ Peggle1Bootstrap(c=ℵ()):
     ¿"BOOTSTRAP_PEGGLE1"∈c:
@@ -380,3 +369,30 @@ __exports__ = "peggle2",
     c.BOOTSTRAP_PEGGLE1 = ForcefeedPeggle1Peggle2(BOOTSTRAP)
     c.Parser = 󰲡ForcefeedPeggle1Peggle2(FROM_GRAM(x))
     ↪ c.ForcefeedPeggle1Peggle2, c.BOOTSTRAP_PEGGLE1, c.Parser
+
+¿ __name__≡"__main__":
+    GRAM = 󰦥󰦥󰦥󰦥󰦥
+    main    = 󰆴W? (entry 󰆴W?)*
+    entry   = (
+        ƨ(section=󰆴'[' wrd 󰆴']') 󰆴W?
+        (pair = (
+            (bruh:key = ⠶wrd) 󰆴(w? ↷ '=')
+            (value = (wrd ∨ str)+) 󰆴W? ) )* )
+    str     = ~‹"[^"]+"›
+    wrd     = ~‹[-\w]+›
+    w       = ~‹[ \t]+›
+    W       = ~‹[ \t\n]+›
+    󰦥󰦥󰦥󰦥󰦥
+    CONTENT = 󰦥󰦥󰦥󰦥󰦥
+    [section1]
+    somekey = somevalue
+    someotherkey=someothervalue
+    [duawhdiawi]
+    somekey =                 somevalue
+    someotherkey=✓□awhdapi
+    󰦥󰦥󰦥󰦥󰦥
+    RULE = "main"
+
+    gram = peggle2(GRAM)☾
+    󱁕 = gram(CONTENT, RULE)
+    󱁕ᴾ

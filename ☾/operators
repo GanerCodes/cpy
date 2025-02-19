@@ -121,7 +121,7 @@
     𝗜 󰈲􋊧 𝗙
         conditional map, apply mod to elm if right true
         `[0,1,2,3] 󰈲􍈽 󷺹>1ᐸ ≡ [0,1,󷰿,󷱀]`
-        󷹇 if modifier is not a 𝗙 it becomes a replcaement value
+        󷹇 if modifier is not a 𝗙 it becomes a replacement value
     𝗜 󰈲􋊧􌥡 𝑜
         same as previous but right func is equality check on 𝑜
     󷹇 Supports ᔨ and 󰮈
@@ -259,7 +259,7 @@
     𝑜±𝑜􊽨
     `±5 ≡ [5,¯5]`
     `1±5 ≡ [6,¯4]`
-󷰧 󷷶󷷻 𝚡∨􊽨𝚢 ᴍdia⟦+-⟧ diamond {subtract}
+󷰧 󷷶󷷻 𝚡∨􊽨𝚢 ᴍdia⟦+-⟧ diamond {add,subtract}
     󷹇 Requested by Michael for future advanced math things
 󷰨 ◄► 𝚡∧𝚢 ᴍca⟦lr⟧ {left,right} value
     `1►5 ≡ 5 ≡ 5◄1`
@@ -267,11 +267,13 @@
     `1⋄2 ≡ [1,2]`
     `1⋄2⋄9 ≡ [1,2,9]`
     󰤱 make this less janky
-󷰪 ∪ 𝚡∧𝚡 ᴍuw𝕊 union
+󷰪 ∪ 𝚡∨𝚢 ᴍuw𝕊 union
     𝑠 ∪ 𝗜 = x|𝑠(right)
     𝑙 ∪ 𝗜 = [⠤x,right∖x]
     󰤱˜ docs
-󷰫 ∩ 𝚡∧𝚡 ᴍus𝕊 intesection
+󷰪 󷹩 𝚡∨𝚢 ᴍux exclusive difference
+    󰤱
+󷰫 ∩ 𝚡∨𝚢 ᴍus𝕊 intesection
     𝑠 ∩ 𝗜 = x∩𝑠(right)
     𝗜 ∩ 𝗜 = left󰈲󷺹∈right
     󰤱˜ docs
@@ -449,7 +451,7 @@
     `√󰁛5 ≡ 5󰁛􍩯`
     "؆25" ⟶ [󷱂, 5]  beware IEEE 754
     "؆³1" ⟶ 3ʳᵈ roots of unity
-󷰭 ! .𝚡 ! factorial
+󷰭 ! 𝚡. ! factorial
     Suffix unary
     `5! ≡ 120`
     `0! ≡ 1`
@@ -609,7 +611,7 @@
 󷰾 îĵ󷺈   ᴍ⟦ijk⟧^ {imaginary,j,k} unit
     `ĵ+2î ≡ ℍ(0,2,1,0)`
 󷰾 τπ󷺍󷺎󷺏   ᴍ⟦⁅t𝕊⁆⁅p⟦𝕊234⟧⁆⟧ {tau,½τ,½π,½󷺍,½󷺎}
-󷰾 􋐳􋐲􋐴􋑯   ᴍ,⟦⁅cos⁆⁅sin⁆⁅tan⁆⁅log⁆⟧ {cos,sin,tan,log} Function (maybe operator in future?)
+󷰾 􋐳􋐲􋐴􋑯􋑃􋑂   ᴍ,⟦⁅cos⁆⁅sin⁆⁅tan⁆⁅log⁆⁅lcm⁆⁅gcd⁆⟧ {cos,sin,tan,log,lcm,gcd} Function (maybe operator in future?)
 >¡ℭ ⟨DBLUE⟩ □ᐦ∞îĵ󷺈ℇ󷺍󷺎󷺏
 
 󷰾 ⟞⟝   ᴍ⟦⁅-|⁆⁅|-⁆⟧𝕊 {left,right}-tack arg for {left,right} whisker
@@ -623,12 +625,12 @@
 󷰾 ᐒᐘᐖᐛ   ᴍ ⟦>⁅>>⁆⟧|⟦AD⟧ {left,right,left,right} whisker apply{,, to elt's, to elt's}, no insert
 󷰾 󷺻󷺿󷺼󷻀   ᴍ|⟦>⁅>>⁆⟧|⟦AD⟧ {left,right,left,right} whisker function{,, to elt's, to elt's}, no insert
 >   ¡ℭ ⟨YELLOW⟩ 𝚲⥌↦␛󰅁␛󰅂ᐸᐳᑅᑀᑈᐵᐘᐒᐛᐖ󷺽󷺹󷺾󷺺󷻀󷺼󷺿󷺻
-
+󷰾 ℂℍ     ᴍq⟦ch⟧ {complex,quaternion} type
 󷰾 𝑏𝑖𝑓𝑑   ᴍwi⟦bifd⟧ {bool,int,float,dict} type
-󷰾 ᔐ𝑦𝑒𝑜   ᴍ⟦⁅cs⁆⁅wi⟦yeo⟧⁆⟧ {str,bytes,Exception,object} type
+󷰾 ᔐ𝑦𝑒𝑜   ᴍ⟦⁅cs𝕊⁆⁅wi⟦yeo⟧⁆⟧ {str,bytes,Exception,object} type
 󷰾 𝑠𝑡𝑙    ᴍwi⟦stl⟧ {set,tuple,list} type
-󷰾    ᴍcf⟦orw⟧ file {open,read,write}
-󷰾    ᴍcbc clipboard
+󷰾     ᴍcf⟦orw⟧ file {open,read,write}
+󷰾       ᴍcbc clipboard
     "()" ⟶ contents of clipboard
     "(‹stuff›)" ⟶ copies "stuff" to clipboard
 󷰾 󰋺   ᴍcic runtime include ☾ code

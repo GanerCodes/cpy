@@ -38,7 +38,7 @@ I: Include self in group (right asoc.)
 ∓ᴾᴮᴺ󰁢 ±ᴾᴮᴺ󰁢 +ᴾᴮᴺ󰁢 -ᴾᴮᴺ󰁢 󷷶ᴾᴮᴺ󰁢 󷷻ᴾᴮᴺ󰁢
 ◄ᴮᴺ󰁏󰁢 ►ᴮᴺ󰁏󰁢
 ⋄ᴮᴺ󰁢
-∪ᴮᴺ󰁢 ␉ ∩ᴮᴺ󰁢 ␉ ⨉ᴾ󰀒ᴮᴺ󰁢 ⊞ᴾ󰀒ᴮᴺ󰁢 ∖ᴮᴺ󰁢
+∪ᴮᴺ󰁢 󷹩ᴮᴺ󰁢 ␉ ∩ᴮᴺ󰁢 ␉ ⨉ᴾ󰀒ᴮᴺ󰁢 ⊞ᴾ󰀒ᴮᴺ󰁢 ∖ᴮᴺ󰁢
 //ᴮᴺ󰁢 /ᴮᴺ󰁢   *ᴮᴺᴾ󰁞󰁢 󷷷ᴮᴺ󰁢   󷷸ᴮᴺ󰁢   󰔛ᴮᴾ󰀒ᴺ󰁢 󱫩ᴮᴾ󰀒ᴺ󰁢 ␛
       ≅ᴮᴺ󰁍󰁢  ≇ᴮᴺ󰁍󰁢  ⋅ᴮᴺ󰁢   ÷ᴮᴺ󰁢   ⹏ᴮᴺ󰁢   %ᴮᴺ󰁢   ␛
       ⋀ᴾ󰀒ᴺ󰁢  ⋁ᴾ󰀒ᴺ󰁢  ⫰ᴾ󰀒ᴺ󰁢  ⫯ᴾ󰀒ᴺ󰁢  󷹒ᴾ󰀒ᴺ󰁢  @ᴮᴾᴺ󰁞󰁢 ␛
@@ -162,10 +162,10 @@ comment = ~‹((|#)[^\n]*(?=\n|\Z))|(🟑[^🟑]*(🟑|\Z))|(֎[^֎]*(֎|\Z))
 from whitespace_tools import *
 from py_naming_tools import *
 
-mkexp = lambda *X: Ń("expr", *X)
-mkgrp = lambda *X, b="()": Ń("group", b[0], X[0] if ⵌ(X)==1 else X, b[1])
+mkexp = lambda *X: Ņ("expr", *X)
+mkgrp = lambda *X, b="()": Ņ("group", b[0], X[0] if ⵌ(X)==1 else X, b[1])
 mkgxp = lambda *X, b="()": mkgrp(mkexp(*X), b=b)
-mkstr = lambda x='': Ń("str", '"', x, '"')
+mkstr = lambda x='': Ņ("str", '"', x, '"')
 mkvar = lambda x: Node("var", x)
 mkexp_ = lambda *n: Node("expr_", [*n])
 mkgxp_ = lambda *n: mkgrp(mkexp_(*n))
@@ -283,7 +283,7 @@ def σ_00():
         if args: args.append(COMMA_TND)
         args.extend([OP.TND("⠤"), mkvar("𝓐"), COMMA_TND,
                      OP.TND("⠶"), mkvar("𝓚")])
-        return Ń("oper",
+        return Ņ("oper",
             ("oper_mod_l", ᐦ), ("oper_lit", OP_NAME),
             (mkgxp(
                 ("lamb", ("lamb_h_normal", *args),
@@ -387,12 +387,12 @@ def σ_10():
 def σ_15():
     yield "Refactor lambdas"
     ((yield replacement("lamb_h_preset"))
-    (lambda n: Ń("lamb_h",
+    (lambda n: Ņ("lamb_h",
             *ᴍ(lambda t: mkexp(mkvar(t)), "xyzwvutsr"[:"𝚲󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱".index(n.c)]),
             ARG_A, ARG_K)))
     
     ((yield replacement("lamb_h_implicit"))
-    (lambda n: Ń("lamb_h", mkexp(n.C[0]), ARG_A, ARG_K)))
+    (lambda n: Ņ("lamb_h", mkexp(n.C[0]), ARG_A, ARG_K)))
     
     @(yield replacement("lamb_h_normal", "lamb_h_py"))
     def _(n):
@@ -411,10 +411,10 @@ def σ_15():
             elif k in ("**", "⠶"): has_k = True
             else                 : continue
             if len(c) == 1:
-                c.C[0] = Ń("expr_", '*'+'*'*(k=="**" or k=='⠶'))
+                c.C[0] = Ņ("expr_", '*'+'*'*(k=="**" or k=='⠶'))
         if not has_a: C.append(ARG_A)
         if not has_k: C.append(ARG_K)
-        return Ń("lamb_h", *C)
+        return Ņ("lamb_h", *C)
     
     ((yield replacement("lamb_b", rec='A'))
     (lambda n: n.copy(t="expr")))
@@ -650,7 +650,7 @@ def σ_35():
         return mkgxp(*(L,) if L else (), op_l, *(R,) if R else ())
 
     def make_if(t, l, r, m_l, m_r):
-        return Ń(t, l, r, m_l, m_r)
+        return Ņ(t, l, r, m_l, m_r)
     def make_el(t, l, r, m_l, m_r):
         assert l[0].t in "⭜¿"
         if t=='⭝': return mkgxp(l[0][1], OP.TND('¿'), l[0][0], OP.TND('¡'), r)
@@ -688,11 +688,11 @@ def σ_35():
                         OP.TND('¿'),
                     𝓡,
                         OP.TND('¡'),
-                    mkgxp(þPOPNR, Ń("oper_lit", '∨'), TRUE)))
+                    mkgxp(þPOPNR, Ņ("oper_lit", '∨'), TRUE)))
         if t == "󷺒": # x⭜(y⭜✗⭝x)⭝✓
             return mkgxp(
                 mkgxp(
-                    mkgxp(þPOPNR, Ń("oper_lit", '∨'), FALSE),
+                    mkgxp(þPOPNR, Ņ("oper_lit", '∨'), FALSE),
                         OP.TND('¿'),
                     𝓡,
                         OP.TND('¡'),
@@ -733,7 +733,7 @@ def σ_40():
     (lambda n: mkgxp(n.C[0], mkgrp(n.C[1]))))
     
     ((yield replacement("lamb_h", rec='B', n="Format lambda header"))
-    (lambda n: Ń("lamb_h", ("kw", "lambda"), *J́(n.C, COMMA), ("oper_lit", ":"))))
+    (lambda n: Ņ("lamb_h", ("kw", "lambda"), *J́(n.C, COMMA), ("oper_lit", ":"))))
 
 def σ_45():
     ((yield replacement("parser_main", rec='A', n="Unparse whitespace"))
@@ -744,13 +744,13 @@ def σ_45():
 
 def σ_48():
     ((yield replacement("for_expr", rec='B', n="Build for exprs"))
-    (lambda n: Ń(
+    (lambda n: Ņ(
         "expr",
         n.C[0], ("kw", "for"), n.C[1], ("kw", "in"), n.C[2],
         *([("kw", "if"), n.C[3]] if n['cond'] else []))))
     
     ((yield replacement("for_stmt", rec='B', n="Build for stmt"))
-    (lambda n: Ń(
+    (lambda n: Ņ(
         "kw_pfx_colon_expr",
         ("kw_pfx_colon", "for"),
         ("expr", n.C[0], ("kw", "in"), n.C[1]),

@@ -32,7 +32,7 @@ class OP:
     
     @classmethod
     def TND(ℂ, s, l=ᐦ, r=ᐦ):
-        return Ń("oper", ("oper_mod_l", l), ("oper_lit", s), ("oper_mod_r", r))
+        return Ņ("oper", ("oper_mod_l", l), ("oper_lit", s), ("oper_mod_r", r))
     
     @classmethod
     def is_op(ℂ, n, ops=ᗜ):

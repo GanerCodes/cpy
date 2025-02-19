@@ -11,9 +11,9 @@ IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
 
 ⊢ outer_globals(i=0):
     ➰i󷸊+1:
-        G = _getframe(i).f_globals
-        ¿G["__file__"]≠__file__: ⇥
-    ↪ G
+        𝘎 = _getframe(i).f_globals
+        ¿𝘎[‹__file__›]≠__file__: ⇥
+    ↪ 𝘎
 
 ⊢ 𝔦𝔪𝔭(x):  deprecated
     ¿x≡␛s:  system stuff
@@ -25,7 +25,7 @@ IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
         G = outer_globals()
         G[␛𝐩⥉PEV] = 𝐩
         G[␛𝐫⥉PEV] = 𝐫
-        G[h≔PEV("𝐩𝐝")] = 𝚲G["__file__"] ⥉𝐩→.parent
+        G[h≔PEV("𝐩𝐝")] = 𝚲G[‹__file__›] ⥉𝐩→.parent
         G["subprocess"] = subprocess
         G["os"], G["sys"], G["shutil"] = os, sys, shutil
         G["time"], G["sleep"] = time, sleep
@@ -60,40 +60,51 @@ IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
  󷹇 var name __exports__ determines the default stuff to dump into namespace
  󰤱 bug that store_code doesn't work if found in cache
 ⊢ 󰋺(𝔣, ⠤𝔸, g=✓, store_code=✓, just_get_path=✗):
-    ⮌ sys ⨡ path as P, _getframe as GF
-    ⮌ os ⨡ path, listdir
+    ⮌ sys ⨡ path as 𝘗
     ⮌ pathlib ⨡ Path as 𝐩
-    G = outer_globals()
-    drs = [␛., ⠤P]
-    ¿G.get("__file__")≕fp: drs.append(𝐩(fp) / ‹..›)
-    f, drs = □, drsᐵ⥉𝐩→.resolve()ᐸ 󰈲󷺹.is_dir()
-    ∀p∈drs:
-        ¿f ≔ ⋁ ← ᐦ⋄".☾" ᴍ 󰲡z≔p/‹⟦𝔣⟧⟦x⟧›→.is_file() ∧ z󰅂: ⇥
-    f ⨳ ‹Can't find "⟦𝔣⟧" in [⟦drsᐖ‹"⟦⟞⟧"›ᐸ⨝␛,𝘀⟧]!›
-    ¿just_get_path: ↪f
-    nam = PEV(f.stem ≕ na)
-    ¿f∈IMPORTED_:
-        ¿IMPORTED_≕m≅□: ↪
+    
+    𝘎 = outer_globals()
+    𝙳 = [␛., ⠤𝘗]
+    ¿𝘎.get(‹__file__›)≕fp:
+        𝙳.append(𝐩(fp).parent)
+    𝙳 󷸊 ᴍ𝐩ᐵ.resolve()ᐸ 󰈲󷺹.is_dir()ᐸ ⭢ ᚤ
+    𝚏, 𝙲𝙷𝙺 = □, ⍁
+    ∀p,e ∈ 𝙳⨉‹ .☾›⍭:
+        f = p/‹⟦𝔣⟧⟦e⟧›
+        ¿f.is_dir():
+            ¿ 𝙲𝙷𝙺.append(h≔f/‹main.☾›)►h.is_file()␛
+             ∨𝙲𝙷𝙺.append(h≔f/‹⟦𝔣⟧󷺗.☾›)►h.is_file():
+                𝚏,𝚗 = h,PEV(𝚗𝚊≔f.stem)
+                ⇥
+            ↺
+        𝙲𝙷𝙺.append(f)
+        ¿f.is_file():
+            𝚏,𝚗 = f,PEV(𝚗𝚊≔f.stem)
+            ⇥
+    𝚏 ⨳ ‹Can't find "⟦𝔣⟧", files checked:⟦𝙲𝙷𝙺⟕𝗻𝘁⟧›
+    ¿just_get_path: ↪𝚏
+    ¿𝚏∈IMPORTED_:
+        ¿IMPORTED_􀲤≕𝘔≅□: ↪
     ¡:
-        code = f.open().read()
-        Ω Module(ℵ´ 􋇑): __repr__ = 𝚲‹Module "⟦na⟧"›
-        IMPORTED_ = □
-        ns = {"__name__": nam, "__file__": f}
-        IMPORTED_ = m = Module(⠶󱠨(␛+code, get_ns=✓, cap_stdout=✗, ns=ns, fname=ᔐ←f))
-        importsₙₐ = m
-        ¿store_code: m􋕟􋕟ᶜᵖʸ􋕟ᶜᵒᵈᵉ􋕟􋕟 = code
-    𝑘 = *∈𝔸 ⭜m⁻󰈳󰲡x₀≡␛_󰅂⭝ [⠤𝔸 ∖ {!}]
-    𝑘󷸊󰌷("__exports__"∈m⁻ ⭜[⠤m􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟]⭝ ⍁)
+        𝚌𝚘𝚍𝚎 = ⓦ(𝚏.open(), 󷺹.read())
+        Ω Module(ℵ´ 􋇑): __repr__ = 𝚲‹Module "⟦𝚗𝚊⟧"›
+        ns = {‹__name__›:𝚗, ‹__file__›:𝚏, ‹__dir__›:𝚏.parent}
+        IMPORTED_􀲤 = □
+        𝘔 = Module(⠶󱠨(␛+𝚌𝚘𝚍𝚎, get_ns=✓, cap_stdout=✗, ns=ns, fname=ᔐ(𝚏)))
+        IMPORTED_􀲤 = imports􀲴􀲚 = 𝘔
+        ¿store_code: 𝘔[‹__cpy_code__›] = 𝚌𝚘𝚍𝚎
+    𝑘 = *∈𝔸 ⭜𝘔⁻󰈳󰲡x₀≡␛_󰅂⭝ [⠤𝔸 ∖ {!}]
+    𝑘󷸊󰌷("__exports__"∈𝘔⁻ ⭜[⠤𝘔[‹__exports__›]]⭝ ⍁)
     ¿g:
         ∀k∈𝑘:
             K = PEV(k)
-             ‹⟦‹✗✓›󰂝􊮇ₘ⟧: Adding "⟦k⟧"(⟦K⟧) from ⟦𝔣⟧ to ⟦G["__file__"]⟧›☾
-            ¿K∈m: G󰂝 = m󰂝
-            ¡   : ‹Warning, ⟦k⟧∉⟦m⟧›
-        ¿-∉𝔸∌! ∧ na∉𝑘:
-            Gₙₐₘ = m
-    ¿!∈𝔸: nam∈m ⨳ ‹Can't find "⟦nam⟧" inside module "⟦na⟧"!›
-    ↪ m
+             ‹⟦‹✗✓›󰂝􊮇ₘ⟧: Adding "⟦k⟧"(⟦K⟧) from ⟦𝔣⟧ to ⟦𝘎[‹__file__›]⟧›☾
+            ¿K∈𝘔: 𝘎󰂝 = 𝘔󰂝
+            ¡   : ‹Warning, ⟦k⟧∉⟦𝘔⟧›☾
+        ¿-∉𝔸∌! ∧ 𝚗𝚊∉𝑘:
+            𝘎􀲴 = 𝘔
+    !∉𝔸 ∨ 𝚗∈𝘔 ⨳ ‹Can't find "⟦𝚗⟧" inside module "⟦𝚗𝚊⟧"!›
+    ↪ 𝘔
 
 ℳℱ_cache = {}
 ⊢ ℳℱ(load):
@@ -104,8 +115,11 @@ IMPIMPMAP = 𝑑(IMPSIMPSꟿ󷺹⋄ᵜ󷺾→󰌷)
     ↪ ƒ
 SUBPROCA = ℳℱ(𝚲󰋺(‹subproca›).SUBPROCA)
 
-kots, highlighter = 󰋺("kots"), 󰋺("highlighter")
-𝐩,env,,,,,pwd,cd = kots􋕟􋕟ᵉˣᵖᵒʳᵗˢ􋕟􋕟ᐖkots[PEV(⟞)]
+kots = 󰋺("kots")
+∀n∈kots[‹__exports__›]:
+    𝚗 = PEV(n)
+    globals()􀲴 = __builtins__􀲴 = kots􀲴
+highlighter = 󰋺("highlighter")
 
 __builtins__["__error_printer__"] ≔ __error_printer__ ≔ highlighter.__error_printer__
 __builtins__["__highlighter__"  ] ≔ __highlighter__   ≔ highlighter.__highlighter__

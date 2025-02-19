@@ -1,6 +1,6 @@
 ⨡ traceback, threading, sys
 ⮌ json ⨡ loads
-‹kots 🌈›⍭ᴍ󰋺
+󰋺(‹🌈›)
 
 styf = moon_dir / "FontCompose/Output/style.json"
 styd = styf ⥉  ⥉ loads ⥉ ℵ

@@ -382,6 +382,7 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
 ∖´ = 󰲣xᐹ𝑠 ⭜x-𝑠(y)⭝ [z∀z∈x¿z∉y]
 ∪´ = 󰲣xᐹ𝑠 ⭜𝑠(x)|𝑠(y)⭝ [⠤x,⠤(z∀z∈y¿z∉x)]
 ∩´ = 󰲣xᐹ𝑠 ⭜𝑠(x)&𝑠(y)⭝ [z∀z∈x¿z∈y]
+󷹩´ = 󰲣x∪y →∖← x∩y
 ⨉´ = OPWRAP_(⥌x=␀,y=␀,s=␀↦product(⠤y≅␀∧s≇␀⭜[x]⋅s⭝(y≅␀⭜x⭝[x,y])⋅(s≅␀⭜1⭝s))ᴍ𝑙)
 ⊞´ = OPWRAP_(⥌⠤𝔸,s=1↦(ƒ≔⥌⠤𝔸,n=1,r=[]↦𝔸⋅nᑀ₀ᴍ󰲡⟞🃌>1 ⭜ƒ(⠤⟞₁﹕,r=r+[x])⭝ r+[x])(⠤𝔸, n=s))
 ᣆ´ = 𝑐𝑑(ƒ ≔ 󰲣(𝔸🃌⭜𝔸₀∘x⭝x)⭜y∘x⭝x, 𝑔=a↦󰲣ƒ(x,y,𝗙(a)⭜a⭝󰻾ᵃ))
@@ -681,5 +682,6 @@ CUSTOM_CORSP.extend([⫰,⫯,󷹒])
     ¿rwrap: ꬶ=with_inv(ꬶ,ƒ,✗)
     ƒ􋕟􋕟ⁱⁿᵛᵉʳˢᵉ􋕟􋕟 = 𝚲ꬶ
     ↪ ƒ
+􋑃, 􋑂 = lcm, gcd
 􋐳, 􋐲 = with_inv(cos, acos), with_inv(sin, asin)
 􋐴, 􋑯, 􋐼 = with_inv(tan, atan), with_inv(exp, log), with_inv(log, exp)

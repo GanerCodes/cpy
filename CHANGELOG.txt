@@ -391,3 +391,5 @@ DEPRECATED: 󰑅ᴵ, use 󰑅ᔨ
 Added implicit imports, only works for ℍ atm (also kots autoimports)
 
 Implicit multiplication between numbers and strs now is a thing
+
+󰋺 now is smarter, if a folder is in ☾/Library it gets the /main.☾ file. also we check local files and stuff now. also we have __dir__ which pairs with __file__.
