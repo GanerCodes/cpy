@@ -1,6 +1,7 @@
 BASE_CHARSET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 𝔍 = {↑:JSON.stringify, ↓:JSON.parse};
+󷹝 = String.fromCharCode;
 󰈙 = document;
 𝑜 = Object;
 𝗙 = 󰲡x instanceof Function;
@@ -34,7 +35,7 @@ Array.prototype.starmap = function(x){↪ꟿ(this,x)}
 𝐸.prototype.map     = function(x  ){this􋑱=Array.from(this􋑱)􊾡(x  ); ↪this};
 𝐸.prototype.starmap = function(x  ){this􋑱=Array.from(this􋑱)􋅝(x  ); ↪this};
 𝐸.prototype.filter  = function(x  ){this􋑱=Array.from(this􋑱)􋐉(x  ); ↪this};
-𝐸.prototype.reduce  = function(x,y){this􋑱=Array.from(this􋑱)􋔩(x,y); ↪this};
+𝐸.prototype.reduce  = function(x,y){↪     Array.from(this􋑱)􋔩(x,y);      };
     
 GID = 󰲡document.getElementById(x);
 VAL = 󰲡GID(x).value;
