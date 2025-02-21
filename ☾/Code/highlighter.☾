@@ -70,4 +70,4 @@ threading.excepthook = sys.excepthook
 
 ¿ __name__≡"__main__":
     ➰ l≔sys.stdin.readline:
-        ☾´(highlight∘l, end=ᐦ)
+        ☾´(__highlighter__∘l, end=ᐦ)
