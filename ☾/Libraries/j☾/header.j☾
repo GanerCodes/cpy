@@ -9,6 +9,7 @@ BASE_CHARSET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 󰻾 = 󰲡x;
 ⋀ = 󰲡x.every(󰻾);
 󱑼 = 󰲣𝑙(x)􊾡(⥌k,i↦[k,yᵢ]);
+ꟿ  = 󰲣𝑙(x)􊾡(󰲡y(⠤x));
 ᴍ  = 󰲣𝑙(x)􊾡(y);
 ᴍv = 󰲣𝒟(𝒪(x)􊾡(⥌[k,v]↦[k,y(v)]));
 ᴍk = 󰲣𝒟(𝒪(x)􊾡(⥌[k,v]↦[y(k),v]));
@@ -27,6 +28,13 @@ groups = ⥌l,𝑓↦{
     O = {};
     l􋁃(󰲡𝒮(O, 𝑓(x), []).push(x));
     ↪ O; }
+
+© 𝐸 = Element
+Array.prototype.starmap = function(x){↪ꟿ(this,x)}
+𝐸.prototype.map     = function(x  ){this􋑱=Array.from(this􋑱)􊾡(x  ); ↪this};
+𝐸.prototype.starmap = function(x  ){this􋑱=Array.from(this􋑱)􋅝(x  ); ↪this};
+𝐸.prototype.filter  = function(x  ){this􋑱=Array.from(this􋑱)􋐉(x  ); ↪this};
+𝐸.prototype.reduce  = function(x,y){this􋑱=Array.from(this􋑱)􋔩(x,y); ↪this};
     
 GID = 󰲡document.getElementById(x);
 VAL = 󰲡GID(x).value;

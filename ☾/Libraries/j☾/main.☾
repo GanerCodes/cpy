@@ -71,7 +71,7 @@ reps = 󰦥󰦥󰦥󰦥󰦥
 󰦥󰦥󰦥󰦥󰦥.strip󷺻𝗻󰛔􍪵␛ ᐸ⍭ᐵ.strip󷹎¹𝘀ᐸ⥉ℵ
 
 specials = ℵ(␛𝗻␛𝘁␛𝘀␛󷺗󱑼[␛\␛n,␛\␛t,𝘀,ᐦ])
-attr_repl = ‹󰊄 󰿨  󱇙 󰌷 ⨝ + - ∀ ᴍ 󰈲 ſ @ : ¶›⍭ 󰛔 ⍭‹innerText children disabled classList append join .add .remove forEach map filter reduce at slice style›
+attr_repl = ‹󰊄 󰿨  󱇙 󰌷 ⨝ + - ∀ ᴍ ꟿ 󰈲 ſ @ : ¶›⍭ 󰛔 ⍭‹innerText children disabled classList append join .add .remove forEach map starmap filter reduce at slice style›
 CONSTANTS = ‹ⴳⴴ✓✗□ᐦ󰮈⬤îĵ󷺈ℇτπ󷺍󷺏∞󷱪󷱽󷱾󷱫󷱬󷱭󷱮󷱯󷱰󷱩↉½⅓¼⅕⅙⅐⅛⅑⅒⅔⅖¾⅗⅜⅘⅚⅝⅞›
 OPERATORS = ‹!== === == => // /= *= -= += ++ -- && ?? ||›⍭󰌷‹󰆴󱟱󱫬𝚲󰲡󰲣󰲥󰲧󰲩󰲫󰲭󰲯󰲱󱣩🆕⎉©⎔!%&*/+-,.:;?<=>@^|¡¬¯±¿÷ſϜᐴᐹᗢᙎᙡᙧᚤᣆᴙℵℶ↨↪↺⇥∀∅∈∉∋∌∓∖∘√∣∤∧∨∩∪∾≅≇≔≕≠≡≤≥⊂⊃⊄⊅⊊⊋⊚⊛⊜⊞⋀⋁⋄⋅⌃⍁⍉⍜⍟⍭▢►◄○☾⛶➰⟕⟖⟗⠤⠶⤈⤉⨀⨁⨉⨝⨡⨳⩓⩔⪡⪢⫯⫰⬄⬒⬓⭜⭝⭥⮂⮌ⴵ⸘⹏ꟿ𝌂🃌🟕🟖󰈲󰈳󰌷󰑅󰒼󰒽󰔶󰛔󰬩󰬫󰸵󰸷󰻾󱅏󱑼󱖘󱖚󷸉󷸊󷸋󷸌󷸍󷸎󷸕󷸖󷸗󷸘󷸙󷸚󷸛󷸜󷸸󷸹󷸺󷸻󷹄󷹅󷹌󷹍󷹎󷹓󷹔󷹕󷹖󷹜󷹝󷹴󷹵󷺒󷺤󷺥󷺦󷺫󷺬›
 

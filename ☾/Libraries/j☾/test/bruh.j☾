@@ -1,5 +1,5 @@
 document.body.append(
-    󱀝 div [
+    󱀝:α div [
         󱀝 h4 {𝑆 color:#f00;}
             ‹This is coolll›
         󱀝 button {onclick ⟦⥌x↦alert("hi")⟧ ⍮ 𝑆 color:green;}
@@ -11,3 +11,4 @@ document.body.append(
         ]
     ]
 );
+α􊾡(󰲡x􋒷="joe")
