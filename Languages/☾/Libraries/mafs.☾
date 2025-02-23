@@ -1,0 +1,138 @@
+? from functools import Cache
+
+⊢binℕ(c,r=2):
+    ¿c(1): ↪1
+    ub=1
+    ➰¬c(ub):
+        ub󷸊⋅r
+    lb=ub⹏r
+    ➰ub-lb>1:
+        m=(ub+lb)⹏2
+        ¿c(m): ub=m
+        ¡: lb=m
+    ↪ub
+
+⊢⫚(x,y):
+    ¿xᐹ𝑖∧yᐹ𝑖: ↪x!⁻ʸ ⹏←y!
+    ¿x󷹵𝗜∧yᐹ𝑖: ↪x!⁻ʸ / y!
+    ¿xᐹî∧yᐹî: ↪x!   / y!⋅(x-y)!
+    ¿xᐹ𝗜∧yᐹ𝑖:
+        ¿y󷹵𝑖∨y<0: ✗⨳‹can't choose ⟦y⟧ things from a list›
+        ¿x🃌<y: ↪⍁
+        ¿¬y: ↪[⍁]
+        ↪⫚(x﹕􍨄,y)+←⫚(x﹕􍨄,y-1)ᐵ+[x􍨄]
+    ¿xᐹ𝑖∧yᐹ𝗜: ↪xᐹ𝑖∧⋀(yᐵᐹ𝑖)⭜x!⹏←(y+[x-←y⨁])ᴍ!⨀⭝x!/←(y+[x-←y⨁])ᴍ!⨀
+    ¿xᐹ𝗜∧yᐹ𝗜:
+        ¿⋁(yᐵ󷹵𝑖∨⟞<0): ✗⨳‹can't choose groups ⟦y⟧ from a list›
+        ¿x🃌<y⨁: ↪⍁
+        ¿¬⋁y: ↪[⍁􋌵ʸ]
+        ↪⫚(x﹕􍨄,y)+←(y⭥󰈲󰲡yₓ)ᐖᐳᐳ⟝₁+(⟝₀≡⟞)⋅[x􍨄]ᐛ↨ᑈ⫚(x﹕􍨄,ᐳ⟝₁-(⟝₀≡⟞)ᐛy↨)ᐸ⨁
+
+⊢󱇙nro(n):
+    ↪2ⁿ⁻¹
+⊢󱇙nru(n):
+    ¿n<0: ↪0
+    ¿n≤1: ↪1
+    t,k=0,1
+    ↪󷸺▢(√←⅔n+1/36)ᐖ-󷰾⌃⟞⋅(󱇙nru(n-⟞⋅(3⟞-1)⹏2)+󱇙nru(n-⟞⋅(3⟞+1)⹏2))ᐸ⨁
+⊢󱇙nso(n,b=[]):
+    ¿n<0: ↪0
+    ¿n≡0: ↪1
+    ↪󷸺n∖bᐖ󱇙nso(n-⟞,b+[⟞])ᐸ⨁0
+
+ 󱇙nsu
+ 󱇙sro
+ 󱇙sru
+ 󱇙sso
+ 󱇙ssu
+
+
+⊢smolfactor(n,k=1):
+    ¿k<1: ↪1
+    ¿k≡1∧¬←n%2: ↪2
+    ∀p∈k󷸺▢←√n:
+        ¿¬←n%p: ↪p
+    ↪n
+⊢isprime(p):
+    ↪smolfactor(p)≡p
+⊢firstprimes(n):
+    ¿n≤1: ↪[2]⋅n
+    t,p=[2],3
+    ➰t🃌<n:
+        ¿isprime(p): t.append(p)
+        p󷸊+2
+    ↪t
+⊢primesunder(n):
+    ↪2󷸹n󰈲isprime
+⊢divisors(n):
+    ¿(r≔▢(√n))²≡n: ↪(1󷸹r󰈳ᐳn%󷺽)≕f→+[r]+←fᴙᐵ⹏ᵜn
+    ↪(1󷸻r󰈳ᐳn%󷺽)≕f→+←fᴙᐵ⹏ᵜn
+⊢primedivs(n):
+    ↪𝑙(primedivsr(n)󰻾)
+⊢primedivsr(n):
+    ¿n≡1: ↪⍁
+    t=⍁
+    ➰n>1:
+        t.append(s≔smolfactor(n,t🃌⭜t􍨄-1⭝1))
+        n󷸊⹏s
+    ↪t
+
+
+
+🟑
+󰤱TODO
+sets ¶,ℤ,ℚ,ℝ,ℂ,𝔻,ℍ
+
+n∈¶  is prime?
+n ¶  first n primes
+∞ ¶  set of primes
+n ¶󰂂 primes less than
+n ¶⁺ all divisors
+n ¶􋁒 prime divs
+n ¶ prime divs w/ duplicates
+n ¶􋁼 factorization as a ℵ⁰(p↦exp)
+n ¶⁷ ord₇(n)
+n ¶􋠕 euler totient
+n ¶􊽥 morbius
+n ¶􀰫 manbrogolffish
+
+number theory functions:
+------------------------
+𝔅ⁿ Bernoulli polynomials
+✿ reciprocity
+  ℭ Carmichael function
+n∈ℭ is n a Carmichael num
+𝔇 Dirichlet functions
+󱇙 partition function
+factorials (rising/falling !ⁿ and count-by-n !ⁿ􍢉)
+
+integral functions:
+-------------------
+Γ(z)   gamma function
+Γ(z,n) polygamma
+
+Si/Ci/Li/Ei functions
+􋑀 Erf
+ℜ󰁑 Riemann/Hurwitz ζ function
+
+Elliptic Integrals:
+-------------------
+quarter period
+Weierstrass ℘ 𝔚􋀊
+ʝ-invariant function
+
+Other functions:
+----------------
+Bessel 𝔅ᴶ 𝔅󰀘
+Lambert 𝔏ᵂ
+Average functions (AM, GM, AGM, HM)
+
+constants:
+----------
+bernoulli numbers 𝔅ₙ
+Harmonic numbers ℌₙ
+ℭᴳ Catalan's constant
+ϕ golden ratio
+γ Euler-Mascheroni
+
+ℇ󰁛≡󷰾􍨍

@@ -1,3 +1,57 @@
+ 🮦🮧
+
+
+
+ https://codegolf.stackexchange.com/questions/277847/split-string-into-minimum-number-of-palindromic-substrings
+
+f= 󰲡2􋌵ˣ⭥ᐵ󷹜²🃌xᑀ􍪸󷺿𝌂ᵜ⭥xᐵ󷸻ᵜx⨁ᐸᐸ󰒼🃌󱖔􋔭⋀○󷺺≡ᴙ⟞
+🟑
+
+⋀       all
+🮧○🮦🮦🮦🮦  compose
+  󷺺🮦🮦🮦  function on 1 iterable, applies to each element, insert here
+   ≡🮦🮦  equals
+    ᴙ🮦  reverse
+     ⟞  function argument
+
+󰲡🮦🮦🮦🮦🮦🮦🮦🮦🮦  function of 1 variable, x
+ 2🮦🮦        2 to the power of
+  􋌵🮦            len of
+   ˣ            x
+ 🮧🮧🮧⭥       range, i.e., [0,1,…,2ˡᵉⁿ⁽ˣ⁾-1]
+ 🮧🮧🮧🮧ᐵ🮦🮦🮦🮦  apply to each element, insert here
+      󷹜🮦🮦🮦  int to string with padding
+       ²    in base 2
+        🃌🮦  len of
+         x  x
+
+󰲡2􋌵ˣ⭥ᐵ󷹜²🃌x         for each 🃌x length binary string
+ 🮧🮧🮧🮧🮧🮧🮧🮧🮧ᑀ🮦       start of a function that uses the binary string
+           􍪸       index by function variable
+            󷺿      end of the function of 1 variable, not inserted here
+ 🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧𝌂🮦🮦🮦  partition by
+              ᵜ    swap arguments
+               ⭥🮦  range of
+                x  x
+
+󰲡2􋌵ˣ⭥ᐵ󷹜²🃌xᑀ􍪸󷺿𝌂ᵜ⭥x         get the partition of x by a binary string
+ 🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧ᐵ        apply to each element, insert here
+ 🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧󷸻🮦🮦     inclusive range
+                   ᵜ      swap arguments
+                    x     x
+ 🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧⨁    sum
+                      ᐸᐸ  end both apply to each element
+
+󰲡2􋌵ˣ⭥ᐵ󷹜²🃌xᑀ􍪸󷺿𝌂ᵜ⭥xᐵ󷸻ᵜx⨁ᐸᐸ            get the partitions of x
+ 🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧󰒼🮦          sort by
+                         🃌          length
+ 🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧🮧󱖔🮦🮦🮦🮦🮦🮦🮦  interpret as binary op with blue prescedence
+                           􋔭        first element that satisfies
+                            ⋀○󷺺≡ᴙ⟞  all are palindromes
+
+🟑
+
+
  https://codegolf.stackexchange.com/questions/273479/is-this-a-valid-pzn/277818#277818
 
 f= 󷺹ᴙ󷹝Ϝ􍨅+⨁⟞󷹝₇2∣ᵜ11
