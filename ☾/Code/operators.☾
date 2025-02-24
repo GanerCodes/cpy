@@ -696,4 +696,4 @@ CUSTOM_CORSP.extend([⫰,⫯,󷹒])
 
 􋑃, 􋑂 = lcm, gcd
 􋐳, 􋐲 = with_inv(cos, acos), with_inv(sin, asin)
-􋐴, 􋑯, 􋐼 = with_inv(tan, atan), with_inv(exp, log), with_inv(log, exp)
+􋐴, 􋑯, 􋐼 = with_inv(tan, atan), with_inv(log, exp), with_inv(exp, log)
