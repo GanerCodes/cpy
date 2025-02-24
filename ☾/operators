@@ -633,13 +633,15 @@
     `✓≡1`
 󷰾 ⴴⴳ   ᴍcc⟦ft⟧ {falsey,truthy} function that always returns {false,true}
 >¡ℭ ⦑c⦑f00⦒⦒ ✗ⴴ ␠ ¡ℭ ⦑c⦑0f0⦒⦒ ✓ⴳ
-󷰾 𝗙   ᴍwsF check if function
+󷰾 𝗙𝗛𝗜   ᴍws⟦FHI⟧ check if {function,hashable,iterable}
     `󷺹²ᐸᐹ𝗙 ∧ 𝗙(󷺹²) ≡ ✓`
     `[1,2,3]ᐹ𝗙 ∨ 𝗙(22) ≡ ✗`
-󷰾 𝗛   ᴍwsH check if hashable, if so, return hashed value
-󷰾 𝗜   ᴍwsI check if iterable
+    
     `[1,2,3]ᐹ𝗜 ∧ 𝗜([1,2,3]) ≡ ✓`
     `2ᐹ𝗜 ∨ 𝗜(□) ≡ ✗`
+    
+    󷹇 𝗛 checks if hashable, if so, return hashed value
+
 󷰾 □   ᴍ[] none
 󷰾 ᐦ   ᴍc" empty string
 󷰾 ∞   ᴍ88 infinity
@@ -647,7 +649,8 @@
 󷰾 îĵ󷺈   ᴍ⟦ijk⟧^ {imaginary,j,k} unit
     `ĵ+2î ≡ ℍ(0,2,1,0)`
 󷰾 τπ󷺍󷺎󷺏   ᴍ⟦⁅t𝕊⁆⁅p⟦𝕊234⟧⁆⟧ {tau,½τ,½π,½󷺍,½󷺎}
-󷰾 􋐳􋐲􋐴􋑯􋑃􋑂   ᴍ,⟦⁅cos⁆⁅sin⁆⁅tan⁆⁅log⁆⁅lcm⁆⁅gcd⁆⟧ {cos,sin,tan,log,lcm,gcd} Function (maybe operator in future?)
+󷰾 􋐳􋐲􋐴􋑯   ᴍ,⟦⁅cos⁆⁅sin⁆⁅tan⁆⁅log⁆⟧ {cos,sin,tan,log} Function (maybe operator in future?)
+󷰾 􋑃􋑂     ᴍ,⟦⁅lcm⁆⁅gcd⁆⟧ {lcm,gcd} Function (maybe operator in future?)
 >¡ℭ ⟨DBLUE⟩ □ᐦ∞îĵ󷺈ℇ󷺍󷺎󷺏
 
 󷰾 ⟞⟝   ᴍ⟦⁅-|⁆⁅|-⁆⟧𝕊 {left,right}-tack arg for {left,right} whisker
