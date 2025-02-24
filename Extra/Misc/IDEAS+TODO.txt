@@ -2,12 +2,11 @@
 
     󰤱  Documentation (oh gosh people are finding the project now)
     󰤱  Implicit shape  operator
-        󷹇 1st number is outer layer
+        https://ganer.xyz/s/35253369382cfe6b
         default: hypercube w/ max dim?
         100 items: shape² = ⬤⋄⬤ = 10⨯10
         100 items: shape³ = ⬤⋄⬤⋄⬤ = 1⨯1⨯1⨯100…?  1 largest cube factor
         100 items: shape 25⋄4 = 25⨯4
-                   deshape is just 󰌷?
         100 items: shape 10⋄5 = 10⨯5⨯2…?
         100 items: shape ⬤⋄5 = 20⨯5
         124 items: shape ⬤⋄⬤ = 2⨯2⨯31…?
