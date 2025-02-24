@@ -1,7 +1,7 @@
 § TODOs ------------------------------------
 
     󰤱  Documentation (oh gosh people are finding the project now)
-    󰤱  Ponder shape 󰆩󰋁󰠷⥊ operator
+    󰤱  Implicit shape  operator
         󷹇 1st number is outer layer
         default: hypercube w/ max dim?
         100 items: shape² = ⬤⋄⬤ = 10⨯10
