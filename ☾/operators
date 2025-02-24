@@ -292,11 +292,17 @@
 󷰭 ☾ 𝚡󷺤􊽨𝚡 ᴍcp𝕊 print
     "‹hello›☾" ⟶ prints "hello" to stdout
     󰤱 docs
-󷰭 🃌 𝚡󷺤𝚡 ᴍca𝕊 cardinality (length)
-    𝔦 🃌
-    Returns length of 𝔦
-    `‹egg›🃌 ≡ 3`
-    `[1,2]🃌 ≡ 2`
+󷰭 🃌󷸑󷸒 𝚡󷺤𝚡 ᴍc⟦⁅a𝕊⁆⁅S𝕊⁆⁅SS⁆⟧ {cardinality (length),shape,depth}
+    𝗜 🃌: Length of arg
+        `‹egg›🃌 ≡ 3`
+        `[1,2]🃌 ≡ 2`
+    𝗜 󷸑: Shape of arg
+        `[[["ab","cd"],["ef","gh"]]]󷸑 ≡ 1⋄2⋄2⋄2`
+        󷹇 modifier is limit
+        `[[["ab","cd"]]]󷸑² ≡ 1⋄1`
+    𝗜 󷸒: Depth of arg
+        `[[["ab","cd"],["ef","gh"]]]󷸒 ≡ 4`
+        󷹇 basically same as 🃌○󷸑
 󷰭 󷹝 𝚡󷺤􊽨𝚡 ᴍCS str⟷int involution
     Gets ascii/unicode value(s) of string and vise versa
     󰤱 docs

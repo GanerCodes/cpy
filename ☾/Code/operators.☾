@@ -182,7 +182,7 @@ LITERAL_OPS_􊯛₋ = _
     ⸘𝑔ᐹ𝑖 ∧ 𝕏∈␛⊚␛⊛␛⍟: 𝑔=Ticker(𝑔+1)
     ⊢ r(⠤𝔸,⠶𝕂):
          n, g = s, 𝑔(ƒ(⠤𝔸,⠶𝕂)≕f)
-        n, f, g = s, 𝔸⭜𝔸₀⭝□, 𝑔(⠤𝔸, ⠶𝕂)
+        n, f, g = s⫰, 𝔸⭜𝔸₀⭝□, 𝑔(⠤𝔸, ⠶𝕂)
                          ↑ 󰤱 sensable?
         ¿𝕏≡␛⊚:
             ¿g: ↪f
@@ -199,6 +199,7 @@ LITERAL_OPS_􊯛₋ = _
                 𝑔(ƒ(f)≕f)≕g
                 ¿¬g∨𝕏≡␛⊛: rf.append(f)
                 ¿g      : ↪ rf
+            ¿s<0: ↪ rf  indicates hitting limit should return current results
         ⸘𝕏∈␛🟕␛🟖:
             rf, rg = [f], [g]
             ➰0<n󷸊-1:
@@ -398,8 +399,6 @@ OPWRAP_(⠤‹ᐴ󷹵󷹴›)(⥌𝕏,x=␀,y=␀,s=␀↦(󰲣yᐹˢx, 󰲣¬�
 !´ = 󰲡󷸺x⨀¹
 …´ = 󰲣𝑙←range(x,y)
 ∓´,±´ = 𝚲-´⋄+´ᐵ(⠤𝕣(𝔸)), 𝚲+´⋄-´ᐵ(⠤𝕣(𝔸))
-⪢´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x􍈼﹪􊹳ₓ􍪪ᵢ﹕+x﹕ᵢ⭝ x >> y)
-⪡´ = OPWRAP_(⥌x,y=1↦xᐹᔐ|𝑙|𝑡 ⭜x∧←x ⪢ ¯y       ⭝ x << y)
 ◄´,►´ = RET_L, RET_R
 ⊂´,⊃´ = 󰲣𝑠(x).issubset(𝑠←y), 󰲣𝑠(y).issubset(𝑠←x)
  󰤱 maybe generalize above to multiset subset for left being list, with 􋇠 disabling that? same for ∖ ∩ ∪
@@ -487,6 +486,13 @@ CUSTOM_CORSP.extend([⫰,⫯,󷹒])
     ¡:
         𝙰 󷸊 ᴍ(𝕏≡␛󱑼⭜ 󷺹󰸷ˢ􋁤􋅂􀸩􍪵􍩭􀸧ˢhᐸ ⭝ 󷺹󰸵ˢ􋁤􋅂􀸩􍪵􊿥􀸧ˢhᐸ)
     ↪ zip(⠤𝙰)ᴍ𝑙
+
+@OPWRAP_(⠤‹⪡⪢›)
+⊢ _(𝕏, 𝚡=␀, 𝚢=1, s=␀):
+    ¿s≅␀:
+        ¿𝚡ᐹℤ: ↪ 𝕏≡␛⪢ ⭜𝚡>>𝚢⭝ 𝚡<<𝚢
+        ¿𝕏≡␛⪡: 𝚢󷸊󷹒
+        ↪ 𝚡∧←𝚡􍈼􀳊﹪􊹳􀳈􍪪ᵢ﹕+𝚡﹕ᵢ
 
 @OPWRAP_(⠤‹󰒼󰒽›)
 ⊢ _(𝕏, 𝚡=␀, 𝚢=󰻾, s=␀, 𝘪=✗):
@@ -681,6 +687,10 @@ CUSTOM_CORSP.extend([⫰,⫯,󷹒])
     ¿rwrap: ꬶ=with_inv(ꬶ,ƒ,✗)
     ƒ􋕟􋕟ⁱⁿᵛᵉʳˢᵉ􋕟􋕟 = 𝚲ꬶ
     ↪ ƒ
+
+󷸑 = OPWRAP_(⥌𝚡,s=∞↦ᓕ⁰⭢⊛􍈽ˢ󷺹󷹵𝗜∨⟞ᐹᔐᐸ∘𝚡ᴍ🃌)
+󷸒 = OPWRAP_(🃌○󷸑)
+
 􋑃, 􋑂 = lcm, gcd
 􋐳, 􋐲 = with_inv(cos, acos), with_inv(sin, asin)
 􋐴, 􋑯, 􋐼 = with_inv(tan, atan), with_inv(exp, log), with_inv(log, exp)
