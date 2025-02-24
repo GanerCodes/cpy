@@ -1,6 +1,17 @@
 § TODOs ------------------------------------
 
     󰤱  Documentation (oh gosh people are finding the project now)
+    󰤱  Ponder shape 󰆩󰋁󰠷⥊ operator
+        󷹇 1st number is outer layer
+        default: hypercube w/ max dim?
+        100 items: shape² = ⬤⋄⬤ = 10⨯10
+        100 items: shape³ = ⬤⋄⬤⋄⬤ = 1⨯1⨯1⨯100…?  1 largest cube factor
+        100 items: shape 25⋄4 = 25⨯4
+                   deshape is just 󰌷?
+        100 items: shape 10⋄5 = 10⨯5⨯2…?
+        100 items: shape ⬤⋄5 = 20⨯5
+        124 items: shape ⬤⋄⬤ = 2⨯2⨯31…?
+    󰤱  sup/sub 󷸓󷸔
     󰤱  Angle of complex number
     󰤱  Better window, multidimentional
     󰤱  bootstrap everything
@@ -11,16 +22,6 @@
     󰤱  regex but better
     󰤱  add the edge cases for the new compose ops
         󰤱 rlly combinators need overhaul like where is good under
-    󰤱  Ponder shape ⥊󰋁󰠷 operator
-        󷹇 1st number is outer layer
-        default: hypercube w/ max dim?
-        100 items: shape² = ⬤⋄⬤ = 10⨯10
-        100 items: shape³ = ⬤⋄⬤⋄⬤ = 1⨯1⨯1⨯100…?  1 largest cube factor
-        100 items: shape 25⋄4 = 25⨯4
-                   deshape is just 󰌷?
-        100 items: shape 10⋄5 = 10⨯5⨯2…?
-        100 items: shape ⬤⋄5 = 20⨯5
-        124 items: shape ⬤⋄⬤ = 2⨯2⨯31…?
     󰤱  Better ☾
     󰤱  proper cli for generating font
     󰤱  side-invarient unary doesn't work ⓦ implicit multiplication
